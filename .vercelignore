@@ -1,0 +1,4 @@
+images/*.jpg
+images/*.png
+.git
+*.tar.gz
