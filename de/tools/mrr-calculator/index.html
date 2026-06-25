@@ -88,6 +88,14 @@ footer a{color:#0066cc;text-decoration:none}
   .card-row{grid-template-columns:1fr}
 }
 .lang-switcher{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 0;margin:8px 0;border-top:1px solid #e8e8ed;font-size:11px}.lang-switcher .lang-label{font-size:13px;margin-right:4px}.lang-switcher .lang-link{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#fff;border:1px solid #e8e8ed;color:#86868b;text-decoration:none;font-size:10px;font-weight:600;transition:all .15s}.lang-switcher .lang-link:hover{background:#0066cc;color:#fff;border-color:#0066cc}.lang-switcher .lang-link.active{background:#0066cc;color:#fff;border-color:#0066cc}
+
+/* Language Switcher - Apple Style */
+.lang-nav{display:flex;align-items:center;gap:2px;margin-left:12px;padding-left:12px;border-left:1px solid #e8e8ed}
+.lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
+.lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
+.lang-nav a.active{color:#0066cc;font-weight:600}
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
 </style>
 
 <link rel="stylesheet" href="/css/tool-style.css"/>
@@ -181,7 +189,7 @@ footer a{color:#0066cc;text-decoration:none}
   <link rel="alternate" hreflang="es" href="https://carbide-tooling.com/es/tools/mrr-calculator/"/>
   <link rel="alternate" hreflang="vi" href="https://carbide-tooling.com/vi/tools/mrr-calculator/"/>
   <link rel="alternate" hreflang="zh" href="https://carbide-tooling.com/zh/tools/mrr-calculator/"/>
-  <link rel="alternate" hreflang="x-default" href="https://carbide-tooling.com/tools/mrr-calculator/"/>
+  <link rel="alternate" hreflang="x-default" href="https://carbide-tooling.com/tools/mrr-calculator"/>
 </head>
 <body>
 <nav>
@@ -194,7 +202,7 @@ footer a{color:#0066cc;text-decoration:none}
       <a href="https://carbide-tooling.com/about.html">Über uns</a>
     </div>
   </div>
-  <a href="https://carbide-tooling.com/quote.html" style="display:inline-flex;align-items:center;gap:6px;background:#0066cc;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">📩 Angebot anfordern</a>
+  <a href="https://carbide-tooling.com/quote.html" style="display:inline-flex;align-items:center;gap:6px;background:#0066cc;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">📩 Angebot anfordern</a><div class="lang-nav"><a href="/de/tools/mrr-calculator/">EN</a><span class="sep">|</span><a href="#" class="active" onclick="return false">DE</a><span class="sep">|</span><a href="/jp/tools/mrr-calculator/">JP</a><span class="sep">|</span><a href="/es/tools/mrr-calculator/">ES</a><span class="sep">|</span><a href="/vi/tools/mrr-calculator/">VI</a><span class="sep">|</span><a href="/zh/tools/mrr-calculator/">中</a></div>
 </div>
 </nav>
 
@@ -267,11 +275,11 @@ footer a{color:#0066cc;text-decoration:none}
 </div>
 
 <div class="ref-links">
-  <a href="/tools/speed-feed/" class="ref-link">
+  <a href="/de/tools/speed-feed/" class="ref-link">
     <div class="icon">⚙️</div><h4>Schnittgeschwindigkeit &amp; Vorschub Rechner</h4>
     <p>Find the optimal U/min and feed rate for your tool and material combo.</p><span class="tag">Start here</span>
   </a>
-  <a href="/tools/chip-load/" class="ref-link">
+  <a href="/de/tools/chip-load/" class="ref-link">
     <div class="icon">📐</div><h4>Spanbelastung Rechner</h4>
     <p>Verify your chip load is within the recommended range before pushing MRR.</p><span class="tag">Safety check</span>
   </a>
@@ -284,7 +292,7 @@ footer a{color:#0066cc;text-decoration:none}
 <div class="container">
   <div class="footer-links">
     <a href="/">Startseite</a>
-    <a href="/tools/">Alle Werkzeuge</a>
+    <a href="/de/tools/">Alle Werkzeuge</a>
     <a href="/products/">Produkte</a>
     <a href="/guides/">Leitfäden</a>
     <a href="/about.html">Über uns</a>
@@ -296,7 +304,7 @@ footer a{color:#0066cc;text-decoration:none}
     <a href="https://twitter.com/carbidetooling" target="_blank" rel="noopener" aria-label="X (Twitter)">𝕏</a>
     <a href="mailto:sales@carbide-tooling.com" aria-label="Email">✉</a>
   </div>
-  <p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Alle Werkzeuge</a></p>
+  <p style="margin-bottom:4px"><a href="/de/tools/" style="color:#0066cc">Alle Werkzeuge</a></p>
   <p style="font-size:11px;margin-bottom:6px">Ergebnisse dienen nur zur Referenz. Konsultieren Sie Werkzeughersteller für spezifische Anwendungen.</p>
   <p style="font-size:11px">© 2026 Carbide Tooling</p>
 </div>
@@ -381,7 +389,7 @@ calc();
 <div class="container">
   <h2>MRR vs. Werkzeug Life: The Fundamental Tradeoff in CNC Machining</h2>
   <p>Every machinist faces the same optimization problem: remove material as fast as possible without destroying the tool. Werkstoff Removal Rate (MRR) measures productivity — how many cubic centimeters of metal you can evacuate per minute. Werkzeug life measures cost — how many parts you can make before replacing the cutter. These two metrics are inversely related through the <strong>Taylor Werkzeug Life Equation</strong>: doubling MRR typically reduces tool life by 60-80%. The art of profitable machining lies in finding the economic optimum, not the technical maximum.</p>
-  <p>This calculator helps you quantify both sides of the equation. Enter your cutting parameters and it returns MRR in both metric (cm³/min) and imperial (in³/min), plus estimated spindle power requirements. Use it alongside the <a href="/tools/speed-feed/" style="color:#0066cc">Schnittgeschwindigkeit &amp; Vorschub Rechner</a> and <a href="/tools/chip-load/" style="color:#0066cc">Spanbelastung Rechner</a> to build a complete picture of your machining process.</p>
+  <p>This calculator helps you quantify both sides of the equation. Enter your cutting parameters and it returns MRR in both metric (cm³/min) and imperial (in³/min), plus estimated spindle power requirements. Use it alongside the <a href="/de/tools/speed-feed/" style="color:#0066cc">Schnittgeschwindigkeit &amp; Vorschub Rechner</a> and <a href="/de/tools/chip-load/" style="color:#0066cc">Spanbelastung Rechner</a> to build a complete picture of your machining process.</p>
 
   <div class="highlight-box">
     <h3>📊 Quick Reference: Typical MRR Benchmarks by Werkstoff</h3>
@@ -400,11 +408,11 @@ calc();
   <p>This formula assumes the tool is fully engaged in the cut. For peripheral milling with radial engagement less than tool radius, the effective MRR is proportional to the arc of engagement. For high-speed machining with very light radial engagements (5-15%), trochoidal toolpaths can achieve surprisingly high MRR despite light chip loads, because the tool never fully engages and thermal load is distributed across the cutting edge.</p>
 
   <h2>The Relationship Between MRR, Spanbelastung, and Werkzeug Deflection</h2>
-  <p>Increasing MRR by increasing depth of cut increases tool deflection proportionally. Increasing MRR by increasing feed rate increases chip load but also increases cutting forces. Increasing MRR by increasing U/min can reduce chip load (if feed rate stays the same) — potentially causing the tool to rub instead of cut. The <a href="/tools/chip-load/" style="color:#0066cc">Spanbelastung Rechner</a> helps verify that your chosen parameters keep the chip load within the recommended range for the material.</p>
+  <p>Increasing MRR by increasing depth of cut increases tool deflection proportionally. Increasing MRR by increasing feed rate increases chip load but also increases cutting forces. Increasing MRR by increasing U/min can reduce chip load (if feed rate stays the same) — potentially causing the tool to rub instead of cut. The <a href="/de/tools/chip-load/" style="color:#0066cc">Spanbelastung Rechner</a> helps verify that your chosen parameters keep the chip load within the recommended range for the material.</p>
   <p>A practical guideline: for carbide end mills, maximum recommended MRR is typically reached when <strong>chip load is at the upper end of the recommended range</strong> and <strong>spindle power reaches 70-80% of rated capacity</strong>. Pushing beyond this point offers diminishing returns — the tool life drops faster than MRR increases.</p>
 
   <h2>How to Increase MRR Without Breaking Tools</h2>
-  <p><strong>1. Optimize radial engagement first.</strong> For roughing, use 40-70% radial engagement (width of cut relative to tool diameter). Below 30%, you're wasting potential MRR. Above 70%, chip evacuation becomes the bottleneck. The <a href="/tools/speed-feed/" style="color:#0066cc">Schnittgeschwindigkeit &amp; Vorschub Rechner</a> can help you find the optimal balance for your specific material.</p>
+  <p><strong>1. Optimize radial engagement first.</strong> For roughing, use 40-70% radial engagement (width of cut relative to tool diameter). Below 30%, you're wasting potential MRR. Above 70%, chip evacuation becomes the bottleneck. The <a href="/de/tools/speed-feed/" style="color:#0066cc">Schnittgeschwindigkeit &amp; Vorschub Rechner</a> can help you find the optimal balance for your specific material.</p>
   <p><strong>2. Match the flute count to the material.</strong> Aluminum benefits from 2-3 flute tools (chip evacuation limited). Steel and stainless benefit from 4-5 flute tools (stiffness limited). Hardened materials need 6+ flutes for the required rigidity.</p>
   <p><strong>3. Use chip thinning to your advantage.</strong> At light radial engagements, the effective chip thickness is less than the programmed feed per tooth. You can increase feed rate by 30-50% when running at 10-25% radial engagement without exceeding the recommended maximum chip load.</p>
   <p><strong>4. Monitor spindle load.</strong> Most modern CNC controls display spindle load as a percentage. If you're below 60% spindle load at full depth of cut, you can increase feed rate. If you're above 90%, back off to protect the tool and spindle bearings.</p>
@@ -426,16 +434,16 @@ calc();
 </div>
 </section>
 <div class="toolbox-widget"><h3>🔧 Präzisionswerkzeugkasten</h3><div class="toolbox-links">
-<a href="/tools/speed-feed/">Schnittgeschwindigkeit & Vorschub</a>
-<a href="/tools/hardness-converter/">Hardness Umrechner</a>
-<a href="/tools/tap-drill-size-calculator/">Tap Drill Size</a>
-<a href="/tools/mrr-calculator/">MRR Rechner</a>
-<a href="/tools/feed-converter/">Vorschub Umrechner</a>
-<a href="/tools/surface-roughness-calculator/">Surface Roughness</a>
-<a href="/tools/titanium-machining-guide/">Titanium Leitfaden</a>
-<a href="/tools/carbide-grade-cross-ref-2/">Grade Cross Ref</a>
-<a href="/tools/cost-per-part-calculator/">Cost Per Part</a>
-<a href="/tools/torque-unit-converter/">Torque Umrechner</a>
+<a href="/de/tools/speed-feed/">Schnittgeschwindigkeit & Vorschub</a>
+<a href="/de/tools/hardness-converter/">Hardness Umrechner</a>
+<a href="/de/tools/tap-drill-size-calculator/">Tap Drill Size</a>
+<a href="/de/tools/mrr-calculator/">MRR Rechner</a>
+<a href="/de/tools/feed-converter/">Vorschub Umrechner</a>
+<a href="/de/tools/surface-roughness-calculator/">Surface Roughness</a>
+<a href="/de/tools/titanium-machining-guide/">Titanium Leitfaden</a>
+<a href="/de/tools/carbide-grade-cross-ref-2/">Grade Cross Ref</a>
+<a href="/de/tools/cost-per-part-calculator/">Cost Per Part</a>
+<a href="/de/tools/torque-unit-converter/">Torque Umrechner</a>
 </div></div>
 
 <aside class="b2b-card">
@@ -450,14 +458,14 @@ calc();
 <section class="more-tools">
   <h3>🔧 100+ professionelle Zerspanungswerkzeuge entdecken</h3>
   <div class="tool-grid">
-<a href="/tools/plastic-machining/">Plastic Machining Leitfaden</a>
-<a href="/tools/torque-unit-converter/">Torque Einheit Umrechner</a>
-<a href="/tools/tangent-point-calculator/">Tangent Point Rechner</a>
-<a href="/tools/toolbox-organizer/">Toolbox Organizer</a>
-<a href="/tools/keyway-depth-calculator/">Keyway Schnitttiefe Rechner</a>
-<a href="/tools/sfm-m-min-converter/">m/min to m/min Umrechner</a>
-<a href="/tools/metal-cost-calculator/">Metal Cost Rechner</a>
-<a href="/tools/threading-pass-calculator/">Threading Pass Rechner</a>
+<a href="/de/tools/plastic-machining/">Plastic Machining Leitfaden</a>
+<a href="/de/tools/torque-unit-converter/">Torque Einheit Umrechner</a>
+<a href="/de/tools/tangent-point-calculator/">Tangent Point Rechner</a>
+<a href="/de/tools/toolbox-organizer/">Toolbox Organizer</a>
+<a href="/de/tools/keyway-depth-calculator/">Keyway Schnitttiefe Rechner</a>
+<a href="/de/tools/sfm-m-min-converter/">m/min to m/min Umrechner</a>
+<a href="/de/tools/metal-cost-calculator/">Metal Cost Rechner</a>
+<a href="/de/tools/threading-pass-calculator/">Threading Pass Rechner</a>
 
   </div>
 </section>

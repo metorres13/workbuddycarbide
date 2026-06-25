@@ -76,6 +76,14 @@ footer a{color:#0066cc;text-decoration:none}
   .card-row{grid-template-columns:1fr}
 }
 .lang-switcher{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 0;margin:8px 0;border-top:1px solid #e8e8ed;font-size:11px}.lang-switcher .lang-label{font-size:13px;margin-right:4px}.lang-switcher .lang-link{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#fff;border:1px solid #e8e8ed;color:#86868b;text-decoration:none;font-size:10px;font-weight:600;transition:all .15s}.lang-switcher .lang-link:hover{background:#0066cc;color:#fff;border-color:#0066cc}.lang-switcher .lang-link.active{background:#0066cc;color:#fff;border-color:#0066cc}
+
+/* Language Switcher - Apple Style */
+.lang-nav{display:flex;align-items:center;gap:2px;margin-left:12px;padding-left:12px;border-left:1px solid #e8e8ed}
+.lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
+.lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
+.lang-nav a.active{color:#0066cc;font-weight:600}
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
 </style>
 
 <link rel="stylesheet" href="/css/tool-style.css"/>
@@ -169,7 +177,7 @@ footer a{color:#0066cc;text-decoration:none}
   <link rel="alternate" hreflang="es" href="https://carbide-tooling.com/es/tools/force-calculator/"/>
   <link rel="alternate" hreflang="vi" href="https://carbide-tooling.com/vi/tools/force-calculator/"/>
   <link rel="alternate" hreflang="zh" href="https://carbide-tooling.com/zh/tools/force-calculator/"/>
-  <link rel="alternate" hreflang="x-default" href="https://carbide-tooling.com/tools/force-calculator/"/>
+  <link rel="alternate" hreflang="x-default" href="https://carbide-tooling.com/tools/force-calculator"/>
 </head>
 <body>
 <nav>
@@ -182,7 +190,7 @@ footer a{color:#0066cc;text-decoration:none}
       <a href="https://carbide-tooling.com/about.html">Về chúng tôi</a>
     </div>
   </div>
-  <a href="https://carbide-tooling.com/quote.html" style="display:inline-flex;align-items:center;gap:6px;background:#0066cc;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">📩 Yêu cầu báo giá</a>
+  <a href="https://carbide-tooling.com/quote.html" style="display:inline-flex;align-items:center;gap:6px;background:#0066cc;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">📩 Yêu cầu báo giá</a><div class="lang-nav"><a href="/vi/tools/force-calculator/">EN</a><span class="sep">|</span><a href="/de/tools/force-calculator/">DE</a><span class="sep">|</span><a href="/jp/tools/force-calculator/">JP</a><span class="sep">|</span><a href="/es/tools/force-calculator/">ES</a><span class="sep">|</span><a href="#" class="active" onclick="return false">VI</a><span class="sep">|</span><a href="/zh/tools/force-calculator/">中</a></div>
 </div>
 </nav>
 
@@ -258,11 +266,11 @@ footer a{color:#0066cc;text-decoration:none}
 </div>
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px">
-  <a href="/tools/horsepower-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
+  <a href="/vi/tools/horsepower-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
     <div style="font-size:20px;margin-bottom:4px">🔌</div><h4 style="font-size:14px;font-weight:600;margin-bottom:2px">Spindle Horsepower Máy tính</h4>
     <p style="font-size:12px;color:#86868b">Compare force results against your machine's power curve.</p>
   </a>
-  <a href="/tools/speed-feed/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
+  <a href="/vi/tools/speed-feed/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
     <div style="font-size:20px;margin-bottom:4px">⚙️</div><h4 style="font-size:14px;font-weight:600;margin-bottom:2px">Tốc độ cắt &amp; Lượng chạy dao Máy tính</h4>
     <p style="font-size:12px;color:#86868b">Optimize chip load and cutting speed for your material.</p>
   </a>
@@ -273,7 +281,7 @@ footer a{color:#0066cc;text-decoration:none}
 <div class="container">
   <div class="footer-links">
     <a href="/">Trang chủ</a>
-    <a href="/tools/">Tất cả công cụ</a>
+    <a href="/vi/tools/">Tất cả công cụ</a>
     <a href="/products/">Sản phẩm</a>
     <a href="/guides/">Hướng dẫn kỹ thuật</a>
     <a href="/about.html">Về chúng tôi</a>
@@ -285,7 +293,7 @@ footer a{color:#0066cc;text-decoration:none}
     <a href="https://twitter.com/carbidetooling" target="_blank" rel="noopener" aria-label="X (Twitter)">𝕏</a>
     <a href="mailto:sales@carbide-tooling.com" aria-label="Email">✉</a>
   </div>
-  <p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Tất cả công cụ</a></p>
+  <p style="margin-bottom:4px"><a href="/vi/tools/" style="color:#0066cc">Tất cả công cụ</a></p>
   <p style="font-size:11px;margin-bottom:6px">Kết quả chỉ mang tính tham khảo. Tham khảo nhà sản xuất dụng cụ.</p>
   <p style="font-size:11px">© 2026 Carbide Tooling</p>
 </div>
@@ -397,7 +405,7 @@ calc();
   <p>Once the cutting force Fc is known, spindle torque and power follow directly:</p>
   <p><code>Torque Mc = Fc × (D/2)</code> where D is tool diameter in meters.<br/>
   <code>Power Pc = Fc × Vc</code> where Vc is cutting speed in m/s.</p>
-  <p>This direct relationship means that any parameter that increases cutting force — higher feed, deeper cuts, harder materials — also increases torque and power proportionally. The <a href="/tools/horsepower-calculator/" style="color:#0066cc">Spindle Horsepower Máy tính</a> provides an independent check from the MRR perspective; comparing both tools helps validate your input parameters.</p>
+  <p>This direct relationship means that any parameter that increases cutting force — higher feed, deeper cuts, harder materials — also increases torque and power proportionally. The <a href="/vi/tools/horsepower-calculator/" style="color:#0066cc">Spindle Horsepower Máy tính</a> provides an independent check from the MRR perspective; comparing both tools helps validate your input parameters.</p>
 
   <h2>How Cutting Parameters Affect Each Force Component</h2>
   <p><strong>Chiều sâu cắt of cut (ap)</strong> has a linear relationship with all three force components. Doubling ap doubles Fc, Ff, and Fp. This makes DOC the most direct lever for controlling cutting forces — and the fastest way to overload a tool or spindle.</p>
@@ -406,8 +414,8 @@ calc();
 
   <h2>Practical Implications: Deflection, Chatter, and Dụng cụ Selection</h2>
   <p>The radial force component Fp is responsible for <strong>tool deflection</strong>. A 12mm end mill with 50mm overhang deflecting under 1,500 N of radial force will produce a dimensional error of approximately 0.08-0.12 mm — enough to scrap a tight-tolerance feature. The deflection risk indicator in this calculator gives a qualitative assessment based on the ratio of cutting force to tool stiffness.</p>
-  <p><strong>Chatter</strong> occurs when the cutting force excites the natural frequency of the tool-holder-spindle system. The most common fix is to reduce radial engagement (which reduces the number of teeth in cut, changing the excitation frequency) or to change Vòng/phút (which shifts the tooth engagement frequency away from the system's resonant peak). Using the <a href="/tools/speed-feed/" style="color:#0066cc">Tốc độ cắt &amp; Lượng chạy dao Máy tính</a> to find alternative Vòng/phút values is often the quickest chatter resolution.</p>
-  <p>For thin-wall machining, the passive force Fp pushes the workpiece away from the tool. Reducing radial engagement is the most effective strategy — at 10% ae, the cutting force drops by approximately 60% compared to 50% ae, allowing thin walls to be machined without deflection. The <a href="/tools/mrr-calculator/" style="color:#0066cc">MRR Máy tính</a> can help quantify the productivity trade-off.</p>
+  <p><strong>Chatter</strong> occurs when the cutting force excites the natural frequency of the tool-holder-spindle system. The most common fix is to reduce radial engagement (which reduces the number of teeth in cut, changing the excitation frequency) or to change Vòng/phút (which shifts the tooth engagement frequency away from the system's resonant peak). Using the <a href="/vi/tools/speed-feed/" style="color:#0066cc">Tốc độ cắt &amp; Lượng chạy dao Máy tính</a> to find alternative Vòng/phút values is often the quickest chatter resolution.</p>
+  <p>For thin-wall machining, the passive force Fp pushes the workpiece away from the tool. Reducing radial engagement is the most effective strategy — at 10% ae, the cutting force drops by approximately 60% compared to 50% ae, allowing thin walls to be machined without deflection. The <a href="/vi/tools/mrr-calculator/" style="color:#0066cc">MRR Máy tính</a> can help quantify the productivity trade-off.</p>
 
   <h2>Cutting Force Benchmarks by Vật liệu</h2>
   <p><strong>Aluminum 6061:</strong> Low cutting forces (kc1 ≈ 700 N/mm²). A typical finishing pass with fz=0.05 mm, ap=1mm produces Fc ≈ 200-300 N — negligible for most machines and holders.</p>
@@ -421,7 +429,7 @@ calc();
   <p><strong>How does tool diameter affect cutting force?</strong> Larger tools distribute the cutting force across a longer cutting edge, reducing the specific force per unit edge length. However, larger diameters also mean higher torque at the same Fc — torque = Fc × D/2. A 25mm tool generates the same Fc as a 12mm tool at the same chip cross-section, but with double the torque demand on the spindle.</p>
   <p><strong>What is a safe cutting force for a 12mm carbide end mill?</strong> For a standard 12mm end mill with 40mm overhang: Fc below 2,000 N is safe for any operation. Fc between 2,000-4,000 N requires rigid setup and quality tool holders. Fc above 4,000 N risks tool breakage and should only be attempted with heavy-duty holders and stable machining conditions.</p>
   <p><strong>How do I reduce cutting force without changing feed?</strong> Increase the rake angle (positive rake tools reduce forces by 20-30%), use a tool with a larger helix angle (45° vs 30° reduces forces by 10-15%), or apply high-pressure coolant (reduces forces by 10-20% through improved chip lubrication).</p>
-  <p><strong>What's the relationship between cutting force and spindle power?</strong> Direct: Power (kW) = Fc (N) × Vc (m/s) / 1000. Cutting force and spindle power are two sides of the same physical phenomenon. The <a href="/tools/horsepower-calculator/" style="color:#0066cc">Spindle Horsepower Máy tính</a> approaches this from the MRR side; comparing both gives a cross-check on your parameter choices.</p>
+  <p><strong>What's the relationship between cutting force and spindle power?</strong> Direct: Power (kW) = Fc (N) × Vc (m/s) / 1000. Cutting force and spindle power are two sides of the same physical phenomenon. The <a href="/vi/tools/horsepower-calculator/" style="color:#0066cc">Spindle Horsepower Máy tính</a> approaches this from the MRR side; comparing both gives a cross-check on your parameter choices.</p>
   <p><strong>How does tool holder type affect force limits?</strong> ER collets (typically 8-10 Nm clamping torque) can safely transmit 1,500-2,500 N cutting force before the tool pulls down. Milling chucks (hydraulic or mechanical) handle 4,000-8,000 N. Shrink-fit holders handle 6,000-12,000 N. The tool holder is often the weakest link in the force transmission chain — exceeding its grip limit causes tool pull-out and catastrophic failure.</p>
 
   <div style="text-align:center;padding:32px 24px;font-size:15px;color:#1d1d1f;background:#f5f5f7;border-radius:16px;max-width:900px;margin:40px auto 0">
@@ -430,16 +438,16 @@ calc();
 </div>
 </section>
 <div class="toolbox-widget"><h3>🔧 Hộp công cụ kỹ thuật chính xác</h3><div class="toolbox-links">
-<a href="/tools/speed-feed/">Tốc độ cắt & Lượng chạy dao</a>
-<a href="/tools/hardness-converter/">Hardness Bộ chuyển đổi</a>
-<a href="/tools/tap-drill-size-calculator/">Tap Drill Size</a>
-<a href="/tools/mrr-calculator/">MRR Máy tính</a>
-<a href="/tools/feed-converter/">Lượng chạy dao Bộ chuyển đổi</a>
-<a href="/tools/surface-roughness-calculator/">Surface Roughness</a>
-<a href="/tools/titanium-machining-guide/">Titanium Hướng dẫn</a>
-<a href="/tools/carbide-grade-cross-ref-2/">Grade Cross Ref</a>
-<a href="/tools/cost-per-part-calculator/">Cost Per Part</a>
-<a href="/tools/torque-unit-converter/">Torque Bộ chuyển đổi</a>
+<a href="/vi/tools/speed-feed/">Tốc độ cắt & Lượng chạy dao</a>
+<a href="/vi/tools/hardness-converter/">Hardness Bộ chuyển đổi</a>
+<a href="/vi/tools/tap-drill-size-calculator/">Tap Drill Size</a>
+<a href="/vi/tools/mrr-calculator/">MRR Máy tính</a>
+<a href="/vi/tools/feed-converter/">Lượng chạy dao Bộ chuyển đổi</a>
+<a href="/vi/tools/surface-roughness-calculator/">Surface Roughness</a>
+<a href="/vi/tools/titanium-machining-guide/">Titanium Hướng dẫn</a>
+<a href="/vi/tools/carbide-grade-cross-ref-2/">Grade Cross Ref</a>
+<a href="/vi/tools/cost-per-part-calculator/">Cost Per Part</a>
+<a href="/vi/tools/torque-unit-converter/">Torque Bộ chuyển đổi</a>
 </div></div>
 
 <aside class="b2b-card">
@@ -454,14 +462,14 @@ calc();
 <section class="more-tools">
   <h3>🔧 Khám phá 100+ công cụ gia công chuyên nghiệp</h3>
   <div class="tool-grid">
-<a href="/tools/wall-thickness-calculator/">Wall Thickness Máy tính</a>
-<a href="/tools/arc-r-to-ij-converter/">Arc R to IJ Bộ chuyển đổi</a>
-<a href="/tools/metric-imperial-thread-converter/">Metric/Imperial Thread Bộ chuyển đổi</a>
-<a href="/tools/shipping-duty-estimator/">Shipping Duty Estimator</a>
-<a href="/tools/automation-vs-manual-calculator/">Automation vs Manual</a>
-<a href="/tools/brass-machining-parameters/">Brass Machining Parameters</a>
-<a href="/tools/cnc-roi-calculator/">CNC ROI Máy tính</a>
-<a href="/tools/stainless-properties/">Stainless Steel Properties</a>
+<a href="/vi/tools/wall-thickness-calculator/">Wall Thickness Máy tính</a>
+<a href="/vi/tools/arc-r-to-ij-converter/">Arc R to IJ Bộ chuyển đổi</a>
+<a href="/vi/tools/metric-imperial-thread-converter/">Metric/Imperial Thread Bộ chuyển đổi</a>
+<a href="/vi/tools/shipping-duty-estimator/">Shipping Duty Estimator</a>
+<a href="/vi/tools/automation-vs-manual-calculator/">Automation vs Manual</a>
+<a href="/vi/tools/brass-machining-parameters/">Brass Machining Parameters</a>
+<a href="/vi/tools/cnc-roi-calculator/">CNC ROI Máy tính</a>
+<a href="/vi/tools/stainless-properties/">Stainless Steel Properties</a>
 
   </div>
 </section>

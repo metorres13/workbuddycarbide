@@ -102,6 +102,14 @@ footer a{color:#0066cc;text-decoration:none}
   .card-row{grid-template-columns:1fr}
 }
 .lang-switcher{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 0;margin:8px 0;border-top:1px solid #e8e8ed;font-size:11px}.lang-switcher .lang-label{font-size:13px;margin-right:4px}.lang-switcher .lang-link{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#fff;border:1px solid #e8e8ed;color:#86868b;text-decoration:none;font-size:10px;font-weight:600;transition:all .15s}.lang-switcher .lang-link:hover{background:#0066cc;color:#fff;border-color:#0066cc}.lang-switcher .lang-link.active{background:#0066cc;color:#fff;border-color:#0066cc}
+
+/* Language Switcher - Apple Style */
+.lang-nav{display:flex;align-items:center;gap:2px;margin-left:12px;padding-left:12px;border-left:1px solid #e8e8ed}
+.lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
+.lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
+.lang-nav a.active{color:#0066cc;font-weight:600}
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
 </style>
 
 <link rel="stylesheet" href="/css/tool-style.css"/>
@@ -195,7 +203,7 @@ footer a{color:#0066cc;text-decoration:none}
   <link rel="alternate" hreflang="es" href="https://carbide-tooling.com/es/tools/surface-speed/"/>
   <link rel="alternate" hreflang="vi" href="https://carbide-tooling.com/vi/tools/surface-speed/"/>
   <link rel="alternate" hreflang="zh" href="https://carbide-tooling.com/zh/tools/surface-speed/"/>
-  <link rel="alternate" hreflang="x-default" href="https://carbide-tooling.com/tools/surface-speed/"/>
+  <link rel="alternate" hreflang="x-default" href="https://carbide-tooling.com/tools/surface-speed"/>
 </head>
 <body>
 <nav>
@@ -208,7 +216,7 @@ footer a{color:#0066cc;text-decoration:none}
       <a href="https://carbide-tooling.com/about.html">About</a>
     </div>
   </div>
-  <a href="https://carbide-tooling.com/quote.html" style="display:inline-flex;align-items:center;gap:6px;background:#0066cc;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">📩 Get a Quote</a>
+  <a href="https://carbide-tooling.com/quote.html" style="display:inline-flex;align-items:center;gap:6px;background:#0066cc;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">📩 Get a Quote</a><div class="lang-nav"><a href="#" class="active" onclick="return false">EN</a><span class="sep">|</span><a href="/de/tools/surface-speed/">DE</a><span class="sep">|</span><a href="/jp/tools/surface-speed/">JP</a><span class="sep">|</span><a href="/es/tools/surface-speed/">ES</a><span class="sep">|</span><a href="/vi/tools/surface-speed/">VI</a><span class="sep">|</span><a href="/zh/tools/surface-speed/">中</a></div>
 </div>
 </nav>
 

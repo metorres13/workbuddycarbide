@@ -5,6 +5,14 @@
 <link rel="canonical" href="https://carbide-tooling.com/es/tools/tool-runout-calculator/"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/><link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet"/>
 <style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',-apple-system,sans-serif;background:#fff;color:#1d1d1f;line-height:1.6}.container{max-width:900px;margin:0 auto;padding:0 24px}nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(24px);border-bottom:1px solid rgba(0,0,0,.06);height:44px}.nav-inner{display:flex;align-items:center;justify-content:space-between;height:44px;max-width:1060px;margin:0 auto;padding:0 24px;font-size:12px}.nav-left{display:flex;align-items:center;gap:32px}.logo{font-size:14px;font-weight:700;text-decoration:none;color:#1d1d1f;display:flex;align-items:center;gap:6px}.logo span{font-weight:800;color:#0066cc}.nav-links>a{color:#1d1d1f;text-decoration:none;padding:0 18px;height:44px;display:flex;align-items:center;font-weight:500;font-size:12px}.nav-links>a:hover{color:#0066cc}.hero{text-align:center;padding:80px 0 60px}.hero .badge{display:inline-flex;background:#f5f5f7;padding:4px 14px;border-radius:20px;font-size:11px;font-weight:600;color:#86868b;margin-bottom:16px}.hero h1{font-size:40px;font-weight:800;letter-spacing:-1px;margin-bottom:12px}.hero h1 .accent{color:#0066cc}.hero p{font-size:17px;color:#86868b;max-width:600px;margin:0 auto 32px}.btn{display:inline-flex;background:#0066cc;color:#fff;padding:8px 20px;border-radius:20px;font-size:13px;font-weight:600;text-decoration:none}.card{background:#f5f5f7;border-radius:20px;padding:28px 30px;margin-bottom:20px}.card h2{font-size:20px;font-weight:700;margin-bottom:4px}.card .sub{font-size:13px;color:#86868b;margin-bottom:20px}.card-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}.field label{display:block;font-size:11px;font-weight:600;color:#86868b;margin-bottom:4px;text-transform:uppercase}.field select,.field input{width:100%;padding:8px 12px;border:1px solid #e8e8ed;border-radius:10px;font-size:13px;font-weight:500;font-family:inherit;background:#fff;outline:none}.field select:focus,.field input:focus{border-color:#0066cc}.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2386868b' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px}.result-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px}.result-item{background:#fff;border-radius:14px;padding:16px;text-align:center;border:1px solid #e8e8ed}.result-item .label{font-size:10px;font-weight:600;text-transform:uppercase;color:#86868b;margin-bottom:4px}.result-item .value{font-size:20px;font-weight:700;color:#0066cc}.result-item .unit{font-size:11px;color:#86868b}.result-item .value.bad{color:#dc2626}.result-item .value.ok{color:#16a34a}.seo{padding:60px 0}.seo h2{font-size:22px;font-weight:700;margin-bottom:8px;margin-top:40px}.seo h3{font-size:16px;font-weight:600;margin-top:28px;margin-bottom:6px}.seo p{font-size:15px;color:#333;margin-bottom:14px;line-height:1.8}.seo ul{padding-left:20px;margin-bottom:14px}.seo li{font-size:14px;color:#444;margin-bottom:4px}.seo .diag{background:#fef2f2;border-left:3px solid #dc2626;padding:16px 20px;border-radius:8px;margin:16px 0}.seo .diag p{margin:0;font-size:14px}footer{background:#f5f5f7;border-top:1px solid #e8e8ed;padding:40px 0;margin-top:60px;text-align:center;font-size:12px;color:#86868b}footer a{color:#0066cc;text-decoration:none}@media(max-width:768px){.card-row{grid-template-columns:1fr}}.lang-switcher{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 0;margin:8px 0;border-top:1px solid #e8e8ed;font-size:11px}.lang-switcher .lang-label{font-size:13px;margin-right:4px}.lang-switcher .lang-link{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#fff;border:1px solid #e8e8ed;color:#86868b;text-decoration:none;font-size:10px;font-weight:600;transition:all .15s}.lang-switcher .lang-link:hover{background:#0066cc;color:#fff;border-color:#0066cc}.lang-switcher .lang-link.active{background:#0066cc;color:#fff;border-color:#0066cc}
+
+/* Language Switcher - Apple Style */
+.lang-nav{display:flex;align-items:center;gap:2px;margin-left:12px;padding-left:12px;border-left:1px solid #e8e8ed}
+.lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
+.lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
+.lang-nav a.active{color:#0066cc;font-weight:600}
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
 </style>
 <link rel="stylesheet" href="/css/tool-style.css"/>
 <meta name="theme-color" content="#0066cc"/>
@@ -89,9 +97,9 @@
   <link rel="alternate" hreflang="es" href="https://carbide-tooling.com/es/tools/tool-runout-calculator/"/>
   <link rel="alternate" hreflang="vi" href="https://carbide-tooling.com/vi/tools/tool-runout-calculator/"/>
   <link rel="alternate" hreflang="zh" href="https://carbide-tooling.com/zh/tools/tool-runout-calculator/"/>
-  <link rel="alternate" hreflang="x-default" href="https://carbide-tooling.com/tools/tool-runout-calculator/"/>
+  <link rel="alternate" hreflang="x-default" href="https://carbide-tooling.com/tools/tool-runout-calculator"/>
 </head>
-<body><nav><div class="nav-inner"><div class="nav-left"><a href="https://carbide-tooling.com/" class="logo"><span>◆</span> Carbide Tooling</a><div class="nav-links"><a href="https://carbide-tooling.com/products/">Productos</a><a href="https://carbide-tooling.com/guides/">Guías técnicas</a><a href="https://carbide-tooling.com/about.html">Nosotros</a></div></div><a href="https://carbide-tooling.com/quote.html" style="display:inline-flex;background:#0066cc;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">📩 Solicitar cotización</a></div></nav>
+<body><nav><div class="nav-inner"><div class="nav-left"><a href="https://carbide-tooling.com/" class="logo"><span>◆</span> Carbide Tooling</a><div class="nav-links"><a href="https://carbide-tooling.com/products/">Productos</a><a href="https://carbide-tooling.com/guides/">Guías técnicas</a><a href="https://carbide-tooling.com/about.html">Nosotros</a></div></div><a href="https://carbide-tooling.com/quote.html" style="display:inline-flex;background:#0066cc;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">📩 Solicitar cotización</a><div class="lang-nav"><a href="/es/tools/tool-runout-calculator/">EN</a><span class="sep">|</span><a href="/de/tools/tool-runout-calculator/">DE</a><span class="sep">|</span><a href="/jp/tools/tool-runout-calculator/">JP</a><span class="sep">|</span><a href="#" class="active" onclick="return false">ES</a><span class="sep">|</span><a href="/vi/tools/tool-runout-calculator/">VI</a><span class="sep">|</span><a href="/zh/tools/tool-runout-calculator/">中</a></div></div></nav>
 <section class="hero"><div class="container"><div class="badge">🔍 Diagnostic Herramienta</div><h1>Herramienta Runout <span class="accent">Impact</span></h1><p>Runout is the #1 cause of uneven tool wear and inconsistent surface finish. Enter your measured runout and see how it affects each flute's chip load.</p><a class="btn" href="#calculator">Diagnose ↓</a></div></section>
 <section id="calculator" class="container" style="padding-bottom:40px">
 <div class="card"><h2>🔍 Runout Impact Analysis</h2><p class="sub">Measures how runout distributes chip load unevenly across flutes.</p>
@@ -108,14 +116,14 @@
 <div class="result-item"><div class="label">Herramienta Life Impact</div><div class="value" id="r-life">—</div><div class="unit">% reduction</div></div>
 </div>
 </div>
-<div style="text-align:center;margin:20px 0"><a href="/tools/" style="color:#0066cc;text-decoration:none;font-size:13px">← Todas las herramientas</a></div>
+<div style="text-align:center;margin:20px 0"><a href="/es/tools/" style="color:#0066cc;text-decoration:none;font-size:13px">← Todas las herramientas</a></div>
 </section>
 
 <footer class="tool-footer">
 <div class="container">
   <div class="footer-links">
     <a href="/">Inicio</a>
-    <a href="/tools/">Todas las herramientas</a>
+    <a href="/es/tools/">Todas las herramientas</a>
     <a href="/products/">Productos</a>
     <a href="/guides/">Guías técnicas</a>
     <a href="/about.html">Nosotros</a>
@@ -127,7 +135,7 @@
     <a href="https://twitter.com/carbidetooling" target="_blank" rel="noopener" aria-label="X (Twitter)">𝕏</a>
     <a href="mailto:sales@carbide-tooling.com" aria-label="Email">✉</a>
   </div>
-  <p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Todas las herramientas</a></p>
+  <p style="margin-bottom:4px"><a href="/es/tools/" style="color:#0066cc">Todas las herramientas</a></p>
   <p style="font-size:11px;margin-bottom:6px">Los resultados son solo de referencia. Consulte a los fabricantes para aplicaciones específicas.</p>
   <p style="font-size:11px">© 2026 Carbide Tooling</p>
 </div>
@@ -161,16 +169,16 @@ calc();</script><section class="seo-content"><div class="container">
 <p><strong>What holder type has the lowest runout?</strong> Shrink-fit holders (2-4 μm), followed by hydraulic chucks (3-5 μm), then milling chucks (5-10 μm), and ER collets (10-30 μm depending on quality and condition).</p>
 </div></section>
 <div class="toolbox-widget"><h3>🔧 Caja de herramientas de precisión</h3><div class="toolbox-links">
-<a href="/tools/speed-feed/">Velocidad de corte & Avance</a>
-<a href="/tools/hardness-converter/">Hardness Convertidor</a>
-<a href="/tools/tap-drill-size-calculator/">Tap Drill Size</a>
-<a href="/tools/mrr-calculator/">MRR Calculadora</a>
-<a href="/tools/feed-converter/">Avance Convertidor</a>
-<a href="/tools/surface-roughness-calculator/">Surface Roughness</a>
-<a href="/tools/titanium-machining-guide/">Titanium Guía</a>
-<a href="/tools/carbide-grade-cross-ref-2/">Grade Cross Ref</a>
-<a href="/tools/cost-per-part-calculator/">Cost Per Part</a>
-<a href="/tools/torque-unit-converter/">Torque Convertidor</a>
+<a href="/es/tools/speed-feed/">Velocidad de corte & Avance</a>
+<a href="/es/tools/hardness-converter/">Hardness Convertidor</a>
+<a href="/es/tools/tap-drill-size-calculator/">Tap Drill Size</a>
+<a href="/es/tools/mrr-calculator/">MRR Calculadora</a>
+<a href="/es/tools/feed-converter/">Avance Convertidor</a>
+<a href="/es/tools/surface-roughness-calculator/">Surface Roughness</a>
+<a href="/es/tools/titanium-machining-guide/">Titanium Guía</a>
+<a href="/es/tools/carbide-grade-cross-ref-2/">Grade Cross Ref</a>
+<a href="/es/tools/cost-per-part-calculator/">Cost Per Part</a>
+<a href="/es/tools/torque-unit-converter/">Torque Convertidor</a>
 </div></div>
 
 <aside class="b2b-card">
@@ -185,14 +193,14 @@ calc();</script><section class="seo-content"><div class="container">
 <section class="more-tools">
   <h3>🔧 Explore 100+ herramientas de mecanizado profesionales</h3>
   <div class="tool-grid">
-<a href="/tools/gear-parameter-calculator/">Gear Parameter Calculadora</a>
-<a href="/tools/pomodoro-timer/">Pomodoro Timer</a>
-<a href="/tools/helical-interpolation-calculator/">Helical Interpolation Calculadora</a>
-<a href="/tools/thread-depth-torque-calculator/">Thread Profundidad & Torque Calculadora</a>
-<a href="/tools/coating-selector/">Coating Selector</a>
-<a href="/tools/batch-cost-calculator/">Batch Cost Calculadora</a>
-<a href="/tools/horsepower-calculator/">Horsepower Calculadora</a>
-<a href="/tools/speed-feed/">Velocidad de corte & Avance Calculadora</a>
+<a href="/es/tools/gear-parameter-calculator/">Gear Parameter Calculadora</a>
+<a href="/es/tools/pomodoro-timer/">Pomodoro Timer</a>
+<a href="/es/tools/helical-interpolation-calculator/">Helical Interpolation Calculadora</a>
+<a href="/es/tools/thread-depth-torque-calculator/">Thread Profundidad & Torque Calculadora</a>
+<a href="/es/tools/coating-selector/">Coating Selector</a>
+<a href="/es/tools/batch-cost-calculator/">Batch Cost Calculadora</a>
+<a href="/es/tools/horsepower-calculator/">Horsepower Calculadora</a>
+<a href="/es/tools/speed-feed/">Velocidad de corte & Avance Calculadora</a>
 
   </div>
 </section>

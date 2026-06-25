@@ -80,6 +80,14 @@ footer a{color:#0066cc;text-decoration:none}
   .card-row{grid-template-columns:1fr}
 }
 .lang-switcher{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 0;margin:8px 0;border-top:1px solid #e8e8ed;font-size:11px}.lang-switcher .lang-label{font-size:13px;margin-right:4px}.lang-switcher .lang-link{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#fff;border:1px solid #e8e8ed;color:#86868b;text-decoration:none;font-size:10px;font-weight:600;transition:all .15s}.lang-switcher .lang-link:hover{background:#0066cc;color:#fff;border-color:#0066cc}.lang-switcher .lang-link.active{background:#0066cc;color:#fff;border-color:#0066cc}
+
+/* Language Switcher - Apple Style */
+.lang-nav{display:flex;align-items:center;gap:2px;margin-left:12px;padding-left:12px;border-left:1px solid #e8e8ed}
+.lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
+.lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
+.lang-nav a.active{color:#0066cc;font-weight:600}
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
 </style>
 
 <link rel="stylesheet" href="/css/tool-style.css"/>
@@ -173,7 +181,7 @@ footer a{color:#0066cc;text-decoration:none}
   <link rel="alternate" hreflang="es" href="https://carbide-tooling.com/es/tools/horsepower-calculator/"/>
   <link rel="alternate" hreflang="vi" href="https://carbide-tooling.com/vi/tools/horsepower-calculator/"/>
   <link rel="alternate" hreflang="zh" href="https://carbide-tooling.com/zh/tools/horsepower-calculator/"/>
-  <link rel="alternate" hreflang="x-default" href="https://carbide-tooling.com/tools/horsepower-calculator/"/>
+  <link rel="alternate" hreflang="x-default" href="https://carbide-tooling.com/tools/horsepower-calculator"/>
 </head>
 <body>
 <nav>
@@ -186,7 +194,7 @@ footer a{color:#0066cc;text-decoration:none}
       <a href="https://carbide-tooling.com/about.html">会社概要</a>
     </div>
   </div>
-  <a href="https://carbide-tooling.com/quote.html" style="display:inline-flex;align-items:center;gap:6px;background:#0066cc;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">📩 見積もりを取得</a>
+  <a href="https://carbide-tooling.com/quote.html" style="display:inline-flex;align-items:center;gap:6px;background:#0066cc;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">📩 見積もりを取得</a><div class="lang-nav"><a href="/jp/tools/horsepower-calculator/">EN</a><span class="sep">|</span><a href="/de/tools/horsepower-calculator/">DE</a><span class="sep">|</span><a href="#" class="active" onclick="return false">JP</a><span class="sep">|</span><a href="/es/tools/horsepower-calculator/">ES</a><span class="sep">|</span><a href="/vi/tools/horsepower-calculator/">VI</a><span class="sep">|</span><a href="/zh/tools/horsepower-calculator/">中</a></div>
 </div>
 </nav>
 
@@ -258,11 +266,11 @@ footer a{color:#0066cc;text-decoration:none}
 </div>
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px">
-  <a href="/tools/mrr-calculator/" class="ref-link" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
+  <a href="/jp/tools/mrr-calculator/" class="ref-link" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
     <div style="font-size:20px;margin-bottom:4px">⚡</div><h4 style="font-size:14px;font-weight:600;margin-bottom:2px">MRR 計算機</h4>
     <p style="font-size:12px;color:#86868b">計算 material removal rate for your parameters.</p>
   </a>
-  <a href="/tools/speed-feed/" class="ref-link" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
+  <a href="/jp/tools/speed-feed/" class="ref-link" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
     <div style="font-size:20px;margin-bottom:4px">⚙️</div><h4 style="font-size:14px;font-weight:600;margin-bottom:2px">切削速度 &amp; 送り 計算機</h4>
     <p style="font-size:12px;color:#86868b">Find the optimal 回転数 and feed rate first.</p>
   </a>
@@ -275,7 +283,7 @@ footer a{color:#0066cc;text-decoration:none}
 <div class="container">
   <div class="footer-links">
     <a href="/">ホーム</a>
-    <a href="/tools/">全ツール</a>
+    <a href="/jp/tools/">全ツール</a>
     <a href="/products/">製品</a>
     <a href="/guides/">技術ガイド</a>
     <a href="/about.html">会社概要</a>
@@ -287,7 +295,7 @@ footer a{color:#0066cc;text-decoration:none}
     <a href="https://twitter.com/carbidetooling" target="_blank" rel="noopener" aria-label="X (Twitter)">𝕏</a>
     <a href="mailto:sales@carbide-tooling.com" aria-label="Email">✉</a>
   </div>
-  <p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">全ツール</a></p>
+  <p style="margin-bottom:4px"><a href="/jp/tools/" style="color:#0066cc">全ツール</a></p>
   <p style="font-size:11px;margin-bottom:6px">結果は参考値です. 具体的な用途については工具メーカーにご相談ください.</p>
   <p style="font-size:11px">© 2026 Carbide Tooling</p>
 </div>
@@ -402,13 +410,13 @@ calc();
 
   <h2>Understanding the Power-Torque-rpm Triangle</h2>
   <p>Spindle motors have a characteristic <strong>power curve</strong> that defines how much torque is available at each rpm. A typical 10 kW spindle might deliver full power only above 6,000 rpm. Below that, torque is limited by the drive electronics. This means a cut that requires 10 kW at 4,000 回転数 may stall the machine, while the same cut at 8,000 回転数 runs fine — because at 8,000 回転数 the spindle can actually deliver 10 kW.</p>
-  <p>The relationship is: <code>Torque (Nm) = (Power (kW) × 9550) ÷ 回転数</code>. This calculator computes torque at the spindle, allowing you to compare against your machine's torque curve. If the required torque exceeds your machine's available torque at that rpm, you need to reduce cutting parameters or increase 回転数 to move to a more favorable point on the power curve. For more precise cutting parameter optimization, use the <a href="/tools/speed-feed/" style="color:#0066cc">切削速度 &amp; 送り 計算機</a>.</p>
+  <p>The relationship is: <code>Torque (Nm) = (Power (kW) × 9550) ÷ 回転数</code>. This calculator computes torque at the spindle, allowing you to compare against your machine's torque curve. If the required torque exceeds your machine's available torque at that rpm, you need to reduce cutting parameters or increase 回転数 to move to a more favorable point on the power curve. For more precise cutting parameter optimization, use the <a href="/jp/tools/speed-feed/" style="color:#0066cc">切削速度 &amp; 送り 計算機</a>.</p>
 
   <h2>Power Requirements by 被削材</h2>
   <p><strong>Aluminum 6061:</strong> Low specific cutting force (Kc ≈ 700 N/mm²). A typical finishing pass with a 12mm end mill at 10,000 回転数 requires less than 1 kW. Aggressive roughing with DOC = 3× diameter can consume 8-12 kW in aluminum. This is why high-speed machining centers with 30+ kW spindles dominate aluminum aerospace production.</p>
-  <p><strong>Mild Steel 1018:</strong> Moderate power demand (Kc ≈ 2000 N/mm²). Expect 2-4 kW for conventional roughing with a 12mm tool. Increasing feed beyond 0.15 mm/tooth causes rapid power escalation — the <a href="/tools/chip-load/" style="color:#0066cc">Chip Load 計算機</a> helps you stay in the efficient zone.</p>
+  <p><strong>Mild Steel 1018:</strong> Moderate power demand (Kc ≈ 2000 N/mm²). Expect 2-4 kW for conventional roughing with a 12mm tool. Increasing feed beyond 0.15 mm/tooth causes rapid power escalation — the <a href="/jp/tools/chip-load/" style="color:#0066cc">Chip Load 計算機</a> helps you stay in the efficient zone.</p>
   <p><strong>Stainless Steel 304:</strong> High specific cutting force (Kc ≈ 2500 N/mm²) plus work-hardening. Power demand is 30-50% higher than mild steel at the same MRR. The extra power is consumed by the work-hardened layer beneath each cut surface.</p>
-  <p><strong>Titanium Grade 5:</strong> Very high power per cm³ (Kc ≈ 1700 N/mm²) combined with low recommended chip loads. The power number looks modest (3-6 kW), but the spindle must deliver this at low 回転数 (2,000-4,000), where machine torque is typically limited. This is why titanium is torque-limited, not power-limited — and why using the <a href="/tools/mrr-calculator/" style="color:#0066cc">MRR 計算機</a> alone without checking power can lead to unrealistic expectations.</p>
+  <p><strong>Titanium Grade 5:</strong> Very high power per cm³ (Kc ≈ 1700 N/mm²) combined with low recommended chip loads. The power number looks modest (3-6 kW), but the spindle must deliver this at low 回転数 (2,000-4,000), where machine torque is typically limited. This is why titanium is torque-limited, not power-limited — and why using the <a href="/jp/tools/mrr-calculator/" style="color:#0066cc">MRR 計算機</a> alone without checking power can lead to unrealistic expectations.</p>
   <p><strong>Inconel 718:</strong> Extreme cutting forces (Kc ≈ 3200 N/mm²). Even light cuts require substantial power. A 10mm end mill taking ap=1mm, ae=5mm at 2,500 回転数 with 400 mm/min feed requires approximately 4-6 kW at the spindle — near the limit of many 40-taper machines.</p>
 
   <h2>Machine Efficiency: The Hidden Variable</h2>
@@ -428,16 +436,16 @@ calc();
 </div>
 </section>
 <div class="toolbox-widget"><h3>🔧 精密加工ツールボックス</h3><div class="toolbox-links">
-<a href="/tools/speed-feed/">切削速度 & 送り</a>
-<a href="/tools/hardness-converter/">Hardness 換算</a>
-<a href="/tools/tap-drill-size-calculator/">Tap Drill Size</a>
-<a href="/tools/mrr-calculator/">MRR 計算機</a>
-<a href="/tools/feed-converter/">送り 換算</a>
-<a href="/tools/surface-roughness-calculator/">Surface Roughness</a>
-<a href="/tools/titanium-machining-guide/">Titanium ガイド</a>
-<a href="/tools/carbide-grade-cross-ref-2/">Grade Cross Ref</a>
-<a href="/tools/cost-per-part-calculator/">Cost Per Part</a>
-<a href="/tools/torque-unit-converter/">Torque 換算</a>
+<a href="/jp/tools/speed-feed/">切削速度 & 送り</a>
+<a href="/jp/tools/hardness-converter/">Hardness 換算</a>
+<a href="/jp/tools/tap-drill-size-calculator/">Tap Drill Size</a>
+<a href="/jp/tools/mrr-calculator/">MRR 計算機</a>
+<a href="/jp/tools/feed-converter/">送り 換算</a>
+<a href="/jp/tools/surface-roughness-calculator/">Surface Roughness</a>
+<a href="/jp/tools/titanium-machining-guide/">Titanium ガイド</a>
+<a href="/jp/tools/carbide-grade-cross-ref-2/">Grade Cross Ref</a>
+<a href="/jp/tools/cost-per-part-calculator/">Cost Per Part</a>
+<a href="/jp/tools/torque-unit-converter/">Torque 換算</a>
 </div></div>
 
 <aside class="b2b-card">
@@ -452,14 +460,14 @@ calc();
 <section class="more-tools">
   <h3>🔧 100以上のプロ用加工ツールを見る</h3>
   <div class="tool-grid">
-<a href="/tools/tangent-point-calculator/">Tangent Point 計算機</a>
-<a href="/tools/threading-pass-calculator/">Threading Pass 計算機</a>
-<a href="/tools/polar-rect-converter/">Polar to Rectangular 換算</a>
-<a href="/tools/flatness-calculator/">Flatness 計算機</a>
-<a href="/tools/aluminum-alloy-table/">Aluminum Alloy Table</a>
-<a href="/tools/torque-unit-converter/">Torque 単位 換算</a>
-<a href="/tools/sine-bar-calculator/">Sine Bar 計算機</a>
-<a href="/tools/tap-drill-size-calculator/">Tap Drill Size 計算機</a>
+<a href="/jp/tools/tangent-point-calculator/">Tangent Point 計算機</a>
+<a href="/jp/tools/threading-pass-calculator/">Threading Pass 計算機</a>
+<a href="/jp/tools/polar-rect-converter/">Polar to Rectangular 換算</a>
+<a href="/jp/tools/flatness-calculator/">Flatness 計算機</a>
+<a href="/jp/tools/aluminum-alloy-table/">Aluminum Alloy Table</a>
+<a href="/jp/tools/torque-unit-converter/">Torque 単位 換算</a>
+<a href="/jp/tools/sine-bar-calculator/">Sine Bar 計算機</a>
+<a href="/jp/tools/tap-drill-size-calculator/">Tap Drill Size 計算機</a>
 
   </div>
 </section>

@@ -76,6 +76,14 @@ footer a{color:#0066cc;text-decoration:none}
   .card-row{grid-template-columns:1fr}
 }
 .lang-switcher{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 0;margin:8px 0;border-top:1px solid #e8e8ed;font-size:11px}.lang-switcher .lang-label{font-size:13px;margin-right:4px}.lang-switcher .lang-link{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#fff;border:1px solid #e8e8ed;color:#86868b;text-decoration:none;font-size:10px;font-weight:600;transition:all .15s}.lang-switcher .lang-link:hover{background:#0066cc;color:#fff;border-color:#0066cc}.lang-switcher .lang-link.active{background:#0066cc;color:#fff;border-color:#0066cc}
+
+/* Language Switcher - Apple Style */
+.lang-nav{display:flex;align-items:center;gap:2px;margin-left:12px;padding-left:12px;border-left:1px solid #e8e8ed}
+.lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
+.lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
+.lang-nav a.active{color:#0066cc;font-weight:600}
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
 </style>
 
 <link rel="stylesheet" href="/css/tool-style.css"/>
@@ -169,7 +177,7 @@ footer a{color:#0066cc;text-decoration:none}
   <link rel="alternate" hreflang="es" href="https://carbide-tooling.com/es/tools/surface-roughness-calculator/"/>
   <link rel="alternate" hreflang="vi" href="https://carbide-tooling.com/vi/tools/surface-roughness-calculator/"/>
   <link rel="alternate" hreflang="zh" href="https://carbide-tooling.com/zh/tools/surface-roughness-calculator/"/>
-  <link rel="alternate" hreflang="x-default" href="https://carbide-tooling.com/tools/surface-roughness-calculator/"/>
+  <link rel="alternate" hreflang="x-default" href="https://carbide-tooling.com/tools/surface-roughness-calculator"/>
 </head>
 <body>
 <nav>
@@ -182,7 +190,7 @@ footer a{color:#0066cc;text-decoration:none}
       <a href="https://carbide-tooling.com/about.html">会社概要</a>
     </div>
   </div>
-  <a href="https://carbide-tooling.com/quote.html" style="display:inline-flex;background:#0066cc;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">📩 見積もりを取得</a>
+  <a href="https://carbide-tooling.com/quote.html" style="display:inline-flex;background:#0066cc;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">📩 見積もりを取得</a><div class="lang-nav"><a href="/jp/tools/surface-roughness-calculator/">EN</a><span class="sep">|</span><a href="/de/tools/surface-roughness-calculator/">DE</a><span class="sep">|</span><a href="#" class="active" onclick="return false">JP</a><span class="sep">|</span><a href="/es/tools/surface-roughness-calculator/">ES</a><span class="sep">|</span><a href="/vi/tools/surface-roughness-calculator/">VI</a><span class="sep">|</span><a href="/zh/tools/surface-roughness-calculator/">中</a></div>
 </div>
 </nav>
 
@@ -253,11 +261,11 @@ footer a{color:#0066cc;text-decoration:none}
 </div>
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px">
-  <a href="/tools/speed-feed/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
+  <a href="/jp/tools/speed-feed/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
     <div style="font-size:20px;margin-bottom:4px">⚙️</div><h4 style="font-size:14px;font-weight:600;margin-bottom:2px">切削速度 &amp; 送り 計算機</h4>
     <p style="font-size:12px;color:#86868b">Find the balance between surface finish and productivity.</p>
   </a>
-  <a href="/tools/cycle-time-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
+  <a href="/jp/tools/cycle-time-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
     <div style="font-size:20px;margin-bottom:4px">⏱️</div><h4 style="font-size:14px;font-weight:600;margin-bottom:2px">Cycle Time 計算機</h4>
     <p style="font-size:12px;color:#86868b">Lower feed = finer finish but longer cycle time.</p>
   </a>
@@ -268,7 +276,7 @@ footer a{color:#0066cc;text-decoration:none}
 <div class="container">
   <div class="footer-links">
     <a href="/">ホーム</a>
-    <a href="/tools/">全ツール</a>
+    <a href="/jp/tools/">全ツール</a>
     <a href="/products/">製品</a>
     <a href="/guides/">技術ガイド</a>
     <a href="/about.html">会社概要</a>
@@ -280,7 +288,7 @@ footer a{color:#0066cc;text-decoration:none}
     <a href="https://twitter.com/carbidetooling" target="_blank" rel="noopener" aria-label="X (Twitter)">𝕏</a>
     <a href="mailto:sales@carbide-tooling.com" aria-label="Email">✉</a>
   </div>
-  <p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">全ツール</a></p>
+  <p style="margin-bottom:4px"><a href="/jp/tools/" style="color:#0066cc">全ツール</a></p>
   <p style="font-size:11px;margin-bottom:6px">結果は参考値です. 具体的な用途については工具メーカーにご相談ください.</p>
   <p style="font-size:11px">© 2026 Carbide Tooling</p>
 </div>
@@ -378,15 +386,15 @@ calc();
   <p>The critical insight from these formulas is that roughness increases with the <strong>square of the feed rate</strong> — doubling the feed quadruples the surface roughness. Conversely, increasing the nose radius reduces roughness linearly — doubling the radius halves the roughness. This makes nose radius selection the most powerful lever for controlling surface finish without sacrificing cycle time.</p>
 
   <h2>Nose Radius Selection: Balancing Roughness and Productivity</h2>
-  <p>The relationship between feed rate, nose radius, and surface roughness creates a three-way optimization problem. A larger nose radius (1.2 mm vs. 0.4 mm) allows four times higher feed rate for the same Ra, directly reducing cycle time. However, larger nose radii increase cutting forces and can cause chatter in long-overhang operations — a problem analyzed in detail by the <a href="/tools/force-calculator/" style="color:#0066cc">Milling Force 計算機</a>.</p>
-  <p>Practical nose radius selection guidelines: For finishing passes requiring Ra ≤ 0.8 μm, use a 0.8 mm or 1.2 mm nose radius with feed rates between 0.08-0.15 mm/rev. For roughing where Ra ≤ 3.2 μm is acceptable, use a 0.4 mm radius with feeds up to 0.35 mm/rev. The <a href="/tools/cycle-time-calculator/" style="color:#0066cc">Cycle Time 計算機</a> can help quantify the productivity impact of switching to a larger nose radius.</p>
+  <p>The relationship between feed rate, nose radius, and surface roughness creates a three-way optimization problem. A larger nose radius (1.2 mm vs. 0.4 mm) allows four times higher feed rate for the same Ra, directly reducing cycle time. However, larger nose radii increase cutting forces and can cause chatter in long-overhang operations — a problem analyzed in detail by the <a href="/jp/tools/force-calculator/" style="color:#0066cc">Milling Force 計算機</a>.</p>
+  <p>Practical nose radius selection guidelines: For finishing passes requiring Ra ≤ 0.8 μm, use a 0.8 mm or 1.2 mm nose radius with feed rates between 0.08-0.15 mm/rev. For roughing where Ra ≤ 3.2 μm is acceptable, use a 0.4 mm radius with feeds up to 0.35 mm/rev. The <a href="/jp/tools/cycle-time-calculator/" style="color:#0066cc">Cycle Time 計算機</a> can help quantify the productivity impact of switching to a larger nose radius.</p>
 
   <h2>Why Actual Roughness Differs from Theoretical</h2>
   <p>The theoretical model assumes perfect geometry — a sharp tool with an ideal nose radius cutting without vibration, built-up edge, or tool wear. In production, actual Ra is typically 20-50% higher than theoretical due to several factors:</p>
   <ul>
     <li><strong>Built-up edge (BUE):</strong> 被削材 adhering to the cutting edge creates an irregular surface. Most common in aluminum and low-carbon steel at moderate cutting speeds. Increasing cutting speed by 20% or using a polished insert reduces BUE.</li>
-    <li><strong>Chatter vibration:</strong> Even mild chatter (amplitude < 10 μm) can double the actual Ra. The problem is mechanical, not geometric — use the <a href="/tools/speed-feed/" style="color:#0066cc">切削速度 &amp; 送り 計算機</a> to find a stable 回転数 range.</li>
-    <li><strong>工具 wear:</strong> A worn tool produces a degraded surface finish. As flank wear reaches 0.2 mm, actual Ra can increase by 50-80% compared to a fresh edge. The increase in cutting forces from tool wear can be monitored using the <a href="/tools/horsepower-calculator/" style="color:#0066cc">Spindle Horsepower 計算機</a> — a power increase of 15%+ at constant parameters indicates tool wear.</li>
+    <li><strong>Chatter vibration:</strong> Even mild chatter (amplitude < 10 μm) can double the actual Ra. The problem is mechanical, not geometric — use the <a href="/jp/tools/speed-feed/" style="color:#0066cc">切削速度 &amp; 送り 計算機</a> to find a stable 回転数 range.</li>
+    <li><strong>工具 wear:</strong> A worn tool produces a degraded surface finish. As flank wear reaches 0.2 mm, actual Ra can increase by 50-80% compared to a fresh edge. The increase in cutting forces from tool wear can be monitored using the <a href="/jp/tools/horsepower-calculator/" style="color:#0066cc">Spindle Horsepower 計算機</a> — a power increase of 15%+ at constant parameters indicates tool wear.</li>
     <li><strong>被削材 smearing:</strong> Ductile materials like aluminum and low-carbon steel can smear across the machined surface, creating peaks and valleys not predicted by the geometric model. Using coolant with EP additives reduces smearing.</li>
   </ul>
 
@@ -410,7 +418,7 @@ calc();
   <p><strong>What is Ra surface finish?</strong> Ra (Roughness Average) is the arithmetic mean of absolute profile deviations from the mean line over the evaluation length. It is the most commonly specified surface finish parameter in ISO engineering drawings.</p>
   <p><strong>How do I calculate surface finish from feed rate and nose radius?</strong> Use the formula Ra = f² / (32 × R). This calculator does it instantly for both turning and milling operations. The result is the theoretical best possible finish — actual Ra will be 20-50% higher.</p>
   <p><strong>What feed rate gives 0.4 μm Ra in turning?</strong> For a 0.8 mm nose radius: f = √(0.4 × 32 × 0.8 / 1000) = 0.10 mm/rev. For a 0.4 mm radius: f = 0.07 mm/rev. This calculator's "Feed rate to achieve target" field shows the answer for your specific parameters automatically.</p>
-  <p><strong>Does cutting speed affect surface finish?</strong> Indirectly, yes — through built-up edge formation. At low cutting speeds (below 150 m/min in steel), BUE forms and degrades surface finish. At very high speeds (above 800 m/min), thermal softening can improve finish. The <a href="/tools/speed-feed/" style="color:#0066cc">切削速度 &amp; 送り 計算機</a> helps select speeds that avoid the BUE formation range.</p>
+  <p><strong>Does cutting speed affect surface finish?</strong> Indirectly, yes — through built-up edge formation. At low cutting speeds (below 150 m/min in steel), BUE forms and degrades surface finish. At very high speeds (above 800 m/min), thermal softening can improve finish. The <a href="/jp/tools/speed-feed/" style="color:#0066cc">切削速度 &amp; 送り 計算機</a> helps select speeds that avoid the BUE formation range.</p>
   <p><strong>How does tool wear affect surface roughness?</strong> As the tool wears, the nose radius changes (usually increases slightly before catastrophic failure), which should theoretically improve finish. However, micro-chipping and edge breakdown create irregular surface features that degrade finish significantly. Replace inserts when Ra increases by more than 30% at constant cutting parameters.</p>
   <p><strong>What is the difference between Ra and Rz?</strong> Ra is the average deviation across the entire profile. Rz is the average of the five highest peaks minus the five lowest valleys. Rz is typically 5-7 times larger than Ra for turned surfaces. ISO 1302 allows specifying either parameter; Rz is preferred for sealing surfaces and joints where peak heights matter most.</p>
 
@@ -420,16 +428,16 @@ calc();
 </div>
 </section>
 <div class="toolbox-widget"><h3>🔧 精密加工ツールボックス</h3><div class="toolbox-links">
-<a href="/tools/speed-feed/">切削速度 & 送り</a>
-<a href="/tools/hardness-converter/">Hardness 換算</a>
-<a href="/tools/tap-drill-size-calculator/">Tap Drill Size</a>
-<a href="/tools/mrr-calculator/">MRR 計算機</a>
-<a href="/tools/feed-converter/">送り 換算</a>
-<a href="/tools/surface-roughness-calculator/">Surface Roughness</a>
-<a href="/tools/titanium-machining-guide/">Titanium ガイド</a>
-<a href="/tools/carbide-grade-cross-ref-2/">Grade Cross Ref</a>
-<a href="/tools/cost-per-part-calculator/">Cost Per Part</a>
-<a href="/tools/torque-unit-converter/">Torque 換算</a>
+<a href="/jp/tools/speed-feed/">切削速度 & 送り</a>
+<a href="/jp/tools/hardness-converter/">Hardness 換算</a>
+<a href="/jp/tools/tap-drill-size-calculator/">Tap Drill Size</a>
+<a href="/jp/tools/mrr-calculator/">MRR 計算機</a>
+<a href="/jp/tools/feed-converter/">送り 換算</a>
+<a href="/jp/tools/surface-roughness-calculator/">Surface Roughness</a>
+<a href="/jp/tools/titanium-machining-guide/">Titanium ガイド</a>
+<a href="/jp/tools/carbide-grade-cross-ref-2/">Grade Cross Ref</a>
+<a href="/jp/tools/cost-per-part-calculator/">Cost Per Part</a>
+<a href="/jp/tools/torque-unit-converter/">Torque 換算</a>
 </div></div>
 
 <aside class="b2b-card">
@@ -444,14 +452,14 @@ calc();
 <section class="more-tools">
   <h3>🔧 100以上のプロ用加工ツールを見る</h3>
   <div class="tool-grid">
-<a href="/tools/aql-sampling-calculator/">AQL Sampling 計算機</a>
-<a href="/tools/threading-pass-calculator/">Threading Pass 計算機</a>
-<a href="/tools/thread-pitch-diameter-calculator/">Thread Pitch 直径 計算機</a>
-<a href="/tools/superalloy-tool-life/">Superalloy 工具 Life Estimator</a>
-<a href="/tools/coating-selector/">Coating Selector</a>
-<a href="/tools/horsepower-calculator/">Horsepower 計算機</a>
-<a href="/tools/countersink-depth-calculator/">Countersink 切込み深さ 計算機</a>
-<a href="/tools/slot-milling-calculator/">Slot Milling 計算機</a>
+<a href="/jp/tools/aql-sampling-calculator/">AQL Sampling 計算機</a>
+<a href="/jp/tools/threading-pass-calculator/">Threading Pass 計算機</a>
+<a href="/jp/tools/thread-pitch-diameter-calculator/">Thread Pitch 直径 計算機</a>
+<a href="/jp/tools/superalloy-tool-life/">Superalloy 工具 Life Estimator</a>
+<a href="/jp/tools/coating-selector/">Coating Selector</a>
+<a href="/jp/tools/horsepower-calculator/">Horsepower 計算機</a>
+<a href="/jp/tools/countersink-depth-calculator/">Countersink 切込み深さ 計算機</a>
+<a href="/jp/tools/slot-milling-calculator/">Slot Milling 計算機</a>
 
   </div>
 </section>

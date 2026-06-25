@@ -103,6 +103,14 @@ footer a:hover{text-decoration:underline}
   .card-row{grid-template-columns:1fr}
 }
 .lang-switcher{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 0;margin:8px 0;border-top:1px solid #e8e8ed;font-size:11px}.lang-switcher .lang-label{font-size:13px;margin-right:4px}.lang-switcher .lang-link{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#fff;border:1px solid #e8e8ed;color:#86868b;text-decoration:none;font-size:10px;font-weight:600;transition:all .15s}.lang-switcher .lang-link:hover{background:#0066cc;color:#fff;border-color:#0066cc}.lang-switcher .lang-link.active{background:#0066cc;color:#fff;border-color:#0066cc}
+
+/* Language Switcher - Apple Style */
+.lang-nav{display:flex;align-items:center;gap:2px;margin-left:12px;padding-left:12px;border-left:1px solid #e8e8ed}
+.lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
+.lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
+.lang-nav a.active{color:#0066cc;font-weight:600}
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
 </style>
 
 <link rel="stylesheet" href="/css/tool-style.css"/>
@@ -196,7 +204,7 @@ footer a:hover{text-decoration:underline}
   <link rel="alternate" hreflang="es" href="https://carbide-tooling.com/es/tools/speed-feed/"/>
   <link rel="alternate" hreflang="vi" href="https://carbide-tooling.com/vi/tools/speed-feed/"/>
   <link rel="alternate" hreflang="zh" href="https://carbide-tooling.com/zh/tools/speed-feed/"/>
-  <link rel="alternate" hreflang="x-default" href="https://carbide-tooling.com/tools/speed-feed/"/>
+  <link rel="alternate" hreflang="x-default" href="https://carbide-tooling.com/tools/speed-feed"/>
 </head>
 <body>
 
@@ -211,7 +219,7 @@ footer a:hover{text-decoration:underline}
       <a href="https://carbide-tooling.com/about.html">关于我们</a>
     </div>
   </div>
-  <a href="https://carbide-tooling.com/quote.html" style="display:inline-flex;align-items:center;gap:6px;background:#0066cc;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">📩 获取报价</a>
+  <a href="https://carbide-tooling.com/quote.html" style="display:inline-flex;align-items:center;gap:6px;background:#0066cc;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">📩 获取报价</a><div class="lang-nav"><a href="/zh/tools/speed-feed/">EN</a><span class="sep">|</span><a href="/de/tools/speed-feed/">DE</a><span class="sep">|</span><a href="/jp/tools/speed-feed/">JP</a><span class="sep">|</span><a href="/es/tools/speed-feed/">ES</a><span class="sep">|</span><a href="/vi/tools/speed-feed/">VI</a><span class="sep">|</span><a href="#" class="active" onclick="return false">中</a></div>
 </div>
 </nav>
 
@@ -317,7 +325,7 @@ footer a:hover{text-decoration:underline}
 <div class="container">
   <div class="footer-links">
     <a href="/">首页</a>
-    <a href="/tools/">所有工具</a>
+    <a href="/zh/tools/">所有工具</a>
     <a href="/products/">产品</a>
     <a href="/guides/">技术指南</a>
     <a href="/about.html">关于我们</a>
@@ -329,7 +337,7 @@ footer a:hover{text-decoration:underline}
     <a href="https://twitter.com/carbidetooling" target="_blank" rel="noopener" aria-label="X (Twitter)">𝕏</a>
     <a href="mailto:sales@carbide-tooling.com" aria-label="Email">✉</a>
   </div>
-  <p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">所有工具</a></p>
+  <p style="margin-bottom:4px"><a href="/zh/tools/" style="color:#0066cc">所有工具</a></p>
   <p style="font-size:11px;margin-bottom:6px">结果仅供参考. 具体应用请咨询刀具制造商.</p>
   <p style="font-size:11px">© 2026 Carbide Tooling</p>
 </div>
@@ -442,16 +450,16 @@ calc();
 </div>
 </section>
 <div class="toolbox-widget"><h3>🔧 精密工程工具箱</h3><div class="toolbox-links">
-<a href="/tools/speed-feed/">切削速度 & 进给</a>
-<a href="/tools/hardness-converter/">Hardness 转换器</a>
-<a href="/tools/tap-drill-size-calculator/">Tap Drill Size</a>
-<a href="/tools/mrr-calculator/">MRR 计算器</a>
-<a href="/tools/feed-converter/">进给 转换器</a>
-<a href="/tools/surface-roughness-calculator/">Surface Roughness</a>
-<a href="/tools/titanium-machining-guide/">Titanium 指南</a>
-<a href="/tools/carbide-grade-cross-ref-2/">Grade Cross Ref</a>
-<a href="/tools/cost-per-part-calculator/">Cost Per Part</a>
-<a href="/tools/torque-unit-converter/">Torque 转换器</a>
+<a href="/zh/tools/speed-feed/">切削速度 & 进给</a>
+<a href="/zh/tools/hardness-converter/">Hardness 转换器</a>
+<a href="/zh/tools/tap-drill-size-calculator/">Tap Drill Size</a>
+<a href="/zh/tools/mrr-calculator/">MRR 计算器</a>
+<a href="/zh/tools/feed-converter/">进给 转换器</a>
+<a href="/zh/tools/surface-roughness-calculator/">Surface Roughness</a>
+<a href="/zh/tools/titanium-machining-guide/">Titanium 指南</a>
+<a href="/zh/tools/carbide-grade-cross-ref-2/">Grade Cross Ref</a>
+<a href="/zh/tools/cost-per-part-calculator/">Cost Per Part</a>
+<a href="/zh/tools/torque-unit-converter/">Torque 转换器</a>
 </div></div>
 
 <aside class="b2b-card">
@@ -466,14 +474,14 @@ calc();
 <section class="more-tools">
   <h3>🔧 探索100+专业加工工具</h3>
   <div class="tool-grid">
-<a href="/tools/gun-drill-calculator/">Gun Drill 计算器</a>
-<a href="/tools/tensile-strength-converter/">Tensile Strength 转换器</a>
-<a href="/tools/carbide-grade-cross-ref-2/">Carbide Grade Cross Reference</a>
-<a href="/tools/feed-converter/">进给 转换器</a>
-<a href="/tools/thread-depth-torque-calculator/">Thread 切削深度 & Torque 计算器</a>
-<a href="/tools/chip-load/">Chip Load 计算器</a>
-<a href="/tools/round-bar-weight/">Round Bar Weight 计算器</a>
-<a href="/tools/chamfer-calculator/">Chamfer 计算器</a>
+<a href="/zh/tools/gun-drill-calculator/">Gun Drill 计算器</a>
+<a href="/zh/tools/tensile-strength-converter/">Tensile Strength 转换器</a>
+<a href="/zh/tools/carbide-grade-cross-ref-2/">Carbide Grade Cross Reference</a>
+<a href="/zh/tools/feed-converter/">进给 转换器</a>
+<a href="/zh/tools/thread-depth-torque-calculator/">Thread 切削深度 & Torque 计算器</a>
+<a href="/zh/tools/chip-load/">Chip Load 计算器</a>
+<a href="/zh/tools/round-bar-weight/">Round Bar Weight 计算器</a>
+<a href="/zh/tools/chamfer-calculator/">Chamfer 计算器</a>
 
   </div>
 </section>

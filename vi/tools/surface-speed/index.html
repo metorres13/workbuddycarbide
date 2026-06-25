@@ -102,6 +102,14 @@ footer a{color:#0066cc;text-decoration:none}
   .card-row{grid-template-columns:1fr}
 }
 .lang-switcher{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 0;margin:8px 0;border-top:1px solid #e8e8ed;font-size:11px}.lang-switcher .lang-label{font-size:13px;margin-right:4px}.lang-switcher .lang-link{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#fff;border:1px solid #e8e8ed;color:#86868b;text-decoration:none;font-size:10px;font-weight:600;transition:all .15s}.lang-switcher .lang-link:hover{background:#0066cc;color:#fff;border-color:#0066cc}.lang-switcher .lang-link.active{background:#0066cc;color:#fff;border-color:#0066cc}
+
+/* Language Switcher - Apple Style */
+.lang-nav{display:flex;align-items:center;gap:2px;margin-left:12px;padding-left:12px;border-left:1px solid #e8e8ed}
+.lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
+.lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
+.lang-nav a.active{color:#0066cc;font-weight:600}
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
 </style>
 
 <link rel="stylesheet" href="/css/tool-style.css"/>
@@ -195,7 +203,7 @@ footer a{color:#0066cc;text-decoration:none}
   <link rel="alternate" hreflang="es" href="https://carbide-tooling.com/es/tools/surface-speed/"/>
   <link rel="alternate" hreflang="vi" href="https://carbide-tooling.com/vi/tools/surface-speed/"/>
   <link rel="alternate" hreflang="zh" href="https://carbide-tooling.com/zh/tools/surface-speed/"/>
-  <link rel="alternate" hreflang="x-default" href="https://carbide-tooling.com/tools/surface-speed/"/>
+  <link rel="alternate" hreflang="x-default" href="https://carbide-tooling.com/tools/surface-speed"/>
 </head>
 <body>
 <nav>
@@ -208,7 +216,7 @@ footer a{color:#0066cc;text-decoration:none}
       <a href="https://carbide-tooling.com/about.html">Về chúng tôi</a>
     </div>
   </div>
-  <a href="https://carbide-tooling.com/quote.html" style="display:inline-flex;align-items:center;gap:6px;background:#0066cc;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">📩 Yêu cầu báo giá</a>
+  <a href="https://carbide-tooling.com/quote.html" style="display:inline-flex;align-items:center;gap:6px;background:#0066cc;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">📩 Yêu cầu báo giá</a><div class="lang-nav"><a href="/vi/tools/surface-speed/">EN</a><span class="sep">|</span><a href="/de/tools/surface-speed/">DE</a><span class="sep">|</span><a href="/jp/tools/surface-speed/">JP</a><span class="sep">|</span><a href="/es/tools/surface-speed/">ES</a><span class="sep">|</span><a href="#" class="active" onclick="return false">VI</a><span class="sep">|</span><a href="/zh/tools/surface-speed/">中</a></div>
 </div>
 </nav>
 
@@ -275,18 +283,18 @@ footer a{color:#0066cc;text-decoration:none}
 
 <!-- Cross-links to other tools -->
 <div class="ref-links" style="margin-top:40px">
-  <a href="/tools/grade-reference/" class="ref-link"><div class="icon">🔩</div><h4>Carbide Grade Cross Reference</h4><p>Search equivalent grades across Sandvik, Kennametal, Kyocera, Iscar, Mitsubishi, and more.</p><span class="tag">Cross-reference tool</span></a>
+  <a href="/vi/tools/grade-reference/" class="ref-link"><div class="icon">🔩</div><h4>Carbide Grade Cross Reference</h4><p>Search equivalent grades across Sandvik, Kennametal, Kyocera, Iscar, Mitsubishi, and more.</p><span class="tag">Cross-reference tool</span></a>
   <a href="https://carbide-tooling.com/vi/tools/" class="ref-link"><div class="icon">📋</div><h4>Tất cả công cụ</h4><p>Browse all CNC machining calculators and reference tools.</p><span class="tag">Dụng cụ hub</span></a>
 </div>
 
 <div class="ref-links">
-  <a href="/tools/speed-feed/" class="ref-link">
+  <a href="/vi/tools/speed-feed/" class="ref-link">
     <div class="icon">⚙️</div>
     <h4>Tốc độ cắt &amp; Lượng chạy dao Máy tính</h4>
     <p>Once you know your m/phút, calculate optimal v/ph, feed rate, and chip load for any material.</p>
     <span class="tag">Đề xuất next step</span>
   </a>
-  <a href="/tools/chip-load/" class="ref-link">
+  <a href="/vi/tools/chip-load/" class="ref-link">
     <div class="icon">📐</div>
     <h4>Chip Load Máy tính</h4>
     <p>Verify feed per tooth against material-specific recommendations to prevent tool failure.</p>
@@ -301,7 +309,7 @@ footer a{color:#0066cc;text-decoration:none}
 <div class="container">
   <div class="footer-links">
     <a href="/">Trang chủ</a>
-    <a href="/tools/">Tất cả công cụ</a>
+    <a href="/vi/tools/">Tất cả công cụ</a>
     <a href="/products/">Sản phẩm</a>
     <a href="/guides/">Hướng dẫn kỹ thuật</a>
     <a href="/about.html">Về chúng tôi</a>
@@ -313,7 +321,7 @@ footer a{color:#0066cc;text-decoration:none}
     <a href="https://twitter.com/carbidetooling" target="_blank" rel="noopener" aria-label="X (Twitter)">𝕏</a>
     <a href="mailto:sales@carbide-tooling.com" aria-label="Email">✉</a>
   </div>
-  <p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Tất cả công cụ</a></p>
+  <p style="margin-bottom:4px"><a href="/vi/tools/" style="color:#0066cc">Tất cả công cụ</a></p>
   <p style="font-size:11px;margin-bottom:6px">Kết quả chỉ mang tính tham khảo. Tham khảo nhà sản xuất dụng cụ.</p>
   <p style="font-size:11px">© 2026 Carbide Tooling</p>
 </div>
@@ -448,7 +456,7 @@ setMode('sfm');
 
   <div class="case-study">
     <h3>🔍 Real-World Case: 300% Dụng cụ Life Improvement by Correcting Surface Tốc độ cắt</h3>
-    <p>A medical device manufacturer was turning 17-4 PH stainless steel on a CNC lathe with a carbide insert. They were running at 1,200 Vòng/phút with a 12mm diameter workpiece — giving a surface speed of approximately 45 m/min. Inserts were failing after 80 parts, with edge chipping and built-up edge formation. Using this calculator, they determined the correct surface speed should be 120 m/min for that material. By adjusting Vòng/phút to 3,200 (and verifying with our <a href="/tools/speed-feed/" style="color:#0066cc">Tốc độ cắt &amp; Lượng chạy dao Máy tính</a>), tool life increased to over 350 parts per edge — a 4× improvement. The annual savings on insert costs alone exceeded $12,000.</p>
+    <p>A medical device manufacturer was turning 17-4 PH stainless steel on a CNC lathe with a carbide insert. They were running at 1,200 Vòng/phút with a 12mm diameter workpiece — giving a surface speed of approximately 45 m/min. Inserts were failing after 80 parts, with edge chipping and built-up edge formation. Using this calculator, they determined the correct surface speed should be 120 m/min for that material. By adjusting Vòng/phút to 3,200 (and verifying with our <a href="/vi/tools/speed-feed/" style="color:#0066cc">Tốc độ cắt &amp; Lượng chạy dao Máy tính</a>), tool life increased to over 350 parts per edge — a 4× improvement. The annual savings on insert costs alone exceeded $12,000.</p>
   </div>
 
   <h2>The m/phút Formula: How Surface Tốc độ cắt Is Tínhd</h2>
@@ -478,7 +486,7 @@ setMode('sfm');
   </div>
 
   <h2>Why Chip Load Affects Optimal Surface Tốc độ cắt</h2>
-  <p>The relationship between m/phút and <a href="/tools/chip-load/" style="color:#0066cc">chip load</a> is often misunderstood. At higher surface speeds, the chip load per tooth must be maintained within the recommended range — otherwise the tool rubs instead of shearing, generating excessive heat regardless of m/phút. This is why a proper speeds-and-feeds calculation requires both surface speed AND chip load optimization. Use the <a href="/tools/chip-load/" style="color:#0066cc">Chip Load Máy tính</a> after setting your m/phút to verify the feed per tooth is adequate.</p>
+  <p>The relationship between m/phút and <a href="/vi/tools/chip-load/" style="color:#0066cc">chip load</a> is often misunderstood. At higher surface speeds, the chip load per tooth must be maintained within the recommended range — otherwise the tool rubs instead of shearing, generating excessive heat regardless of m/phút. This is why a proper speeds-and-feeds calculation requires both surface speed AND chip load optimization. Use the <a href="/vi/tools/chip-load/" style="color:#0066cc">Chip Load Máy tính</a> after setting your m/phút to verify the feed per tooth is adequate.</p>
 
   <h2>m/phút vs. v/ph: When to Use Each</h2>
   <p>Vòng/phút is a machine parameter — it's what you set on the spindle control. m/phút is a process parameter — it's what actually determines cutting performance. The same m/phút can require very different Vòng/phút depending on diameter:</p>
@@ -491,28 +499,28 @@ setMode('sfm');
   <h2>Signs Your Surface Tốc độ cắt Is Wrong</h2>
   <p><strong>Too fast:</strong> Rapid flank wear, plastic deformation of the cutting edge, built-up edge, chatter, discolored chips (blue/purple), poor surface finish.<br/>
   <strong>Too slow:</strong> BUE formation, high cutting forces, poor chip control, chatter, smearing on the workpiece surface, reduced productivity.</p>
-  <p>When in doubt, consult the <a href="/tools/speed-feed/" style="color:#0066cc">Tốc độ cắt &amp; Lượng chạy dao Máy tính</a> which incorporates material-specific m/phút ranges for carbide end mills.</p>
+  <p>When in doubt, consult the <a href="/vi/tools/speed-feed/" style="color:#0066cc">Tốc độ cắt &amp; Lượng chạy dao Máy tính</a> which incorporates material-specific m/phút ranges for carbide end mills.</p>
 
   <h2>Câu hỏi thường gặp</h2>
   <p><strong>What is m/phút in machining?</strong> m/phút (Surface Feet per Minute) is the linear speed at which a cutting tool edge travels through the workpiece material. It determines cutting temperature, tool life, and surface finish.</p>
   <p><strong>How do I calculate m/phút from v/ph?</strong> Multiply π by the diameter in inches and v/ph, then divide by 12: <code>m/phút = (π × D × v/ph) ÷ 12</code>. Use this calculator for instant results.</p>
   <p><strong>What m/phút should I use for carbide end mills in stainless steel?</strong> For stainless 304, use 250-400 m/phút for roughing, 300-500 m/phút for finishing. Lower end for heavier cuts, higher end for finishing passes.</p>
   <p><strong>The difference between m/phút and v/ph?</strong> m/phút is cutting speed through material (process parameter). Vòng/phút is spindle rotation speed (machine parameter). Vòng/phút = (m/phút × 12) ÷ (π × D).</p>
-  <p><strong>Does workpiece hardness affect surface speed?</strong> Yes — harder materials require lower m/phút. As a rule of thumb, reduce m/phút by 20% for every 10 HRC increase above 35 HRC. Higher hardness also increases cutting forces, which must be accounted for in the <a href="/tools/speed-feed/" style="color:#0066cc">speed and feed calculation</a>.</p>
+  <p><strong>Does workpiece hardness affect surface speed?</strong> Yes — harder materials require lower m/phút. As a rule of thumb, reduce m/phút by 20% for every 10 HRC increase above 35 HRC. Higher hardness also increases cutting forces, which must be accounted for in the <a href="/vi/tools/speed-feed/" style="color:#0066cc">speed and feed calculation</a>.</p>
   <p><strong>Should I use coolant or dry at high m/phút?</strong> At high m/phút (above 600 m/phút in steel), coolant is essential to manage thermal shock. With carbide tools, intermittent coolant application can cause micro-cracking. Use consistent flood or through-spindle coolant when running above 500 m/phút.</p>
 </div>
 </section>
 <div class="toolbox-widget"><h3>🔧 Hộp công cụ kỹ thuật chính xác</h3><div class="toolbox-links">
-<a href="/tools/speed-feed/">Tốc độ cắt & Lượng chạy dao</a>
-<a href="/tools/hardness-converter/">Hardness Bộ chuyển đổi</a>
-<a href="/tools/tap-drill-size-calculator/">Tap Drill Size</a>
-<a href="/tools/mrr-calculator/">MRR Máy tính</a>
-<a href="/tools/feed-converter/">Lượng chạy dao Bộ chuyển đổi</a>
-<a href="/tools/surface-roughness-calculator/">Surface Roughness</a>
-<a href="/tools/titanium-machining-guide/">Titanium Hướng dẫn</a>
-<a href="/tools/carbide-grade-cross-ref-2/">Grade Cross Ref</a>
-<a href="/tools/cost-per-part-calculator/">Cost Per Part</a>
-<a href="/tools/torque-unit-converter/">Torque Bộ chuyển đổi</a>
+<a href="/vi/tools/speed-feed/">Tốc độ cắt & Lượng chạy dao</a>
+<a href="/vi/tools/hardness-converter/">Hardness Bộ chuyển đổi</a>
+<a href="/vi/tools/tap-drill-size-calculator/">Tap Drill Size</a>
+<a href="/vi/tools/mrr-calculator/">MRR Máy tính</a>
+<a href="/vi/tools/feed-converter/">Lượng chạy dao Bộ chuyển đổi</a>
+<a href="/vi/tools/surface-roughness-calculator/">Surface Roughness</a>
+<a href="/vi/tools/titanium-machining-guide/">Titanium Hướng dẫn</a>
+<a href="/vi/tools/carbide-grade-cross-ref-2/">Grade Cross Ref</a>
+<a href="/vi/tools/cost-per-part-calculator/">Cost Per Part</a>
+<a href="/vi/tools/torque-unit-converter/">Torque Bộ chuyển đổi</a>
 </div></div>
 
 <aside class="b2b-card">
@@ -527,14 +535,14 @@ setMode('sfm');
 <section class="more-tools">
   <h3>🔧 Khám phá 100+ công cụ gia công chuyên nghiệp</h3>
   <div class="tool-grid">
-<a href="/tools/wall-thickness-calculator/">Wall Thickness Máy tính</a>
-<a href="/tools/dia-circ-calculator/">Đường kính & Circumference Máy tính</a>
-<a href="/tools/batch-cost-calculator/">Batch Cost Máy tính</a>
-<a href="/tools/hardness-converter/">Hardness Bộ chuyển đổi</a>
-<a href="/tools/gear-parameter-calculator/">Gear Parameter Máy tính</a>
-<a href="/tools/cast-iron-machining/">Cast Iron Machining Máy tính</a>
-<a href="/tools/taper-calculator/">Taper Máy tính</a>
-<a href="/tools/feed-rate-override-calculator/">Lượng chạy dao Rate Override Máy tính</a>
+<a href="/vi/tools/wall-thickness-calculator/">Wall Thickness Máy tính</a>
+<a href="/vi/tools/dia-circ-calculator/">Đường kính & Circumference Máy tính</a>
+<a href="/vi/tools/batch-cost-calculator/">Batch Cost Máy tính</a>
+<a href="/vi/tools/hardness-converter/">Hardness Bộ chuyển đổi</a>
+<a href="/vi/tools/gear-parameter-calculator/">Gear Parameter Máy tính</a>
+<a href="/vi/tools/cast-iron-machining/">Cast Iron Machining Máy tính</a>
+<a href="/vi/tools/taper-calculator/">Taper Máy tính</a>
+<a href="/vi/tools/feed-rate-override-calculator/">Lượng chạy dao Rate Override Máy tính</a>
 
   </div>
 </section>

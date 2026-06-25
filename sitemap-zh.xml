@@ -22,26 +22,6 @@
     <xhtml:link rel="alternate" hreflang="zh" href="https://carbide-tooling.com/zh/tools/"/>
   </url>
   <url>
-    <loc>https://carbide-tooling.com/zh/about.html</loc>
-    <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://carbide-tooling.com/about.html"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://carbide-tooling.com/de/about.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://carbide-tooling.com/jp/about.html"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://carbide-tooling.com/es/about.html"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://carbide-tooling.com/vi/about.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://carbide-tooling.com/zh/about.html"/>
-  </url>
-  <url>
-    <loc>https://carbide-tooling.com/zh/quote.html</loc>
-    <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://carbide-tooling.com/quote.html"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://carbide-tooling.com/de/quote.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://carbide-tooling.com/jp/quote.html"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://carbide-tooling.com/es/quote.html"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://carbide-tooling.com/vi/quote.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://carbide-tooling.com/zh/quote.html"/>
-  </url>
-  <url>
     <loc>https://carbide-tooling.com/zh/tools/aluminum-alloy-table/</loc>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://carbide-tooling.com/tools/aluminum-alloy-table/"/>

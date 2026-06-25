@@ -78,6 +78,14 @@ footer a{color:#0066cc;text-decoration:none}
   .card-row,.seo .comparison{grid-template-columns:1fr}
 }
 .lang-switcher{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 0;margin:8px 0;border-top:1px solid #e8e8ed;font-size:11px}.lang-switcher .lang-label{font-size:13px;margin-right:4px}.lang-switcher .lang-link{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#fff;border:1px solid #e8e8ed;color:#86868b;text-decoration:none;font-size:10px;font-weight:600;transition:all .15s}.lang-switcher .lang-link:hover{background:#0066cc;color:#fff;border-color:#0066cc}.lang-switcher .lang-link.active{background:#0066cc;color:#fff;border-color:#0066cc}
+
+/* Language Switcher - Apple Style */
+.lang-nav{display:flex;align-items:center;gap:2px;margin-left:12px;padding-left:12px;border-left:1px solid #e8e8ed}
+.lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
+.lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
+.lang-nav a.active{color:#0066cc;font-weight:600}
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
 </style>
 
 <link rel="stylesheet" href="/css/tool-style.css"/>
@@ -171,7 +179,7 @@ footer a{color:#0066cc;text-decoration:none}
   <link rel="alternate" hreflang="es" href="https://carbide-tooling.com/es/tools/cycle-time-calculator/"/>
   <link rel="alternate" hreflang="vi" href="https://carbide-tooling.com/vi/tools/cycle-time-calculator/"/>
   <link rel="alternate" hreflang="zh" href="https://carbide-tooling.com/zh/tools/cycle-time-calculator/"/>
-  <link rel="alternate" hreflang="x-default" href="https://carbide-tooling.com/tools/cycle-time-calculator/"/>
+  <link rel="alternate" hreflang="x-default" href="https://carbide-tooling.com/tools/cycle-time-calculator"/>
 </head>
 <body>
 <nav>
@@ -184,7 +192,7 @@ footer a{color:#0066cc;text-decoration:none}
       <a href="https://carbide-tooling.com/about.html">会社概要</a>
     </div>
   </div>
-  <a href="https://carbide-tooling.com/quote.html" style="display:inline-flex;background:#0066cc;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">📩 見積もりを取得</a>
+  <a href="https://carbide-tooling.com/quote.html" style="display:inline-flex;background:#0066cc;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">📩 見積もりを取得</a><div class="lang-nav"><a href="/jp/tools/cycle-time-calculator/">EN</a><span class="sep">|</span><a href="/de/tools/cycle-time-calculator/">DE</a><span class="sep">|</span><a href="#" class="active" onclick="return false">JP</a><span class="sep">|</span><a href="/es/tools/cycle-time-calculator/">ES</a><span class="sep">|</span><a href="/vi/tools/cycle-time-calculator/">VI</a><span class="sep">|</span><a href="/zh/tools/cycle-time-calculator/">中</a></div>
 </div>
 </nav>
 
@@ -270,11 +278,11 @@ footer a{color:#0066cc;text-decoration:none}
 </div>
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px">
-  <a href="/tools/speed-feed/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
+  <a href="/jp/tools/speed-feed/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
     <div style="font-size:20px;margin-bottom:4px">⚙️</div><h4 style="font-size:14px;font-weight:600;margin-bottom:2px">切削速度 &amp; 送り 計算機</h4>
     <p style="font-size:12px;color:#86868b">Optimize cutting parameters before calculating cycle time.</p>
   </a>
-  <a href="/tools/mrr-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
+  <a href="/jp/tools/mrr-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
     <div style="font-size:20px;margin-bottom:4px">⚡</div><h4 style="font-size:14px;font-weight:600;margin-bottom:2px">MRR 計算機</h4>
     <p style="font-size:12px;color:#86868b">被削材 removal rate affects cycle time directly.</p>
   </a>
@@ -285,7 +293,7 @@ footer a{color:#0066cc;text-decoration:none}
 <div class="container">
   <div class="footer-links">
     <a href="/">ホーム</a>
-    <a href="/tools/">全ツール</a>
+    <a href="/jp/tools/">全ツール</a>
     <a href="/products/">製品</a>
     <a href="/guides/">技術ガイド</a>
     <a href="/about.html">会社概要</a>
@@ -297,7 +305,7 @@ footer a{color:#0066cc;text-decoration:none}
     <a href="https://twitter.com/carbidetooling" target="_blank" rel="noopener" aria-label="X (Twitter)">𝕏</a>
     <a href="mailto:sales@carbide-tooling.com" aria-label="Email">✉</a>
   </div>
-  <p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">全ツール</a></p>
+  <p style="margin-bottom:4px"><a href="/jp/tools/" style="color:#0066cc">全ツール</a></p>
   <p style="font-size:11px;margin-bottom:6px">結果は参考値です. 具体的な用途については工具メーカーにご相談ください.</p>
   <p style="font-size:11px">© 2026 Carbide Tooling</p>
 </div>
@@ -404,7 +412,7 @@ calc();
 
   <h2>Where Cycle Time Gets Lost: The Hidden Factors</h2>
   <p>Cutting time is only part of the total cycle time. The non-cutting components — tool positioning, indexing, part loading/unloading, and inspection — often account for 30-60% of the total cycle on small parts. This calculator includes a non-cutting time parameter so you can model the total cycle accurately.</p>
-  <p>The most commonly overlooked factor is the <strong>number of passes</strong>. A single roughing pass at 3mm DOC removes more material per minute than two passes at 1.5mm each, but the cutting forces may exceed the insert's capability. The <a href="/tools/force-calculator/" style="color:#0066cc">Milling Force 計算機</a> can help determine the maximum DOC for your specific operation, enabling you to minimize pass count while staying within safe force limits.</p>
+  <p>The most commonly overlooked factor is the <strong>number of passes</strong>. A single roughing pass at 3mm DOC removes more material per minute than two passes at 1.5mm each, but the cutting forces may exceed the insert's capability. The <a href="/jp/tools/force-calculator/" style="color:#0066cc">Milling Force 計算機</a> can help determine the maximum DOC for your specific operation, enabling you to minimize pass count while staying within safe force limits.</p>
 
   <h3>Cost Impact of Cycle Time Reduction</h3>
   <p>Every second saved on cycle time reduces cost proportionally. At a shop rate of $85/hour, a 10-second reduction on a 3-minute cycle saves $0.47 per part. On a run of 10,000 parts, that's $4,700. The table below shows how small improvements compound:</p>
@@ -415,14 +423,14 @@ calc();
   </div>
 
   <h2>Operation-Specific Strategies to Reduce Cycle Time</h2>
-  <p><strong>OD Turning:</strong> The most direct lever is increasing DOC to reduce the number of passes. Each eliminated pass saves the full cutting time plus approach/retract motion. Verify force limits with the <a href="/tools/force-calculator/" style="color:#0066cc">Force 計算機</a> before increasing DOC.</p>
+  <p><strong>OD Turning:</strong> The most direct lever is increasing DOC to reduce the number of passes. Each eliminated pass saves the full cutting time plus approach/retract motion. Verify force limits with the <a href="/jp/tools/force-calculator/" style="color:#0066cc">Force 計算機</a> before increasing DOC.</p>
   <p><strong>Facing:</strong> Constant surface speed (CSS) mode is essential. Without CSS, the 回転数 stays fixed and the cutting speed drops to zero at the center — dramatically increasing cycle time for facing operations. Always program facing with G96 (CSS) rather than G97 (constant rpm).</p>
   <p><strong>Boring:</strong> Internal boring cycles are limited by tool overhang and vibration. The cycle time is often determined by the need to take light passes to control chatter. Using a tuned boring bar with a higher natural frequency can allow deeper DOC and reduce pass count.</p>
   <p><strong>Parting:</strong> Parting is feed-limited, not speed-limited. Increasing feed from 0.05 mm/rev to 0.12 mm/rev can cut cycle time by 60% on the parting operation. However, higher feeds increase the risk of jamming the insert in the cut. Use a parting tool with chip-forming geometry designed for high feed rates.</p>
 
   <h2>How Cutting Parameters Affect Cycle Time vs. 工具 Life</h2>
   <p>There is a direct trade-off between cycle time and tool life. Increasing feed by 20% reduces cycle time by 17% but reduces tool life by approximately 35% (per the Taylor equation extended to feed rate effects). The optimal economic operating point balances the cost of increased tool consumption against the savings from reduced cycle time. For high-volume production (10,000+ parts), the optimal feed rate is typically higher than for low-volume runs, because tool change time is amortized across more parts.</p>
-  <p>Using the <a href="/tools/speed-feed/" style="color:#0066cc">切削速度 &amp; 送り 計算機</a> to find the material-specific recommended chip load ensures you operate in the efficient zone where small feed increases give large cycle time reductions without disproportionate tool life penalties.</p>
+  <p>Using the <a href="/jp/tools/speed-feed/" style="color:#0066cc">切削速度 &amp; 送り 計算機</a> to find the material-specific recommended chip load ensures you operate in the efficient zone where small feed increases give large cycle time reductions without disproportionate tool life penalties.</p>
 
   <div class="comparison">
     <div><h4>⚡ High 送り Strategy</h4><p>f=0.4 mm/rev → 90 sec cycle<br/>工具 life: 80 parts/edge<br/>Cost: optimized for volume</p></div>
@@ -435,7 +443,7 @@ calc();
   <p><strong>How does depth of cut affect cycle time?</strong> DOC determines the number of passes required. Doubling DOC halves the number of passes, directly reducing cycle time. Example: removing 6mm of stock at 2mm DOC requires 3 passes; at 4mm DOC it requires 2 passes — a 33% cycle time reduction.</p>
   <p><strong>What is a good cycle time for CNC turning?</strong> For a typical shaft 50mm diameter × 100mm long in mild steel: 60-120 seconds per part is efficient. Under 60 seconds requires high-feed strategies with rigid setup. Over 180 seconds indicates conservative parameters or excessive pass count.</p>
   <p><strong>Does constant surface speed affect cycle time?</strong> Significantly for facing and large-diameter variations. CSS maintains optimal cutting speed throughout the operation, reducing cycle time by 20-40% on facing passes compared to constant rpm. Always use G96 for facing operations.</p>
-  <p><strong>How do I reduce cycle time without reducing tool life?</strong> Increase 回転数 rather than feed — higher 回転数 reduces cycle time without increasing chip load (which is the primary driver of tool wear). Verify that the higher 回転数 stays within the recommended cutting speed range for the material using the <a href="/tools/speed-feed/" style="color:#0066cc">切削速度 &amp; 送り 計算機</a>.</p>
+  <p><strong>How do I reduce cycle time without reducing tool life?</strong> Increase 回転数 rather than feed — higher 回転数 reduces cycle time without increasing chip load (which is the primary driver of tool wear). Verify that the higher 回転数 stays within the recommended cutting speed range for the material using the <a href="/jp/tools/speed-feed/" style="color:#0066cc">切削速度 &amp; 送り 計算機</a>.</p>
 
   <div style="text-align:center;padding:32px 24px;font-size:15px;color:#1d1d1f;background:#f5f5f7;border-radius:16px;max-width:900px;margin:40px auto 0">
     <p style="margin:0">へ reduce cycle time without compromising quality, check our High-Performance End Mills</p>
@@ -443,16 +451,16 @@ calc();
 </div>
 </section>
 <div class="toolbox-widget"><h3>🔧 精密加工ツールボックス</h3><div class="toolbox-links">
-<a href="/tools/speed-feed/">切削速度 & 送り</a>
-<a href="/tools/hardness-converter/">Hardness 換算</a>
-<a href="/tools/tap-drill-size-calculator/">Tap Drill Size</a>
-<a href="/tools/mrr-calculator/">MRR 計算機</a>
-<a href="/tools/feed-converter/">送り 換算</a>
-<a href="/tools/surface-roughness-calculator/">Surface Roughness</a>
-<a href="/tools/titanium-machining-guide/">Titanium ガイド</a>
-<a href="/tools/carbide-grade-cross-ref-2/">Grade Cross Ref</a>
-<a href="/tools/cost-per-part-calculator/">Cost Per Part</a>
-<a href="/tools/torque-unit-converter/">Torque 換算</a>
+<a href="/jp/tools/speed-feed/">切削速度 & 送り</a>
+<a href="/jp/tools/hardness-converter/">Hardness 換算</a>
+<a href="/jp/tools/tap-drill-size-calculator/">Tap Drill Size</a>
+<a href="/jp/tools/mrr-calculator/">MRR 計算機</a>
+<a href="/jp/tools/feed-converter/">送り 換算</a>
+<a href="/jp/tools/surface-roughness-calculator/">Surface Roughness</a>
+<a href="/jp/tools/titanium-machining-guide/">Titanium ガイド</a>
+<a href="/jp/tools/carbide-grade-cross-ref-2/">Grade Cross Ref</a>
+<a href="/jp/tools/cost-per-part-calculator/">Cost Per Part</a>
+<a href="/jp/tools/torque-unit-converter/">Torque 換算</a>
 </div></div>
 
 <aside class="b2b-card">
@@ -467,14 +475,14 @@ calc();
 <section class="more-tools">
   <h3>🔧 100以上のプロ用加工ツールを見る</h3>
   <div class="tool-grid">
-<a href="/tools/chamfer-calculator/">Chamfer 計算機</a>
-<a href="/tools/coolant-concentration/">Coolant Concentration 計算機</a>
-<a href="/tools/round-bar-weight/">Round Bar Weight 計算機</a>
-<a href="/tools/step-milling-calculator/">Step Milling 計算機</a>
-<a href="/tools/threading-pass-calculator/">Threading Pass 計算機</a>
-<a href="/tools/engineering-interest-calculator/">Engineering Interest 計算機</a>
-<a href="/tools/titanium-machining-guide/">Titanium Machining ガイド</a>
-<a href="/tools/heat-expansion-calculator/">Heat Expansion 計算機</a>
+<a href="/jp/tools/chamfer-calculator/">Chamfer 計算機</a>
+<a href="/jp/tools/coolant-concentration/">Coolant Concentration 計算機</a>
+<a href="/jp/tools/round-bar-weight/">Round Bar Weight 計算機</a>
+<a href="/jp/tools/step-milling-calculator/">Step Milling 計算機</a>
+<a href="/jp/tools/threading-pass-calculator/">Threading Pass 計算機</a>
+<a href="/jp/tools/engineering-interest-calculator/">Engineering Interest 計算機</a>
+<a href="/jp/tools/titanium-machining-guide/">Titanium Machining ガイド</a>
+<a href="/jp/tools/heat-expansion-calculator/">Heat Expansion 計算機</a>
 
   </div>
 </section>

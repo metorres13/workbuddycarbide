@@ -71,6 +71,14 @@ footer a{color:#0066cc;text-decoration:none}
   .card-row{grid-template-columns:1fr}
 }
 .lang-switcher{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 0;margin:8px 0;border-top:1px solid #e8e8ed;font-size:11px}.lang-switcher .lang-label{font-size:13px;margin-right:4px}.lang-switcher .lang-link{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#fff;border:1px solid #e8e8ed;color:#86868b;text-decoration:none;font-size:10px;font-weight:600;transition:all .15s}.lang-switcher .lang-link:hover{background:#0066cc;color:#fff;border-color:#0066cc}.lang-switcher .lang-link.active{background:#0066cc;color:#fff;border-color:#0066cc}
+
+/* Language Switcher - Apple Style */
+.lang-nav{display:flex;align-items:center;gap:2px;margin-left:12px;padding-left:12px;border-left:1px solid #e8e8ed}
+.lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
+.lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
+.lang-nav a.active{color:#0066cc;font-weight:600}
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
 </style>
 
 <link rel="stylesheet" href="/css/tool-style.css"/>
@@ -164,7 +172,7 @@ footer a{color:#0066cc;text-decoration:none}
   <link rel="alternate" hreflang="es" href="https://carbide-tooling.com/es/tools/trochoidal-milling-calculator/"/>
   <link rel="alternate" hreflang="vi" href="https://carbide-tooling.com/vi/tools/trochoidal-milling-calculator/"/>
   <link rel="alternate" hreflang="zh" href="https://carbide-tooling.com/zh/tools/trochoidal-milling-calculator/"/>
-  <link rel="alternate" hreflang="x-default" href="https://carbide-tooling.com/tools/trochoidal-milling-calculator/"/>
+  <link rel="alternate" hreflang="x-default" href="https://carbide-tooling.com/tools/trochoidal-milling-calculator"/>
 </head>
 <body>
 <nav>
@@ -177,7 +185,7 @@ footer a{color:#0066cc;text-decoration:none}
       <a href="https://carbide-tooling.com/about.html">会社概要</a>
     </div>
   </div>
-  <a href="https://carbide-tooling.com/quote.html" style="display:inline-flex;background:#0066cc;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">📩 見積もりを取得</a>
+  <a href="https://carbide-tooling.com/quote.html" style="display:inline-flex;background:#0066cc;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">📩 見積もりを取得</a><div class="lang-nav"><a href="/jp/tools/trochoidal-milling-calculator/">EN</a><span class="sep">|</span><a href="/de/tools/trochoidal-milling-calculator/">DE</a><span class="sep">|</span><a href="#" class="active" onclick="return false">JP</a><span class="sep">|</span><a href="/es/tools/trochoidal-milling-calculator/">ES</a><span class="sep">|</span><a href="/vi/tools/trochoidal-milling-calculator/">VI</a><span class="sep">|</span><a href="/zh/tools/trochoidal-milling-calculator/">中</a></div>
 </div>
 </nav>
 
@@ -247,11 +255,11 @@ footer a{color:#0066cc;text-decoration:none}
 </div>
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px">
-  <a href="/tools/mrr-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f">
+  <a href="/jp/tools/mrr-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f">
     <div style="font-size:20px">⚡</div><h4 style="font-size:14px;font-weight:600;margin:4px 0 2px">MRR 計算機</h4>
     <p style="font-size:12px;color:#86868b">Compare trochoidal MRR against conventional milling.</p>
   </a>
-  <a href="/tools/ramping-angle-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f">
+  <a href="/jp/tools/ramping-angle-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f">
     <div style="font-size:20px">📐</div><h4 style="font-size:14px;font-weight:600;margin:4px 0 2px">Ramping Angle 計算機</h4>
     <p style="font-size:12px;color:#86868b">Optimize entry strategies before trochoidal paths.</p>
   </a>
@@ -262,7 +270,7 @@ footer a{color:#0066cc;text-decoration:none}
 <div class="container">
   <div class="footer-links">
     <a href="/">ホーム</a>
-    <a href="/tools/">全ツール</a>
+    <a href="/jp/tools/">全ツール</a>
     <a href="/products/">製品</a>
     <a href="/guides/">技術ガイド</a>
     <a href="/about.html">会社概要</a>
@@ -274,7 +282,7 @@ footer a{color:#0066cc;text-decoration:none}
     <a href="https://twitter.com/carbidetooling" target="_blank" rel="noopener" aria-label="X (Twitter)">𝕏</a>
     <a href="mailto:sales@carbide-tooling.com" aria-label="Email">✉</a>
   </div>
-  <p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">全ツール</a></p>
+  <p style="margin-bottom:4px"><a href="/jp/tools/" style="color:#0066cc">全ツール</a></p>
   <p style="font-size:11px;margin-bottom:6px">結果は参考値です. 具体的な用途については工具メーカーにご相談ください.</p>
   <p style="font-size:11px">© 2026 Carbide Tooling</p>
 </div>
@@ -363,7 +371,7 @@ calc();
   <h2>Material-Specific Trochoidal Strategies</h2>
   <p><strong>Aluminum 6061:</strong> 2-3 flute tools with stepover of 10-15% and full axial depth (1-1.5× diameter). 送り rates can reach 2-3× conventional values. Chip evacuation becomes the limiting factor at high MRR — use compressed air or coolant through the spindle. MRR improvements of 4-6× over conventional are typical.</p>
   <p><strong>Mild Steel 1018:</strong> 4-5 flute tools with stepover of 8-12% and axial depth of 1-1.5× diameter. 送り increase of 1.5-2× over conventional. The limiting factor is machine rigidity, not tool life. MRR improvement of 2-4× is achievable with a rigid machine.</p>
-  <p><strong>Stainless Steel 304:</strong> 5-6 flute tools with stepover of 5-10%. Axial depth limited to 0.75-1× diameter due to work-hardening at the depth-of-cut line. 送り increase of 1.3-1.8×. MRR improvement of 1.5-3×. The <a href="/tools/force-calculator/" style="color:#0066cc">Milling Force 計算機</a> can help verify that the reduced radial engagement keeps cutting forces within safe limits.</p>
+  <p><strong>Stainless Steel 304:</strong> 5-6 flute tools with stepover of 5-10%. Axial depth limited to 0.75-1× diameter due to work-hardening at the depth-of-cut line. 送り increase of 1.3-1.8×. MRR improvement of 1.5-3×. The <a href="/jp/tools/force-calculator/" style="color:#0066cc">Milling Force 計算機</a> can help verify that the reduced radial engagement keeps cutting forces within safe limits.</p>
   <p><strong>Titanium Grade 5:</strong> 4-5 flute tools with stepover of 5-8%. Axial depth of 0.5-1× diameter. 送り increase is modest — 1.2-1.5× — because chip load is limited by thermal considerations. The main benefit of trochoidal milling in titanium is consistent tool life, not MRR. Through-spindle coolant at 50+ bar is essential.</p>
 
   <h2>Trochoidal Toolpath Geometry: Stepover, Engagement Angle, and Chip Thinning</h2>
@@ -388,16 +396,16 @@ calc();
 </div>
 </section>
 <div class="toolbox-widget"><h3>🔧 精密加工ツールボックス</h3><div class="toolbox-links">
-<a href="/tools/speed-feed/">切削速度 & 送り</a>
-<a href="/tools/hardness-converter/">Hardness 換算</a>
-<a href="/tools/tap-drill-size-calculator/">Tap Drill Size</a>
-<a href="/tools/mrr-calculator/">MRR 計算機</a>
-<a href="/tools/feed-converter/">送り 換算</a>
-<a href="/tools/surface-roughness-calculator/">Surface Roughness</a>
-<a href="/tools/titanium-machining-guide/">Titanium ガイド</a>
-<a href="/tools/carbide-grade-cross-ref-2/">Grade Cross Ref</a>
-<a href="/tools/cost-per-part-calculator/">Cost Per Part</a>
-<a href="/tools/torque-unit-converter/">Torque 換算</a>
+<a href="/jp/tools/speed-feed/">切削速度 & 送り</a>
+<a href="/jp/tools/hardness-converter/">Hardness 換算</a>
+<a href="/jp/tools/tap-drill-size-calculator/">Tap Drill Size</a>
+<a href="/jp/tools/mrr-calculator/">MRR 計算機</a>
+<a href="/jp/tools/feed-converter/">送り 換算</a>
+<a href="/jp/tools/surface-roughness-calculator/">Surface Roughness</a>
+<a href="/jp/tools/titanium-machining-guide/">Titanium ガイド</a>
+<a href="/jp/tools/carbide-grade-cross-ref-2/">Grade Cross Ref</a>
+<a href="/jp/tools/cost-per-part-calculator/">Cost Per Part</a>
+<a href="/jp/tools/torque-unit-converter/">Torque 換算</a>
 </div></div>
 
 <aside class="b2b-card">
@@ -412,14 +420,14 @@ calc();
 <section class="more-tools">
   <h3>🔧 100以上のプロ用加工ツールを見る</h3>
   <div class="tool-grid">
-<a href="/tools/cycle-time-calculator/">Cycle Time 計算機</a>
-<a href="/tools/drill-point-length-calculator/">Drill Point Length 計算機</a>
-<a href="/tools/carbide-grade-cross-ref-2/">Carbide Grade Cross Reference</a>
-<a href="/tools/brass-machining-parameters/">Brass Machining Parameters</a>
-<a href="/tools/plastic-machining/">Plastic Machining ガイド</a>
-<a href="/tools/feed-rate-override-calculator/">送り Rate Override 計算機</a>
-<a href="/tools/blind-hole-tapping-calculator/">Blind Hole Tapping 計算機</a>
-<a href="/tools/pythagorean-calculator/">Pythagorean 計算機</a>
+<a href="/jp/tools/cycle-time-calculator/">Cycle Time 計算機</a>
+<a href="/jp/tools/drill-point-length-calculator/">Drill Point Length 計算機</a>
+<a href="/jp/tools/carbide-grade-cross-ref-2/">Carbide Grade Cross Reference</a>
+<a href="/jp/tools/brass-machining-parameters/">Brass Machining Parameters</a>
+<a href="/jp/tools/plastic-machining/">Plastic Machining ガイド</a>
+<a href="/jp/tools/feed-rate-override-calculator/">送り Rate Override 計算機</a>
+<a href="/jp/tools/blind-hole-tapping-calculator/">Blind Hole Tapping 計算機</a>
+<a href="/jp/tools/pythagorean-calculator/">Pythagorean 計算機</a>
 
   </div>
 </section>
