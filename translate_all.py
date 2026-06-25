@@ -13,6 +13,17 @@ from bs4 import BeautifulSoup, NavigableString, Tag
 ROOT = "/Users/nicky/ZCodeProject/carbide-site"
 
 # ── Credentials ──
+# Auto-load credentials from .env file if present
+_env_file = os.path.join(os.path.dirname(__file__), ".env")
+if os.path.exists(_env_file):
+    with open(_env_file) as _f:
+        for _line in _f:
+            _line = _line.strip()
+            if _line and not _line.startswith("#") and "=" in _line:
+                _k, _v = _line.split("=", 1)
+                _v = _v.strip().strip('"').strip("'")
+                os.environ.setdefault(_k.strip(), _v)
+
 AK = os.environ.get("ALIBABA_AK", "")
 SK = os.environ.get("ALIBABA_SK", "")
 
