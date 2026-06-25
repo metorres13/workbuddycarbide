@@ -27,7 +27,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-
 .logo span{font-weight:800;color:#0066cc}
 .nav-links{display:flex;align-items:center;gap:0}
 .nav-links>a{color:#86868b;cursor:pointer;text-decoration:none;padding:0 18px;transition:color .2s;height:44px;display:flex;align-items:center;font-weight:500}
-.nav-links>a:hover{color:#1d1d1f}
+
 
 .hero{text-align:center;padding:80px 0 60px}
 .hero .badge{display:inline-flex;align-items:center;gap:4px;background:#f5f5f7;padding:4px 14px;border-radius:20px;font-size:11px;font-weight:600;color:#86868b;margin-bottom:16px}
@@ -123,11 +123,21 @@ footer a{color:#0066cc;text-decoration:none}
 .lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
 .lang-menu a .flag{font-size:16px}
 
-.nav-left{gap:16px}.nav-links>a{padding:0 12px;font-size:12px}.logo{font-size:13px;white-space:nowrap}
+.logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
-@media(max-width:768px){.nav-links{display:none}.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
-@media(min-width:769px){.nav-left{gap:20px}}
-.logo{cursor:pointer!important}.btn{cursor:pointer!important}.btn-outline{cursor:pointer!important}.lang-link{cursor:pointer!important}</style>
+@media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
+@media(min-width:769px){}
+.logo{cursor:pointer!important}.btn{cursor:pointer!important}.btn-outline{cursor:pointer!important}.lang-link{cursor:pointer!important}
+/* === NAV OVERRIDE === */
+.nav-inner{display:flex!important;align-items:center!important;justify-content:space-between!important;height:44px!important;max-width:1060px!important;margin:0 auto!important;padding:0 24px!important;font-size:12px!important}
+.nav-left{display:flex!important;align-items:center!important;gap:12px!important}
+.logo{font-size:14px!important;font-weight:700!important;letter-spacing:-0.3px!important;display:flex!important;align-items:center!important;gap:6px!important;text-decoration:none!important;color:#1d1d1f!important;cursor:pointer!important;white-space:nowrap!important}
+.logo span{font-weight:800!important;color:#0066cc!important}
+.nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
+.nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
+.nav-links>a:hover{color:#1d1d1f!important}
+@media(max-width:768px){.nav-links{display:none!important}}
+</style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
 <link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230066cc'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-size='18' font-weight='800' fill='%23fff'%3E◆%3C/text%3E%3C/svg%3E" rel="icon" type="image/svg+xml"/>
