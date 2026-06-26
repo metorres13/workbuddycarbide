@@ -12,20 +12,7 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
-
-/* Language Switcher - Dropdown with Flags */
-.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
-.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
-.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
-.lang-dropdown{position:relative;display:inline-flex;align-items:center}
-.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
-.lang-menu.show{display:block}
-.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
-.lang-menu a:hover{background:#f5f5f7}
-.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
-.lang-menu a .flag{font-size:16px}
-
+.lang-nav /* Language Switcher - Dropdown with Flags */
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -39,7 +26,18 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){.nav-links{display:none!important}}
+@media(max-width:768px){}
+
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -140,84 +138,45 @@ nav#nav-v2 .nv-logo span{font-weight:800;color:#0066cc}
 nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-shrink:0}
 nav#nav-v2 .nv-links>a{color:#1d1d1f;text-decoration:none;padding:0 14px;height:48px;display:flex;align-items:center;font-weight:500;font-size:12px;transition:color .15s;white-space:nowrap}
 nav#nav-v2 .nv-links>a:hover{color:#0066cc}
+nav#nav-v2 .nv-lang{position:relative;display:flex;align-items:center}
 nav#nav-v2 .nv-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
 nav#nav-v2 .nv-quote{display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:6px 16px;border-radius:24px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap}
 nav#nav-v2 .nv-quote:hover{background:#0055aa;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,204,.25)}
-nav#nav-v2 .nv-lang{display:flex;align-items:center;gap:2px;margin-left:4px;padding-left:8px;border-left:1px solid #e8e8ed}
-nav#nav-v2 .nv-lang a{font-size:10px;font-weight:600;color:#86868b;text-decoration:none;padding:3px 6px;border-radius:12px;transition:all .15s;letter-spacing:.3px}
-nav#nav-v2 .nv-lang a:hover{color:#1d1d1f;background:#f5f5f7}
-nav#nav-v2 .nv-lang a.active{color:#0066cc;background:#f0f7ff;font-weight:700}
-nav#nav-v2 .nv-lang .sep{color:#d2d2d6;font-size:10px;margin:0 1px;font-weight:300}
 @media(max-width:768px){
-  nav#nav-v2 .nv-links{display:none}
-  nav#nav-v2 .nv-lang a{font-size:9px;padding:2px 4px}
+  nav#nav-v2 .nv-inner{flex-wrap:wrap;padding:10px 16px;gap:4px;align-items:center}
+  nav#nav-v2 .nv-logo{font-size:14px;order:0;flex-shrink:0;margin-right:auto}
+  nav#nav-v2 .nv-right{order:1;flex-shrink:0;width:auto;gap:6px}
+  nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-wrap:wrap;order:2;width:100%;justify-content:center;margin-top:2px;padding-top:2px;border-top:1px solid #f0f0f0}
+  nav#nav-v2 .nv-links>a{padding:6px 12px;font-size:11px;height:auto;font-weight:500}
+  nav#nav-v2 .nv-lang{position:relative!important}
+  nav#nav-v2 .lang-dd{right:-30px;min-width:130px}
   nav#nav-v2 .nv-quote{padding:4px 10px;font-size:10px}
 }
 nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important}
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
 </style>
 
 <style id="hero-atmo-style">
-/* ── Hero Atmosphere ── */
-.hero-atmo {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  background: linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 40%, #d2d2d7 100%);
-  margin-bottom: -60px;
-  z-index: 0;
-}
-.hero-atmo::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(0,102,204,.06) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 80% at 80% 40%, rgba(0,0,0,.04) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.95) 90%, #fff 100%);
-}
-.hero-atmo::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 80px;
-  background: linear-gradient(0deg, #fff 0%, transparent 100%);
-}
-/* Image Container - Apple Style */
-.img-container {
-  width: 100%;
-  aspect-ratio: 1;
-  background: #fff;
-  border-radius: 20px;
-  border: 1px solid #d2d2d7;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.img-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #f0f0f3 0%, #e8e8ed 50%, #f0f0f3 100%);
-  color: #c0c0c6;
-  font-size: 48px;
-}
-.img-placeholder::after {
-  content: '◆';
-  font-size: 48px;
-  opacity: .3;
-}
+.hero-atmo{position:relative;width:100%;height:200px;overflow:hidden;background:linear-gradient(180deg,#f5f5f7 0%,#e8e8ed 40%,#d2d2d7 100%);margin-bottom:-60px;z-index:0}
+.hero-atmo::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 50%,rgba(0,102,204,.06) 0%,transparent 50%),radial-gradient(ellipse 60% 80% at 80% 40%,rgba(0,0,0,.04) 0%,transparent 50%),linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.95) 90%,#fff 100%)}
+.hero-atmo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(0deg,#fff 0%,transparent 100%)}
+.img-container{width:100%;aspect-ratio:1;background:#fff;border-radius:20px;border:1px solid #d2d2d7;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
+.img-container img{width:100%;height:100%;object-fit:cover}
+.img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f0f0f3 0%,#e8e8ed 50%,#f0f0f3 100%);color:#c0c0c6;font-size:48px}
+.img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
-
 
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
@@ -226,163 +185,24 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-</head>
-<body>
-
-<div class="hero-img-wrapper">
-<img src="https://images.unsplash.com/1504328346580-ee3558200b6a?w=1200&h=675&fit=crop&q=80&auto=format" alt="Khoan cacbua chính xác" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
-<div class="img-overlay"></div>
-</div>
-<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
+<nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/vi/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
-<a href="/vi/">Trang chủ</a>
 <a href="/vi/products/">Sản phẩm</a>
-<a href="/vi/tools/">Công cụ</a>
+<a href="/vi/tools/">Máy Tính &amp; Công Cụ</a>
 <a href="/vi/guides/">Hướng dẫn</a>
 <a href="/vi/about.html">Giới thiệu</a>
 </div>
 <div class="nv-right">
-<div class="nv-lang"><a href="/tools/peck-drilling-calculator/">EN</a><span class="sep">·</span><a href="/de/tools/peck-drilling-calculator/">DE</a><a href="/jp/tools/peck-drilling-calculator/">JP</a><span class="sep">·</span><a href="/es/tools/peck-drilling-calculator/">ES</a><a href="#" onclick="return false" class="active">VI</a></div>
+<div class="nv-lang"><div class="lang-btn" onclick="toggleLangDD(event)"><span class="flag">🇻🇳</span><span>VI</span><span class="caret">▼</span></div><div class="lang-dd" id="lang-dd"><a href="/tools/peck-drilling-calculator" class=""><span class="flag">🇺🇸</span><span class="lbl">EN</span><span class="nm">English</span></a><a href="/de/tools/peck-drilling-calculator" class=""><span class="flag">🇩🇪</span><span class="lbl">DE</span><span class="nm">Deutsch</span></a><a href="/jp/tools/peck-drilling-calculator" class=""><span class="flag">🇯🇵</span><span class="lbl">JP</span><span class="nm">日本語</span></a><a href="/es/tools/peck-drilling-calculator" class=""><span class="flag">🇪🇸</span><span class="lbl">ES</span><span class="nm">Español</span></a><a href="/vi/tools/peck-drilling-calculator" class="current"><span class="flag">🇻🇳</span><span class="lbl">VI</span><span class="nm">Tiếng Việt</span></a></div></div>
 <a class="nv-quote" href="/vi/quote.html">📩 Báo giá</a>
 </div>
 </div>
 </nav>
-<section class="hero"><div class="container"><div class="badge">🔄 Best Practice Guide</div><h1>Máy tính khoan Peck</h1><p>Đặt độ sâu peck dựa trên độ sâu lỗ, Đường kính mũi khoan và vật liệu. Tránh đóng gói chip, vỡ và các lỗ quá khổ.</p><a class="btn" href="#calculator">Tính toán ↓</a></div></section>
-<section class="container" id="calculator" style="padding-bottom:40px">
-<div class="card"><h2>🔄Chu trình khoan peck</h2><p class="sub">Đối với chu trình khoan peck lỗ sâu G83 trên các trung tâm gia công CNC.</p>
-<div class="card-row">
-<div class="field"><label>🔩Vật liệu</label><select id="material" onchange="calc()"><option value="al6061">Aluminum 6061</option><option selected="" value="ss304">Stainless Steel 304</option><option value="mild_steel">Mild Steel 1018</option></select></div>
-<div class="field"><label>🕳️ Đường kính mũi khoan (mm)</label><input id="dia" max="50" min="0.5" oninput="calc()" step="0.5" type="number" value="8"/></div>
-<div class="field"><label>📏Độ sâu lỗ (mm)</label><input id="depth" max="500" min="1" oninput="calc()" step="5" type="number" value="40"/></div>
-<div class="field"><label>⚡Tốc độ cắt Vc (m/phút)</label><input id="vc" max="500" min="5" oninput="calc()" step="5" type="number" value="60"/></div>
-<div class="field"><label>📊Tốc độ cấp liệu (mm/vòng)</label><input id="feed" max="2" min="0.01" oninput="calc()" step="0.01" type="number" value="0.12"/></div>
-</div>
-<div class="result-grid">
-<div class="result-item"><div class="label">First Peck Depth</div><div class="value" id="r-peck1">—</div><div class="unit">mm</div></div>
-<div class="result-item"><div class="label">Subsequent Pecks</div><div class="value" id="r-peckn">—</div><div class="unit">mm</div></div>
-<div class="result-item"><div class="label">Total Pecks</div><div class="value" id="r-pecks">—</div><div class="unit">pecks</div></div>
-<div class="result-item"><div class="label">RPM</div><div class="value" id="r-rpm">—</div><div class="unit">RPM</div></div>
-</div>
-</div>
-<div style="text-align:center;margin:20px 0"><a href="/tools/" style="color:#0066cc;text-decoration:none;font-size:13px">← Tất cả công cụ</a></div>
-</section>
-<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Công cụ chính xác liên quan</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/vi/tools/percentage-of-thread-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Percentage Of Thread Calculator</a><a href="/vi/tools/plastic-machining/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Plastic Machining</a><a href="/vi/tools/polar-rect-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Polar Rect Converter</a><a href="/vi/tools/metal-cost-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Metal Cost Calculator</a><a href="/vi/tools/toolbox-organizer/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Toolbox Organizer</a><a href="/vi/tools/dia-circ-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Dia Circ Calculator</a></div></div><footer class="tool-footer">
-<div class="container">
-<div class="footer-links">
-<a href="/">Trang chủ</a>
-<a href="/tools/">Tất cả công cụ</a>
-<a href="/products/">Sản phẩm</a>
-<a href="/guides/">Hướng dẫn</a>
-<a href="/about.html">Về chúng tôi</a>
-<a href="/quote.html">Bộ chuyển đổi độ cứng</a>
-<a href="/privacy.html">Kích thước mũi khoan taro</a>
-</div>
-<div class="footer-social">
-<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Công cụ tính MRR</a>
-<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
-<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
-</div>
-<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Tất cả công cụ</a></p>
-<p style="font-size:11px;margin-bottom:6px">Kết quả chỉ mang tính tham khảo. Hãy tham khảo ý kiến của các nhà sản xuất dụng cụ để biết thông tin về các ứng dụng cụ thể.</p>
-<p style="font-size:11px">©Dụng cụ cắt gọt bằng cacbua năm 2026</p>
-</div>
-</footer>
-<script>
-const MATS={al6061:{p1:4,p2:2},ss304:{p1:1.5,p2:0.5},mild_steel:{p1:2,p2:1}};
-function calc(){const m=MATS[document.getElementById('material').value];const d=parseFloat(document.getElementById('dia').value)||8;const dep=parseFloat(document.getElementById('depth').value)||40;const vc=parseFloat(document.getElementById('vc').value)||60;const feed=parseFloat(document.getElementById('feed').value)||0.12;const rpm=d>0?(vc*1000)/(Math.PI*d):1000;const minPeck=1.5;const p1=Math.min(dep,d*m.p1);const pn=Math.max(minPeck,d*m.p2);let remaining=dep-p1;let pecks=1;if(remaining>0){pecks+=Math.ceil(remaining/pn);}document.getElementById('r-peck1').textContent=p1.toFixed(1);document.getElementById('r-peckn').textContent=pn.toFixed(1);document.getElementById('r-pecks').textContent=pecks;document.getElementById('r-rpm').textContent=Math.round(rpm);}
-calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><section class="seo-content"><div class="container">
-<h2>Quy Tắc khoan peck: 25 năm làm lỗ đã dạy chúng tôi</h2>
-<p>Mổ đầu tiên luôn sâu nhất. Một mũi khoan cacbua sắc bén đi vào vật liệu rắn ở bề mặt có thể mất một peck ban đầu đường kính 2-3 × vì di tản chip dễ dàng thoát ra ngay lập tức. Sau khi lỗ đạt đến độ sâu đường kính 3-4 ×, chip phải di chuyển lên sáo, và độ sâu peck phải được giảm xuống để tránh đóng gói.</p>
-<p>Đối với mũi khoan cacbua 10 mm bằng thép 4140 ở độ sâu 40mm, mũi khoan đầu tiên có thể là 20-25mm. Mỏ mổ thứ hai nên là 10-12mm. đến mổ thứ ba, độ sâu sẽ giảm xuống 5-6mm. Mô hình peck giảm này Tối đa hóa năng suất đồng thời ngăn chặn việc đóng gói chip gây ra sự cố khoan.</p>
-<p>Trên một trung tâm khoan/vòi Haas hoặc doosan, chu kỳ G83 với peck giảm (thay đổi giá trị Q trên mỗi peck) phải được lập trình bằng tay hoặc bằng macro. Hầu hết các hệ thống cam đều tạo ra độ sâu peck không đổi-Máy Tính ở trên mang đến cho bạn mẫu peck biến đổi tối ưu để lập trình thủ công.</p>
-<div class="rules"><h3>📋Quy tắc nhanh cho độ sâu mổ</h3><ul><li>Nhôm: mổ đầu tiên = Đường kính khoan 4 ×; tiếp theo = Đường kính 2 ×</li><li>Thép: đầu tiên = 2 × đường kính; tiếp theo = 1 × đường kính</li><li>Không gỉ: đầu tiên = 1.5 × đường kính; tiếp theo = 0.5 × đường kính</li><li>Phá vỡ Chip: giảm 20% tốc độ nạp cho chu kỳ thu nhỏ peck so với khoan liên tục</li></ul></div>
-<h2>Câu hỏi thường gặp</h2>
-<p><strong>What is peck drilling?</strong> A drilling cycle where the tool periodically retracts to break chips and clear the flutes. G83 in most CNC controls.</p>
-<p><strong>How deep should each peck be?</strong> First peck: 2-4× drill diameter depending on material. Subsequent pecks: 0.5-2× diameter. Decrease peck depth as hole depth increases.</p>
-<p><strong>When should I use peck drilling vs. continuous drilling?</strong> For holes deeper than 3× diameter in steel, or 5× diameter in aluminum, use peck drilling. For shallow holes, continuous drilling is faster and produces better surface finish.</p>
-<p><strong>Does peck drilling increase cycle time?</strong> Yes, by 15-40% depending on the number of pecks. The trade-off is acceptable because peck drilling prevents tool breakage, which costs far more than the added cycle time.</p>
-</div></section>
-<div class="toolbox-widget"><h3>🔧Hộp công cụ kỹ thuật chính xác</h3><div class="toolbox-links">
-<a href="/tools/speed-feed/">Độ nhám bề mặt</a>
-<a href="/tools/hardness-converter/">Hướng dẫn về Titan</a>
-<a href="/tools/tap-drill-size-calculator/">Phân loại tham chiếu</a>
-<a href="/tools/mrr-calculator/">Chi phí trên mỗi bộ phận</a>
-<a href="/tools/feed-converter/">Bộ biến mô</a>
-<a href="/tools/surface-roughness-calculator/">Yêu cầu báo giá số lượng lớn →</a>
-<a href="/tools/titanium-machining-guide/">Mũi khoan cacbua</a>
-<a href="/tools/carbide-grade-cross-ref-2/">Dao phay ren &amp; Tarô</a>
-<a href="/tools/cost-per-part-calculator/">Bộ chuyển đổi cung R sang IJ</a>
-<a href="/tools/torque-unit-converter/">Công cụ tính độ sâu ren &amp; mô-men xoắn</a>
-</div></div>
-<aside class="b2b-card-enhanced" style="margin:32px 0">
-<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
-<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
-<div style="flex:1;min-width:0">
-<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Giải Pháp Chuyên Nghiệp cho Peck Drilling Calculator?</h3>
-<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Nhận giá trực tiếp từ nhà máy cho dụng cụ carbide cao cấp với chất lượng chứng nhận ISO.</p>
-</div>
-<a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
-</div>
-<div class="product-links"><span>🔗 Recommended:</span><a href="/products/drills.html">Công cụ tính chi phí trên mỗi sản phẩm</a><a href="/products/threading-tools.html">Công cụ ước tính tuổi thọ dụng cụ cho siêu hợp kim</a></div>
-
-<div class="share-bar">
-<span class="share-label">↗ Share with Engineers</span>
-<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/peck-drilling-calculator/" rel="noopener" target="_blank">LinkedIn</a>
-<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/peck-drilling-calculator/&amp;text=Peck Drilling Calculator" rel="noopener" target="_blank">𝕏</a>
-<a href="mailto:subject=Peck Drilling Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/peck-drilling-calculator/">Email</a>
-</div>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/vi/tools/titanium-machining-guide/">Titanium Machining Guide</a>
-<a href="/vi/tools/brass-machining-parameters/">Brass Machining Parameters</a>
-<a href="/vi/tools/countersink-depth-calculator/">Countersink Depth Calculator</a>
-<a href="/vi/tools/drill-point-length-calculator/">Drill Point Length Calculator</a>
-<a href="/vi/tools/threading-pass-calculator/">Threading Pass Calculator</a>
-<a href="/vi/tools/dovetail-calculator/">Dovetail Calculator</a>
-<a href="/vi/tools/percentage-of-thread-calculator/">Percentage Of Thread Calculator</a>
-<a href="/vi/tools/metric-imperial-thread-converter/">Metric Imperial Thread Converter</a>
-<a href="/vi/tools/hardness-converter/">Hardness Converter</a>
-<a href="/vi/tools/iso-fit-calculator/">Iso Fit Calculator</a>
-
-</div>
-</section>
-<style>
-.engineering-directory a{
-  display:block;
-  font-size:12px;
-  font-weight:500;
-  color:#1d1d1f;
-  text-decoration:none;
-  padding:8px 14px;
-  background:#fff;
-  border-radius:10px;
-  border:1px solid #e8e8ed;
-  transition:all .15s;
-  text-align:center;
-}
-.engineering-directory a:hover{
-  background:#0066cc;
-  color:#fff;
-  border-color:#0066cc;
-  transform:translateY(-1px);
-  box-shadow:0 4px 12px rgba(0,102,204,.15);
-}
-</style>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
-<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/vi/tools/tangent-point-calculator/">Tangent Point Calculator</a>
-<a href="/vi/tools/coolant-concentration/">Coolant Concentration</a>
-<a href="/vi/tools/titanium-machining-guide/">Titanium Machining Guide</a>
-<a href="/vi/tools/slot-milling-calculator/">Slot Milling Calculator</a>
-<a href="/vi/tools/taper-calculator/">Taper Calculator</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyêulator/">Taper Calculator</a>
 <a href="/vi/tools/flatness-calculator/">Flatness Calculator</a>
 <a href="/vi/tools/metal-weight-calculator/">Metal Weight Calculator</a>
 <a href="/vi/tools/cast-iron-machining/">Cast Iron Machining</a>
@@ -412,6 +232,21 @@ calc();</script><script>function toggleLang(e){e.stopPropagation();document.getE
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
+
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
@@ -422,4 +257,5 @@ calc();</script><script>function toggleLang(e){e.stopPropagation();document.getE
 </div>
 <a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
 </div>
+<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
 </body></html>

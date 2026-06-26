@@ -11,20 +11,7 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
-
-/* Language Switcher - Dropdown with Flags */
-.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
-.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
-.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
-.lang-dropdown{position:relative;display:inline-flex;align-items:center}
-.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
-.lang-menu.show{display:block}
-.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
-.lang-menu a:hover{background:#f5f5f7}
-.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
-.lang-menu a .flag{font-size:16px}
-
+.lang-nav /* Language Switcher - Dropdown with Flags */
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -38,7 +25,18 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){.nav-links{display:none!important}}
+@media(max-width:768px){}
+
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -139,84 +137,45 @@ nav#nav-v2 .nv-logo span{font-weight:800;color:#0066cc}
 nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-shrink:0}
 nav#nav-v2 .nv-links>a{color:#1d1d1f;text-decoration:none;padding:0 14px;height:48px;display:flex;align-items:center;font-weight:500;font-size:12px;transition:color .15s;white-space:nowrap}
 nav#nav-v2 .nv-links>a:hover{color:#0066cc}
+nav#nav-v2 .nv-lang{position:relative;display:flex;align-items:center}
 nav#nav-v2 .nv-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
 nav#nav-v2 .nv-quote{display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:6px 16px;border-radius:24px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap}
 nav#nav-v2 .nv-quote:hover{background:#0055aa;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,204,.25)}
-nav#nav-v2 .nv-lang{display:flex;align-items:center;gap:2px;margin-left:4px;padding-left:8px;border-left:1px solid #e8e8ed}
-nav#nav-v2 .nv-lang a{font-size:10px;font-weight:600;color:#86868b;text-decoration:none;padding:3px 6px;border-radius:12px;transition:all .15s;letter-spacing:.3px}
-nav#nav-v2 .nv-lang a:hover{color:#1d1d1f;background:#f5f5f7}
-nav#nav-v2 .nv-lang a.active{color:#0066cc;background:#f0f7ff;font-weight:700}
-nav#nav-v2 .nv-lang .sep{color:#d2d2d6;font-size:10px;margin:0 1px;font-weight:300}
 @media(max-width:768px){
-  nav#nav-v2 .nv-links{display:none}
-  nav#nav-v2 .nv-lang a{font-size:9px;padding:2px 4px}
+  nav#nav-v2 .nv-inner{flex-wrap:wrap;padding:10px 16px;gap:4px;align-items:center}
+  nav#nav-v2 .nv-logo{font-size:14px;order:0;flex-shrink:0;margin-right:auto}
+  nav#nav-v2 .nv-right{order:1;flex-shrink:0;width:auto;gap:6px}
+  nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-wrap:wrap;order:2;width:100%;justify-content:center;margin-top:2px;padding-top:2px;border-top:1px solid #f0f0f0}
+  nav#nav-v2 .nv-links>a{padding:6px 12px;font-size:11px;height:auto;font-weight:500}
+  nav#nav-v2 .nv-lang{position:relative!important}
+  nav#nav-v2 .lang-dd{right:-30px;min-width:130px}
   nav#nav-v2 .nv-quote{padding:4px 10px;font-size:10px}
 }
 nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important}
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
 </style>
 
 <style id="hero-atmo-style">
-/* ── Hero Atmosphere ── */
-.hero-atmo {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  background: linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 40%, #d2d2d7 100%);
-  margin-bottom: -60px;
-  z-index: 0;
-}
-.hero-atmo::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(0,102,204,.06) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 80% at 80% 40%, rgba(0,0,0,.04) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.95) 90%, #fff 100%);
-}
-.hero-atmo::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 80px;
-  background: linear-gradient(0deg, #fff 0%, transparent 100%);
-}
-/* Image Container - Apple Style */
-.img-container {
-  width: 100%;
-  aspect-ratio: 1;
-  background: #fff;
-  border-radius: 20px;
-  border: 1px solid #d2d2d7;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.img-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #f0f0f3 0%, #e8e8ed 50%, #f0f0f3 100%);
-  color: #c0c0c6;
-  font-size: 48px;
-}
-.img-placeholder::after {
-  content: '◆';
-  font-size: 48px;
-  opacity: .3;
-}
+.hero-atmo{position:relative;width:100%;height:200px;overflow:hidden;background:linear-gradient(180deg,#f5f5f7 0%,#e8e8ed 40%,#d2d2d7 100%);margin-bottom:-60px;z-index:0}
+.hero-atmo::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 50%,rgba(0,102,204,.06) 0%,transparent 50%),radial-gradient(ellipse 60% 80% at 80% 40%,rgba(0,0,0,.04) 0%,transparent 50%),linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.95) 90%,#fff 100%)}
+.hero-atmo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(0deg,#fff 0%,transparent 100%)}
+.img-container{width:100%;aspect-ratio:1;background:#fff;border-radius:20px;border:1px solid #d2d2d7;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
+.img-container img{width:100%;height:100%;object-fit:cover}
+.img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f0f0f3 0%,#e8e8ed 50%,#f0f0f3 100%);color:#c0c0c6;font-size:48px}
+.img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
-
 
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
@@ -225,163 +184,24 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-</head>
-<body>
-
-<div class="hero-img-wrapper">
-<img src="https://images.unsplash.com/1565193566165-24e2f9e7e80c?w=1200&h=675&fit=crop&q=80&auto=format" alt="Sản xuất công nghiệp chính xác" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
-<div class="img-overlay"></div>
-</div>
-<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
+<nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/vi/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
-<a href="/vi/">Trang chủ</a>
 <a href="/vi/products/">Sản phẩm</a>
-<a href="/vi/tools/">Công cụ</a>
+<a href="/vi/tools/">Máy Tính &amp; Công Cụ</a>
 <a href="/vi/guides/">Hướng dẫn</a>
 <a href="/vi/about.html">Giới thiệu</a>
 </div>
 <div class="nv-right">
-<div class="nv-lang"><a href="/tools/heat-expansion-calculator/">EN</a><span class="sep">·</span><a href="/de/tools/heat-expansion-calculator/">DE</a><a href="/jp/tools/heat-expansion-calculator/">JP</a><span class="sep">·</span><a href="/es/tools/heat-expansion-calculator/">ES</a><a href="#" onclick="return false" class="active">VI</a></div>
+<div class="nv-lang"><div class="lang-btn" onclick="toggleLangDD(event)"><span class="flag">🇻🇳</span><span>VI</span><span class="caret">▼</span></div><div class="lang-dd" id="lang-dd"><a href="/tools/heat-expansion-calculator" class=""><span class="flag">🇺🇸</span><span class="lbl">EN</span><span class="nm">English</span></a><a href="/de/tools/heat-expansion-calculator" class=""><span class="flag">🇩🇪</span><span class="lbl">DE</span><span class="nm">Deutsch</span></a><a href="/jp/tools/heat-expansion-calculator" class=""><span class="flag">🇯🇵</span><span class="lbl">JP</span><span class="nm">日本語</span></a><a href="/es/tools/heat-expansion-calculator" class=""><span class="flag">🇪🇸</span><span class="lbl">ES</span><span class="nm">Español</span></a><a href="/vi/tools/heat-expansion-calculator" class="current"><span class="flag">🇻🇳</span><span class="lbl">VI</span><span class="nm">Tiếng Việt</span></a></div></div>
 <a class="nv-quote" href="/vi/quote.html">📩 Báo giá</a>
 </div>
 </div>
 </nav>
-<section class="hero"><div class="container"><div class="badge">🌡️ Physics-Based Tool</div><h1>Gia công giãn nở nhiệt</h1><p>Nhiệt từ cắt mở rộng phôi và dụng cụ. Trong một thời gian dài sản xuất, sự trôi dạt nhiệt này có thể đẩy các bộ phận ra khỏi Dung sai. Tính mở rộng và quyết định khi nào nên để máy nóng lên.</p><a class="btn" href="#calculator">Tính toán ↓</a></div></section>
-<section class="container" id="calculator" style="padding-bottom:40px">
-<div class="card"><h2>🌡️ Dự Toán Tăng trưởng nhiệt</h2><p class="sub">Δl = α × L × Δt. Nhập vật liệu, chiều dài bộ phận và nhiệt độ dự kiến tăng lên.</p>
-<div class="card-row">
-<div class="field"><label>🔩Vật liệu phôi</label><select id="material" onchange="calc()"><option value="al6061">Aluminum 6061 (α=23)</option><option selected="" value="ss304">Stainless Steel 304 (α=17)</option><option value="mild_steel">Mild Steel 1018 (α=12)</option><option value="ti6al4v">Titanium Gr5 (α=8.6)</option></select></div>
-<div class="field"><label>📏Chiều dài phần (mm)</label><input id="length" max="2000" min="1" oninput="calc()" step="10" type="number" value="200"/></div>
-<div class="field"><label>📐Đường kính chi tiết (mm)</label><input id="dia" max="500" min="1" oninput="calc()" step="1" type="number" value="50"/></div>
-<div class="field"><label>🌡️ Nhiệt độ dự kiến tăng (° C)</label><input id="dt" max="200" min="1" oninput="calc()" step="1" type="number" value="25"/></div>
-</div>
-<div class="result-grid">
-<div class="result-item"><div class="label">Length Expansion</div><div class="value" id="r-length">—</div><div class="unit">microns</div></div>
-<div class="result-item"><div class="label">Diameter Expansion</div><div class="value" id="r-dia">—</div><div class="unit">microns</div></div>
-<div class="result-item"><div class="label">Time to Stable (min)</div><div class="value" id="r-time">—</div><div class="unit">minutes</div></div>
-<div class="result-item"><div class="label">Expansion Impact</div><div class="value" id="r-impact">—</div><div class="unit">μm/min</div></div>
-</div>
-</div>
-<div style="text-align:center;margin:20px 0"><a href="/tools/" style="color:#0066cc;text-decoration:none;font-size:13px">← Tất cả công cụ</a></div>
-</section>
-<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Công cụ chính xác liên quan</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/vi/tools/hardness-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Hardness Converter</a><a href="/vi/tools/helical-interpolation-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Helical Interpolation Calculator</a><a href="/vi/tools/horsepower-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Horsepower Calculator</a><a href="/vi/tools/taper-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Taper Calculator</a><a href="/vi/tools/metal-weight-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Metal Weight Calculator</a><a href="/vi/tools/blind-hole-tapping-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Blind Hole Tapping Calculator</a></div></div><footer class="tool-footer">
-<div class="container">
-<div class="footer-links">
-<a href="/">Trang chủ</a>
-<a href="/tools/">Tất cả công cụ</a>
-<a href="/products/">Sản phẩm</a>
-<a href="/guides/">Hướng dẫn</a>
-<a href="/about.html">Về chúng tôi</a>
-<a href="/quote.html">Bộ chuyển đổi độ cứng</a>
-<a href="/privacy.html">Kích thước mũi khoan taro</a>
-</div>
-<div class="footer-social">
-<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Công cụ tính MRR</a>
-<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
-<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
-</div>
-<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Tất cả công cụ</a></p>
-<p style="font-size:11px;margin-bottom:6px">Kết quả chỉ mang tính tham khảo. Hãy tham khảo ý kiến của các nhà sản xuất dụng cụ để biết thông tin về các ứng dụng cụ thể.</p>
-<p style="font-size:11px">©Dụng cụ cắt gọt bằng cacbua năm 2026</p>
-</div>
-</footer>
-<script>
-const MATS={al6061:{a:23,label:'Aluminum'},ss304:{a:17,label:'Stainless'},mild_steel:{a:12,label:'Steel'},ti6al4v:{a:8.6,label:'Titanium'}};
-function calc(){const m=MATS[document.getElementById('material').value];const l=parseFloat(document.getElementById('length').value)||200;const d=parseFloat(document.getElementById('dia').value)||50;const dt=parseFloat(document.getElementById('dt').value)||25;const lenExp=m.a*l*dt/1000;const diaExp=m.a*d*dt/1000;const warmUp=Math.min(30,5+dt*1.2);const driftRate=lenExp/warmUp;document.getElementById('r-length').textContent=lenExp.toFixed(1);document.getElementById('r-dia').textContent=diaExp.toFixed(1);document.getElementById('r-time').textContent=Math.round(warmUp);document.getElementById('r-impact').textContent=driftRate.toFixed(1);}
-calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><section class="seo-content"><div class="container">
-<h2>Tại sao phần đầu của bạn luôn khác với phần năm mươi của bạn</h2>
-<p>Mỗi thợ máy đã nhìn thấy nó: Phần đầu tiên của buổi sáng đo hoàn hảo ở nhiệt độ cửa hàng 20 ° C. Đến phần 30, chương trình tương tự sản xuất các bộ phận quá khổ 20-50 micron. Máy không thay đổi-Nhiệt độ có. Chất lỏng cắt làm ấm lên, vòng bi trục chính đạt được cân bằng nhiệt, và phôi hấp thụ nhiệt từ quá trình cắt. Trên trục 200 mm bằng thép không gỉ 304, nhiệt độ tăng 25 ° C Thêm 85 micron chiều dài-đủ để đẩy một tính năng dung sai gần ra khỏi Thông số kỹ thuật.</p>
-<p>Giãn nở nhiệt hoàn toàn có thể đảo ngược và có thể dự đoán được. Công thức là tuyến tính: mỗi mức độ thay đổi nhiệt độ mở rộng thép 12 micron mỗi mét, nhôm 23 và titan 8.6. Một khi bạn biết nhiệt độ tăng, bạn có thể tính toán độ trôi chiều và bù đắp trong chương trình hoặc trong bảng bù công cụ.</p>
-<h2>Chu kỳ khởi động: khi nào và bao lâu</h2>
-<p>Một công cụ máy CNC cần khoảng 15-30 phút để đạt được trạng thái cân bằng nhiệt sau khi khởi động nguội. Trong thời gian này, trục chính phát triển theo chiều dọc khi vòng bi khởi động, và các ốc vít mở rộng theo trục. Trên VF-2 Haas, sự tăng trưởng trục z trong quá trình khởi động có thể đạt tới 25-40 micron. Trên VC-500 mazak, thường là 15-25 micron do cấu trúc gang dày hơn giúp hấp thụ nhiệt chậm hơn.</p>
-<p>Chạy chương trình khởi động-Tốc độ trục xoay và chuyển động nhanh-mang máy đến nhiệt độ đồng đều và giảm sự trôi dạt nhiệt trong quá trình sản xuất. Đối với các bộ phận có dung sai dưới 25 micron, chạy một chu kỳ khởi động trước khi phần đầu tiên không phải là tùy chọn.</p>
-<h2>Câu hỏi thường gặp</h2>
-<p><strong>How much does steel expand with heat?</strong> 12 microns per meter per degree Celsius. A 500 mm steel part that heats up by 20°C grows 120 microns — over 0.1 mm.</p>
-<p><strong>Does cutting fluid temperature matter?</strong> Yes. Flood coolant systems can heat up by 10-20°C during production, transferring heat to the workpiece and machine structure. A chiller unit on the coolant system is the standard fix for high-volume production with tight tolerances.</p>
-<p><strong>How do I compensate for thermal expansion in my CNC program?</strong> Two methods: (1) Let the machine warm up for 20-30 minutes before cutting the first part. (2) After warm-up, measure the first part and adjust your tool offsets to account for the remaining thermal drift.</p>
-<p><strong>Does tool expansion affect hole accuracy?</strong> A 12 mm carbide end mill heating up by 100°C at the cutting edge expands by approximately 5 microns — enough to affect H7 hole tolerances. Carbide's low expansion coefficient (5.5 μm/m·°C) compared to steel (12 μm/m·°C) means the tool expands less than the workpiece for the same temperature rise.</p>
-</div></section>
-<div class="toolbox-widget"><h3>🔧Hộp công cụ kỹ thuật chính xác</h3><div class="toolbox-links">
-<a href="/tools/speed-feed/">Độ nhám bề mặt</a>
-<a href="/tools/hardness-converter/">Hướng dẫn về Titan</a>
-<a href="/tools/tap-drill-size-calculator/">Phân loại tham chiếu</a>
-<a href="/tools/mrr-calculator/">Chi phí trên mỗi bộ phận</a>
-<a href="/tools/feed-converter/">Bộ biến mô</a>
-<a href="/tools/surface-roughness-calculator/">Yêu cầu báo giá số lượng lớn →</a>
-<a href="/tools/titanium-machining-guide/">Mũi phay ngón cacbua nguyên khối</a>
-<a href="/tools/carbide-grade-cross-ref-2/">Đầu dao tiện</a>
-<a href="/tools/cost-per-part-calculator/">Công cụ tính chiều dài mũi khoan</a>
-<a href="/tools/torque-unit-converter/">Máy tính lấy mẫu AQL</a>
-</div></div>
-<aside class="b2b-card-enhanced" style="margin:32px 0">
-<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
-<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
-<div style="flex:1;min-width:0">
-<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Giải Pháp Chuyên Nghiệp cho Heat Expansion Calculator?</h3>
-<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Nhận giá trực tiếp từ nhà máy cho dụng cụ carbide cao cấp với chất lượng chứng nhận ISO.</p>
-</div>
-<a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
-</div>
-<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">Máy tính nội suy xoắn ốc</a><a href="/products/turning-inserts.html">Máy tính khoan taro</a></div>
-
-<div class="share-bar">
-<span class="share-label">↗ Share with Engineers</span>
-<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/heat-expansion-calculator/" rel="noopener" target="_blank">LinkedIn</a>
-<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/heat-expansion-calculator/&amp;text=Heat Expansion Calculator" rel="noopener" target="_blank">𝕏</a>
-<a href="mailto:subject=Heat Expansion Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/heat-expansion-calculator/">Email</a>
-</div>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/vi/tools/cast-iron-machining/">Cast Iron Machining</a>
-<a href="/vi/tools/drill-point-length-calculator/">Drill Point Length Calculator</a>
-<a href="/vi/tools/grade-reference/">Grade Reference</a>
-<a href="/vi/tools/bolt-circle-calculator/">Bolt Circle Calculator</a>
-<a href="/vi/tools/polar-rect-converter/">Polar Rect Converter</a>
-<a href="/vi/tools/tapping-feed-rate-calculator/">Tapping Feed Rate Calculator</a>
-<a href="/vi/tools/iso-fit-calculator/">Iso Fit Calculator</a>
-<a href="/vi/tools/tool-steel-heat-treat/">Tool Steel Heat Treat</a>
-<a href="/vi/tools/machine-power-calculator/">Machine Power Calculator</a>
-<a href="/vi/tools/tool-life-economics/">Tool Life Economics</a>
-
-</div>
-</section>
-<style>
-.engineering-directory a{
-  display:block;
-  font-size:12px;
-  font-weight:500;
-  color:#1d1d1f;
-  text-decoration:none;
-  padding:8px 14px;
-  background:#fff;
-  border-radius:10px;
-  border:1px solid #e8e8ed;
-  transition:all .15s;
-  text-align:center;
-}
-.engineering-directory a:hover{
-  background:#0066cc;
-  color:#fff;
-  border-color:#0066cc;
-  transform:translateY(-1px);
-  box-shadow:0 4px 12px rgba(0,102,204,.15);
-}
-</style>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
-<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/vi/tools/shipping-duty-estimator/">Shipping Duty Estimator</a>
-<a href="/vi/tools/dia-circ-calculator/">Dia Circ Calculator</a>
-<a href="/vi/tools/metric-imperial-thread-converter/">Metric Imperial Thread Converter</a>
-<a href="/vi/tools/bolt-circle-calculator/">Bolt Circle Calculator</a>
-<a href="/vi/tools/cost-per-part-calculator/">Cost Per Part Calculator</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyêst-per-part-calculator/">Cost Per Part Calculator</a>
 <a href="/vi/tools/aluminum-alloy-table/">Aluminum Alloy Table</a>
 <a href="/vi/tools/iso-fit-calculator/">Iso Fit Calculator</a>
 <a href="/vi/tools/automation-vs-manual-calculator/">Automation Vs Manual Calculator</a>
@@ -411,6 +231,21 @@ calc();</script><script>function toggleLang(e){e.stopPropagation();document.getE
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
+
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
@@ -421,4 +256,5 @@ calc();</script><script>function toggleLang(e){e.stopPropagation();document.getE
 </div>
 <a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
 </div>
+<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
 </body></html>

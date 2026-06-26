@@ -12,20 +12,7 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
-
-/* Language Switcher - Dropdown with Flags */
-.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
-.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
-.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
-.lang-dropdown{position:relative;display:inline-flex;align-items:center}
-.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
-.lang-menu.show{display:block}
-.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
-.lang-menu a:hover{background:#f5f5f7}
-.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
-.lang-menu a .flag{font-size:16px}
-
+.lang-nav /* Language Switcher - Dropdown with Flags */
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -39,7 +26,18 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){.nav-links{display:none!important}}
+@media(max-width:768px){}
+
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -140,84 +138,45 @@ nav#nav-v2 .nv-logo span{font-weight:800;color:#0066cc}
 nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-shrink:0}
 nav#nav-v2 .nv-links>a{color:#1d1d1f;text-decoration:none;padding:0 14px;height:48px;display:flex;align-items:center;font-weight:500;font-size:12px;transition:color .15s;white-space:nowrap}
 nav#nav-v2 .nv-links>a:hover{color:#0066cc}
+nav#nav-v2 .nv-lang{position:relative;display:flex;align-items:center}
 nav#nav-v2 .nv-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
 nav#nav-v2 .nv-quote{display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:6px 16px;border-radius:24px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap}
 nav#nav-v2 .nv-quote:hover{background:#0055aa;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,204,.25)}
-nav#nav-v2 .nv-lang{display:flex;align-items:center;gap:2px;margin-left:4px;padding-left:8px;border-left:1px solid #e8e8ed}
-nav#nav-v2 .nv-lang a{font-size:10px;font-weight:600;color:#86868b;text-decoration:none;padding:3px 6px;border-radius:12px;transition:all .15s;letter-spacing:.3px}
-nav#nav-v2 .nv-lang a:hover{color:#1d1d1f;background:#f5f5f7}
-nav#nav-v2 .nv-lang a.active{color:#0066cc;background:#f0f7ff;font-weight:700}
-nav#nav-v2 .nv-lang .sep{color:#d2d2d6;font-size:10px;margin:0 1px;font-weight:300}
 @media(max-width:768px){
-  nav#nav-v2 .nv-links{display:none}
-  nav#nav-v2 .nv-lang a{font-size:9px;padding:2px 4px}
+  nav#nav-v2 .nv-inner{flex-wrap:wrap;padding:10px 16px;gap:4px;align-items:center}
+  nav#nav-v2 .nv-logo{font-size:14px;order:0;flex-shrink:0;margin-right:auto}
+  nav#nav-v2 .nv-right{order:1;flex-shrink:0;width:auto;gap:6px}
+  nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-wrap:wrap;order:2;width:100%;justify-content:center;margin-top:2px;padding-top:2px;border-top:1px solid #f0f0f0}
+  nav#nav-v2 .nv-links>a{padding:6px 12px;font-size:11px;height:auto;font-weight:500}
+  nav#nav-v2 .nv-lang{position:relative!important}
+  nav#nav-v2 .lang-dd{right:-30px;min-width:130px}
   nav#nav-v2 .nv-quote{padding:4px 10px;font-size:10px}
 }
 nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important}
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
 </style>
 
 <style id="hero-atmo-style">
-/* ── Hero Atmosphere ── */
-.hero-atmo {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  background: linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 40%, #d2d2d7 100%);
-  margin-bottom: -60px;
-  z-index: 0;
-}
-.hero-atmo::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(0,102,204,.06) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 80% at 80% 40%, rgba(0,0,0,.04) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.95) 90%, #fff 100%);
-}
-.hero-atmo::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 80px;
-  background: linear-gradient(0deg, #fff 0%, transparent 100%);
-}
-/* Image Container - Apple Style */
-.img-container {
-  width: 100%;
-  aspect-ratio: 1;
-  background: #fff;
-  border-radius: 20px;
-  border: 1px solid #d2d2d7;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.img-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #f0f0f3 0%, #e8e8ed 50%, #f0f0f3 100%);
-  color: #c0c0c6;
-  font-size: 48px;
-}
-.img-placeholder::after {
-  content: '◆';
-  font-size: 48px;
-  opacity: .3;
-}
+.hero-atmo{position:relative;width:100%;height:200px;overflow:hidden;background:linear-gradient(180deg,#f5f5f7 0%,#e8e8ed 40%,#d2d2d7 100%);margin-bottom:-60px;z-index:0}
+.hero-atmo::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 50%,rgba(0,102,204,.06) 0%,transparent 50%),radial-gradient(ellipse 60% 80% at 80% 40%,rgba(0,0,0,.04) 0%,transparent 50%),linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.95) 90%,#fff 100%)}
+.hero-atmo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(0deg,#fff 0%,transparent 100%)}
+.img-container{width:100%;aspect-ratio:1;background:#fff;border-radius:20px;border:1px solid #d2d2d7;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
+.img-container img{width:100%;height:100%;object-fit:cover}
+.img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f0f0f3 0%,#e8e8ed 50%,#f0f0f3 100%);color:#c0c0c6;font-size:48px}
+.img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
-
 
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
@@ -226,163 +185,25 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-</head>
-<body>
-
-<div class="hero-img-wrapper">
-<img src="https://images.unsplash.com/1567361808960-3e7f9e3b3de1?w=1200&h=675&fit=crop&q=80&auto=format" alt="精密加工" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
-<div class="img-overlay"></div>
-</div>
-<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
+<nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/jp/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
-<a href="/jp/">ホーム</a>
 <a href="/jp/products/">製品</a>
-<a href="/jp/tools/">ツール</a>
+<a href="/jp/tools/">計算機 &amp; ツール</a>
 <a href="/jp/guides/">ガイド</a>
 <a href="/jp/about.html">会社概要</a>
 </div>
 <div class="nv-right">
-<div class="nv-lang"><a href="/tools/tool-runout-calculator/">EN</a><span class="sep">·</span><a href="/de/tools/tool-runout-calculator/">DE</a><a href="#" onclick="return false" class="active">JP</a><span class="sep">·</span><a href="/es/tools/tool-runout-calculator/">ES</a><a href="/vi/tools/tool-runout-calculator/">VI</a></div>
+<div class="nv-lang"><div class="lang-btn" onclick="toggleLangDD(event)"><span class="flag">🇯🇵</span><span>JP</span><span class="caret">▼</span></div><div class="lang-dd" id="lang-dd"><a href="/tools/tool-runout-calculator" class=""><span class="flag">🇺🇸</span><span class="lbl">EN</span><span class="nm">English</span></a><a href="/de/tools/tool-runout-calculator" class=""><span class="flag">🇩🇪</span><span class="lbl">DE</span><span class="nm">Deutsch</span></a><a href="/jp/tools/tool-runout-calculator" class="current"><span class="flag">🇯🇵</span><span class="lbl">JP</span><span class="nm">日本語</span></a><a href="/es/tools/tool-runout-calculator" class=""><span class="flag">🇪🇸</span><span class="lbl">ES</span><span class="nm">Español</span></a><a href="/vi/tools/tool-runout-calculator" class=""><span class="flag">🇻🇳</span><span class="lbl">VI</span><span class="nm">Tiếng Việt</span></a></div></div>
 <a class="nv-quote" href="/jp/quote.html">📩 見積依頼</a>
 </div>
 </div>
 </nav>
-<section class="hero"><div class="container"><div class="badge">🔍 Diagnostic Tool</div><h1>ツールの暴走の影響</h1><p>ランアウトは、不均一な工具摩耗と一貫性のない表面仕上げの第1の原因です。測定したランアウトを入力して、各フルートのチップ負荷にどのように影響するかを確認します。</p><a class="btn" href="#calculator">診断は、</a></div></section>
-<section class="container" id="calculator" style="padding-bottom:40px">
-<div class="card"><h2>🔍ランアウトの影響分析</h2><p class="sub">ランアウトがチップ負荷をフルート全体に不均一に分散させる方法を測定します。</p>
-<div class="card-row">
-<div class="field"><label>📐工具径（mm）</label><input id="dia" max="50" min="0.5" oninput="calc()" step="0.5" type="number" value="12"/></div>
-<div class="field"><label>📏測定されたランアウト (μ m)</label><input id="runout" max="200" min="1" oninput="calc()" step="1" type="number" value="20"/></div>
-<div class="field"><label>🦷フルート</label><select id="flutes" onchange="calc()"><option>2</option><option selected="">4</option><option>6</option></select></div>
-<div class="field"><label>📊プログラムされたfz (mm)</label><input id="fz" max="1" min="0.001" oninput="calc()" step="0.005" type="number" value="0.05"/></div>
-</div>
-<div class="result-grid">
-<div class="result-item"><div class="label">Max Chip Load (Flute 1)</div><div class="value bad" id="r-max">—</div><div class="unit">mm</div></div>
-<div class="result-item"><div class="label">Min Chip Load (Flute N)</div><div class="value" id="r-min">—</div><div class="unit">mm</div></div>
-<div class="result-item"><div class="label">Load Imbalance</div><div class="value bad" id="r-imbalance">—</div><div class="unit">%</div></div>
-<div class="result-item"><div class="label">Tool Life Impact</div><div class="value" id="r-life">—</div><div class="unit">% reduction</div></div>
-</div>
-</div>
-<div style="text-align:center;margin:20px 0"><a href="/tools/" style="color:#0066cc;text-decoration:none;font-size:13px">← すべてのツール</a></div>
-</section>
-<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">関連精密工具</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/jp/tools/tangent-point-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tangent Point Calculator</a><a href="/jp/tools/tap-drill-size-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tap Drill Size Calculator</a><a href="/jp/tools/taper-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Taper Calculator</a><a href="/jp/tools/npt-pipe-thread-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Npt Pipe Thread Calculator</a><a href="/jp/tools/machinability-rating/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Machinability Rating</a><a href="/jp/tools/form-tap-drill-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Form Tap Drill Calculator</a></div></div><footer class="tool-footer">
-<div class="container">
-<div class="footer-links">
-<a href="/">ホーム</a>
-<a href="/tools/">すべてのツール</a>
-<a href="/products/">製品</a>
-<a href="/guides/">ガイド</a>
-<a href="/about.html">について</a>
-<a href="/quote.html">硬度変換器</a>
-<a href="/privacy.html">タップ穴径</a>
-</div>
-<div class="footer-social">
-<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">MRR計算ツール</a>
-<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
-<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
-</div>
-<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">すべてのツール</a></p>
-<p style="font-size:11px;margin-bottom:6px">結果は参考としてのみご使用ください。具体的な用途については、工具メーカーにご相談ください。</p>
-<p style="font-size:11px">©2026年用超硬工具</p>
-</div>
-</footer>
-<script>
-function calc(){const d=parseFloat(document.getElementById('dia').value)||12;const r=parseFloat(document.getElementById('runout').value)||20;const z=parseInt(document.getElementById('flutes').value)||4;const fz=parseFloat(document.getElementById('fz').value)||0.05;const rMm=r/1000;const maxFz=fz+rMm>0?fz+rMm:0;const minFz=Math.max(0,fz-rMm);const imbalance=maxFz>0?((maxFz-minFz)/maxFz)*100:0;const lifeRed=Math.min(80,r*2);document.getElementById('r-max').textContent=maxFz.toFixed(4);document.getElementById('r-min').textContent=minFz.toFixed(4);document.getElementById('r-imbalance').textContent=Math.round(imbalance)+'%';document.getElementById('r-life').textContent=Math.round(lifeRed)+'%';}
-calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><section class="seo-content"><div class="container">
-<div class="diag"><p><strong>🔴 Symptom:</strong> One flute always wears faster than the others. Tool life is half of what it should be. Surface finish varies from part to part. <strong>→ Likely cause: excessive runout.</strong></p></div>
-<h2>ランアウトがツールライフを不当に破壊する方法</h2>
-<p>ツールホルダーに20μmの振れがある場合、カットへの最初のフルートは他のフルートよりも多くの材料を取ります。20μmのランアウトと1歯あたり0.05mmのプログラムされたチップ負荷を備えた4フルートエンドミルでは、最初のフルートは実際には0.07mmでカットします-推奨負荷を40% 超えています。残りの3つのフルートのカットは次第に少なくなり、最後のフルートのカットはわずか0.03mmで、チップの最小厚さを下回る可能性があり、カットではなく摩擦が発生します。</p>
-<p>過負荷のフルートは急速に摩耗し、エッジチッピングを発生させます。最初のフルートが失敗すると、残りのフルートはシェア以上のものをとることを余儀なくされ、予想される寿命のほんの一部でツールを破壊するカスケード障害を作成します。これが、20μmのランアウトホルダー内の4フルートエンドミルが、4μmホルダー内の同じツールと同じ限り30〜50% しか持続できない理由です。</p>
-<p>標準のERコレットホルダーでは、15〜30μmのランアウトが一般的です。精密な油圧またはシュリンクフィットホルダーでは、ランアウトは通常5μm未満です。これらのホルダー間のコスト差は、生産量を実行しているショップの場合、数週間以内に工具寿命で回収されます。</p>
-<h2>暴走関連の問題の診断</h2>
-<p>ランアウトは、特定のパターンの症状を生成します。スピンドルの回転周波数に対応する定期的な間隔でのチャターマーク、1つまたは2つのフルートによる不均一な工具摩耗は、他のフルートよりも大幅に多くのエッジ摩耗を示し、さまざまな工具の向きで機械加工された機能の寸法変化です。ハースVF-2または同様のVMCでは、ツールの先端とホルダーの下50 mmにあるダイヤルインジケーターでランアウトをチェックすることは、すべてのツールの変更の一部である必要があります。仕上げ工具のために10μmを超える先端のランアウトは、材料を切断する前に修正する必要があります。</p>
-<h2>よくある質問</h2>
-<p><strong>What is tool runout?</strong> The eccentricity of the cutting tool relative to the spindle axis, measured in microns. Runout causes each flute to take an uneven cut.</p>
-<p><strong>How much runout is acceptable?</strong> Below 5 μm for finishing, below 15 μm for roughing. Above 20 μm, tool life drops by 50% or more regardless of material or cutting parameters.</p>
-<p><strong>How do I measure runout?</strong> Use a dial indicator at the tool tip. Rotate the spindle by hand and read the total indicated runout (TIR). Measure both at the tip and 50 mm down the tool to check for bent tools.</p>
-<p><strong>What holder type has the lowest runout?</strong> Shrink-fit holders (2-4 μm), followed by hydraulic chucks (3-5 μm), then milling chucks (5-10 μm), and ER collets (10-30 μm depending on quality and condition).</p>
-</div></section>
-<div class="toolbox-widget"><h3>🔧精密工学ツールボックス</h3><div class="toolbox-links">
-<a href="/tools/speed-feed/">表面粗さ</a>
-<a href="/tools/hardness-converter/">チタンガイド</a>
-<a href="/tools/tap-drill-size-calculator/">グレード相互参照</a>
-<a href="/tools/mrr-calculator/">部品当たりのコスト</a>
-<a href="/tools/feed-converter/">トルクコンバーター</a>
-<a href="/tools/surface-roughness-calculator/">一括見積もりを依頼する →</a>
-<a href="/tools/titanium-machining-guide/">ソリッドカーバイドエンドミル</a>
-<a href="/tools/carbide-grade-cross-ref-2/">工具ホルダー</a>
-<a href="/tools/cost-per-part-calculator/">歯車パラメータ計算ツール</a>
-<a href="/tools/torque-unit-converter/">ポモドーロタイマー</a>
-</div></div>
-<aside class="b2b-card-enhanced" style="margin:32px 0">
-<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
-<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
-<div style="flex:1;min-width:0">
-<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Tool Runout Calculatorのプロフェッショナルソリューション</h3>
-<p style="font-size:12px;color:#555;line-height:1.5;margin:0">ISO認証品質のプレミアム超硬工具を工場直送価格でご提供。技術サポート付き。</p>
-</div>
-<a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
-</div>
-<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">ねじ山の深さとトルク計算ツール</a><a href="/products/tool-holders.html">コーティングセレクター</a></div>
-
-<div class="share-bar">
-<span class="share-label">↗ Share with Engineers</span>
-<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/tool-runout-calculator/" rel="noopener" target="_blank">LinkedIn</a>
-<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/tool-runout-calculator/&amp;text=Tool Runout Calculator" rel="noopener" target="_blank">𝕏</a>
-<a href="mailto:subject=Tool Runout Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/tool-runout-calculator/">Email</a>
-</div>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
 <p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/jp/tools/tap-drill-size-calculator/">Tap Drill Size Calculator</a>
-<a href="/jp/tools/cnc-roi-calculator/">Cnc Roi Calculator</a>
-<a href="/jp/tools/machinability-rating/">Machinability Rating</a>
-<a href="/jp/tools/graphite-machining/">Graphite Machining</a>
-<a href="/jp/tools/tube-weight-calculator/">Tube Weight Calculator</a>
-<a href="/jp/tools/polar-rect-converter/">Polar Rect Converter</a>
-<a href="/jp/tools/aluminum-alloy-table/">Aluminum Alloy Table</a>
-<a href="/jp/tools/die-steel-thermal-conductivity/">Die Steel Thermal Conductivity</a>
-<a href="/jp/tools/tapping-feed-rate-calculator/">Tapping Feed Rate Calculator</a>
-<a href="/jp/tools/trochoidal-milling-calculator/">Trochoidal Milling Calculator</a>
-
-</div>
-</section>
-<style>
-.engineering-directory a{
-  display:block;
-  font-size:12px;
-  font-weight:500;
-  color:#1d1d1f;
-  text-decoration:none;
-  padding:8px 14px;
-  background:#fff;
-  border-radius:10px;
-  border:1px solid #e8e8ed;
-  transition:all .15s;
-  text-align:center;
-}
-.engineering-directory a:hover{
-  background:#0066cc;
-  color:#fff;
-  border-color:#0066cc;
-  transform:translateY(-1px);
-  box-shadow:0 4px 12px rgba(0,102,204,.15);
-}
-</style>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
-<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/jp/tools/mcode-reference/">Mcode Reference</a>
-<a href="/jp/tools/tool-wear-cost-calculator/">Tool Wear Cost Calculator</a>
-<a href="/jp/tools/shipping-duty-estimator/">Shipping Duty Estimator</a>
-<a href="/jp/tools/tap-drill-size-calculator/">Tap Drill Size Calculator</a>
-<a href="/jp/tools/tangent-point-calculator/">Tangent Point Calculator</a>
+<div style="diulator</a>
 <a href="/jp/tools/sine-bar-calculator/">Sine Bar Calculator</a>
 <a href="/jp/tools/brass-machining-parameters/">Brass Machining Parameters</a>
 <a href="/jp/tools/ramping-angle-calculator/">Ramping Angle Calculator</a>
@@ -412,6 +233,21 @@ calc();</script><script>function toggleLang(e){e.stopPropagation();document.getE
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
+
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
@@ -422,4 +258,5 @@ calc();</script><script>function toggleLang(e){e.stopPropagation();document.getE
 </div>
 <a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
 </div>
+<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
 </body></html>

@@ -11,20 +11,7 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
-
-/* Language Switcher - Dropdown with Flags */
-.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
-.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
-.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
-.lang-dropdown{position:relative;display:inline-flex;align-items:center}
-.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
-.lang-menu.show{display:block}
-.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
-.lang-menu a:hover{background:#f5f5f7}
-.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
-.lang-menu a .flag{font-size:16px}
-
+.lang-nav /* Language Switcher - Dropdown with Flags */
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -38,7 +25,18 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){.nav-links{display:none!important}}
+@media(max-width:768px){}
+
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -211,84 +209,45 @@ nav#nav-v2 .nv-logo span{font-weight:800;color:#0066cc}
 nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-shrink:0}
 nav#nav-v2 .nv-links>a{color:#1d1d1f;text-decoration:none;padding:0 14px;height:48px;display:flex;align-items:center;font-weight:500;font-size:12px;transition:color .15s;white-space:nowrap}
 nav#nav-v2 .nv-links>a:hover{color:#0066cc}
+nav#nav-v2 .nv-lang{position:relative;display:flex;align-items:center}
 nav#nav-v2 .nv-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
 nav#nav-v2 .nv-quote{display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:6px 16px;border-radius:24px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap}
 nav#nav-v2 .nv-quote:hover{background:#0055aa;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,204,.25)}
-nav#nav-v2 .nv-lang{display:flex;align-items:center;gap:2px;margin-left:4px;padding-left:8px;border-left:1px solid #e8e8ed}
-nav#nav-v2 .nv-lang a{font-size:10px;font-weight:600;color:#86868b;text-decoration:none;padding:3px 6px;border-radius:12px;transition:all .15s;letter-spacing:.3px}
-nav#nav-v2 .nv-lang a:hover{color:#1d1d1f;background:#f5f5f7}
-nav#nav-v2 .nv-lang a.active{color:#0066cc;background:#f0f7ff;font-weight:700}
-nav#nav-v2 .nv-lang .sep{color:#d2d2d6;font-size:10px;margin:0 1px;font-weight:300}
 @media(max-width:768px){
-  nav#nav-v2 .nv-links{display:none}
-  nav#nav-v2 .nv-lang a{font-size:9px;padding:2px 4px}
+  nav#nav-v2 .nv-inner{flex-wrap:wrap;padding:10px 16px;gap:4px;align-items:center}
+  nav#nav-v2 .nv-logo{font-size:14px;order:0;flex-shrink:0;margin-right:auto}
+  nav#nav-v2 .nv-right{order:1;flex-shrink:0;width:auto;gap:6px}
+  nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-wrap:wrap;order:2;width:100%;justify-content:center;margin-top:2px;padding-top:2px;border-top:1px solid #f0f0f0}
+  nav#nav-v2 .nv-links>a{padding:6px 12px;font-size:11px;height:auto;font-weight:500}
+  nav#nav-v2 .nv-lang{position:relative!important}
+  nav#nav-v2 .lang-dd{right:-30px;min-width:130px}
   nav#nav-v2 .nv-quote{padding:4px 10px;font-size:10px}
 }
 nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important}
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
 </style>
 
 <style id="hero-atmo-style">
-/* ── Hero Atmosphere ── */
-.hero-atmo {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  background: linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 40%, #d2d2d7 100%);
-  margin-bottom: -60px;
-  z-index: 0;
-}
-.hero-atmo::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(0,102,204,.06) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 80% at 80% 40%, rgba(0,0,0,.04) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.95) 90%, #fff 100%);
-}
-.hero-atmo::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 80px;
-  background: linear-gradient(0deg, #fff 0%, transparent 100%);
-}
-/* Image Container - Apple Style */
-.img-container {
-  width: 100%;
-  aspect-ratio: 1;
-  background: #fff;
-  border-radius: 20px;
-  border: 1px solid #d2d2d7;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.img-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #f0f0f3 0%, #e8e8ed 50%, #f0f0f3 100%);
-  color: #c0c0c6;
-  font-size: 48px;
-}
-.img-placeholder::after {
-  content: '◆';
-  font-size: 48px;
-  opacity: .3;
-}
+.hero-atmo{position:relative;width:100%;height:200px;overflow:hidden;background:linear-gradient(180deg,#f5f5f7 0%,#e8e8ed 40%,#d2d2d7 100%);margin-bottom:-60px;z-index:0}
+.hero-atmo::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 50%,rgba(0,102,204,.06) 0%,transparent 50%),radial-gradient(ellipse 60% 80% at 80% 40%,rgba(0,0,0,.04) 0%,transparent 50%),linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.95) 90%,#fff 100%)}
+.hero-atmo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(0deg,#fff 0%,transparent 100%)}
+.img-container{width:100%;aspect-ratio:1;background:#fff;border-radius:20px;border:1px solid #d2d2d7;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
+.img-container img{width:100%;height:100%;object-fit:cover}
+.img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f0f0f3 0%,#e8e8ed 50%,#f0f0f3 100%);color:#c0c0c6;font-size:48px}
+.img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
-
 
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
@@ -297,142 +256,24 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-</head>
-<body>
-
-<div class="hero-img-wrapper">
-<img src="https://images.unsplash.com/1567361808960-3e7f9e3b3de1?w=1200&h=675&fit=crop&q=80&auto=format" alt="Präzisionsbearbeitung" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
-<div class="img-overlay"></div>
-</div>
-<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
+<nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/de/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
-<a href="/de/">Start</a>
 <a href="/de/products/">Produkte</a>
-<a href="/de/tools/">Werkzeuge</a>
+<a href="/de/tools/">Rechner &amp; Werkzeuge</a>
 <a href="/de/guides/">Anleitungen</a>
 <a href="/de/about.html">Über uns</a>
 </div>
 <div class="nv-right">
-<div class="nv-lang"><a href="/tools/plastic-machining/">EN</a><span class="sep">·</span><a href="#" onclick="return false" class="active">DE</a><a href="/jp/tools/plastic-machining/">JP</a><span class="sep">·</span><a href="/es/tools/plastic-machining/">ES</a><a href="/vi/tools/plastic-machining/">VI</a></div>
+<div class="nv-lang"><div class="lang-btn" onclick="toggleLangDD(event)"><span class="flag">🇩🇪</span><span>DE</span><span class="caret">▼</span></div><div class="lang-dd" id="lang-dd"><a href="/tools/plastic-machining" class=""><span class="flag">🇺🇸</span><span class="lbl">EN</span><span class="nm">English</span></a><a href="/de/tools/plastic-machining" class="current"><span class="flag">🇩🇪</span><span class="lbl">DE</span><span class="nm">Deutsch</span></a><a href="/jp/tools/plastic-machining" class=""><span class="flag">🇯🇵</span><span class="lbl">JP</span><span class="nm">日本語</span></a><a href="/es/tools/plastic-machining" class=""><span class="flag">🇪🇸</span><span class="lbl">ES</span><span class="nm">Español</span></a><a href="/vi/tools/plastic-machining" class=""><span class="flag">🇻🇳</span><span class="lbl">VI</span><span class="nm">Tiếng Việt</span></a></div></div>
 <a class="nv-quote" href="/de/quote.html">📩 Angebot</a>
 </div>
 </div>
-</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">Polar/Rect-Konverter</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">Produktionseffizienz</a> <span style="color:#d2d2d6">›</span> Plastic Machining</div>
-<section class="hero"><div class="container"><div class="badge">🧰 Tool</div><h1>Kunststoff typ</h1><p>Operation</p></div></section>
-
-<div class="container"><div class="card"><h2>Alle Werkzeuge</h2><label>Die Ergebnisse dienen ausschließlich als Referenz. Wenden Sie sich bei spezifischen Anwendungen an die Hersteller der Werkzeuge.</label><select id="grade" onchange="calc()"><option value="POM">POM / Delrin / Acetal</option><option value="PA6">Nylon 6 / PA6</option><option value="PMMA">Acrylic / PMMA</option><option value="PTFE">PTFE / Teflon</option><option value="UHMW">UHMWPE</option></select><label>©2026 Hartmetallwerkzeuge</label><select id="op" onchange="calc()"><option value="turning">Turning</option><option value="milling">Milling</option></select><input id="i1" oninput="calc()" type="number" value="10"/><label>Bearbeitung von POM (Delrin): Geschwindigkeiten, Vorschubs und Best Practices</label><select id="tool" onchange="calc()"><option value="carbide">Carbide</option><option value="hss">HSS (polished)</option></select><input id="i2" oninput="calc()" type="number" value="100"/><div class="res"><div class="res-item"><div class="lbl">SFM</div><div class="val" id="r2">—</div></div><div class="res-item"><div class="lbl">fz (mm)</div><div class="val" id="r3">—</div></div><div class="res-item"><div class="lbl">Tip</div><div class="val" id="r1">—</div></div></div></div>
-<div style="text-align:center;margin:24px 0"><a href="/tools/" style="color:#0066cc;font-size:13px">Geschwindigkeit &amp; Vorschub</a></div></div>
-<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Verwandte Präzisionswerkzeuge</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/de/tools/peck-drilling-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Peck Drilling Calculator</a><a href="/de/tools/percentage-of-thread-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Percentage Of Thread Calculator</a><a href="/de/tools/polar-rect-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Polar Rect Converter</a><a href="/de/tools/tap-drill-size-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tap Drill Size Calculator</a><a href="/de/tools/toolbox-organizer/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Toolbox Organizer</a><a href="/de/tools/coolant-lifecycle-cost/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Coolant Lifecycle Cost</a></div></div><footer class="tool-footer">
-<div class="container">
-<div class="footer-links">
-<a href="/">Polar/Rect-Konverter</a>
-<a href="/tools/">POM (Acetal/Delrin) ist einer der bearbeitbar sten Kunststoffe und erzeugt saubere Schnitte mit aus gezeichneter Dimensions stabilität. Verwenden Sie Hartmetall werkzeuge mit 500-1. 000 SFM mit Vorschub raten von 0,003-0, 008 in/rev zum Drehen. Scharfes Werkzeug mit Positiv rechen (10-15 °) verhindert das Schmelzen und erzeugt optisch klare Oberflächen. Reduzieren Sie bei dünnwandigen Teilen die Geschwindigkeit, um eine Wärme bildung zu verhindern, die zu einer Dimensions ausdehnung führt.</a>
-<a href="/products/">🇩🇪DE</a>
-<a href="/guides/">🇯🇵JP</a>
-<a href="/about.html">🇪🇸ES</a>
-<a href="/quote.html">Titanführung</a>
-<a href="/privacy.html">Notenübereinstimmung</a>
-</div>
-<div class="footer-social">
-<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Kosten pro Teil</a>
-<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
-<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
-</div>
-<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">POM (Acetal/Delrin) ist einer der bearbeitbar sten Kunststoffe und erzeugt saubere Schnitte mit aus gezeichneter Dimensions stabilität. Verwenden Sie Hartmetall werkzeuge mit 500-1. 000 SFM mit Vorschub raten von 0,003-0, 008 in/rev zum Drehen. Scharfes Werkzeug mit Positiv rechen (10-15 °) verhindert das Schmelzen und erzeugt optisch klare Oberflächen. Reduzieren Sie bei dünnwandigen Teilen die Geschwindigkeit, um eine Wärme bildung zu verhindern, die zu einer Dimensions ausdehnung führt.</a></p>
-<p style="font-size:11px;margin-bottom:6px">Nylon maschinelle Bearbeitung: Umgang mit Feuchtigkeit und Hitze</p>
-<p style="font-size:11px">Nylon (PA6, PA66) nimmt Feuchtigkeit aus der Luft auf, was die Dimensions stabilität während der Bearbeitung beeint rächt igt. Für Präzisions teile wird eine Vor trocknung bei 80 °C für 2-4 Stunden empfohlen. Verwenden Sie Kühlmittel oder Luftstoß, um Wärme zu steuern-Nylon hat eine schlechte Wärme leitfähig keit und Wärme stau kann zu lokalisiertem Schmelzen führen. Pflegen Sie scharfe Werkzeuge und klettern Sie auf die Mühle, um die Reibungs erwärmung zu reduzieren.</p>
-</div>
-<section class="seo"><div class="container">
-<h2>Bearbeitung von PTFE (Teflon): Verhinderung der Verformung</h2><p>Der niedrige Reibungs koeffizient und die hohe Wärme ausdehnung von PTFE machen es schwierig, enge Toleranzen zu halten. Verwenden Sie extrem scharfe Werkzeuge mit hohen Rechen winkeln (15-20 °). Lichts chnitte (0,010-0,030 Zoll Tiefe) mit hohen Vorschub raten minimieren die Wärme erzeugung. Die Weichheit des Materials bedeutet, dass der Spann druck sorgfältig kontrolliert werden muss, um eine Verformung während der Bearbeitung zu verhindern.</p>
-<h2>Häufig gestellte Fragen</h2><p>Benötigen Kunststoffe während der Bearbeitung Kühlmittel? Im Allgemeinen ja für Produktions arbeiten. Kühlmittel verhindert Wärme bildung, die Schmelzen, Dimensions ausdehnung und schlechte Oberflächen beschaffenheit verursacht. Für Prototypen oder kurze Auflagen kann Luftstoß für Materialien wie Delrin ausreichen. Nylon und Acryl profitieren erheblich von Hochwasser kühlmittel, um hitze bedingte Probleme zu vermeiden.</p>
-<h2>Was ist die beste Werkzeug beschichtung für die Kunststoff bearbeitung? Unbeschichtetes poliertes Karbid wird im Allgemeinen für die Kunststoff bearbeitung bevorzugt. Die polierte Oberfläche reduziert die Reibung und verhindert die Haftung des Materials. DLC-Beschichtungen (Diamond-Like Carbon) reduzieren die Reibung weiter, verursachen jedoch zusätzliche Kosten. Vermeiden Sie Ti Al N-Beschichtungen für Kunststoffe-sie erhöhen die Reibung und erzeugen mehr Wärme.</h2><p>Wie ver hindere ich weiße Linien oder Spannungs spuren in bearbeiteten Acryl? Weiße Linien entstehen durch Mikro risse, die durch Werkzeug ausstiegs spannungen verursacht werden. Verwenden Sie scharfe, polierte Werkzeuge mit null oder leicht negativem Rechen. Reduzieren Sie die Vorschub rate im letzten Durchgang um 50%. Das Glühen des Acryl nach der Bearbeitung bei 80 ° C für 2 Stunden kann innere Spannungen lindern und sichtbare Spannungs spuren reduzieren.</p>
-<h2>⚡Berechnet für die Hochleistungsserie von Carbide-Tooling.com. Katalog anzeigen →</h2>
-<p><strong>Do plastics require coolant during machining?</strong> Generally, yes for production work. Coolant prevents heat buildup that causes melting, dimensional expansion, and poor surface finish. For prototype or short runs, air blast can suffice for materials like Delrin. Nylon and acrylic benefit significantly from flood coolant to prevent heat-related issues.</p>
-<p><strong>What is the best tool coating for plastic machining?</strong> Uncoated polished carbide is generally preferred for plastic machining. The polished surface reduces friction and prevents material adhesion. DLC (Diamond-Like Carbon) coatings further reduce friction but add cost. Avoid TiAlN coatings for plastics — they increase friction and generate more heat.</p>
-<p><strong>How do I prevent white lines or stress marks in machined acrylic?</strong> White lines occur from micro-cracking caused by tool exit stresses. Use sharp, polished tools with zero or slightly negative rake. Reduce feed rate on the final pass by 50%. Annealing the acrylic after machining at 80°C for 2 hours can relieve internal stresses and reduce visible stress marks.</p>
-<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">Massenanfrage stellen →</a></p>
-</div></section>
-</footer>
-<script>function calc(){document.getElementById('r1').textContent=parseFloat(document.getElementById('i1').value)*parseFloat(document.getElementById('i2').value);}calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><div class="toolbox-widget"><h3>Produkte</h3><div class="toolbox-links">
-<a href="/tools/speed-feed/">Leistungsstufen-Wahlhilfe</a>
-<a href="/tools/hardness-converter/">Notenabfrage einfügen</a>
-<a href="/tools/tap-drill-size-calculator/">Schätzung der Versandgebühren</a>
-<a href="/tools/mrr-calculator/">Berechnung der Lagerumschlagshäufigkeit</a>
-<a href="/tools/feed-converter/">G-Code-Referenz</a>
-<a href="/tools/surface-roughness-calculator/">Absatzrechner</a>
-<a href="/tools/titanium-machining-guide/">ISO-Fit-Rechner</a>
-<a href="/tools/carbide-grade-cross-ref-2/">Härteverfahrensrechner für Werkzeugstahl</a>
-<a href="/tools/cost-per-part-calculator/">LinkedIn</a>
-<a href="/tools/torque-unit-converter/">E-Mail</a>
-</div></div>
-<aside class="b2b-card-enhanced" style="margin:32px 0">
-<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
-<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
-<div style="flex:1;min-width:0">
-<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Professionelle Lösungen für Plastic Machining?</h3>
-<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Erhalten Sie werkseitige Preise für Premium-Hartmetallwerkzeuge mit ISO-zertifizierter Qualität.</p>
-</div>
-<a href="/de/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Massenangebot anfordern →</a>
-</div>
-<div class="product-links"><span>🔗 Recommended:</span><a href="/products/carbide-grades.html">Grade Selection Guide</a><a href="/guides/insert-grade-selection.html">Insert Grade Inquiry</a></div>
-
-<div class="share-bar">
-<span class="share-label">↗ Share with Engineers</span>
-<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/plastic-machining/" rel="noopener" target="_blank">LinkedIn</a>
-<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/plastic-machining/&amp;text=Plastic Machining Guide" rel="noopener" target="_blank">𝕏</a>
-<a href="mailto:subject=Plastic Machining Guide&amp;body=Check this out: https://carbide-tooling.com/tools/plastic-machining/">Email</a>
-</div>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav>
+class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Globales Engineering-Verzeichnis</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professionelle Bearbeitungswerkzeuge</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/de/tools/tool-change-time-analyzer/">Tool Change Time Analyzer</a>
-<a href="/de/tools/automation-vs-manual-calculator/">Automation Vs Manual Calculator</a>
-<a href="/de/tools/arc-r-to-ij-converter/">Arc R To Ij Converter</a>
-<a href="/de/tools/pressure-converter/">Pressure Converter</a>
-<a href="/de/tools/feed-converter/">Feed Converter</a>
-<a href="/de/tools/ball-nose-effective-diameter/">Ball Nose Effective Diameter</a>
-<a href="/de/tools/gcode-reference/">Gcode Reference</a>
-<a href="/de/tools/machinability-rating/">Machinability Rating</a>
-<a href="/de/tools/ramping-angle-calculator/">Ramping Angle Calculator</a>
-<a href="/de/tools/cnc-roi-calculator/">Cnc Roi Calculator</a>
-
-</div>
-</section>
-<style>
-.engineering-directory a{
-  display:block;
-  font-size:12px;
-  font-weight:500;
-  color:#1d1d1f;
-  text-decoration:none;
-  padding:8px 14px;
-  background:#fff;
-  border-radius:10px;
-  border:1px solid #e8e8ed;
-  transition:all .15s;
-  text-align:center;
-}
-.engineering-directory a:hover{
-  background:#0066cc;
-  color:#fff;
-  border-color:#0066cc;
-  transform:translateY(-1px);
-  box-shadow:0 4px 12px rgba(0,102,204,.15);
-}
-</style>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
-<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Globales Engineering-Verzeichnis</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professionelle Bearbeitungswerkzeuge</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/de/tools/scrap-value-calculator/">Scrap Value Calculator</a>
-<a href="/de/tools/gear-parameter-calculator/">Gear Parameter Calculator</a>
-<a href="/de/tools/heat-expansion-calculator/">Heat Expansion Calculator</a>
-<a href="/de/tools/tapping-feed-rate-calculator/">Tapping Feed Rate Calculator</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professior</a>
 <a href="/de/tools/step-milling-calculator/">Step Milling Calculator</a>
 <a href="/de/tools/gdt-symbols-reference/">Gdt Symbols Reference</a>
 <a href="/de/tools/tangent-point-calculator/">Tangent Point Calculator</a>
@@ -463,6 +304,21 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
+
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
@@ -473,4 +329,5 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 </div>
 <a href="/de/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Massenangebot anfordern →</a>
 </div>
+<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
 </body></html>

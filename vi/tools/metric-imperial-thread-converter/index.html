@@ -11,20 +11,7 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
-
-/* Language Switcher - Dropdown with Flags */
-.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
-.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
-.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
-.lang-dropdown{position:relative;display:inline-flex;align-items:center}
-.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
-.lang-menu.show{display:block}
-.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
-.lang-menu a:hover{background:#f5f5f7}
-.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
-.lang-menu a .flag{font-size:16px}
-
+.lang-nav /* Language Switcher - Dropdown with Flags */
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -38,7 +25,18 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){.nav-links{display:none!important}}
+@media(max-width:768px){}
+
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -211,84 +209,45 @@ nav#nav-v2 .nv-logo span{font-weight:800;color:#0066cc}
 nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-shrink:0}
 nav#nav-v2 .nv-links>a{color:#1d1d1f;text-decoration:none;padding:0 14px;height:48px;display:flex;align-items:center;font-weight:500;font-size:12px;transition:color .15s;white-space:nowrap}
 nav#nav-v2 .nv-links>a:hover{color:#0066cc}
+nav#nav-v2 .nv-lang{position:relative;display:flex;align-items:center}
 nav#nav-v2 .nv-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
 nav#nav-v2 .nv-quote{display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:6px 16px;border-radius:24px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap}
 nav#nav-v2 .nv-quote:hover{background:#0055aa;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,204,.25)}
-nav#nav-v2 .nv-lang{display:flex;align-items:center;gap:2px;margin-left:4px;padding-left:8px;border-left:1px solid #e8e8ed}
-nav#nav-v2 .nv-lang a{font-size:10px;font-weight:600;color:#86868b;text-decoration:none;padding:3px 6px;border-radius:12px;transition:all .15s;letter-spacing:.3px}
-nav#nav-v2 .nv-lang a:hover{color:#1d1d1f;background:#f5f5f7}
-nav#nav-v2 .nv-lang a.active{color:#0066cc;background:#f0f7ff;font-weight:700}
-nav#nav-v2 .nv-lang .sep{color:#d2d2d6;font-size:10px;margin:0 1px;font-weight:300}
 @media(max-width:768px){
-  nav#nav-v2 .nv-links{display:none}
-  nav#nav-v2 .nv-lang a{font-size:9px;padding:2px 4px}
+  nav#nav-v2 .nv-inner{flex-wrap:wrap;padding:10px 16px;gap:4px;align-items:center}
+  nav#nav-v2 .nv-logo{font-size:14px;order:0;flex-shrink:0;margin-right:auto}
+  nav#nav-v2 .nv-right{order:1;flex-shrink:0;width:auto;gap:6px}
+  nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-wrap:wrap;order:2;width:100%;justify-content:center;margin-top:2px;padding-top:2px;border-top:1px solid #f0f0f0}
+  nav#nav-v2 .nv-links>a{padding:6px 12px;font-size:11px;height:auto;font-weight:500}
+  nav#nav-v2 .nv-lang{position:relative!important}
+  nav#nav-v2 .lang-dd{right:-30px;min-width:130px}
   nav#nav-v2 .nv-quote{padding:4px 10px;font-size:10px}
 }
 nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important}
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
 </style>
 
 <style id="hero-atmo-style">
-/* ── Hero Atmosphere ── */
-.hero-atmo {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  background: linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 40%, #d2d2d7 100%);
-  margin-bottom: -60px;
-  z-index: 0;
-}
-.hero-atmo::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(0,102,204,.06) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 80% at 80% 40%, rgba(0,0,0,.04) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.95) 90%, #fff 100%);
-}
-.hero-atmo::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 80px;
-  background: linear-gradient(0deg, #fff 0%, transparent 100%);
-}
-/* Image Container - Apple Style */
-.img-container {
-  width: 100%;
-  aspect-ratio: 1;
-  background: #fff;
-  border-radius: 20px;
-  border: 1px solid #d2d2d7;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.img-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #f0f0f3 0%, #e8e8ed 50%, #f0f0f3 100%);
-  color: #c0c0c6;
-  font-size: 48px;
-}
-.img-placeholder::after {
-  content: '◆';
-  font-size: 48px;
-  opacity: .3;
-}
+.hero-atmo{position:relative;width:100%;height:200px;overflow:hidden;background:linear-gradient(180deg,#f5f5f7 0%,#e8e8ed 40%,#d2d2d7 100%);margin-bottom:-60px;z-index:0}
+.hero-atmo::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 50%,rgba(0,102,204,.06) 0%,transparent 50%),radial-gradient(ellipse 60% 80% at 80% 40%,rgba(0,0,0,.04) 0%,transparent 50%),linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.95) 90%,#fff 100%)}
+.hero-atmo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(0deg,#fff 0%,transparent 100%)}
+.img-container{width:100%;aspect-ratio:1;background:#fff;border-radius:20px;border:1px solid #d2d2d7;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
+.img-container img{width:100%;height:100%;object-fit:cover}
+.img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f0f0f3 0%,#e8e8ed 50%,#f0f0f3 100%);color:#c0c0c6;font-size:48px}
+.img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
-
 
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
@@ -297,161 +256,24 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-</head>
-<body>
-
-<div class="hero-img-wrapper">
-<img src="https://images.unsplash.com/1581093450607-4e0f9a7b3e3c?w=1200&h=675&fit=crop&q=80&auto=format" alt="Cắt ren" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
-<div class="img-overlay"></div>
-</div>
-<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
+<nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/vi/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
-<a href="/vi/">Trang chủ</a>
 <a href="/vi/products/">Sản phẩm</a>
-<a href="/vi/tools/">Công cụ</a>
+<a href="/vi/tools/">Máy Tính &amp; Công Cụ</a>
 <a href="/vi/guides/">Hướng dẫn</a>
 <a href="/vi/about.html">Giới thiệu</a>
 </div>
 <div class="nv-right">
-<div class="nv-lang"><a href="/tools/metric-imperial-thread-converter/">EN</a><span class="sep">·</span><a href="/de/tools/metric-imperial-thread-converter/">DE</a><a href="/jp/tools/metric-imperial-thread-converter/">JP</a><span class="sep">·</span><a href="/es/tools/metric-imperial-thread-converter/">ES</a><a href="#" onclick="return false" class="active">VI</a></div>
+<div class="nv-lang"><div class="lang-btn" onclick="toggleLangDD(event)"><span class="flag">🇻🇳</span><span>VI</span><span class="caret">▼</span></div><div class="lang-dd" id="lang-dd"><a href="/tools/metric-imperial-thread-converter" class=""><span class="flag">🇺🇸</span><span class="lbl">EN</span><span class="nm">English</span></a><a href="/de/tools/metric-imperial-thread-converter" class=""><span class="flag">🇩🇪</span><span class="lbl">DE</span><span class="nm">Deutsch</span></a><a href="/jp/tools/metric-imperial-thread-converter" class=""><span class="flag">🇯🇵</span><span class="lbl">JP</span><span class="nm">日本語</span></a><a href="/es/tools/metric-imperial-thread-converter" class=""><span class="flag">🇪🇸</span><span class="lbl">ES</span><span class="nm">Español</span></a><a href="/vi/tools/metric-imperial-thread-converter" class="current"><span class="flag">🇻🇳</span><span class="lbl">VI</span><span class="nm">Tiếng Việt</span></a></div></div>
 <a class="nv-quote" href="/vi/quote.html">📩 Báo giá</a>
 </div>
 </div>
-</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">Tốc độ bề mặt (SFM)</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">Trình phân tích thời gian thay dao</a> <span style="color:#d2d2d6">›</span> Metric Imperial Thread Converter</div>
-<section class="hero"><div class="container"><div class="badge" style="display:inline-flex;background:#f5f5f7;padding:4px 14px;border-radius:20px;font-size:11px;font-weight:600;color:#86868b;margin-bottom:16px">🔄 Conversion Tool</div><h1>So sánh đường kính và rãnh trên các tiêu chuẩn.</h1><p>📐Hướng</p><a class="btn" href="#calculator">Đường kính hiệu dụng của đầu tròn</a></div></section>
-
-<section class="container" id="calculator" style="padding-bottom:40px">
-<div class="card"><h2>Tất cả công cụ</h2><p class="sub">Kết quả chỉ mang tính tham khảo. Hãy tham khảo ý kiến của các nhà sản xuất dụng cụ để biết thông tin về các ứng dụng cụ thể.</p>
-<div class="card-row">
-<div class="field"><label>©Dụng cụ cắt gọt bằng cacbua năm 2026</label><select id="dir" onchange="calc()"><option value="m2i">Metric → Imperial</option><option value="i2m">Imperial → Metric</option></select></div>
-<div class="field"><label>Chuyển đổi chỉ số hệ mét sang TPI</label><select id="size" onchange="calc()"><option value="M6">M6 × 1.0</option><option value="M8">M8 × 1.25</option><option selected="" value="M10">M10 × 1.5</option><option value="M12">M12 × 1.75</option><option value="M16">M16 × 2.0</option><option value="M20">M20 × 2.5</option></select></div>
-</div>
-<div class="result-grid">
-<div class="result-item"><div class="label">Closest UNC</div><div class="value" id="r-unc">—</div><div class="unit" id="r-unc-note">UNC</div></div>
-<div class="result-item"><div class="label">Closest UNF</div><div class="value" id="r-unf">—</div><div class="unit">UNF</div></div>
-<div class="result-item"><div class="label">Diameter Match</div><div class="value" id="r-match">—</div><div class="unit">%</div></div>
-<div class="result-item"><div class="label">Pitch Difference</div><div class="value" id="r-diff">—</div><div class="unit">mm</div></div>
-</div>
-</div>
-<div style="text-align:center;margin:16px 0"><a href="/tools/" style="color:#0066cc;text-decoration:none;font-size:13px">Tốc độ và Lượng ăn dao</a></div>
-</section>
-<script>
-const CONV={M6:{d:6,p:1.0,unc:'1/4-20',unf:'1/4-28'},M8:{d:8,p:1.25,unc:'5/16-18',unf:'5/16-24'},M10:{d:10,p:1.5,unc:'3/8-16',unf:'3/8-24'},M12:{d:12,p:1.75,unc:'1/2-13',unf:'7/16-20'},M16:{d:16,p:2.0,unc:'5/8-11',unf:'5/8-18'},M20:{d:20,p:2.5,unc:'3/4-10',unf:'3/4-16'}};
-const IMP={};
-function calc(){const sz=document.getElementById('size').value;const c=CONV[sz];if(!c)return;const uncD=c.d/25.4;const matchPct=100;document.getElementById('r-unc').textContent=c.unc||'—';document.getElementById('r-unf').textContent=c.unf||'—';document.getElementById('r-match').textContent=matchPct.toFixed(0)+'%';document.getElementById('r-diff').textContent='0.00';}
-calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
-<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Công cụ chính xác liên quan</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/vi/tools/machinability-rating/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Machinability Rating</a><a href="/vi/tools/machine-power-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Machine Power Calculator</a><a href="/vi/tools/mcode-reference/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Mcode Reference</a><a href="/vi/tools/graphite-machining/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Graphite Machining</a><a href="/vi/tools/keyway-depth-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Keyway Depth Calculator</a><a href="/vi/tools/superalloy-tool-life/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Superalloy Tool Life</a></div></div><footer class="tool-footer">
-<div class="container">
-<div class="footer-links">
-<a href="/">Tốc độ bề mặt (SFM)</a>
-<a href="/tools/">Các chủ đề hệ mét được chỉ định bởi độ cao (mm trên mỗi sợi), trong khi các chủ đề Imperial (Un) được chỉ định bởi các chủ đề trên mỗi inch (TPI). Chuyển đổi: TPI = 25.4 / Pitch (mm). M10 × 1.5 có độ cao 1.5mm = 16.9 TPI, gần nhất là 5/16-18 UNC. M12 × 1.75 = 14.5 TPI ÷ 1/2-13 UNC. Để phay ren, việc chuyển đổi giữa các hệ thống này một cách chính xác tránh được lỗi đường dẫn công cụ tốn kém.</a>
-<a href="/products/">🇩🇪Đức</a>
-<a href="/guides/">🇯🇵JP</a>
-<a href="/about.html">🇪🇸ES</a>
-<a href="/quote.html">Phân loại tham chiếu</a>
-<a href="/privacy.html">Chi phí trên mỗi bộ phận</a>
-</div>
-<div class="footer-social">
-<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Bộ biến mô</a>
-<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
-<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
-</div>
-<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Các chủ đề hệ mét được chỉ định bởi độ cao (mm trên mỗi sợi), trong khi các chủ đề Imperial (Un) được chỉ định bởi các chủ đề trên mỗi inch (TPI). Chuyển đổi: TPI = 25.4 / Pitch (mm). M10 × 1.5 có độ cao 1.5mm = 16.9 TPI, gần nhất là 5/16-18 UNC. M12 × 1.75 = 14.5 TPI ÷ 1/2-13 UNC. Để phay ren, việc chuyển đổi giữa các hệ thống này một cách chính xác tránh được lỗi đường dẫn công cụ tốn kém.</a></p>
-<p style="font-size:11px;margin-bottom:6px">So sánh Đường kính: hệ mét so với chủ đề Đế Quốc</p>
-<p style="font-size:11px">Đường kính ren hệ mét được chỉ định là OD danh nghĩa tính bằng mm. các chuyển đổi phổ biến: M6 ≧ 1/4 inch (6.35mm so với 6.0mm), M8 "5/16 inch (7.94mm so với 8.0mm), M10" 3/8 inch (9.53mm so với 10.0mm), m12 khoảng 1/2 inch (12.7mm so với 12.0mm). Trong khi đóng, chúng không thể hoán đổi cho nhau-Luôn luôn sử dụng đúng hệ thống dây buộc.</p>
-</div>
-<section class="seo"><div class="container">
-<h2>Luồng thực tế: khi nào cần sử dụng hệ mét so với Đế Quốc</h2><p>Hầu hết các máy CNC hiện đại đều có thể cắt cả hai hệ thống tốt như nhau. Sử dụng hệ thống được chỉ định bởi bản vẽ của khách hàng hoặc tiêu chuẩn Fastener trong chuỗi cung ứng của bạn. Chuyển đổi các thiết kế của Imperial sang số liệu có thể làm giảm hàng tồn kho dụng cụ, vì máy khoan và vòi số liệu có sẵn rộng rãi hơn trên toàn cầu. Tuy nhiên, nên xem xét chi phí và thời gian dẫn của các sợi chỉ đặc biệt.</p>
-<h2>Câu hỏi thường gặp</h2><p>Tôi có thể thay thế dây buộc hệ mét cho Đế Quốc không? không nên mua. Sự khác biệt đường kính 0.3-0.7mm tạo ra sự tương tác hoặc nhiễu ren không đủ, có thể gây ra lỗi khớp. Thay thế M10 cho 3/8-16 có thể Tước các sợi chỉ dưới tải. Luôn luôn linh kiện máy móc cho hệ thống ren được chỉ định.</p>
-<h2>Làm cách nào để chuyển đổi lớp ren (6 h so với 2 B)? dung sai hệ mét ISO 6 h thành lớp Un 2 B cho các ứng dụng vừa vặn. 4 H6 H (số liệu) ÷ 3 B (Un) cho phù hợp với độ chính xác, và 7 h (số liệu) ÷ 1 B (Un) cho phù hợp lỏng lẻo. Đây là những xấp xỉ-Đối với các khớp quan trọng, sử dụng tiêu chuẩn được chỉ định bởi cơ quan thiết kế.</h2><p>Máy khoan hệ mét và Đế Quốc có tương thích với máy khoan ren không? Máy khoan ren hệ mét (ví dụ, 8.5mm cho M10 × 1.5) không có tương đương chính xác của đế quốc. Sử dụng Kích thước mũi khoan gần nhất có sẵn nếu cần, nhưng thực hành ưa thích là sử dụng mũi khoan được chỉ định cho hệ thống ren bị cắt. Ví dụ, sử dụng máy khoan 'q' (0.332 inch) cho 3/8-16 UNC, không phải máy khoan hệ mét 8.3mm.</p>
-<h2>⚡Được tính toán cho Dòng sản phẩm Hiệu suất Cao của Carbide-Tooling.com. Xem danh mục →</h2>
-<p><strong>Can I substitute a metric fastener for an imperial one?</strong> Not recommended. The 0.3–0.7 mm diameter differences create insufficient thread engagement or interference, which can cause joint failure. Substituting M10 for 3/8-16 may strip threads under load. Always machine parts to the specified thread system.</p>
-<p><strong>How do I convert thread class (6H vs. 2B)?</strong> ISO 6H metric tolerance approximates to UN 2B class for medium-fit applications. 4H6H (metric) ≈ 3B (UN) for precision fits, and 7H (metric) ≈ 1B (UN) for loose fits. These are approximations — for critical joints, use the standard specified by the design authority.</p>
-<p><strong>Are metric and imperial drills compatible for threading?</strong> Metric tap drills (e.g., 8.5 mm for M10×1.5) don't have exact imperial equivalents. Use the closest available drill size if needed, but preferred practice is to use the specified tap drill for the thread system being cut. For example, use a 'Q' drill (0.332 inch) for 3/8-16 UNC, not an 8.3 mm metric drill.</p>
-<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">Mũi khoan cacbua</a></p>
-</div></section>
-</footer>
-<div class="toolbox-widget"><h3>Sản phẩm</h3><div class="toolbox-links">
-<a href="/tools/speed-feed/">Dao phay ren &amp; Tarô</a>
-<a href="/tools/hardness-converter/">Tài liệu tham khảo G-Code</a>
-<a href="/tools/tap-drill-size-calculator/">Trình chọn lớp phủ</a>
-<a href="/tools/mrr-calculator/">Công cụ tính toán thiết kế mũi khoan bậc</a>
-<a href="/tools/feed-converter/">Máy tính khoan taro</a>
-<a href="/tools/surface-roughness-calculator/">Máy tính gia công gang</a>
-<a href="/tools/titanium-machining-guide/">Công cụ tính độ lệch của dụng cụ</a>
-<a href="/tools/carbide-grade-cross-ref-2/">Bộ chuyển đổi cung R sang IJ</a>
-<a href="/tools/cost-per-part-calculator/">LinkedIn</a>
-<a href="/tools/torque-unit-converter/">Thư điện tử</a>
-</div></div>
-<aside class="b2b-card-enhanced" style="margin:32px 0">
-<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
-<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
-<div style="flex:1;min-width:0">
-<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Giải Pháp Chuyên Nghiệp cho Metric Imperial Thread Converter?</h3>
-<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Nhận giá trực tiếp từ nhà máy cho dụng cụ carbide cao cấp với chất lượng chứng nhận ISO.</p>
-</div>
-<a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
-</div>
-<div class="product-links"><span>🔗 Recommended:</span><a href="/products/drills.html">Carbide Drills</a><a href="/products/threading-tools.html">Thread Mills &amp; Taps</a></div>
-
-<div class="share-bar">
-<span class="share-label">↗ Share with Engineers</span>
-<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/metric-imperial-thread-converter/" rel="noopener" target="_blank">LinkedIn</a>
-<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/metric-imperial-thread-converter/&amp;text=Metric/Imperial Thread Converter" rel="noopener" target="_blank">𝕏</a>
-<a href="mailto:subject=Metric/Imperial Thread Converter&amp;body=Check this out: https://carbide-tooling.com/tools/metric-imperial-thread-converter/">Email</a>
-</div>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav>
+class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/vi/tools/aluminum-alloy-table/">Aluminum Alloy Table</a>
-<a href="/vi/tools/heat-expansion-calculator/">Heat Expansion Calculator</a>
-<a href="/vi/tools/temp-converter/">Temp Converter</a>
-<a href="/vi/tools/percentage-of-thread-calculator/">Percentage Of Thread Calculator</a>
-<a href="/vi/tools/tapping-feed-rate-calculator/">Tapping Feed Rate Calculator</a>
-<a href="/vi/tools/round-bar-weight/">Round Bar Weight</a>
-<a href="/vi/tools/chip-load/">Chip Load</a>
-<a href="/vi/tools/tool-steel-heat-treat/">Tool Steel Heat Treat</a>
-<a href="/vi/tools/machine-power-calculator/">Machine Power Calculator</a>
-<a href="/vi/tools/thread-lead-angle-calculator/">Thread Lead Angle Calculator</a>
-
-</div>
-</section>
-<style>
-.engineering-directory a{
-  display:block;
-  font-size:12px;
-  font-weight:500;
-  color:#1d1d1f;
-  text-decoration:none;
-  padding:8px 14px;
-  background:#fff;
-  border-radius:10px;
-  border:1px solid #e8e8ed;
-  transition:all .15s;
-  text-align:center;
-}
-.engineering-directory a:hover{
-  background:#0066cc;
-  color:#fff;
-  border-color:#0066cc;
-  transform:translateY(-1px);
-  box-shadow:0 4px 12px rgba(0,102,204,.15);
-}
-</style>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
-<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/vi/tools/thread-depth-torque-calculator/">Thread Depth Torque Calculator</a>
-<a href="/vi/tools/weight-shipping-calculator/">Weight Shipping Calculator</a>
-<a href="/vi/tools/mcode-reference/">Mcode Reference</a>
-<a href="/vi/tools/inventory-turnover-calculator/">Inventory Turnover Calculator</a>
-<a href="/vi/tools/tap-drill-size-calculator/">Tap Drill Size Calculator</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyêtools/tap-drill-size-calculator/">Tap Drill Size Calculator</a>
 <a href="/vi/tools/surface-speed/">Surface Speed</a>
 <a href="/vi/tools/npt-pipe-thread-calculator/">Npt Pipe Thread Calculator</a>
 <a href="/vi/tools/step-milling-calculator/">Step Milling Calculator</a>
@@ -481,6 +303,21 @@ calc();</script><script>function toggleLang(e){e.stopPropagation();document.getE
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
+
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
@@ -491,4 +328,5 @@ calc();</script><script>function toggleLang(e){e.stopPropagation();document.getE
 </div>
 <a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
 </div>
+<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
 </body></html>

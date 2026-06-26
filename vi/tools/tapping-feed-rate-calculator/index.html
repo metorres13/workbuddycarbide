@@ -11,20 +11,7 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
-
-/* Language Switcher - Dropdown with Flags */
-.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
-.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
-.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
-.lang-dropdown{position:relative;display:inline-flex;align-items:center}
-.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
-.lang-menu.show{display:block}
-.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
-.lang-menu a:hover{background:#f5f5f7}
-.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
-.lang-menu a .flag{font-size:16px}
-
+.lang-nav /* Language Switcher - Dropdown with Flags */
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -38,7 +25,18 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){.nav-links{display:none!important}}
+@media(max-width:768px){}
+
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -211,84 +209,45 @@ nav#nav-v2 .nv-logo span{font-weight:800;color:#0066cc}
 nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-shrink:0}
 nav#nav-v2 .nv-links>a{color:#1d1d1f;text-decoration:none;padding:0 14px;height:48px;display:flex;align-items:center;font-weight:500;font-size:12px;transition:color .15s;white-space:nowrap}
 nav#nav-v2 .nv-links>a:hover{color:#0066cc}
+nav#nav-v2 .nv-lang{position:relative;display:flex;align-items:center}
 nav#nav-v2 .nv-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
 nav#nav-v2 .nv-quote{display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:6px 16px;border-radius:24px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap}
 nav#nav-v2 .nv-quote:hover{background:#0055aa;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,204,.25)}
-nav#nav-v2 .nv-lang{display:flex;align-items:center;gap:2px;margin-left:4px;padding-left:8px;border-left:1px solid #e8e8ed}
-nav#nav-v2 .nv-lang a{font-size:10px;font-weight:600;color:#86868b;text-decoration:none;padding:3px 6px;border-radius:12px;transition:all .15s;letter-spacing:.3px}
-nav#nav-v2 .nv-lang a:hover{color:#1d1d1f;background:#f5f5f7}
-nav#nav-v2 .nv-lang a.active{color:#0066cc;background:#f0f7ff;font-weight:700}
-nav#nav-v2 .nv-lang .sep{color:#d2d2d6;font-size:10px;margin:0 1px;font-weight:300}
 @media(max-width:768px){
-  nav#nav-v2 .nv-links{display:none}
-  nav#nav-v2 .nv-lang a{font-size:9px;padding:2px 4px}
+  nav#nav-v2 .nv-inner{flex-wrap:wrap;padding:10px 16px;gap:4px;align-items:center}
+  nav#nav-v2 .nv-logo{font-size:14px;order:0;flex-shrink:0;margin-right:auto}
+  nav#nav-v2 .nv-right{order:1;flex-shrink:0;width:auto;gap:6px}
+  nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-wrap:wrap;order:2;width:100%;justify-content:center;margin-top:2px;padding-top:2px;border-top:1px solid #f0f0f0}
+  nav#nav-v2 .nv-links>a{padding:6px 12px;font-size:11px;height:auto;font-weight:500}
+  nav#nav-v2 .nv-lang{position:relative!important}
+  nav#nav-v2 .lang-dd{right:-30px;min-width:130px}
   nav#nav-v2 .nv-quote{padding:4px 10px;font-size:10px}
 }
 nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important}
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
 </style>
 
 <style id="hero-atmo-style">
-/* ── Hero Atmosphere ── */
-.hero-atmo {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  background: linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 40%, #d2d2d7 100%);
-  margin-bottom: -60px;
-  z-index: 0;
-}
-.hero-atmo::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(0,102,204,.06) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 80% at 80% 40%, rgba(0,0,0,.04) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.95) 90%, #fff 100%);
-}
-.hero-atmo::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 80px;
-  background: linear-gradient(0deg, #fff 0%, transparent 100%);
-}
-/* Image Container - Apple Style */
-.img-container {
-  width: 100%;
-  aspect-ratio: 1;
-  background: #fff;
-  border-radius: 20px;
-  border: 1px solid #d2d2d7;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.img-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #f0f0f3 0%, #e8e8ed 50%, #f0f0f3 100%);
-  color: #c0c0c6;
-  font-size: 48px;
-}
-.img-placeholder::after {
-  content: '◆';
-  font-size: 48px;
-  opacity: .3;
-}
+.hero-atmo{position:relative;width:100%;height:200px;overflow:hidden;background:linear-gradient(180deg,#f5f5f7 0%,#e8e8ed 40%,#d2d2d7 100%);margin-bottom:-60px;z-index:0}
+.hero-atmo::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 50%,rgba(0,102,204,.06) 0%,transparent 50%),radial-gradient(ellipse 60% 80% at 80% 40%,rgba(0,0,0,.04) 0%,transparent 50%),linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.95) 90%,#fff 100%)}
+.hero-atmo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(0deg,#fff 0%,transparent 100%)}
+.img-container{width:100%;aspect-ratio:1;background:#fff;border-radius:20px;border:1px solid #d2d2d7;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
+.img-container img{width:100%;height:100%;object-fit:cover}
+.img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f0f0f3 0%,#e8e8ed 50%,#f0f0f3 100%);color:#c0c0c6;font-size:48px}
+.img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
-
 
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
@@ -297,161 +256,24 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-</head>
-<body>
-
-<div class="hero-img-wrapper">
-<img src="https://images.unsplash.com/1504328346580-ee3558200b6a?w=1200&h=675&fit=crop&q=80&auto=format" alt="Khoan cacbua chính xác" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
-<div class="img-overlay"></div>
-</div>
-<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
+<nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/vi/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
-<a href="/vi/">Trang chủ</a>
 <a href="/vi/products/">Sản phẩm</a>
-<a href="/vi/tools/">Công cụ</a>
+<a href="/vi/tools/">Máy Tính &amp; Công Cụ</a>
 <a href="/vi/guides/">Hướng dẫn</a>
 <a href="/vi/about.html">Giới thiệu</a>
 </div>
 <div class="nv-right">
-<div class="nv-lang"><a href="/tools/tapping-feed-rate-calculator/">EN</a><span class="sep">·</span><a href="/de/tools/tapping-feed-rate-calculator/">DE</a><a href="/jp/tools/tapping-feed-rate-calculator/">JP</a><span class="sep">·</span><a href="/es/tools/tapping-feed-rate-calculator/">ES</a><a href="#" onclick="return false" class="active">VI</a></div>
+<div class="nv-lang"><div class="lang-btn" onclick="toggleLangDD(event)"><span class="flag">🇻🇳</span><span>VI</span><span class="caret">▼</span></div><div class="lang-dd" id="lang-dd"><a href="/tools/tapping-feed-rate-calculator" class=""><span class="flag">🇺🇸</span><span class="lbl">EN</span><span class="nm">English</span></a><a href="/de/tools/tapping-feed-rate-calculator" class=""><span class="flag">🇩🇪</span><span class="lbl">DE</span><span class="nm">Deutsch</span></a><a href="/jp/tools/tapping-feed-rate-calculator" class=""><span class="flag">🇯🇵</span><span class="lbl">JP</span><span class="nm">日本語</span></a><a href="/es/tools/tapping-feed-rate-calculator" class=""><span class="flag">🇪🇸</span><span class="lbl">ES</span><span class="nm">Español</span></a><a href="/vi/tools/tapping-feed-rate-calculator" class="current"><span class="flag">🇻🇳</span><span class="lbl">VI</span><span class="nm">Tiếng Việt</span></a></div></div>
 <a class="nv-quote" href="/vi/quote.html">📩 Báo giá</a>
 </div>
 </div>
-</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">Máy tính mộng đuôi én</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">Công cụ tính độ phẳng</a> <span style="color:#d2d2d6">›</span> Tapping Lượng chạy dao Rate Calculator</div>
-<section class="hero"><div class="container"><div class="badge" style="display:inline-flex;background:#f5f5f7;padding:4px 14px;border-radius:20px;font-size:11px;font-weight:600;color:#86868b;margin-bottom:16px">⚡ Formula Guide</div><h1>⚡Bộ nạp và vòng/phút</h1><p>Việc khai thác luôn luôn là: f = rpm × cao độ. Không có ngoại lệ.</p><a class="btn" href="#calculator">Chiều dài mũi khoan</a></div></section>
-
-<section class="container" id="calculator" style="padding-bottom:40px">
-<div class="card"><h2>📐Kích thước ren</h2><p class="sub">⚡Sfm được đề xuất</p>
-<div class="card-row">
-<div class="field"><label>🕳️ Độ sâu lỗ (mm)</label><select id="material" onchange="calc()"><option value="steel">Steel</option><option value="ss">Stainless</option><option value="al">Aluminum</option></select></div>
-<div class="field"><label>Tất cả công cụ</label><select id="size" onchange="calc()"><option value="6">M6 × 1.0</option><option value="8">M8 × 1.25</option><option selected="" value="10">M10 × 1.5</option><option value="12">M12 × 1.75</option></select></div>
-<div class="field"><label>Kết quả chỉ mang tính tham khảo. Hãy tham khảo ý kiến của các nhà sản xuất dụng cụ để biết thông tin về các ứng dụng cụ thể.</label><select id="sfm" onchange="calc()"><option value="40">40 SFM — HSS tap in steel</option><option selected="" value="20">20 SFM — Carbide tap in stainless</option><option value="80">80 SFM — Roll form tap in aluminum</option></select></div>
-<div class="field"><label>©Dụng cụ cắt gọt bằng cacbua năm 2026</label><input id="depth" max="200" min="3" oninput="calc()" step="1" type="number" value="20"/></div>
-</div>
-<div class="result-grid">
-<div class="result-item"><div class="label">Spindle RPM</div><div class="value" id="r-rpm">—</div><div class="unit">RPM</div></div>
-<div class="result-item"><div class="label">Lượng chạy dao Rate</div><div class="value" id="r-feed">—</div><div class="unit">mm/min</div></div>
-<div class="result-item"><div class="label">Tapping Time</div><div class="value" id="r-time">—</div><div class="unit">seconds</div></div>
-<div class="result-item"><div class="label">Surface Tốc độ cắt</div><div class="value" id="r-sfm">—</div><div class="unit">SFM</div></div>
-</div>
-</div>
-<div style="text-align:center;margin:16px 0"><a href="/tools/" style="color:#0066cc;text-decoration:none;font-size:13px">Xem danh mục →</a></div>
-</section>
-<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Công cụ chính xác liên quan</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/vi/tools/tangent-point-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tangent Point Calculator</a><a href="/vi/tools/tap-drill-size-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tap Drill Size Calculator</a><a href="/vi/tools/taper-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Taper Calculator</a><a href="/vi/tools/ramping-angle-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Ramping Angle Calculator</a><a href="/vi/tools/blind-hole-tapping-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Blind Hole Tapping Calculator</a><a href="/vi/tools/feed-rate-override-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Feed Rate Override Calculator</a></div></div><footer class="tool-footer">
-<div class="container">
-<div class="footer-links">
-<a href="/">Máy tính mộng đuôi én</a>
-<a href="/tools/">Tính toán tốc độ khai thác từ rpm</a>
-<a href="/products/">🇬🇧Tiếng Anh</a>
-<a href="/guides/">🇩🇪Đức</a>
-<a href="/about.html">🇯🇵JP</a>
-<a href="/quote.html">Độ nhám bề mặt</a>
-<a href="/privacy.html">Hướng dẫn về Titan</a>
-</div>
-<div class="footer-social">
-<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Phân loại tham chiếu</a>
-<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
-<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
-</div>
-<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Tính toán tốc độ khai thác từ rpm</a></p>
-<p style="font-size:11px;margin-bottom:6px">Đối với việc gõ cứng, tốc độ nạp được gắn trực tiếp vào trục chính RPM: feed (in/min) = rpm/TPI (Thread per inch). Đối với chỉ số hệ mét: thức ăn (mm/phút) = rpm × cao độ (mm). Ví dụ: 1/2-13 UNC ở 400 rpm = 400 / 13 = 30.8 in/PHÚT. M10 × 1.5 ở tốc độ 400 rpm = 400 × 1.5 = 600mm/phút. Việc ghi đè nguồn cấp dữ liệu phải được thiết lập thành 100% để khai thác cứng-Điều khiển đồng bộ chuyển động trục Z với vòng quay trục chính.</p>
-<p style="font-size:11px">Tốc độ khai thác tối ưu bằng vật liệu</p>
-</div>
-<section class="seo"><div class="container">
-<h2>Tốc độ khai thác được khuyến nghị cho Vòi thép tốc độ cao (HSS): Nhôm: 500-1,000 vòng/phút, đồng thau: 400-700 vòng/phút, thép cacbon thấp: 200-400 vòng/phút, thép hợp kim (4140, 4340): 100-200 vòng/phút, thép không gỉ (304): 50-100 Vòng/phút, Titan: 30-60 vòng/phút. Đối với vòi cacbua, nhân tốc độ 2-3 ×. Đối với các nhà máy ren, chạy ở rpm cao hơn với tải chip giảm là chấp nhận được.</h2><p>Khai thác peck so với khai thác một chiều</p>
-<h2>Khai thác peck (Độ sâu gia tăng khi rút lại) được sử dụng cho các lỗ mù trên 1.5 × Đường kính vật liệu có sự hình thành chip kém (không gỉ, nhôm). Mỗi độ sâu mổ phải là 2-3 × cao độ. Khai thác một đầu thích hợp cho các lỗ thông qua và các lỗ mù trong vật liệu có khả năng phá vỡ Chip tốt (gang, đồng thau). Peck Tapping tăng thêm 20-40% để chu kỳ thời gian nhưng làm giảm đáng kể nguy cơ vỡ vòi.</h2><p>Câu hỏi thường gặp</p>
-<h2>Sự khác biệt giữa khai thác cứng nhắc và khai thác đồng bộ là gì? khai thác cứng nhắc và khai thác đồng bộ tham khảo cùng một quá trình: Điều khiển CNC đồng bộ hóa điện tử vòng quay trục chính và nguồn cấp trục Z. Khai thác bù đắp sử dụng giá đỡ vòi nổi để tính toán các lỗi đồng bộ hóa nhỏ. Khai thác cứng nhắc yêu cầu điều khiển CNC với khả năng này (tiêu chuẩn trên hầu hết các máy từ năm 2000).</h2><p>Tôi có thể gõ mà không có giá đỡ nổi trong CNC không? Vâng, nếu điều khiển của bạn hỗ trợ gõ cứng (g84.2 hoặc M29 trên fanuc). Đối với các máy không có khả năng khai thác cứng, hãy sử dụng giá đỡ vòi kiểu nén với phao trục 0.5-1.0mm để tránh vỡ vòi từ nguồn cấp dữ liệu/Tốc độ không khớp.</p>
-<h2>Làm cách nào để tính độ sâu khai thác an toàn cho máy phay ren? tốc độ nạp của dao phay ren Phụ thuộc vào đường dẫn của dụng cụ chứ không phải vòng quay. Sử dụng công thức: feed (in/min) = rpm × Lượng chạy dao PER Tooth × Số lượng sáo. Đối với máy nghiền ren 3 sáo ở tốc độ 2,000 vòng/phút với 0.001 in/răng: thức ăn = 2,000 × 0.001 × 3 = 6.0 in/PHÚT. Tốc độ nội suy xoắn ốc được tính riêng dựa trên độ cao của sợi.</h2>
-<p><strong>What is the difference between rigid tapping and synchronized tapping?</strong> Rigid tapping and synchronized tapping refer to the same process: the CNC control electronically synchronizes the spindle rotation and Z-axis feed. Compensating tapping uses a floating tap holder to account for minor synchronization errors. Rigid tapping requires CNC controls with this capability (standard on most machines since 2000).</p>
-<p><strong>Can I tap without a floating holder in a CNC?</strong> Yes, if your control supports rigid tapping (G84.2 or M29 on Fanuc). For machines without rigid tapping capability, use a compression-type tap holder with axial float of 0.5–1.0 mm to prevent tap breakage from feed/speed mismatch.</p>
-<p><strong>How do I calculate safe tapping depth for thread mills?</strong> Thread milling feed rate depends on the tool's path, not spindle RPM. Use the formula: Lượng chạy dao (in/min) = RPM × Lượng chạy dao per Tooth × Number of Flutes. For a 3-flute thread mill at 2,000 RPM with 0.001 in/tooth: Lượng chạy dao = 2,000 × 0.001 × 3 = 6.0 in/min. The helical interpolation rate is calculated separately based on the thread pitch.</p>
-<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">Bộ biến mô</a></p>
-</div></section>
-</footer>
-<script>
-const PITCHES={6:1.0,8:1.25,10:1.5,12:1.75,14:2.0,16:2.0,18:2.5,20:2.5};
-function calc(){const sz=parseInt(document.getElementById('size').value);const dep=parseFloat(document.getElementById('depth').value)||20;const sfm=parseFloat(document.getElementById('sfm').value)||20;const pitch=PITCHES[sz]||1.5;const rpm=sz>0?(sfm*12*25.4)/(Math.PI*sz):500;const feed=rpm*pitch;const time=feed>0?(dep/feed*60):0;document.getElementById('r-rpm').textContent=Math.round(Math.min(rpm,3000));document.getElementById('r-feed').textContent=Math.round(feed);document.getElementById('r-time').textContent=time.toFixed(1);document.getElementById('r-sfm').textContent=sfm;}
-calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><div class="toolbox-widget"><h3>◆Dụng cụ cắt gọt bằng cacbua</h3><div class="toolbox-links">
-<a href="/tools/speed-feed/">Yêu cầu báo giá số lượng lớn →</a>
-<a href="/tools/hardness-converter/">Mũi phay ngón cacbua nguyên khối</a>
-<a href="/tools/tap-drill-size-calculator/">Giá đựng dụng cụ</a>
-<a href="/tools/mrr-calculator/">Bù trừ bán kính mũi dao</a>
-<a href="/tools/feed-converter/">Hẹn giờ Pomodoro</a>
-<a href="/tools/surface-roughness-calculator/">Tham khảo các ký hiệu GD&amp;T</a>
-<a href="/tools/titanium-machining-guide/">Bộ chuyển đổi độ bền kéo</a>
-<a href="/tools/carbide-grade-cross-ref-2/">Công cụ tính góc dốc</a>
-<a href="/tools/cost-per-part-calculator/">Đường kính hiệu dụng của đầu tròn</a>
-<a href="/tools/torque-unit-converter/">Công cụ tính toán nhiệt luyện thép dụng cụ</a>
-</div></div>
-<aside class="b2b-card-enhanced" style="margin:32px 0">
-<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
-<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
-<div style="flex:1;min-width:0">
-<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Giải Pháp Chuyên Nghiệp cho Tapping Feed Rate Calculator?</h3>
-<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Nhận giá trực tiếp từ nhà máy cho dụng cụ carbide cao cấp với chất lượng chứng nhận ISO.</p>
-</div>
-<a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
-</div>
-<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">LinkedIn</a><a href="/products/tool-holders.html">Thư điện tử</a></div>
-
-<div class="share-bar">
-<span class="share-label">↗ Share with Engineers</span>
-<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/tapping-feed-rate-calculator/" rel="noopener" target="_blank">LinkedIn</a>
-<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/tapping-feed-rate-calculator/&amp;text=Tapping Lượng chạy dao Rate Calculator" rel="noopener" target="_blank">𝕏</a>
-<a href="mailto:subject=Tapping Lượng chạy dao Rate Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/tapping-feed-rate-calculator/">Email</a>
-</div>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav>
+class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/vi/tools/force-calculator/">Force Calculator</a>
-<a href="/vi/tools/coolant-lifecycle-cost/">Coolant Lifecycle Cost</a>
-<a href="/vi/tools/tool-wear-cost-calculator/">Tool Wear Cost Calculator</a>
-<a href="/vi/tools/temp-converter/">Temp Converter</a>
-<a href="/vi/tools/metal-cost-calculator/">Metal Cost Calculator</a>
-<a href="/vi/tools/form-tap-drill-calculator/">Form Tap Drill Calculator</a>
-<a href="/vi/tools/micron-inch-converter/">Micron Inch Converter</a>
-<a href="/vi/tools/machine-power-calculator/">Machine Power Calculator</a>
-<a href="/vi/tools/drill-point-length-calculator/">Drill Point Length Calculator</a>
-<a href="/vi/tools/polar-rect-converter/">Polar Rect Converter</a>
-
-</div>
-</section>
-<style>
-.engineering-directory a{
-  display:block;
-  font-size:12px;
-  font-weight:500;
-  color:#1d1d1f;
-  text-decoration:none;
-  padding:8px 14px;
-  background:#fff;
-  border-radius:10px;
-  border:1px solid #e8e8ed;
-  transition:all .15s;
-  text-align:center;
-}
-.engineering-directory a:hover{
-  background:#0066cc;
-  color:#fff;
-  border-color:#0066cc;
-  transform:translateY(-1px);
-  box-shadow:0 4px 12px rgba(0,102,204,.15);
-}
-</style>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
-<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/vi/tools/thread-depth-torque-calculator/">Thread Depth Torque Calculator</a>
-<a href="/vi/tools/hardness-converter/">Hardness Converter</a>
-<a href="/vi/tools/trochoidal-milling-calculator/">Trochoidal Milling Calculator</a>
-<a href="/vi/tools/pressure-converter/">Pressure Converter</a>
-<a href="/vi/tools/surface-speed/">Surface Speed</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyêace-speed/">Surface Speed</a>
 <a href="/vi/tools/thread-lead-angle-calculator/">Thread Lead Angle Calculator</a>
 <a href="/vi/tools/threading-pass-calculator/">Threading Pass Calculator</a>
 <a href="/vi/tools/taper-calculator/">Taper Calculator</a>
@@ -481,6 +303,21 @@ calc();</script><script>function toggleLang(e){e.stopPropagation();document.getE
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
+
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
@@ -491,4 +328,5 @@ calc();</script><script>function toggleLang(e){e.stopPropagation();document.getE
 </div>
 <a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
 </div>
+<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
 </body></html>

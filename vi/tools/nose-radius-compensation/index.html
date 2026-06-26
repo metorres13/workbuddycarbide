@@ -79,20 +79,7 @@ footer a{color:#0066cc;text-decoration:none}
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
-
-/* Language Switcher - Dropdown with Flags */
-.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
-.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
-.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
-.lang-dropdown{position:relative;display:inline-flex;align-items:center}
-.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
-.lang-menu.show{display:block}
-.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
-.lang-menu a:hover{background:#f5f5f7}
-.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
-.lang-menu a .flag{font-size:16px}
-
+.lang-nav /* Language Switcher - Dropdown with Flags */
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -106,7 +93,18 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){.nav-links{display:none!important}}
+@media(max-width:768px){}
+
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -215,84 +213,45 @@ nav#nav-v2 .nv-logo span{font-weight:800;color:#0066cc}
 nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-shrink:0}
 nav#nav-v2 .nv-links>a{color:#1d1d1f;text-decoration:none;padding:0 14px;height:48px;display:flex;align-items:center;font-weight:500;font-size:12px;transition:color .15s;white-space:nowrap}
 nav#nav-v2 .nv-links>a:hover{color:#0066cc}
+nav#nav-v2 .nv-lang{position:relative;display:flex;align-items:center}
 nav#nav-v2 .nv-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
 nav#nav-v2 .nv-quote{display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:6px 16px;border-radius:24px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap}
 nav#nav-v2 .nv-quote:hover{background:#0055aa;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,204,.25)}
-nav#nav-v2 .nv-lang{display:flex;align-items:center;gap:2px;margin-left:4px;padding-left:8px;border-left:1px solid #e8e8ed}
-nav#nav-v2 .nv-lang a{font-size:10px;font-weight:600;color:#86868b;text-decoration:none;padding:3px 6px;border-radius:12px;transition:all .15s;letter-spacing:.3px}
-nav#nav-v2 .nv-lang a:hover{color:#1d1d1f;background:#f5f5f7}
-nav#nav-v2 .nv-lang a.active{color:#0066cc;background:#f0f7ff;font-weight:700}
-nav#nav-v2 .nv-lang .sep{color:#d2d2d6;font-size:10px;margin:0 1px;font-weight:300}
 @media(max-width:768px){
-  nav#nav-v2 .nv-links{display:none}
-  nav#nav-v2 .nv-lang a{font-size:9px;padding:2px 4px}
+  nav#nav-v2 .nv-inner{flex-wrap:wrap;padding:10px 16px;gap:4px;align-items:center}
+  nav#nav-v2 .nv-logo{font-size:14px;order:0;flex-shrink:0;margin-right:auto}
+  nav#nav-v2 .nv-right{order:1;flex-shrink:0;width:auto;gap:6px}
+  nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-wrap:wrap;order:2;width:100%;justify-content:center;margin-top:2px;padding-top:2px;border-top:1px solid #f0f0f0}
+  nav#nav-v2 .nv-links>a{padding:6px 12px;font-size:11px;height:auto;font-weight:500}
+  nav#nav-v2 .nv-lang{position:relative!important}
+  nav#nav-v2 .lang-dd{right:-30px;min-width:130px}
   nav#nav-v2 .nv-quote{padding:4px 10px;font-size:10px}
 }
 nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important}
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
 </style>
 
 <style id="hero-atmo-style">
-/* ── Hero Atmosphere ── */
-.hero-atmo {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  background: linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 40%, #d2d2d7 100%);
-  margin-bottom: -60px;
-  z-index: 0;
-}
-.hero-atmo::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(0,102,204,.06) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 80% at 80% 40%, rgba(0,0,0,.04) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.95) 90%, #fff 100%);
-}
-.hero-atmo::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 80px;
-  background: linear-gradient(0deg, #fff 0%, transparent 100%);
-}
-/* Image Container - Apple Style */
-.img-container {
-  width: 100%;
-  aspect-ratio: 1;
-  background: #fff;
-  border-radius: 20px;
-  border: 1px solid #d2d2d7;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.img-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #f0f0f3 0%, #e8e8ed 50%, #f0f0f3 100%);
-  color: #c0c0c6;
-  font-size: 48px;
-}
-.img-placeholder::after {
-  content: '◆';
-  font-size: 48px;
-  opacity: .3;
-}
+.hero-atmo{position:relative;width:100%;height:200px;overflow:hidden;background:linear-gradient(180deg,#f5f5f7 0%,#e8e8ed 40%,#d2d2d7 100%);margin-bottom:-60px;z-index:0}
+.hero-atmo::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 50%,rgba(0,102,204,.06) 0%,transparent 50%),radial-gradient(ellipse 60% 80% at 80% 40%,rgba(0,0,0,.04) 0%,transparent 50%),linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.95) 90%,#fff 100%)}
+.hero-atmo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(0deg,#fff 0%,transparent 100%)}
+.img-container{width:100%;aspect-ratio:1;background:#fff;border-radius:20px;border:1px solid #d2d2d7;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
+.img-container img{width:100%;height:100%;object-fit:cover}
+.img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f0f0f3 0%,#e8e8ed 50%,#f0f0f3 100%);color:#c0c0c6;font-size:48px}
+.img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
-
 
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
@@ -301,288 +260,24 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-</head>
-<body>
-
-<div class="hero-img-wrapper">
-<img src="https://images.unsplash.com/1565193566165-24e2f9e7e80c?w=1200&h=675&fit=crop&q=80&auto=format" alt="Tính toán tốc độ phay CNC" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
-<div class="img-overlay"></div>
-</div>
-<div class="hero-atmo" aria-hidden="true"></div>
 <nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/vi/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
-<a href="/vi/">Trang chủ</a>
 <a href="/vi/products/">Sản phẩm</a>
-<a href="/vi/tools/">Công cụ</a>
+<a href="/vi/tools/">Máy Tính &amp; Công Cụ</a>
 <a href="/vi/guides/">Hướng dẫn</a>
 <a href="/vi/about.html">Giới thiệu</a>
 </div>
 <div class="nv-right">
-<div class="nv-lang"><a href="/tools/nose-radius-compensation/">EN</a><span class="sep">·</span><a href="/de/tools/nose-radius-compensation/">DE</a><a href="/jp/tools/nose-radius-compensation/">JP</a><span class="sep">·</span><a href="/es/tools/nose-radius-compensation/">ES</a><a href="#" onclick="return false" class="active">VI</a></div>
+<div class="nv-lang"><div class="lang-btn" onclick="toggleLangDD(event)"><span class="flag">🇻🇳</span><span>VI</span><span class="caret">▼</span></div><div class="lang-dd" id="lang-dd"><a href="/tools/nose-radius-compensation" class=""><span class="flag">🇺🇸</span><span class="lbl">EN</span><span class="nm">English</span></a><a href="/de/tools/nose-radius-compensation" class=""><span class="flag">🇩🇪</span><span class="lbl">DE</span><span class="nm">Deutsch</span></a><a href="/jp/tools/nose-radius-compensation" class=""><span class="flag">🇯🇵</span><span class="lbl">JP</span><span class="nm">日本語</span></a><a href="/es/tools/nose-radius-compensation" class=""><span class="flag">🇪🇸</span><span class="lbl">ES</span><span class="nm">Español</span></a><a href="/vi/tools/nose-radius-compensation" class="current"><span class="flag">🇻🇳</span><span class="lbl">VI</span><span class="nm">Tiếng Việt</span></a></div></div>
 <a class="nv-quote" href="/vi/quote.html">📩 Báo giá</a>
 </div>
 </div>
 </nav>
-<section class="hero">
-<div class="container">
-<div class="badge">📐 Free Professional Tool</div>
-<h1>Dụng cụ bù bán kính mũi</h1>
-<p>Tính giá trị bù x và Z cho thao tác xoay máy tiện CNC. Tạo ra các bộ giảm giá G41/G42 chính xác cho các bề mặt bán kính, vát và thon.</p>
-<div class="hero-actions">
-<a class="btn" href="#calculator">Bắt đầu tính toán ↓</a>
-<a class="btn-outline" href="https://carbide-tooling.com/quote.html">📩Nhận báo giá chính xác</a>
-</div>
-</div>
-</section>
-<section class="container" id="calculator" style="padding-bottom:40px">
-<div class="card">
-<h2>📐Bù trừ bán kính mũi dao</h2>
-<p class="sub">Dành cho máy tiện CNC Dụng cụ điều chỉnh đường dẫn G41/G42. Cập nhật kết quả theo thời gian thực.</p>
-<div class="card-row">
-<div class="field"><label>🔘Bán kính mũi (mm)</label>
-<input id="radius" max="6" min="0.05" oninput="calc()" step="0.05" type="number" value="0.8"/>
-</div>
-<div class="field"><label>🔧Cắt hướng</label>
-<select id="direction" onchange="calc()">
-<option value="od">OD Turning — G42 (right of cut)</option>
-<option value="id">ID Boring — G41 (left of cut)</option>
-<option value="face">Facing — G42</option>
-</select>
-</div>
-<div class="field"><label>📐Góc bề mặt α (°)</label>
-<input id="angle" max="90" min="0" oninput="calc()" step="1" type="number" value="45"/>
-<span style="font-size:10px;color:#86868b">0° = straight turning, 90° = facing</span>
-</div>
-<div class="field"><label>🎯Tính năng hồ sơ</label>
-<select id="feature" onchange="calc()">
-<option value="chamfer">Chamfer / Taper</option>
-<option value="radius">Radius (convex)</option>
-<option value="radius-concave">Radius (concave / internal)</option>
-</select>
-</div>
-</div>
-<div class="result-grid">
-<div class="result-item"><div class="label">X-axis Compensation</div><div class="value" id="r-xcomp">—</div><div class="unit">mm (diametral)</div></div>
-<div class="result-item"><div class="label">Z-axis Compensation</div><div class="value" id="r-zcomp">—</div><div class="unit">mm</div></div>
-<div class="result-item"><div class="label">G Code</div><div class="value" id="r-gcode">—</div><div class="unit">ISO 6983</div></div>
-<div class="result-item"><div class="label">Compensated Radius</div><div class="value" id="r-comp-rad">—</div><div class="unit">mm</div></div>
-</div>
-<div class="extra-info">
-<span>Uncompensated error at this angle: <span class="val" id="x-error">—</span> mm</span>
-<span style="color:#d2d2d6">|</span>
-<span>Virtual tip offset: <span class="val" id="x-offset">—</span> mm</span>
-<span style="color:#d2d2d6">|</span>
-<span>Suggested TNR (for next run): <span class="val" id="x-tnr">—</span> mm</span>
-</div>
-</div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px">
-<a href="/tools/surface-roughness-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
-<div style="font-size:20px">🔬</div><h4 style="font-size:14px;font-weight:600;margin:4px 0 2px">Công cụ tính độ nhám bề mặt</h4>
-<p style="font-size:12px;color:#86868b">Bán kính mũi ảnh hưởng trực tiếp đến bề mặt hoàn thiện.</p>
-</a>
-<a href="/tools/cycle-time-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
-<div style="font-size:20px">⏱️</div><h4 style="font-size:14px;font-weight:600;margin:4px 0 2px">Công cụ tính thời gian chu kỳ</h4>
-<p style="font-size:12px;color:#86868b">Thời gian quay ước tính với các đường dẫn công cụ bù.</p>
-</a>
-</div>
-</section>
-<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Công cụ chính xác liên quan</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/vi/tools/npt-pipe-thread-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Npt Pipe Thread Calculator</a><a href="/vi/tools/cnc-roi-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Cnc Roi Calculator</a><a href="/vi/tools/dovetail-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Dovetail Calculator</a><a href="/vi/tools/polar-rect-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Polar Rect Converter</a><a href="/vi/tools/tool-wear-cost-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tool Wear Cost Calculator</a><a href="/vi/tools/chip-load/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Chip Load</a></div></div><footer class="tool-footer">
-<div class="container">
-<div class="footer-links">
-<a href="/">Trang chủ</a>
-<a href="/tools/">Tất cả công cụ</a>
-<a href="/products/">Sản phẩm</a>
-<a href="/guides/">Hướng dẫn</a>
-<a href="/about.html">Về chúng tôi</a>
-<a href="/quote.html">Bộ chuyển đổi độ cứng</a>
-<a href="/privacy.html">Kích thước mũi khoan taro</a>
-</div>
-<div class="footer-social">
-<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Công cụ tính MRR</a>
-<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
-<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
-</div>
-<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Tất cả công cụ</a></p>
-<p style="font-size:11px;margin-bottom:6px">Kết quả chỉ mang tính tham khảo. Hãy tham khảo ý kiến của các nhà sản xuất dụng cụ để biết thông tin về các ứng dụng cụ thể.</p>
-<p style="font-size:11px">©Dụng cụ cắt gọt bằng cacbua năm 2026</p>
-</div>
-</footer>
-<script>
-function calc() {
- const r = parseFloat(document.getElementById('radius').value) || 0.8;
- const dir = document.getElementById('direction').value;
- const angle = parseFloat(document.getElementById('angle').value) || 45;
- const feature = document.getElementById('feature').value;
- const aRad = angle * Math.PI / 180;
-
- // Basic compensation values for a chamfer/taper
- // ΔX (diametral) = 2 * R * (1 - cos(α))
- // ΔZ = R * (1 - sin(α))
- let xComp = 2 * r * (1 - Math.cos(aRad));
- let zComp = r * (1 - Math.sin(aRad));
-
- // For radius features, the compensation is the full radius
- if (feature === 'radius') {
- xComp = 2 * r;
- zComp = r;
- } else if (feature === 'radius-concave') {
- xComp = -2 * r;
- zComp = -r;
- }
-
- // Determine G-code
- let gcode = dir === 'id' ? 'G41' : 'G42';
-
- // Compensated radius for radius features
- let compRad = 0;
- if (feature === 'radius') {
- compRad = parseFloat(document.getElementById('angle').value) - r;
- } else if (feature === 'radius-concave') {
- compRad = parseFloat(document.getElementById('angle').value) + r;
- }
-
- // Uncompensated error at the tip (the distance between programmed and actual)
- const error = r - (r * Math.cos(aRad));
-
- // Virtual tip offset from center of radius
- const offset = r * Math.SQRT2;
-
- // Suggested TNR for this angle - max radius that keeps error under 0.05mm
- const maxAllowedError = 0.05;
- const suggestedTnr = error > 0 ? Math.min(2.4, Math.max(0.2, r * (maxAllowedError / error))) : r;
-
- document.getElementById('r-xcomp').textContent = xComp.toFixed(3);
- document.getElementById('r-zcomp').textContent = zComp.toFixed(3);
- document.getElementById('r-gcode').textContent = gcode;
- document.getElementById('r-comp-rad').textContent = compRad > 0 ? compRad.toFixed(2) : 'N/A';
- document.getElementById('x-error').textContent = error.toFixed(3);
- document.getElementById('x-offset').textContent = offset.toFixed(2);
- document.getElementById('x-tnr').textContent = suggestedTnr.toFixed(2);
-}
-
-calc();
-</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
-<section class="seo-content">
-<div class="container">
-<h2>Bù bán kính mũi làm gì với đường dẫn dụng cụ của bạn</h2>
-<p>Lập trình máy tiện CNC chỉ định vị trí công cụ bằng cách sử dụng đầu nhọn lý thuyết của phần chèn. Nhưng các miếng chèn thật có bán kính-thường là 0.2 đến 2.4mm. khi cắt đường kính hoặc mặt thẳng, bán kính này không có sự khác biệt. Khi bạn cắt vát, bán kính hoặc côn, điểm cắt thực tế dịch chuyển dọc theo bán kính, và đường dẫn đầu nhọn được lập trình không còn phù hợp với bề mặt cắt thực tế. Không khớp có thể là 0.2mm hoặc hơn-Đủ để loại bỏ một bộ phận chính xác.</p>
-<p>Bù bán kính Mũi (G41/G42 theo mã ISO) điều chỉnh đường dẫn dụng cụ theo bán kính mũi để cạnh cắt thực tế theo đường viền được lập trình. Máy tính này tính toán giá trị bù x và Z cho bất kỳ sự kết hợp nào giữa bán kính mũi, góc bề mặt và Hướng cắt.</p>
-<h2>Hình Học bù bán kính mũi</h2>
-<p>Điểm cắt trên miếng chèn mũi tròn di chuyển dọc theo bán kính mũi khi góc bề mặt thay đổi. Đối với một bề mặt ở góc α từ trục chính:</p>
-<p><code>ΔX = 2 × R × (1 − cos α)</code> (diametral)<br/>
-<code>ΔZ = R × (1 − sin α)</code></p>
-<p>Bán kính mũi r ở đâu và α là góc bề mặt (0 ° để quay, 90 ° đối mặt). Đối với vát 45 ° có bán kính mũi 0.8mm: Δx = 0.47mm, Δz = 0.23mm. không có bù, vát có đường kính gần nửa milimet.</p>
-<div class="fig">
-<span class="label">Nose radius compensation geometry for a 45° chamfer. The shaded area shows material not removed without compensation.</span>
-</div>
-<h2>G41 và G42: khi nào nên sử dụng mỗi</h2>
-<p>G42 kích hoạt bù bán kính dao cắt với dụng cụ ở bên phải đường dẫn được lập trình. Để xoay OD (Dụng cụ cắt ở mặt trước của bộ phận, di chuyển từ trái sang phải), sử dụng g42. Đối với máy cắt ID (Dụng cụ cắt ở tường sau, di chuyển sang trái sang phải), sử dụng G41-Dụng cụ cắt ở bên trái. Nhận được lỗi này về phía sau gấp đôi lỗi bồi thường thay vì sửa nó.</p>
-<p>Hầu hết các hệ thống cam tự động xử lý G41/G42. Đối với lập trình thủ công, quy tắc đơn giản: G42 cho hoạt động OD, G41 cho hoạt động ID. Máy Tính ở trên mặc định là OD/direction và hiển thị mã G chính xác cho thiết lập của bạn.</p>
-<h2>Tại sao đầu ảo không bao giờ khớp với đường cắt thực tế</h2>
-<p>"Đầu công cụ ảo"-điểm giao điểm của hai cạnh thẳng lý thuyết của công cụ-Là một sự tiện lợi toán học không tồn tại trên công cụ thực tế. Mỗi miếng chèn đều có bán kính kết nối cạnh bên và cạnh cắt phía trước. Đầu ảo nằm trong bán kính, bù từ cạnh cắt thực tế bằng (r × √ 2) ở cả x và Z. Khi bạn lập trình bằng cách sử dụng đầu ảo mà không bù đắp, mọi bề mặt góc cạnh đều được gia công dưới kích thước.</p>
-<p>Độ lệch này không đổi đối với bán kính mũi nhất định, đó là lý do tại sao G41/G42 chỉ cần biết giá trị Bán kính trong thanh ghi bù dụng cụ. Điều khiển Tính Toán Hình Học bù dựa trên góc bề mặt tức thời của đường dẫn được lập trình.</p>
-<h2>Bồi thường cho cấu hình bên trong và bên ngoài</h2>
-<p>Đối với bán kính lồi (góc ngoài), bù làm tăng bán kính đường dẫn dụng cụ theo bán kính mũi. Đối với bán kính lõm (góc trong), bán kính đường dẫn giảm theo bán kính mũi. Cả hai trường hợp đều tạo ra cấu hình bộ phận chính xác-nhưng trường hợp bên trong quan trọng hơn vì bù không đủ khiến công cụ cắt góc bên trong.</p>
-<p>Trên bán kính nội bộ, luôn xác minh rằng bán kính đường dẫn bù là dương. Nếu bán kính mũi vượt quá bán kính góc được lập trình, điều khiển không thể duy trì đường viền và tạo ra lỗi hoặc góc nhọn. Bán kính mũi 0.8mm không thể tái tạo góc trong 0.5mm-Bán kính trong có thể lập trình nhỏ nhất bằng bán kính mũi cộng với lề an toàn.</p>
-<h2>Bán kính mũi ảnh hưởng thế nào đến việc quay côn</h2>
-<p>Khi xoay một côn, sai số không Bù có cả thành phần x và Z khác nhau theo góc côn. Lỗi trong hướng x là rất quan trọng vì nó tăng gấp đôi (đo đường kính). Độ côn 10 ° với bán kính mũi 1.2mm tạo ra sai số đường kính khoảng 0.02mm-không đáng kể cho hầu hết công việc. Độ côn 60 ° với cùng bán kính tạo ra lỗi 0.6mm-Thảm Họa cho bất kỳ độ chính xác nào phù hợp.</p>
-<p>Hướng tiếp cận của công cụ cũng quan trọng. Dụng cụ cầm tay bên phải với các cạnh cắt hướng về phần đầu hoạt động khác nhau về bù trừ so với dụng cụ cầm tay bên trái. Các công cụ có góc tiếp cận 90 ° (xoay OD tiêu chuẩn) sử dụng các giá trị bù được hiển thị trong máy tính này; các công cụ có góc tiếp cận 45 ° hoặc 75 ° yêu cầu các giá trị sửa đổi.</p>
-<h2>Giới hạn bồi thường thực tế</h2>
-<p>Bán kính mũi chèn tiêu chuẩn là 0.2, 0.4, 0.8, 1.2, 1.6 và 2.4mm. Bán kính nhỏ nhất có thể tạo ra một góc trong nhất định bằng bán kính góc. Đối với các góc bên ngoài, không có giới hạn thấp hơn-bất kỳ bán kính mũi nào cũng có thể tạo ra bất kỳ góc bên ngoài nào, mặc dù bán kính lớn hơn yêu cầu bồi thường nhiều hơn.</p>
-<p>For general turning, a 0.8 mm nose radius offers the best balance of edge strength, surface finish capability, and compensation range. For finishing work requiring precise internal radii under 1.0 mm, switch to a 0.4 mm radius insert. The <a href="/tools/surface-roughness-calculator/" style="color:#0066cc">Công cụ tính độ nhám bề mặt</a> helps quantify the surface finish trade-off when switching to a smaller nose radius.</p>
-<h2>Câu hỏi thường gặp</h2>
-<p><strong>What is nose radius compensation in CNC turning?</strong> It's the adjustment of the programmed tool path to account for the insert's nose radius. Without it, angled surfaces (chamfers, radii, tapers) are cut undersize by an amount proportional to the nose radius and the surface angle.</p>
-<p><strong>When do I use G41 vs G42?</strong> G42 (tool right of contour) for OD turning. G41 (tool left of contour) for ID boring. On most lathes, OD roughing and finishing use G42. Facing and back-turning may reverse the direction depending on tool orientation.</p>
-<p><strong>How much error does a 0.8 mm nose radius cause on a 45° chamfer?</strong> Approximately 0.47 mm in diameter (X) and 0.23 mm in length (Z). This calculator shows the exact values for your specific parameters.</p>
-<p><strong>Can I skip compensation for small chamfers?</strong> For chamfers under 0.5 mm wide with tolerances of ±0.1 mm, the uncompensated error may be acceptable. For any chamfer over 0.5 mm or any chamfer with a tolerance tighter than ±0.05 mm, compensation is required to hold the dimension.</p>
-<p><strong>Does tool holder orientation affect compensation values?</strong> Yes. Standard OD turning with a right-hand tool (cutting toward the headstock) uses the values shown here. Left-hand tools, back-turning tools, and tools with non-standard approach angles require different compensation vectors. Most CAM systems handle these variations automatically.</p>
-<p><strong>How does nose radius compensation interact with tool wear?</strong> As the nose radius wears, the effective radius increases, and the compensation becomes progressively less accurate. When tool wear causes the actual radius to change by more than 0.05 mm, the compensated path no longer produces the correct profile. This is detectable as a gradual shift in chamfer dimensions or corner radii over the life of the insert.</p>
-<div style="text-align:center;padding:32px 24px;font-size:15px;color:#1d1d1f;background:#f5f5f7;border-radius:16px;max-width:900px;margin:40px auto 0">
-<p style="margin:0">Để chèn với dung sai bán kính mũi phù hợp, hãy kiểm tra các máy xay hiệu suất cao của chúng tôi</p>
-</div>
-</div>
-</section>
-<div class="toolbox-widget"><h3>🔧Hộp công cụ kỹ thuật chính xác</h3><div class="toolbox-links">
-<a href="/tools/speed-feed/">Hướng dẫn về Titan</a>
-<a href="/tools/hardness-converter/">Phân loại tham chiếu</a>
-<a href="/tools/tap-drill-size-calculator/">Chi phí trên mỗi bộ phận</a>
-<a href="/tools/mrr-calculator/">Bộ biến mô</a>
-<a href="/tools/feed-converter/">Yêu cầu báo giá số lượng lớn →</a>
-<a href="/tools/surface-roughness-calculator/">Mũi phay ngón cacbua nguyên khối</a>
-<a href="/tools/titanium-machining-guide/">Giá đựng dụng cụ</a>
-<a href="/tools/carbide-grade-cross-ref-2/">Bàn hợp kim nhôm</a>
-<a href="/tools/cost-per-part-calculator/">Máy tính điểm tiếp tuyến</a>
-<a href="/tools/torque-unit-converter/">Bộ chuyển đổi độ bền kéo</a>
-</div></div>
-<aside class="b2b-card-enhanced" style="margin:32px 0">
-<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
-<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
-<div style="flex:1;min-width:0">
-<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Giải Pháp Chuyên Nghiệp cho Nose Radius Compensation?</h3>
-<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Nhận giá trực tiếp từ nhà máy cho dụng cụ carbide cao cấp với chất lượng chứng nhận ISO.</p>
-</div>
-<a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
-</div>
-<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">Máy tính phay bước</a><a href="/products/tool-holders.html">Công cụ tính toán lượng dư khoan rộng</a></div>
-
-<div class="share-bar">
-<span class="share-label">↗ Share with Engineers</span>
-<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/nose-radius-compensation/" rel="noopener" target="_blank">LinkedIn</a>
-<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/nose-radius-compensation/&amp;text=Nose Radius Compensation" rel="noopener" target="_blank">𝕏</a>
-<a href="mailto:subject=Nose Radius Compensation&amp;body=Check this out: https://carbide-tooling.com/tools/nose-radius-compensation/">Email</a>
-</div>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/vi/tools/superalloy-tool-life/">Superalloy Tool Life</a>
-<a href="/vi/tools/feed-converter/">Feed Converter</a>
-<a href="/vi/tools/thread-pitch-diameter-calculator/">Thread Pitch Diameter Calculator</a>
-<a href="/vi/tools/speed-feed/">Speed Feed</a>
-<a href="/vi/tools/tapping-feed-rate-calculator/">Tapping Feed Rate Calculator</a>
-<a href="/vi/tools/drill-point-length-calculator/">Drill Point Length Calculator</a>
-<a href="/vi/tools/dia-circ-calculator/">Dia Circ Calculator</a>
-<a href="/vi/tools/dovetail-calculator/">Dovetail Calculator</a>
-<a href="/vi/tools/taper-calculator/">Taper Calculator</a>
-<a href="/vi/tools/step-drill-design-calculator/">Step Drill Design Calculator</a>
-
-</div>
-</section>
-<style>
-.engineering-directory a{
-  display:block;
-  font-size:12px;
-  font-weight:500;
-  color:#1d1d1f;
-  text-decoration:none;
-  padding:8px 14px;
-  background:#fff;
-  border-radius:10px;
-  border:1px solid #e8e8ed;
-  transition:all .15s;
-  text-align:center;
-}
-.engineering-directory a:hover{
-  background:#0066cc;
-  color:#fff;
-  border-color:#0066cc;
-  transform:translateY(-1px);
-  box-shadow:0 4px 12px rgba(0,102,204,.15);
-}
-</style>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
-<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/vi/tools/ramping-angle-calculator/">Ramping Angle Calculator</a>
-<a href="/vi/tools/form-tap-drill-calculator/">Form Tap Drill Calculator</a>
-<a href="/vi/tools/percentage-of-thread-calculator/">Percentage Of Thread Calculator</a>
-<a href="/vi/tools/stainless-properties/">Stainless Properties</a>
-<a href="/vi/tools/brass-machining-parameters/">Brass Machining Parameters</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyêtools/brass-machining-parameters/">Brass Machining Parameters</a>
 <a href="/vi/tools/metric-imperial-thread-converter/">Metric Imperial Thread Converter</a>
 <a href="/vi/tools/thread-depth-torque-calculator/">Thread Depth Torque Calculator</a>
 <a href="/vi/tools/toolbox-organizer/">Toolbox Organizer</a>
@@ -612,6 +307,21 @@ calc();
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
+
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
@@ -622,5 +332,6 @@ calc();
 </div>
 <a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
 </div>
+<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
 </body>
 </html>

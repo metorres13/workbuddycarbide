@@ -11,20 +11,7 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
-
-/* Language Switcher - Dropdown with Flags */
-.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
-.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
-.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
-.lang-dropdown{position:relative;display:inline-flex;align-items:center}
-.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
-.lang-menu.show{display:block}
-.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
-.lang-menu a:hover{background:#f5f5f7}
-.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
-.lang-menu a .flag{font-size:16px}
-
+.lang-nav /* Language Switcher - Dropdown with Flags */
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -38,7 +25,18 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){.nav-links{display:none!important}}
+@media(max-width:768px){}
+
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -211,84 +209,45 @@ nav#nav-v2 .nv-logo span{font-weight:800;color:#0066cc}
 nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-shrink:0}
 nav#nav-v2 .nv-links>a{color:#1d1d1f;text-decoration:none;padding:0 14px;height:48px;display:flex;align-items:center;font-weight:500;font-size:12px;transition:color .15s;white-space:nowrap}
 nav#nav-v2 .nv-links>a:hover{color:#0066cc}
+nav#nav-v2 .nv-lang{position:relative;display:flex;align-items:center}
 nav#nav-v2 .nv-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
 nav#nav-v2 .nv-quote{display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:6px 16px;border-radius:24px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap}
 nav#nav-v2 .nv-quote:hover{background:#0055aa;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,204,.25)}
-nav#nav-v2 .nv-lang{display:flex;align-items:center;gap:2px;margin-left:4px;padding-left:8px;border-left:1px solid #e8e8ed}
-nav#nav-v2 .nv-lang a{font-size:10px;font-weight:600;color:#86868b;text-decoration:none;padding:3px 6px;border-radius:12px;transition:all .15s;letter-spacing:.3px}
-nav#nav-v2 .nv-lang a:hover{color:#1d1d1f;background:#f5f5f7}
-nav#nav-v2 .nv-lang a.active{color:#0066cc;background:#f0f7ff;font-weight:700}
-nav#nav-v2 .nv-lang .sep{color:#d2d2d6;font-size:10px;margin:0 1px;font-weight:300}
 @media(max-width:768px){
-  nav#nav-v2 .nv-links{display:none}
-  nav#nav-v2 .nv-lang a{font-size:9px;padding:2px 4px}
+  nav#nav-v2 .nv-inner{flex-wrap:wrap;padding:10px 16px;gap:4px;align-items:center}
+  nav#nav-v2 .nv-logo{font-size:14px;order:0;flex-shrink:0;margin-right:auto}
+  nav#nav-v2 .nv-right{order:1;flex-shrink:0;width:auto;gap:6px}
+  nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-wrap:wrap;order:2;width:100%;justify-content:center;margin-top:2px;padding-top:2px;border-top:1px solid #f0f0f0}
+  nav#nav-v2 .nv-links>a{padding:6px 12px;font-size:11px;height:auto;font-weight:500}
+  nav#nav-v2 .nv-lang{position:relative!important}
+  nav#nav-v2 .lang-dd{right:-30px;min-width:130px}
   nav#nav-v2 .nv-quote{padding:4px 10px;font-size:10px}
 }
 nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important}
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
 </style>
 
 <style id="hero-atmo-style">
-/* ── Hero Atmosphere ── */
-.hero-atmo {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  background: linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 40%, #d2d2d7 100%);
-  margin-bottom: -60px;
-  z-index: 0;
-}
-.hero-atmo::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(0,102,204,.06) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 80% at 80% 40%, rgba(0,0,0,.04) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.95) 90%, #fff 100%);
-}
-.hero-atmo::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 80px;
-  background: linear-gradient(0deg, #fff 0%, transparent 100%);
-}
-/* Image Container - Apple Style */
-.img-container {
-  width: 100%;
-  aspect-ratio: 1;
-  background: #fff;
-  border-radius: 20px;
-  border: 1px solid #d2d2d7;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.img-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #f0f0f3 0%, #e8e8ed 50%, #f0f0f3 100%);
-  color: #c0c0c6;
-  font-size: 48px;
-}
-.img-placeholder::after {
-  content: '◆';
-  font-size: 48px;
-  opacity: .3;
-}
+.hero-atmo{position:relative;width:100%;height:200px;overflow:hidden;background:linear-gradient(180deg,#f5f5f7 0%,#e8e8ed 40%,#d2d2d7 100%);margin-bottom:-60px;z-index:0}
+.hero-atmo::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 50%,rgba(0,102,204,.06) 0%,transparent 50%),radial-gradient(ellipse 60% 80% at 80% 40%,rgba(0,0,0,.04) 0%,transparent 50%),linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.95) 90%,#fff 100%)}
+.hero-atmo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(0deg,#fff 0%,transparent 100%)}
+.img-container{width:100%;aspect-ratio:1;background:#fff;border-radius:20px;border:1px solid #d2d2d7;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
+.img-container img{width:100%;height:100%;object-fit:cover}
+.img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f0f0f3 0%,#e8e8ed 50%,#f0f0f3 100%);color:#c0c0c6;font-size:48px}
+.img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
-
 
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
@@ -297,149 +256,24 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-</head>
-<body>
-
-<div class="hero-img-wrapper">
-<img src="https://images.unsplash.com/1567361808960-3e7f9e3b3de1?w=1200&h=675&fit=crop&q=80&auto=format" alt="Gia công CNC nhôm" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
-<div class="img-overlay"></div>
-</div>
-<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
+<nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/vi/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
-<a href="/vi/">Trang chủ</a>
 <a href="/vi/products/">Sản phẩm</a>
-<a href="/vi/tools/">Công cụ</a>
+<a href="/vi/tools/">Máy Tính &amp; Công Cụ</a>
 <a href="/vi/guides/">Hướng dẫn</a>
 <a href="/vi/about.html">Giới thiệu</a>
 </div>
 <div class="nv-right">
-<div class="nv-lang"><a href="/tools/aluminum-alloy-table/">EN</a><span class="sep">·</span><a href="/de/tools/aluminum-alloy-table/">DE</a><a href="/jp/tools/aluminum-alloy-table/">JP</a><span class="sep">·</span><a href="/es/tools/aluminum-alloy-table/">ES</a><a href="#" onclick="return false" class="active">VI</a></div>
+<div class="nv-lang"><div class="lang-btn" onclick="toggleLangDD(event)"><span class="flag">🇻🇳</span><span>VI</span><span class="caret">▼</span></div><div class="lang-dd" id="lang-dd"><a href="/tools/aluminum-alloy-table" class=""><span class="flag">🇺🇸</span><span class="lbl">EN</span><span class="nm">English</span></a><a href="/de/tools/aluminum-alloy-table" class=""><span class="flag">🇩🇪</span><span class="lbl">DE</span><span class="nm">Deutsch</span></a><a href="/jp/tools/aluminum-alloy-table" class=""><span class="flag">🇯🇵</span><span class="lbl">JP</span><span class="nm">日本語</span></a><a href="/es/tools/aluminum-alloy-table" class=""><span class="flag">🇪🇸</span><span class="lbl">ES</span><span class="nm">Español</span></a><a href="/vi/tools/aluminum-alloy-table" class="current"><span class="flag">🇻🇳</span><span class="lbl">VI</span><span class="nm">Tiếng Việt</span></a></div></div>
 <a class="nv-quote" href="/vi/quote.html">📩 Báo giá</a>
 </div>
 </div>
-</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">Máy tính mrr</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">Độ nhám bề mặt</a> <span style="color:#d2d2d6">›</span> Aluminum Alloy Table</div>
-<section class="hero"><div class="container"><div class="badge">📋 Grade Database</div><h1>5xxx</h1><p>6xxx</p></div></section>
-
-<div class="container">
-<div class="series"><button class="active" onclick="filterAl('all')">Tất cả các công cụ</button><button onclick="filterAl('2')">Kết quả chỉ mang tính tham khảo. Tham khảo ý kiến các nhà sản xuất công cụ cho các ứng dụng cụ thể.</button><button onclick="filterAl('5')">©Dụng cụ cacbua 2026</button><button onclick="filterAl('6')">6061 nhôm: Thành phần &amp; khả năng gia công</button><button onclick="filterAl('7')">Nhôm 6061 là một trong những hợp kim được sử dụng rộng rãi nhất trong gia công CNC, mang lại khả năng chống ăn mòn tuyệt vời, khả năng hàn và độ bền vừa phải. Với xếp hạng khả năng gia công 70%, sản phẩm tạo ra sự hình thành Chip tốt và bề mặt hoàn thiện với tốc độ cắt 600-1,000 sfm. Thành phần cân bằng của magiê và silicon làm cho nó lý tưởng cho các thành phần kết cấu, khung ô tô và vỏ điện tử tiêu dùng nơi cần có độ bền vừa phải và khả năng chống ăn mòn.</button></div>
-<div id="al-table-wrap"></div>
-<div style="text-align:center;margin:24px 0"><a href="/tools/" style="color:#0066cc;font-size:13px">Bộ chuyển đổi độ cứng</a></div></div>
-<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Công cụ chính xác liên quan</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/vi/tools/aql-sampling-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Aql Sampling Calculator</a><a href="/vi/tools/arc-r-to-ij-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Arc R To Ij Converter</a><a href="/vi/tools/automation-vs-manual-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Automation Vs Manual Calculator</a><a href="/vi/tools/plastic-machining/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Plastic Machining</a><a href="/vi/tools/toolbox-organizer/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Toolbox Organizer</a><a href="/vi/tools/tool-steel-heat-treat/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tool Steel Heat Treat</a></div></div><footer class="tool-footer">
-<div class="container">
-<div class="footer-links">
-<a href="/">Máy tính mrr</a>
-<a href="/tools/">Nhôm 7075: ứng dụng cường độ cao</a>
-<a href="/products/">🇯🇵JP</a>
-<a href="/guides/">🇪🇸ES</a>
-<a href="/about.html">🇻🇳VI</a>
-<a href="/quote.html">Bộ chuyển đổi mô-men xoắn</a>
-<a href="/privacy.html">Yêu cầu Báo Giá số lượng lớn →</a>
-</div>
-<div class="footer-social">
-<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Hướng dẫn Lựa chọn lớp</a>
-<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
-<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
-</div>
-<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Nhôm 7075: ứng dụng cường độ cao</a></p>
-<p style="font-size:11px;margin-bottom:6px">Nhôm 7075 là hợp kim thích hợp cho các ứng dụng hàng không vũ trụ và căng thẳng cao, có độ bền kéo tương đương với nhiều loại thép. Kẽm của nó là yếu tố hợp kim Chính mang lại khả năng gia công 50%, yêu cầu các công cụ sắc nét hơn và tốc độ giảm khoảng 300-600 sfm. Các ứng dụng phổ biến bao gồm các bộ phận kết cấu máy bay, thiết bị leo núi và các bộ phận xe đạp hiệu suất cao, nơi tiết kiệm trọng lượng và sức mạnh là rất quan trọng.</p>
-<p style="font-size:11px">Lựa chọn hợp kim phù hợp cho công việc CNC của bạn</p>
-</div>
-<section class="seo"><div class="container">
-<h2>Sự lựa chọn giữa 6061 và 7075 Phụ thuộc vào yêu cầu bộ phận cụ thể của bạn: 6061 cung cấp khả năng chống ăn mòn và khả năng hàn tốt hơn với chi phí thấp hơn, trong khi 7075 cung cấp tỷ lệ sức mạnh/Trọng lượng vượt trội ở mức cao. Đối với việc tạo mẫu và gia công thông thường, 6061 thường được ưu tiên. Đối với các bộ phận sản xuất chịu tải trọng theo chu kỳ cao, độ bền mỏi của 7075 chứng minh chi phí vật liệu bổ sung.</h2><p>Câu hỏi thường gặp</p>
-<h2>Hợp kim nhôm nào dễ nhất cho máy nhất? nhôm 6061 được coi là hợp kim phổ biến nhất có thể gia công, tạo ra sự vỡ chip nhất quán và bề mặt hoàn thiện tuyệt vời. 7075 đòi hỏi sự chú ý nhiều hơn đến độ sắc nét và tốc độ của dụng cụ. Đối với các hình học phức tạp với dung sai chặt chẽ, 6061 thường là lựa chọn an toàn hơn.</h2><p>Tôi có thể sử dụng cùng dụng cụ cho 6061 và 7075 không? Vâng, với điều chỉnh. Máy nghiền cacbua hoạt động tốt cho cả hai hợp kim. Giảm tốc độ trục chính 30-40% khi chuyển từ 6061 sang 7075 và đảm bảo lưu lượng nước làm mát đầy đủ để quản lý lực cắt cao hơn là 7075.</p>
-<h2>Xử lý nhiệt có ảnh hưởng đến khả năng gia công của các hợp kim này không? vâng. 6061-T6 và 7075-t6 là nhiệt độ phổ biến nhất để gia công. Điều kiện T6 cung cấp độ bền tốt trong khi vẫn duy trì khả năng gia công chấp nhận được. Nhiệt độ quá tuổi có thể làm giảm sức mạnh nhưng tạo hình Chip tốt hơn một chút.</h2><p>⚡Đã tính toán cho dòng r Carbide-Tooling.com hiệu suất cao. Xem danh mục →</p>
-<h2>🔧Hộp công cụ kỹ thuật chính xác</h2>
-<p><strong>Which aluminum alloy is easiest to machine?</strong> 6061 aluminum is considered the most machinable common alloy, producing consistent chip breakage and excellent surface finishes. 7075 requires more attention to tool sharpness and speeds. For complex geometries with tight tolerances, 6061 is typically the safer choice.</p>
-<p><strong>Can I use the same tooling for 6061 and 7075?</strong> Yes, with adjustments. Carbide end mills work well for both alloys. Reduce spindle speed by 30–40% when switching from 6061 to 7075, and ensure adequate coolant flow to manage the higher cutting forces of 7075.</p>
-<p><strong>Does heat treatment affect machinability of these alloys?</strong> Yes. 6061-T6 and 7075-T6 are the most common tempers for machining. The T6 condition provides good strength while maintaining acceptable machinability. Over-aged tempers may reduce strength but offer slightly better chip formation.</p>
-<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">Máy tính Thời gian chu kỳ</a></p>
-</div></section>
-</footer>
-<script>
-const ALUM=[{g:'2024',s:'2',ts:'470',y:'325',el:'10%',hb:'120',use:'Aerospace structures'},{g:'2014',s:'2',ts:'485',y:'415',el:'13%',hb:'135',use:'Heavy-duty forgings'},{g:'5052',s:'5',ts:'230',y:'170',el:'12%',hb:'60',use:'Marine, fuel tanks'},{g:'5083',s:'5',ts:'300',y:'228',el:'16%',hb:'89',use:'Shipbuilding, pressure'},{g:'6061',s:'6',ts:'310',y:'276',el:'12%',hb:'95',use:'General structural'},{g:'6063',s:'6',ts:'240',y:'210',el:'12%',hb:'80',use:'Extrusions, profiles'},{g:'6082',s:'6',ts:'330',y:'280',el:'10%',hb:'100',use:'European structural'},{g:'7075',s:'7',ts:'570',y:'505',el:'11%',hb:'150',use:'Aerospace, molds'},{g:'7050',s:'7',ts:'510',y:'455',el:'10%',hb:'140',use:'Aerospace plate'}];
-function filterAl(s){document.querySelectorAll('.series button').forEach(b=>b.classList.toggle('active',b.textContent===s||(s==='all'&&b.textContent==='All')));const rows=s==='all'?ALUM:ALUM.filter(a=>a.s===s);document.getElementById('al-table-wrap').innerHTML=`<table class="al-table"><tr><th>Grade</th><th>Series</th><th>Tensile (MPa)</th><th>Yield (MPa)</th><th>Elong</th><th>HB</th><th>Use</th></tr>${rows.map(r=>`<tr><td><b>${r.g}</b></td><td>${r.s}xxx</td><td>${r.ts}</td><td>${r.y}</td><td>${r.el}</td><td>${r.hb}</td><td>${r.use}</td></tr>`).join('')}</table>`;}
-filterAl('all');
-</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><div class="toolbox-widget"><h3>Hướng dẫn</h3><div class="toolbox-links">
-<a href="/tools/speed-feed/">Máy Tính chi phí kim loại</a>
-<a href="/tools/hardness-converter/">Bộ chọn lớp phủ</a>
-<a href="/tools/tap-drill-size-calculator/">Máy tính góc ramping</a>
-<a href="/tools/mrr-calculator/">Quyền riêng tư</a>
-<a href="/tools/feed-converter/">Tự động hóa và thủ công</a>
-<a href="/tools/surface-roughness-calculator/">trong</a>
-<a href="/tools/titanium-machining-guide/">Máy tính xoay phối hợp</a>
-<a href="/tools/carbide-grade-cross-ref-2/">Liên kết trong</a>
-<a href="/tools/cost-per-part-calculator/">Thư điện tử</a>
-<a href="/tools/torque-unit-converter/">Torque Converter</a>
-</div></div>
-<aside class="b2b-card-enhanced" style="margin:32px 0">
-<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
-<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
-<div style="flex:1;min-width:0">
-<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Giải Pháp Chuyên Nghiệp cho Aluminum Alloy Table?</h3>
-<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Nhận giá trực tiếp từ nhà máy cho dụng cụ carbide cao cấp với chất lượng chứng nhận ISO.</p>
-</div>
-<a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
-</div>
-<div class="product-links"><span>🔗 Recommended:</span><a href="/products/carbide-grades.html">Grade Selection Guide</a><a href="/guides/insert-grade-selection.html">Insert Grade Inquiry</a></div>
-
-<div class="share-bar">
-<span class="share-label">↗ Share with Engineers</span>
-<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/aluminum-alloy-table/" rel="noopener" target="_blank">LinkedIn</a>
-<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/aluminum-alloy-table/&amp;text=Aluminum Alloy Table" rel="noopener" target="_blank">𝕏</a>
-<a href="mailto:subject=Aluminum Alloy Table&amp;body=Check this out: https://carbide-tooling.com/tools/aluminum-alloy-table/">Email</a>
-</div>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav>
+class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/vi/tools/carbide-grade-cross-ref-2/">Carbide Grade Cross Ref 2</a>
-<a href="/vi/tools/die-steel-thermal-conductivity/">Die Steel Thermal Conductivity</a>
-<a href="/vi/tools/grade-reference/">Grade Reference</a>
-<a href="/vi/tools/reaming-allowance-calculator/">Reaming Allowance Calculator</a>
-<a href="/vi/tools/round-bar-weight/">Round Bar Weight</a>
-<a href="/vi/tools/surface-roughness-calculator/">Surface Roughness Calculator</a>
-<a href="/vi/tools/arc-r-to-ij-converter/">Arc R To Ij Converter</a>
-<a href="/vi/tools/taper-calculator/">Taper Calculator</a>
-<a href="/vi/tools/metal-weight-calculator/">Metal Weight Calculator</a>
-<a href="/vi/tools/speed-feed/">Speed Feed</a>
-
-</div>
-</section>
-<style>
-.engineering-directory a{
-  display:block;
-  font-size:12px;
-  font-weight:500;
-  color:#1d1d1f;
-  text-decoration:none;
-  padding:8px 14px;
-  background:#fff;
-  border-radius:10px;
-  border:1px solid #e8e8ed;
-  transition:all .15s;
-  text-align:center;
-}
-.engineering-directory a:hover{
-  background:#0066cc;
-  color:#fff;
-  border-color:#0066cc;
-  transform:translateY(-1px);
-  box-shadow:0 4px 12px rgba(0,102,204,.15);
-}
-</style>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
-<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/vi/tools/ball-nose-effective-diameter/">Ball Nose Effective Diameter</a>
-<a href="/vi/tools/brass-machining-parameters/">Brass Machining Parameters</a>
-<a href="/vi/tools/machine-power-calculator/">Machine Power Calculator</a>
-<a href="/vi/tools/surface-speed/">Surface Speed</a>
-<a href="/vi/tools/tangent-point-calculator/">Tangent Point Calculator</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyêt-calculator/">Tangent Point Calculator</a>
 <a href="/vi/tools/temp-converter/">Temp Converter</a>
 <a href="/vi/tools/tool-life-economics/">Tool Life Economics</a>
 <a href="/vi/tools/tapping-feed-rate-calculator/">Tapping Feed Rate Calculator</a>
@@ -469,6 +303,21 @@ filterAl('all');
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
+
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
@@ -479,4 +328,5 @@ filterAl('all');
 </div>
 <a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
 </div>
+<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
 </body></html>

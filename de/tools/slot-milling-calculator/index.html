@@ -76,20 +76,7 @@ footer a{color:#0066cc;text-decoration:none}
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
-
-/* Language Switcher - Dropdown with Flags */
-.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
-.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
-.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
-.lang-dropdown{position:relative;display:inline-flex;align-items:center}
-.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
-.lang-menu.show{display:block}
-.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
-.lang-menu a:hover{background:#f5f5f7}
-.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
-.lang-menu a .flag{font-size:16px}
-
+.lang-nav /* Language Switcher - Dropdown with Flags */
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -103,7 +90,18 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){.nav-links{display:none!important}}
+@media(max-width:768px){}
+
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -212,84 +210,45 @@ nav#nav-v2 .nv-logo span{font-weight:800;color:#0066cc}
 nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-shrink:0}
 nav#nav-v2 .nv-links>a{color:#1d1d1f;text-decoration:none;padding:0 14px;height:48px;display:flex;align-items:center;font-weight:500;font-size:12px;transition:color .15s;white-space:nowrap}
 nav#nav-v2 .nv-links>a:hover{color:#0066cc}
+nav#nav-v2 .nv-lang{position:relative;display:flex;align-items:center}
 nav#nav-v2 .nv-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
 nav#nav-v2 .nv-quote{display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:6px 16px;border-radius:24px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap}
 nav#nav-v2 .nv-quote:hover{background:#0055aa;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,204,.25)}
-nav#nav-v2 .nv-lang{display:flex;align-items:center;gap:2px;margin-left:4px;padding-left:8px;border-left:1px solid #e8e8ed}
-nav#nav-v2 .nv-lang a{font-size:10px;font-weight:600;color:#86868b;text-decoration:none;padding:3px 6px;border-radius:12px;transition:all .15s;letter-spacing:.3px}
-nav#nav-v2 .nv-lang a:hover{color:#1d1d1f;background:#f5f5f7}
-nav#nav-v2 .nv-lang a.active{color:#0066cc;background:#f0f7ff;font-weight:700}
-nav#nav-v2 .nv-lang .sep{color:#d2d2d6;font-size:10px;margin:0 1px;font-weight:300}
 @media(max-width:768px){
-  nav#nav-v2 .nv-links{display:none}
-  nav#nav-v2 .nv-lang a{font-size:9px;padding:2px 4px}
+  nav#nav-v2 .nv-inner{flex-wrap:wrap;padding:10px 16px;gap:4px;align-items:center}
+  nav#nav-v2 .nv-logo{font-size:14px;order:0;flex-shrink:0;margin-right:auto}
+  nav#nav-v2 .nv-right{order:1;flex-shrink:0;width:auto;gap:6px}
+  nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-wrap:wrap;order:2;width:100%;justify-content:center;margin-top:2px;padding-top:2px;border-top:1px solid #f0f0f0}
+  nav#nav-v2 .nv-links>a{padding:6px 12px;font-size:11px;height:auto;font-weight:500}
+  nav#nav-v2 .nv-lang{position:relative!important}
+  nav#nav-v2 .lang-dd{right:-30px;min-width:130px}
   nav#nav-v2 .nv-quote{padding:4px 10px;font-size:10px}
 }
 nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important}
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
 </style>
 
 <style id="hero-atmo-style">
-/* ── Hero Atmosphere ── */
-.hero-atmo {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  background: linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 40%, #d2d2d7 100%);
-  margin-bottom: -60px;
-  z-index: 0;
-}
-.hero-atmo::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(0,102,204,.06) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 80% at 80% 40%, rgba(0,0,0,.04) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.95) 90%, #fff 100%);
-}
-.hero-atmo::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 80px;
-  background: linear-gradient(0deg, #fff 0%, transparent 100%);
-}
-/* Image Container - Apple Style */
-.img-container {
-  width: 100%;
-  aspect-ratio: 1;
-  background: #fff;
-  border-radius: 20px;
-  border: 1px solid #d2d2d7;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.img-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #f0f0f3 0%, #e8e8ed 50%, #f0f0f3 100%);
-  color: #c0c0c6;
-  font-size: 48px;
-}
-.img-placeholder::after {
-  content: '◆';
-  font-size: 48px;
-  opacity: .3;
-}
+.hero-atmo{position:relative;width:100%;height:200px;overflow:hidden;background:linear-gradient(180deg,#f5f5f7 0%,#e8e8ed 40%,#d2d2d7 100%);margin-bottom:-60px;z-index:0}
+.hero-atmo::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 50%,rgba(0,102,204,.06) 0%,transparent 50%),radial-gradient(ellipse 60% 80% at 80% 40%,rgba(0,0,0,.04) 0%,transparent 50%),linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.95) 90%,#fff 100%)}
+.hero-atmo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(0deg,#fff 0%,transparent 100%)}
+.img-container{width:100%;aspect-ratio:1;background:#fff;border-radius:20px;border:1px solid #d2d2d7;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
+.img-container img{width:100%;height:100%;object-fit:cover}
+.img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f0f0f3 0%,#e8e8ed 50%,#f0f0f3 100%);color:#c0c0c6;font-size:48px}
+.img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
-
 
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
@@ -298,297 +257,24 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-</head>
-<body>
-
-<div class="hero-img-wrapper">
-<img src="https://images.unsplash.com/1565193566165-24e2f9e7e80c?w=1200&h=675&fit=crop&q=80&auto=format" alt="CNC-Fräsgeschwindigkeit und Vorschub" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
-<div class="img-overlay"></div>
-</div>
-<div class="hero-atmo" aria-hidden="true"></div>
 <nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/de/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
-<a href="/de/">Start</a>
 <a href="/de/products/">Produkte</a>
-<a href="/de/tools/">Werkzeuge</a>
+<a href="/de/tools/">Rechner &amp; Werkzeuge</a>
 <a href="/de/guides/">Anleitungen</a>
 <a href="/de/about.html">Über uns</a>
 </div>
 <div class="nv-right">
-<div class="nv-lang"><a href="/tools/slot-milling-calculator/">EN</a><span class="sep">·</span><a href="#" onclick="return false" class="active">DE</a><a href="/jp/tools/slot-milling-calculator/">JP</a><span class="sep">·</span><a href="/es/tools/slot-milling-calculator/">ES</a><a href="/vi/tools/slot-milling-calculator/">VI</a></div>
+<div class="nv-lang"><div class="lang-btn" onclick="toggleLangDD(event)"><span class="flag">🇩🇪</span><span>DE</span><span class="caret">▼</span></div><div class="lang-dd" id="lang-dd"><a href="/tools/slot-milling-calculator" class=""><span class="flag">🇺🇸</span><span class="lbl">EN</span><span class="nm">English</span></a><a href="/de/tools/slot-milling-calculator" class="current"><span class="flag">🇩🇪</span><span class="lbl">DE</span><span class="nm">Deutsch</span></a><a href="/jp/tools/slot-milling-calculator" class=""><span class="flag">🇯🇵</span><span class="lbl">JP</span><span class="nm">日本語</span></a><a href="/es/tools/slot-milling-calculator" class=""><span class="flag">🇪🇸</span><span class="lbl">ES</span><span class="nm">Español</span></a><a href="/vi/tools/slot-milling-calculator" class=""><span class="flag">🇻🇳</span><span class="lbl">VI</span><span class="nm">Tiếng Việt</span></a></div></div>
 <a class="nv-quote" href="/de/quote.html">📩 Angebot</a>
 </div>
 </div>
 </nav>
-<section class="hero">
-<div class="container">
-<div class="badge">🔧 Free Professional Tool</div>
-<h1>Schruppen-Rechner</h1>
-<p>Berechnen Sie sichere Schnittgeschwindigkeiten und Vorschübe für das Schlitzen über die gesamte Werkstückbreite sowie für das Herstellen von Keilnuten. Das Slot fräsen greift mit 180 ° in das Werkzeug ein-die Vorschub raten müssen reduziert werden, um einen Werkzeug ausfall zu verhindern.</p>
-<div class="hero-actions">
-<a class="btn" href="#calculator">Berechnung starten ↓</a>
-<a class="btn-outline" href="https://carbide-tooling.com/quote.html">📩Erhalten Sie ein Präzisionsangebot</a>
-</div>
-</div>
-</section>
-<section class="container" id="calculator" style="padding-bottom:40px">
-<div class="card">
-<h2>🔧Slot &amp; Keyway Fräsen</h2>
-<p class="sub">Das Schlitzen mit voller Breite (ae = D) ist der anspruchs vollste Fräs vorgang. Die Vorschub raten müssen für die Evakuierung von Chips und die Wärme konzentration ver antwort lich sein.</p>
-<div class="card-row">
-<div class="field"><label>🔩Material</label>
-<select id="material" onchange="calc()">
-<option value="al6061">Aluminum 6061</option>
-<option selected="" value="ss304">Stainless Steel 304</option>
-<option value="mild_steel">Mild Steel 1018</option>
-<option value="ti6al4v">Titanium Grade 5</option>
-</select>
-</div>
-<div class="field"><label>📐Werkzeugdurchmesser (mm)</label>
-<input id="dia" max="50" min="1" oninput="calc()" step="0.5" type="number" value="10"/>
-<span style="font-size:10px;color:#86868b">Slot width = tool diameter</span>
-</div>
-<div class="field"><label>🦷Flöten</label>
-<select id="flutes" onchange="calc()"><option value="2">2</option><option value="3">3</option><option selected="" value="4">4</option><option value="5">5</option><option value="6">6</option></select>
-</div>
-<div class="field"><label>⏬Slot Tiefe (mm)</label>
-<input id="depth" max="30" min="0.1" oninput="calc()" step="0.5" type="number" value="5"/>
-</div>
-<div class="field"><label>📏Slot Länge (mm)</label>
-<input id="length" max="1000" min="1" oninput="calc()" step="5" type="number" value="50"/>
-</div>
-<div class="field"><label>🔧Pass-Typ</label>
-<select id="pass-type" onchange="calc()">
-<option value="single">Single pass (full depth)</option>
-<option selected="" value="multi">Multiple passes (peck)</option>
-</select>
-</div>
-<div class="field"><label>⚡Schnittgeschwindigkeit (Vc m/min)</label>
-<input id="vc" max="2000" min="10" oninput="calc()" step="10" type="number" value="120"/>
-</div>
-<div class="field"><label>📊Spanbelastung-fz (mm)</label>
-<input id="fz" max="1" min="0.001" oninput="calc()" step="0.005" type="number" value="0.04"/>
-</div>
-</div>
-<div class="result-grid">
-<div class="result-item"><div class="label">RPM</div><div class="value" id="r-rpm">—</div><div class="unit">RPM</div></div>
-<div class="result-item"><div class="label">Slotting Vorschub Rate</div><div class="value" id="r-feed">—</div><div class="unit">mm/min</div></div>
-<div class="result-item"><div class="label">vs Side Milling Vorschub</div><div class="value warning" id="r-reduction">—</div><div class="unit">% reduction</div></div>
-<div class="result-item"><div class="label">Cut Time (this slot)</div><div class="value" id="r-time">—</div><div class="unit">seconds</div></div>
-</div>
-<div class="extra-info">
-<span>Side milling feed (for comparison): <span class="val" id="x-side">—</span> mm/min</span>
-<span style="color:#d2d2d6">|</span>
-<span>Material removed: <span class="val" id="x-mrr">—</span> cm³</span>
-<span style="color:#d2d2d6">|</span>
-<span>Max slot depth per pass: <span class="val" id="x-maxdepth">—</span> mm</span>
-</div>
-</div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px">
-<a href="/tools/trochoidal-milling-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f">
-<div style="font-size:20px">🌀</div><h4 style="font-size:14px;font-weight:600;margin:4px 0 2px">Trochoide Fräsberechnung</h4>
-<p style="font-size:12px;color:#86868b">Bei breiten Schlitzen können Troch oidal pfade das herkömmliche Schlitzen übertreffen.</p>
-</a>
-<a href="/tools/force-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f">
-<div style="font-size:20px">💪</div><h4 style="font-size:14px;font-weight:600;margin:4px 0 2px">Fräskraftrechner</h4>
-<p style="font-size:12px;color:#86868b">Das Stotzen verdoppelt die Schnitt kräfte-überprüfen Sie die Werkzeug grenzen.</p>
-</a>
-</div>
-</section>
-<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Verwandte Präzisionswerkzeuge</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/de/tools/scrap-value-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Scrap Value Calculator</a><a href="/de/tools/sfm-m-min-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Sfm M Min Converter</a><a href="/de/tools/shipping-duty-estimator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Shipping Duty Estimator</a><a href="/de/tools/tapping-feed-rate-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tapping Feed Rate Calculator</a><a href="/de/tools/torque-unit-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Torque Unit Converter</a><a href="/de/tools/tool-life-economics/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tool Life Economics</a></div></div><footer class="tool-footer">
-<div class="container">
-<div class="footer-links">
-<a href="/">Startseite</a>
-<a href="/tools/">Alle Werkzeuge</a>
-<a href="/products/">Produkte</a>
-<a href="/guides/">Führer</a>
-<a href="/about.html">Über</a>
-<a href="/quote.html">Härtekonverter</a>
-<a href="/privacy.html">Bohrergröße für Gewindebohrungen</a>
-</div>
-<div class="footer-social">
-<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">MRR-Rechner</a>
-<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
-<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
-</div>
-<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Alle Werkzeuge</a></p>
-<p style="font-size:11px;margin-bottom:6px">Die Ergebnisse dienen ausschließlich als Referenz. Wenden Sie sich bei spezifischen Anwendungen an die Hersteller der Werkzeuge.</p>
-<p style="font-size:11px">©2026 Hartmetallwerkzeuge</p>
-</div>
-</footer>
-<script>
-const MATS = {
- al6061:{feedReduction:0.5,docMult:1.5,sideVorschub:1.0,label:'Aluminum'},
- ss304:{feedReduction:0.35,docMult:0.8,sideVorschub:1.0,label:'Stainless 304'},
- mild_steel:{feedReduction:0.45,docMult:1.0,sideVorschub:1.0,label:'Mild Steel'},
- ti6al4v:{feedReduction:0.3,docMult:0.5,sideVorschub:1.0,label:'Titanium'},
-};
-
-function calc() {
- const mat = MATS[document.getElementById('material').value];
- const dia = parseFloat(document.getElementById('dia').value) || 10;
- const z = parseInt(document.getElementById('flutes').value) || 4;
- const depth = parseFloat(document.getElementById('depth').value) || 5;
- const length = parseFloat(document.getElementById('length').value) || 50;
- const passType = document.getElementById('pass-type').value;
- const vc = parseFloat(document.getElementById('vc').value) || 120;
- const fz = parseFloat(document.getElementById('fz').value) || 0.04;
-
- const rpm = dia > 0 ? (vc * 1000) / (Math.PI * dia) : 1000;
-
- // Side milling feed (full chip load)
- const sideVorschub = rpm * z * fz;
-
- // Slotting feed reduction
- const reductionPct = mat.feedReduction;
- const slotVorschub = sideVorschub * reductionPct;
-
- // Vorschub reduction percentage display
- const feedReductionDisplay = Math.round((1 - reductionPct) * 100);
-
- // Max depth per pass
- const maxDepth = dia * mat.docMult;
-
- // Number of passes
- const numPasses = passType === 'single' ? 1 : Math.ceil(depth / (dia * 0.75));
-
- // Actual depth per pass
- const actDepthPerPass = Math.min(depth, numPasses > 0 ? depth / numPasses : depth);
-
- // Cutting time per pass (with approach allowance)
- const approachLen = dia * 1.5;
- const cutDistPerPass = length + approachLen;
- const cutTimePerPassMin = slotVorschub > 0 ? cutDistPerPass / slotVorschub : 0;
- const retractTime = 2; // seconds per retract
- const totalCutTimeSec = cutTimePerPassMin * 60 * numPasses + retractTime * (numPasses - 1);
-
- // Material removed
- const slotVol = (Math.PI * dia * dia / 4 * length / 1000); // cm³ (simplified)
-
- // MRR
- const mrr = (actDepthPerPass * dia * slotVorschub) / 1000;
-
- document.getElementById('r-rpm').textContent = Math.round(rpm);
- document.getElementById('r-feed').textContent = Math.round(slotVorschub);
- document.getElementById('r-reduction').textContent = feedReductionDisplay;
- document.getElementById('r-time').textContent = totalCutTimeSec.toFixed(1);
- document.getElementById('x-side').textContent = Math.round(sideVorschub);
- document.getElementById('x-mrr').textContent = slotVol.toFixed(1);
- document.getElementById('x-maxdepth').textContent = maxDepth.toFixed(1);
-}
-
-calc();
-</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
-<section class="seo-content">
-<div class="container">
-<h2>Slot Fräsen ist nicht seitlich Fräsen</h2>
-<p>Ein Programmierer, der Schlitz fräsen wie Seiten fräsen behandelt, bricht Werkzeuge. Beim Seiten fräsen ist das Werkzeug über 30-50% seines Durchmessers in Eingriff-Späne haben Raum zum Formen und Austritt, Kühlmittel erreicht die Schneid zone und die Schnitt kräfte werden über den eingerastenen Lichtbogen verteilt. Beim Schlitz fräsen wird das Werkzeug bei 180 ° Eingriff im Schnitt vergraben. Jede Flöte schneidet von der Einfahrt bis zur Ausfahrt. Chips müssen beide Seiten der Flöten gleichzeitig hinauf wandern. Kühlmittel kämpft darum, die volle Schneide zu erreichen. Die Schnitt kräfte sind 2-3 × höher als bei einem äquivalenten Seiten fräs durchlauf.</p>
-<p>Die Lösung ist nicht kompliziert: Reduzieren Sie die Vorschub rate. Aber wie viel? Die Standard-Seitenfräs vorschub raten müssen zum Schlitzen je nach Material und Schlitz tiefe um 40-60% reduziert werden. Dieser Rechner wendet materials pezi fische Reduktion faktoren an, sodass Sie nicht raten müssen.</p>
-<h2>Warum die Chip-Evakuierung die Preise für das Fräsen von Slot begrenzt</h2>
-<p>In einem Schlitz mit voller Breite muss sich der von jeder Flöte erzeugte Chip über die gesamte Länge der Flöte bewegen, um den Schnitt zu verlassen. In tiefen Schlitzen (Tiefe&gt; 2 × Durchmesser) kann sich der Chip 30-50mm bewegen, bevor das Werkzeug entfernt wird. Ist die Vorschub geschwindigkeit zu hoch, übersteigt das Chip volumen das Flöten volumen und das Werkzeug packt mit Chips. Beim Packen bleibt die Vorschub rate stehen, die Spindel last steigt und das Werkzeug an der Flöten wurzel bricht.</p>
-<p>Zwei-Flöten-Werkzeuge evakuieren Chips beim Schlitzen besser als Vier-Flöten-Werkzeuge, da zwischen den Schneid kanten mehr physischer Raum ist. Aus diesem Grund kann eine 2-Flöten-Endmühle mit 60% ihrer normalen Vorschub rate eine 4-Flöten-Endmühle bei 50% ihres normalen Vorschubs übertreffen-das 2-Flöten-Werkzeug löscht Chips effektiver und kann ein höheres effektives Vorschub aufrechterhalten.</p>
-<h2>Pecking gegen Single-Pass-Slot ting</h2>
-<p>Für Schlitze, die tiefer als 1 × Werkzeug durchmesser sind, wird das Picken (mehrere flache Pässe) empfohlen. Jeder Peck sollte einen Durchmesser von 0,5 bis 1 × tief haben, mit einem vollständigen Rückziehen zwischen den Picks, um Späne zu reinigen und das Kühlmittel die Schneid zone erreichen zu lassen. Das Einpass schlitzen über die Tiefe von 1,5 × Durchmesser hinaus erfordert reduzierte Vorschub raten und sollte nur mit Durchgangs spindel kühlmittel versucht werden.</p>
-<p>Das Anpecken verlängert die Zeit für das Ein-und Wieder eintritt, ermöglicht jedoch höhere Vorschub raten während des Schneid abschnitts. Die Netto zykluszeit begünstigt häufig das Picken von tiefen Schlitzen, da das Schneid futter 1,5 bis 2 × höher sein kann als das Einzel pass futter. Der Zyklus-Zeit-Rechner kann helfen, die optimale Anzahl von Pecks für Ihre spezifische Slot-Geometrie zu bestimmen.</p>
-<h2>Keyway Fräsen: Besondere Überlegungen</h2>
-<p>Keyways werden normaler weise auf enge Toleranzen (H7/h7-Passungen) geschnitten und erfordern einen Zielpass. Der Schruppen pass sollte den Standard fräs parametern des Schlitzes mit einer End zugabe von 0,2 bis 0,5mm pro Seite folgen. Der Zielpass benötigt 0,1-0,2mm pro Seite bei 60-70% der Schrupp vorschub rate, um die erforderliche Oberflächen beschaffenheit und Maß genauigkeit zu erreichen.</p>
-<p>Schlüssels ch neider (Woodruff-und Schlüssels itz schneider) haben eine andere Geometrie als Standard-Schaftfräser. Sie haben typischer weise weniger Flöten (2-3) und einen größeren Kern durchmesser für die Steifigkeit. Die Zuführungen und Geschwindigkeiten dieses Rechners gelten für Standard-Schaftfräser, die Schlüssel wege schneiden. Konsultieren Sie für dedizierte Schlüssels itz schneider die Empfehlungen des Herstellers.</p>
-<h2>Kühlmittels trategie für das Fräsen von Slot</h2>
-<p>Hochwasser kühlmittel am Werkzeug einstiegs punkt ist die Mindest anforderung für Schlitz fräsen in Stahl und Edelstahl. Der Kühlmittels trom muss die Schneid zone erreichen-nicht nur die Oberseite des Werkstücks. Bei Schlitzen mit einer Tiefe von mehr als 20 mm verbessert das Durchgangs spindel kühlmittel bei 20 bar die Späne vakuierung und die Werkzeug lebensdauer erheblich. In Aluminium ist Druckluft oft ausreichend und bevorzugtes Kühlmittel kann bei hohen Vorschub raten einen thermischen Schock in Aluminium verursachen.</p>
-<p>MQL (Mindestmenge schmierung) ist wirksam zum Schlitzen in Aluminium und Weich stahl. Der Öl nebel reduziert die Reibung an der Chip-Tool-Schnitts telle, ohne den thermischen Gradienten zu erzeugen, den das Hochwasser kühlmittel erzeugt. Für Edelstahl und Titan ist Hochdruck-Durch spindel kühlmittel bei 50 bar die einzige zuverlässige Kühlmittels trategie zum Schlitzen.</p>
-<h2>Häufig gestellte Fragen</h2>
-<p><strong>What is slot milling?</strong> A milling operation where the tool is engaged across its full diameter (180° engagement), cutting a slot in a single pass. It is the most demanding milling operation due to restricted chip evacuation and high cutting forces.</p>
-<p><strong>How much should I reduce feed rate for slotting?</strong> Vorschub rate should be reduced by 40-60% compared to side milling at the same chip load. The exact reduction depends on material, slot depth, and tool geometry. This calculator computes the safe reduction automatically.</p>
-<p><strong>Can I use the same RPM for slotting as side milling?</strong> RPM should be slightly reduced (10-20%) for slotting to reduce heat generation at the tool center. The calculator's RPM value accounts for this reduction.</p>
-<p><strong>How deep can I cut in one pass for slot milling?</strong> For aluminum, up to 1.5× tool diameter in a single pass. For steel and stainless, limit single-pass depth to 1× tool diameter. For titanium, do not exceed 0.5× diameter per pass without through-spindle coolant.</p>
-<p><strong>What is the best flute count for slot milling?</strong> 2-3 flutes are preferred for slotting because they provide more chip evacuation space. 4-flute tools can be used for finishing passes where the depth per pass is low and chip volume is small.</p>
-<p><strong>When should I use trochoidal milling instead of slotting?</strong> For slots wider than 2× tool diameter, trochoidal milling with a smaller tool produces higher MRR and better tool life than conventional slotting with a full-width tool. Use the <a href="/tools/trochoidal-milling-calculator/" style="color:#0066cc">Trochoide Fräsberechnung</a> to compare both approaches.</p>
-<div style="text-align:center;padding:32px 24px;font-size:15px;color:#1d1d1f;background:#f5f5f7;border-radius:16px;max-width:900px;margin:40px auto 0">
-<p style="margin:0">Für Schlit fräser mit optimierter Flöten geometrie überprüfen Sie unsere Hochleistungs-Schaftfräser</p>
-</div>
-</div>
-</section>
-<div class="toolbox-widget"><h3>🔧Werkzeugkasten der Präzisionstechnik</h3><div class="toolbox-links">
-<a href="/tools/speed-feed/">Titanführung</a>
-<a href="/tools/hardness-converter/">Notenübereinstimmung</a>
-<a href="/tools/tap-drill-size-calculator/">Kosten pro Teil</a>
-<a href="/tools/mrr-calculator/">Drehmomentwandler</a>
-<a href="/tools/feed-converter/">Massenanfrage stellen →</a>
-<a href="/tools/surface-roughness-calculator/">Vollhartmetall-Schaftfräser</a>
-<a href="/tools/titanium-machining-guide/">Werkzeughalter</a>
-<a href="/tools/carbide-grade-cross-ref-2/">Notenreferenz</a>
-<a href="/tools/cost-per-part-calculator/">Schrottwertrechner</a>
-<a href="/tools/torque-unit-converter/">Kosten des Kühlmittel-Lebenszyklus</a>
-</div></div>
-<aside class="b2b-card-enhanced" style="margin:32px 0">
-<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
-<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
-<div style="flex:1;min-width:0">
-<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Professionelle Lösungen für Slot Milling Calculator?</h3>
-<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Erhalten Sie werkseitige Preise für Premium-Hartmetallwerkzeuge mit ISO-zertifizierter Qualität.</p>
-</div>
-<a href="/de/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Massenangebot anfordern →</a>
-</div>
-<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">Gussbearbeitungsrechner</a><a href="/products/tool-holders.html">Werkzeugstandzeit-Schätzer für Superlegierungen</a></div>
-
-<div class="share-bar">
-<span class="share-label">↗ Share with Engineers</span>
-<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/slot-milling-calculator/" rel="noopener" target="_blank">LinkedIn</a>
-<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/slot-milling-calculator/&amp;text=Slot Milling Calculator" rel="noopener" target="_blank">𝕏</a>
-<a href="mailto:subject=Slot Milling Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/slot-milling-calculator/">Email</a>
-</div>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Globales Engineering-Verzeichnis</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professionelle Bearbeitungswerkzeuge</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/de/tools/cycle-time-calculator/">Cycle Time Calculator</a>
-<a href="/de/tools/force-calculator/">Force Calculator</a>
-<a href="/de/tools/titanium-machining-guide/">Titanium Machining Guide</a>
-<a href="/de/tools/threading-pass-calculator/">Threading Pass Calculator</a>
-<a href="/de/tools/micron-inch-converter/">Micron Inch Converter</a>
-<a href="/de/tools/peck-drilling-calculator/">Peck Drilling Calculator</a>
-<a href="/de/tools/grade-reference/">Grade Reference</a>
-<a href="/de/tools/cast-iron-machining/">Cast Iron Machining</a>
-<a href="/de/tools/temp-converter/">Temp Converter</a>
-<a href="/de/tools/pressure-converter/">Pressure Converter</a>
-
-</div>
-</section>
-<style>
-.engineering-directory a{
-  display:block;
-  font-size:12px;
-  font-weight:500;
-  color:#1d1d1f;
-  text-decoration:none;
-  padding:8px 14px;
-  background:#fff;
-  border-radius:10px;
-  border:1px solid #e8e8ed;
-  transition:all .15s;
-  text-align:center;
-}
-.engineering-directory a:hover{
-  background:#0066cc;
-  color:#fff;
-  border-color:#0066cc;
-  transform:translateY(-1px);
-  box-shadow:0 4px 12px rgba(0,102,204,.15);
-}
-</style>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
-<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Globales Engineering-Verzeichnis</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professionelle Bearbeitungswerkzeuge</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/de/tools/cost-per-part-calculator/">Cost Per Part Calculator</a>
-<a href="/de/tools/npt-pipe-thread-calculator/">Npt Pipe Thread Calculator</a>
-<a href="/de/tools/coating-selector/">Coating Selector</a>
-<a href="/de/tools/wall-thickness-calculator/">Wall Thickness Calculator</a>
-<a href="/de/tools/speed-feed/">Speed Feed</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professie/tools/speed-feed/">Speed Feed</a>
 <a href="/de/tools/sine-bar-calculator/">Sine Bar Calculator</a>
 <a href="/de/tools/tool-wear-cost-calculator/">Tool Wear Cost Calculator</a>
 <a href="/de/tools/feed-converter/">Feed Converter</a>
@@ -618,6 +304,21 @@ calc();
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
+
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
@@ -628,5 +329,6 @@ calc();
 </div>
 <a href="/de/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Massenangebot anfordern →</a>
 </div>
+<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
 </body>
 </html>

@@ -11,20 +11,7 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
-
-/* Language Switcher - Dropdown with Flags */
-.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
-.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
-.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
-.lang-dropdown{position:relative;display:inline-flex;align-items:center}
-.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
-.lang-menu.show{display:block}
-.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
-.lang-menu a:hover{background:#f5f5f7}
-.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
-.lang-menu a .flag{font-size:16px}
-
+.lang-nav /* Language Switcher - Dropdown with Flags */
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -38,7 +25,18 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){.nav-links{display:none!important}}
+@media(max-width:768px){}
+
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -211,84 +209,45 @@ nav#nav-v2 .nv-logo span{font-weight:800;color:#0066cc}
 nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-shrink:0}
 nav#nav-v2 .nv-links>a{color:#1d1d1f;text-decoration:none;padding:0 14px;height:48px;display:flex;align-items:center;font-weight:500;font-size:12px;transition:color .15s;white-space:nowrap}
 nav#nav-v2 .nv-links>a:hover{color:#0066cc}
+nav#nav-v2 .nv-lang{position:relative;display:flex;align-items:center}
 nav#nav-v2 .nv-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
 nav#nav-v2 .nv-quote{display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:6px 16px;border-radius:24px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap}
 nav#nav-v2 .nv-quote:hover{background:#0055aa;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,204,.25)}
-nav#nav-v2 .nv-lang{display:flex;align-items:center;gap:2px;margin-left:4px;padding-left:8px;border-left:1px solid #e8e8ed}
-nav#nav-v2 .nv-lang a{font-size:10px;font-weight:600;color:#86868b;text-decoration:none;padding:3px 6px;border-radius:12px;transition:all .15s;letter-spacing:.3px}
-nav#nav-v2 .nv-lang a:hover{color:#1d1d1f;background:#f5f5f7}
-nav#nav-v2 .nv-lang a.active{color:#0066cc;background:#f0f7ff;font-weight:700}
-nav#nav-v2 .nv-lang .sep{color:#d2d2d6;font-size:10px;margin:0 1px;font-weight:300}
 @media(max-width:768px){
-  nav#nav-v2 .nv-links{display:none}
-  nav#nav-v2 .nv-lang a{font-size:9px;padding:2px 4px}
+  nav#nav-v2 .nv-inner{flex-wrap:wrap;padding:10px 16px;gap:4px;align-items:center}
+  nav#nav-v2 .nv-logo{font-size:14px;order:0;flex-shrink:0;margin-right:auto}
+  nav#nav-v2 .nv-right{order:1;flex-shrink:0;width:auto;gap:6px}
+  nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-wrap:wrap;order:2;width:100%;justify-content:center;margin-top:2px;padding-top:2px;border-top:1px solid #f0f0f0}
+  nav#nav-v2 .nv-links>a{padding:6px 12px;font-size:11px;height:auto;font-weight:500}
+  nav#nav-v2 .nv-lang{position:relative!important}
+  nav#nav-v2 .lang-dd{right:-30px;min-width:130px}
   nav#nav-v2 .nv-quote{padding:4px 10px;font-size:10px}
 }
 nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important}
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
 </style>
 
 <style id="hero-atmo-style">
-/* ── Hero Atmosphere ── */
-.hero-atmo {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  background: linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 40%, #d2d2d7 100%);
-  margin-bottom: -60px;
-  z-index: 0;
-}
-.hero-atmo::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(0,102,204,.06) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 80% at 80% 40%, rgba(0,0,0,.04) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.95) 90%, #fff 100%);
-}
-.hero-atmo::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 80px;
-  background: linear-gradient(0deg, #fff 0%, transparent 100%);
-}
-/* Image Container - Apple Style */
-.img-container {
-  width: 100%;
-  aspect-ratio: 1;
-  background: #fff;
-  border-radius: 20px;
-  border: 1px solid #d2d2d7;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.img-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #f0f0f3 0%, #e8e8ed 50%, #f0f0f3 100%);
-  color: #c0c0c6;
-  font-size: 48px;
-}
-.img-placeholder::after {
-  content: '◆';
-  font-size: 48px;
-  opacity: .3;
-}
+.hero-atmo{position:relative;width:100%;height:200px;overflow:hidden;background:linear-gradient(180deg,#f5f5f7 0%,#e8e8ed 40%,#d2d2d7 100%);margin-bottom:-60px;z-index:0}
+.hero-atmo::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 50%,rgba(0,102,204,.06) 0%,transparent 50%),radial-gradient(ellipse 60% 80% at 80% 40%,rgba(0,0,0,.04) 0%,transparent 50%),linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.95) 90%,#fff 100%)}
+.hero-atmo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(0deg,#fff 0%,transparent 100%)}
+.img-container{width:100%;aspect-ratio:1;background:#fff;border-radius:20px;border:1px solid #d2d2d7;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
+.img-container img{width:100%;height:100%;object-fit:cover}
+.img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f0f0f3 0%,#e8e8ed 50%,#f0f0f3 100%);color:#c0c0c6;font-size:48px}
+.img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
-
 
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
@@ -297,156 +256,25 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-</head>
-<body>
-
-<div class="hero-img-wrapper">
-<img src="https://images.unsplash.com/1504917598568-65a8f8b4f8ca?w=1200&h=675&fit=crop&q=80&auto=format" alt="鋼製造と加工" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
-<div class="img-overlay"></div>
-</div>
-<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
+<nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/jp/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
-<a href="/jp/">ホーム</a>
 <a href="/jp/products/">製品</a>
-<a href="/jp/tools/">ツール</a>
+<a href="/jp/tools/">計算機 &amp; ツール</a>
 <a href="/jp/guides/">ガイド</a>
 <a href="/jp/about.html">会社概要</a>
 </div>
 <div class="nv-right">
-<div class="nv-lang"><a href="/tools/metal-weight-calculator/">EN</a><span class="sep">·</span><a href="/de/tools/metal-weight-calculator/">DE</a><a href="#" onclick="return false" class="active">JP</a><span class="sep">·</span><a href="/es/tools/metal-weight-calculator/">ES</a><a href="/vi/tools/metal-weight-calculator/">VI</a></div>
+<div class="nv-lang"><div class="lang-btn" onclick="toggleLangDD(event)"><span class="flag">🇯🇵</span><span>JP</span><span class="caret">▼</span></div><div class="lang-dd" id="lang-dd"><a href="/tools/metal-weight-calculator" class=""><span class="flag">🇺🇸</span><span class="lbl">EN</span><span class="nm">English</span></a><a href="/de/tools/metal-weight-calculator" class=""><span class="flag">🇩🇪</span><span class="lbl">DE</span><span class="nm">Deutsch</span></a><a href="/jp/tools/metal-weight-calculator" class="current"><span class="flag">🇯🇵</span><span class="lbl">JP</span><span class="nm">日本語</span></a><a href="/es/tools/metal-weight-calculator" class=""><span class="flag">🇪🇸</span><span class="lbl">ES</span><span class="nm">Español</span></a><a href="/vi/tools/metal-weight-calculator" class=""><span class="flag">🇻🇳</span><span class="lbl">VI</span><span class="nm">Tiếng Việt</span></a></div></div>
 <a class="nv-quote" href="/jp/quote.html">📩 見積依頼</a>
 </div>
 </div>
-</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">の中で</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">カタログを表示する →</a> <span style="color:#d2d2d6">›</span> Metal Weight Calculator</div>
-<section class="hero"><h1>次元1 (mm)</h1><p>次元2 (mm)</p></section>
-<div class="container">
-<div class="two-col">
-<div class="card"><h2>次元3/壁 (mm)</h2><label>📊グレードによる密度</label><select id="shape" onchange="calc()"><option value="round">Round rod</option><option value="block">Rectangular block</option><option value="ring">Ring / tube</option></select>
-<label>Co %</label><select id="grade" onchange="calc()"><option value="6">6% Co — General purpose (15.2 g/cm³)</option><option selected="" value="10">10% Co — Impact resistant (14.8 g/cm³)</option><option value="15">15% Co — Heavy duty (14.5 g/cm³)</option></select>
-<label>ISOグループ</label><input id="d1" oninput="calc()" type="number" value="20"/>
-<label id="l2">密度 (g/cmの ³)</label><input id="d2" oninput="calc()" type="number" value="100"/>
-<label id="l3" style="display:none">アプリケーション</label><input id="d3" oninput="calc()" style="display:none" type="number" value="5"/>
-<div class="result-box"><div class="val" id="r-weight">0.00</div><div class="unit">grams</div></div></div>
-<div class="card"><h2>K01-K05</h2><table class="dens-table"><tr><th>仕上げ</th><th>K10-K20</th><th>一般的な目的</th><th>P25-P40</th></tr>
-<tr><td>3</td><td>粗さ</td><td>15.4</td><td>M30-M40</td></tr><tr><td>6</td><td>重いインパクト</td><td>15.2</td><td>すべてのツール</td></tr><tr><td>10</td><td>結果は参考としてのみご使用ください。具体的な用途については、工具メーカーにご相談ください。</td><td>14.8</td><td>©2026年用超硬工具</td></tr><tr><td>15</td><td>炭化タングステン密度vs.スチール: 重量比</td><td>14.5</td><td>炭化タングステンの密度は14.5〜15.5g/cm ³ で、鋼の密度は約2倍 (7.85g/cm ³) です。この高密度は、機械加工における振動減衰のために炭化物工具にかなりの質量を与えます。カーバイドボーリングバーは、同等のスチールバーの2倍の重さがあり、深い穴と精密なボーリング操作に優れた動的安定性を提供します。</td></tr></table></div></div>
-<div style="text-align:center;margin:16px 0"><a href="/tools/" style="color:#0066cc;font-size:13px">速度と送り量</a></div></div>
-<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">関連精密工具</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/jp/tools/machinability-rating/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Machinability Rating</a><a href="/jp/tools/machine-power-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Machine Power Calculator</a><a href="/jp/tools/mcode-reference/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Mcode Reference</a><a href="/jp/tools/weight-shipping-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Weight Shipping Calculator</a><a href="/jp/tools/gear-parameter-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Gear Parameter Calculator</a><a href="/jp/tools/speed-feed/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Speed Feed</a></div></div><footer class="tool-footer">
-<div class="container">
-<div class="footer-links">
-<a href="/">の中で</a>
-<a href="/tools/">ツーリングアプリケーションのカーバイド重量の計算</a>
-<a href="/products/">🇩🇪ドイツ</a>
-<a href="/guides/">🇯🇵ジェイピー</a>
-<a href="/about.html">🇪🇸エスイー</a>
-<a href="/quote.html">チタンガイド</a>
-<a href="/privacy.html">グレード相互参照</a>
-</div>
-<div class="footer-social">
-<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">部品当たりのコスト</a>
-<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
-<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
-</div>
-<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">ツーリングアプリケーションのカーバイド重量の計算</a></p>
-<p style="font-size:11px;margin-bottom:6px">カーバイドブランクおよびインサートの場合、重量 = 体積 × 密度。標準のCNMG432カーバイドインサートの重量は約9.5グラムです。長さ50mmの10mmの丸い炭化物ブランクの重量は約57グラムです。正確な重量を理解することは、高速回転ツールホルダーの送料とツールバランス要件を計算するのに役立ちます。</p>
-<p style="font-size:11px">素材の選択: カーバイドvs.スチールvs.セラミック</p>
-</div>
-<section class="seo"><div class="container">
-<h2>カーバイドは重いですが、その剛性 (鋼の場合は200 GPaに対して600〜650 GPaのヤング率) は、同じ断面で3倍の剛性を提供します。マシニングセンターの場合、カーバイド工具ホルダーを使用すると、鋼に比べて振動振幅を40% 削減できます。重量ペナルティは、厳しい公差を必要とする仕上げ作業でのパフォーマンスの向上によって相殺されます。</h2><p>よくある質問</p>
-<h2>典型的なカーバイドエンドミルの重量はどれくらいですか?フルートの長さが75mmの12mmカーバイドエンドミルの重量は約85〜95グラムです。同じ長さの6mmエンドミルの重量は約22〜28グラムです。正確な重量は、フルートの形状、シャンクの直径、および全体の長さによって異なります。</h2><p>コバルト含有量は炭化物密度に影響しますか?はい。より高いコバルト含有量 (バインダー) は密度をわずかに低下させる。グレードK10 (6% コバルト) の密度は〜15.0g/cm ³ ですが、K30 (12% コバルト) の密度は〜14.3g/cm ³ です。炭化タングステンのコバルト代替は、一般的なグレードの範囲全体で総重量を約5% 削減します。</p>
-<h2>カーバイド工具注文の出荷重量を計算するにはどうすればよいですか?インサートの数と個々の重量 (通常はそれぞれ5〜15グラム) を数え、ツールホルダーの重量 (各0.2〜2.0 kg) とパッケージ重量 (0.1〜0.5 kg) を追加します。大量注文の場合、梱包材の5% 超過を考慮に入れます。カーバイドは密度が高いですがコンパクトです。少量の注文の重量は驚くほど少ないことがよくあります。</h2><p>⚡カーバイド・ツーリング・ドットコムの高性能シリーズ用に算出済み。カタログを表示する →</p>
-<h2>🔧精密工学ツールボックス</h2>
-<p><strong>How much does a typical carbide end mill weigh?</strong> A 12-mm carbide end mill with 75-mm flute length weighs approximately 85–95 grams. A 6-mm end mill of same length weighs about 22–28 grams. The exact weight depends on flute geometry, shank diameter, and overall length.</p>
-<p><strong>Does cobalt content affect carbide density?</strong> Yes. Higher cobalt content (binder) reduces density slightly. Grade K10 (6% cobalt) has density ~15.0 g/cm³, while K30 (12% cobalt) has density ~14.3 g/cm³. The cobalt substitution for tungsten carbide reduces overall weight by approximately 5% across the range of common grades.</p>
-<p><strong>How do I calculate shipping weight for carbide tool orders?</strong> Count the number of inserts and their individual weights (typically 5–15 grams each), add the weight of toolholders (0.2–2.0 kg each), and packaging weight (0.1–0.5 kg). For bulk orders, factor in a 5% overage for packing materials. Carbide is dense but compact — small orders often weigh surprisingly little.</p>
-<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">一括見積もりを依頼する →</a></p>
-</div></section>
-</footer>
-<script>
-const DENS={6:15.2,10:14.8,15:14.5};
-function calc(){const shape=document.getElementById('shape').value;const co=parseInt(document.getElementById('grade').value);const d1=parseFloat(document.getElementById('d1').value)||20;const d2=parseFloat(document.getElementById('d2').value)||100;const den=DENS[co]||15;let vol=0;if(shape==='round'){vol=Math.PI*(d1/2)**2*d2;}else if(shape==='block'){vol=d1*d2*parseFloat(document.getElementById('d3').value||5);}else{const wall=parseFloat(document.getElementById('d3').value||5);vol=Math.PI*((d1/2)**2-((d1-2*wall)/2)**2)*d2;}
-document.getElementById('r-weight').textContent=(vol*den/1000).toFixed(2);}
-document.getElementById('shape').addEventListener('change',function(){const s=this.value;document.getElementById('l2').textContent=s==='round'?'Length (mm)':'Width (mm)';const l3=document.getElementById('l3');const d3=document.getElementById('d3');if(s==='block'){l3.textContent='Height (mm)';l3.style.display='block';d3.style.display='block';}else if(s==='ring'){l3.textContent='Wall thickness (mm)';l3.style.display='block';d3.style.display='block';}else{l3.style.display='none';d3.style.display='none';}
-calc();});calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><div class="toolbox-widget"><h3>製品</h3><div class="toolbox-links">
-<a href="/tools/speed-feed/">ソリッドカーバイドエンドミル</a>
-<a href="/tools/hardness-converter/">旋削用インサート</a>
-<a href="/tools/tap-drill-size-calculator/">エンジニアリング利子計算機</a>
-<a href="/tools/mrr-calculator/">NPTパイプねじ計算ツール</a>
-<a href="/tools/feed-converter/">メートル法／インチネジ変換器</a>
-<a href="/tools/surface-roughness-calculator/">キー溝の深さ計算ツール</a>
-<a href="/tools/titanium-machining-guide/">ISOフィット計算機</a>
-<a href="/tools/carbide-grade-cross-ref-2/">GD&amp;T記号リファレンス</a>
-<a href="/tools/cost-per-part-calculator/">SFMからm/分への変換器</a>
-<a href="/tools/torque-unit-converter/">送り速度計算ツールをタップする</a>
-</div></div>
-<aside class="b2b-card-enhanced" style="margin:32px 0">
-<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
-<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
-<div style="flex:1;min-width:0">
-<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Metal Weight Calculatorのプロフェッショナルソリューション</h3>
-<p style="font-size:12px;color:#555;line-height:1.5;margin:0">ISO認証品質のプレミアム超硬工具を工場直送価格でご提供。技術サポート付き。</p>
-</div>
-<a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
-</div>
-<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">電子メール</a><a href="/products/turning-inserts.html">Turning Inserts</a></div>
-
-<div class="share-bar">
-<span class="share-label">↗ Share with Engineers</span>
-<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/metal-weight-calculator/" rel="noopener" target="_blank">LinkedIn</a>
-<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/metal-weight-calculator/&amp;text=Metal Weight Calculator" rel="noopener" target="_blank">𝕏</a>
-<a href="mailto:subject=Metal Weight Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/metal-weight-calculator/">Email</a>
-</div>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav>
+class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
 <p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/jp/tools/reaming-allowance-calculator/">Reaming Allowance Calculator</a>
-<a href="/jp/tools/shipping-duty-estimator/">Shipping Duty Estimator</a>
-<a href="/jp/tools/slot-milling-calculator/">Slot Milling Calculator</a>
-<a href="/jp/tools/gcode-reference/">Gcode Reference</a>
-<a href="/jp/tools/helical-interpolation-calculator/">Helical Interpolation Calculator</a>
-<a href="/jp/tools/metal-cost-calculator/">Metal Cost Calculator</a>
-<a href="/jp/tools/thread-pitch-diameter-calculator/">Thread Pitch Diameter Calculator</a>
-<a href="/jp/tools/chamfer-calculator/">Chamfer Calculator</a>
-<a href="/jp/tools/bolt-circle-calculator/">Bolt Circle Calculator</a>
-<a href="/jp/tools/force-calculator/">Force Calculator</a>
-
-</div>
-</section>
-<style>
-.engineering-directory a{
-  display:block;
-  font-size:12px;
-  font-weight:500;
-  color:#1d1d1f;
-  text-decoration:none;
-  padding:8px 14px;
-  background:#fff;
-  border-radius:10px;
-  border:1px solid #e8e8ed;
-  transition:all .15s;
-  text-align:center;
-}
-.engineering-directory a:hover{
-  background:#0066cc;
-  color:#fff;
-  border-color:#0066cc;
-  transform:translateY(-1px);
-  box-shadow:0 4px 12px rgba(0,102,204,.15);
-}
-</style>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
-<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/jp/tools/heat-expansion-calculator/">Heat Expansion Calculator</a>
-<a href="/jp/tools/wall-thickness-calculator/">Wall Thickness Calculator</a>
-<a href="/jp/tools/sine-bar-calculator/">Sine Bar Calculator</a>
-<a href="/jp/tools/tapping-feed-rate-calculator/">Tapping Feed Rate Calculator</a>
-<a href="/jp/tools/drill-point-length-calculator/">Drill Point Length Calculator</a>
+<div style="dior/">Drill Point Length Calculator</a>
 <a href="/jp/tools/batch-cost-calculator/">Batch Cost Calculator</a>
 <a href="/jp/tools/cycle-time-calculator/">Cycle Time Calculator</a>
 <a href="/jp/tools/ramping-angle-calculator/">Ramping Angle Calculator</a>
@@ -476,6 +304,21 @@ calc();});calc();</script><script>function toggleLang(e){e.stopPropagation();doc
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
+
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
@@ -486,4 +329,5 @@ calc();});calc();</script><script>function toggleLang(e){e.stopPropagation();doc
 </div>
 <a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
 </div>
+<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
 </body></html>

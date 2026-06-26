@@ -76,20 +76,7 @@ footer a{color:#0066cc;text-decoration:none}
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
-
-/* Language Switcher - Dropdown with Flags */
-.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
-.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
-.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
-.lang-dropdown{position:relative;display:inline-flex;align-items:center}
-.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
-.lang-menu.show{display:block}
-.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
-.lang-menu a:hover{background:#f5f5f7}
-.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
-.lang-menu a .flag{font-size:16px}
-
+.lang-nav /* Language Switcher - Dropdown with Flags */
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -103,7 +90,18 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){.nav-links{display:none!important}}
+@media(max-width:768px){}
+
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -212,84 +210,45 @@ nav#nav-v2 .nv-logo span{font-weight:800;color:#0066cc}
 nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-shrink:0}
 nav#nav-v2 .nv-links>a{color:#1d1d1f;text-decoration:none;padding:0 14px;height:48px;display:flex;align-items:center;font-weight:500;font-size:12px;transition:color .15s;white-space:nowrap}
 nav#nav-v2 .nv-links>a:hover{color:#0066cc}
+nav#nav-v2 .nv-lang{position:relative;display:flex;align-items:center}
 nav#nav-v2 .nv-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
 nav#nav-v2 .nv-quote{display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:6px 16px;border-radius:24px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap}
 nav#nav-v2 .nv-quote:hover{background:#0055aa;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,204,.25)}
-nav#nav-v2 .nv-lang{display:flex;align-items:center;gap:2px;margin-left:4px;padding-left:8px;border-left:1px solid #e8e8ed}
-nav#nav-v2 .nv-lang a{font-size:10px;font-weight:600;color:#86868b;text-decoration:none;padding:3px 6px;border-radius:12px;transition:all .15s;letter-spacing:.3px}
-nav#nav-v2 .nv-lang a:hover{color:#1d1d1f;background:#f5f5f7}
-nav#nav-v2 .nv-lang a.active{color:#0066cc;background:#f0f7ff;font-weight:700}
-nav#nav-v2 .nv-lang .sep{color:#d2d2d6;font-size:10px;margin:0 1px;font-weight:300}
 @media(max-width:768px){
-  nav#nav-v2 .nv-links{display:none}
-  nav#nav-v2 .nv-lang a{font-size:9px;padding:2px 4px}
+  nav#nav-v2 .nv-inner{flex-wrap:wrap;padding:10px 16px;gap:4px;align-items:center}
+  nav#nav-v2 .nv-logo{font-size:14px;order:0;flex-shrink:0;margin-right:auto}
+  nav#nav-v2 .nv-right{order:1;flex-shrink:0;width:auto;gap:6px}
+  nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-wrap:wrap;order:2;width:100%;justify-content:center;margin-top:2px;padding-top:2px;border-top:1px solid #f0f0f0}
+  nav#nav-v2 .nv-links>a{padding:6px 12px;font-size:11px;height:auto;font-weight:500}
+  nav#nav-v2 .nv-lang{position:relative!important}
+  nav#nav-v2 .lang-dd{right:-30px;min-width:130px}
   nav#nav-v2 .nv-quote{padding:4px 10px;font-size:10px}
 }
 nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important}
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
 </style>
 
 <style id="hero-atmo-style">
-/* ── Hero Atmosphere ── */
-.hero-atmo {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  background: linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 40%, #d2d2d7 100%);
-  margin-bottom: -60px;
-  z-index: 0;
-}
-.hero-atmo::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(0,102,204,.06) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 80% at 80% 40%, rgba(0,0,0,.04) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.95) 90%, #fff 100%);
-}
-.hero-atmo::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 80px;
-  background: linear-gradient(0deg, #fff 0%, transparent 100%);
-}
-/* Image Container - Apple Style */
-.img-container {
-  width: 100%;
-  aspect-ratio: 1;
-  background: #fff;
-  border-radius: 20px;
-  border: 1px solid #d2d2d7;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.img-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #f0f0f3 0%, #e8e8ed 50%, #f0f0f3 100%);
-  color: #c0c0c6;
-  font-size: 48px;
-}
-.img-placeholder::after {
-  content: '◆';
-  font-size: 48px;
-  opacity: .3;
-}
+.hero-atmo{position:relative;width:100%;height:200px;overflow:hidden;background:linear-gradient(180deg,#f5f5f7 0%,#e8e8ed 40%,#d2d2d7 100%);margin-bottom:-60px;z-index:0}
+.hero-atmo::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 50%,rgba(0,102,204,.06) 0%,transparent 50%),radial-gradient(ellipse 60% 80% at 80% 40%,rgba(0,0,0,.04) 0%,transparent 50%),linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.95) 90%,#fff 100%)}
+.hero-atmo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(0deg,#fff 0%,transparent 100%)}
+.img-container{width:100%;aspect-ratio:1;background:#fff;border-radius:20px;border:1px solid #d2d2d7;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
+.img-container img{width:100%;height:100%;object-fit:cover}
+.img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f0f0f3 0%,#e8e8ed 50%,#f0f0f3 100%);color:#c0c0c6;font-size:48px}
+.img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
-
 
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
@@ -298,297 +257,24 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-</head>
-<body>
-
-<div class="hero-img-wrapper">
-<img src="https://images.unsplash.com/1565193566165-24e2f9e7e80c?w=1200&h=675&fit=crop&q=80&auto=format" alt="Tính toán tốc độ phay CNC" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
-<div class="img-overlay"></div>
-</div>
-<div class="hero-atmo" aria-hidden="true"></div>
 <nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/vi/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
-<a href="/vi/">Trang chủ</a>
 <a href="/vi/products/">Sản phẩm</a>
-<a href="/vi/tools/">Công cụ</a>
+<a href="/vi/tools/">Máy Tính &amp; Công Cụ</a>
 <a href="/vi/guides/">Hướng dẫn</a>
 <a href="/vi/about.html">Giới thiệu</a>
 </div>
 <div class="nv-right">
-<div class="nv-lang"><a href="/tools/slot-milling-calculator/">EN</a><span class="sep">·</span><a href="/de/tools/slot-milling-calculator/">DE</a><a href="/jp/tools/slot-milling-calculator/">JP</a><span class="sep">·</span><a href="/es/tools/slot-milling-calculator/">ES</a><a href="#" onclick="return false" class="active">VI</a></div>
+<div class="nv-lang"><div class="lang-btn" onclick="toggleLangDD(event)"><span class="flag">🇻🇳</span><span>VI</span><span class="caret">▼</span></div><div class="lang-dd" id="lang-dd"><a href="/tools/slot-milling-calculator" class=""><span class="flag">🇺🇸</span><span class="lbl">EN</span><span class="nm">English</span></a><a href="/de/tools/slot-milling-calculator" class=""><span class="flag">🇩🇪</span><span class="lbl">DE</span><span class="nm">Deutsch</span></a><a href="/jp/tools/slot-milling-calculator" class=""><span class="flag">🇯🇵</span><span class="lbl">JP</span><span class="nm">日本語</span></a><a href="/es/tools/slot-milling-calculator" class=""><span class="flag">🇪🇸</span><span class="lbl">ES</span><span class="nm">Español</span></a><a href="/vi/tools/slot-milling-calculator" class="current"><span class="flag">🇻🇳</span><span class="lbl">VI</span><span class="nm">Tiếng Việt</span></a></div></div>
 <a class="nv-quote" href="/vi/quote.html">📩 Báo giá</a>
 </div>
 </div>
 </nav>
-<section class="hero">
-<div class="container">
-<div class="badge">🔧 Free Professional Tool</div>
-<h1>Công cụ tính toán phay rãnh</h1>
-<p>Tính toán tốc độ cắt và lượng ăn dao an toàn cho gia công rãnh phay rộng hết chiều rộng phôi và gia công then. Khe phay gắn vào dụng cụ ở 180 °-Phải giảm tốc độ nạp để tránh hỏng dụng cụ.</p>
-<div class="hero-actions">
-<a class="btn" href="#calculator">Bắt đầu tính toán ↓</a>
-<a class="btn-outline" href="https://carbide-tooling.com/quote.html">📩Nhận báo giá chính xác</a>
-</div>
-</div>
-</section>
-<section class="container" id="calculator" style="padding-bottom:40px">
-<div class="card">
-<h2>🔧Rãnh &amp; rãnh phay</h2>
-<p class="sub">Rãnh toàn chiều rộng (AE = D) là thao tác phay đòi hỏi khắt khe nhất. Tỷ lệ thức ăn phải chiếm tỷ lệ di tản chip và nồng độ nhiệt.</p>
-<div class="card-row">
-<div class="field"><label>🔩Vật liệu</label>
-<select id="material" onchange="calc()">
-<option value="al6061">Aluminum 6061</option>
-<option selected="" value="ss304">Stainless Steel 304</option>
-<option value="mild_steel">Mild Steel 1018</option>
-<option value="ti6al4v">Titanium Grade 5</option>
-</select>
-</div>
-<div class="field"><label>📐Đường kính dụng cụ (mm)</label>
-<input id="dia" max="50" min="1" oninput="calc()" step="0.5" type="number" value="10"/>
-<span style="font-size:10px;color:#86868b">Slot width = tool diameter</span>
-</div>
-<div class="field"><label>🦷Sáo</label>
-<select id="flutes" onchange="calc()"><option value="2">2</option><option value="3">3</option><option selected="" value="4">4</option><option value="5">5</option><option value="6">6</option></select>
-</div>
-<div class="field"><label>⏬Độ sâu khe (mm)</label>
-<input id="depth" max="30" min="0.1" oninput="calc()" step="0.5" type="number" value="5"/>
-</div>
-<div class="field"><label>📏Chiều dài khe (mm)</label>
-<input id="length" max="1000" min="1" oninput="calc()" step="5" type="number" value="50"/>
-</div>
-<div class="field"><label>🔧Loại thẻ</label>
-<select id="pass-type" onchange="calc()">
-<option value="single">Single pass (full depth)</option>
-<option selected="" value="multi">Multiple passes (peck)</option>
-</select>
-</div>
-<div class="field"><label>⚡Tốc độ cắt (Vc m/phút)</label>
-<input id="vc" max="2000" min="10" oninput="calc()" step="10" type="number" value="120"/>
-</div>
-<div class="field"><label>📊Tải Chip-Fz (mm)</label>
-<input id="fz" max="1" min="0.001" oninput="calc()" step="0.005" type="number" value="0.04"/>
-</div>
-</div>
-<div class="result-grid">
-<div class="result-item"><div class="label">RPM</div><div class="value" id="r-rpm">—</div><div class="unit">RPM</div></div>
-<div class="result-item"><div class="label">Slotting Lượng chạy dao Rate</div><div class="value" id="r-feed">—</div><div class="unit">mm/min</div></div>
-<div class="result-item"><div class="label">vs Side Milling Lượng chạy dao</div><div class="value warning" id="r-reduction">—</div><div class="unit">% reduction</div></div>
-<div class="result-item"><div class="label">Cut Time (this slot)</div><div class="value" id="r-time">—</div><div class="unit">seconds</div></div>
-</div>
-<div class="extra-info">
-<span>Side milling feed (for comparison): <span class="val" id="x-side">—</span> mm/min</span>
-<span style="color:#d2d2d6">|</span>
-<span>Material removed: <span class="val" id="x-mrr">—</span> cm³</span>
-<span style="color:#d2d2d6">|</span>
-<span>Max slot depth per pass: <span class="val" id="x-maxdepth">—</span> mm</span>
-</div>
-</div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px">
-<a href="/tools/trochoidal-milling-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f">
-<div style="font-size:20px">🌀</div><h4 style="font-size:14px;font-weight:600;margin:4px 0 2px">Máy tính phay trocôit</h4>
-<p style="font-size:12px;color:#86868b">Đối với các khe rộng, đường dẫn hình trochoidal có thể vượt trội hơn các rãnh thông thường.</p>
-</a>
-<a href="/tools/force-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f">
-<div style="font-size:20px">💪</div><h4 style="font-size:14px;font-weight:600;margin:4px 0 2px">Công cụ tính lực phay</h4>
-<p style="font-size:12px;color:#86868b">Rãnh đôi lực cắt-xác minh Giới hạn công cụ.</p>
-</a>
-</div>
-</section>
-<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Công cụ chính xác liên quan</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/vi/tools/scrap-value-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Scrap Value Calculator</a><a href="/vi/tools/sfm-m-min-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Sfm M Min Converter</a><a href="/vi/tools/shipping-duty-estimator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Shipping Duty Estimator</a><a href="/vi/tools/polar-rect-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Polar Rect Converter</a><a href="/vi/tools/gdt-symbols-reference/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Gdt Symbols Reference</a><a href="/vi/tools/nose-radius-compensation/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Nose Radius Compensation</a></div></div><footer class="tool-footer">
-<div class="container">
-<div class="footer-links">
-<a href="/">Trang chủ</a>
-<a href="/tools/">Tất cả công cụ</a>
-<a href="/products/">Sản phẩm</a>
-<a href="/guides/">Hướng dẫn</a>
-<a href="/about.html">Về chúng tôi</a>
-<a href="/quote.html">Bộ chuyển đổi độ cứng</a>
-<a href="/privacy.html">Kích thước mũi khoan taro</a>
-</div>
-<div class="footer-social">
-<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Công cụ tính MRR</a>
-<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
-<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
-</div>
-<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Tất cả công cụ</a></p>
-<p style="font-size:11px;margin-bottom:6px">Kết quả chỉ mang tính tham khảo. Hãy tham khảo ý kiến của các nhà sản xuất dụng cụ để biết thông tin về các ứng dụng cụ thể.</p>
-<p style="font-size:11px">©Dụng cụ cắt gọt bằng cacbua năm 2026</p>
-</div>
-</footer>
-<script>
-const MATS = {
- al6061:{feedReduction:0.5,docMult:1.5,sideLượng chạy dao:1.0,label:'Aluminum'},
- ss304:{feedReduction:0.35,docMult:0.8,sideLượng chạy dao:1.0,label:'Stainless 304'},
- mild_steel:{feedReduction:0.45,docMult:1.0,sideLượng chạy dao:1.0,label:'Mild Steel'},
- ti6al4v:{feedReduction:0.3,docMult:0.5,sideLượng chạy dao:1.0,label:'Titanium'},
-};
-
-function calc() {
- const mat = MATS[document.getElementById('material').value];
- const dia = parseFloat(document.getElementById('dia').value) || 10;
- const z = parseInt(document.getElementById('flutes').value) || 4;
- const depth = parseFloat(document.getElementById('depth').value) || 5;
- const length = parseFloat(document.getElementById('length').value) || 50;
- const passType = document.getElementById('pass-type').value;
- const vc = parseFloat(document.getElementById('vc').value) || 120;
- const fz = parseFloat(document.getElementById('fz').value) || 0.04;
-
- const rpm = dia > 0 ? (vc * 1000) / (Math.PI * dia) : 1000;
-
- // Side milling feed (full chip load)
- const sideLượng chạy dao = rpm * z * fz;
-
- // Slotting feed reduction
- const reductionPct = mat.feedReduction;
- const slotLượng chạy dao = sideLượng chạy dao * reductionPct;
-
- // Lượng chạy dao reduction percentage display
- const feedReductionDisplay = Math.round((1 - reductionPct) * 100);
-
- // Max depth per pass
- const maxDepth = dia * mat.docMult;
-
- // Number of passes
- const numPasses = passType === 'single' ? 1 : Math.ceil(depth / (dia * 0.75));
-
- // Actual depth per pass
- const actDepthPerPass = Math.min(depth, numPasses > 0 ? depth / numPasses : depth);
-
- // Cutting time per pass (with approach allowance)
- const approachLen = dia * 1.5;
- const cutDistPerPass = length + approachLen;
- const cutTimePerPassMin = slotLượng chạy dao > 0 ? cutDistPerPass / slotLượng chạy dao : 0;
- const retractTime = 2; // seconds per retract
- const totalCutTimeSec = cutTimePerPassMin * 60 * numPasses + retractTime * (numPasses - 1);
-
- // Material removed
- const slotVol = (Math.PI * dia * dia / 4 * length / 1000); // cm³ (simplified)
-
- // MRR
- const mrr = (actDepthPerPass * dia * slotLượng chạy dao) / 1000;
-
- document.getElementById('r-rpm').textContent = Math.round(rpm);
- document.getElementById('r-feed').textContent = Math.round(slotLượng chạy dao);
- document.getElementById('r-reduction').textContent = feedReductionDisplay;
- document.getElementById('r-time').textContent = totalCutTimeSec.toFixed(1);
- document.getElementById('x-side').textContent = Math.round(sideLượng chạy dao);
- document.getElementById('x-mrr').textContent = slotVol.toFixed(1);
- document.getElementById('x-maxdepth').textContent = maxDepth.toFixed(1);
-}
-
-calc();
-</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
-<section class="seo-content">
-<div class="container">
-<h2>Khe phay không phải là cạnh phay</h2>
-<p>Một lập trình viên xử lý khe phay như phay bên sẽ phá vỡ các công cụ. Trong phay cạnh, dụng cụ được sử dụng trên 30-50% Đường kính của nó-chip có chỗ để hình thành và thoát ra, chất làm mát đạt đến vùng cắt, và lực cắt được phân phối trên các vòng cung tham gia. Trong khe phay, dụng cụ được chôn trong vết cắt ở độ tương tác 180 °. Mỗi cây sáo đều được cắt từ lối vào đến lối ra. Chip phải di chuyển đồng thời cả hai mặt của sáo. Chất làm mát vật lộn để đạt được các cạnh cắt đầy đủ. Lực cắt cao hơn 2-3 × so với đường phay cạnh tương đương.</p>
-<p>Việc sửa chữa không phức tạp: giảm tỷ lệ thức ăn. Nhưng giá bao nhiêu? Tỷ lệ thức ăn xay tiêu chuẩn Phải Giảm 40-60% cho rãnh, tùy thuộc vào vật liệu và độ sâu khe. Máy tính này sử dụng các yếu tố giảm Vật liệu cụ thể, do đó bạn không cần phải đoán.</p>
-<h2>Tại sao giới hạn di tản chip tỷ lệ cấp dữ liệu Dao phay khe</h2>
-<p>Trong một khe rộng đầy đủ, con chip được tạo ra bởi mỗi sáo phải di chuyển toàn bộ chiều dài của sáo để thoát khỏi vết cắt. Trong các khe sâu (chiều sâu&gt; 2 × đường kính), chip có thể di chuyển 30-50mm trước khi xóa dụng cụ. Nếu tốc độ nạp quá cao, khối lượng chip vượt quá âm lượng sáo và công cụ Đóng gói với chip. Việc đóng gói làm cho tốc độ nạp thức ăn bị trì hoãn, tải trọng trục chính tăng vọt và dụng cụ bị gãy ở gốc sáo.</p>
-<p>Dụng cụ hai sáo sơ tán Chip tốt hơn dụng cụ bốn sáo ở rãnh vì có nhiều không gian vật lý giữa các cạnh cắt. Vì lý do này, máy nghiền 2 Sáo với tốc độ nạp bình thường 60% có thể vượt trội hơn máy nghiền 4 sáo ở mức 50% thức ăn bình thường-dụng cụ 2 sáo giúp làm sạch chip hiệu quả hơn và có thể duy trì thức ăn hiệu quả cao hơn.</p>
-<h2>Mổ xẻ và xẻ rãnh một lần</h2>
-<p>Đối với các khe sâu hơn đường kính dụng cụ 1 ×, nên mổ xẻ (nhiều rãnh nông). Mỗi cái mổ phải có đường kính sâu 0.5-1 ×, với một sự rút lại đầy đủ giữa các cái mổ để làm sạch chip và cho phép chất làm mát đến khu vực cắt. Rãnh một lần vượt quá Độ sâu đường kính 1.5 × yêu cầu giảm tốc độ thức ăn và chỉ nên thử với chất làm mát xuyên trục chính.</p>
-<p>Pecking cho biết thêm thời gian không cắt để rút lại và tái nhập nhưng cho phép tỷ lệ thức ăn cao hơn trong phần cắt. Thời gian chu kỳ mạng thường thích hợp để mổ sâu vì thức ăn cắt có thể cao hơn 1.5-2 × so với thức ăn một lần. Máy tính Thời gian chu kỳ có thể giúp xác định Số lượng hồ đào tối ưu cho hình học khe cụ thể của bạn.</p>
-<h2>Phay phím: Cân nhắc đặc biệt</h2>
-<p>Keyways thường được cắt thành dung sai chặt chẽ (H7/H7 phù hợp) và yêu cầu một kết thúc vượt qua. Đường chuyền gia công thô phải tuân theo các thông số phay khe tiêu chuẩn với Phụ Cấp hoàn thiện 0.2-0.5mm mỗi bên. Đường chuyền hoàn thiện mất 0.1-0.2mm mỗi bên ở tốc độ 60-70% tốc độ gia công thô để đạt được độ hoàn thiện bề mặt yêu cầu và độ chính xác chiều.</p>
-<p>Máy cắt phím (Máy cắt gỗ và máy cắt bàn phím) có hình học khác với máy nghiền đầu tiêu chuẩn. Chúng thường có ít sáo hơn (2-3) và đường kính lõi lớn hơn cho độ cứng. Nguồn cấp dữ liệu và tốc độ từ máy tính này có giá trị cho các phím cắt nhà máy cuối tiêu chuẩn; đối với máy cắt bàn phím chuyên dụng, hãy tham khảo các khuyến nghị của nhà sản xuất.</p>
-<h2>Chiến lược làm mát cho khe phay</h2>
-<p>Làm mát Nước Lũ tại điểm vào dụng cụ là yêu cầu tối thiểu để phay khe bằng thép và không gỉ. Dòng nước làm mát phải đạt đến vùng cắt-không chỉ là bề mặt trên cùng của phôi. Đối với các khe sâu hơn 20mm, chất làm mát xuyên trục ở 20 bar cải thiện đáng kể việc di tản chip và tuổi thọ dụng cụ. Trong nhôm, khí nén thường đủ và được ưu tiên-Chất làm mát có thể gây sốc nhiệt trong nhôm ở tốc độ nạp cao.</p>
-<p>Mql (bôi trơn số lượng tối thiểu) có hiệu quả trong việc khía nhôm và thép nhẹ. Sương dầu làm giảm ma sát ở giao diện Chip-Tool mà không tạo ra Gradient nhiệt làm mát lũ tạo ra. Đối với không gỉ và titan, nước làm mát trục chính áp suất cao ở 50 bar là chiến lược làm mát đáng tin cậy duy nhất để khía.</p>
-<h2>Câu hỏi thường gặp</h2>
-<p><strong>What is slot milling?</strong> A milling operation where the tool is engaged across its full diameter (180° engagement), cutting a slot in a single pass. It is the most demanding milling operation due to restricted chip evacuation and high cutting forces.</p>
-<p><strong>How much should I reduce feed rate for slotting?</strong> Lượng chạy dao rate should be reduced by 40-60% compared to side milling at the same chip load. The exact reduction depends on material, slot depth, and tool geometry. This calculator computes the safe reduction automatically.</p>
-<p><strong>Can I use the same RPM for slotting as side milling?</strong> RPM should be slightly reduced (10-20%) for slotting to reduce heat generation at the tool center. The calculator's RPM value accounts for this reduction.</p>
-<p><strong>How deep can I cut in one pass for slot milling?</strong> For aluminum, up to 1.5× tool diameter in a single pass. For steel and stainless, limit single-pass depth to 1× tool diameter. For titanium, do not exceed 0.5× diameter per pass without through-spindle coolant.</p>
-<p><strong>What is the best flute count for slot milling?</strong> 2-3 flutes are preferred for slotting because they provide more chip evacuation space. 4-flute tools can be used for finishing passes where the depth per pass is low and chip volume is small.</p>
-<p><strong>When should I use trochoidal milling instead of slotting?</strong> For slots wider than 2× tool diameter, trochoidal milling with a smaller tool produces higher MRR and better tool life than conventional slotting with a full-width tool. Use the <a href="/tools/trochoidal-milling-calculator/" style="color:#0066cc">Máy tính phay trocôit</a> to compare both approaches.</p>
-<div style="text-align:center;padding:32px 24px;font-size:15px;color:#1d1d1f;background:#f5f5f7;border-radius:16px;max-width:900px;margin:40px auto 0">
-<p style="margin:0">Đối với các nhà máy đầu rãnh với hình học sáo được tối ưu hóa, hãy kiểm tra các nhà máy cuối hiệu suất cao của chúng tôi</p>
-</div>
-</div>
-</section>
-<div class="toolbox-widget"><h3>🔧Hộp công cụ kỹ thuật chính xác</h3><div class="toolbox-links">
-<a href="/tools/speed-feed/">Hướng dẫn về Titan</a>
-<a href="/tools/hardness-converter/">Phân loại tham chiếu</a>
-<a href="/tools/tap-drill-size-calculator/">Chi phí trên mỗi bộ phận</a>
-<a href="/tools/mrr-calculator/">Bộ biến mô</a>
-<a href="/tools/feed-converter/">Yêu cầu báo giá số lượng lớn →</a>
-<a href="/tools/surface-roughness-calculator/">Mũi phay ngón cacbua nguyên khối</a>
-<a href="/tools/titanium-machining-guide/">Giá đựng dụng cụ</a>
-<a href="/tools/carbide-grade-cross-ref-2/">Tham chiếu điểm số</a>
-<a href="/tools/cost-per-part-calculator/">Công cụ tính giá trị phế liệu</a>
-<a href="/tools/torque-unit-converter/">Chi phí vòng đời của chất làm mát</a>
-</div></div>
-<aside class="b2b-card-enhanced" style="margin:32px 0">
-<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
-<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
-<div style="flex:1;min-width:0">
-<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Giải Pháp Chuyên Nghiệp cho Slot Milling Calculator?</h3>
-<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Nhận giá trực tiếp từ nhà máy cho dụng cụ carbide cao cấp với chất lượng chứng nhận ISO.</p>
-</div>
-<a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
-</div>
-<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">Máy tính gia công gang</a><a href="/products/tool-holders.html">Công cụ ước tính tuổi thọ dụng cụ cho siêu hợp kim</a></div>
-
-<div class="share-bar">
-<span class="share-label">↗ Share with Engineers</span>
-<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/slot-milling-calculator/" rel="noopener" target="_blank">LinkedIn</a>
-<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/slot-milling-calculator/&amp;text=Slot Milling Calculator" rel="noopener" target="_blank">𝕏</a>
-<a href="mailto:subject=Slot Milling Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/slot-milling-calculator/">Email</a>
-</div>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/vi/tools/tool-life-economics/">Tool Life Economics</a>
-<a href="/vi/tools/bulk-discount-calculator/">Bulk Discount Calculator</a>
-<a href="/vi/tools/scrap-value-calculator/">Scrap Value Calculator</a>
-<a href="/vi/tools/blind-hole-tapping-calculator/">Blind Hole Tapping Calculator</a>
-<a href="/vi/tools/aluminum-alloy-table/">Aluminum Alloy Table</a>
-<a href="/vi/tools/percentage-of-thread-calculator/">Percentage Of Thread Calculator</a>
-<a href="/vi/tools/peck-drilling-calculator/">Peck Drilling Calculator</a>
-<a href="/vi/tools/npt-pipe-thread-calculator/">Npt Pipe Thread Calculator</a>
-<a href="/vi/tools/metric-imperial-thread-converter/">Metric Imperial Thread Converter</a>
-<a href="/vi/tools/metal-cost-calculator/">Metal Cost Calculator</a>
-
-</div>
-</section>
-<style>
-.engineering-directory a{
-  display:block;
-  font-size:12px;
-  font-weight:500;
-  color:#1d1d1f;
-  text-decoration:none;
-  padding:8px 14px;
-  background:#fff;
-  border-radius:10px;
-  border:1px solid #e8e8ed;
-  transition:all .15s;
-  text-align:center;
-}
-.engineering-directory a:hover{
-  background:#0066cc;
-  color:#fff;
-  border-color:#0066cc;
-  transform:translateY(-1px);
-  box-shadow:0 4px 12px rgba(0,102,204,.15);
-}
-</style>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
-<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/vi/tools/nose-radius-compensation/">Nose Radius Compensation</a>
-<a href="/vi/tools/countersink-depth-calculator/">Countersink Depth Calculator</a>
-<a href="/vi/tools/arc-r-to-ij-converter/">Arc R To Ij Converter</a>
-<a href="/vi/tools/helical-interpolation-calculator/">Helical Interpolation Calculator</a>
-<a href="/vi/tools/percentage-of-thread-calculator/">Percentage Of Thread Calculator</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyêhref="/vi/tools/percentage-of-thread-calculator/">Percentage Of Thread Calculator</a>
 <a href="/vi/tools/form-tap-drill-calculator/">Form Tap Drill Calculator</a>
 <a href="/vi/tools/carbide-grade-cross-ref-2/">Carbide Grade Cross Ref 2</a>
 <a href="/vi/tools/gdt-symbols-reference/">Gdt Symbols Reference</a>
@@ -618,6 +304,21 @@ calc();
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
+
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
@@ -628,5 +329,6 @@ calc();
 </div>
 <a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
 </div>
+<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
 </body>
 </html>

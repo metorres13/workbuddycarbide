@@ -13,20 +13,7 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
-
-/* Language Switcher - Dropdown with Flags */
-.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
-.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
-.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
-.lang-dropdown{position:relative;display:inline-flex;align-items:center}
-.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
-.lang-menu.show{display:block}
-.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
-.lang-menu a:hover{background:#f5f5f7}
-.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
-.lang-menu a .flag{font-size:16px}
-
+.lang-nav /* Language Switcher - Dropdown with Flags */
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -40,7 +27,18 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){.nav-links{display:none!important}}
+@media(max-width:768px){}
+
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -141,84 +139,45 @@ nav#nav-v2 .nv-logo span{font-weight:800;color:#0066cc}
 nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-shrink:0}
 nav#nav-v2 .nv-links>a{color:#1d1d1f;text-decoration:none;padding:0 14px;height:48px;display:flex;align-items:center;font-weight:500;font-size:12px;transition:color .15s;white-space:nowrap}
 nav#nav-v2 .nv-links>a:hover{color:#0066cc}
+nav#nav-v2 .nv-lang{position:relative;display:flex;align-items:center}
 nav#nav-v2 .nv-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
 nav#nav-v2 .nv-quote{display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:6px 16px;border-radius:24px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap}
 nav#nav-v2 .nv-quote:hover{background:#0055aa;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,204,.25)}
-nav#nav-v2 .nv-lang{display:flex;align-items:center;gap:2px;margin-left:4px;padding-left:8px;border-left:1px solid #e8e8ed}
-nav#nav-v2 .nv-lang a{font-size:10px;font-weight:600;color:#86868b;text-decoration:none;padding:3px 6px;border-radius:12px;transition:all .15s;letter-spacing:.3px}
-nav#nav-v2 .nv-lang a:hover{color:#1d1d1f;background:#f5f5f7}
-nav#nav-v2 .nv-lang a.active{color:#0066cc;background:#f0f7ff;font-weight:700}
-nav#nav-v2 .nv-lang .sep{color:#d2d2d6;font-size:10px;margin:0 1px;font-weight:300}
 @media(max-width:768px){
-  nav#nav-v2 .nv-links{display:none}
-  nav#nav-v2 .nv-lang a{font-size:9px;padding:2px 4px}
+  nav#nav-v2 .nv-inner{flex-wrap:wrap;padding:10px 16px;gap:4px;align-items:center}
+  nav#nav-v2 .nv-logo{font-size:14px;order:0;flex-shrink:0;margin-right:auto}
+  nav#nav-v2 .nv-right{order:1;flex-shrink:0;width:auto;gap:6px}
+  nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-wrap:wrap;order:2;width:100%;justify-content:center;margin-top:2px;padding-top:2px;border-top:1px solid #f0f0f0}
+  nav#nav-v2 .nv-links>a{padding:6px 12px;font-size:11px;height:auto;font-weight:500}
+  nav#nav-v2 .nv-lang{position:relative!important}
+  nav#nav-v2 .lang-dd{right:-30px;min-width:130px}
   nav#nav-v2 .nv-quote{padding:4px 10px;font-size:10px}
 }
 nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important}
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
 </style>
 
 <style id="hero-atmo-style">
-/* ── Hero Atmosphere ── */
-.hero-atmo {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  background: linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 40%, #d2d2d7 100%);
-  margin-bottom: -60px;
-  z-index: 0;
-}
-.hero-atmo::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(0,102,204,.06) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 80% at 80% 40%, rgba(0,0,0,.04) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.95) 90%, #fff 100%);
-}
-.hero-atmo::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 80px;
-  background: linear-gradient(0deg, #fff 0%, transparent 100%);
-}
-/* Image Container - Apple Style */
-.img-container {
-  width: 100%;
-  aspect-ratio: 1;
-  background: #fff;
-  border-radius: 20px;
-  border: 1px solid #d2d2d7;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.img-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #f0f0f3 0%, #e8e8ed 50%, #f0f0f3 100%);
-  color: #c0c0c6;
-  font-size: 48px;
-}
-.img-placeholder::after {
-  content: '◆';
-  font-size: 48px;
-  opacity: .3;
-}
+.hero-atmo{position:relative;width:100%;height:200px;overflow:hidden;background:linear-gradient(180deg,#f5f5f7 0%,#e8e8ed 40%,#d2d2d7 100%);margin-bottom:-60px;z-index:0}
+.hero-atmo::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 50%,rgba(0,102,204,.06) 0%,transparent 50%),radial-gradient(ellipse 60% 80% at 80% 40%,rgba(0,0,0,.04) 0%,transparent 50%),linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.95) 90%,#fff 100%)}
+.hero-atmo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(0deg,#fff 0%,transparent 100%)}
+.img-container{width:100%;aspect-ratio:1;background:#fff;border-radius:20px;border:1px solid #d2d2d7;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
+.img-container img{width:100%;height:100%;object-fit:cover}
+.img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f0f0f3 0%,#e8e8ed 50%,#f0f0f3 100%);color:#c0c0c6;font-size:48px}
+.img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
-
 
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
@@ -227,167 +186,25 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-</head>
-<body>
-
-<div class="hero-img-wrapper">
-<img src="https://images.unsplash.com/1565193566165-24e2f9e7e80c?w=1200&h=675&fit=crop&q=80&auto=format" alt="CNCフライス削り速度と送り" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
-<div class="img-overlay"></div>
-</div>
-<div class="hero-atmo" aria-hidden="true"></div>
 <nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/jp/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
-<a href="/jp/">ホーム</a>
 <a href="/jp/products/">製品</a>
-<a href="/jp/tools/">ツール</a>
+<a href="/jp/tools/">計算機 &amp; ツール</a>
 <a href="/jp/guides/">ガイド</a>
 <a href="/jp/about.html">会社概要</a>
 </div>
 <div class="nv-right">
-<div class="nv-lang"><a href="/tools/ball-nose-effective-diameter/">EN</a><span class="sep">·</span><a href="/de/tools/ball-nose-effective-diameter/">DE</a><a href="#" onclick="return false" class="active">JP</a><span class="sep">·</span><a href="/es/tools/ball-nose-effective-diameter/">ES</a><a href="/vi/tools/ball-nose-effective-diameter/">VI</a></div>
+<div class="nv-lang"><div class="lang-btn" onclick="toggleLangDD(event)"><span class="flag">🇯🇵</span><span>JP</span><span class="caret">▼</span></div><div class="lang-dd" id="lang-dd"><a href="/tools/ball-nose-effective-diameter" class=""><span class="flag">🇺🇸</span><span class="lbl">EN</span><span class="nm">English</span></a><a href="/de/tools/ball-nose-effective-diameter" class=""><span class="flag">🇩🇪</span><span class="lbl">DE</span><span class="nm">Deutsch</span></a><a href="/jp/tools/ball-nose-effective-diameter" class="current"><span class="flag">🇯🇵</span><span class="lbl">JP</span><span class="nm">日本語</span></a><a href="/es/tools/ball-nose-effective-diameter" class=""><span class="flag">🇪🇸</span><span class="lbl">ES</span><span class="nm">Español</span></a><a href="/vi/tools/ball-nose-effective-diameter" class=""><span class="flag">🇻🇳</span><span class="lbl">VI</span><span class="nm">Tiếng Việt</span></a></div></div>
 <a class="nv-quote" href="/jp/quote.html">📩 見積依頼</a>
 </div>
 </div>
 </nav>
-<section class="hero"><div class="container"><div class="badge">📐 Technical Reference</div><h1>ボールの鼻の有効な直径</h1><p>ボールエンドミルが特定の深さで切断する場合、切断を行う実際の直径は、ツールの公称直径よりも小さくなります。この計算機は有効直径を見つけ、それに応じてRPMを調整します。</p><a class="btn" href="#calculator">計算します ↓</a></div></section>
-<section class="container" id="calculator" style="padding-bottom:40px">
-<div class="card"><h2>📐有効な切断の直径</h2><p class="sub">式: De = 2 × √(R ²-(R-ap)²) ここで、R = ツール半径、ap = カットの深さ。</p>
-<div class="card-row">
-<div class="field"><label>🔘ボールの鼻の直径 (mm)</label><input id="dia" max="50" min="0.5" oninput="calc()" step="0.5" type="number" value="10"/></div>
-<div class="field"><label>⏬カットap (mm) の深さ</label><input id="doc" max="25" min="0.01" oninput="calc()" step="0.05" type="number" value="0.3"/></div>
-<div class="field"><label>🦷フルート</label><select id="flutes" onchange="calc()"><option>2</option><option selected="">4</option><option>6</option></select></div>
-<div class="field"><label>⚡切断の速度Vc (m/min)</label><input id="vc" max="2000" min="10" oninput="calc()" step="10" type="number" value="120"/></div>
-<div class="field"><label>📊歯fz (mm) ごとのフィード</label><input id="fz" max="1" min="0.001" oninput="calc()" step="0.005" type="number" value="0.04"/></div>
-</div>
-<div class="result-grid">
-<div class="result-item"><div class="label">Effective Diameter</div><div class="value" id="r-de">—</div><div class="unit">mm</div></div>
-<div class="result-item"><div class="label">Effective RPM</div><div class="value" id="r-rpm">—</div><div class="unit">RPM</div></div>
-<div class="result-item"><div class="label">If Programmed at Nominal</div><div class="value" id="r-wrong">—</div><div class="unit">RPM (too slow)</div></div>
-<div class="result-item"><div class="label">Error If Ignored</div><div class="value" id="r-error">—</div><div class="unit">% too slow</div></div>
-</div>
-</div>
-<div style="text-align:center;margin:20px 0"><a href="/tools/" style="color:#0066cc;text-decoration:none;font-size:13px">← すべてのツール</a></div>
-</section>
-<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">関連精密工具</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/jp/tools/batch-cost-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Batch Cost Calculator</a><a href="/jp/tools/blind-hole-tapping-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Blind Hole Tapping Calculator</a><a href="/jp/tools/bolt-circle-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Bolt Circle Calculator</a><a href="/jp/tools/gear-parameter-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Gear Parameter Calculator</a><a href="/jp/tools/weight-shipping-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Weight Shipping Calculator</a><a href="/jp/tools/feed-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Feed Converter</a></div></div><footer class="tool-footer">
-<div class="container">
-<div class="footer-links">
-<a href="/">ホーム</a>
-<a href="/tools/">すべてのツール</a>
-<a href="/products/">製品</a>
-<a href="/guides/">ガイド</a>
-<a href="/about.html">について</a>
-<a href="/quote.html">硬度変換器</a>
-<a href="/privacy.html">タップ穴径</a>
-</div>
-<div class="footer-social">
-<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">MRR計算ツール</a>
-<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
-<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
-</div>
-<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">すべてのツール</a></p>
-<p style="font-size:11px;margin-bottom:6px">結果は参考としてのみご使用ください。具体的な用途については、工具メーカーにご相談ください。</p>
-<p style="font-size:11px">©2026年用超硬工具</p>
-</div>
-</footer>
-<script>
-function calc(){const d=parseFloat(document.getElementById('dia').value)||10;const ap=parseFloat(document.getElementById('doc').value)||0.3;const z=parseInt(document.getElementById('flutes').value)||4;const vc=parseFloat(document.getElementById('vc').value)||120;const fz=parseFloat(document.getElementById('fz').value)||0.04;const r=d/2;const de=ap>0&&ap<=d?2*Math.sqrt(r*r-(r-ap)*(r-ap)):d;const effRpm=de>0?(vc*1000)/(Math.PI*de):0;const nomRpm=d>0?(vc*1000)/(Math.PI*d):0;const err=nomRpm>0?((effRpm-nomRpm)/nomRpm)*100:0;document.getElementById('r-de').textContent=de.toFixed(2);document.getElementById('r-rpm').textContent=Math.round(effRpm);document.getElementById('r-wrong').textContent=Math.round(nomRpm);document.getElementById('r-error').textContent='+'+(err).toFixed(0);}
-calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
-<section class="seo-content"><div class="container">
-<div class="formula-box">De = 2 × √(R² − (R − ap)²)<br/><span class="sub">Effective diameter at depth of cut ap, tool radius R</span></div>
-<h2>ボールノーズRPMが有効直径から計算されなければならない理由</h2>
-<p>深さ0.3mmの10 mmボールエンドミル切断の有効切断直径は約3.4mmであり、公称直径のわずか34% である。120 m/minで10 mmに基づいてRPMをプログラムすれば、3,820 RPMを得ます。しかし、実際の切断は直径3.4mmで行われ、表面速度はわずか41 m/分であり、鋼の炭化物の推奨範囲をはるかに下回っています。ツールはカットの代わりにこすり、熱を発生させ、摩耗を加速します。</p>
-<p>有効直径に基づく正しいRPMは11,200RPMである。これは3 × の差である。公称ベースのRPMで動作するということは、ツールが必要な切削速度の3分の1で動いていることを意味します。その結果、表面仕上げが悪く、エッジが急速に摩耗し、部品が廃棄されます。特に、ボールエンドミルが標準である金型と金型の3 D仕上げ作業ではそうです。</p>
-<h2>金型とダイの仕事に対する実用的な影響</h2>
-<p>ハースVM-3または大熊MB-4000での金型仕上げでは、ボールエンドミルはカットの軽い深さ (通常は0.1〜0.5mm) で使用されます。これらの深さでは、有効直径は公称直径の一部です。深さ0.15mmの6 mmボールエンドミルの有効直径はわずか1.9mmです。RPMは6 mmではなく1.9mmから計算する必要があります。有効直径が小さいほどツールパスのmmあたりのRPMが少ないため、送り速度も調整する必要があります。</p>
-<p>MastercamやFusion 360などのCAMシステムには、HSMツールパスに有効直径補正が含まれています。ただし、手動でプログラミングする場合、または既存のコードを編集する場合、この計算機は修正された値を提供します。重要な表面仕上げパスの場合、一部のプログラマーは、有効直径エラーに対する安全マージンとして、プログラムされたRPMをさらに10〜15% 増加させます。</p>
-<h2>よくある質問</h2>
-<p><strong>What is effective diameter in ball nose milling?</strong> The actual diameter of the cutting zone at the depth of cut. Since a ball end mill is spherical, the contact point moves up the radius as depth decreases, reducing the effective cutting diameter.</p>
-<p><strong>How do you calculate effective diameter?</strong> De = 2 × √(R² − (R − ap)²). The calculator above does this instantly for any tool size and depth.</p>
-<p><strong>What RPM should I run a 6 mm ball at 0.15 mm depth?</strong> At 0.15 mm depth, the effective diameter is 1.9 mm. At 120 m/min Vc, RPM should be approximately 20,000 — near the limit of a standard 10k spindle. This is why mold finishing often requires high-speed spindles or smaller stepovers.</p>
-<p><strong>Does effective diameter affect feed rate?</strong> Yes. 送り rate = RPM × flutes × fz. Since RPM increases at small effective diameters, feed rate also increases. But the chip thinning effect at light depths means the programmed fz may need to be reduced to maintain the actual chip load.</p>
-</div></section>
-<div class="toolbox-widget"><h3>🔧精密工学ツールボックス</h3><div class="toolbox-links">
-<a href="/tools/speed-feed/">表面粗さ</a>
-<a href="/tools/hardness-converter/">チタンガイド</a>
-<a href="/tools/tap-drill-size-calculator/">グレード相互参照</a>
-<a href="/tools/mrr-calculator/">部品当たりのコスト</a>
-<a href="/tools/feed-converter/">トルクコンバーター</a>
-<a href="/tools/surface-roughness-calculator/">一括見積もりを依頼する →</a>
-<a href="/tools/titanium-machining-guide/">ソリッドカーバイドエンドミル</a>
-<a href="/tools/carbide-grade-cross-ref-2/">ツールホルダー</a>
-<a href="/tools/cost-per-part-calculator/">超合金工具寿命推定ツール</a>
-<a href="/tools/torque-unit-converter/">送料・関税の見積もりツール</a>
-</div></div>
-<aside class="b2b-card-enhanced" style="margin:32px 0">
-<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
-<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
-<div style="flex:1;min-width:0">
-<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Ball Nose Effective Diameterのプロフェッショナルソリューション</h3>
-<p style="font-size:12px;color:#555;line-height:1.5;margin:0">ISO認証品質のプレミアム超硬工具を工場直送価格でご提供。技術サポート付き。</p>
-</div>
-<a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
-</div>
-<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">スピード &amp; フィード計算機</a><a href="/products/tool-holders.html">壁厚計算機</a></div>
-
-<div class="share-bar">
-<span class="share-label">↗ Share with Engineers</span>
-<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/ball-nose-effective-diameter/" rel="noopener" target="_blank">LinkedIn</a>
-<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/ball-nose-effective-diameter/&amp;text=Ball Nose Effective Diameter" rel="noopener" target="_blank">𝕏</a>
-<a href="mailto:subject=Ball Nose Effective Diameter&amp;body=Check this out: https://carbide-tooling.com/tools/ball-nose-effective-diameter/">Email</a>
-</div>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
 <p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/jp/tools/automation-vs-manual-calculator/">Automation Vs Manual Calculator</a>
-<a href="/jp/tools/pressure-converter/">Pressure Converter</a>
-<a href="/jp/tools/countersink-depth-calculator/">Countersink Depth Calculator</a>
-<a href="/jp/tools/mrr-calculator/">Mrr Calculator</a>
-<a href="/jp/tools/tool-wear-cost-calculator/">Tool Wear Cost Calculator</a>
-<a href="/jp/tools/surface-speed/">Surface Speed</a>
-<a href="/jp/tools/machine-power-calculator/">Machine Power Calculator</a>
-<a href="/jp/tools/machinability-rating/">Machinability Rating</a>
-<a href="/jp/tools/temp-converter/">Temp Converter</a>
-<a href="/jp/tools/npt-pipe-thread-calculator/">Npt Pipe Thread Calculator</a>
-
-</div>
-</section>
-<style>
-.engineering-directory a{
-  display:block;
-  font-size:12px;
-  font-weight:500;
-  color:#1d1d1f;
-  text-decoration:none;
-  padding:8px 14px;
-  background:#fff;
-  border-radius:10px;
-  border:1px solid #e8e8ed;
-  transition:all .15s;
-  text-align:center;
-}
-.engineering-directory a:hover{
-  background:#0066cc;
-  color:#fff;
-  border-color:#0066cc;
-  transform:translateY(-1px);
-  box-shadow:0 4px 12px rgba(0,102,204,.15);
-}
-</style>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
-<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/jp/tools/machine-power-calculator/">Machine Power Calculator</a>
-<a href="/jp/tools/feed-converter/">Feed Converter</a>
-<a href="/jp/tools/dovetail-calculator/">Dovetail Calculator</a>
-<a href="/jp/tools/metal-weight-calculator/">Metal Weight Calculator</a>
-<a href="/jp/tools/form-tap-drill-calculator/">Form Tap Drill Calculator</a>
-<a href="/jp/tools/surface-speed/">Surface Speed</a>
+<div style="dihref="/jp/tools/surface-speed/">Surface Speed</a>
 <a href="/jp/tools/brass-machining-parameters/">Brass Machining Parameters</a>
 <a href="/jp/tools/ultimate-unit-converter/">Ultimate Unit Converter</a>
 <a href="/jp/tools/carbide-grade-cross-ref-2/">Carbide Grade Cross Ref 2</a>
@@ -416,6 +233,21 @@ calc();</script><script>function toggleLang(e){e.stopPropagation();document.getE
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
+
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
@@ -426,4 +258,5 @@ calc();</script><script>function toggleLang(e){e.stopPropagation();document.getE
 </div>
 <a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
 </div>
+<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
 </body></html>

@@ -12,20 +12,7 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
-
-/* Language Switcher - Dropdown with Flags */
-.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
-.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
-.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
-.lang-dropdown{position:relative;display:inline-flex;align-items:center}
-.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
-.lang-menu.show{display:block}
-.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
-.lang-menu a:hover{background:#f5f5f7}
-.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
-.lang-menu a .flag{font-size:16px}
-
+.lang-nav /* Language Switcher - Dropdown with Flags */
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -39,7 +26,18 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){.nav-links{display:none!important}}
+@media(max-width:768px){}
+
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -140,84 +138,45 @@ nav#nav-v2 .nv-logo span{font-weight:800;color:#0066cc}
 nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-shrink:0}
 nav#nav-v2 .nv-links>a{color:#1d1d1f;text-decoration:none;padding:0 14px;height:48px;display:flex;align-items:center;font-weight:500;font-size:12px;transition:color .15s;white-space:nowrap}
 nav#nav-v2 .nv-links>a:hover{color:#0066cc}
+nav#nav-v2 .nv-lang{position:relative;display:flex;align-items:center}
 nav#nav-v2 .nv-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
 nav#nav-v2 .nv-quote{display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:6px 16px;border-radius:24px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap}
 nav#nav-v2 .nv-quote:hover{background:#0055aa;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,204,.25)}
-nav#nav-v2 .nv-lang{display:flex;align-items:center;gap:2px;margin-left:4px;padding-left:8px;border-left:1px solid #e8e8ed}
-nav#nav-v2 .nv-lang a{font-size:10px;font-weight:600;color:#86868b;text-decoration:none;padding:3px 6px;border-radius:12px;transition:all .15s;letter-spacing:.3px}
-nav#nav-v2 .nv-lang a:hover{color:#1d1d1f;background:#f5f5f7}
-nav#nav-v2 .nv-lang a.active{color:#0066cc;background:#f0f7ff;font-weight:700}
-nav#nav-v2 .nv-lang .sep{color:#d2d2d6;font-size:10px;margin:0 1px;font-weight:300}
 @media(max-width:768px){
-  nav#nav-v2 .nv-links{display:none}
-  nav#nav-v2 .nv-lang a{font-size:9px;padding:2px 4px}
+  nav#nav-v2 .nv-inner{flex-wrap:wrap;padding:10px 16px;gap:4px;align-items:center}
+  nav#nav-v2 .nv-logo{font-size:14px;order:0;flex-shrink:0;margin-right:auto}
+  nav#nav-v2 .nv-right{order:1;flex-shrink:0;width:auto;gap:6px}
+  nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-wrap:wrap;order:2;width:100%;justify-content:center;margin-top:2px;padding-top:2px;border-top:1px solid #f0f0f0}
+  nav#nav-v2 .nv-links>a{padding:6px 12px;font-size:11px;height:auto;font-weight:500}
+  nav#nav-v2 .nv-lang{position:relative!important}
+  nav#nav-v2 .lang-dd{right:-30px;min-width:130px}
   nav#nav-v2 .nv-quote{padding:4px 10px;font-size:10px}
 }
 nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important}
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
 </style>
 
 <style id="hero-atmo-style">
-/* ── Hero Atmosphere ── */
-.hero-atmo {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  background: linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 40%, #d2d2d7 100%);
-  margin-bottom: -60px;
-  z-index: 0;
-}
-.hero-atmo::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(0,102,204,.06) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 80% at 80% 40%, rgba(0,0,0,.04) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.95) 90%, #fff 100%);
-}
-.hero-atmo::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 80px;
-  background: linear-gradient(0deg, #fff 0%, transparent 100%);
-}
-/* Image Container - Apple Style */
-.img-container {
-  width: 100%;
-  aspect-ratio: 1;
-  background: #fff;
-  border-radius: 20px;
-  border: 1px solid #d2d2d7;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.img-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #f0f0f3 0%, #e8e8ed 50%, #f0f0f3 100%);
-  color: #c0c0c6;
-  font-size: 48px;
-}
-.img-placeholder::after {
-  content: '◆';
-  font-size: 48px;
-  opacity: .3;
-}
+.hero-atmo{position:relative;width:100%;height:200px;overflow:hidden;background:linear-gradient(180deg,#f5f5f7 0%,#e8e8ed 40%,#d2d2d7 100%);margin-bottom:-60px;z-index:0}
+.hero-atmo::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 50%,rgba(0,102,204,.06) 0%,transparent 50%),radial-gradient(ellipse 60% 80% at 80% 40%,rgba(0,0,0,.04) 0%,transparent 50%),linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.95) 90%,#fff 100%)}
+.hero-atmo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(0deg,#fff 0%,transparent 100%)}
+.img-container{width:100%;aspect-ratio:1;background:#fff;border-radius:20px;border:1px solid #d2d2d7;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
+.img-container img{width:100%;height:100%;object-fit:cover}
+.img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f0f0f3 0%,#e8e8ed 50%,#f0f0f3 100%);color:#c0c0c6;font-size:48px}
+.img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
-
 
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
@@ -226,165 +185,24 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-</head>
-<body>
-
-<div class="hero-img-wrapper">
-<img src="https://images.unsplash.com/1565193566165-24e2f9e7e80c?w=1200&h=675&fit=crop&q=80&auto=format" alt="Cálculo de velocidad y avance CNC" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
-<div class="img-overlay"></div>
-</div>
-<div class="hero-atmo" aria-hidden="true"></div>
 <nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/es/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
-<a href="/es/">Inicio</a>
 <a href="/es/products/">Productos</a>
-<a href="/es/tools/">Herramientas</a>
+<a href="/es/tools/">Calculadoras &amp; Herramientas</a>
 <a href="/es/guides/">Guías</a>
 <a href="/es/about.html">Acerca de</a>
 </div>
 <div class="nv-right">
-<div class="nv-lang"><a href="/tools/helical-interpolation-calculator/">EN</a><span class="sep">·</span><a href="/de/tools/helical-interpolation-calculator/">DE</a><a href="/jp/tools/helical-interpolation-calculator/">JP</a><span class="sep">·</span><a href="#" onclick="return false" class="active">ES</a><a href="/vi/tools/helical-interpolation-calculator/">VI</a></div>
+<div class="nv-lang"><div class="lang-btn" onclick="toggleLangDD(event)"><span class="flag">🇪🇸</span><span>ES</span><span class="caret">▼</span></div><div class="lang-dd" id="lang-dd"><a href="/tools/helical-interpolation-calculator" class=""><span class="flag">🇺🇸</span><span class="lbl">EN</span><span class="nm">English</span></a><a href="/de/tools/helical-interpolation-calculator" class=""><span class="flag">🇩🇪</span><span class="lbl">DE</span><span class="nm">Deutsch</span></a><a href="/jp/tools/helical-interpolation-calculator" class=""><span class="flag">🇯🇵</span><span class="lbl">JP</span><span class="nm">日本語</span></a><a href="/es/tools/helical-interpolation-calculator" class="current"><span class="flag">🇪🇸</span><span class="lbl">ES</span><span class="nm">Español</span></a><a href="/vi/tools/helical-interpolation-calculator" class=""><span class="flag">🇻🇳</span><span class="lbl">VI</span><span class="nm">Tiếng Việt</span></a></div></div>
 <a class="nv-quote" href="/es/quote.html">📩 Cotización</a>
 </div>
 </div>
 </nav>
-<section class="hero"><div class="container"><div class="badge">🔄 Case Study Tool</div><h1>Calculadora de interpolación helicoidal</h1><p>Calcule los parámetros de fresado de orificios: ajustes de velocidad de alimentación, ángulo de rampa por revolución y geometría de trayectoria helicoidal para orificios interpolados.</p><a class="btn" href="#calculator">Calcular ↓</a></div></section>
-<section class="container" id="calculator" style="padding-bottom:40px">
-<div class="card"><h2>🔄Fresado de círculo/orificio helicoidal</h2><p class="sub">Para programar trayectorias de herramienta de interpolación helicoidal en centros de mecanizado.</p>
-<div class="card-row">
-<div class="field"><label>📐Diámetro del cortador (mm)</label><input id="dia" max="50" min="1" oninput="calc()" step="0.5" type="number" value="12"/></div>
-<div class="field"><label>🕳️ Diámetro del orificio (mm)</label><input id="bore" max="200" min="5" oninput="calc()" step="1" type="number" value="25"/></div>
-<div class="field"><label>⏬Profundidad del orificio (mm)</label><input id="depth" max="200" min="1" oninput="calc()" step="1" type="number" value="20"/></div>
-<div class="field"><label>⏱️ Z por Revolución (mm)</label><input id="zper" max="5" min="0.05" oninput="calc()" step="0.05" type="number" value="0.5"/></div>
-<div class="field"><label>🦷Flautas</label><select id="flutes" onchange="calc()"><option>2</option><option selected="">4</option><option>6</option></select></div>
-<div class="field"><label>⚡Velocidad de corte Vc (m/min)</label><input id="vc" max="2000" min="10" oninput="calc()" step="10" type="number" value="180"/></div>
-<div class="field"><label>📊Chip de carga fz (mm)</label><input id="fz" max="1" min="0.001" oninput="calc()" step="0.005" type="number" value="0.05"/></div>
-</div>
-<div class="result-grid">
-<div class="result-item"><div class="label">RPM at Cutter</div><div class="value" id="r-rpm">—</div><div class="unit">RPM</div></div>
-<div class="result-item"><div class="label">Avance Rate (Cutter)</div><div class="value" id="r-feed">—</div><div class="unit">mm/min</div></div>
-<div class="result-item"><div class="label">Ramp Angle</div><div class="value" id="r-angle">—</div><div class="unit">degrees</div></div>
-<div class="result-item"><div class="label">Revolutions to Depth</div><div class="value" id="r-revs">—</div><div class="unit">revolutions</div></div>
-</div>
-</div>
-<div style="text-align:center;margin:20px 0"><a href="/tools/" style="color:#0066cc;text-decoration:none;font-size:13px">← Todas las herramientas</a></div>
-</section>
-<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Herramientas de precisión relacionadas</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/es/tools/hardness-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Hardness Converter</a><a href="/es/tools/heat-expansion-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Heat Expansion Calculator</a><a href="/es/tools/horsepower-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Horsepower Calculator</a><a href="/es/tools/gdt-symbols-reference/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Gdt Symbols Reference</a><a href="/es/tools/stainless-properties/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Stainless Properties</a><a href="/es/tools/mcode-reference/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Mcode Reference</a></div></div><footer class="tool-footer">
-<div class="container">
-<div class="footer-links">
-<a href="/">Inicio</a>
-<a href="/tools/">Todas las herramientas</a>
-<a href="/products/">Productos</a>
-<a href="/guides/">Guías</a>
-<a href="/about.html">Sobre</a>
-<a href="/quote.html">Convertidor de dureza</a>
-<a href="/privacy.html">Tamaño del taladro de roscado</a>
-</div>
-<div class="footer-social">
-<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Calculadora de MRR</a>
-<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
-<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
-</div>
-<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Todas las herramientas</a></p>
-<p style="font-size:11px;margin-bottom:6px">Los resultados son únicamente de referencia. Consulte a los fabricantes de herramientas para aplicaciones específicas.</p>
-<p style="font-size:11px">©Herramientas de carburo 2026</p>
-</div>
-</footer>
-<script>
-function calc(){const d=parseFloat(document.getElementById('dia').value)||12;const b=parseFloat(document.getElementById('bore').value)||25;const dep=parseFloat(document.getElementById('depth').value)||20;const zper=parseFloat(document.getElementById('zper').value)||0.5;const fl=parseInt(document.getElementById('flutes').value)||4;const vc=parseFloat(document.getElementById('vc').value)||180;const fz=parseFloat(document.getElementById('fz').value)||0.05;const effDia=(b-d)/2+d;const rpm=effDia>0?(vc*1000)/(Math.PI*effDia):1000;const feed=rpm*fl*fz;const circ=Math.PI*b;const angle=circ>0?Math.atan2(zper,circ)*180/Math.PI:0;const revs=dep>0&&zper>0?dep/zper:0;document.getElementById('r-rpm').textContent=Math.round(rpm);document.getElementById('r-feed').textContent=Math.round(feed);document.getElementById('r-angle').textContent=angle.toFixed(2);document.getElementById('r-revs').textContent=revs.toFixed(1);}
-calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
-<section class="seo-content"><div class="container">
-<div class="case"><h3>📋Caso de estudio: 25 mm de diámetro en 304 SS en un VF-2 Haas</h3><p>Un taller estaba interpolando un orificio pasante de 25 mm en acero inoxidable 304 usando un molino de extremo de 4-flauta de 12 mm a 1.200 mm/min de alimentación. La herramienta cható en cada orificio, produciendo un acabado superficial de 15 μm. El CAM por defecto a 0,7mm Z por rev. Al reducir el Z por revoluciones a 0,35mm y aumentar la velocidad del husillo a 5.500 RPM (calculado a partir del diámetro de corte efectivo), el acabado mejoró a 2,5 μm Ra y la vida útil de la herramienta se duplicó. El tiempo de ciclo aumentó en un 12%, una compensación aceptable para eliminar el escariado secundario.</p></div>
-<h2>Velocidad de alimentación de interpolación helicoidal: por qué el centro de la herramienta corta más lento</h2>
-<p>En la interpolación helicoidal, la velocidad de corte varía a través del diámetro de la herramienta. El borde exterior de la herramienta (más cercano a la pared del orificio) corta en la Vc programada. El borde interior (el más cercano al centro del orificio) corta a una velocidad menor proporcional a la relación entre el radio interior y el radio exterior. Esto significa que la carga de viruta no es uniforme a través del borde de corte-el borde interior produce virutas más delgadas, lo que aumenta la fuerza de corte específica localmente.</p>
-<p>Para trayectorias helicoidales en un Mazak o Okuma, reduzca la velocidad de alimentación en un 10-20% en comparación con la alimentación lineal en la misma carga de chip para tener en cuenta esta distribución de chip desigual. El ajuste de la velocidad de alimentación es más significativo cuando el diámetro del orificio es menor que 2 x el diámetro del cortador. Para taladros de más de 3 × diámetro del cortador, el efecto es menor y puede ignorarse.</p>
-<h2>Preguntas frecuentes</h2>
-<p><strong>What is helical interpolation?</strong> A G02/G03 circular interpolation move with simultaneous Z-axis movement, creating a helical toolpath. Used for bore milling, thread milling, and spiral entry.</p>
-<p><strong>How do you calculate feed rate for helical milling?</strong> Avance at the cutter = RPM × flutes × fz. The Z-axis feed = feed × tan(ramp angle). Use the calculator above for exact values.</p>
-<p><strong>What is a safe Z per revolution for helical interpolation?</strong> 0.2-0.8 mm per revolution depending on material and tool diameter. Lower values for stainless and titanium; higher values for aluminum. The maximum Z per rev should never exceed the tool's corner radius.</p>
-<p><strong>When should I use helical interpolation instead of drilling?</strong> For bores over 20 mm diameter, helical milling with a standard end mill is more versatile than using a dedicated drill or boring head. The tool can machine multiple bore sizes, and the process is not affected by coolant pressure or chip packing.</p>
-</div></section>
-<div class="toolbox-widget"><h3>🔧Caja de herramientas de ingeniería de precisión</h3><div class="toolbox-links">
-<a href="/tools/speed-feed/">Rugosidad de la superficie</a>
-<a href="/tools/hardness-converter/">Guía de titanio</a>
-<a href="/tools/tap-drill-size-calculator/">Referencia cruzada de calificaciones</a>
-<a href="/tools/mrr-calculator/">Costo por pieza</a>
-<a href="/tools/feed-converter/">Convertidor de par</a>
-<a href="/tools/surface-roughness-calculator/">Solicitar cotización por volumen →</a>
-<a href="/tools/titanium-machining-guide/">Fresas de extremo de carburo sólido</a>
-<a href="/tools/carbide-grade-cross-ref-2/">Portaherramientas</a>
-<a href="/tools/cost-per-part-calculator/">Calculadora de Perforación Peck</a>
-<a href="/tools/torque-unit-converter/">Calculadora de planitud</a>
-</div></div>
-<aside class="b2b-card-enhanced" style="margin:32px 0">
-<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
-<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
-<div style="flex:1;min-width:0">
-<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">¿Soluciones Profesionales para Helical Interpolation Calculator?</h3>
-<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Obtenga precios directos de fábrica en herramientas de carburo premium con calidad certificada ISO.</p>
-</div>
-<a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
-</div>
-<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">Conductividad térmica del acero</a><a href="/products/tool-holders.html">Calculadora de costos por lote</a></div>
-
-<div class="share-bar">
-<span class="share-label">↗ Share with Engineers</span>
-<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/helical-interpolation-calculator/" rel="noopener" target="_blank">LinkedIn</a>
-<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/helical-interpolation-calculator/&amp;text=Helical Interpolation Calculator" rel="noopener" target="_blank">𝕏</a>
-<a href="mailto:subject=Helical Interpolation Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/helical-interpolation-calculator/">Email</a>
-</div>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/es/tools/round-bar-weight/">Round Bar Weight</a>
-<a href="/es/tools/feed-rate-override-calculator/">Feed Rate Override Calculator</a>
-<a href="/es/tools/mcode-reference/">Mcode Reference</a>
-<a href="/es/tools/coolant-concentration/">Coolant Concentration</a>
-<a href="/es/tools/feed-converter/">Feed Converter</a>
-<a href="/es/tools/cycle-time-calculator/">Cycle Time Calculator</a>
-<a href="/es/tools/dovetail-calculator/">Dovetail Calculator</a>
-<a href="/es/tools/pressure-converter/">Pressure Converter</a>
-<a href="/es/tools/hardness-converter/">Hardness Converter</a>
-<a href="/es/tools/cast-iron-machining/">Cast Iron Machining</a>
-
-</div>
-</section>
-<style>
-.engineering-directory a{
-  display:block;
-  font-size:12px;
-  font-weight:500;
-  color:#1d1d1f;
-  text-decoration:none;
-  padding:8px 14px;
-  background:#fff;
-  border-radius:10px;
-  border:1px solid #e8e8ed;
-  transition:all .15s;
-  text-align:center;
-}
-.engineering-directory a:hover{
-  background:#0066cc;
-  color:#fff;
-  border-color:#0066cc;
-  transform:translateY(-1px);
-  box-shadow:0 4px 12px rgba(0,102,204,.15);
-}
-</style>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
-<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/es/tools/bulk-discount-calculator/">Bulk Discount Calculator</a>
-<a href="/es/tools/stainless-properties/">Stainless Properties</a>
-<a href="/es/tools/metric-imperial-thread-converter/">Metric Imperial Thread Converter</a>
-<a href="/es/tools/round-bar-weight/">Round Bar Weight</a>
-<a href="/es/tools/reaming-allowance-calculator/">Reaming Allowance Calculator</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesls/reaming-allowance-calculator/">Reaming Allowance Calculator</a>
 <a href="/es/tools/cnc-roi-calculator/">Cnc Roi Calculator</a>
 <a href="/es/tools/coating-selector/">Coating Selector</a>
 <a href="/es/tools/chip-load/">Chip Load</a>
@@ -414,6 +232,21 @@ calc();</script><script>function toggleLang(e){e.stopPropagation();document.getE
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
+
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
@@ -424,4 +257,5 @@ calc();</script><script>function toggleLang(e){e.stopPropagation();document.getE
 </div>
 <a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
 </div>
+<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
 </body></html>

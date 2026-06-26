@@ -78,20 +78,7 @@ footer a{color:#0066cc;text-decoration:none}
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
-
-/* Language Switcher - Dropdown with Flags */
-.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
-.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
-.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
-.lang-dropdown{position:relative;display:inline-flex;align-items:center}
-.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
-.lang-menu.show{display:block}
-.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
-.lang-menu a:hover{background:#f5f5f7}
-.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
-.lang-menu a .flag{font-size:16px}
-
+.lang-nav /* Language Switcher - Dropdown with Flags */
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -105,7 +92,18 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){.nav-links{display:none!important}}
+@media(max-width:768px){}
+
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -214,84 +212,45 @@ nav#nav-v2 .nv-logo span{font-weight:800;color:#0066cc}
 nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-shrink:0}
 nav#nav-v2 .nv-links>a{color:#1d1d1f;text-decoration:none;padding:0 14px;height:48px;display:flex;align-items:center;font-weight:500;font-size:12px;transition:color .15s;white-space:nowrap}
 nav#nav-v2 .nv-links>a:hover{color:#0066cc}
+nav#nav-v2 .nv-lang{position:relative;display:flex;align-items:center}
 nav#nav-v2 .nv-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
 nav#nav-v2 .nv-quote{display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:6px 16px;border-radius:24px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap}
 nav#nav-v2 .nv-quote:hover{background:#0055aa;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,204,.25)}
-nav#nav-v2 .nv-lang{display:flex;align-items:center;gap:2px;margin-left:4px;padding-left:8px;border-left:1px solid #e8e8ed}
-nav#nav-v2 .nv-lang a{font-size:10px;font-weight:600;color:#86868b;text-decoration:none;padding:3px 6px;border-radius:12px;transition:all .15s;letter-spacing:.3px}
-nav#nav-v2 .nv-lang a:hover{color:#1d1d1f;background:#f5f5f7}
-nav#nav-v2 .nv-lang a.active{color:#0066cc;background:#f0f7ff;font-weight:700}
-nav#nav-v2 .nv-lang .sep{color:#d2d2d6;font-size:10px;margin:0 1px;font-weight:300}
 @media(max-width:768px){
-  nav#nav-v2 .nv-links{display:none}
-  nav#nav-v2 .nv-lang a{font-size:9px;padding:2px 4px}
+  nav#nav-v2 .nv-inner{flex-wrap:wrap;padding:10px 16px;gap:4px;align-items:center}
+  nav#nav-v2 .nv-logo{font-size:14px;order:0;flex-shrink:0;margin-right:auto}
+  nav#nav-v2 .nv-right{order:1;flex-shrink:0;width:auto;gap:6px}
+  nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-wrap:wrap;order:2;width:100%;justify-content:center;margin-top:2px;padding-top:2px;border-top:1px solid #f0f0f0}
+  nav#nav-v2 .nv-links>a{padding:6px 12px;font-size:11px;height:auto;font-weight:500}
+  nav#nav-v2 .nv-lang{position:relative!important}
+  nav#nav-v2 .lang-dd{right:-30px;min-width:130px}
   nav#nav-v2 .nv-quote{padding:4px 10px;font-size:10px}
 }
 nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important}
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
 </style>
 
 <style id="hero-atmo-style">
-/* ── Hero Atmosphere ── */
-.hero-atmo {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  background: linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 40%, #d2d2d7 100%);
-  margin-bottom: -60px;
-  z-index: 0;
-}
-.hero-atmo::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(0,102,204,.06) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 80% at 80% 40%, rgba(0,0,0,.04) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.95) 90%, #fff 100%);
-}
-.hero-atmo::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 80px;
-  background: linear-gradient(0deg, #fff 0%, transparent 100%);
-}
-/* Image Container - Apple Style */
-.img-container {
-  width: 100%;
-  aspect-ratio: 1;
-  background: #fff;
-  border-radius: 20px;
-  border: 1px solid #d2d2d7;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.img-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #f0f0f3 0%, #e8e8ed 50%, #f0f0f3 100%);
-  color: #c0c0c6;
-  font-size: 48px;
-}
-.img-placeholder::after {
-  content: '◆';
-  font-size: 48px;
-  opacity: .3;
-}
+.hero-atmo{position:relative;width:100%;height:200px;overflow:hidden;background:linear-gradient(180deg,#f5f5f7 0%,#e8e8ed 40%,#d2d2d7 100%);margin-bottom:-60px;z-index:0}
+.hero-atmo::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 50%,rgba(0,102,204,.06) 0%,transparent 50%),radial-gradient(ellipse 60% 80% at 80% 40%,rgba(0,0,0,.04) 0%,transparent 50%),linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.95) 90%,#fff 100%)}
+.hero-atmo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(0deg,#fff 0%,transparent 100%)}
+.img-container{width:100%;aspect-ratio:1;background:#fff;border-radius:20px;border:1px solid #d2d2d7;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
+.img-container img{width:100%;height:100%;object-fit:cover}
+.img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f0f0f3 0%,#e8e8ed 50%,#f0f0f3 100%);color:#c0c0c6;font-size:48px}
+.img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
-
 
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
@@ -300,312 +259,24 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-</head>
-<body>
-
-<div class="hero-img-wrapper">
-<img src="https://images.unsplash.com/1565193566165-24e2f9e7e80c?w=1200&h=675&fit=crop&q=80&auto=format" alt="CNC-Fräsgeschwindigkeit und Vorschub" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
-<div class="img-overlay"></div>
-</div>
-<div class="hero-atmo" aria-hidden="true"></div>
 <nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/de/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
-<a href="/de/">Start</a>
 <a href="/de/products/">Produkte</a>
-<a href="/de/tools/">Werkzeuge</a>
+<a href="/de/tools/">Rechner &amp; Werkzeuge</a>
 <a href="/de/guides/">Anleitungen</a>
 <a href="/de/about.html">Über uns</a>
 </div>
 <div class="nv-right">
-<div class="nv-lang"><a href="/tools/ramping-angle-calculator/">EN</a><span class="sep">·</span><a href="#" onclick="return false" class="active">DE</a><a href="/jp/tools/ramping-angle-calculator/">JP</a><span class="sep">·</span><a href="/es/tools/ramping-angle-calculator/">ES</a><a href="/vi/tools/ramping-angle-calculator/">VI</a></div>
+<div class="nv-lang"><div class="lang-btn" onclick="toggleLangDD(event)"><span class="flag">🇩🇪</span><span>DE</span><span class="caret">▼</span></div><div class="lang-dd" id="lang-dd"><a href="/tools/ramping-angle-calculator" class=""><span class="flag">🇺🇸</span><span class="lbl">EN</span><span class="nm">English</span></a><a href="/de/tools/ramping-angle-calculator" class="current"><span class="flag">🇩🇪</span><span class="lbl">DE</span><span class="nm">Deutsch</span></a><a href="/jp/tools/ramping-angle-calculator" class=""><span class="flag">🇯🇵</span><span class="lbl">JP</span><span class="nm">日本語</span></a><a href="/es/tools/ramping-angle-calculator" class=""><span class="flag">🇪🇸</span><span class="lbl">ES</span><span class="nm">Español</span></a><a href="/vi/tools/ramping-angle-calculator" class=""><span class="flag">🇻🇳</span><span class="lbl">VI</span><span class="nm">Tiếng Việt</span></a></div></div>
 <a class="nv-quote" href="/de/quote.html">📩 Angebot</a>
 </div>
 </div>
 </nav>
-<section class="hero">
-<div class="container">
-<div class="badge">📐 Free Professional Tool</div>
-<h1>Steigungswinkelrechner</h1>
-<p>Berechnen Sie maximale Rampen winkel und spiralförmige Interpolation parameter für das CNC-Fräsen. Bestimmen Sie die Z-Achsen-Vorschub raten für den Rampen eintritt und die Helix bohrung.</p>
-<div class="hero-actions">
-<a class="btn" href="#calculator">Berechnung starten ↓</a>
-<a class="btn-outline" href="https://carbide-tooling.com/quote.html">📩Erhalten Sie ein Präzisionsangebot</a>
-</div>
-</div>
-</section>
-<section class="container" id="calculator" style="padding-bottom:40px">
-<div class="card">
-<h2>📐Rampe &amp; Helical Interpolation</h2>
-<p class="sub">Berechnen Sie sichere Rampen parameter basierend auf Werkzeug geometrie und Material. Ergebnisaktualisierung in Echtzeit.</p>
-<div class="card-row">
-<div class="field"><label>🔩Material</label>
-<select id="material" onchange="calc()">
-<option value="al6061">Aluminum 6061</option>
-<option selected="" value="ss304">Stainless Steel 304</option>
-<option value="mild_steel">Mild Steel 1018</option>
-<option value="ti6al4v">Titanium Grade 5</option>
-</select>
-</div>
-<div class="field"><label>📐Werkzeugdurchmesser (mm)</label>
-<input id="dia" max="50" min="1" oninput="calc()" step="0.5" type="number" value="12"/>
-</div>
-<div class="field"><label>🦷Flöten</label>
-<select id="flutes" onchange="calc()"><option value="2">2</option><option value="3">3</option><option selected="" value="4">4</option><option value="5">5</option><option value="6">6</option></select>
-</div>
-<div class="field"><label>🔧Werkzeug typ</label>
-<select id="tool-type" onchange="calc()">
-<option value="standard">Standard End Mill</option>
-<option value="high-feed">High-Vorschub End Mill</option>
-<option value="drill">Indexable Drill</option>
-<option value="ball">Ball Nose End Mill</option>
-</select>
-</div>
-<div class="field"><label>⏬Axial tiefe (ap mm)</label>
-<input id="doc" max="10" min="0.1" oninput="calc()" step="0.1" type="number" value="1"/>
-</div>
-<div class="field"><label>↔️ Radiale Verlobung (ae %)</label>
-<input id="radial" max="100" min="1" oninput="calc()" step="1" type="number" value="40"/>
-<span style="font-size:10px;color:#86868b">% of tool diameter</span>
-</div>
-<div class="field"><label>⚡Schnittgeschwindigkeit (Vc m/min)</label>
-<input id="vc" max="2000" min="10" oninput="calc()" step="10" type="number" value="120"/>
-</div>
-<div class="field"><label>📊Vorschub pro Zahn (mm)</label>
-<input id="fz" max="1" min="0.001" oninput="calc()" step="0.005" type="number" value="0.05"/>
-</div>
-</div>
-<div class="result-grid">
-<div class="result-item"><div class="label">Max Ramping Angle</div><div class="value" id="r-angle">—</div><div class="unit">degrees</div></div>
-<div class="result-item"><div class="label">Z Vorschub Rate (mm/min)</div><div class="value" id="r-zfeed">—</div><div class="unit">mm/min</div></div>
-<div class="result-item"><div class="label">Helical Diameter</div><div class="value" id="r-helix">—</div><div class="unit">mm</div></div>
-<div class="result-item"><div class="label">Ramp Status</div><div class="value" id="r-status">—</div><div class="unit" id="r-status-unit"></div></div>
-</div>
-<div class="extra-info">
-<span>RPM: <span class="val" id="x-rpm">—</span></span>
-<span style="color:#d2d2d6">|</span>
-<span>Table feed: <span class="val" id="x-feed">—</span> mm/min</span>
-<span style="color:#d2d2d6">|</span>
-<span>Material removal in ramp: <span class="val" id="x-mrr">—</span> cm³/min</span>
-</div>
-</div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px">
-<a href="/tools/force-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f">
-<div style="font-size:20px">💪</div><h4 style="font-size:14px;font-weight:600;margin:4px 0 2px">Fräskraftrechner</h4>
-<p style="font-size:12px;color:#86868b">Das Rampen erzeugt höhere Schnitt kräfte-überprüfen Sie die Kraft grenzen.</p>
-</a>
-<a href="/tools/speed-feed/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f">
-<div style="font-size:20px">⚙️</div><h4 style="font-size:14px;font-weight:600;margin:4px 0 2px">Geschwindigkeits- und Vorschubrechner</h4>
-<p style="font-size:12px;color:#86868b">Optimieren Sie die Parameter, bevor Sie den Rampen eintritt berechnen.</p>
-</a>
-</div>
-</section>
-<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Verwandte Präzisionswerkzeuge</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/de/tools/reaming-allowance-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Reaming Allowance Calculator</a><a href="/de/tools/round-bar-weight/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Round Bar Weight</a><a href="/de/tools/bulk-discount-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Bulk Discount Calculator</a><a href="/de/tools/coolant-lifecycle-cost/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Coolant Lifecycle Cost</a><a href="/de/tools/plastic-machining/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Plastic Machining</a><a href="/de/tools/cnc-roi-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Cnc Roi Calculator</a></div></div><footer class="tool-footer">
-<div class="container">
-<div class="footer-links">
-<a href="/">Startseite</a>
-<a href="/tools/">Alle Werkzeuge</a>
-<a href="/products/">Produkte</a>
-<a href="/guides/">Führer</a>
-<a href="/about.html">Über</a>
-<a href="/quote.html">Geschwindigkeit &amp; Vorschub</a>
-<a href="/privacy.html">Härtekonverter</a>
-</div>
-<div class="footer-social">
-<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Bohrergröße für Gewindebohrungen</a>
-<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
-<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
-</div>
-<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Alle Werkzeuge</a></p>
-<p style="font-size:11px;margin-bottom:6px">Die Ergebnisse dienen ausschließlich als Referenz. Wenden Sie sich bei spezifischen Anwendungen an die Hersteller der Werkzeuge.</p>
-<p style="font-size:11px">©2026 Hartmetallwerkzeuge</p>
-</div>
-</footer>
-<script>
-const MATS = {
- al6061:{label:'Aluminum 6061',maxAngle:5,feedReduction:0.7},
- ss304:{label:'Stainless 304',maxAngle:2,feedReduction:0.45},
- mild_steel:{label:'Mild Steel',maxAngle:3,feedReduction:0.6},
- ti6al4v:{label:'Titanium Gr5',maxAngle:1.5,feedReduction:0.3},
-};
-
-const TOOL_TYPES = {
- standard:{baseAngle:3.5,helixFactor:1.0},
- 'high-feed':{baseAngle:8,helixFactor:1.3},
- drill:{baseAngle:2,helixFactor:0.8},
- ball:{baseAngle:4,helixFactor:1.1},
-};
-
-function calc() {
- const mat = MATS[document.getElementById('material').value];
- const dia = parseFloat(document.getElementById('dia').value) || 12;
- const flutes = parseInt(document.getElementById('flutes').value) || 4;
- const toolKey = document.getElementById('tool-type').value;
- const tType = TOOL_TYPES[toolKey];
- const ap = parseFloat(document.getElementById('doc').value) || 1;
- const aePct = parseFloat(document.getElementById('radial').value) || 40;
- const vc = parseFloat(document.getElementById('vc').value) || 120;
- const fz = parseFloat(document.getElementById('fz').value) || 0.05;
-
- // RPM
- const rpm = dia > 0 ? (vc * 1000) / (Math.PI * dia) : 1000;
- // Table feed
- const tableVorschub = rpm * flutes * fz;
-
- // Max ramping angle = tool base angle adjusted by material
- let maxAngle = tType.baseAngle * (mat.maxAngle / 5);
- maxAngle = Math.min(maxAngle, mat.maxAngle, tType.baseAngle * 1.5);
- maxAngle = Math.max(maxAngle, 0.5);
-
- // Radial adjustment — lower radial engagement allows steeper ramps
- const aeRatio = aePct / 100;
- const radFactor = aeRatio > 0 ? Math.min(1.5, 1 + (1 - aeRatio)) : 1;
- maxAngle = Math.min(maxAngle * radFactor, mat.maxAngle * 1.2);
-
- // Z feed rate
- const zVorschub = tableVorschub * Math.sin(maxAngle * Math.PI / 180) * mat.feedReduction;
-
- // Helical diameter (effective hole diameter for helical interpolation)
- const helixDia = dia * (1 - aeRatio * 0.5);
-
- // Status assessment
- let status, sClass;
- if (maxAngle >= 4) { status = '✅ Safe'; sClass = ''; }
- else if (maxAngle >= 2) { status = '⚠️ Moderate'; sClass = 'warning'; }
- else { status = '⚠️ Conservative'; sClass = 'warning'; }
-
- // MRR in ramp condition
- const effectiveDoc = ap + (dia * Math.sin(maxAngle * Math.PI / 180) * 0.5);
- const mrrRamp = (effectiveDoc * (aeRatio * dia) * tableVorschub * 0.5 * mat.feedReduction) / 1000;
-
- document.getElementById('r-angle').textContent = maxAngle.toFixed(1);
- document.getElementById('r-zfeed').textContent = Math.round(zVorschub);
- document.getElementById('r-helix').textContent = helixDia.toFixed(1);
- const st = document.getElementById('r-status');
- st.textContent = status;
- st.className = 'value ' + sClass;
- document.getElementById('x-rpm').textContent = Math.round(rpm);
- document.getElementById('x-feed').textContent = Math.round(tableVorschub);
- document.getElementById('x-mrr').textContent = mrrRamp.toFixed(1);
-}
-
-calc();
-</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
-<section class="seo-content">
-<div class="container">
-<h2>Ramping: Die Einstiegs strategie, die Ihr Werkzeug leben definiert</h2>
-<p>Jeder Hohlraum, jede Tasche, jede Würfel öffnung beginnt mit einem Sprung oder einer Rampe. Wenn Sie gerade nach unten eintauchen, wird die Mitte des Werkzeugs belastet-der eine Teil einer End mühle mit Null-Schnitt geschwindigkeit. Das Ergebnis ist, Metall seitwärts unter die Werkzeug fläche zu drücken und Wärme, Durchbiegung und häufig ein geripptes Werkzeug zu erzeugen.</p>
-<p>Durch das Rampen wird die Eintritts last über die Schneid kanten verteilt, indem das Werkzeug in einem abwärts spiralen oder abgewinkelten geraden Pfad bewegt wird. Die Schnitt geschwindigkeit bleibt im normalen Bereich, die Chip bildung ist konsistent und das Werkzeug überlebt, um die Teile herzustellen, die Sie benötigen. Der Kompromiss besteht darin, dass das Rampen länger dauert als ein Sprung und eine sorgfältige Auswahl der Parameter erfordert-genau das behandelt dieser Taschen rechner.</p>
-<h2>Wie der maximale Rampen winkel bestimmt wird</h2>
-<p>Drei Faktoren setzen die Grenze für den Rampen winkel. Die Werkzeug geometrie steht an erster Stelle-Standard-Schaftfräser haben einen maximalen Rampen winkel von 2-5 Grad, abhängig von der Anzahl der Flöten und dem Kern durchmesser. Hoch leistungs mühlen mit ihren großen Eck radien können 5-10 Grad bewältigen. Indexable Bohrer sind typischer weise auf 1-3 Grad begrenzt.</p>
-<p>Die zweite Einschränkung ist die Fähigkeit der Flöte, Chips am unteren Rand des Schnitts zu evakuieren. Steile Rampen erzeugen dicke, breite Chips in der Mitte des Werkzeugs, die durch die Flöte austreten müssen. Wenn das Chip volumen die Flöten kapazität übers ch reitet, tritt eine Packung auf, gefolgt von einem Werkzeug fehler. Der radiale Eingriff (ae %) und die axiale Tiefe (ap) bestimmen den Chip querschnitt am Rampen boden.</p>
-<p>Die dritte Einschränkung ist die Fähigkeit der Maschine, den heli kalen Pfad zu interpolieren. Die meisten CNC-Steuerungen können eine helikale Interpolation ausführen (G02/G03 mit Z-Achsen bewegung), aber der maximale Helix winkel variiert zwischen den Steuer elementen. Bei den meisten Steuerungen sind Winkel bis zu 5 Grad sicher. Darüber hinaus kann die Steuerung den Pfad umrunden oder einen Fehler erzeugen.</p>
-<h2>Helische Interpolation im Vergleich zu linearer Rampe</h2>
-<p>Das lineare Rampen bewegt das Werkzeug in einem Winkel zur Werkstück oberfläche in einer geraden Linie-normaler weise für den Schlitz eintritt, bei dem das Werkzeug in einem Winkel in das Material eintaucht. Die helikale Interpolation bewegt das Werkzeug in einem spiralförmigen Pfad und schneidet gleichzeitig X, Y und Z ein-verwendet für den Loch eintritt, den Taschen eintritt von fest und die Matrize öffnung.</p>
-<p>Die helikale Interpolation erzeugt eine gleichmäßigere Spanbelastung, da das Werkzeug immer vollständig geschnitten wird. Eine lineare Rampe kann eine Flöte überlastet lassen, wenn die Beschleunigung der Maschine nicht ausreicht, um den programmierten Weg aufrecht zu erhalten. Beim helikalen Rampen unter scheidet sich die effektive Vorschub rate am Werkzeug zentrum von der Vorschub rate an der Schneide-die Innenkante bewegt sich langsamer, während sich die Außenkante schneller bewegt. Dieser Rechner erklärt diesen Unterschied, indem er die effektive Schnitt geschwindigkeit an der Peripherie des Werkzeugs berechnet.</p>
-<h2>Ramping Vorschub Rate: Warum es niedriger ist als normales Schneid futter</h2>
-<p>Während des Rampens wird der axiale Eingriff des Werkzeugs zum radialen Eingriff hinzugefügt, wodurch ein kombinierter Eingriffs winkel entsteht, der die effektive Spanbelastung erhöht. Die Z-Achsen-Komponente der Vorschub rate muss in die Gesamt vorschub rate einbezogen werden, sonst übers ch reitet die Chip belastung pro Zahn das empfohlene Maximum.</p>
-<p>Dieser Rechner berechnet die Z-Achsen-Vorschub rate (mm/min), die erforderlich ist, um die programmierte Spanbelastung während der Rampe aufrecht zu erhalten. Der Z-Vorschub ist immer niedriger als der Tisch vorschub, da das Werkzeug mit einer kontrollierten Geschwindigkeit absteigen muss, um die Spanbelastung in Grenzen zu halten. Eine von vielen Programmierern verwendete Standard regel-die Reduzierung des Vorschubmittels um 50% beim Rampen-ist für Aluminium konservativ, für Edelstahl und Titan jedoch häufig nicht ausreichend.</p>
-<h2>Chip ausdünnung in der Mitte des Werkzeugs</h2>
-<p>Wenn das Werkzeug während der spiralförmigen Interpolation in das Material abfällt, variiert die Chip dicke über die Schneide. An der Peripherie des Werkzeugs ist die Schnitt geschwindigkeit maximal und die Chips bilden sich normal. Wenn Sie sich in Richtung Mitte bewegen, sinkt die Schnitt geschwindigkeit linear auf Null. Der Teil des Werkzeugs innerhalb von 1-2mm von der Mitte schneidet effektiv nicht, sondern drückt. Diese Zone erzeugt beim Rampen die meiste Wärme und den größten Verschleiß.</p>
-<p>Werkzeug hersteller fügen Standard-Schaftfräser speziell für diese Zone ein konkaves Relief oder eine "Mittels chneid geometrie" hinzu. Eine mittig schneidende End mühle hat Schneid kanten, die sich in der Mitte treffen, so dass sie eintauchen oder rampen kann, ohne Material zu schieben. Nicht mittig schneidende Werkzeuge sollten niemals zum Rampen verwendet werden-ihnen fehlt die Kanten geometrie für das axiale Schneiden und sie versagen sofort.</p>
-<h2>Praktische Ramping-Richtlinien nach Material</h2>
-<p><strong>Aluminum 6061:</strong> Ramp angles of 3-5 degrees with a standard 4-flute end mill are safe. Vorschub reduction of 20-30% from normal cutting feed is sufficient. Use center-cutting tools only.</p>
-<p><strong>Mild Steel 1018:</strong> Limit ramping to 2-3 degrees with speed and feed, reducing feed by 40% from normal. For cavities larger than 2× tool diameter, use pre-drilled entry holes rather than ramping from solid.</p>
-<p><strong>Stainless Steel 304:</strong> Ramp angles should not exceed 1.5-2 degrees. Reduce feed by 50-60%. Use a high-feed end mill with 2-3 flutes if ramping from solid is unavoidable. The <a href="/tools/force-calculator/" style="color:#0066cc">Fräskraftrechner</a> can help estimate the increased load during ramping.</p>
-<p><strong>Titanium Grade 5:</strong> Ramping from solid in titanium is strongly discouraged. Pre-drill entry holes whenever possible. If ramping is required, limit the angle to 1 degree, reduce feed by 70%, and use through-spindle coolant at 50+ bar to prevent thermal damage at the tool center.</p>
-<h2>Häufig gestellte Fragen</h2>
-<p><strong>What is ramping in CNC milling?</strong> Ramping is entering material at an angle rather than plunging straight down. It distributes the cutting load across the tool's flutes and prevents the center of the tool from pushing material.</p>
-<p><strong>What is the maximum ramping angle for a standard end mill?</strong> For a standard 4-flute end mill, 2-4 degrees depending on the core diameter. High-feed end mills can reach 5-10 degrees. This calculator computes the safe maximum for your specific tool and material combination.</p>
-<p><strong>How do I calculate Z-axis feed rate for helical ramping?</strong> Z feed = table feed × sin(ramp angle). The calculator above computes this automatically based on your tool parameters and material.</p>
-<p><strong>Can I ramp with a non-center-cutting end mill?</strong> No. Non-center-cutting tools lack the flute geometry to cut axially. Using them for ramping pushes material at the tool center, causing deflection and rapid failure. Always verify the tool is center-cutting before programming a ramp entry.</p>
-<p><strong>Does helical interpolation produce the same chip load as linear cutting?</strong> No. During helical interpolation, the chip load varies across the tool diameter. The outer edge of the tool travels faster than the inner edge, creating uneven chip thickness. This calculator uses the average effective chip load to determine safe parameters.</p>
-<p><strong>When should I pre-drill instead of ramping?</strong> For cavities deeper than 2× tool diameter in steel and stainless, or any cavity in titanium and superalloys, pre-drilling is faster and safer than ramping. The <a href="/tools/cycle-time-calculator/" style="color:#0066cc">Oberflächenrauheit</a> can help compare the total cycle time of ramping vs. pre-drilling.</p>
-<div style="text-align:center;padding:32px 24px;font-size:15px;color:#1d1d1f;background:#f5f5f7;border-radius:16px;max-width:900px;margin:40px auto 0">
-<p style="margin:0">Für für den Rampen optimierte Mittels chneid mühlen überprüfen Sie unsere Hochleistungs-Schaftfräser</p>
-</div>
-</div>
-</section>
-<div class="toolbox-widget"><h3>🔧Werkzeugkasten der Präzisionstechnik</h3><div class="toolbox-links">
-<a href="/tools/speed-feed/">Titanführung</a>
-<a href="/tools/hardness-converter/">Notenübereinstimmung</a>
-<a href="/tools/tap-drill-size-calculator/">Kosten pro Teil</a>
-<a href="/tools/mrr-calculator/">Drehmomentwandler</a>
-<a href="/tools/feed-converter/">Massenanfrage stellen →</a>
-<a href="/tools/surface-roughness-calculator/">Vollhartmetall-Schaftfräser</a>
-<a href="/tools/titanium-machining-guide/">Werkzeughalter</a>
-<a href="/tools/carbide-grade-cross-ref-2/">ISO-Fit-Rechner</a>
-<a href="/tools/cost-per-part-calculator/">Schlüsselkerbtiefenrechner</a>
-<a href="/tools/torque-unit-converter/">Getriebeparameterrechner</a>
-</div></div>
-<aside class="b2b-card-enhanced" style="margin:32px 0">
-<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
-<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
-<div style="flex:1;min-width:0">
-<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Professionelle Lösungen für Ramping Angle Calculator?</h3>
-<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Erhalten Sie werkseitige Preise für Premium-Hartmetallwerkzeuge mit ISO-zertifizierter Qualität.</p>
-</div>
-<a href="/de/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Massenangebot anfordern →</a>
-</div>
-<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">Zerspanbarkeitsbewertung</a><a href="/products/tool-holders.html">Rechner für die Oberflächengeschwindigkeit (SFM)</a></div>
-
-<div class="share-bar">
-<span class="share-label">↗ Share with Engineers</span>
-<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/ramping-angle-calculator/" rel="noopener" target="_blank">LinkedIn</a>
-<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/ramping-angle-calculator/&amp;text=Ramping Angle Calculator" rel="noopener" target="_blank">𝕏</a>
-<a href="mailto:subject=Ramping Angle Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/ramping-angle-calculator/">Email</a>
-</div>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Globales Engineering-Verzeichnis</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professionelle Bearbeitungswerkzeuge</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/de/tools/weight-shipping-calculator/">Weight Shipping Calculator</a>
-<a href="/de/tools/ball-nose-effective-diameter/">Ball Nose Effective Diameter</a>
-<a href="/de/tools/tool-life-economics/">Tool Life Economics</a>
-<a href="/de/tools/surface-roughness-calculator/">Surface Roughness Calculator</a>
-<a href="/de/tools/chamfer-calculator/">Chamfer Calculator</a>
-<a href="/de/tools/production-efficiency-calculator/">Production Efficiency Calculator</a>
-<a href="/de/tools/drill-point-length-calculator/">Drill Point Length Calculator</a>
-<a href="/de/tools/die-steel-thermal-conductivity/">Die Steel Thermal Conductivity</a>
-<a href="/de/tools/temp-converter/">Temp Converter</a>
-<a href="/de/tools/brass-machining-parameters/">Brass Machining Parameters</a>
-
-</div>
-</section>
-<style>
-.engineering-directory a{
-  display:block;
-  font-size:12px;
-  font-weight:500;
-  color:#1d1d1f;
-  text-decoration:none;
-  padding:8px 14px;
-  background:#fff;
-  border-radius:10px;
-  border:1px solid #e8e8ed;
-  transition:all .15s;
-  text-align:center;
-}
-.engineering-directory a:hover{
-  background:#0066cc;
-  color:#fff;
-  border-color:#0066cc;
-  transform:translateY(-1px);
-  box-shadow:0 4px 12px rgba(0,102,204,.15);
-}
-</style>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
-<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Globales Engineering-Verzeichnis</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professionelle Bearbeitungswerkzeuge</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/de/tools/graphite-machining/">Graphite Machining</a>
-<a href="/de/tools/horsepower-calculator/">Horsepower Calculator</a>
-<a href="/de/tools/dia-circ-calculator/">Dia Circ Calculator</a>
-<a href="/de/tools/bolt-circle-calculator/">Bolt Circle Calculator</a>
-<a href="/de/tools/automation-vs-manual-calculator/">Automation Vs Manual Calculator</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professimanual-calculator/">Automation Vs Manual Calculator</a>
 <a href="/de/tools/nose-radius-compensation/">Nose Radius Compensation</a>
 <a href="/de/tools/tube-weight-calculator/">Tube Weight Calculator</a>
 <a href="/de/tools/step-drill-design-calculator/">Step Drill Design Calculator</a>
@@ -635,6 +306,21 @@ calc();
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
+
+.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
+.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
+.lang-btn .flag{font-size:14px;line-height:1}
+.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
+.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
+.lang-dd.open{display:block;animation:ddIn .15s ease}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-dd a:hover{background:#f5f5f7}
+.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
+.lang-dd a .flag{font-size:18px;line-height:1}
+.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
+.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
+
 </style>
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
@@ -645,5 +331,6 @@ calc();
 </div>
 <a href="/de/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Massenangebot anfordern →</a>
 </div>
+<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
 </body>
 </html>
