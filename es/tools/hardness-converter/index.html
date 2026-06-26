@@ -289,8 +289,21 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 }
 </style>
 
+
+<style id="hero-img-style">
+.hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.hero-img-wrapper:hover img{transform:scale(1.03)}
+.hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
+</style>
+
 </head>
 <body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1581093450562-17e0e3e3b3d2?w=1200&h=675&fit=crop&q=80&auto=format" alt="Prueba de dureza" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
 <div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/es/"><span>◆</span> Carbide Tooling</a>
