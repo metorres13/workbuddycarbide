@@ -11,7 +11,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -25,18 +38,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -249,6 +251,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -256,7 +259,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1581093450607-4e0f9a7b3e3c?w=1200&h=675&fit=crop&q=80&auto=format" alt="Cắt ren" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/vi/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -270,15 +280,102 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 <a class="nv-quote" href="/vi/quote.html">📩 Báo giá</a>
 </div>
 </div>
-</nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">Công cụ tính toán tải chip</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">Công cụ tính bước ren</a> <span style="color:#d2d2d6">›</span> Thread Lead Angle Calculator</div>
+<section class="hero"><div class="container"><div class="badge" style="display:inline-flex;background:#f5f5f7;padding:4px 14px;border-radius:20px;font-size:11px;font-weight:600;color:#86868b;margin-bottom:16px">📐 Physics Tool</div><h1>Công thức: = arctan (Chì/(đường kính cao độ))</h1><p>🔩Kích thước ren</p><a class="btn" href="#calculator">Vòng quay hàng tồn kho</a></div></section>
+
+<section class="container" id="calculator" style="padding-bottom:40px">
+<div class="card"><h2>Tất cả công cụ</h2><p class="sub">Kết quả chỉ mang tính tham khảo. Hãy tham khảo ý kiến của các nhà sản xuất dụng cụ để biết thông tin về các ứng dụng cụ thể.</p>
+<div class="card-row">
+<div class="field"><label>©Dụng cụ cắt gọt bằng cacbua năm 2026</label><select id="size" onchange="calc()"><option>M6×1.0</option><option>M8×1.25</option><option selected="">M10×1.5</option><option>M12×1.75</option><option>M16×2.0</option></select></div>
+<div class="field"><label>Công thức góc chì và ý nghĩa của nó</label><select id="starts" onchange="calc()"><option value="1">1 (single)</option><option value="2">2 (double)</option><option value="3">3 (triple)</option></select></div>
+</div>
+<div class="result-grid">
+<div class="result-item"><div class="label">Lead Angle</div><div class="value" id="r-angle">—</div><div class="unit">degrees</div></div>
+<div class="result-item"><div class="label">Lead (per rev)</div><div class="value" id="r-lead">—</div><div class="unit">mm</div></div>
+<div class="result-item"><div class="label">At Minor Dia</div><div class="value" id="r-minor">—</div><div class="unit">degrees</div></div>
+<div class="result-item"><div class="label">At Major Dia</div><div class="value" id="r-major">—</div><div class="unit">degrees</div></div>
+</div>
+</div>
+<div style="text-align:center;margin:16px 0"><a href="/tools/" style="color:#0066cc;text-decoration:none;font-size:13px">Tốc độ và Lượng ăn dao</a></div>
+</section>
+<script>
+function calc(){const val=document.getElementById('size').value;const starts=parseInt(document.getElementById('starts').value);const dia=parseFloat(val.split('×')[0].replace('M',''));const pitch=parseFloat(val.split('×')[1]);const lead=pitch*starts;const pd=dia-pitch*0.6495;const angle=Math.atan(lead/(Math.PI*pd))*180/Math.PI;const minor=Math.atan(lead/(Math.PI*(dia-pitch*1.0825)))*180/Math.PI;const major=Math.atan(lead/(Math.PI*dia))*180/Math.PI;document.getElementById('r-angle').textContent=angle.toFixed(2);document.getElementById('r-lead').textContent=lead.toFixed(2);document.getElementById('r-minor').textContent=minor.toFixed(2);document.getElementById('r-major').textContent=major.toFixed(2);}
+calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Công cụ chính xác liên quan</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/vi/tools/tangent-point-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tangent Point Calculator</a><a href="/vi/tools/tap-drill-size-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tap Drill Size Calculator</a><a href="/vi/tools/taper-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Taper Calculator</a><a href="/vi/tools/coolant-concentration/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Coolant Concentration</a><a href="/vi/tools/cycle-time-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Cycle Time Calculator</a><a href="/vi/tools/superalloy-tool-life/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Superalloy Tool Life</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">Công cụ tính toán tải chip</a>
+<a href="/tools/">Góc chì (góc xoắn) được tính là: Góc chì = arctan (Chì/(đường kính cao độ)). Đối với một luồng M10 × 1.5 khởi động đơn: Chì = 1.5mm, đường kính sân = 9.026mm, góc chì = arctan(1.5/(Mosfet × 9.026)) 【 3.03 °. Góc dẫn ảnh hưởng đến việc tạo đường dẫn dụng cụ phay ren, khai thác yêu cầu mô-men xoắn và thành phần lực trục trong các cụm ren.</a>
+<a href="/products/">🇩🇪Đức</a>
+<a href="/guides/">🇯🇵JP</a>
+<a href="/about.html">🇪🇸ES</a>
+<a href="/quote.html">Phân loại tham chiếu</a>
+<a href="/privacy.html">Chi phí trên mỗi bộ phận</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Bộ biến mô</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Góc chì (góc xoắn) được tính là: Góc chì = arctan (Chì/(đường kính cao độ)). Đối với một luồng M10 × 1.5 khởi động đơn: Chì = 1.5mm, đường kính sân = 9.026mm, góc chì = arctan(1.5/(Mosfet × 9.026)) 【 3.03 °. Góc dẫn ảnh hưởng đến việc tạo đường dẫn dụng cụ phay ren, khai thác yêu cầu mô-men xoắn và thành phần lực trục trong các cụm ren.</a></p>
+<p style="font-size:11px;margin-bottom:6px">Góc Chì ảnh hưởng đến phay ren như thế nào</p>
+<p style="font-size:11px">Khi phay ren, góc nội suy xoắn ốc của dụng cụ phải khớp với góc chì của ren để tạo thành ren chính xác. Không phù hợp làm cho các sườn Dụng cụ cọ xát hơn là cắt, tạo ra các sợi bị rách và tăng tốc độ mài mòn của dụng cụ. Đối với các sợi có đường kính lớn có góc chì dốc (ví dụ, các sợi khởi động nhiều lần), nên sử dụng các máy nghiền ren có hình học cạnh chuyên dụng.</p>
+</div>
+<section class="seo"><div class="container">
+<h2>Góc dẫn trong vít điện và vít bi</h2><p>Trong vít Truyền tải điện, góc dẫn xác định hiệu quả và hành vi tự khóa. Các góc dẫn dưới 6 ° thường tạo ra các sợi tự khóa (ma sát giữ tải mà không cần phanh). Các góc chì trên 10 ° mang lại hiệu quả cao hơn (80-90% cho vít bi) nhưng yêu cầu cơ chế phanh cho tải trọng thẳng đứng. Góc dẫn cũng ảnh hưởng đến sự phân bố Tải trọng xuyên tâm so với trục trên các ren vít.</p>
+<h2>Câu hỏi thường gặp</h2><p>Góc chì điển hình cho ốc vít tiêu chuẩn là gì? các ren tiêu chuẩn UNC/UNF và hệ mét có góc chì 2-5 ° cho các ren khởi động đơn. Một dây dẫn 1/4-20 UNC (đường kính khoảng 0.217 inch) có góc dẫn Khoảng 4.2 °. Chỉ đường kính nhỏ hơn có các góc chì lớn hơn-#4-40 UNC (đường kính sân = 0.096 inch) có góc chì Khoảng 3.8 °.</p>
+<h2>Góc Chì ảnh hưởng đến việc tách chỉ như thế nào? góc ren được thiết kế cho các góc chì cụ thể. Sử dụng thước đo được thiết kế cho một vòng xoắn chậm (góc chì nhỏ) trên một SỢI XOẮN nhanh có thể tạo ra sự chấp nhận không chính xác. Thiết bị đo ren có thể điều chỉnh phải được hiệu chỉnh cho góc chì và đường kính sân cụ thể của ren đang được kiểm tra.</h2><p>Góc chì có thể làm cho Ren bị lỏng dưới rung không? Các ren có góc chì trên 5 ° dễ bị lỏng rung hơn vì góc xoắn tạo ra một thành phần lực bên có thể xoay đai ốc. Đây là lý do tại sao chỉ cao độ (góc chì nhỏ hơn) được ưa thích cho các ứng dụng có độ rung cao Mặc dù cường độ thấp hơn.</p>
+<h2>⚡Được tính toán cho Dòng sản phẩm Hiệu suất Cao của Carbide-Tooling.com. Xem danh mục →</h2>
+<p><strong>What is a typical lead angle for standard fasteners?</strong> Standard UNC/UNF and metric threads have lead angles of 2–5° for single-start threads. A 1/4-20 UNC (pitch diameter ≈ 0.217 inches) has a lead angle of approximately 4.2°. Smaller diameter threads have larger lead angles — #4-40 UNC (pitch diameter ≈ 0.096 inches) has a lead angle of approximately 3.8°.</p>
+<p><strong>How does lead angle affect thread gaging?</strong> Thread gages are designed for specific lead angles. Using a gage designed for a slow helix (small lead angle) on a fast helix thread can produce incorrect acceptance. Adjustable thread gages must be calibrated for the specific lead angle and pitch diameter of the thread being inspected.</p>
+<p><strong>Can lead angle cause thread loosening under vibration?</strong> Threads with lead angles above 5° are more susceptible to vibrational loosening because the helix angle creates a lateral force component that can rotate the nut. This is why fine-pitch threads (smaller lead angles) are preferred for high-vibration applications despite their lower strength.</p>
+<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">Mũi khoan cacbua</a></p>
+</div></section>
+</footer>
+<div class="toolbox-widget"><h3>Sản phẩm</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Dao phay ren &amp; Tarô</a>
+<a href="/tools/hardness-converter/">Công cụ tính trọng lượng &amp; vận chuyển</a>
+<a href="/tools/tap-drill-size-calculator/">Máy tính gia công than chì</a>
+<a href="/tools/mrr-calculator/">Máy tính vòng tròn chốt</a>
+<a href="/tools/feed-converter/">Công cụ tính tỷ lệ phần trăm theo luồng</a>
+<a href="/tools/surface-roughness-calculator/">Tài liệu tham khảo G-Code</a>
+<a href="/tools/titanium-machining-guide/">Bộ chuyển đổi từ tọa độ cực sang tọa độ Descartes</a>
+<a href="/tools/carbide-grade-cross-ref-2/">Công cụ tính giảm dần</a>
+<a href="/tools/cost-per-part-calculator/">LinkedIn</a>
+<a href="/tools/torque-unit-converter/">Thư điện tử</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Giải Pháp Chuyên Nghiệp cho Thread Lead Angle Calculator?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Nhận giá trực tiếp từ nhà máy cho dụng cụ carbide cao cấp với chất lượng chứng nhận ISO.</p>
+</div>
+<a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/drills.html">Carbide Drills</a><a href="/products/threading-tools.html">Thread Mills &amp; Taps</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/thread-lead-angle-calculator/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/thread-lead-angle-calculator/&amp;text=Thread Lead Angle Calculator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Thread Lead Angle Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/thread-lead-angle-calculator/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyêols/dia-circ-calculator/">Dia Circ Calculator</a>
-<a href="/vi/tools/thread-pitch-diameter-calculator/">Thread Pitch Diameter Calculator</a>
-<a href="/vi/tools/grade-reference/">Grade Reference</a>
-<a href="/vi/tools/coord-rotation-calculator/">Coord Rotation Calculator</a>
-<a href="/vi/tools/heat-expansion-calculator/">Heat Expansion Calculator</a>
-<a href="/vi/tools/ball-nose-effective-diameter/">Ball Nose Effective Diameter</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/vi/tools/blind-hole-tapping-calculator/">Blind Hole Tapping Calculator</a>
+<a href="/vi/tools/toolbox-organizer/">Toolbox Organizer</a>
+<a href="/vi/tools/metal-weight-calculator/">Metal Weight Calculator</a>
+<a href="/vi/tools/bolt-circle-calculator/">Bolt Circle Calculator</a>
+<a href="/vi/tools/npt-pipe-thread-calculator/">Npt Pipe Thread Calculator</a>
+<a href="/vi/tools/flatness-calculator/">Flatness Calculator</a>
+<a href="/vi/tools/tube-weight-calculator/">Tube Weight Calculator</a>
+<a href="/vi/tools/hardness-converter/">Hardness Converter</a>
+<a href="/vi/tools/slot-milling-calculator/">Slot Milling Calculator</a>
+<a href="/vi/tools/coolant-lifecycle-cost/">Coolant Lifecycle Cost</a>
 
 </div>
 </section>
@@ -303,22 +400,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/vi/tools/temp-converter/">Temp Converter</a>
+<a href="/vi/tools/helical-interpolation-calculator/">Helical Interpolation Calculator</a>
+<a href="/vi/tools/engineering-interest-calculator/">Engineering Interest Calculator</a>
+<a href="/vi/tools/bolt-circle-calculator/">Bolt Circle Calculator</a>
+<a href="/vi/tools/dia-circ-calculator/">Dia Circ Calculator</a>
+<a href="/vi/tools/thread-pitch-diameter-calculator/">Thread Pitch Diameter Calculator</a>
+<a href="/vi/tools/grade-reference/">Grade Reference</a>
+<a href="/vi/tools/coord-rotation-calculator/">Coord Rotation Calculator</a>
+<a href="/vi/tools/heat-expansion-calculator/">Heat Expansion Calculator</a>
+<a href="/vi/tools/ball-nose-effective-diameter/">Ball Nose Effective Diameter</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -328,5 +429,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>

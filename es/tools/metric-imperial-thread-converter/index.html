@@ -11,7 +11,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -25,18 +38,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -249,6 +251,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -256,7 +259,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1581093450607-4e0f9a7b3e3c?w=1200&h=675&fit=crop&q=80&auto=format" alt="Corte de rosca" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/es/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -270,15 +280,104 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 <a class="nv-quote" href="/es/quote.html">📩 Cotización</a>
 </div>
 </div>
-</nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">Velocidad de corte (SFM)</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">Analizador de tiempos de cambio de herramienta</a> <span style="color:#d2d2d6">›</span> Metric Imperial Thread Converter</div>
+<section class="hero"><div class="container"><div class="badge" style="display:inline-flex;background:#f5f5f7;padding:4px 14px;border-radius:20px;font-size:11px;font-weight:600;color:#86868b;margin-bottom:16px">🔄 Conversion Tool</div><h1>Compare diámetros y pasos a través de los estándares.</h1><p>📐Dirección</p><a class="btn" href="#calculator">Diámetro efectivo de la punta esférica</a></div></section>
+
+<section class="container" id="calculator" style="padding-bottom:40px">
+<div class="card"><h2>Todas las herramientas</h2><p class="sub">Los resultados son únicamente de referencia. Consulte a los fabricantes de herramientas para aplicaciones específicas.</p>
+<div class="card-row">
+<div class="field"><label>©Herramientas de carburo 2026</label><select id="dir" onchange="calc()"><option value="m2i">Metric → Imperial</option><option value="i2m">Imperial → Metric</option></select></div>
+<div class="field"><label>Conversión de pasos de rosca métrica a TPI</label><select id="size" onchange="calc()"><option value="M6">M6 × 1.0</option><option value="M8">M8 × 1.25</option><option selected="" value="M10">M10 × 1.5</option><option value="M12">M12 × 1.75</option><option value="M16">M16 × 2.0</option><option value="M20">M20 × 2.5</option></select></div>
+</div>
+<div class="result-grid">
+<div class="result-item"><div class="label">Closest UNC</div><div class="value" id="r-unc">—</div><div class="unit" id="r-unc-note">UNC</div></div>
+<div class="result-item"><div class="label">Closest UNF</div><div class="value" id="r-unf">—</div><div class="unit">UNF</div></div>
+<div class="result-item"><div class="label">Diameter Match</div><div class="value" id="r-match">—</div><div class="unit">%</div></div>
+<div class="result-item"><div class="label">Pitch Difference</div><div class="value" id="r-diff">—</div><div class="unit">mm</div></div>
+</div>
+</div>
+<div style="text-align:center;margin:16px 0"><a href="/tools/" style="color:#0066cc;text-decoration:none;font-size:13px">Velocidad y avance</a></div>
+</section>
+<script>
+const CONV={M6:{d:6,p:1.0,unc:'1/4-20',unf:'1/4-28'},M8:{d:8,p:1.25,unc:'5/16-18',unf:'5/16-24'},M10:{d:10,p:1.5,unc:'3/8-16',unf:'3/8-24'},M12:{d:12,p:1.75,unc:'1/2-13',unf:'7/16-20'},M16:{d:16,p:2.0,unc:'5/8-11',unf:'5/8-18'},M20:{d:20,p:2.5,unc:'3/4-10',unf:'3/4-16'}};
+const IMP={};
+function calc(){const sz=document.getElementById('size').value;const c=CONV[sz];if(!c)return;const uncD=c.d/25.4;const matchPct=100;document.getElementById('r-unc').textContent=c.unc||'—';document.getElementById('r-unf').textContent=c.unf||'—';document.getElementById('r-match').textContent=matchPct.toFixed(0)+'%';document.getElementById('r-diff').textContent='0.00';}
+calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Herramientas de precisión relacionadas</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/es/tools/machinability-rating/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Machinability Rating</a><a href="/es/tools/machine-power-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Machine Power Calculator</a><a href="/es/tools/mcode-reference/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Mcode Reference</a><a href="/es/tools/ramping-angle-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Ramping Angle Calculator</a><a href="/es/tools/tube-weight-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tube Weight Calculator</a><a href="/es/tools/gcode-reference/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Gcode Reference</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">Velocidad de corte (SFM)</a>
+<a href="/tools/">Las roscas métricas se especifican por paso (mm por rosca), mientras que las roscas imperiales (UN) se especifican por roscas por pulgada (TPI). La conversión: TPI = 25,4/paso (mm). M10 × 1,5 tiene un paso de 1,5mm = 16,9 TPI, lo más cercano a 5/16-18 UNC. M12 × 1,75 = 14,5 TPI ≈ 1/2-13 UNC. Para el fresado de roscas, la conversión correcta entre estos sistemas evita los costosos errores de la trayectoria de la herramienta.</a>
+<a href="/products/">🇩🇪DE</a>
+<a href="/guides/">🇯🇵JP</a>
+<a href="/about.html">🇪🇸ES</a>
+<a href="/quote.html">Referencia cruzada de calificaciones</a>
+<a href="/privacy.html">Costo por pieza</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Convertidor de par</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Las roscas métricas se especifican por paso (mm por rosca), mientras que las roscas imperiales (UN) se especifican por roscas por pulgada (TPI). La conversión: TPI = 25,4/paso (mm). M10 × 1,5 tiene un paso de 1,5mm = 16,9 TPI, lo más cercano a 5/16-18 UNC. M12 × 1,75 = 14,5 TPI ≈ 1/2-13 UNC. Para el fresado de roscas, la conversión correcta entre estos sistemas evita los costosos errores de la trayectoria de la herramienta.</a></p>
+<p style="font-size:11px;margin-bottom:6px">Comparaciones de diámetro: Roscas métricas vs. imperiales</p>
+<p style="font-size:11px">Los diámetros de rosca métricos se especifican como OD nominal en mm. Conversiones comunes: M6 ≈ 1/4 pulgada (6,35mm vs. 6,0mm), M8 ≈ 5/16 pulgadas (7,94mm vs. 8,0mm), M10 ≈ 3/8 pulgadas (9,53mm vs. 10,0mm), M12 ≈ 1/2 pulgada (12,7mm vs. 12,0mm). Mientras están cerca, estos NO son intercambiables: use siempre el sistema de sujeción correcto.</p>
+</div>
+<section class="seo"><div class="container">
+<h2>Threading práctico: cuándo usar métrico vs. imperial</h2><p>La mayoría de las máquinas CNC modernas pueden cortar ambos sistemas igualmente bien. Utilice el sistema especificado por los dibujos de su cliente o el estándar de fijación en su cadena de suministro. La conversión de diseños imperiales existentes a métricos puede reducir el inventario de herramientas, ya que los taladros métricos y los grifos están más ampliamente disponibles a nivel mundial. Sin embargo, se debe considerar el costo y el tiempo de entrega de los indicadores de rosca especiales.</p>
+<h2>Preguntas frecuentes</h2><p>¿Puedo sustituir un cierre métrico por uno imperial? Las diferencias de diámetro de 0,3-0,7mm crean un acoplamiento insuficiente de la rosca o interferencia, lo que puede causar fallas en la articulación. Sustituir M10 por 3/8-16 puede pelar los hilos bajo carga. Siempre mecanizar piezas al sistema de rosca especificado.</p>
+<h2>¿Cómo convierto la clase de rosca (6 H frente a 2 B)? La tolerancia métrica ISO 6 H se aproxima a la clase UN 2 B para aplicaciones de ajuste medio. 4 H6 H (métrico) ≈ 3 B (UN) para ajustes de precisión, y 7 H (métrico) ≈ 1 B (UN) para ajustes sueltos. Estas son aproximaciones: para las uniones críticas, use el estándar especificado por la autoridad de diseño.</h2><p>¿Son compatibles las brocas métricas e imperiales para roscar? Las brocas métricas (por ejemplo, 8,5mm para M10 × 1,5) no tienen equivalentes imperiales exactos. Use el tamaño de broca disponible más cercano si es necesario, pero la práctica preferida es usar el taladro de rosca especificado para el sistema de rosca que se está cortando. Por ejemplo, use un taladro 'Q' (0.332 pulgadas) para 3/8-16 UNC, no un taladro métrico de 8,3mm.</p>
+<h2>⚡Calculado para la Serie de Alto Rendimiento de Carbide-Tooling.com. Ver catálogo →</h2>
+<p><strong>Can I substitute a metric fastener for an imperial one?</strong> Not recommended. The 0.3–0.7 mm diameter differences create insufficient thread engagement or interference, which can cause joint failure. Substituting M10 for 3/8-16 may strip threads under load. Always machine parts to the specified thread system.</p>
+<p><strong>How do I convert thread class (6H vs. 2B)?</strong> ISO 6H metric tolerance approximates to UN 2B class for medium-fit applications. 4H6H (metric) ≈ 3B (UN) for precision fits, and 7H (metric) ≈ 1B (UN) for loose fits. These are approximations — for critical joints, use the standard specified by the design authority.</p>
+<p><strong>Are metric and imperial drills compatible for threading?</strong> Metric tap drills (e.g., 8.5 mm for M10×1.5) don't have exact imperial equivalents. Use the closest available drill size if needed, but preferred practice is to use the specified tap drill for the thread system being cut. For example, use a 'Q' drill (0.332 inch) for 3/8-16 UNC, not an 8.3 mm metric drill.</p>
+<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">Brocas de carburo</a></p>
+</div></section>
+</footer>
+<div class="toolbox-widget"><h3>Productos</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Fresas de roscar y machos de roscar</a>
+<a href="/tools/hardness-converter/">Referencia de G-Code</a>
+<a href="/tools/tap-drill-size-calculator/">Seleccionador de recubrimientos</a>
+<a href="/tools/mrr-calculator/">Calculadora de diseño de brocas escalonadas</a>
+<a href="/tools/feed-converter/">Calculadora de brocas para roscar con machos de formar</a>
+<a href="/tools/surface-roughness-calculator/">Calculadora de mecanizado de hierro fundido</a>
+<a href="/tools/titanium-machining-guide/">Calculadora de desalineación de herramientas</a>
+<a href="/tools/carbide-grade-cross-ref-2/">Convertidor de arco R a IJ</a>
+<a href="/tools/cost-per-part-calculator/">LinkedIn</a>
+<a href="/tools/torque-unit-converter/">Correo electrónico</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">¿Soluciones Profesionales para Metric Imperial Thread Converter?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Obtenga precios directos de fábrica en herramientas de carburo premium con calidad certificada ISO.</p>
+</div>
+<a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/drills.html">Carbide Drills</a><a href="/products/threading-tools.html">Thread Mills &amp; Taps</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/metric-imperial-thread-converter/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/metric-imperial-thread-converter/&amp;text=Metric/Imperial Thread Converter" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Metric/Imperial Thread Converter&amp;body=Check this out: https://carbide-tooling.com/tools/metric-imperial-thread-converter/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profese-analyzer/">Tool Change Time Analyzer</a>
-<a href="/es/tools/temp-converter/">Temp Converter</a>
-<a href="/es/tools/automation-vs-manual-calculator/">Automation Vs Manual Calculator</a>
-<a href="/es/tools/production-efficiency-calculator/">Production Efficiency Calculator</a>
-<a href="/es/tools/brass-machining-parameters/">Brass Machining Parameters</a>
-<a href="/es/tools/tube-weight-calculator/">Tube Weight Calculator</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/es/tools/plastic-machining/">Plastic Machining</a>
+<a href="/es/tools/mrr-calculator/">Mrr Calculator</a>
+<a href="/es/tools/nose-radius-compensation/">Nose Radius Compensation</a>
+<a href="/es/tools/gcode-reference/">Gcode Reference</a>
+<a href="/es/tools/machinability-rating/">Machinability Rating</a>
+<a href="/es/tools/die-steel-thermal-conductivity/">Die Steel Thermal Conductivity</a>
+<a href="/es/tools/iso-fit-calculator/">Iso Fit Calculator</a>
+<a href="/es/tools/torque-unit-converter/">Torque Unit Converter</a>
+<a href="/es/tools/metal-weight-calculator/">Metal Weight Calculator</a>
+<a href="/es/tools/reaming-allowance-calculator/">Reaming Allowance Calculator</a>
 
 </div>
 </section>
@@ -303,22 +402,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/es/tools/hardness-converter/">Hardness Converter</a>
+<a href="/es/tools/cast-iron-machining/">Cast Iron Machining</a>
+<a href="/es/tools/arc-r-to-ij-converter/">Arc R To Ij Converter</a>
+<a href="/es/tools/threading-pass-calculator/">Threading Pass Calculator</a>
+<a href="/es/tools/tool-change-time-analyzer/">Tool Change Time Analyzer</a>
+<a href="/es/tools/temp-converter/">Temp Converter</a>
+<a href="/es/tools/automation-vs-manual-calculator/">Automation Vs Manual Calculator</a>
+<a href="/es/tools/production-efficiency-calculator/">Production Efficiency Calculator</a>
+<a href="/es/tools/brass-machining-parameters/">Brass Machining Parameters</a>
+<a href="/es/tools/tube-weight-calculator/">Tube Weight Calculator</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -328,5 +431,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>

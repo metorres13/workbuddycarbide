@@ -11,7 +11,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -25,18 +38,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -249,6 +251,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -256,7 +259,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1504917598568-65a8f8b4f8ca?w=1200&h=675&fit=crop&q=80&auto=format" alt="チタン加工" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/jp/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -270,16 +280,86 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 <a class="nv-quote" href="/jp/quote.html">📩 見積依頼</a>
 </div>
 </div>
-</nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">壁の厚さ</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">極座標/直交座標変換器</a> <span style="color:#d2d2d6">›</span> Superalloy Tool Life</div>
+<section class="hero"><div class="container"><div class="badge">🧰 Tool</div><h1>合金</h1><p>切削速度Vc（m/分）</p></div></section>
+
+<div class="container"><div class="card"><h2>すべてのツール</h2><label>結果は参考としてのみご使用ください。具体的な用途については、工具メーカーにご相談ください。</label><select id="alloy" onchange="calc()"><option value="in718">Inconel 718</option><option value="in625">Inconel 625</option><option value="hast">Hastelloy X</option><option value="wasp">Waspaloy</option></select><label>©2026年用超硬工具</label><input id="i1" oninput="calc()" type="number" value="40"/><label>インコネル718加工における工具寿命の推定</label><input id="ref" oninput="calc()" type="number" value="30"/><input id="i2" oninput="calc()" type="number" value="100"/><div class="res"><div class="res-item"><div class="lbl">Est. Tool Life (min)</div><div class="val" id="r2">—</div></div><div class="res-item"><div class="lbl">vs Baseline</div><div class="val" id="r3">—</div></div><div class="res-item"><div class="lbl">Verdict</div><div class="val" id="r1">—</div></div></div></div>
+<div style="text-align:center;margin:24px 0"><a href="/tools/" style="color:#0066cc;font-size:13px">速度と送り量</a></div></div>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">関連精密工具</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/jp/tools/scrap-value-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Scrap Value Calculator</a><a href="/jp/tools/sfm-m-min-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Sfm M Min Converter</a><a href="/jp/tools/shipping-duty-estimator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Shipping Duty Estimator</a><a href="/jp/tools/tool-runout-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tool Runout Calculator</a><a href="/jp/tools/tapping-feed-rate-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tapping Feed Rate Calculator</a><a href="/jp/tools/machine-power-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Machine Power Calculator</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">壁の厚さ</a>
+<a href="/tools/">インコネル718は、その高温強度、加工硬化率、および炭化物形成傾向により、工具の急速な摩耗で有名です。80-120 SFMのカーバイドツーリングでは、側面の摩耗が0.012インチを超える前に、15〜30分の切削時間の工具寿命を期待してください。300-500 SFMでセラミック (Si Al ON) ツールを使用すると、ツールの寿命は45〜60分に延長されますが、剛性のセットアップとネガティブレーキの形状が必要です。</a>
+<a href="/products/">🇩🇪ドイツ</a>
+<a href="/guides/">🇯🇵ジェイピー</a>
+<a href="/about.html">🇪🇸エスイー</a>
+<a href="/quote.html">チタンガイド</a>
+<a href="/privacy.html">グレード相互参照</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">トルクコンバーター</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">インコネル718は、その高温強度、加工硬化率、および炭化物形成傾向により、工具の急速な摩耗で有名です。80-120 SFMのカーバイドツーリングでは、側面の摩耗が0.012インチを超える前に、15〜30分の切削時間の工具寿命を期待してください。300-500 SFMでセラミック (Si Al ON) ツールを使用すると、ツールの寿命は45〜60分に延長されますが、剛性のセットアップとネガティブレーキの形状が必要です。</a></p>
+<p style="font-size:11px;margin-bottom:6px">Hastelloy Machining: スピード、フィード、ツールの選択</p>
+<p style="font-size:11px">ハステロイはC-276、ニッケル含有量が高いため、追加の加工硬化を伴うインコネルと同様の課題を提示します。超硬工具付き60-100 SFMの表面速度は、10-20分の工具寿命を提供します。可変ヘリックスジオメトリを備えたTiAl Nコーティングされたカーバイカーエンドミルは、標準のジオメトリと比較して、チャタリングを減らし、ツールの寿命を25〜40% 延長します。クライムフライスは、表面仕上げと工具寿命のために必須です。</p>
+</div>
+<section class="seo"><div class="container">
+<h2>Waspaloy and Rene 41: 高度な合金加工</h2><p>WaspaloyとRene 41の沈殿硬化性超合金には、最も保守的なパラメーターが必要です。炭化物を使用した30〜60 SFMとセラミックを使用した200〜350 SFMです。ツールの寿命は、最適なパラメータでも5〜15分に低下します。切削ゾーンに向けられた高圧クーラント (1,000 PSI) を使用して、熱を管理し、工具の寿命を延ばします。表面の完全性が重要な仕上げ操作のためのCBN (立方窒化ホウ素) ツールを検討してください。</p>
+<h2>よくある質問</h2><p>なぜ超合金は工具をこんなに早く摩耗させるのですか?超合金は、高い切断温度 (800〜1,000 °C) で高強度を維持し、研磨摩耗と拡散摩耗を同時に引き起こします。さらに、材料は切断中に急速に硬化し、エッジの破壊を加速する硬化層を作成します。熱、研磨、および化学的摩耗メカニズムの組み合わせにより、鋼よりも5〜10倍速くツールのエッジが破壊されます。</p>
+<h2>インコネルで最も長持ちする工具材料は何ですか?荒削りの場合: Si Al ONセラミックは、高速で最高の工具寿命を提供します。仕上げ用: CBN (BZN 6000グレード) は、最も長い寿命を提供しますが、コストが高くなります。汎用超合金の作業では、マイクログレイン基板を使用したTi Al Nコーティング炭化物が最高の価値対寿命比を提供します。</h2><p>高圧クーラントは工具寿命を大幅に改善しますか?はい。チップツールインターフェイスに正確に向けられた1,000PSIのクーラントは、切断温度を下げ、チップの破損を改善することにより、ツールの寿命を50〜150% 延長できます。スピンドル冷却剤は理想的です。HPCのない機械の場合、300 PSIの外部クーラントノズルは依然として有意義な改善を提供します。</p>
+<h2>⚡カーバイド・ツーリング・ドットコムの高性能シリーズ用に算出済み。カタログを表示する →</h2>
+<p><strong>Why do superalloys wear tools so quickly?</strong> Superalloys maintain high strength at elevated cutting temperatures (800–1,000°C), causing abrasive wear and diffusion wear simultaneously. Additionally, the materials work-harden rapidly during cutting, creating a hardened layer that accelerates edge breakdown. The combination of thermal, abrasive, and chemical wear mechanisms destroys tool edges 5–10× faster than steel.</p>
+<p><strong>What tool material lasts longest in Inconel?</strong> For roughing: SiAlON ceramics provide the best tool life at high speeds. For finishing: CBN (BZN 6000 grade) offers the longest life but at higher cost. For general-purpose superalloy work, TiAlN-coated carbide with micro-grain substrate provides the best value-to-life ratio.</p>
+<p><strong>Does high-pressure coolant significantly improve tool life?</strong> Yes. Coolant at 1,000+ PSI directed precisely at the chip-tool interface can extend tool life by 50–150% by reducing cutting temperature and improving chip breakage. Through-spindle coolant is ideal. For machines without HPC, external coolant nozzles at 300+ PSI still provide meaningful improvement.</p>
+<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">成績選択ガイド</a></p>
+</div></section>
+</footer>
+<script>function calc(){document.getElementById('r1').textContent=parseFloat(document.getElementById('i1').value)*parseFloat(document.getElementById('i2').value);}calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><div class="toolbox-widget"><h3>製品</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">成績照会を挿入する</a>
+<a href="/tools/hardness-converter/">直径と円周の計算ツール</a>
+<a href="/tools/tap-drill-size-calculator/">超硬合金グレードの相互参照表</a>
+<a href="/tools/mrr-calculator/">送り速度計算ツールをタップする</a>
+<a href="/tools/feed-converter/">リーミング余裕量計算ツール</a>
+<a href="/tools/surface-roughness-calculator/">ドリル先端長計算ツール</a>
+<a href="/tools/titanium-machining-guide/">工具オーバーラン計算ツール</a>
+<a href="/tools/carbide-grade-cross-ref-2/">サイクルタイム計算機</a>
+<a href="/tools/cost-per-part-calculator/">カタログを表示する →</a>
+<a href="/tools/torque-unit-converter/">リンクドイン</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Superalloy Tool Lifeのプロフェッショナルソリューション</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">ISO認証品質のプレミアム超硬工具を工場直送価格でご提供。技術サポート付き。</p>
+</div>
+<a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/carbide-grades.html">Grade Selection Guide</a><a href="/guides/insert-grade-selection.html">Insert Grade Inquiry</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/superalloy-tool-life/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/superalloy-tool-life/&amp;text=Superalloy Tool Life Estimator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Superalloy Tool Life Estimator&amp;body=Check this out: https://carbide-tooling.com/tools/superalloy-tool-life/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
 <p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
-<div style="dieading Pass Calculator</a>
-<a href="/jp/tools/shipping-duty-estimator/">Shipping Duty Estimator</a>
-<a href="/jp/tools/toolbox-organizer/">Toolbox Organizer</a>
-<a href="/jp/tools/titanium-machining-guide/">Titanium Machining Guide</a>
-<a href="/jp/tools/dovetail-calculator/">Dovetail Calculator</a>
-<a href="/jp/tools/mrr-calculator/">Mrr Calculator</a>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/jp/tools/carbide-grade-cross-ref-2/">Carbide Grade Cross Ref 2</a>
+<a href="/jp/tools/pressure-converter/">Pressure Converter</a>
+<a href="/jp/tools/tensile-strength-converter/">Tensile Strength Converter</a>
+<a href="/jp/tools/thread-lead-angle-calculator/">Thread Lead Angle Calculator</a>
+<a href="/jp/tools/cost-per-part-calculator/">Cost Per Part Calculator</a>
+<a href="/jp/tools/plastic-machining/">Plastic Machining</a>
+<a href="/jp/tools/aluminum-alloy-table/">Aluminum Alloy Table</a>
+<a href="/jp/tools/tap-drill-size-calculator/">Tap Drill Size Calculator</a>
+<a href="/jp/tools/step-milling-calculator/">Step Milling Calculator</a>
+<a href="/jp/tools/gun-drill-calculator/">Gun Drill Calculator</a>
 
 </div>
 </section>
@@ -304,22 +384,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/jp/tools/horsepower-calculator/">Horsepower Calculator</a>
+<a href="/jp/tools/form-tap-drill-calculator/">Form Tap Drill Calculator</a>
+<a href="/jp/tools/tool-steel-heat-treat/">Tool Steel Heat Treat</a>
+<a href="/jp/tools/surface-roughness-calculator/">Surface Roughness Calculator</a>
+<a href="/jp/tools/threading-pass-calculator/">Threading Pass Calculator</a>
+<a href="/jp/tools/shipping-duty-estimator/">Shipping Duty Estimator</a>
+<a href="/jp/tools/toolbox-organizer/">Toolbox Organizer</a>
+<a href="/jp/tools/titanium-machining-guide/">Titanium Machining Guide</a>
+<a href="/jp/tools/dovetail-calculator/">Dovetail Calculator</a>
+<a href="/jp/tools/mrr-calculator/">Mrr Calculator</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -329,5 +413,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>

@@ -11,7 +11,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -25,18 +38,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -249,6 +251,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -256,7 +259,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1504917598568-65a8f8b4f8ca?w=1200&h=675&fit=crop&q=80&auto=format" alt="Sản xuất thép" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/vi/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -270,14 +280,102 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 <a class="nv-quote" href="/vi/quote.html">📩 Báo giá</a>
 </div>
 </div>
-</nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">trong</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">Xem danh mục →</a> <span style="color:#d2d2d6">›</span> Metal Cost Calculator</div>
+<section class="hero"><h1>Hình dạng</h1><p>Đường kính/Chiều rộng (mm)</p></section>
+<div class="container">
+<div class="split">
+<div class="inputs"><h2 style="font-size:15px;font-weight:700;margin-bottom:10px">Chiều dài (mm)</h2>
+<label>Số lượng</label><select id="mat" onchange="calc()"><option value="mild">Mild Steel 1018</option><option selected="" value="ss304">Stainless 304</option><option value="al6061">Aluminum 6061</option><option value="ti">Titanium Gr5</option></select>
+<label>📊Thị trường hiện tại ($/kg)</label><select id="shape" onchange="calc()"><option value="bar">Round bar</option><option value="plate">Plate</option></select>
+<label>$/Kg</label><input id="d1" oninput="calc()" type="number" value="50"/>
+<label>Mật độ</label><input id="len" oninput="calc()" type="number" value="200"/>
+<label>Thép nhẹ</label><input id="qty" oninput="calc()" type="number" value="100"/></div>
+<div><div class="cost-card"><div class="lbl">Weight per Part</div><div class="val" id="r-wt">0.00</div><div class="lbl">kg</div></div>
+<div class="cost-card"><div class="lbl">Material Cost per Part</div><div class="val" id="r-cost">$0.00</div></div>
+<div class="cost-card"><div class="lbl">Total Material Cost</div><div class="val" id="r-total">$0.00</div></div>
+<div class="cost-card"><div class="lbl">Scrap Factor (20%)</div><div class="val" id="r-scrap">$0.00</div></div>
+<h2 style="font-size:14px;font-weight:700;margin:16px 0 6px">$0.80</h2>
+<table class="mkt-table"><tr><th>Số lượng</th><th>$3.20</th><th>Nhôm 6061</th></tr>
+<tr><td>$2.80</td><td>Titan GR5</td><td>7.85</td></tr><tr><td>$35.00</td><td>Tất cả công cụ</td><td>8.0</td></tr><tr><td>Kết quả chỉ mang tính tham khảo. Hãy tham khảo ý kiến của các nhà sản xuất dụng cụ để biết thông tin về các ứng dụng cụ thể.</td><td>©Dụng cụ cắt gọt bằng cacbua năm 2026</td><td>2.7</td></tr><tr><td>Tính toán chi phí vật liệu trên một phần từ kho</td><td>Chi phí nguyên liệu trên một phần phụ thuộc vào giá nguyên liệu ($/kg hoặc $/lb), mức sử dụng hàng tồn kho và giá trị phế liệu. Đối với hàng tồn kho: chi phí cho mỗi bộ phận = (Chiều dài thanh trên mỗi bộ phận × trọng lượng thanh trên inch × $/kg)-Phục hồi phế liệu. Đối với công việc tấm: thêm hiệu quả làm tổ (thường là 60-85%) vào tính toán. Theo dõi việc sử dụng vật liệu thực tế so với ước tính xác định các cơ hội tiết kiệm chi phí.</td><td>4.43</td></tr></table></div></div>
+<div style="text-align:center;margin:16px 0"><a href="/tools/" style="color:#0066cc;font-size:13px">Tốc độ và Lượng ăn dao</a></div></div>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Công cụ chính xác liên quan</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/vi/tools/machinability-rating/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Machinability Rating</a><a href="/vi/tools/machine-power-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Machine Power Calculator</a><a href="/vi/tools/mcode-reference/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Mcode Reference</a><a href="/vi/tools/cost-per-part-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Cost Per Part Calculator</a><a href="/vi/tools/helical-interpolation-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Helical Interpolation Calculator</a><a href="/vi/tools/production-efficiency-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Production Efficiency Calculator</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">trong</a>
+<a href="/tools/">Hiệu quả làm tổ và ảnh hưởng đến tổng chi phí</a>
+<a href="/products/">🇩🇪Đức</a>
+<a href="/guides/">🇯🇵JP</a>
+<a href="/about.html">🇪🇸ES</a>
+<a href="/quote.html">Hướng dẫn về Titan</a>
+<a href="/privacy.html">Phân loại tham chiếu</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Chi phí trên mỗi bộ phận</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Hiệu quả làm tổ và ảnh hưởng đến tổng chi phí</a></p>
+<p style="font-size:11px;margin-bottom:6px">Hiệu quả làm tổ Đo lường lượng nguyên liệu thô kết thúc trong phần hoàn thiện. Hiệu quả làm tổ 70% có nghĩa là 30% là phế liệu. Cải thiện tổ chỉ bằng 5% thông qua lập trình cam được tối ưu hóa có thể giảm 7% chi phí vật liệu tổng thể. Đối với các bộ phận khối lượng lớn, đầu tư vào phần mềm làm tổ chuyên dụng sẽ tự trả tiền thông qua tiết kiệm vật liệu.</p>
+<p style="font-size:11px">Biến động Giá vật chất và Dự Toán Chi Phí</p>
+</div>
+<section class="seo"><div class="container">
+<h2>Giá kim loại dao động đáng kể do điều kiện thị trường. Giá nhôm có thể thay đổi ± 20% hàng năm, trong khi thép có thể thay đổi ± 30% hoặc nhiều hơn. Bao gồm một bộ đệm giá 15% trong báo giá cho kim loại có độ biến động cao. Sử dụng chỉ số giá hàng tháng từ các nguồn như London Metal Exchange (LME) để điều chỉnh ước tính chi phí. Hãy xem xét các thỏa thuận mua hàng có giá nguyên liệu cho báo giá công ty.</h2><p>Câu hỏi thường gặp</p>
+<h2>Giá trị thu hồi phế liệu trung bình của thép là gì? Máy thu hồi phế liệu thép cacbon khoảng 10-15% chi phí nguyên liệu làm giá trị phế liệu. Thép không gỉ và hợp kim có giá trị cao có thể phục hồi 30-50% do giá trị kim loại vốn có của chúng. Tính toán chi phí xử lý và xử lý phế liệu (thường là 2-5% giá trị phế liệu) trong tính toán thu hồi phế liệu ròng của bạn.</h2><p>Làm Thế Nào Để Tôi chiếm số lượng đặt hàng tối thiểu về chi phí? nhà phân phối Vật liệu tính phí bảo hiểm cho số lượng dưới ngưỡng đặt hàng tối thiểu của họ. Nếu bộ phận của bạn sử dụng ít hơn mức tối thiểu, hãy phân phối chi phí nguyên liệu dư thừa trên số lượng đặt hàng. Đối với nhiều công việc nhỏ, chi phí vật liệu có thể cao hơn 40-50% so với sản xuất lớn chạy trên cơ sở mỗi phần.</p>
+<h2>Chứng nhận vật liệu có tăng thêm chi phí không? vâng. Báo cáo kiểm tra vật liệu (mtrs) và chứng nhận thường thêm 5-15% vào chi phí nguyên liệu. Đối với các ứng dụng hàng không vũ trụ, y tế hoặc quốc phòng quan trọng, chứng nhận là bắt buộc. Đối với các công việc thương mại, chỉ định 'không yêu cầu cert 'để tiết kiệm chi phí vật liệu nếu sử dụng cuối cùng cho phép.</h2><p>⚡Được tính toán cho Dòng sản phẩm Hiệu suất Cao của Carbide-Tooling.com. Xem danh mục →</p>
+<h2>🔧Hộp công cụ kỹ thuật chính xác</h2>
+<p><strong>What is the average scrap recovery value for steel?</strong> Carbon steel scrap recovers approximately 10–15% of raw material cost as scrap value. Stainless steel and high-value alloys can recover 30–50% due to their inherent metal value. Account for scrap handling and processing costs (typically 2–5% of scrap value) in your net scrap recovery calculation.</p>
+<p><strong>How do I account for minimum order quantities in cost?</strong> Material distributors charge premiums for quantities below their minimum order threshold. If your part uses less than the minimum, distribute the surplus material cost across the ordered quantity. For small lot jobs, material costs can be 40–50% higher than large production runs on a per-part basis.</p>
+<p><strong>Does material certification add cost?</strong> Yes. Material test reports (MTRs) and certifications typically add 5–15% to raw material cost. For critical aerospace, medical, or defense applications, certification is mandatory. For commercial jobs, specify 'no cert required' to save on material costs if the end use allows.</p>
+<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">Yêu cầu báo giá số lượng lớn →</a></p>
+</div></section>
+</footer>
+<script>
+const MATS={mild:{den:7.85,cost:0.8},ss304:{den:8.0,cost:3.2},al6061:{den:2.7,cost:2.8},ti:{den:4.43,cost:35}};
+function calc(){const m=MATS[document.getElementById('mat').value];const shape=document.getElementById('shape').value;const d1=parseFloat(document.getElementById('d1').value)||50;const len=parseFloat(document.getElementById('len').value)||200;const qty=parseInt(document.getElementById('qty').value)||100;let vol=shape==='bar'?Math.PI*(d1/2)**2*len:d1*100*len;const wt=vol*m.den/1e6;const cost=wt*m.cost;document.getElementById('r-wt').textContent=wt.toFixed(3);document.getElementById('r-cost').textContent='$'+cost.toFixed(2);document.getElementById('r-total').textContent='$'+(cost*qty).toFixed(2);document.getElementById('r-scrap').textContent='$'+(cost*qty*0.2).toFixed(2);}
+calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><div class="toolbox-widget"><h3>Sản phẩm</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Mũi phay ngón cacbua nguyên khối</a>
+<a href="/tools/hardness-converter/">Đầu dao tiện</a>
+<a href="/tools/tap-drill-size-calculator/">Công cụ tính toán thông số bánh răng</a>
+<a href="/tools/mrr-calculator/">Công cụ tính trọng lượng thanh tròn</a>
+<a href="/tools/feed-converter/">Đường kính hiệu dụng của đầu tròn</a>
+<a href="/tools/surface-roughness-calculator/">Tính chất của thép không gỉ</a>
+<a href="/tools/titanium-machining-guide/">Máy tính khoan taro</a>
+<a href="/tools/carbide-grade-cross-ref-2/">Công cụ tính nồng độ dung dịch làm mát</a>
+<a href="/tools/cost-per-part-calculator/">Công cụ tính trọng lượng ống</a>
+<a href="/tools/torque-unit-converter/">Trình chuyển đổi đơn vị tối ưu</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Giải Pháp Chuyên Nghiệp cho Metal Cost Calculator?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Nhận giá trực tiếp từ nhà máy cho dụng cụ carbide cao cấp với chất lượng chứng nhận ISO.</p>
+</div>
+<a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">Thư điện tử</a><a href="/products/turning-inserts.html">Turning Inserts</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/metal-cost-calculator/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/metal-cost-calculator/&amp;text=Metal Cost Calculator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Metal Cost Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/metal-cost-calculator/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyê<a href="/vi/tools/dovetail-calculator/">Dovetail Calculator</a>
-<a href="/vi/tools/coolant-concentration/">Coolant Concentration</a>
-<a href="/vi/tools/surface-speed/">Surface Speed</a>
-<a href="/vi/tools/cast-iron-machining/">Cast Iron Machining</a>
-<a href="/vi/tools/cycle-time-calculator/">Cycle Time Calculator</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/vi/tools/heat-expansion-calculator/">Heat Expansion Calculator</a>
+<a href="/vi/tools/carbide-grade-cross-ref-2/">Carbide Grade Cross Ref 2</a>
+<a href="/vi/tools/metal-weight-calculator/">Metal Weight Calculator</a>
+<a href="/vi/tools/speed-feed/">Speed Feed</a>
+<a href="/vi/tools/ball-nose-effective-diameter/">Ball Nose Effective Diameter</a>
+<a href="/vi/tools/taper-calculator/">Taper Calculator</a>
+<a href="/vi/tools/percentage-of-thread-calculator/">Percentage Of Thread Calculator</a>
+<a href="/vi/tools/chamfer-calculator/">Chamfer Calculator</a>
+<a href="/vi/tools/grade-reference/">Grade Reference</a>
+<a href="/vi/tools/round-bar-weight/">Round Bar Weight</a>
 
 </div>
 </section>
@@ -302,22 +400,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/vi/tools/tube-weight-calculator/">Tube Weight Calculator</a>
+<a href="/vi/tools/machinability-rating/">Machinability Rating</a>
+<a href="/vi/tools/mrr-calculator/">Mrr Calculator</a>
+<a href="/vi/tools/toolbox-organizer/">Toolbox Organizer</a>
+<a href="/vi/tools/gun-drill-calculator/">Gun Drill Calculator</a>
+<a href="/vi/tools/dovetail-calculator/">Dovetail Calculator</a>
+<a href="/vi/tools/coolant-concentration/">Coolant Concentration</a>
+<a href="/vi/tools/surface-speed/">Surface Speed</a>
+<a href="/vi/tools/cast-iron-machining/">Cast Iron Machining</a>
+<a href="/vi/tools/cycle-time-calculator/">Cycle Time Calculator</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -327,5 +429,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>

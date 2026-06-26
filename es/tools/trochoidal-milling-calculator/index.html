@@ -77,7 +77,20 @@ footer a{color:#0066cc;text-decoration:none}
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -91,18 +104,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -251,6 +253,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -258,6 +261,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1565193566165-24e2f9e7e80c?w=1200&h=675&fit=crop&q=80&auto=format" alt="Cálculo de velocidad y avance CNC" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div>
 <nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/es/"><span>◆</span> Carbide Tooling</a>
@@ -273,14 +284,232 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 </div>
 </div>
 </nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<section class="hero">
+<div class="container">
+<div class="badge">🌀 Free Professional Tool</div>
+<h1>Calculadora de fresado trocoide</h1>
+<p>Calcule las tasas efectivas de alimentación, adelgazamiento de virutas y MRR para trayectorias trocoidales (fresado de pelado). Optimice el paso y la profundidad axial para la productividad máxima.</p>
+<div class="hero-actions">
+<a class="btn" href="#calculator">Comenzar el cálculo ↓</a>
+<a class="btn-outline" href="https://carbide-tooling.com/quote.html">📩Obtenga una cotización de precisión</a>
+</div>
+</div>
+</section>
+<section class="container" id="calculator" style="padding-bottom:40px">
+<div class="card">
+<h2>🌀Parámetros de fresado trocoidal</h2>
+<p class="sub">Basado en la teoría de adelgazamiento de chips para trayectorias de herramientas HSM de bajo compromiso radial. Actualización de resultados en tiempo real.</p>
+<div class="card-row">
+<div class="field"><label>🔩Material</label>
+<select id="material" onchange="calc()">
+<option value="al6061">Aluminum 6061</option>
+<option selected="" value="ss304">Stainless Steel 304</option>
+<option value="mild_steel">Mild Steel 1018</option>
+<option value="ti6al4v">Titanium Grade 5</option>
+</select>
+</div>
+<div class="field"><label>📐Diámetro de la herramienta (mm)</label>
+<input id="dia" max="50" min="1" oninput="calc()" step="0.5" type="number" value="12"/>
+</div>
+<div class="field"><label>🦷Flautas</label>
+<select id="flutes" onchange="calc()"><option value="2">2</option><option value="3">3</option><option selected="" value="4">4</option><option value="5">5</option><option value="6">6</option></select>
+</div>
+<div class="field"><label>↔️ Stepover - Radial (ae %)</label>
+<input id="stepover" max="50" min="1" oninput="calc()" step="1" type="number" value="10"/>
+<span style="font-size:10px;color:#86868b">5-15% recommended for trochoidal</span>
+</div>
+<div class="field"><label>⏬Profundidad axial (ap mm)</label>
+<input id="doc" max="50" min="0.5" oninput="calc()" step="0.5" type="number" value="12"/>
+</div>
+<div class="field"><label>⚡Velocidad de corte (Vc m/min)</label>
+<input id="vc" max="2000" min="10" oninput="calc()" step="10" type="number" value="180"/>
+</div>
+<div class="field"><label>📊Carga por diente-fz (mm)</label>
+<input id="fz" max="1" min="0.001" oninput="calc()" step="0.005" type="number" value="0.06"/>
+</div>
+</div>
+<div class="result-grid">
+<div class="result-item"><div class="label">RPM</div><div class="value" id="r-rpm">—</div><div class="unit">RPM</div></div>
+<div class="result-item"><div class="label">Effective Avance</div><div class="value" id="r-feed">—</div><div class="unit">mm/min</div></div>
+<div class="result-item"><div class="label">MRR (trochoidal)</div><div class="value" id="r-mrr">—</div><div class="unit">cm³/min</div></div>
+<div class="result-item"><div class="label">vs. Conventional MRR</div><div class="value good" id="r-compare">—</div><div class="unit">× improvement</div></div>
+</div>
+<div class="extra-info">
+<span>Chip thinning factor: <span class="val" id="x-thinning">—</span>×</span>
+<span style="color:#d2d2d6">|</span>
+<span>Effective chip load: <span class="val" id="x-eff-chip">—</span> mm</span>
+<span style="color:#d2d2d6">|</span>
+<span>Max stepover: <span class="val" id="x-max-step">—</span>%</span>
+<span style="color:#d2d2d6">|</span>
+<span>Tool engagement angle: <span class="val" id="x-engage">—</span>°</span>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px">
+<a href="/tools/mrr-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f">
+<div style="font-size:20px">⚡</div><h4 style="font-size:14px;font-weight:600;margin:4px 0 2px">Calculadora de MRR</h4>
+<p style="font-size:12px;color:#86868b">Comparar MRR trocoidal contra molienda convencional.</p>
+</a>
+<a href="/tools/ramping-angle-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f">
+<div style="font-size:20px">📐</div><h4 style="font-size:14px;font-weight:600;margin:4px 0 2px">Calculadora del ángulo de rampa</h4>
+<p style="font-size:12px;color:#86868b">Optimizar las estrategias de entrada antes de las trayectorias trocoidales.</p>
+</a>
+</div>
+</section>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Herramientas de precisión relacionadas</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/es/tools/tangent-point-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tangent Point Calculator</a><a href="/es/tools/tap-drill-size-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tap Drill Size Calculator</a><a href="/es/tools/taper-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Taper Calculator</a><a href="/es/tools/surface-roughness-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Surface Roughness Calculator</a><a href="/es/tools/npt-pipe-thread-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Npt Pipe Thread Calculator</a><a href="/es/tools/bolt-circle-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Bolt Circle Calculator</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">Inicio</a>
+<a href="/tools/">Todas las herramientas</a>
+<a href="/products/">Productos</a>
+<a href="/guides/">Guías</a>
+<a href="/about.html">Sobre</a>
+<a href="/quote.html">Velocidad y avance</a>
+<a href="/privacy.html">Convertidor de dureza</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Tamaño del taladro de roscado</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Todas las herramientas</a></p>
+<p style="font-size:11px;margin-bottom:6px">Los resultados son únicamente de referencia. Consulte a los fabricantes de herramientas para aplicaciones específicas.</p>
+<p style="font-size:11px">©Herramientas de carburo 2026</p>
+</div>
+</footer>
+<script>
+const MATS = {
+ al6061:{label:'Aluminum 6061',maxStep:15,feedMult:2.5,docMult:1.5},
+ ss304:{label:'Stainless 304',maxStep:10,feedMult:1.6,docMult:0.8},
+ mild_steel:{label:'Mild Steel',maxStep:12,feedMult:2.0,docMult:1.2},
+ ti6al4v:{label:'Titanium Gr5',maxStep:8,feedMult:1.4,docMult:0.5},
+};
+
+function calc() {
+ const mat = MATS[document.getElementById('material').value];
+ const dia = parseFloat(document.getElementById('dia').value) || 12;
+ const z = parseInt(document.getElementById('flutes').value) || 4;
+ const stepPct = parseFloat(document.getElementById('stepover').value) || 10;
+ const ap = parseFloat(document.getElementById('doc').value) || 12;
+ const vc = parseFloat(document.getElementById('vc').value) || 180;
+ const fz = parseFloat(document.getElementById('fz').value) || 0.06;
+
+ const rpm = dia > 0 ? (vc * 1000) / (Math.PI * dia) : 1000;
+ const ae = dia * stepPct / 100;
+
+ // Engagement angle
+ const engRatio = ae / dia;
+ const engAngle = engRatio > 0 ? Math.acos(1 - 2 * engRatio) * 180 / Math.PI : 0;
+
+ // Chip thinning factor
+ const thinning = engAngle > 0 && engAngle < 180 ? 1 / Math.sin(engAngle * Math.PI / 180) : 1;
+
+ // Effective fz (programmed fz × thinning factor gives actual chip load)
+ const effFz = fz * thinning;
+
+ // Avance rate with chip thinning
+ const feed = rpm * z * effFz;
+
+ // MRR (trochoidal)
+ const mrrTroch = (ap * ae * feed) / 1000;
+
+ // Conventional comparison (using typical 40% stepover, 0.5× diameter DOC)
+ const convAvance = rpm * z * fz * 0.6; // 40% feed reduction for conventional
+ const convDoc = dia * 0.5;
+ const convAe = dia * 0.4;
+ const mrrConv = (convDoc * convAe * convAvance) / 1000;
+
+ const improvement = mrrConv > 0 ? mrrTroch / mrrConv : 0;
+
+ // Max recommended stepover for this material
+ const maxStep = mat.maxStep;
+
+ document.getElementById('r-rpm').textContent = Math.round(rpm);
+ document.getElementById('r-feed').textContent = Math.round(feed);
+ document.getElementById('r-mrr').textContent = mrrTroch.toFixed(1);
+ document.getElementById('r-compare').textContent = improvement.toFixed(1) + '×';
+ document.getElementById('x-thinning').textContent = thinning.toFixed(2);
+ document.getElementById('x-eff-chip').textContent = effFz.toFixed(4);
+ document.getElementById('x-max-step').textContent = maxStep;
+ document.getElementById('x-engage').textContent = engAngle.toFixed(1);
+}
+
+calc();
+</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
+<section class="seo-content">
+<div class="container">
+<h2>Por qué el fresado trocoidal corta 3 veces más rápido que el desbaste convencional</h2>
+<p>Un maquinista que ejecuta un molino de extremo de 12mm en un bolsillo de acero con desbaste convencional toma pases radiales de 0,5mm a una profundidad axial de 4mm. La herramienta dura 90 minutos, el bolsillo tarda 45 minutos en rugoso y la máquina rara vez supera el 60% de carga del husillo. Cambiando a una trayectoria de herramienta trocoidal con 10% de paso (1,2mm radial) y 12mm de profundidad axial (longitud completa de la flauta), los mismos desbaste de bolsillo en 14 minutos. La herramienta dura 120 minutos. La diferencia no es incremental, es estructural.</p>
+<p>El fresado trocoidal funciona porque mantiene el acoplamiento radial de la herramienta lo suficientemente bajo como para que el filo de corte nunca se enganche completamente con el material. La carga de viruta se distribuye a través de múltiples dientes en un perfil de espesor de viruta constante. El calor es transportado por el chip en lugar de ser conducido a la herramienta. El husillo de la máquina permanece por debajo del 80% de carga incluso a 3 × el MRR de las trayectorias de herramientas convencionales. Estos números no son teóricos: se miden diariamente en talleres de producción que ejecutan estrategias de mecanizado de alta velocidad.</p>
+<h2>Cómo Trochoidal Milling cambia el cálculo de la velocidad de alimentación</h2>
+<p>Las fórmulas de velocidad de alimentación convencionales suponen que la herramienta está acoplada a través de una porción significativa de su diámetro. El fresado trocoidal utiliza un acoplamiento radial de 5-15%, lo que crea un efecto de adelgazamiento de la viruta: la viruta producida a un acoplamiento radial bajo es más delgada que la alimentación programada por diente. Para mantener la carga recomendada de virutas, la velocidad de alimentación debe aumentarse mediante el factor de adelgazamiento de virutas.</p>
+<p>Factor de adelgazamiento del chip = 1 / sin (ángulo de enganche). Para un stepover del 10% con una herramienta de 12mm, el ángulo de acoplamiento es de aproximadamente 37 °, dando un factor de adelgazamiento de aproximadamente 1,65 ×. Esto significa que la alimentación programada por diente puede ser un 65% más alta mientras se mantiene la misma carga de viruta real que el fresado convencional. Combinado con la profundidad axial completa típica de las trayectorias trocoidales, el aumento efectivo de MRR es sustancial.</p>
+<h2>Estrategias Trocoidales Específicas del Material</h2>
+<p><strong>Aluminum 6061:</strong> 2-3 flute tools with stepover of 10-15% and full axial depth (1-1.5× diameter). Avance rates can reach 2-3× conventional values. Chip evacuation becomes the limiting factor at high MRR — use compressed air or coolant through the spindle. MRR improvements of 4-6× over conventional are typical.</p>
+<p><strong>Mild Steel 1018:</strong> 4-5 flute tools with stepover of 8-12% and axial depth of 1-1.5× diameter. Avance increase of 1.5-2× over conventional. The limiting factor is machine rigidity, not tool life. MRR improvement of 2-4× is achievable with a rigid machine.</p>
+<p><strong>Stainless Steel 304:</strong> 5-6 flute tools with stepover of 5-10%. Axial depth limited to 0.75-1× diameter due to work-hardening at the depth-of-cut line. Avance increase of 1.3-1.8×. MRR improvement of 1.5-3×. The <a href="/tools/force-calculator/" style="color:#0066cc">Rugosidad de la superficie</a> can help verify that the reduced radial engagement keeps cutting forces within safe limits.</p>
+<p><strong>Titanium Grade 5:</strong> 4-5 flute tools with stepover of 5-8%. Axial depth of 0.5-1× diameter. Avance increase is modest — 1.2-1.5× — because chip load is limited by thermal considerations. The main benefit of trochoidal milling in titanium is consistent tool life, not MRR. Through-spindle coolant at 50+ bar is essential.</p>
+<h2>Geometría de la trayectoria de herramienta trocoidal: paso a paso, ángulo de compromiso y adelgazamiento de chips</h2>
+<p>Los tres parámetros que definen un paso trocoidal son el paso (acoplamiento radial), la profundidad axial y el paso trocoidal (el avance hacia delante por bucle). Stepover es el más crítico: determina el ángulo de acoplamiento, que a su vez determina el factor de adelgazamiento de la viruta y las fuerzas de corte.</p>
+<p>El ángulo de acoplamiento θ para un escalón dado ae con el diámetro de herramienta D es: θ = arccos (1-2 x ae/D). Al 10% de paso, θ ≈ 37 °; al 20%, θ ≈ 53 °; al 40%, θ ≈ 79 °. Por debajo del 10% de paso, el efecto de adelgazamiento de la viruta se vuelve extremo-un 5% de paso da un factor de adelgazamiento de 2,5 ×, lo que permite velocidades de alimentación muy altas pero con rendimientos decrecientes en MRR porque la herramienta pasa la mayor parte de su tiempo en el aire. El punto óptimo para la mayoría de los materiales es 8-15% stepover.</p>
+<h2>Cuando el fresado trocoidal no ayuda</h2>
+<p>Las trayectorias trocoidales generan una aceleración y desaceleración constantes en los ejes de la máquina. Las máquinas con una aceleración deficiente (por debajo de 3 m/s²) no pueden mantener la velocidad de alimentación programada en los bucles trocoidales apretados: la alimentación promedio real cae al 40-60% de los valores programados, negando la ventaja MRR. Para estas máquinas, el desbaste convencional con acoplamiento radial moderado (30-40%) produce mejores resultados.</p>
+<p>Las herramientas cortas (menos de 3 × de longitud de diámetro) se benefician más del fresado trocoidal. Las herramientas largas (más de 5 × de diámetro) introducen deflexión y vibración que limitan el MRR alcanzable independientemente de la estrategia de la trayectoria de la herramienta. En estos casos, la reducción de la profundidad axial y el uso de stepover convencional es más productivo que luchar con la inestabilidad trocoidal.</p>
+<h2>Preguntas frecuentes</h2>
+<p><strong>What is trochoidal milling?</strong> A high-speed machining strategy where the tool follows a looping (trochoidal) path with low radial engagement (5-15%) and high axial depth. This maintains constant chip load and allows much higher feed rates than conventional roughing.</p>
+<p><strong>How do you calculate feed rate for trochoidal milling?</strong> Avance rate = RPM × flutes × programmed fz × chip thinning factor. The chip thinning factor compensates for the reduced chip thickness at low radial engagement. This calculator does all the math automatically.</p>
+<p><strong>What stepover should I use for trochoidal milling?</strong> 8-15% of tool diameter for most materials. 5-10% for difficult materials like titanium and stainless. Below 5% the tool spends too much time in air; above 20% the chip thinning benefit decreases and cutting forces rise sharply.</p>
+<p><strong>Can I use trochoidal milling on any CNC machine?</strong> No. Machine acceleration must be at least 3 m/s² to maintain programmed feed on the looping toolpath. Machines with acceleration below 2 m/s² will see reduced benefit. Newer machines with linear motors or dual-ball screws achieve 5-10 m/s² and maximize trochoidal performance.</p>
+<p><strong>How does trochoidal milling affect tool life?</strong> Trochoidal toolpaths typically improve tool life by 20-50% compared to conventional roughing at the same MRR because the reduced radial engagement prevents thermal shock and distributes wear evenly across the cutting edge. The constant chip load also eliminates the impact loading that causes micro-chipping.</p>
+<p><strong>What is chip thinning in trochoidal milling?</strong> At low radial engagement, the chip produced is thinner than the programmed feed per tooth. The ratio of programmed to actual chip thickness is the chip thinning factor. Avance rate must be increased by this factor to maintain the recommended chip load. This calculator computes the thinning factor for your specific stepover.</p>
+<div style="text-align:center;padding:32px 24px;font-size:15px;color:#1d1d1f;background:#f5f5f7;border-radius:16px;max-width:900px;margin:40px auto 0">
+<p style="margin:0">Para molinos de extremo diseñados para trayectorias trocoidales HSM, consulte nuestros molinos de extremo de alto rendimiento</p>
+</div>
+</div>
+</section>
+<div class="toolbox-widget"><h3>🔧Caja de herramientas de ingeniería de precisión</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Guía de titanio</a>
+<a href="/tools/hardness-converter/">Referencia cruzada de calificaciones</a>
+<a href="/tools/tap-drill-size-calculator/">Costo por pieza</a>
+<a href="/tools/mrr-calculator/">Calculadora de MRR</a>
+<a href="/tools/feed-converter/">Solicitar cotización por volumen →</a>
+<a href="/tools/surface-roughness-calculator/">Fresas de extremo de carburo sólido</a>
+<a href="/tools/titanium-machining-guide/">Portaherramientas</a>
+<a href="/tools/carbide-grade-cross-ref-2/">Calculadora del tiempo de ciclo</a>
+<a href="/tools/cost-per-part-calculator/">Calculadora de la longitud del punto de perforación</a>
+<a href="/tools/torque-unit-converter/">Referencia cruzada de grados de carburo</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">¿Soluciones Profesionales para Trochoidal Milling Calculator?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Obtenga precios directos de fábrica en herramientas de carburo premium con calidad certificada ISO.</p>
+</div>
+<a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">Guía de mecanizado de plásticos</a><a href="/products/tool-holders.html">Calculadora de modificación de la velocidad de avance</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/trochoidal-milling-calculator/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/trochoidal-milling-calculator/&amp;text=Trochoidal Milling Calculator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Trochoidal Milling Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/trochoidal-milling-calculator/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesfer Calculator</a>
-<a href="/es/tools/form-tap-drill-calculator/">Form Tap Drill Calculator</a>
-<a href="/es/tools/slot-milling-calculator/">Slot Milling Calculator</a>
-<a href="/es/tools/feed-converter/">Feed Converter</a>
-<a href="/es/tools/peck-drilling-calculator/">Peck Drilling Calculator</a>
-<a href="/es/tools/thread-lead-angle-calculator/">Thread Lead Angle Calculator</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/es/tools/engineering-interest-calculator/">Engineering Interest Calculator</a>
+<a href="/es/tools/metric-imperial-thread-converter/">Metric Imperial Thread Converter</a>
+<a href="/es/tools/horsepower-calculator/">Horsepower Calculator</a>
+<a href="/es/tools/feed-rate-override-calculator/">Feed Rate Override Calculator</a>
+<a href="/es/tools/bulk-discount-calculator/">Bulk Discount Calculator</a>
+<a href="/es/tools/batch-cost-calculator/">Batch Cost Calculator</a>
+<a href="/es/tools/machine-power-calculator/">Machine Power Calculator</a>
+<a href="/es/tools/coord-rotation-calculator/">Coord Rotation Calculator</a>
+<a href="/es/tools/cast-iron-machining/">Cast Iron Machining</a>
+<a href="/es/tools/hardness-converter/">Hardness Converter</a>
 
 </div>
 </section>
@@ -305,22 +534,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/es/tools/tapping-feed-rate-calculator/">Tapping Feed Rate Calculator</a>
+<a href="/es/tools/taper-calculator/">Taper Calculator</a>
+<a href="/es/tools/chip-load/">Chip Load</a>
+<a href="/es/tools/tap-drill-size-calculator/">Tap Drill Size Calculator</a>
+<a href="/es/tools/chamfer-calculator/">Chamfer Calculator</a>
+<a href="/es/tools/form-tap-drill-calculator/">Form Tap Drill Calculator</a>
+<a href="/es/tools/slot-milling-calculator/">Slot Milling Calculator</a>
+<a href="/es/tools/feed-converter/">Feed Converter</a>
+<a href="/es/tools/peck-drilling-calculator/">Peck Drilling Calculator</a>
+<a href="/es/tools/thread-lead-angle-calculator/">Thread Lead Angle Calculator</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -330,6 +563,20 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body>
 </html>

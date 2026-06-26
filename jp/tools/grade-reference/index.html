@@ -112,7 +112,20 @@ footer a{color:#0066cc;text-decoration:none}
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -126,18 +139,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -286,6 +288,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -293,6 +296,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1537432376149-e8c3e3e3b3c2?w=1200&h=675&fit=crop&q=80&auto=format" alt="超硬切削工具詳細" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div>
 <nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/jp/"><span>◆</span> Carbide Tooling</a>
@@ -308,14 +319,361 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 </div>
 </div>
 </nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<section class="hero">
+<div class="container">
+<div class="badge">🔩 Cross-Reference Tool</div>
+<h1>超硬合金グレードの相互参照表</h1>
+<p>Sandvik、Kennametal、Kyocera、Iscar、Mitsubishi、Sumitomo、およびWalterで超硬インサートのグレードを検索して比較します。ISO P/M/K/Sアプリケーションの同等のグレードを見つけます。</p>
+<div class="hero-actions">
+<a class="btn" href="#reference">検索グレード ※</a>
+<a class="btn-outline" href="#quote">📦無料サンプルをリクエスト</a>
+</div>
+</div>
+</section>
+<section class="container" id="reference" style="padding-bottom:40px">
+<!-- Brand bar -->
+<div class="brand-bar">
+<span>Brands indexed: <strong>Sandvik</strong></span><span><strong>Kennametal</strong></span><span><strong>Kyocera</strong></span><span><strong>Iscar</strong></span><span><strong>Mitsubishi</strong></span><span><strong>Sumitomo</strong></span><span><strong>Walter</strong></span>
+</div>
+<!-- Search -->
+<div class="search-wrap">
+<span class="icon">🔍</span>
+<input autocomplete="off" id="search-input" oninput="filterTable()" placeholder="Search grade name, e.g. GC4325, KCU10, IC8250..." type="text"/>
+</div>
+<!-- ISO Filter Chips -->
+<div class="chips">
+<button class="chip active" onclick="filterISO('all')">すべてのISO</button>
+<button class="chip" onclick="filterISO('P')"><span class="iso-tag iso-p">P</span> Steel</button>
+<button class="chip" onclick="filterISO('M')"><span class="iso-tag iso-m">M</span> Stainless</button>
+<button class="chip" onclick="filterISO('K')"><span class="iso-tag iso-k">K</span> Cast Iron</button>
+<button class="chip" onclick="filterISO('S')"><span class="iso-tag iso-s">S</span> Superalloys</button>
+</div>
+<!-- Table -->
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>ISO</th>
+<th>Sandvik <span style="font-weight:400;color:#86868b">Coromant</span></th>
+<th>ケンナメタル</th>
+<th>京セラ</th>
+<th>イスカル</th>
+<th>三菱</th>
+<th>住友</th>
+<th>ウォルター</th>
+</tr>
+</thead>
+<tbody id="grade-table-body">
+<!-- Filled by JS -->
+</tbody>
+</table>
+</div>
+<!-- Status -->
+<p id="table-status" style="text-align:center;font-size:13px;color:#86868b;margin-top:16px"></p>
+<!-- Cross-links -->
+<div class="ref-links">
+<a class="ref-link" href="/tools/speed-feed/">
+<div class="icon">⚙️</div>
+<h4>切削速度・送り計算ツール</h4>
+<p>グレードを選択したら、これを使用して最適な速度とフィードを計算します。</p>
+<span class="tag">Recommended next step</span>
+</a>
+<a class="ref-link" href="/tools/surface-speed/">
+<div class="icon">🔄</div>
+<h4>SFM電卓</h4>
+<p>さまざまなワーク材料の表面速度パラメータを変換します。</p>
+<span class="tag">Companion tool</span>
+</a>
+</div>
+<!-- Quote CTA -->
+<div id="quote" style="background:linear-gradient(135deg,#f5f5f7,#eeeef0);border-radius:20px;padding:36px 32px;text-align:center;margin-top:32px">
+<h3 style="font-size:20px;font-weight:700;margin-bottom:6px">📦生産量が必要ですか?</h3>
+<p style="font-size:14px;color:#86868b;margin-bottom:16px">上記のグレードの無料サンプルまたは卸売見積もりをリクエストしてください。工場直送価格、ISO品質。</p>
+<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+<a class="btn" href="https://carbide-tooling.com/quote.html">📩無料サンプルをリクエスト</a>
+<a class="btn-outline" href="https://carbide-tooling.com/quote.html">📋卸売見積もりを取得する</a>
+</div>
+</div>
+</section>
+<!-- ===== SEO CONTENT ===== -->
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">関連精密工具</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/jp/tools/gcode-reference/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Gcode Reference</a><a href="/jp/tools/gdt-symbols-reference/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Gdt Symbols Reference</a><a href="/jp/tools/gear-parameter-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Gear Parameter Calculator</a><a href="/jp/tools/carbide-grade-cross-ref-2/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Carbide Grade Cross Ref 2</a><a href="/jp/tools/round-bar-weight/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Round Bar Weight</a><a href="/jp/tools/trochoidal-milling-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Trochoidal Milling Calculator</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">ホーム</a>
+<a href="/tools/">すべてのツール</a>
+<a href="/products/">製品</a>
+<a href="/guides/">ガイド</a>
+<a href="/about.html">について</a>
+<a href="/quote.html">カーバイドツーリング</a>
+<a href="/privacy.html">速度と送り量</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">硬度変換器</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">すべてのツール</a></p>
+<p style="font-size:11px;margin-bottom:6px">結果は参考としてのみご使用ください。具体的な用途については、工具メーカーにご相談ください。</p>
+<p style="font-size:11px">©2026年用超硬工具</p>
+</div>
+</footer>
+<script>
+// Grade database
+const GRADES = [
+ // ISO P - Steel
+ {iso:'P', brand:'Sandvik', grade:'GC4325', style:'Medium', coating:'CVD'},
+ {iso:'P', brand:'Sandvik', grade:'GC3330', style:'Tough', coating:'PVD'},
+ {iso:'P', brand:'Sandvik', grade:'GC4425', style:'Finish', coating:'CVD'},
+ {iso:'P', brand:'Kennametal', grade:'KCU10', style:'Medium', coating:'CVD'},
+ {iso:'P', brand:'Kennametal', grade:'KCP25', style:'Rough', coating:'CVD'},
+ {iso:'P', brand:'Kennametal', grade:'KC9110', style:'Finish', coating:'PVD'},
+ {iso:'P', brand:'Kyocera', grade:'CA100P', style:'Finish', coating:'PVD'},
+ {iso:'P', brand:'Kyocera', grade:'CA510P', style:'Medium', coating:'CVD'},
+ {iso:'P', brand:'Kyocera', grade:'PR1535', style:'Rough', coating:'CVD'},
+ {iso:'P', brand:'Iscar', grade:'IC8250', style:'Medium', coating:'CVD'},
+ {iso:'P', brand:'Iscar', grade:'IC8300', style:'Rough', coating:'PVD'},
+ {iso:'P', brand:'Iscar', grade:'IC328', style:'Finish', coating:'PVD'},
+ {iso:'P', brand:'Mitsubishi', grade:'UE6020', style:'Medium', coating:'CVD'},
+ {iso:'P', brand:'Mitsubishi', grade:'UE6110', style:'Rough', coating:'CVD'},
+ {iso:'P', brand:'Mitsubishi', grade:'MP9030', style:'Finish', coating:'PVD'},
+ {iso:'P', brand:'Sumitomo', grade:'AC6030P',style:'Medium', coating:'CVD'},
+ {iso:'P', brand:'Sumitomo', grade:'AC700P', style:'Rough', coating:'PVD'},
+ {iso:'P', brand:'Sumitomo', grade:'AC820P', style:'Finish', coating:'CVD'},
+ {iso:'P', brand:'Walter', grade:'WSM43S', style:'Rough', coating:'PVD'},
+ {iso:'P', brand:'Walter', grade:'WPP10S', style:'Finish', coating:'CVD'},
+ {iso:'P', brand:'Walter', grade:'WPP25S', style:'Medium', coating:'CVD'},
+ // ISO M - Stainless
+ {iso:'M', brand:'Sandvik', grade:'GC2025', style:'Medium', coating:'CVD'},
+ {iso:'M', brand:'Sandvik', grade:'GC2015', style:'Finish', coating:'CVD'},
+ {iso:'M', brand:'Sandvik', grade:'GC3330', style:'Rough', coating:'PVD'},
+ {iso:'M', brand:'Kennametal', grade:'KC9225', style:'Medium', coating:'PVD'},
+ {iso:'M', brand:'Kennametal', grade:'KC9240', style:'Rough', coating:'PVD'},
+ {iso:'M', brand:'Kennametal', grade:'KCM25', style:'Finish', coating:'CVD'},
+ {iso:'M', brand:'Kyocera', grade:'CA125M', style:'Medium', coating:'PVD'},
+ {iso:'M', brand:'Kyocera', grade:'CA525M', style:'Finish', coating:'CVD'},
+ {iso:'M', brand:'Kyocera', grade:'PR1605', style:'Rough', coating:'PVD'},
+ {iso:'M', brand:'Iscar', grade:'IC8300', style:'Rough', coating:'PVD'},
+ {iso:'M', brand:'Iscar', grade:'IC808', style:'Medium', coating:'PVD'},
+ {iso:'M', brand:'Iscar', grade:'IC504', style:'Finish', coating:'PVD'},
+ {iso:'M', brand:'Mitsubishi', grade:'MP6130', style:'Medium', coating:'PVD'},
+ {iso:'M', brand:'Mitsubishi', grade:'MP7030', style:'Rough', coating:'PVD'},
+ {iso:'M', brand:'Mitsubishi', grade:'MP9120', style:'Finish', coating:'PVD'},
+ {iso:'M', brand:'Sumitomo', grade:'AC6030M',style:'Medium', coating:'CVD'},
+ {iso:'M', brand:'Sumitomo', grade:'AC700M', style:'Rough', coating:'PVD'},
+ {iso:'M', brand:'Sumitomo', grade:'AC820M', style:'Finish', coating:'CVD'},
+ {iso:'M', brand:'Walter', grade:'WSM35S', style:'Medium', coating:'PVD'},
+ {iso:'M', brand:'Walter', grade:'WSM43S', style:'Rough', coating:'PVD'},
+ {iso:'M', brand:'Walter', grade:'WPP15S', style:'Finish', coating:'CVD'},
+ // ISO K - Cast Iron
+ {iso:'K', brand:'Sandvik', grade:'GC3215', style:'Rough', coating:'CVD'},
+ {iso:'K', brand:'Sandvik', grade:'GC3220', style:'Medium', coating:'CVD'},
+ {iso:'K', brand:'Sandvik', grade:'GC4230', style:'Finish', coating:'CVD'},
+ {iso:'K', brand:'Kennametal', grade:'KCK20B', style:'Medium', coating:'CVD'},
+ {iso:'K', brand:'Kennametal', grade:'KCK15B', style:'Finish', coating:'CVD'},
+ {iso:'K', brand:'Kennametal', grade:'KCP25B', style:'Rough', coating:'CVD'},
+ {iso:'K', brand:'Kyocera', grade:'CA310K', style:'Medium', coating:'CVD'},
+ {iso:'K', brand:'Kyocera', grade:'CA510K', style:'Finish', coating:'CVD'},
+ {iso:'K', brand:'Kyocera', grade:'PR1535', style:'Rough', coating:'CVD'},
+ {iso:'K', brand:'Iscar', grade:'IC8250', style:'Medium', coating:'CVD'},
+ {iso:'K', brand:'Iscar', grade:'IC8300', style:'Rough', coating:'PVD'},
+ {iso:'K', brand:'Iscar', grade:'IC808', style:'Finish', coating:'PVD'},
+ {iso:'K', brand:'Mitsubishi', grade:'UE6020', style:'Medium', coating:'CVD'},
+ {iso:'K', brand:'Mitsubishi', grade:'UE6105', style:'Finish', coating:'CVD'},
+ {iso:'K', brand:'Mitsubishi', grade:'MC9020', style:'Rough', coating:'CVD'},
+ {iso:'K', brand:'Sumitomo', grade:'AC300K', style:'Rough', coating:'CVD'},
+ {iso:'K', brand:'Sumitomo', grade:'AC600K', style:'Medium', coating:'CVD'},
+ {iso:'K', brand:'Sumitomo', grade:'AC800K', style:'Finish', coating:'CVD'},
+ {iso:'K', brand:'Walter', grade:'WKM15S', style:'Finish', coating:'CVD'},
+ {iso:'K', brand:'Walter', grade:'WKM25S', style:'Medium', coating:'CVD'},
+ {iso:'K', brand:'Walter', grade:'WPP20S', style:'Rough', coating:'CVD'},
+ // ISO S - Superalloys
+ {iso:'S', brand:'Sandvik', grade:'GC1105', style:'Finish', coating:'PVD'},
+ {iso:'S', brand:'Sandvik', grade:'GC1115', style:'Medium', coating:'PVD'},
+ {iso:'S', brand:'Sandvik', grade:'S205', style:'Rough', coating:'PVD'},
+ {iso:'S', brand:'Kennametal', grade:'KCS10', style:'Finish', coating:'PVD'},
+ {iso:'S', brand:'Kennametal', grade:'KCS15', style:'Medium', coating:'PVD'},
+ {iso:'S', brand:'Kennametal', grade:'KCM25', style:'Rough', coating:'CVD'},
+ {iso:'S', brand:'Kyocera', grade:'CA115S', style:'Finish', coating:'PVD'},
+ {iso:'S', brand:'Kyocera', grade:'CA525S', style:'Medium', coating:'CVD'},
+ {iso:'S', brand:'Kyocera', grade:'CA510S', style:'Rough', coating:'CVD'},
+ {iso:'S', brand:'Iscar', grade:'IC804', style:'Medium', coating:'PVD'},
+ {iso:'S', brand:'Iscar', grade:'IC806', style:'Finish', coating:'PVD'},
+ {iso:'S', brand:'Iscar', grade:'IC806R', style:'Rough', coating:'PVD'},
+ {iso:'S', brand:'Mitsubishi', grade:'MP9120', style:'Finish', coating:'PVD'},
+ {iso:'S', brand:'Mitsubishi', grade:'MP9130', style:'Medium', coating:'PVD'},
+ {iso:'S', brand:'Mitsubishi', grade:'MP7140', style:'Rough', coating:'PVD'},
+ {iso:'S', brand:'Sumitomo', grade:'AC500S', style:'Rough', coating:'PVD'},
+ {iso:'S', brand:'Sumitomo', grade:'AC600S', style:'Medium', coating:'PVD'},
+ {iso:'S', brand:'Sumitomo', grade:'AC800S', style:'Finish', coating:'PVD'},
+ {iso:'S', brand:'Walter', grade:'WSM35S', style:'Medium', coating:'PVD'},
+ {iso:'S', brand:'Walter', grade:'WSM43S', style:'Rough', coating:'PVD'},
+ {iso:'S', brand:'Walter', grade:'WTT10S', style:'Finish', coating:'PVD'},
+];
+
+const BRANDS = ['Sandvik','Kennametal','Kyocera','Iscar','Mitsubishi','Sumitomo','Walter'];
+const ISO_ORDER = ['P','M','K','S'];
+const ISO_LABELS = {P:'Steel',M:'Stainless',K:'Cast Iron',S:'Superalloys'};
+
+let currentISO = 'all';
+let currentSearch = '';
+
+// Group grades by ISO + style for table rows
+function buildTable() {
+ const body = document.getElementById('grade-table-body');
+ const rows = [];
+
+ ISO_ORDER.forEach(iso => {
+ const isoGrades = GRADES.filter(g => g.iso === iso);
+ // Group by style
+ const styles = [...new Set(isoGrades.map(g => g.style))];
+ styles.sort((a,b) => {
+ const order = {Rough:0,Medium:1,Finish:2};
+ return (order[a]||1) - (order[b]||1);
+ });
+
+ styles.forEach(style => {
+ const row = {iso, style, grades:{}};
+ BRANDS.forEach(b => {
+ const found = isoGrades.find(g => g.brand === b && g.style === style);
+ row.grades[b] = found ? {grade:found.grade, coating:found.coating} : null;
+ });
+ rows.push(row);
+ });
+ });
+
+ return rows;
+}
+
+function render(rows, highlight = '') {
+ const body = document.getElementById('grade-table-body');
+ const items = rows || buildTable();
+
+ let html = '';
+ items.forEach(row => {
+ // Check if this row matches the search
+ if (currentSearch) {
+ const match = BRANDS.some(b => {
+ const g = row.grades[b];
+ return g && g.grade.toLowerCase().includes(currentSearch);
+ });
+ if (!match) return;
+ }
+ // Check ISO filter
+ if (currentISO !== 'all' && row.iso !== currentISO) return;
+
+ const isoLabel = ISO_LABELS[row.iso] || '';
+ html += `<tr>`;
+ html += `<td><span class="iso-tag iso-${row.iso.toLowerCase()}">${row.iso} · ${isoLabel}</span><br><span style="font-size:11px;color:#86868b">${row.style}</span></td>`;
+
+ BRANDS.forEach(b => {
+ const g = row.grades[b];
+ if (g) {
+ const isHighlight = highlight && g.grade.toLowerCase().includes(highlight);
+ const coatingTag = g.coating === 'CVD' ? 'CVD' : 'PVD';
+ html += `<td class="${isHighlight ? 'highlight' : ''}">${g.grade}<br><span style="font-size:10px;color:#86868b">${coatingTag}</span></td>`;
+ } else {
+ html += `<td style="color:#d2d2d6;font-size:11px">—</td>`;
+ }
+ });
+ html += `</tr>`;
+ });
+
+ body.innerHTML = html || '<tr><td colspan="8" style="text-align:center;padding:40px;color:#86868b">No matching grades found. Try a different search term.</td></tr>';
+ 
+ document.getElementById('table-status').textContent = `${body.querySelectorAll('tr').length} grades displayed`;
+}
+
+function filterTable() {
+ const input = document.getElementById('search-input').value.toLowerCase().trim();
+ currentSearch = input;
+ render(buildTable(), input);
+}
+window.filterTable = filterTable;
+
+function filterISO(iso) {
+ currentISO = iso;
+ document.querySelectorAll('.chips .chip').forEach(c => c.classList.toggle('active', c.textContent.includes(iso === 'all' ? 'All' : iso)));
+ render(buildTable(), document.getElementById('search-input').value.toLowerCase().trim());
+}
+window.filterISO = filterISO;
+
+// Init
+render(buildTable());
+</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
+<section class="seo-content">
+<div class="container">
+<h2>ISOカーバイドグレード分類の理解: P、M、K、およびS</h2>
+<p>Carbide insert grades are classified under ISO 513:2012 into color-coded application groups. This international standard defines six main groups — P (steel, blue), M (stainless steel, yellow), K (cast iron, red), N (non-ferrous, green), S (superalloys, brown), and H (hardened, gray). The grade cross-reference tool above focuses on the four most commonly sourced groups: <strong>P, M, K, and S</strong> — covering approximately 85% of all machining applications in general engineering, automotive, aerospace, and medical device manufacturing.</p>
+<p>各ISOグループは、ワークピースの材料だけでなく、予想される故障モードと摩耗メカニズムも指定します。Pグレードのツールは、主にクレーターと熱変形によって摩耗します。Mグレードのツールは、ノッチを付けてエッジを構築することで失敗します。研磨面の摩耗によるKグレードのツール。塑性変形とエッジチッピングによるSグレードのツール。これらの根本的な違いを無視する相互参照検索は、壊滅的なツール障害につながる可能性があります。そのため、グレードマッチングにより、ブランドの同等性よりもISOグループの互換性が優先されます。</p>
+<h3>ISO Pグループ-スチール加工 (ブルー)</h3>
+<p>ISO P covers unalloyed and alloyed steels, from mild 1018 to hardened 4140 and 8620. Steel machining generates long, ductile chips and high cutting temperatures (600-900°C at the tool-chip interface). Grades in this group require substrates with high thermal conductivity and coatings that resist crater wear. Sandvik's GC4325, Kennametal's KCU10, and Mitsubishi's UE6020 are all optimized for steel turning with medium to roughing conditions. The key parameter when cross-referencing P-grade tools is <strong>thermal stability</strong> — a grade rated for continuous cutting in steel may fail immediately in interrupted cuts.</p>
+<h3>ISO Mグループ-ステンレス加工 (イエロー)</h3>
+<p>Stainless steels (304, 316, 17-4 PH, duplex) are the most challenging group because they combine high work-hardening rates with low thermal conductivity. M-grade inserts must resist built-up edge formation at low cutting speeds and plastic deformation at high speeds. Grades like Iscar IC8300, Kyocera CA125M, and Walter WSM35S use specialized substrate grain structures (0.2-0.5 μm) with moderate coating thickness (8-12 μm) to balance edge sharpness with wear resistance. When cross-referencing M-grade tools, prioritize <strong>edge toughness</strong> — a harder grade that performs well in P applications may chip immediately in stainless due to notching at the depth-of-cut line.</p>
+<h3>ISO Kグループ-鋳鉄加工 (赤)</h3>
+<p>Gray and ductile irons (GG25, GGG40, GGG70) produce short, segmented chips and generate abrasive wear on the tool flank. K-grade inserts need high hardness substrates with thick, abrasion-resistant coatings. Sandvik GC3215, Kennametal KCK20B, and Sumitomo AC300K are benchmark grades for gray iron turning at high speeds (400-700 SFM). Cast iron's graphite content acts as a natural lubricant, allowing higher cutting speeds than steel grades. The critical cross-reference parameter for K-group is <strong>coating adhesion</strong> — delamination under the abrasive wear mode is a common failure with low-quality substitute grades.</p>
+<h3>ISO Sグループ-超合金加工 (ブラウン)</h3>
+<p>Nickel-based superalloys (Inconel 718, Waspaloy, Hastelloy) and titanium alloys (Ti-6Al-4V, Ti-5553) represent the extreme edge of machining difficulty. These materials retain high strength at elevated temperatures (up to 1000°C), generating extreme cutting forces and rapid flank wear. S-grade inserts require tough, fine-grain substrates with AlTiN or TiSiN coatings that maintain oxidation resistance above 800°C. Kennametal KCS10, Mitsubishi MP9120, and Sandvik GC1105 are specifically engineered for this application. When cross-referencing S-grade tools, <strong>hot hardness retention</strong> is the most critical parameter — a grade that performs well in titanium at low SFM may deform plastically in Inconel at the same cutting speed.</p>
+<h2>CVD対PVDコーティング: コーティング技術がグレードの相互変更性にどのように影響するか</h2>
+<p>A grade cross-reference that ignores coating type is incomplete. <strong>CVD (Chemical Vapor Deposition)</strong> coatings — typically Al₂O₃ + TiCN multilayers — are 10-20 μm thick and provide superior crater wear resistance at high cutting speeds. They are preferred for steel and cast iron turning at speeds above 300 SFM. <strong>PVD (Physical Vapor Deposition)</strong> coatings — AlTiN, TiSiN, AlCrN — are 2-6 μm thick with compressive residual stress, offering better edge toughness and resistance to edge chipping. PVD-coated grades dominate in stainless steel, superalloys, and any interrupted cut application.</p>
+<p>異なるブランドのグレードを置き換える場合、ISOグループを一致させるよりもコーティング技術を一致させることが重要であることがよくあります。あるブランドのCVDコーティングされたPグレードインサートは、別のブランドのPVDコーティングされたPグレードインサートの直接の代替品ではありません。根本的に異なる切断条件用に設計されています。この相互参照ツールを出発点として使用し、置換を行う前に、コーティングの種類と推奨される切断速度範囲を確認します。</p>
+<h2>継続的なカットと中断されたカット: 操作に適切なグレードを選択する</h2>
+<p>An often-overlooked factor in grade selection is the <strong>cutting condition type</strong>. Continuous turning (uniform OD cuts on bar stock) allows the use of harder, more wear-resistant grades with higher Al₂O₃ content in the CVD coating. Interrupted cuts (face milling with entry/exit impacts, turning with keyways, scale on forged surfaces) require tougher substrates with higher cobalt content and PVD coatings that resist micro-cracking.</p>
+<p>同じISO Pアプリケーショングループでは、中断頻度に応じてまったく異なるグレードが必要になる場合があります。連続鋼旋削には、Sandvik GC4325 (CVD、中硬基板) が理想的です。大幅に中断されたスチールカットの場合は、Sandvik GC3330 (PVD、より頑丈な基板) が推奨されます。この区別を考慮せずに直接相互参照すると、間違ったツールが推奨されます。これが、経験豊富なバイヤーがデュアルグレードの在庫を維持している理由です。これは、荒削りの場合はより厳しいグレードであり、中断または仕上げの操作の場合はより厳しいグレードです。</p>
+<h2>よくある質問</h2>
+<p><strong>How reliable are grade cross-references between brands?</strong> Cross-references provide a starting point, but grades from different manufacturers are never identical. Variations in substrate grain size (0.2 μm vs 0.8 μm), cobalt content (6% vs 12%), coating adhesion, and edge preparation (honing radius) mean two "equivalent" grades can perform very differently in the same operation. Always validate with a trial batch before committing to large-scale substitution.</p>
+<p><strong>Does coating thickness affect grade interchangeability?</strong> Yes. CVD coatings (10-20 μm) are ideal for high-speed continuous cutting but can cause edge chipping in interrupted operations. PVD coatings (2-6 μm) provide better edge toughness. When cross-referencing, match the original coating type first, then the substrate grade. A PVD grade cannot replace a CVD grade in high-speed steel turning without significant performance loss.</p>
+<p><strong>How can I test a substitute grade at low cost?</strong> Request 5-10 pieces of the proposed substitute grade and run a controlled comparison. Machine 50 parts with the current grade and 50 parts with the substitute, measuring tool wear at regular intervals. Compare tool life, surface finish (Ra), and power consumption. Most reputable suppliers offer sample programs — <a href="https://carbide-tooling.com/quote.html" style="color:#0066cc">MRR計算ツール</a>.</p>
+<p><strong>What does the first letter in a grade name mean?</strong> Most manufacturers encode the ISO group in the grade name. Sandvik's "GC4325" — the G indicates a coated grade; Iscar's "IC8300" — IC stands for Iscar Carbide; Kennametal's "KCU10" — K is Kennametal, C is coated. The numbers typically indicate the hardness/wear resistance balance within the brand's own classification system. These internal codes cannot be cross-interpreted between brands — only the ISO application group and coating type provide valid comparison points.</p>
+<p><strong>Can I use a P-grade insert for stainless steel in an emergency?</strong> Not recommended. P-grade inserts lack the edge toughness and notching resistance required for stainless steel's work-hardening behavior. An M-grade insert used in steel will wear faster but may still function. A P-grade insert used in stainless risks immediate chipping and potential tool holder damage. Emergency substitutions should only be made at reduced cutting speeds (50-60% of normal) and reduced feed rates.</p>
+<p><strong>How do I know if a substitute grade is truly equivalent?</strong> Compare four parameters: ISO application group (must match), coating type (CVD vs PVD — ideally match), hardness/ wear resistance position within the brand's own range (a "roughing" grade should replace another "roughing" grade), and recommended cutting speed range (should overlap within 15%). The table above groups grades by ISO class and wear resistance level to facilitate this comparison.</p>
+<p><strong>What causes inconsistent performance between two supposedly equivalent grades?</strong> Most common causes: substrate grain size difference (affects edge sharpness and toughness), coating thickness variation (affects crater resistance and edge integrity), edge preparation radius difference (affects cutting forces and surface finish), and differences in the post-coating treatment (some brands apply surface finishing that improves chip flow). These parameters are rarely published in public datasheets, which is why trial testing is essential.</p>
+<p><strong>Is it worth paying more for branded grades vs. generic Chinese substitutes?</strong> Branded grades from Sandvik, Kennametal, and Mitsubishi offer verified consistency across batches, published technical data, and application engineering support. Generic Chinese manufacturers can produce acceptable quality at 40-60% lower cost, but batch-to-batch consistency varies significantly. For high-volume production where a tool failure stops a production line, branded grades offer lower total cost. For maintenance, repair, and operations (MRO) with less stringent quality requirements, cost-effective alternatives may be suitable. <a href="https://carbide-tooling.com/" style="color:#0066cc">フィードコンバーター</a> provides both options with full ISO quality documentation.</p>
+</div>
+</section>
+<div class="toolbox-widget"><h3>🔧精密工学ツールボックス</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">表面粗さ</a>
+<a href="/tools/hardness-converter/">チタンガイド</a>
+<a href="/tools/tap-drill-size-calculator/">グレード相互参照</a>
+<a href="/tools/mrr-calculator/">部品当たりのコスト</a>
+<a href="/tools/feed-converter/">トルクコンバーター</a>
+<a href="/tools/surface-roughness-calculator/">一括見積もりを依頼する →</a>
+<a href="/tools/titanium-machining-guide/">成績選択ガイド</a>
+<a href="/tools/carbide-grade-cross-ref-2/">成績照会を挿入する</a>
+<a href="/tools/cost-per-part-calculator/">重量・送料計算ツール</a>
+<a href="/tools/torque-unit-converter/">工具鋼の熱処理計算ツール</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Grade Referenceのプロフェッショナルソリューション</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">ISO認証品質のプレミアム超硬工具を工場直送価格でご提供。技術サポート付き。</p>
+</div>
+<a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/carbide-grades.html">馬力計算機</a><a href="/guides/insert-grade-selection.html">送り速度オーバーライド計算機</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/grade-reference/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/grade-reference/&amp;text=Grade Reference" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Grade Reference&amp;body=Check this out: https://carbide-tooling.com/tools/grade-reference/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
 <p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
-<div style="dilue-calculator/">Scrap Value Calculator</a>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/jp/tools/step-milling-calculator/">Step Milling Calculator</a>
 <a href="/jp/tools/chamfer-calculator/">Chamfer Calculator</a>
-<a href="/jp/tools/hardness-converter/">Hardness Converter</a>
-<a href="/jp/tools/die-steel-thermal-conductivity/">Die Steel Thermal Conductivity</a>
 <a href="/jp/tools/titanium-machining-guide/">Titanium Machining Guide</a>
+<a href="/jp/tools/form-tap-drill-calculator/">Form Tap Drill Calculator</a>
+<a href="/jp/tools/speed-feed/">Speed Feed</a>
+<a href="/jp/tools/shipping-duty-estimator/">Shipping Duty Estimator</a>
+<a href="/jp/tools/weight-shipping-calculator/">Weight Shipping Calculator</a>
+<a href="/jp/tools/superalloy-tool-life/">Superalloy Tool Life</a>
+<a href="/jp/tools/tool-change-time-analyzer/">Tool Change Time Analyzer</a>
+<a href="/jp/tools/chip-load/">Chip Load</a>
 
 </div>
 </section>
@@ -340,22 +698,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/jp/tools/flatness-calculator/">Flatness Calculator</a>
+<a href="/jp/tools/threading-pass-calculator/">Threading Pass Calculator</a>
+<a href="/jp/tools/mrr-calculator/">Mrr Calculator</a>
+<a href="/jp/tools/feed-converter/">Feed Converter</a>
+<a href="/jp/tools/metal-cost-calculator/">Metal Cost Calculator</a>
+<a href="/jp/tools/scrap-value-calculator/">Scrap Value Calculator</a>
+<a href="/jp/tools/chamfer-calculator/">Chamfer Calculator</a>
+<a href="/jp/tools/hardness-converter/">Hardness Converter</a>
+<a href="/jp/tools/die-steel-thermal-conductivity/">Die Steel Thermal Conductivity</a>
+<a href="/jp/tools/titanium-machining-guide/">Titanium Machining Guide</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -365,6 +727,20 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body>
 </html>

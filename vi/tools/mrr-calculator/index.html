@@ -94,7 +94,20 @@ footer a{color:#0066cc;text-decoration:none}
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -108,18 +121,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -268,6 +270,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -275,6 +278,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1565193566165-24e2f9e7e80c?w=1200&h=675&fit=crop&q=80&auto=format" alt="Tính toán tốc độ phay CNC" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div>
 <nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/vi/"><span>◆</span> Carbide Tooling</a>
@@ -290,14 +301,252 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 </div>
 </div>
 </nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<section class="hero">
+<div class="container">
+<div class="badge">⚡ Free Professional Tool</div>
+<h1>Máy tính mrrcalculator</h1>
+<p>Tính toán tỷ lệ loại bỏ vật liệu cho hoạt động phay và xoay CNC. Ước tính cần có công suất trục chính và hiểu được sự cân bằng giữa mrr và tuổi thọ của dụng cụ.</p>
+<div class="hero-actions">
+<a class="btn" href="#calculator">Bắt đầu tính toán ↓</a>
+<a class="btn-outline" href="https://carbide-tooling.com/quote.html">📩Nhận báo giá chính xác</a>
+</div>
+</div>
+</section>
+<section class="container" id="calculator" style="padding-bottom:40px">
+<div class="card">
+<h2>⚡Tỷ lệ loại bỏ vật liệu</h2>
+<p class="sub">Đối với thao tác phay. Cập nhật kết quả theo thời gian thực.</p>
+<div class="tabs" id="unit-tabs">
+<button class="tab active" onclick="setUnit('metric')">📐Số liệu (mm)</button>
+<button class="tab" onclick="setUnit('imperial')">📏Đơn vị Anh (inch)</button>
+</div>
+<div class="card-row">
+<div class="field"><label>🔩Vật liệu</label>
+<select id="material" onchange="calc()">
+<option value="al6061">Aluminum 6061</option>
+<option selected="" value="ss304">Stainless Steel 304</option>
+<option value="ti6al4v">Titanium Grade 5</option>
+<option value="hardened_steel">Hardened Steel 45-55 HRC</option>
+<option value="mild_steel">Mild Steel 1018</option>
+<option value="inconel">Inconel 718</option>
+<option value="cast_iron">Cast Iron</option>
+</select>
+</div>
+<div class="field"><label>📐Đường kính dụng cụ</label>
+<input id="tool-dia" max="100" min="0.1" oninput="calc()" step="0.5" type="number" value="12"/>
+</div>
+<div class="field"><label>🦷Sáo</label>
+<select id="flutes" onchange="calc()"><option value="2">2</option><option value="3">3</option><option selected="" value="4">4</option><option value="5">5</option><option value="6">6</option></select>
+</div>
+<div class="field"><label>⏬Độ sâu cắt (AP)</label>
+<input id="doc" max="20" min="0.1" oninput="calc()" step="0.1" type="number" value="2"/>
+</div>
+<div class="field"><label>↔️ Chiều rộng cắt (AE)</label>
+<input id="woc" max="50" min="0.1" oninput="calc()" step="0.1" type="number" value="10"/>
+</div>
+<div class="field"><label>⚡Tốc độ trục chính (vòng/phút)</label>
+<input id="rpm" max="50000" min="100" oninput="calc()" step="100" type="number" value="8000"/>
+</div>
+<div class="field"><label>📊Tốc độ cấp liệu</label>
+<input id="feed" max="50000" min="1" oninput="calc()" step="10" type="number" value="1200"/>
+</div>
+</div>
+<div class="result-grid">
+<div class="result-item"><div class="label">Material Removal Rate</div><div class="value" id="r-mrr">—</div><div class="unit" id="mrr-unit">cm³/min</div></div>
+<div class="result-item"><div class="label">MRR (in³/min)</div><div class="value" id="r-mrr-in">—</div><div class="unit">in³/min</div></div>
+<div class="result-item"><div class="label">Spindle Power Required</div><div class="value" id="r-power">—</div><div class="unit">kW</div></div>
+<div class="result-item"><div class="label">Chip Load (fz)</div><div class="value" id="r-chip">—</div><div class="unit" id="chip-unit">mm/tooth</div></div>
+</div>
+<div class="extra-info">
+<span>SFM: <span class="val" id="x-sfm">—</span></span><span style="color:#d2d2d6">|</span>
+<span>Material removal per tooth: <span class="val" id="x-pert">—</span> <span id="pert-unit">mm³</span></span><span style="color:#d2d2d6">|</span>
+<span>Cutting time per 100mm: <span class="val" id="x-time">—</span> sec</span>
+</div>
+</div>
+<div class="ref-links">
+<a class="ref-link" href="/tools/speed-feed/">
+<div class="icon">⚙️</div><h4>Công cụ tính toán tốc độ và lượng ăn dao</h4>
+<p>Tìm RPM tối ưu và tốc độ nạp cho Bộ dụng cụ và vật liệu của bạn.</p><span class="tag">Start here</span>
+</a>
+<a class="ref-link" href="/tools/chip-load/">
+<div class="icon">📐</div><h4>Công cụ tính toán tải chip</h4>
+<p>Xác minh tải chip của bạn nằm trong phạm vi được khuyến nghị trước khi đẩy mrr.</p><span class="tag">Safety check</span>
+</a>
+</div>
+</section>
+<!-- ===== SEO CONTENT ===== -->
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Công cụ chính xác liên quan</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/vi/tools/machinability-rating/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Machinability Rating</a><a href="/vi/tools/machine-power-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Machine Power Calculator</a><a href="/vi/tools/mcode-reference/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Mcode Reference</a><a href="/vi/tools/grade-reference/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Grade Reference</a><a href="/vi/tools/superalloy-tool-life/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Superalloy Tool Life</a><a href="/vi/tools/threading-pass-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Threading Pass Calculator</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">Trang chủ</a>
+<a href="/tools/">Tất cả công cụ</a>
+<a href="/products/">Sản phẩm</a>
+<a href="/guides/">Hướng dẫn</a>
+<a href="/about.html">Về chúng tôi</a>
+<a href="/quote.html">Bộ chuyển đổi độ cứng</a>
+<a href="/privacy.html">Kích thước mũi khoan taro</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Công cụ tính MRR</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Tất cả công cụ</a></p>
+<p style="font-size:11px;margin-bottom:6px">Kết quả chỉ mang tính tham khảo. Hãy tham khảo ý kiến của các nhà sản xuất dụng cụ để biết thông tin về các ứng dụng cụ thể.</p>
+<p style="font-size:11px">©Dụng cụ cắt gọt bằng cacbua năm 2026</p>
+</div>
+</footer>
+<script>
+const MATS = {
+ al6061:{coeff:0.25,label:'Aluminum 6061'},
+ ss304:{coeff:0.55,label:'Stainless 304'},
+ ti6al4v:{coeff:0.65,label:'Titanium Gr5'},
+ hardened_steel:{coeff:0.7,label:'Hardened Steel'},
+ mild_steel:{coeff:0.4,label:'Mild Steel'},
+ inconel:{coeff:0.8,label:'Inconel 718'},
+ cast_iron:{coeff:0.3,label:'Cast Iron'},
+};
+let unit = 'metric';
+
+function setUnit(u) {
+ unit = u;
+ document.querySelectorAll('#unit-tabs .tab').forEach((t,i) => t.classList.toggle('active',(i===0&&u==='metric')||(i===1&&u==='imperial')));
+ calc();
+}
+window.setUnit = setUnit;
+
+function calc() {
+ const mat = MATS[document.getElementById('material').value];
+ let d = parseFloat(document.getElementById('tool-dia').value) || 12;
+ const z = parseInt(document.getElementById('flutes').value) || 4;
+ let ap = parseFloat(document.getElementById('doc').value) || 2;
+ let ae = parseFloat(document.getElementById('woc').value) || 10;
+ const rpm = parseInt(document.getElementById('rpm').value) || 8000;
+ let feed = parseFloat(document.getElementById('feed').value) || 1200;
+
+ // Convert to mm for calculation
+ if (unit === 'imperial') { d *= 25.4; ap *= 25.4; ae *= 25.4; }
+
+ // MRR in cm³/min
+ const mrrCm = (ap * ae * feed) / 1000;
+ const mrrIn = mrrCm / 16.387;
+
+ // Power estimate
+ const power = mrrCm * mat.coeff * 0.03;
+
+ // Chip load
+ const chipMm = feed / (rpm * z);
+
+ // SFM
+ const sfm = (Math.PI * d * rpm) / 1000 * 3.28084;
+
+ // Material per tooth
+ const pert = ap * ae * chipMm;
+
+ // Cutting time per 100mm
+ const cutTime = feed > 0 ? (100 / feed * 60) : 0;
+
+ // Display
+ document.getElementById('r-mrr').textContent = mrrCm.toFixed(1);
+ document.getElementById('r-mrr-in').textContent = mrrIn.toFixed(2);
+ document.getElementById('r-power').textContent = power.toFixed(2);
+ document.getElementById('r-chip').textContent = chipMm.toFixed(4);
+ document.getElementById('chip-unit').textContent = 'mm/tooth';
+ document.getElementById('mrr-unit').textContent = 'cm³/min';
+ document.getElementById('x-sfm').textContent = Math.round(sfm);
+ document.getElementById('x-pert').textContent = unit === 'metric' ? pert.toFixed(2) : (pert/25.4/25.4/25.4).toFixed(4);
+ document.getElementById('pert-unit').textContent = unit === 'metric' ? 'mm³' : 'in³';
+ document.getElementById('x-time').textContent = cutTime.toFixed(1);
+}
+
+calc();
+</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
+<section class="seo-content">
+<div class="container">
+<h2>Mrr so với tuổi thọ Công cụ: sự cân bằng cơ bản trong gia công CNC</h2>
+<p>Every machinist faces the same optimization problem: remove material as fast as possible without destroying the tool. Material Removal Rate (MRR) measures productivity — how many cubic centimeters of metal you can evacuate per minute. Tool life measures cost — how many parts you can make before replacing the cutter. These two metrics are inversely related through the <strong>Taylor Tool Life Equation</strong>: doubling MRR typically reduces tool life by 60-80%. The art of profitable machining lies in finding the economic optimum, not the technical maximum.</p>
+<p>This calculator helps you quantify both sides of the equation. Enter your cutting parameters and it returns MRR in both metric (cm³/min) and imperial (in³/min), plus estimated spindle power requirements. Use it alongside the <a href="/tools/speed-feed/" style="color:#0066cc">Công cụ tính toán tốc độ và lượng ăn dao</a> and <a href="/tools/chip-load/" style="color:#0066cc">Công cụ tính toán tải chip</a> to build a complete picture of your machining process.</p>
+<div class="highlight-box">
+<h3>📊Tham khảo nhanh: Chuẩn mrr điển hình theo vật liệu</h3>
+<p><strong>Aluminum 6061:</strong> 80-200 cm³/min per kW (most machinable)<br/>
+<strong>Mild Steel 1018:</strong> 20-50 cm³/min per kW<br/>
+<strong>Stainless Steel 304:</strong> 10-25 cm³/min per kW<br/>
+<strong>Titanium Grade 5:</strong> 5-12 cm³/min per kW<br/>
+<strong>Inconel 718:</strong> 3-8 cm³/min per kW (least machinable)<br/>
+ These benchmarks assume rigid setup and adequate coolant. Actual achievable MRR depends on machine rigidity, tool holder runout, and coolant pressure.</p>
+</div>
+<h2>Mrr được tính như thế nào</h2>
+<p>The fundamental formula for MRR in milling is deceptively simple:<br/>
+<code>MRR = ap × ae × Vf</code><br/>
+ Where <strong>ap</strong> = depth of cut (axial engagement), <strong>ae</strong> = width of cut (radial engagement), and <strong>Vf</strong> = feed rate (table feed). All dimensions must be in consistent units — centimeters for metric MRR (cm³/min) or inches for imperial MRR (in³/min).</p>
+<p>Công thức này giả sử công cụ này hoàn toàn tham gia vào việc cắt. Đối với phay ngoại vi có độ tương tác xuyên tâm nhỏ hơn bán kính dụng cụ, mrr hiệu quả tỷ lệ thuận với vòng cung tương tác. Đối với gia công tốc độ cao với các khớp quay xuyên tâm rất nhẹ (5-15%), các đường dẫn dụng cụ hình trochoidal có thể đạt được mrr cao đáng ngạc nhiên mặc dù tải chip nhẹ, bởi vì dụng cụ không bao giờ được sử dụng đầy đủ và tải nhiệt được phân phối trên các cạnh cắt.</p>
+<h2>Mối quan hệ giữa mrr, tải chip và độ lệch công cụ</h2>
+<p>Increasing MRR by increasing depth of cut increases tool deflection proportionally. Increasing MRR by increasing feed rate increases chip load but also increases cutting forces. Increasing MRR by increasing RPM can reduce chip load (if feed rate stays the same) — potentially causing the tool to rub instead of cut. The <a href="/tools/chip-load/" style="color:#0066cc">Công cụ tính toán tải chip</a> helps verify that your chosen parameters keep the chip load within the recommended range for the material.</p>
+<p>A practical guideline: for carbide end mills, maximum recommended MRR is typically reached when <strong>chip load is at the upper end of the recommended range</strong> and <strong>spindle power reaches 70-80% of rated capacity</strong>. Pushing beyond this point offers diminishing returns — the tool life drops faster than MRR increases.</p>
+<h2>Làm thế nào để tăng mrr mà không cần phá vỡ công cụ</h2>
+<p><strong>1. Optimize radial engagement first.</strong> For roughing, use 40-70% radial engagement (width of cut relative to tool diameter). Below 30%, you're wasting potential MRR. Above 70%, chip evacuation becomes the bottleneck. The <a href="/tools/speed-feed/" style="color:#0066cc">Công cụ tính toán tốc độ và lượng ăn dao</a> can help you find the optimal balance for your specific material.</p>
+<p><strong>2. Match the flute count to the material.</strong> Aluminum benefits from 2-3 flute tools (chip evacuation limited). Steel and stainless benefit from 4-5 flute tools (stiffness limited). Hardened materials need 6+ flutes for the required rigidity.</p>
+<p><strong>3. Use chip thinning to your advantage.</strong> At light radial engagements, the effective chip thickness is less than the programmed feed per tooth. You can increase feed rate by 30-50% when running at 10-25% radial engagement without exceeding the recommended maximum chip load.</p>
+<p><strong>4. Monitor spindle load.</strong> Most modern CNC controls display spindle load as a percentage. If you're below 60% spindle load at full depth of cut, you can increase feed rate. If you're above 90%, back off to protect the tool and spindle bearings.</p>
+<h2>Chiến lược tối ưu hóa mrr bằng vật liệu</h2>
+<p><strong>Aluminum (6061, 7075):</strong> MRR is limited by chip evacuation, not tool wear. Maximize depth of cut (1-2× diameter) with moderate radial engagement. Use 2-3 flute tools with polished flutes. Achievable MRR: 150-400 cm³/min with 10-15 kW spindle power.</p>
+<p><strong>Steel (1018, 4140):</strong> Balanced between tool life and productivity. Aim for 30-60 cm³/min per kW. Use 4-5 flute tools with AlTiN coating. Depth of cut should not exceed 0.5× tool diameter for stability.</p>
+<p><strong>Stainless Steel (304, 316):</strong> MRR limited by notching at the depth-of-cut line. Use variable helix geometries and maintain chip load above 0.05 mm/tooth. Expect 15-30 cm³/min per kW.</p>
+<p><strong>Titanium (Grade 5):</strong> Thermally limited. MRR above 8 cm³/min per kW requires through-spindle coolant at 50+ bar. Trochoidal toolpaths with 5-15% radial engagement maximize MRR while controlling heat.</p>
+<p><strong>Inconel 718:</strong> MRR is always a compromise. Expect 4-10 cm³/min per kW with carbide tooling. Push beyond this range only with ceramic tooling at very high speeds (800+ SFM) and very light feeds.</p>
+<h2>Câu hỏi thường gặp</h2>
+<p><strong>What's a good MRR for CNC milling?</strong> It depends entirely on material and machine capability. For a typical 10 kW machining center: aluminum 150-400 cm³/min, steel 40-80 cm³/min, stainless 20-40 cm³/min, titanium 8-15 cm³/min. Use the calculator above to benchmark your specific operation.</p>
+<p><strong>Does increasing MRR always reduce tool life?</strong> Yes, per the Taylor equation. But the relationship is not linear — small MRR increases (10-20%) cause modest tool life reductions. Aggressive MRR increases (50-100%) cause disproportionate tool life loss. The optimal operating point is typically where the cost of tooling per part equals the cost of machine time per part.</p>
+<p><strong>How does tool diameter affect MRR?</strong> Larger tools allow deeper depths of cut and wider radial engagements, directly increasing MRR. A 20mm end mill can achieve 4-5× the MRR of a 10mm end mill in the same material, assuming sufficient spindle power is available. However, larger tools require higher spindle torque and are more susceptible to chatter at long overhangs.</p>
+<p><strong>What limits MRR in a typical CNC machine?</strong> Four factors: spindle power (kW), spindle torque (Nm), maximum RPM, and machine rigidity. Most production machines are power-limited in steel and torque-limited in titanium. High-speed machining centers are typically rigidity-limited in hardened materials. Know your machine's power curve before planning MRR targets.</p>
+<p><strong>Can I use MRR to estimate cycle time?</strong> Yes, approximately: Cycle time (min) ≈ Workpiece volume removed (cm³) ÷ MRR (cm³/min). This is a rough estimate that assumes 100% tool engagement. Actual cycle times are 20-40% higher due to approach, retract, and air cutting moves. Use this calculator's cutting time estimate as a starting point.</p>
+<p><strong>How does coolant affect achievable MRR?</strong> Proper coolant delivery can increase achievable MRR by 30-50% in steel and stainless, and 50-100% in titanium and superalloys. Through-spindle coolant at 50-100 bar is the single most effective investment for increasing MRR in difficult materials. Flood coolant is adequate for aluminum and cast iron at moderate MRR levels.</p>
+</div>
+</section>
+<div class="toolbox-widget"><h3>🔧Hộp công cụ kỹ thuật chính xác</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Bộ biến mô</a>
+<a href="/tools/hardness-converter/">Yêu cầu báo giá số lượng lớn →</a>
+<a href="/tools/tap-drill-size-calculator/">Mũi phay ngón cacbua nguyên khối</a>
+<a href="/tools/mrr-calculator/">Giá đựng dụng cụ</a>
+<a href="/tools/feed-converter/">Hướng dẫn gia công nhựa</a>
+<a href="/tools/surface-roughness-calculator/">Chuyển đổi đơn vị mô-men xoắn</a>
+<a href="/tools/titanium-machining-guide/">Máy tính điểm tiếp tuyến</a>
+<a href="/tools/carbide-grade-cross-ref-2/">Hộp đựng dụng cụ</a>
+<a href="/tools/cost-per-part-calculator/">Máy tính tính độ sâu rãnh then</a>
+<a href="/tools/torque-unit-converter/">Bộ chuyển đổi SFM sang m/phút</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Giải Pháp Chuyên Nghiệp cho Mrr Calculator?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Nhận giá trực tiếp từ nhà máy cho dụng cụ carbide cao cấp với chất lượng chứng nhận ISO.</p>
+</div>
+<a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">Công cụ tính bước ren</a><a href="/products/tool-holders.html">LinkedIn</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/mrr-calculator/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/mrr-calculator/&amp;text=MRR Calculator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=MRR Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/mrr-calculator/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyêmin-converter/">Sfm M Min Converter</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/vi/tools/chamfer-calculator/">Chamfer Calculator</a>
+<a href="/vi/tools/cnc-roi-calculator/">Cnc Roi Calculator</a>
+<a href="/vi/tools/scrap-value-calculator/">Scrap Value Calculator</a>
+<a href="/vi/tools/aql-sampling-calculator/">Aql Sampling Calculator</a>
+<a href="/vi/tools/cost-per-part-calculator/">Cost Per Part Calculator</a>
+<a href="/vi/tools/step-drill-design-calculator/">Step Drill Design Calculator</a>
+<a href="/vi/tools/thread-lead-angle-calculator/">Thread Lead Angle Calculator</a>
+<a href="/vi/tools/brass-machining-parameters/">Brass Machining Parameters</a>
+<a href="/vi/tools/tool-change-time-analyzer/">Tool Change Time Analyzer</a>
 <a href="/vi/tools/thread-depth-torque-calculator/">Thread Depth Torque Calculator</a>
-<a href="/vi/tools/tangent-point-calculator/">Tangent Point Calculator</a>
-<a href="/vi/tools/dia-circ-calculator/">Dia Circ Calculator</a>
-<a href="/vi/tools/iso-fit-calculator/">Iso Fit Calculator</a>
-<a href="/vi/tools/temp-converter/">Temp Converter</a>
 
 </div>
 </section>
@@ -322,22 +571,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/vi/tools/titanium-machining-guide/">Titanium Machining Guide</a>
+<a href="/vi/tools/bulk-discount-calculator/">Bulk Discount Calculator</a>
+<a href="/vi/tools/batch-cost-calculator/">Batch Cost Calculator</a>
+<a href="/vi/tools/tap-drill-size-calculator/">Tap Drill Size Calculator</a>
+<a href="/vi/tools/sfm-m-min-converter/">Sfm M Min Converter</a>
+<a href="/vi/tools/thread-depth-torque-calculator/">Thread Depth Torque Calculator</a>
+<a href="/vi/tools/tangent-point-calculator/">Tangent Point Calculator</a>
+<a href="/vi/tools/dia-circ-calculator/">Dia Circ Calculator</a>
+<a href="/vi/tools/iso-fit-calculator/">Iso Fit Calculator</a>
+<a href="/vi/tools/temp-converter/">Temp Converter</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -347,6 +600,20 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body>
 </html>

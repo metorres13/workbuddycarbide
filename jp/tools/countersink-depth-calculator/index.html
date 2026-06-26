@@ -11,7 +11,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -25,18 +38,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -249,6 +251,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -256,7 +259,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1567361808960-3e7f9e3b3de1?w=1200&h=675&fit=crop&q=80&auto=format" alt="精密加工" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/jp/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -270,16 +280,86 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 <a class="nv-quote" href="/jp/quote.html">📩 見積依頼</a>
 </div>
 </div>
-</nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">バッチコスト計算機</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">平坦度計算ツール</a> <span style="color:#d2d2d6">›</span> Countersink Depth Calculator</div>
+<section class="hero"><div class="container"><div class="badge" style="display:inline-flex;background:#f5f5f7;padding:4px 14px;border-radius:20px;font-size:11px;font-weight:600;color:#86868b;margin-bottom:16px">📐 Shop Math</div><h1>🔩ねじヘッドDia (mm)</h1><p>🔺カウンターシンク角度</p><a class="btn" href="#calculator">ねじのリード角</a></div></section>
+<section class="container" id="calculator" style="padding-bottom:40px"><div class="card"><h2>📏ねじ長さ (mm)</h2><p class="sub">🔧100種類のプロ向け切削工具をチェック</p><div class="card-row"><div class="field"><label>すべてのツール</label><input id="head" max="30" min="1" oninput="calc()" step="0.5" type="number" value="8"/></div><div class="field"><label>結果は参考としてのみご使用ください。具体的な用途については、工具メーカーにご相談ください。</label><select id="angle" onchange="calc()"><option value="82">82° — Flat head (imperial)</option><option selected="" value="90">90° — Flat head (metric)</option><option value="100">100° — Flat head (thin)</option></select></div><div class="field"><label>©2026年用超硬工具</label><input id="len" max="100" min="3" oninput="calc()" step="1" type="number" value="12"/></div></div><div class="result-grid"><div class="result-item"><div class="label">Countersink Depth</div><div class="value" id="r-depth">—</div><div class="unit">mm</div></div><div class="result-item"><div class="label">Total Z-Depth</div><div class="value" id="r-total">—</div><div class="unit">mm</div></div><div class="result-item"><div class="label">Flat Dia at Surface</div><div class="value" id="r-flat">—</div><div class="unit">mm</div></div><div class="result-item"><div class="label">Chamfer Width</div><div class="value" id="r-chamfer">—</div><div class="unit">mm</div></div></div></div><div style="text-align:center;margin:16px 0"><a href="/tools/" style="color:#0066cc;text-decoration:none;font-size:13px">ISOフィット計算機</a></div></section>
+
+<script>function calc(){const h=parseFloat(document.getElementById('head').value)||8;const a=parseFloat(document.getElementById('angle').value)||90;const depth=(h/2)/Math.tan(a/2*Math.PI/180);document.getElementById('r-depth').textContent=depth.toFixed(2);document.getElementById('r-total').textContent=(depth+2).toFixed(2);document.getElementById('r-flat').textContent=h.toFixed(1);document.getElementById('r-chamfer').textContent=(h/2).toFixed(1);}calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">関連精密工具</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/jp/tools/carbide-grade-cross-ref-2/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Carbide Grade Cross Ref 2</a><a href="/jp/tools/cast-iron-machining/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Cast Iron Machining</a><a href="/jp/tools/chamfer-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Chamfer Calculator</a><a href="/jp/tools/step-milling-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Step Milling Calculator</a><a href="/jp/tools/tool-steel-heat-treat/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tool Steel Heat Treat</a><a href="/jp/tools/gcode-reference/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Gcode Reference</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">バッチコスト計算機</a>
+<a href="/tools/">82 ° フラットヘッドスクリュー (ANSI/ASME規格) の場合、カウンターシンクの深さは、スクリューヘッドの高さにクリアランスの0.005〜0.010インチを加えたものに等しくする必要があります。式は次のとおりです。深さ = (スクリューヘッド直径-スクリューボディ直径)/(2 × タン (カウンターシンク角度/2))。メートル法の90 ° フラットヘッドネジの場合、適切な角度で同じアプローチを使用すると、適切な座席が保証されます。</a>
+<a href="/products/">🇩🇪ドイツ</a>
+<a href="/guides/">🇯🇵ジェイピー</a>
+<a href="/about.html">🇪🇸エスイー</a>
+<a href="/quote.html">グレード相互参照</a>
+<a href="/privacy.html">部品当たりのコスト</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">トルクコンバーター</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">82 ° フラットヘッドスクリュー (ANSI/ASME規格) の場合、カウンターシンクの深さは、スクリューヘッドの高さにクリアランスの0.005〜0.010インチを加えたものに等しくする必要があります。式は次のとおりです。深さ = (スクリューヘッド直径-スクリューボディ直径)/(2 × タン (カウンターシンク角度/2))。メートル法の90 ° フラットヘッドネジの場合、適切な角度で同じアプローチを使用すると、適切な座席が保証されます。</a></p>
+<p style="font-size:11px;margin-bottom:6px">ソケットヘッドキャップネジ用カウンターボア深さ</p>
+<p style="font-size:11px">ソケットヘッドキャップのネジには、ネジ頭の高さに0.010〜0.020インチのクリアランスを加えたカウンターボアの深さが必要です。ツールにアクセスできるように、カウンターボアの直径はスクリューヘッドの直径より0.010〜0.030インチ大きくなければなりません。ソケットヘッドスクリューのサイズに正しいパイロット直径を使用すると、結合が防止され、適切なクランプ荷重が保証されます。</p>
+</div>
+<section class="seo"><div class="container">
+<h2>一般的なカウンターシンク深度エラーの回避</h2><p>最も一般的な間違いは、カウンターシンクを深く切りすぎることです。これにより、スクリューヘッドの噛み合いが減り、ジョイントが弱くなります。生産の前にサンプル部分で常にテストして下さい。コンビネーションドリルとカウンターシンクを使用する場合、特大の不規則なカウンターシンクを作成するチャタリングを防ぐために、フィードレートを制御する必要があります。</p>
+<h2>よくある質問</h2><p>フラットヘッドスクリューの標準的なカウンターシンク角度は、標準のANSI/ASMEカウンターシンク角度は、インチシリーズのフラットヘッドスクリューの場合は82 ° です。メートル法のネジの场合、标准は90 ° です。適切な座席を確保するために、プログラミングの前に必ずネジの標準を確認してください。</p>
+<h2>カウンターシンクの深さを正確に測定するにはどうすればよいですか?カウンターシンクの深さゲージまたはボールベアリングの方法を使用します。既知の直径の精密ボールベアリングをカウンターシンクに配置し、表面からの高さを測定します。カウンターシンクの深さは、ボールの直径と測定された高さから計算できます。</h2><p>スポットドリルを使用してカウンターシンクを作成できますか?スポットドリルは、カウンターシンクを作成するのではなく、開始穴用に設計されています。それらに含まれる角度 (90 ° または120 °) は、標準のカウンターシンク角度 (82 ° または90 °) とは異なります。適切な形状と一貫した結果を得るには、専用のカウンターシンクツールまたは面取りミルを使用します。</p>
+<h2>⚡カーバイド・ツーリング・ドットコムの高性能シリーズ用に算出済み。カタログを表示する →</h2>
+<p><strong>What is the standard countersink angle for flat head screws?</strong> The standard ANSI/ASME countersink angle is 82° for inch-series flat head screws. For metric screws, the standard is 90°. Always verify the screw standard before programming to ensure proper seating.</p>
+<p><strong>How do I measure countersink depth accurately?</strong> Use a countersink depth gage or a ball-bearing method: place a precision ball bearing of known diameter in the countersink and measure the height above the surface. The countersink depth can be calculated from the ball diameter and measured height.</p>
+<p><strong>Can I use a spot drill to create a countersink?</strong> Spot drills are designed for starting holes, not creating countersinks. Their included angle (90° or 120°) differs from standard countersink angles (82° or 90°). Use dedicated countersink tools or chamfer mills for proper geometry and consistent results.</p>
+<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">超硬ドリル</a></p>
+</div></section>
+</footer>
+<div class="toolbox-widget"><h3>製品</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">ねじ切り用リーマおよびタップ</a>
+<a href="/tools/hardness-converter/">銃のドリル計算機</a>
+<a href="/tools/tap-drill-size-calculator/">直径と円周の計算ツール</a>
+<a href="/tools/mrr-calculator/">速度と送り量</a>
+<a href="/tools/feed-converter/">工具オーバーラン計算ツール</a>
+<a href="/tools/surface-roughness-calculator/">タップ穴径計算ツール</a>
+<a href="/tools/titanium-machining-guide/">生産効率計算機</a>
+<a href="/tools/carbide-grade-cross-ref-2/">リンクドイン</a>
+<a href="/tools/cost-per-part-calculator/">電子メール</a>
+<a href="/tools/torque-unit-converter/">Torque Converter</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Countersink Depth Calculatorのプロフェッショナルソリューション</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">ISO認証品質のプレミアム超硬工具を工場直送価格でご提供。技術サポート付き。</p>
+</div>
+<a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/drills.html">Carbide Drills</a><a href="/products/threading-tools.html">Thread Mills &amp; Taps</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/countersink-depth-calculator/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/countersink-depth-calculator/&amp;text=Countersink Depth Calculator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Countersink Depth Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/countersink-depth-calculator/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
 <p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
-<div style="diCalculator</a>
-<a href="/jp/tools/nose-radius-compensation/">Nose Radius Compensation</a>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/jp/tools/form-tap-drill-calculator/">Form Tap Drill Calculator</a>
+<a href="/jp/tools/automation-vs-manual-calculator/">Automation Vs Manual Calculator</a>
+<a href="/jp/tools/polar-rect-converter/">Polar Rect Converter</a>
+<a href="/jp/tools/force-calculator/">Force Calculator</a>
+<a href="/jp/tools/trochoidal-milling-calculator/">Trochoidal Milling Calculator</a>
+<a href="/jp/tools/aluminum-alloy-table/">Aluminum Alloy Table</a>
+<a href="/jp/tools/mcode-reference/">Mcode Reference</a>
 <a href="/jp/tools/batch-cost-calculator/">Batch Cost Calculator</a>
-<a href="/jp/tools/tool-life-economics/">Tool Life Economics</a>
-<a href="/jp/tools/mrr-calculator/">Mrr Calculator</a>
-<a href="/jp/tools/torque-unit-converter/">Torque Unit Converter</a>
+<a href="/jp/tools/metal-cost-calculator/">Metal Cost Calculator</a>
+<a href="/jp/tools/inventory-turnover-calculator/">Inventory Turnover Calculator</a>
 
 </div>
 </section>
@@ -304,22 +384,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/jp/tools/step-milling-calculator/">Step Milling Calculator</a>
+<a href="/jp/tools/hardness-converter/">Hardness Converter</a>
+<a href="/jp/tools/step-drill-design-calculator/">Step Drill Design Calculator</a>
+<a href="/jp/tools/metal-cost-calculator/">Metal Cost Calculator</a>
+<a href="/jp/tools/cost-per-part-calculator/">Cost Per Part Calculator</a>
+<a href="/jp/tools/nose-radius-compensation/">Nose Radius Compensation</a>
+<a href="/jp/tools/batch-cost-calculator/">Batch Cost Calculator</a>
+<a href="/jp/tools/tool-life-economics/">Tool Life Economics</a>
+<a href="/jp/tools/mrr-calculator/">Mrr Calculator</a>
+<a href="/jp/tools/torque-unit-converter/">Torque Unit Converter</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -329,5 +413,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>

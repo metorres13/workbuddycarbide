@@ -11,7 +11,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -25,18 +38,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -249,6 +251,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -256,7 +259,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1537432376149-e8c3e3e3b3c2?w=1200&h=675&fit=crop&q=80&auto=format" alt="Hartmetall-Schneidwerkzeug Detail" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/de/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -270,16 +280,90 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 <a class="nv-quote" href="/de/quote.html">📩 Angebot</a>
 </div>
 </div>
-</nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">in</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">Katalog ansehen →</a> <span style="color:#d2d2d6">›</span> Machinability Rating</div>
+<div class="container"><div class="badge">📊 Rating Chart</div><h1 class="hero">Den AISI-Bearbeitbar keits index verstehen</h1><p class="hero" style="margin-bottom:16px">Der AISI-Bearbeitbar keits index bewertet Materialien relativ zu AISI 1212-Stahl (bewertet 100%). Höhere Werte weisen auf eine einfachere Bearbeitung hin. Schlüssel referenz punkte: 1212 = 100%, 1117 = 85%, 1018 = 70%, 4140 geglüht = 60%, 316 rostfrei = 40% und Inconel 718 = 15%. Dieser Index bietet einen Ausgangs punkt für Geschwindigkeit-und Vorschub anpassungen beim Material wechsel.</p>
+<input class="search" oninput="filter()" placeholder="Search grade (e.g. 4140, 1018)..." type="text"/>
+<div id="table-wrap"></div>
+<p id="count" style="font-size:12px;color:#86868b;text-align:center"></p>
+<div style="text-align:center;margin:24px 0"><a href="/tools/" style="color:#0066cc;font-size:13px">Geschwindigkeit &amp; Vorschub</a></div></div>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Verwandte Präzisionswerkzeuge</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/de/tools/machine-power-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Machine Power Calculator</a><a href="/de/tools/mcode-reference/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Mcode Reference</a><a href="/de/tools/metal-cost-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Metal Cost Calculator</a><a href="/de/tools/coolant-lifecycle-cost/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Coolant Lifecycle Cost</a><a href="/de/tools/ball-nose-effective-diameter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Ball Nose Effective Diameter</a><a href="/de/tools/iso-fit-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Iso Fit Calculator</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">in</a>
+<a href="/tools/">Wie sich die Bearbeitbar keit auf die Auswahl von Geschwindigkeit und Vorschubmitteln auswirkt</a>
+<a href="/products/">🇩🇪DE</a>
+<a href="/guides/">🇯🇵JP</a>
+<a href="/about.html">🇪🇸ES</a>
+<a href="/quote.html">Titanführung</a>
+<a href="/privacy.html">Notenübereinstimmung</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Kosten pro Teil</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Wie sich die Bearbeitbar keit auf die Auswahl von Geschwindigkeit und Vorschubmitteln auswirkt</a></p>
+<p style="font-size:11px;margin-bottom:6px">Ein Material mit 50% Bearbeitbar keit erfordert ungefähr die Hälfte der Schnitt geschwindigkeit von 1212 Stahl bei 100%. Die Beziehung ist ungefähr: Empfohlene Geschwindigkeit = Basis geschwindigkeit × (Material bearbeitbar keit/100). Die Vorschub raten werden typischer weise durch die Quadratwurzel des Bearbeitbar keits verhältnisses reduziert. Das Umschalten von 1018 (70%) auf 316 SS (40%) deutet beispiels weise auf eine Geschwindigkeit reduzierung um 43% und eine Vorschub reduzierung um 24% hin.</p>
+<p style="font-size:11px">Faktoren, die die Bearbeitbar keit verbessern oder verschlechtern</p>
+</div>
+<section class="seo"><div class="container">
+<h2>Frei arbeitende Additive wie Schwefel (bis zu 0,35%), Blei (bis zu 0,35%) und Kalzium verbessern die Bearbeitbar keit durch Modifizieren der Chip bildung. Kalte Arbeit reduziert die Bearbeitbar keit durch Erhöhung der Härte und Festigkeit. Die Wärme behandlung kann die Bearbeitbar keit dramatisch verändern: Normalisierte 4140 Maschinen sind besser als geglüht, aber gehärtete 4140 über 40 HRC werden erheblich schwieriger zu bearbeiten.</h2><p>Häufig gestellte Fragen</p>
+<h2>Was ist die bearbeitbar ste Stahls orte? AISI 1212 und 1215 bleihaltige frei bearbeitende Stähle sind mit Bewertungen von 100% bzw. 130% am bearbeitbar sten. Diese Qualitäten sind jedoch nicht für Schweiß arbeiten oder Anwendungen mit hoher Beans pru chung geeignet. Für den strukturellen Einsatz bietet 12 L14 (160% Rating) eine hervorragende Bearbeitbar keit bei mäßiger Festigkeit.</h2><p>Gilt die Bearbeitbar keits bewertung für Fräsen und Bohren? Die AISI-Bearbeitbar keits bewertung basiert auf Drehte sts. Für Fräs-und Bohrarbeiten bieten die relativen Bewertungen eine nützliche Richtlinie, aber die tatsächlichen Geschwindigkeit anpassungen können unterschied lich sein. Das Bohren erfordert normaler weise größere Geschwindigkeit reduzierungen für schwierige Materialien als das Drehen.</p>
+<h2>Wie wirkt sich der Material zustand auf die Bearbeitbar keit aus? Der Material zustand wirkt sich erheblich auf die Bearbeitbar keit aus. Geglühte Materialien sind im Allgemeinen am bearbeitbar sten. Kalt gezogene Materialien sind 10-20% härter und entsprechend weniger bearbeitbar. Wärme behandelte Materialien über 40 HRC können 50% oder weniger der Bearbeitbar keit des geglühten Zustands aufweisen.</h2><p>⚡Berechnet für die Hochleistungsserie von Carbide-Tooling.com. Katalog anzeigen →</p>
+<h2>🔧Werkzeugkasten der Präzisionstechnik</h2>
+<p><strong>What is the most machinable steel grade?</strong> AISI 1212 and 1215 leaded free-machining steels are the most machinable, with ratings of 100% and 130% respectively. However, these grades are not suitable for weldments or high-stress applications. For structural use, 12L14 (160% rating) offers excellent machinability with moderate strength.</p>
+<p><strong>Does machinability rating apply to milling and drilling?</strong> The AISI machinability rating is based on turning tests. For milling and drilling operations, the relative ratings provide a useful guideline but the actual speed adjustments may differ. Drilling typically requires larger speed reductions for difficult materials than turning.</p>
+<p><strong>How does material condition affect machinability?</strong> Material condition significantly impacts machinability. Annealed materials are generally most machinable. Cold-drawn materials are 10–20% harder and correspondingly less machinable. Heat-treated materials above 40 HRC can have 50% or less of the machinability of the annealed state.</p>
+<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">Massenanfrage stellen →</a></p>
+</div></section>
+</footer>
+<script>
+const DATA=[{g:'B1112',r:100,c:'Free-machining'},{g:'1215',r:98,c:'Free-machining'},{g:'12L14',r:105,c:'Highest leaded'},{g:'1018',r:70,c:'Low carbon'},{g:'1045',r:60,c:'Medium carbon'},{g:'1117',r:85,c:'Carburizing'},{g:'4140',r:55,c:'Alloy, annealed'},{g:'4140HT',r:35,c:'Hardened to 30HRC'},{g:'4340',r:45,c:'High-strength alloy'},{g:'8620',r:60,c:'Carburizing alloy'},{g:'316',r:35,c:'Stainless'},{g:'304',r:40,c:'Stainless'},{g:'440C',r:25,c:'Hardened stainless'},{g:'D2',r:25,c:'Tool steel'},{g:'A2',r:35,c:'Tool steel'},{g:'O1',r:40,c:'Tool steel'},{g:'H13',r:30,c:'Hot work'},{g:'Ti6Al4V',r:15,c:'Titanium alloy'}];function filter(){const q=document.querySelector('.search').value.toLowerCase();const rows=DATA.filter(d=>d.g.toLowerCase().includes(q));const e=document.getElementById('table-wrap');e.innerHTML='<table class="rate-table"><tr><th>Grade</th><th>Rating</th><th>Bar</th><th>Category</th></tr>'+rows.map(r=>`<tr><td><b>${r.g}</b></td><td>${r.r}%</td><td><span class="bar ${r.r>=70?'good':r.r>=40?'avg':'poor'}" style="width:${r.r*1.2}px"></span></td><td>${r.c}</td></tr>`).join('')+'</table>';document.getElementById('count').textContent=rows.length+' grades';}
+filter();
+</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><div class="toolbox-widget"><h3>Produkte</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Leistungsstufen-Wahlhilfe</a>
+<a href="/tools/hardness-converter/">Notenabfrage einfügen</a>
+<a href="/tools/tap-drill-size-calculator/">PS-Rechner</a>
+<a href="/tools/mrr-calculator/">Leitfaden zur Titanbearbeitung</a>
+<a href="/tools/feed-converter/">Stufenbohrer-Designrechner</a>
+<a href="/tools/surface-roughness-calculator/">Kraftrechner</a>
+<a href="/tools/titanium-machining-guide/">Wärmeausdehnungsrechner</a>
+<a href="/tools/carbide-grade-cross-ref-2/">Spanabtragskalkulator</a>
+<a href="/tools/cost-per-part-calculator/">Schruppen-Rechner</a>
+<a href="/tools/torque-unit-converter/">Bohrlochgrößenrechner</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Professionelle Lösungen für Machinability Rating?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Erhalten Sie werkseitige Preise für Premium-Hartmetallwerkzeuge mit ISO-zertifizierter Qualität.</p>
+</div>
+<a href="/de/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Massenangebot anfordern →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/carbide-grades.html">E-Mail</a><a href="/guides/insert-grade-selection.html">Such klasse (z.B. 4140, 1018)...</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/machinability-rating/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/machinability-rating/&amp;text=Machinability Rating" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Machinability Rating&amp;body=Check this out: https://carbide-tooling.com/tools/machinability-rating/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Globales Engineering-Verzeichnis</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professiCalculator</a>
-<a href="/de/tools/automation-vs-manual-calculator/">Automation Vs Manual Calculator</a>
-<a href="/de/tools/npt-pipe-thread-calculator/">Npt Pipe Thread Calculator</a>
-<a href="/de/tools/stainless-properties/">Stainless Properties</a>
-<a href="/de/tools/bolt-circle-calculator/">Bolt Circle Calculator</a>
-<a href="/de/tools/metal-weight-calculator/">Metal Weight Calculator</a>
-<a href="/de/tools/cycle-time-calculator/">Cycle Time Calculator</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professionelle Bearbeitungswerkzeuge</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/de/tools/gdt-symbols-reference/">Gdt Symbols Reference</a>
+<a href="/de/tools/metal-cost-calculator/">Metal Cost Calculator</a>
+<a href="/de/tools/production-efficiency-calculator/">Production Efficiency Calculator</a>
+<a href="/de/tools/countersink-depth-calculator/">Countersink Depth Calculator</a>
+<a href="/de/tools/polar-rect-converter/">Polar Rect Converter</a>
+<a href="/de/tools/pythagorean-calculator/">Pythagorean Calculator</a>
+<a href="/de/tools/surface-speed/">Surface Speed</a>
+<a href="/de/tools/tool-wear-cost-calculator/">Tool Wear Cost Calculator</a>
+<a href="/de/tools/aql-sampling-calculator/">Aql Sampling Calculator</a>
+<a href="/de/tools/cast-iron-machining/">Cast Iron Machining</a>
 
 </div>
 </section>
@@ -304,22 +388,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Globales Engineering-Verzeichnis</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professionelle Bearbeitungswerkzeuge</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/de/tools/feed-rate-override-calculator/">Feed Rate Override Calculator</a>
+<a href="/de/tools/arc-r-to-ij-converter/">Arc R To Ij Converter</a>
+<a href="/de/tools/tube-weight-calculator/">Tube Weight Calculator</a>
+<a href="/de/tools/thread-pitch-diameter-calculator/">Thread Pitch Diameter Calculator</a>
+<a href="/de/tools/automation-vs-manual-calculator/">Automation Vs Manual Calculator</a>
+<a href="/de/tools/npt-pipe-thread-calculator/">Npt Pipe Thread Calculator</a>
+<a href="/de/tools/stainless-properties/">Stainless Properties</a>
+<a href="/de/tools/bolt-circle-calculator/">Bolt Circle Calculator</a>
+<a href="/de/tools/metal-weight-calculator/">Metal Weight Calculator</a>
+<a href="/de/tools/cycle-time-calculator/">Cycle Time Calculator</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -329,5 +417,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/de/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Massenangebot anfordern →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>

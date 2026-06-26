@@ -12,7 +12,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -26,18 +39,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -178,6 +180,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -185,7 +188,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1504328346580-ee3558200b6a?w=1200&h=675&fit=crop&q=80&auto=format" alt="Perforación de carburo de precisión" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/es/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -200,15 +210,105 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 </div>
 </div>
 </nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<section class="hero"><div class="container"><div class="badge">🔄 Best Practice Guide</div><h1>Calculadora de Perforación Peck</h1><p>Defina las profundidades de picoteado en función de la profundidad del agujero, el diámetro de la broca y el material. Evite el embalaje de chips, la rotura y los agujeros de gran tamaño.</p><a class="btn" href="#calculator">Calcular ↓</a></div></section>
+<section class="container" id="calculator" style="padding-bottom:40px">
+<div class="card"><h2>🔄Ciclo de perforación Peck</h2><p class="sub">Para ciclos de perforación de agujero profundo G83 en centros de mecanizado CNC.</p>
+<div class="card-row">
+<div class="field"><label>🔩Material</label><select id="material" onchange="calc()"><option value="al6061">Aluminum 6061</option><option selected="" value="ss304">Stainless Steel 304</option><option value="mild_steel">Mild Steel 1018</option></select></div>
+<div class="field"><label>🕳️ Diámetro del taladro (mm)</label><input id="dia" max="50" min="0.5" oninput="calc()" step="0.5" type="number" value="8"/></div>
+<div class="field"><label>📏Profundidad del orificio (mm)</label><input id="depth" max="500" min="1" oninput="calc()" step="5" type="number" value="40"/></div>
+<div class="field"><label>⚡Velocidad de corte Vc (m/min)</label><input id="vc" max="500" min="5" oninput="calc()" step="5" type="number" value="60"/></div>
+<div class="field"><label>📊Velocidad de avance (mm/rev)</label><input id="feed" max="2" min="0.01" oninput="calc()" step="0.01" type="number" value="0.12"/></div>
+</div>
+<div class="result-grid">
+<div class="result-item"><div class="label">First Peck Depth</div><div class="value" id="r-peck1">—</div><div class="unit">mm</div></div>
+<div class="result-item"><div class="label">Subsequent Pecks</div><div class="value" id="r-peckn">—</div><div class="unit">mm</div></div>
+<div class="result-item"><div class="label">Total Pecks</div><div class="value" id="r-pecks">—</div><div class="unit">pecks</div></div>
+<div class="result-item"><div class="label">RPM</div><div class="value" id="r-rpm">—</div><div class="unit">RPM</div></div>
+</div>
+</div>
+<div style="text-align:center;margin:20px 0"><a href="/tools/" style="color:#0066cc;text-decoration:none;font-size:13px">← Todas las herramientas</a></div>
+</section>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Herramientas de precisión relacionadas</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/es/tools/percentage-of-thread-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Percentage Of Thread Calculator</a><a href="/es/tools/plastic-machining/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Plastic Machining</a><a href="/es/tools/polar-rect-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Polar Rect Converter</a><a href="/es/tools/gcode-reference/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Gcode Reference</a><a href="/es/tools/reaming-allowance-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Reaming Allowance Calculator</a><a href="/es/tools/die-steel-thermal-conductivity/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Die Steel Thermal Conductivity</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">Inicio</a>
+<a href="/tools/">Todas las herramientas</a>
+<a href="/products/">Productos</a>
+<a href="/guides/">Guías</a>
+<a href="/about.html">Sobre</a>
+<a href="/quote.html">Convertidor de dureza</a>
+<a href="/privacy.html">Tamaño del taladro de roscado</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Calculadora de MRR</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Todas las herramientas</a></p>
+<p style="font-size:11px;margin-bottom:6px">Los resultados son únicamente de referencia. Consulte a los fabricantes de herramientas para aplicaciones específicas.</p>
+<p style="font-size:11px">©Herramientas de carburo 2026</p>
+</div>
+</footer>
+<script>
+const MATS={al6061:{p1:4,p2:2},ss304:{p1:1.5,p2:0.5},mild_steel:{p1:2,p2:1}};
+function calc(){const m=MATS[document.getElementById('material').value];const d=parseFloat(document.getElementById('dia').value)||8;const dep=parseFloat(document.getElementById('depth').value)||40;const vc=parseFloat(document.getElementById('vc').value)||60;const feed=parseFloat(document.getElementById('feed').value)||0.12;const rpm=d>0?(vc*1000)/(Math.PI*d):1000;const minPeck=1.5;const p1=Math.min(dep,d*m.p1);const pn=Math.max(minPeck,d*m.p2);let remaining=dep-p1;let pecks=1;if(remaining>0){pecks+=Math.ceil(remaining/pn);}document.getElementById('r-peck1').textContent=p1.toFixed(1);document.getElementById('r-peckn').textContent=pn.toFixed(1);document.getElementById('r-pecks').textContent=pecks;document.getElementById('r-rpm').textContent=Math.round(rpm);}
+calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><section class="seo-content"><div class="container">
+<h2>Reglas de perforación Peck: lo que nos han enseñado 25 años de holemaking</h2>
+<p>El primer picot es siempre el más profundo. Un taladro afilado de carburo que ingresa al material sólido en la superficie puede tomar un picoteado inicial de 2-3 × de diámetro porque la evacuación del chip es fácil: los chips salen inmediatamente. Una vez que el agujero alcanza la profundidad del diámetro 3-4 ×, los chips deben viajar hasta la flauta, y la profundidad del picoteado debe reducirse para evitar el embalaje.</p>
+<p>Para un taladro de carburo de 10 mm en acero 4140 a 40 mm de profundidad, el primer picoteado puede ser de 20-25mm. El segundo picoteado debe ser de 10-12mm. Para el tercer picoteado, la profundidad debe caer a 5-6mm. Este patrón de picoteo decreciente maximiza la productividad al tiempo que evita el empaquetamiento de virutas que causa la rotura de la broca.</p>
+<p>En un centro de taladro/grifo Haas o Doosan, el ciclo G83 con un picoteo decreciente (valor Q que cambia por picoteo) debe programarse manualmente o con una macro. La mayoría de los sistemas CAM generan profundidades de picoteado constantes: la calculadora anterior le brinda el patrón de picoteado variable óptimo para programar manualmente.</p>
+<div class="rules"><h3>📋Reglas rápidas para la profundidad de Peck</h3><ul><li>Aluminio: primer peck = 4 × diámetro del taladro; subsecuente = 2 × diámetro</li><li>Acero: primero = 2 × diámetro; subsecuente = 1 × diámetro</li><li>Inoxidable: primero = 1,5 × diámetro; subsecuente = 0,5 × diámetro</li><li>Rompiendo la viruta: reduzca el índice de alimentación por el 20% para los ciclos de retracción del picoteado contra la perforación continua</li></ul></div>
+<h2>Preguntas frecuentes</h2>
+<p><strong>What is peck drilling?</strong> A drilling cycle where the tool periodically retracts to break chips and clear the flutes. G83 in most CNC controls.</p>
+<p><strong>How deep should each peck be?</strong> First peck: 2-4× drill diameter depending on material. Subsequent pecks: 0.5-2× diameter. Decrease peck depth as hole depth increases.</p>
+<p><strong>When should I use peck drilling vs. continuous drilling?</strong> For holes deeper than 3× diameter in steel, or 5× diameter in aluminum, use peck drilling. For shallow holes, continuous drilling is faster and produces better surface finish.</p>
+<p><strong>Does peck drilling increase cycle time?</strong> Yes, by 15-40% depending on the number of pecks. The trade-off is acceptable because peck drilling prevents tool breakage, which costs far more than the added cycle time.</p>
+</div></section>
+<div class="toolbox-widget"><h3>🔧Caja de herramientas de ingeniería de precisión</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Rugosidad de la superficie</a>
+<a href="/tools/hardness-converter/">Guía de titanio</a>
+<a href="/tools/tap-drill-size-calculator/">Referencia cruzada de calificaciones</a>
+<a href="/tools/mrr-calculator/">Costo por pieza</a>
+<a href="/tools/feed-converter/">Convertidor de par</a>
+<a href="/tools/surface-roughness-calculator/">Solicitar cotización por volumen →</a>
+<a href="/tools/titanium-machining-guide/">Brocas de carburo</a>
+<a href="/tools/carbide-grade-cross-ref-2/">Fresas de roscar y machos de roscar</a>
+<a href="/tools/cost-per-part-calculator/">Convertidor de arco R a IJ</a>
+<a href="/tools/torque-unit-converter/">Calculadora de profundidad de rosca y par de torsión</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">¿Soluciones Profesionales para Peck Drilling Calculator?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Obtenga precios directos de fábrica en herramientas de carburo premium con calidad certificada ISO.</p>
+</div>
+<a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/drills.html">Calculadora de costo por pieza</a><a href="/products/threading-tools.html">Estimador de vida útil de herramientas para superaleaciones</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/peck-drilling-calculator/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/peck-drilling-calculator/&amp;text=Peck Drilling Calculator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Peck Drilling Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/peck-drilling-calculator/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesr</a>
-<a href="/es/tools/heat-expansion-calculator/">Heat Expansion Calculator</a>
-<a href="/es/tools/brass-machining-parameters/">Brass Machining Parameters</a>
-<a href="/es/tools/carbide-grade-cross-ref-2/">Carbide Grade Cross Ref 2</a>
-<a href="/es/tools/grade-reference/">Grade Reference</a>
-<a href="/es/tools/tensile-strength-converter/">Tensile Strength Converter</a>
-<a href="/es/tools/metal-cost-calculator/">Metal Cost Calculator</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/es/tools/nose-radius-compensation/">Nose Radius Compensation</a>
+<a href="/es/tools/stainless-properties/">Stainless Properties</a>
+<a href="/es/tools/drill-point-length-calculator/">Drill Point Length Calculator</a>
+<a href="/es/tools/machinability-rating/">Machinability Rating</a>
+<a href="/es/tools/coord-rotation-calculator/">Coord Rotation Calculator</a>
+<a href="/es/tools/chamfer-calculator/">Chamfer Calculator</a>
+<a href="/es/tools/pomodoro-timer/">Pomodoro Timer</a>
+<a href="/es/tools/mcode-reference/">Mcode Reference</a>
+<a href="/es/tools/machine-power-calculator/">Machine Power Calculator</a>
+<a href="/es/tools/coolant-lifecycle-cost/">Coolant Lifecycle Cost</a>
 
 </div>
 </section>
@@ -233,22 +333,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/es/tools/tap-drill-size-calculator/">Tap Drill Size Calculator</a>
+<a href="/es/tools/form-tap-drill-calculator/">Form Tap Drill Calculator</a>
+<a href="/es/tools/trochoidal-milling-calculator/">Trochoidal Milling Calculator</a>
+<a href="/es/tools/bulk-discount-calculator/">Bulk Discount Calculator</a>
+<a href="/es/tools/heat-expansion-calculator/">Heat Expansion Calculator</a>
+<a href="/es/tools/brass-machining-parameters/">Brass Machining Parameters</a>
+<a href="/es/tools/carbide-grade-cross-ref-2/">Carbide Grade Cross Ref 2</a>
+<a href="/es/tools/grade-reference/">Grade Reference</a>
+<a href="/es/tools/tensile-strength-converter/">Tensile Strength Converter</a>
+<a href="/es/tools/metal-cost-calculator/">Metal Cost Calculator</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -258,5 +362,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>

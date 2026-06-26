@@ -82,7 +82,20 @@ footer a{color:#0066cc;text-decoration:none}
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -96,18 +109,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -256,6 +258,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -263,6 +266,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1565193566165-24e2f9e7e80c?w=1200&h=675&fit=crop&q=80&auto=format" alt="Fabricación industrial de precisión" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div>
 <nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/es/"><span>◆</span> Carbide Tooling</a>
@@ -278,14 +289,266 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 </div>
 </div>
 </nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<section class="hero">
+<div class="container">
+<div class="badge">💪 Free Professional Tool</div>
+<h1>Calculadora de fuerza de fresado</h1>
+<p>Calcule las fuerzas de corte, el par del husillo y los requisitos de potencia para las operaciones de fresado CNC. Entender la física detrás de cada corte.</p>
+<div class="hero-actions">
+<a class="btn" href="#calculator">Comenzar el cálculo ↓</a>
+<a class="btn-outline" href="https://carbide-tooling.com/quote.html">📩Obtener una cita de precisión</a>
+</div>
+</div>
+</section>
+<section class="container" id="calculator" style="padding-bottom:40px">
+<div class="card">
+<h2>💪Fuerza de corte y par</h2>
+<p class="sub">Basado en el modelo de fuerza de corte Kienzle-Victor. Actualización de resultados en tiempo real.</p>
+<div class="card-row">
+<div class="field"><label>🔩Material</label>
+<select id="material" onchange="calc()">
+<option value="al6061">Aluminum 6061</option>
+<option selected="" value="ss304">Stainless Steel 304</option>
+<option value="ti6al4v">Titanium Grade 5</option>
+<option value="hardened_steel">Hardened Steel 45-55 HRC</option>
+<option value="mild_steel">Mild Steel 1018</option>
+<option value="inconel">Inconel 718</option>
+<option value="cast_iron">Cast Iron</option>
+</select>
+</div>
+<div class="field"><label>🦷Alimentación por diente (fz)</label>
+<input id="fz" max="1" min="0.001" oninput="calc()" step="0.005" type="number" value="0.08"/>
+</div>
+<div class="field"><label>📐Diámetro de la herramienta (mm)</label>
+<input id="tool-dia" max="100" min="0.1" oninput="calc()" step="0.5" type="number" value="12"/>
+</div>
+<div class="field"><label>🦷Número de flautas</label>
+<select id="flutes" onchange="calc()"><option value="2">2</option><option value="3">3</option><option selected="" value="4">4</option><option value="5">5</option><option value="6">6</option></select>
+</div>
+<div class="field"><label>⏬Profundidad de corte-AP (mm)</label>
+<input id="doc" max="20" min="0.1" oninput="calc()" step="0.1" type="number" value="2"/>
+</div>
+<div class="field"><label>↔️ Ancho de Cut-ae (mm)</label>
+<input id="woc" max="50" min="0.1" oninput="calc()" step="0.1" type="number" value="10"/>
+</div>
+<div class="field"><label>⚡Velocidad del husillo (RPM)</label>
+<input id="rpm" max="50000" min="100" oninput="calc()" step="100" type="number" value="8000"/>
+</div>
+<div class="field"><label>🔩Ángulo de compromiso κr (°)</label>
+<select id="kappa" onchange="calc()"><option value="90">90° — Square shoulder</option><option value="75">75° — General purpose</option><option value="45">45° — Face milling</option><option value="10">10° — Ramping</option></select>
+</div>
+</div>
+<!-- Force diagram visual -->
+<div class="result-grid">
+<div class="result-item"><div class="label">Cutting Force (Fc)</div><div class="value" id="r-fc">—</div><div class="unit">N</div></div>
+<div class="result-item"><div class="label">Avance Force (Ff)</div><div class="value" id="r-ff">—</div><div class="unit">N</div></div>
+<div class="result-item"><div class="label">Radial Force (Fp)</div><div class="value" id="r-fp">—</div><div class="unit">N</div></div>
+<div class="result-item"><div class="label">Spindle Torque (Mc)</div><div class="value" id="r-torque">—</div><div class="unit">Nm</div></div>
+</div>
+<div class="extra-info">
+<span>Resultant force: <span class="val" id="x-resultant">—</span> N</span>
+<span style="color:#d2d2d6">|</span>
+<span>Specific cutting force (kc): <span class="val" id="x-kc">—</span> N/mm²</span>
+<span style="color:#d2d2d6">|</span>
+<span>Power at cutting edge: <span class="val" id="x-power">—</span> kW</span>
+<span style="color:#d2d2d6">|</span>
+<span>Deflection risk: <span class="val" id="x-deflect">—</span></span>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px">
+<a href="/tools/horsepower-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
+<div style="font-size:20px;margin-bottom:4px">🔌</div><h4 style="font-size:14px;font-weight:600;margin-bottom:2px">Calculadora de caballos de fuerza del husillo</h4>
+<p style="font-size:12px;color:#86868b">Compare los resultados de la fuerza con la curva de potencia de su máquina.</p>
+</a>
+<a href="/tools/speed-feed/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
+<div style="font-size:20px;margin-bottom:4px">⚙️</div><h4 style="font-size:14px;font-weight:600;margin-bottom:2px">Calculadora de velocidad y avance</h4>
+<p style="font-size:12px;color:#86868b">Optimice la carga de viruta y la velocidad de corte para su material.</p>
+</a>
+</div>
+</section>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Herramientas de precisión relacionadas</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/es/tools/feed-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Feed Converter</a><a href="/es/tools/feed-rate-override-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Feed Rate Override Calculator</a><a href="/es/tools/flatness-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Flatness Calculator</a><a href="/es/tools/blind-hole-tapping-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Blind Hole Tapping Calculator</a><a href="/es/tools/mcode-reference/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Mcode Reference</a><a href="/es/tools/slot-milling-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Slot Milling Calculator</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">Inicio</a>
+<a href="/tools/">Todas las herramientas</a>
+<a href="/products/">Productos</a>
+<a href="/guides/">Guías</a>
+<a href="/about.html">Sobre</a>
+<a href="/quote.html">Velocidad y avance</a>
+<a href="/privacy.html">Convertidor de dureza</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Tamaño del taladro de roscado</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Todas las herramientas</a></p>
+<p style="font-size:11px;margin-bottom:6px">Los resultados son únicamente de referencia. Consulte a los fabricantes de herramientas para aplicaciones específicas.</p>
+<p style="font-size:11px">©Herramientas de carburo 2026</p>
+</div>
+</footer>
+<script>
+const MATS = {
+ al6061:{kc1:700,mc:0.25,coeff:0.25,label:'Aluminum 6061'},
+ ss304:{kc1:2300,mc:0.30,coeff:0.55,label:'Stainless 304'},
+ ti6al4v:{kc1:1700,mc:0.28,coeff:0.65,label:'Titanium Gr5'},
+ hardened_steel:{kc1:3100,mc:0.32,coeff:0.7,label:'Hardened Steel'},
+ mild_steel:{kc1:1900,mc:0.26,coeff:0.4,label:'Mild Steel'},
+ inconel:{kc1:3200,mc:0.35,coeff:0.8,label:'Inconel 718'},
+ cast_iron:{kc1:1400,mc:0.22,coeff:0.3,label:'Cast Iron'},
+};
+
+function calc() {
+ const mat = MATS[document.getElementById('material').value];
+ const fz = parseFloat(document.getElementById('fz').value) || 0.08;
+ const d = parseFloat(document.getElementById('tool-dia').value) || 12;
+ const z = parseInt(document.getElementById('flutes').value) || 4;
+ const ap = parseFloat(document.getElementById('doc').value) || 2;
+ const ae = parseFloat(document.getElementById('woc').value) || 10;
+ const rpm = parseInt(document.getElementById('rpm').value) || 8000;
+ const kappa = parseFloat(document.getElementById('kappa').value) || 90;
+ const krRad = kappa * Math.PI / 180;
+
+ // Chip thickness
+ const h = fz * Math.sin(krRad);
+ 
+ // Specific cutting force with chip thickness effect
+ const kc = mat.kc1 * Math.pow(h, -mat.mc);
+ 
+ // Number of teeth in cut (approximate for milling)
+ const engagementRatio = ae / d;
+ const teethInCut = Math.max(1, z * engagementRatio);
+ 
+ // Average chip cross-section per tooth
+ const avgChipArea = ap * h;
+ 
+ // Cutting force Fc
+ const Fc = kc * avgChipArea * teethInCut;
+ 
+ // Avance force Ff (approximately 0.3-0.5 × Fc depending on rake)
+ const Ff = Fc * (0.25 + 0.15 * Math.sin(krRad));
+ 
+ // Passive/radial force Fp (approximately 0.15-0.25 × Fc)
+ const Fp = Fc * (0.12 + 0.08 * Math.sin(krRad));
+ 
+ // Resultant force
+ const Fr = Math.sqrt(Fc*Fc + Ff*Ff + Fp*Fp);
+ 
+ // Torque (Nm)
+ const torque = Fc * (d / 2 / 1000);
+ 
+ // Cutting speed (m/s)
+ const Vc = (Math.PI * d * rpm) / 60000;
+ 
+ // Power (kW)
+ const power = Fc * Vc / 1000;
+ 
+ // Deflection risk assessment
+ const overhang = d * 4; // assumed overhang = 4x diameter
+ const deflRatio = Fr / (overhang * 100);
+ let deflRisk = 'Low';
+ if (deflRatio > 5) deflRisk = '⚠️ Moderate — check holder';
+ if (deflRatio > 12) deflRisk = '🔴 High — reduce forces or shorten overhang';
+
+ document.getElementById('r-fc').textContent = Math.round(Fc);
+ document.getElementById('r-ff').textContent = Math.round(Ff);
+ document.getElementById('r-fp').textContent = Math.round(Fp);
+ document.getElementById('r-torque').textContent = torque.toFixed(1);
+ document.getElementById('x-resultant').textContent = Math.round(Fr);
+ document.getElementById('x-kc').textContent = Math.round(kc);
+ document.getElementById('x-power').textContent = power.toFixed(2);
+ document.getElementById('x-deflect').textContent = deflRisk;
+}
+
+calc();
+</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
+<section class="seo-content">
+<div class="container">
+<h2>¿De dónde vienen las fuerzas de corte?</h2>
+<p>Cada viruta extraída de una pieza de trabajo crea una fuerza medible en la herramienta de corte. Esta fuerza es el origen físico del consumo de energía del husillo, la deflexión de la herramienta, la vibración de vibración y la demanda de par. Comprender cómo surgen las fuerzas de corte, y cómo se distribuyen a través de los tres ejes, es esencial para seleccionar el portaherramientas adecuado, predecir la calidad del acabado de la superficie y evitar el parloteo en el mecanizado de paredes delgadas.</p>
+<p>The cutting force has three orthogonal components: <strong>Cutting force Fc</strong> (tangential, in the direction of cutting speed), <strong>Avance force Ff</strong> (axial, in the feed direction), and <strong>Passive force Fp</strong> (radial, perpendicular to both). Fc is always the largest — typically 60-70% of the resultant force. Ff accounts for 20-30%, and Fp for 10-20%. The ratio depends primarily on the tool's rake angle, the workpiece material, and the chip thickness.</p>
+<h2>Fórmula de la fuerza de corte</h2>
+<p>La fuerza de corte se modela utilizando la ecuación de Kienzle-Victor, que relaciona la fuerza con la sección transversal de la viruta y la resistencia de corte específica del material:</p>
+<div class="formula-box">
+ Fc = kc × ap × h<br/>
+<span class="sub">where h = fz × sin(κr) — chip thickness, and kc = specific cutting force</span>
+</div>
+<p>The specific cutting force kc is not a constant — it depends on chip thickness through the relationship <code>kc = kc1 × h^(-mc)</code>, where kc1 is the specific cutting force at a reference chip thickness (typically 1 mm) and mc is the material-dependent increase exponent. Thinner chips have higher specific cutting forces because the material is subjected to greater strain in a smaller shear zone. This calculator applies the full Kienzle-Victor model, accounting for chip thickness effects.</p>
+<h3>Par y potencia de las fuerzas de corte</h3>
+<p>Una vez que se conoce la fuerza de corte Fc, el par y la potencia del husillo siguen directamente:</p>
+<p><code>Torque Mc = Fc × (D/2)</code> where D is tool diameter in meters.<br/>
+<code>Power Pc = Fc × Vc</code> where Vc is cutting speed in m/s.</p>
+<p>This direct relationship means that any parameter that increases cutting force — higher feed, deeper cuts, harder materials — also increases torque and power proportionally. The <a href="/tools/horsepower-calculator/" style="color:#0066cc">Calculadora de caballos de fuerza del husillo</a> provides an independent check from the MRR perspective; comparing both tools helps validate your input parameters.</p>
+<h2>Cómo afectan los parámetros de corte a cada componente de fuerza</h2>
+<p><strong>Depth of cut (ap)</strong> has a linear relationship with all three force components. Doubling ap doubles Fc, Ff, and Fp. This makes DOC the most direct lever for controlling cutting forces — and the fastest way to overload a tool or spindle.</p>
+<p><strong>Avance per tooth (fz)</strong> has a sublinear effect on forces due to the chip thickness effect on specific cutting pressure. Doubling fz increases Fc by approximately 50-70% (not 100%), because the chip becomes thicker and the material offers proportionally less resistance per unit area. This is why increasing feed is more efficient than increasing DOC when you want to raise MRR without proportionally increasing forces.</p>
+<p><strong>Width of cut (ae)</strong> affects the number of teeth simultaneously engaged. For peripheral milling, increasing ae from 10% to 50% of tool diameter increases the engagement arc, raising the number of teeth in cut and proportionally increasing average force.</p>
+<h2>Implicaciones prácticas: desviación, charla y selección de herramientas</h2>
+<p>The radial force component Fp is responsible for <strong>tool deflection</strong>. A 12mm end mill with 50mm overhang deflecting under 1,500 N of radial force will produce a dimensional error of approximately 0.08-0.12 mm — enough to scrap a tight-tolerance feature. The deflection risk indicator in this calculator gives a qualitative assessment based on the ratio of cutting force to tool stiffness.</p>
+<p><strong>Chatter</strong> occurs when the cutting force excites the natural frequency of the tool-holder-spindle system. The most common fix is to reduce radial engagement (which reduces the number of teeth in cut, changing the excitation frequency) or to change RPM (which shifts the tooth engagement frequency away from the system's resonant peak). Using the <a href="/tools/speed-feed/" style="color:#0066cc">Calculadora de velocidad y avance</a> to find alternative RPM values is often the quickest chatter resolution.</p>
+<p>For thin-wall machining, the passive force Fp pushes the workpiece away from the tool. Reducing radial engagement is the most effective strategy — at 10% ae, the cutting force drops by approximately 60% compared to 50% ae, allowing thin walls to be machined without deflection. The <a href="/tools/mrr-calculator/" style="color:#0066cc">Referencia cruzada de calificaciones</a> can help quantify the productivity trade-off.</p>
+<h2>Puntos de referencia de fuerza de corte por material</h2>
+<p><strong>Aluminum 6061:</strong> Low cutting forces (kc1 ≈ 700 N/mm²). A typical finishing pass with fz=0.05 mm, ap=1mm produces Fc ≈ 200-300 N — negligible for most machines and holders.</p>
+<p><strong>Mild Steel 1018:</strong> Moderate forces (kc1 ≈ 1900 N/mm²). A 12mm end mill in roughing (fz=0.10 mm, ap=3mm, ae=9mm) generates Fc ≈ 2,500-3,500 N. This is near the limit for ER collet holders; a solid shrink-fit holder is recommended.</p>
+<p><strong>Stainless Steel 304:</strong> High forces (kc1 ≈ 2300 N/mm²) with work-hardening that increases forces by 15-25% after the first pass. Expect Fc ≈ 3,000-4,500 N for moderate roughing parameters. Side loads above 3,000 N require hydraulic or mechanical milling chucks.</p>
+<p><strong>Titanium Grade 5:</strong> Extremely high specific cutting forces (kc1 ≈ 1700 N/mm² at reference thickness) combined with low recommended chip loads. The thin chip effect pushes the effective kc to 2500-3000 N/mm², resulting in Fc = 1,500-2,500 N even at conservative parameters. This high relative force is why titanium is notorious for chatter.</p>
+<p><strong>Inconel 718:</strong> The highest cutting forces of any common engineering material (kc1 ≈ 3200 N/mm²). At typical finishing parameters, Fc still reaches 2,000-3,000 N. Roughing forces can exceed 6,000 N — requiring robust tool holders with runout below 5 μm and machines with high static stiffness.</p>
+<h2>Preguntas frecuentes</h2>
+<p><strong>What is the cutting force formula for milling?</strong> The Kienzle-Victor model: Fc = kc × ap × fz × sin(κr), adjusted for chip thickness effect through kc = kc1 × h⁻ᵐᶜ. This calculator applies the full model automatically.</p>
+<p><strong>How does tool diameter affect cutting force?</strong> Larger tools distribute the cutting force across a longer cutting edge, reducing the specific force per unit edge length. However, larger diameters also mean higher torque at the same Fc — torque = Fc × D/2. A 25mm tool generates the same Fc as a 12mm tool at the same chip cross-section, but with double the torque demand on the spindle.</p>
+<p><strong>What is a safe cutting force for a 12mm carbide end mill?</strong> For a standard 12mm end mill with 40mm overhang: Fc below 2,000 N is safe for any operation. Fc between 2,000-4,000 N requires rigid setup and quality tool holders. Fc above 4,000 N risks tool breakage and should only be attempted with heavy-duty holders and stable machining conditions.</p>
+<p><strong>How do I reduce cutting force without changing feed?</strong> Increase the rake angle (positive rake tools reduce forces by 20-30%), use a tool with a larger helix angle (45° vs 30° reduces forces by 10-15%), or apply high-pressure coolant (reduces forces by 10-20% through improved chip lubrication).</p>
+<p><strong>What's the relationship between cutting force and spindle power?</strong> Direct: Power (kW) = Fc (N) × Vc (m/s) / 1000. Cutting force and spindle power are two sides of the same physical phenomenon. The <a href="/tools/horsepower-calculator/" style="color:#0066cc">Calculadora de caballos de fuerza del husillo</a> approaches this from the MRR side; comparing both gives a cross-check on your parameter choices.</p>
+<p><strong>How does tool holder type affect force limits?</strong> ER collets (typically 8-10 Nm clamping torque) can safely transmit 1,500-2,500 N cutting force before the tool pulls down. Milling chucks (hydraulic or mechanical) handle 4,000-8,000 N. Shrink-fit holders handle 6,000-12,000 N. The tool holder is often the weakest link in the force transmission chain — exceeding its grip limit causes tool pull-out and catastrophic failure.</p>
+<div style="text-align:center;padding:32px 24px;font-size:15px;color:#1d1d1f;background:#f5f5f7;border-radius:16px;max-width:900px;margin:40px auto 0">
+<p style="margin:0">Para aplicaciones de alta fuerza que requieren sujeción rígida de herramientas, consulte nuestras Fresas de extremo de alto rendimiento</p>
+</div>
+</div>
+</section>
+<div class="toolbox-widget"><h3>🔧Caja de herramientas de ingeniería de precisión</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Convertidor de par</a>
+<a href="/tools/hardness-converter/">Solicitar cotización por volumen →</a>
+<a href="/tools/tap-drill-size-calculator/">Fresas de extremo de carburo sólido</a>
+<a href="/tools/mrr-calculator/">Referencia cruzada de calificaciones</a>
+<a href="/tools/feed-converter/">Calculadora de espesor de pared</a>
+<a href="/tools/surface-roughness-calculator/">Convertidor de arco R a IJ</a>
+<a href="/tools/titanium-machining-guide/">Convertidor de roscas métricas e imperiales</a>
+<a href="/tools/carbide-grade-cross-ref-2/">Estimador de derechos de aduana</a>
+<a href="/tools/cost-per-part-calculator/">Automatización frente a manual</a>
+<a href="/tools/torque-unit-converter/">Parámetros de mecanizado del latón</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">¿Soluciones Profesionales para Force Calculator?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Obtenga precios directos de fábrica en herramientas de carburo premium con calidad certificada ISO.</p>
+</div>
+<a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">Propiedades del acero inoxidable</a><a href="/products/tool-holders.html">LinkedIn</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/force-calculator/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/force-calculator/&amp;text=Force Calculator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Force Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/force-calculator/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesls/coolant-lifecycle-cost/">Coolant Lifecycle Cost</a>
-<a href="/es/tools/thread-lead-angle-calculator/">Thread Lead Angle Calculator</a>
-<a href="/es/tools/surface-speed/">Surface Speed</a>
-<a href="/es/tools/carbide-grade-cross-ref-2/">Carbide Grade Cross Ref 2</a>
-<a href="/es/tools/torque-unit-converter/">Torque Unit Converter</a>
-<a href="/es/tools/threading-pass-calculator/">Threading Pass Calculator</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/es/tools/grade-reference/">Grade Reference</a>
+<a href="/es/tools/machinability-rating/">Machinability Rating</a>
+<a href="/es/tools/drill-point-length-calculator/">Drill Point Length Calculator</a>
+<a href="/es/tools/trochoidal-milling-calculator/">Trochoidal Milling Calculator</a>
+<a href="/es/tools/batch-cost-calculator/">Batch Cost Calculator</a>
+<a href="/es/tools/percentage-of-thread-calculator/">Percentage Of Thread Calculator</a>
+<a href="/es/tools/step-drill-design-calculator/">Step Drill Design Calculator</a>
+<a href="/es/tools/gdt-symbols-reference/">Gdt Symbols Reference</a>
+<a href="/es/tools/mrr-calculator/">Mrr Calculator</a>
+<a href="/es/tools/thread-pitch-diameter-calculator/">Thread Pitch Diameter Calculator</a>
 
 </div>
 </section>
@@ -310,22 +573,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/es/tools/slot-milling-calculator/">Slot Milling Calculator</a>
+<a href="/es/tools/pythagorean-calculator/">Pythagorean Calculator</a>
+<a href="/es/tools/production-efficiency-calculator/">Production Efficiency Calculator</a>
+<a href="/es/tools/mcode-reference/">Mcode Reference</a>
+<a href="/es/tools/coolant-lifecycle-cost/">Coolant Lifecycle Cost</a>
+<a href="/es/tools/thread-lead-angle-calculator/">Thread Lead Angle Calculator</a>
+<a href="/es/tools/surface-speed/">Surface Speed</a>
+<a href="/es/tools/carbide-grade-cross-ref-2/">Carbide Grade Cross Ref 2</a>
+<a href="/es/tools/torque-unit-converter/">Torque Unit Converter</a>
+<a href="/es/tools/threading-pass-calculator/">Threading Pass Calculator</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -335,6 +602,20 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body>
 </html>

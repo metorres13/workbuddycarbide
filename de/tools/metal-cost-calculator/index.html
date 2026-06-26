@@ -11,7 +11,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -25,18 +38,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -249,6 +251,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -256,7 +259,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1504917598568-65a8f8b4f8ca?w=1200&h=675&fit=crop&q=80&auto=format" alt="Stahlherstellung und Bearbeitung" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/de/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -270,15 +280,102 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 <a class="nv-quote" href="/de/quote.html">📩 Angebot</a>
 </div>
 </div>
-</nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">in</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">Katalog ansehen →</a> <span style="color:#d2d2d6">›</span> Metal Cost Calculator</div>
+<section class="hero"><h1>Form</h1><p>Durchmesser/Breite (mm)</p></section>
+<div class="container">
+<div class="split">
+<div class="inputs"><h2 style="font-size:15px;font-weight:700;margin-bottom:10px">Länge (mm)</h2>
+<label>Menge</label><select id="mat" onchange="calc()"><option value="mild">Mild Steel 1018</option><option selected="" value="ss304">Stainless 304</option><option value="al6061">Aluminum 6061</option><option value="ti">Titanium Gr5</option></select>
+<label>📊Aktueller Markt ($/kg)</label><select id="shape" onchange="calc()"><option value="bar">Round bar</option><option value="plate">Plate</option></select>
+<label>$/Kg</label><input id="d1" oninput="calc()" type="number" value="50"/>
+<label>Dichte</label><input id="len" oninput="calc()" type="number" value="200"/>
+<label>Baustahl</label><input id="qty" oninput="calc()" type="number" value="100"/></div>
+<div><div class="cost-card"><div class="lbl">Weight per Part</div><div class="val" id="r-wt">0.00</div><div class="lbl">kg</div></div>
+<div class="cost-card"><div class="lbl">Material Cost per Part</div><div class="val" id="r-cost">$0.00</div></div>
+<div class="cost-card"><div class="lbl">Total Material Cost</div><div class="val" id="r-total">$0.00</div></div>
+<div class="cost-card"><div class="lbl">Scrap Factor (20%)</div><div class="val" id="r-scrap">$0.00</div></div>
+<h2 style="font-size:14px;font-weight:700;margin:16px 0 6px">$0,80</h2>
+<table class="mkt-table"><tr><th>Menge</th><th>$3.20</th><th>Aluminium 6061</th></tr>
+<tr><td>$2,80</td><td>Titan Gr5</td><td>7.85</td></tr><tr><td>$35,00</td><td>Alle Werkzeuge</td><td>8.0</td></tr><tr><td>Die Ergebnisse dienen ausschließlich als Referenz. Wenden Sie sich bei spezifischen Anwendungen an die Hersteller der Werkzeuge.</td><td>©2026 Hartmetallwerkzeuge</td><td>2.7</td></tr><tr><td>Berechnung der Material kosten pro Teil aus dem Lager</td><td>Die Material kosten pro Teil hängen vom Rohstoff preis ($/kg oder $/lb), der Lager auslastung und dem Schrott wert ab. Für Balken bestand: Kosten pro Teil = (Balken länge pro Teil × Balken gewicht pro Zoll × $/kg)-Schrott rückgewinnung. Für Platten arbeiten: Fügen Sie der Berechnung die Nist effizienz (normaler weise 60-85%) hinzu. Wenn Sie den tatsächlichen Material verbrauch anhand von Schätzungen verfolgen, werden Kosten einsparung möglichkeiten festgestellt.</td><td>4.43</td></tr></table></div></div>
+<div style="text-align:center;margin:16px 0"><a href="/tools/" style="color:#0066cc;font-size:13px">Geschwindigkeit &amp; Vorschub</a></div></div>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Verwandte Präzisionswerkzeuge</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/de/tools/machinability-rating/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Machinability Rating</a><a href="/de/tools/machine-power-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Machine Power Calculator</a><a href="/de/tools/mcode-reference/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Mcode Reference</a><a href="/de/tools/titanium-machining-guide/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Titanium Machining Guide</a><a href="/de/tools/nose-radius-compensation/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Nose Radius Compensation</a><a href="/de/tools/blind-hole-tapping-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Blind Hole Tapping Calculator</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">in</a>
+<a href="/tools/">Nist effizienz und ihre Auswirkungen auf die Gesamtkosten</a>
+<a href="/products/">🇩🇪DE</a>
+<a href="/guides/">🇯🇵JP</a>
+<a href="/about.html">🇪🇸ES</a>
+<a href="/quote.html">Titanführung</a>
+<a href="/privacy.html">Notenübereinstimmung</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Kosten pro Teil</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Nist effizienz und ihre Auswirkungen auf die Gesamtkosten</a></p>
+<p style="font-size:11px;margin-bottom:6px">Die Nist effizienz misst, wie viel des Rohstoffs im fertigen Teil landet. Eine Nist effizienz von 70% bedeutet, dass 30% Schrott sind. Durch die Verbesserung der Versch achtel ung um nur 5% durch optimierte CAM-Programmierung können die Material kosten insgesamt um 7% gesenkt werden. Für großvolumige Teile zahlt sich die Investition in dedizierte Versch achtel ungs software allein durch Materiale inspa rungen aus.</p>
+<p style="font-size:11px">Material preis Volatilität und Kosten schätzung</p>
+</div>
+<section class="seo"><div class="container">
+<h2>Die Metall preise schwanken aufgrund der Markt bedingungen erheblich. Die Aluminium preise können jährlich ± 20% variieren, während der Stahl ± 30% oder mehr variieren kann. Fügen Sie einen Preis puffer von 15% in Notierungen für Metalle mit hoher Volatilität ein. Verwenden Sie monatliche Preis indizes aus Quellen wie London Metal Exchange (LME), um die Kosten schätzungen anzupassen. Erwägen Sie Kauf vereinbarungen, die die Material preise für feste Angebote sichern.</h2><p>Häufig gestellte Fragen</p>
+<h2>Was ist der durchschnitt liche Abfall rückgewinnung swert für Stahl? Kohlenstoffs tahl schrott gewinnt ungefähr 10-15% der Rohstoff kosten als Schrott wert zurück. Edelstahl und hochwertige Legierungen können aufgrund ihres inhärenten Metall werts 30-50% zurückgewinnen. Berücksichtigen Sie die Kosten für die Handhabung und Verarbeitung von Schrott (normaler weise 2-5% des Schrott werts) in Ihrer Netto-Rückgewinnung berechnung.</h2><p>Wie bilanz iere ich Mindest bestellmengen in den Kosten? Material händler berechnen Prämien für Mengen unterhalb ihrer Mindest bestell schwelle. Wenn Ihr Teil weniger als das Minimum verbraucht, verteilen Sie die übers chüssigen Material kosten auf die bestellte Menge. Bei kleinen Jobs können die Material kosten 40-50% höher sein als bei großen Produktions läufen pro Teil.</p>
+<h2>Ergibt die Material zertifizierung zusätzliche Kosten? Ja. Material testberichte (MTRs) und Zertifizie rungen erhöhen in der Regel die Rohstoff kosten um 5-15%. Für kritische Anwendungen in der Luft-und Raumfahrt, Medizin oder Verteidigung ist eine Zertifizierung obligat orisch. Geben Sie für gewerbliche Aufträge „ Kein Cert erforderlich “an, um Material kosten zu sparen, wenn die End verwendung dies zulässt.</h2><p>⚡Berechnet für die Hochleistungsserie von Carbide-Tooling.com. Katalog anzeigen →</p>
+<h2>🔧Werkzeugkasten der Präzisionstechnik</h2>
+<p><strong>What is the average scrap recovery value for steel?</strong> Carbon steel scrap recovers approximately 10–15% of raw material cost as scrap value. Stainless steel and high-value alloys can recover 30–50% due to their inherent metal value. Account for scrap handling and processing costs (typically 2–5% of scrap value) in your net scrap recovery calculation.</p>
+<p><strong>How do I account for minimum order quantities in cost?</strong> Material distributors charge premiums for quantities below their minimum order threshold. If your part uses less than the minimum, distribute the surplus material cost across the ordered quantity. For small lot jobs, material costs can be 40–50% higher than large production runs on a per-part basis.</p>
+<p><strong>Does material certification add cost?</strong> Yes. Material test reports (MTRs) and certifications typically add 5–15% to raw material cost. For critical aerospace, medical, or defense applications, certification is mandatory. For commercial jobs, specify 'no cert required' to save on material costs if the end use allows.</p>
+<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">Massenanfrage stellen →</a></p>
+</div></section>
+</footer>
+<script>
+const MATS={mild:{den:7.85,cost:0.8},ss304:{den:8.0,cost:3.2},al6061:{den:2.7,cost:2.8},ti:{den:4.43,cost:35}};
+function calc(){const m=MATS[document.getElementById('mat').value];const shape=document.getElementById('shape').value;const d1=parseFloat(document.getElementById('d1').value)||50;const len=parseFloat(document.getElementById('len').value)||200;const qty=parseInt(document.getElementById('qty').value)||100;let vol=shape==='bar'?Math.PI*(d1/2)**2*len:d1*100*len;const wt=vol*m.den/1e6;const cost=wt*m.cost;document.getElementById('r-wt').textContent=wt.toFixed(3);document.getElementById('r-cost').textContent='$'+cost.toFixed(2);document.getElementById('r-total').textContent='$'+(cost*qty).toFixed(2);document.getElementById('r-scrap').textContent='$'+(cost*qty*0.2).toFixed(2);}
+calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><div class="toolbox-widget"><h3>Produkte</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Vollhartmetall-Schaftfräser</a>
+<a href="/tools/hardness-converter/">Drehplatten</a>
+<a href="/tools/tap-drill-size-calculator/">Getriebeparameterrechner</a>
+<a href="/tools/mrr-calculator/">Rundstabgewichtsrechner</a>
+<a href="/tools/feed-converter/">Effektiver Durchmesser der Kugelkopffräse</a>
+<a href="/tools/surface-roughness-calculator/">Eigenschaften von Edelstahl</a>
+<a href="/tools/titanium-machining-guide/">Gewindebohrer-Bohrlochrechner</a>
+<a href="/tools/carbide-grade-cross-ref-2/">Kühlmittelkonzentrationsrechner</a>
+<a href="/tools/cost-per-part-calculator/">Rohrgewichtsrechner</a>
+<a href="/tools/torque-unit-converter/">Ultimativer Einheitenumrechner</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Professionelle Lösungen für Metal Cost Calculator?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Erhalten Sie werkseitige Preise für Premium-Hartmetallwerkzeuge mit ISO-zertifizierter Qualität.</p>
+</div>
+<a href="/de/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Massenangebot anfordern →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">E-Mail</a><a href="/products/turning-inserts.html">Turning Inserts</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/metal-cost-calculator/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/metal-cost-calculator/&amp;text=Metal Cost Calculator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Metal Cost Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/metal-cost-calculator/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Globales Engineering-Verzeichnis</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professi-shipping-calculator/">Weight Shipping Calculator</a>
-<a href="/de/tools/gear-parameter-calculator/">Gear Parameter Calculator</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professionelle Bearbeitungswerkzeuge</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
 <a href="/de/tools/pomodoro-timer/">Pomodoro Timer</a>
-<a href="/de/tools/tool-runout-calculator/">Tool Runout Calculator</a>
-<a href="/de/tools/brass-machining-parameters/">Brass Machining Parameters</a>
-<a href="/de/tools/gun-drill-calculator/">Gun Drill Calculator</a>
+<a href="/de/tools/machinability-rating/">Machinability Rating</a>
+<a href="/de/tools/pythagorean-calculator/">Pythagorean Calculator</a>
+<a href="/de/tools/reaming-allowance-calculator/">Reaming Allowance Calculator</a>
+<a href="/de/tools/inventory-turnover-calculator/">Inventory Turnover Calculator</a>
+<a href="/de/tools/plastic-machining/">Plastic Machining</a>
+<a href="/de/tools/peck-drilling-calculator/">Peck Drilling Calculator</a>
+<a href="/de/tools/tool-life-economics/">Tool Life Economics</a>
+<a href="/de/tools/step-milling-calculator/">Step Milling Calculator</a>
+<a href="/de/tools/mrr-calculator/">Mrr Calculator</a>
 
 </div>
 </section>
@@ -303,22 +400,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Globales Engineering-Verzeichnis</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professionelle Bearbeitungswerkzeuge</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/de/tools/form-tap-drill-calculator/">Form Tap Drill Calculator</a>
+<a href="/de/tools/surface-speed/">Surface Speed</a>
+<a href="/de/tools/thread-lead-angle-calculator/">Thread Lead Angle Calculator</a>
+<a href="/de/tools/pressure-converter/">Pressure Converter</a>
+<a href="/de/tools/weight-shipping-calculator/">Weight Shipping Calculator</a>
+<a href="/de/tools/gear-parameter-calculator/">Gear Parameter Calculator</a>
+<a href="/de/tools/pomodoro-timer/">Pomodoro Timer</a>
+<a href="/de/tools/tool-runout-calculator/">Tool Runout Calculator</a>
+<a href="/de/tools/brass-machining-parameters/">Brass Machining Parameters</a>
+<a href="/de/tools/gun-drill-calculator/">Gun Drill Calculator</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -328,5 +429,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/de/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Massenangebot anfordern →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>

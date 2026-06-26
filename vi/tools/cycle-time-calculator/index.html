@@ -84,7 +84,20 @@ footer a{color:#0066cc;text-decoration:none}
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -98,18 +111,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -258,6 +260,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -265,6 +268,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1581092160607-ee22621e7591?w=1200&h=675&fit=crop&q=80&auto=format" alt="Bảng điều khiển CNC" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div>
 <nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/vi/"><span>◆</span> Carbide Tooling</a>
@@ -280,14 +291,274 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 </div>
 </div>
 </nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<section class="hero">
+<div class="container">
+<div class="badge">⏱️ Free Professional Tool</div>
+<h1>Máy tính Thời gian chu kỳ xoay</h1>
+<p>Ước tính thời gian cắt cho các nguyên công tiện ngoài, tiện mặt đầu, khoan lỗ và cắt đứt. Tính chi phí trên một phần và tối ưu hóa Thông lượng sản xuất.</p>
+<div class="hero-actions">
+<a class="btn" href="#calculator">Bắt đầu tính toán ↓</a>
+<a class="btn-outline" href="https://carbide-tooling.com/quote.html">📩Nhận báo giá chính xác</a>
+</div>
+</div>
+</section>
+<section class="container" id="calculator" style="padding-bottom:40px">
+<div class="card">
+<h2>⏱️ Ước lượng thời gian chu kỳ</h2>
+<p class="sub">Đối với thao tác máy tiện CNC. Nhập thông số dưới đây; kết quả cập nhật trong thời gian thực.</p>
+<div class="card-row">
+<div class="field"><label>🔧Loại hoạt động</label>
+<select id="op-type" onchange="calc()">
+<option value="od">OD Turning (external)</option>
+<option value="facing">Facing (face)</option>
+<option value="boring">Boring (internal)</option>
+<option value="parting">Parting / Cut-off</option>
+</select>
+</div>
+<div class="field"><label>⚙️ Chất liệu</label>
+<select id="material" onchange="calc()">
+<option value="al6061">Aluminum 6061</option>
+<option selected="" value="ss304">Stainless Steel 304</option>
+<option value="mild_steel">Mild Steel 1018</option>
+<option value="ti6al4v">Titanium Grade 5</option>
+</select>
+</div>
+<div class="field"><label>📐Đường kính phần (mm)</label>
+<input id="dia" max="500" min="1" oninput="calc()" step="1" type="number" value="50"/>
+</div>
+<div class="field"><label>📏Chiều dài cắt (mm)</label>
+<input id="length" max="2000" min="1" oninput="calc()" step="1" type="number" value="100"/>
+</div>
+<div class="field"><label>⏬Độ sâu cắt (mm)</label>
+<input id="doc" max="20" min="0.1" oninput="calc()" step="0.1" type="number" value="2"/>
+</div>
+<div class="field"><label>📊Tốc độ nạp (mm/Rev)</label>
+<input id="feed" max="5" min="0.01" oninput="calc()" step="0.01" type="number" value="0.2"/>
+</div>
+<div class="field"><label>⚡Tốc độ cắt (VC m/phút)</label>
+<input id="vc" max="2000" min="10" oninput="calc()" step="10" type="number" value="180"/>
+</div>
+<div class="field"><label>🔄Số lượt truy cập</label>
+<select id="passes" onchange="calc()"><option value="1">1</option><option value="2">2</option><option selected="" value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>
+</div>
+</div>
+<div class="card-row" style="grid-template-columns:1fr 1fr">
+<div class="field"><label>📐Đường kính cuối cùng (mm)</label>
+<input id="final-dia" max="500" min="1" oninput="calc()" step="1" type="number" value="44"/>
+<span style="font-size:10px;color:#86868b">For facing: final = 0</span>
+</div>
+<div class="field"><label>⏱️ Thời gian không cắt (giây)</label>
+<input id="noncut" max="300" min="0" oninput="calc()" step="1" type="number" value="15"/>
+<span style="font-size:10px;color:#86868b">Tool change + positioning</span>
+</div>
+</div>
+<div class="result-grid">
+<div class="result-item"><div class="label">Cutting Time</div><div class="value" id="r-cut">—</div><div class="unit">seconds</div></div>
+<div class="result-item"><div class="label">Cycle Time per Part</div><div class="value" id="r-cycle">—</div><div class="unit">seconds</div></div>
+<div class="result-item"><div class="label">Parts per Hour</div><div class="value" id="r-pph">—</div><div class="unit">parts/hr</div></div>
+<div class="result-item"><div class="label">Spindle Tốc độ cắt</div><div class="value" id="r-rpm">—</div><div class="unit">RPM</div></div>
+</div>
+<div class="extra-info">
+<span>Lượng chạy dao per minute: <span class="val" id="x-fpm">—</span> mm/min</span>
+<span style="color:#d2d2d6">|</span>
+<span>Material removed: <span class="val" id="x-removed">—</span> cm³</span>
+<span style="color:#d2d2d6">|</span>
+<span>Cost per part (est.): <span class="val" id="x-cost">—</span></span>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px">
+<a href="/tools/speed-feed/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
+<div style="font-size:20px;margin-bottom:4px">⚙️</div><h4 style="font-size:14px;font-weight:600;margin-bottom:2px">Công cụ tính toán tốc độ và lượng ăn dao</h4>
+<p style="font-size:12px;color:#86868b">Tối ưu hóa các thông số cắt trước khi tính toán thời gian chu kỳ.</p>
+</a>
+<a href="/tools/mrr-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
+<div style="font-size:20px;margin-bottom:4px">⚡</div><h4 style="font-size:14px;font-weight:600;margin-bottom:2px">Công cụ tính MRR</h4>
+<p style="font-size:12px;color:#86868b">Tỷ lệ loại bỏ vật liệu ảnh hưởng trực tiếp đến thời gian chu kỳ.</p>
+</a>
+</div>
+</section>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Công cụ chính xác liên quan</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/vi/tools/carbide-grade-cross-ref-2/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Carbide Grade Cross Ref 2</a><a href="/vi/tools/cast-iron-machining/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Cast Iron Machining</a><a href="/vi/tools/chamfer-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Chamfer Calculator</a><a href="/vi/tools/sine-bar-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Sine Bar Calculator</a><a href="/vi/tools/hardness-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Hardness Converter</a><a href="/vi/tools/machine-power-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Machine Power Calculator</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">Trang chủ</a>
+<a href="/tools/">Tất cả công cụ</a>
+<a href="/products/">Sản phẩm</a>
+<a href="/guides/">Hướng dẫn</a>
+<a href="/about.html">Về chúng tôi</a>
+<a href="/quote.html">Máy tính lực</a>
+<a href="/privacy.html">Tốc độ và Lượng ăn dao</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Bộ chuyển đổi độ cứng</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Tất cả công cụ</a></p>
+<p style="font-size:11px;margin-bottom:6px">Kết quả chỉ mang tính tham khảo. Hãy tham khảo ý kiến của các nhà sản xuất dụng cụ để biết thông tin về các ứng dụng cụ thể.</p>
+<p style="font-size:11px">©Dụng cụ cắt gọt bằng cacbua năm 2026</p>
+</div>
+</footer>
+<script>
+const MATS = {
+ al6061:{label:'Aluminum 6061'},
+ ss304:{label:'Stainless 304'},
+ mild_steel:{label:'Mild Steel'},
+ ti6al4v:{label:'Titanium Gr5'},
+};
+
+function calc() {
+ const op = document.getElementById('op-type').value;
+ const dia = parseFloat(document.getElementById('dia').value) || 50;
+ const len = parseFloat(document.getElementById('length').value) || 100;
+ const doc = parseFloat(document.getElementById('doc').value) || 2;
+ const feed = parseFloat(document.getElementById('feed').value) || 0.2;
+ const vc = parseFloat(document.getElementById('vc').value) || 180;
+ const passes = parseInt(document.getElementById('passes').value) || 3;
+ const finalDia = parseFloat(document.getElementById('final-dia').value) || 44;
+ const noncut = parseFloat(document.getElementById('noncut').value) || 15;
+
+ // Calculate RPM from Vc
+ let effDia = op === 'facing' ? (dia + finalDia) / 2 : dia;
+ if (op === 'parting') effDia = dia;
+ const rpm = effDia > 0 ? (vc * 1000) / (Math.PI * effDia) : 1000;
+
+ // Lượng chạy dao per minute
+ const fpm = feed * rpm;
+
+ // Calculate travel distance based on operation
+ let travel = 0;
+ if (op === 'od' || op === 'boring') {
+ travel = len + 5; // +5mm approach/overrun
+ } else if (op === 'facing') {
+ travel = (dia - finalDia) / 2 + 3;
+ } else if (op === 'parting') {
+ travel = dia / 2 + 2;
+ }
+
+ // Cutting time per pass
+ const cutPerPassSec = travel > 0 && fpm > 0 ? (travel / fpm) * 60 : 0;
+ 
+ // Total cutting time
+ const totalCutSec = cutPerPassSec * passes;
+ 
+ // Non-cutting between passes
+ const interPassSec = (passes - 1) * 3;
+ 
+ // Total cycle
+ const cycleSec = totalCutSec + noncut + interPassSec;
+ 
+ // Parts per hour
+ const pph = cycleSec > 0 ? 3600 / cycleSec : 0;
+
+ // Material removed
+ const singlePassDepth = (dia - finalDia) / 2 / passes;
+ const removedPerPass = op === 'od' || op === 'boring'
+ ? (Math.PI * (Math.pow(dia/10,2) - Math.pow((dia-2*singlePassDepth)/10,2)) * len/10) / 4
+ : 0;
+ const totalRemoved = removedPerPass * passes;
+
+ // Cost estimate
+ const shopRate = 85; // $/hour
+ const costPerPart = (cycleSec / 3600) * shopRate;
+
+ document.getElementById('r-cut').textContent = totalCutSec.toFixed(1);
+ document.getElementById('r-cycle').textContent = cycleSec.toFixed(1);
+ document.getElementById('r-pph').textContent = Math.round(pph);
+ document.getElementById('r-rpm').textContent = Math.round(rpm);
+ document.getElementById('x-fpm').textContent = Math.round(fpm);
+ document.getElementById('x-removed').textContent = totalRemoved.toFixed(1);
+ document.getElementById('x-cost').textContent = '$' + costPerPart.toFixed(2);
+}
+
+calc();
+</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
+<section class="seo-content">
+<div class="container">
+<h2>Mỗi thao tác xoay mất bao lâu?</h2>
+<p>Một trục thép không gỉ 304, đường kính 50mm x dài 200mm, với ba đường chuyền nhám và một đường chuyền hoàn thiện-Có hợp lý 4 phút không? Hay nó nên là 2? Không có tính toán có cấu trúc, ước tính thay đổi 100% hoặc nhiều hơn giữa các lập trình viên có kinh nghiệm. Sự thay đổi này tác động trực tiếp đến độ chính xác trích dẫn, lập kế hoạch sản xuất và khả năng sinh lời của cửa hàng. Công thức Turning cycle time giúp loại bỏ phỏng đoán bằng cách phá vỡ từng thao tác thành các thành phần hình học và động học của nó.</p>
+<p>Sự khác biệt giữa chu kỳ xoay được tối ưu hóa tốt và chu kỳ bảo thủ thường là 30-50% thời gian chu kỳ-chuyển trực tiếp thành chi phí trên một phần. Một công việc chạy 500 phần mỗi năm với giá $12 mỗi lần so với $8 mỗi lần đại diện cho chênh lệch hàng năm $2,000 cho một số bộ phận duy nhất. Trên toàn bộ lịch trình sản xuất, tiết kiệm từ quỹ tối ưu hóa thời gian chu kỳ chính xác đầu tư đáng kể vào dụng cụ và thiết bị.</p>
+<h2>Công thức thời gian quay</h2>
+<p>Đối với bất kỳ đường chuyền xoay nào, thời gian cắt được lấy từ mối quan hệ cơ bản giữa Khoảng cách di chuyển của dụng cụ và tốc độ nạp liệu:</p>
+<p><strong>Cutting time (min):</strong> <code>t = L / (f × n)</code><br/>
+ Where <strong>L</strong> = total tool travel including approach and overrun (mm), <strong>f</strong> = feed per revolution (mm/rev), and <strong>n</strong> = spindle speed (RPM).</p>
+<p>For <strong>OD turning</strong>, tool travel L = length of cut + approach distance. For <strong>facing</strong>, the average diameter is used: <code>L = (Dinitial + Dfinal) / 4</code> combined with the radial travel distance. For <strong>boring</strong>, the calculation is identical to OD turning but with internal diameter considerations. For <strong>parting</strong>, the travel distance equals the radius of the bar stock.</p>
+<h2>Mất thời gian chu kỳ ở đâu: các yếu tố ẩn giấu</h2>
+<p>Thời gian cắt chỉ là một phần của tổng thời gian chu kỳ. Các thành phần không cắt-Định vị dụng cụ, lập chỉ mục, xếp dỡ một phần và kiểm tra-thường chiếm 30-60% tổng chu kỳ cho các bộ phận nhỏ. Máy tính này bao gồm một thông số thời gian không cắt để bạn có thể mô hình chính xác tổng chu kỳ.</p>
+<p>The most commonly overlooked factor is the <strong>number of passes</strong>. A single roughing pass at 3mm DOC removes more material per minute than two passes at 1.5mm each, but the cutting forces may exceed the insert's capability. The <a href="/tools/force-calculator/" style="color:#0066cc">Trình chuyển đổi nguồn cấp dữ liệu</a> can help determine the maximum DOC for your specific operation, enabling you to minimize pass count while staying within safe force limits.</p>
+<h3>Tác động chi phí của việc giảm thời gian chu kỳ</h3>
+<p>Mỗi giây được tiết kiệm với thời gian chu kỳ giúp giảm chi phí tương ứng. Với tốc độ cửa hàng là $85/giờ, giảm 10 giây cho chu kỳ 3 phút giúp tiết kiệm $0.47 cho mỗi bộ phận. Với tổng cộng 10,000 linh kiện, giá là 4,700 đô la. Bảng dưới đây cho thấy sự cải tiến nhỏ như thế nào:</p>
+<div class="comparison">
+<div><h4>🟢Hiện tại: 180 giây/Phần</h4><p>200 linh kiện/tháng → gia công 10 giờ → $850/tháng → $10,200/năm</p></div>
+<div><h4>🔵Tối ưu hóa: 120 giây/Phần</h4><p>200 parts/month → 6.7 hours → $567/month → $6,800/year<br/><strong>Save: $3,400/year</strong></p></div>
+</div>
+<h2>Chiến Lược hoạt động cụ thể để giảm thời gian chu kỳ</h2>
+<p><strong>OD Turning:</strong> The most direct lever is increasing DOC to reduce the number of passes. Each eliminated pass saves the full cutting time plus approach/retract motion. Verify force limits with the <a href="/tools/force-calculator/" style="color:#0066cc">Độ nhám bề mặt</a> before increasing DOC.</p>
+<p><strong>Facing:</strong> Constant surface speed (CSS) mode is essential. Without CSS, the RPM stays fixed and the cutting speed drops to zero at the center — dramatically increasing cycle time for facing operations. Always program facing with G96 (CSS) rather than G97 (constant RPM).</p>
+<p><strong>Boring:</strong> Internal boring cycles are limited by tool overhang and vibration. The cycle time is often determined by the need to take light passes to control chatter. Using a tuned boring bar with a higher natural frequency can allow deeper DOC and reduce pass count.</p>
+<p><strong>Parting:</strong> Parting is feed-limited, not speed-limited. Increasing feed from 0.05 mm/rev to 0.12 mm/rev can cut cycle time by 60% on the parting operation. However, higher feeds increase the risk of jamming the insert in the cut. Use a parting tool with chip-forming geometry designed for high feed rates.</p>
+<h2>Các thông số cắt ảnh hưởng thế nào đến thời gian chu kỳ so với tuổi thọ của dụng cụ</h2>
+<p>Có sự trao đổi trực tiếp giữa thời gian chu kỳ và tuổi thọ công cụ. Tăng Nguồn cấp dữ liệu 20% làm giảm thời gian chu kỳ 17% nhưng giảm tuổi thọ công cụ Khoảng 35% (theo phương trình Taylor được mở rộng đến hiệu ứng tốc độ Nguồn cấp dữ liệu). Điểm vận hành kinh tế tối ưu cân bằng chi phí tiêu thụ dụng cụ tăng lên so với tiết kiệm từ thời gian chu kỳ giảm. Đối với sản xuất khối lượng lớn (hơn 10,000 bộ phận), tỷ lệ thức ăn tối ưu thường cao hơn so với chạy khối lượng thấp, bởi vì thời gian thay đổi công cụ được biến đổi qua nhiều bộ phận hơn.</p>
+<p>Using the <a href="/tools/speed-feed/" style="color:#0066cc">Công cụ tính toán tốc độ và lượng ăn dao</a> to find the material-specific recommended chip load ensures you operate in the efficient zone where small feed increases give large cycle time reductions without disproportionate tool life penalties.</p>
+<div class="comparison">
+<div><h4>⚡Chiến Lược Nguồn cấp dữ liệu cao</h4><p>f=0.4 mm/rev → 90 sec cycle<br/>Tool life: 80 parts/edge<br/>Cost: optimized for volume</p></div>
+<div><h4>🎯Chiến Lược cân bằng</h4><p>f=0.25 mm/rev → 125 sec cycle<br/>Tool life: 180 parts/edge<br/>Cost: optimized for mixed runs</p></div>
+</div>
+<h2>Câu hỏi thường gặp</h2>
+<p><strong>How do you calculate cycle time for CNC turning?</strong> Cutting time = length of cut ÷ (feed per revolution × RPM). Total cycle time = cutting time + non-cutting time (tool positioning, part loading, inspection). This calculator does both automatically.</p>
+<p><strong>What is the formula for turning time?</strong> T = L ÷ (f × n) where L = total tool travel (mm), f = feed per revolution (mm/rev), n = spindle speed (RPM). For multiple passes, multiply by the number of passes and add non-cutting time between passes.</p>
+<p><strong>How does depth of cut affect cycle time?</strong> DOC determines the number of passes required. Doubling DOC halves the number of passes, directly reducing cycle time. Example: removing 6mm of stock at 2mm DOC requires 3 passes; at 4mm DOC it requires 2 passes — a 33% cycle time reduction.</p>
+<p><strong>What is a good cycle time for CNC turning?</strong> For a typical shaft 50mm diameter × 100mm long in mild steel: 60-120 seconds per part is efficient. Under 60 seconds requires high-feed strategies with rigid setup. Over 180 seconds indicates conservative parameters or excessive pass count.</p>
+<p><strong>Does constant surface speed affect cycle time?</strong> Significantly for facing and large-diameter variations. CSS maintains optimal cutting speed throughout the operation, reducing cycle time by 20-40% on facing passes compared to constant RPM. Always use G96 for facing operations.</p>
+<p><strong>How do I reduce cycle time without reducing tool life?</strong> Increase RPM rather than feed — higher RPM reduces cycle time without increasing chip load (which is the primary driver of tool wear). Verify that the higher RPM stays within the recommended cutting speed range for the material using the <a href="/tools/speed-feed/" style="color:#0066cc">Công cụ tính toán tốc độ và lượng ăn dao</a>.</p>
+<div style="text-align:center;padding:32px 24px;font-size:15px;color:#1d1d1f;background:#f5f5f7;border-radius:16px;max-width:900px;margin:40px auto 0">
+<p style="margin:0">Để giảm thời gian chu kỳ mà không ảnh hưởng đến chất lượng, hãy kiểm tra các nhà máy cuối cùng hiệu suất cao của chúng tôi</p>
+</div>
+</div>
+</section>
+<div class="toolbox-widget"><h3>🔧Hộp công cụ kỹ thuật chính xác</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Chi phí trên mỗi bộ phận</a>
+<a href="/tools/hardness-converter/">Bộ biến mô</a>
+<a href="/tools/tap-drill-size-calculator/">Yêu cầu báo giá số lượng lớn →</a>
+<a href="/tools/mrr-calculator/">Công cụ tính MRR</a>
+<a href="/tools/feed-converter/">Giá đựng dụng cụ</a>
+<a href="/tools/surface-roughness-calculator/">Máy tính vát mép</a>
+<a href="/tools/titanium-machining-guide/">Công cụ tính nồng độ dung dịch làm mát</a>
+<a href="/tools/carbide-grade-cross-ref-2/">Máy tính trọng lượng thanh tròn</a>
+<a href="/tools/cost-per-part-calculator/">Máy tính phay bước</a>
+<a href="/tools/torque-unit-converter/">Công cụ tính bước ren</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Giải Pháp Chuyên Nghiệp cho Cycle Time Calculator?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Nhận giá trực tiếp từ nhà máy cho dụng cụ carbide cao cấp với chất lượng chứng nhận ISO.</p>
+</div>
+<a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">Hướng dẫn gia công titan</a><a href="/products/tool-holders.html">Máy tính mở rộng nhiệt</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/cycle-time-calculator/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/cycle-time-calculator/&amp;text=Cycle Time Calculator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Cycle Time Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/cycle-time-calculator/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyênverter/">Sfm M Min Converter</a>
-<a href="/vi/tools/tool-change-time-analyzer/">Tool Change Time Analyzer</a>
-<a href="/vi/tools/reaming-allowance-calculator/">Reaming Allowance Calculator</a>
-<a href="/vi/tools/micron-inch-converter/">Micron Inch Converter</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/vi/tools/feed-converter/">Feed Converter</a>
+<a href="/vi/tools/cost-per-part-calculator/">Cost Per Part Calculator</a>
+<a href="/vi/tools/nose-radius-compensation/">Nose Radius Compensation</a>
+<a href="/vi/tools/grade-reference/">Grade Reference</a>
+<a href="/vi/tools/feed-rate-override-calculator/">Feed Rate Override Calculator</a>
 <a href="/vi/tools/thread-pitch-diameter-calculator/">Thread Pitch Diameter Calculator</a>
-<a href="/vi/tools/batch-cost-calculator/">Batch Cost Calculator</a>
+<a href="/vi/tools/pythagorean-calculator/">Pythagorean Calculator</a>
+<a href="/vi/tools/temp-converter/">Temp Converter</a>
+<a href="/vi/tools/torque-unit-converter/">Torque Unit Converter</a>
+<a href="/vi/tools/ramping-angle-calculator/">Ramping Angle Calculator</a>
 
 </div>
 </section>
@@ -312,22 +583,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/vi/tools/flatness-calculator/">Flatness Calculator</a>
+<a href="/vi/tools/gun-drill-calculator/">Gun Drill Calculator</a>
+<a href="/vi/tools/machinability-rating/">Machinability Rating</a>
+<a href="/vi/tools/metric-imperial-thread-converter/">Metric Imperial Thread Converter</a>
+<a href="/vi/tools/sfm-m-min-converter/">Sfm M Min Converter</a>
+<a href="/vi/tools/tool-change-time-analyzer/">Tool Change Time Analyzer</a>
+<a href="/vi/tools/reaming-allowance-calculator/">Reaming Allowance Calculator</a>
+<a href="/vi/tools/micron-inch-converter/">Micron Inch Converter</a>
+<a href="/vi/tools/thread-pitch-diameter-calculator/">Thread Pitch Diameter Calculator</a>
+<a href="/vi/tools/batch-cost-calculator/">Batch Cost Calculator</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -337,6 +612,20 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body>
 </html>

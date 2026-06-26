@@ -76,7 +76,20 @@ footer a{color:#0066cc;text-decoration:none}
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -90,18 +103,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -250,6 +252,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -257,6 +260,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1565193566165-24e2f9e7e80c?w=1200&h=675&fit=crop&q=80&auto=format" alt="CNCフライス削り速度と送り" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div>
 <nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/jp/"><span>◆</span> Carbide Tooling</a>
@@ -272,15 +283,238 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 </div>
 </div>
 </nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<section class="hero">
+<div class="container">
+<div class="badge">🔧 Free Professional Tool</div>
+<h1>スロット加工計算ツール</h1>
+<p>全幅スロッティングおよびキー溝切りにおける安全な切削速度と送りを算出します。スロット・ミリングは180 ° で工具に関与します-工具の故障を防ぐために送り速度を下げる必要があります。</p>
+<div class="hero-actions">
+<a class="btn" href="#calculator">計算を開始する ↓</a>
+<a class="btn-outline" href="https://carbide-tooling.com/quote.html">📩精度に関するお見積りを取得する</a>
+</div>
+</div>
+</section>
+<section class="container" id="calculator" style="padding-bottom:40px">
+<div class="card">
+<h2>🔧スロット &amp; Keywayフライス加工</h2>
+<p class="sub">全幅スロッティング (ae = D) は、最も要求の厳しいフライス加工です。フィードレートは、チップの排気と熱濃度を考慮する必要があります。</p>
+<div class="card-row">
+<div class="field"><label>🔩材料</label>
+<select id="material" onchange="calc()">
+<option value="al6061">Aluminum 6061</option>
+<option selected="" value="ss304">Stainless Steel 304</option>
+<option value="mild_steel">Mild Steel 1018</option>
+<option value="ti6al4v">Titanium Grade 5</option>
+</select>
+</div>
+<div class="field"><label>📐工具径（mm）</label>
+<input id="dia" max="50" min="1" oninput="calc()" step="0.5" type="number" value="10"/>
+<span style="font-size:10px;color:#86868b">Slot width = tool diameter</span>
+</div>
+<div class="field"><label>🦷フルート</label>
+<select id="flutes" onchange="calc()"><option value="2">2</option><option value="3">3</option><option selected="" value="4">4</option><option value="5">5</option><option value="6">6</option></select>
+</div>
+<div class="field"><label>⏬スロット深さ (mm)</label>
+<input id="depth" max="30" min="0.1" oninput="calc()" step="0.5" type="number" value="5"/>
+</div>
+<div class="field"><label>📏スロットの長さ (mm)</label>
+<input id="length" max="1000" min="1" oninput="calc()" step="5" type="number" value="50"/>
+</div>
+<div class="field"><label>🔧パスタイプ</label>
+<select id="pass-type" onchange="calc()">
+<option value="single">Single pass (full depth)</option>
+<option selected="" value="multi">Multiple passes (peck)</option>
+</select>
+</div>
+<div class="field"><label>⚡切削速度（Vc m/分）</label>
+<input id="vc" max="2000" min="10" oninput="calc()" step="10" type="number" value="120"/>
+</div>
+<div class="field"><label>📊チップLoad-fz (mm)</label>
+<input id="fz" max="1" min="0.001" oninput="calc()" step="0.005" type="number" value="0.04"/>
+</div>
+</div>
+<div class="result-grid">
+<div class="result-item"><div class="label">RPM</div><div class="value" id="r-rpm">—</div><div class="unit">RPM</div></div>
+<div class="result-item"><div class="label">Slotting 送り Rate</div><div class="value" id="r-feed">—</div><div class="unit">mm/min</div></div>
+<div class="result-item"><div class="label">vs Side Milling 送り</div><div class="value warning" id="r-reduction">—</div><div class="unit">% reduction</div></div>
+<div class="result-item"><div class="label">Cut Time (this slot)</div><div class="value" id="r-time">—</div><div class="unit">seconds</div></div>
+</div>
+<div class="extra-info">
+<span>Side milling feed (for comparison): <span class="val" id="x-side">—</span> mm/min</span>
+<span style="color:#d2d2d6">|</span>
+<span>Material removed: <span class="val" id="x-mrr">—</span> cm³</span>
+<span style="color:#d2d2d6">|</span>
+<span>Max slot depth per pass: <span class="val" id="x-maxdepth">—</span> mm</span>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px">
+<a href="/tools/trochoidal-milling-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f">
+<div style="font-size:20px">🌀</div><h4 style="font-size:14px;font-weight:600;margin:4px 0 2px">トロコイド加工計算ツール</h4>
+<p style="font-size:12px;color:#86868b">広いスロットの場合、トロコイダルパスは従来のスロッティングよりも優れている可能性があります。</p>
+</a>
+<a href="/tools/force-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f">
+<div style="font-size:20px">💪</div><h4 style="font-size:14px;font-weight:600;margin:4px 0 2px">切削力計算ツール</h4>
+<p style="font-size:12px;color:#86868b">スロットは切断力を2倍にします-ツールの制限を確認します。</p>
+</a>
+</div>
+</section>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">関連精密工具</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/jp/tools/scrap-value-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Scrap Value Calculator</a><a href="/jp/tools/sfm-m-min-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Sfm M Min Converter</a><a href="/jp/tools/shipping-duty-estimator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Shipping Duty Estimator</a><a href="/jp/tools/round-bar-weight/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Round Bar Weight</a><a href="/jp/tools/cost-per-part-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Cost Per Part Calculator</a><a href="/jp/tools/thread-depth-torque-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Thread Depth Torque Calculator</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">ホーム</a>
+<a href="/tools/">すべてのツール</a>
+<a href="/products/">製品</a>
+<a href="/guides/">ガイド</a>
+<a href="/about.html">について</a>
+<a href="/quote.html">硬度変換器</a>
+<a href="/privacy.html">タップ穴径</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">MRR計算ツール</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">すべてのツール</a></p>
+<p style="font-size:11px;margin-bottom:6px">結果は参考としてのみご使用ください。具体的な用途については、工具メーカーにご相談ください。</p>
+<p style="font-size:11px">©2026年用超硬工具</p>
+</div>
+</footer>
+<script>
+const MATS = {
+ al6061:{feedReduction:0.5,docMult:1.5,side送り:1.0,label:'Aluminum'},
+ ss304:{feedReduction:0.35,docMult:0.8,side送り:1.0,label:'Stainless 304'},
+ mild_steel:{feedReduction:0.45,docMult:1.0,side送り:1.0,label:'Mild Steel'},
+ ti6al4v:{feedReduction:0.3,docMult:0.5,side送り:1.0,label:'Titanium'},
+};
+
+function calc() {
+ const mat = MATS[document.getElementById('material').value];
+ const dia = parseFloat(document.getElementById('dia').value) || 10;
+ const z = parseInt(document.getElementById('flutes').value) || 4;
+ const depth = parseFloat(document.getElementById('depth').value) || 5;
+ const length = parseFloat(document.getElementById('length').value) || 50;
+ const passType = document.getElementById('pass-type').value;
+ const vc = parseFloat(document.getElementById('vc').value) || 120;
+ const fz = parseFloat(document.getElementById('fz').value) || 0.04;
+
+ const rpm = dia > 0 ? (vc * 1000) / (Math.PI * dia) : 1000;
+
+ // Side milling feed (full chip load)
+ const side送り = rpm * z * fz;
+
+ // Slotting feed reduction
+ const reductionPct = mat.feedReduction;
+ const slot送り = side送り * reductionPct;
+
+ // 送り reduction percentage display
+ const feedReductionDisplay = Math.round((1 - reductionPct) * 100);
+
+ // Max depth per pass
+ const maxDepth = dia * mat.docMult;
+
+ // Number of passes
+ const numPasses = passType === 'single' ? 1 : Math.ceil(depth / (dia * 0.75));
+
+ // Actual depth per pass
+ const actDepthPerPass = Math.min(depth, numPasses > 0 ? depth / numPasses : depth);
+
+ // Cutting time per pass (with approach allowance)
+ const approachLen = dia * 1.5;
+ const cutDistPerPass = length + approachLen;
+ const cutTimePerPassMin = slot送り > 0 ? cutDistPerPass / slot送り : 0;
+ const retractTime = 2; // seconds per retract
+ const totalCutTimeSec = cutTimePerPassMin * 60 * numPasses + retractTime * (numPasses - 1);
+
+ // Material removed
+ const slotVol = (Math.PI * dia * dia / 4 * length / 1000); // cm³ (simplified)
+
+ // MRR
+ const mrr = (actDepthPerPass * dia * slot送り) / 1000;
+
+ document.getElementById('r-rpm').textContent = Math.round(rpm);
+ document.getElementById('r-feed').textContent = Math.round(slot送り);
+ document.getElementById('r-reduction').textContent = feedReductionDisplay;
+ document.getElementById('r-time').textContent = totalCutTimeSec.toFixed(1);
+ document.getElementById('x-side').textContent = Math.round(side送り);
+ document.getElementById('x-mrr').textContent = slotVol.toFixed(1);
+ document.getElementById('x-maxdepth').textContent = maxDepth.toFixed(1);
+}
+
+calc();
+</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
+<section class="seo-content">
+<div class="container">
+<h2>スロットフライス加工はサイドフライス加工ではありません</h2>
+<p>スロットミリングをサイドミリングのように扱うプログラマーは、ツールを壊します。サイドミリングでは、ツールは直径の30〜50% にかみ合います。チップには形成および排出の余地があり、クーラントは切断ゾーンに到達し、切断力はかみ合ったアーク全体に分散されます。スロットミリングでは、ツールは180 ° の噛み合いでカットに埋め込まれます。すべてのフルートは入り口から出口までカットしています。チップはフルートの両側を同時に移動する必要があります。クーラントは完全な最先端に到達するのに苦労しています。切断力は、同等のサイドミリングパスよりも2〜3倍高い。</p>
+<p>修正は複雑ではありません: フィードレートを下げます。しかし、いくらですか? 材料とスロットの深さに応じて、スロットの標準的なサイドミリングフィードレートを40〜60% 削減する必要があります。この計算機は、材料固有の削減係数を適用するため、推測する必要はありません。</p>
+<h2>チップの避難がスロットフライス加工の料金を制限する理由</h2>
+<p>全幅スロットでは、各フルートによって生成されたチップは、カットを出るためにフルートの全長を移動する必要があります。深いスロット (深さ&gt; 2 × 直径) では、チップはツールをクリアする前に30〜50 mm移動することができる。フィードレートが高すぎると、チップボリュームがフルートボリュームを超え、ツールがチップを詰め込みます。パッキングにより、送り速度が失速し、スピンドル荷重がスパイクされ、ツールがフルートの根元で破損します。</p>
+<p>刃先の間に物理的なスペースが多いため、2フルートツールはスロットで4フルートツールよりもチップをうまく避難させます。このため、通常のフィードレートの60% の2フルートエンドミルは、通常のフィードの50% で4フルートエンドミルよりも優れている可能性があります。2フルートツールはチップをより効果的にクリアし、より高い効果的なフィードを維持できます。。</p>
+<h2>ペッキングとシングルパススロット</h2>
+<p>1倍のツール直径よりも深いスロットの場合は、つつく (複数の浅いパス) ことをお勧めします。各ペックは直径0.5〜1 × の深さで、ペックの間に完全に引っ込めてチップをクリアし、クーラントがカッティングゾーンに到達できるようにする必要があります。直径1.5 × の深さを超えるシングルパススロットでは、供給速度を下げる必要があり、スピンドル冷却剤でのみ試行する必要があります。</p>
+<p>ペッキングは、格納と再突入のための非切断時間を追加しますが、切断部分の間のより高い供給速度を可能にします。カッティングフィードはシングルパスフィードよりも1.5〜2倍高くなる可能性があるため、ネットサイクルタイムは多くの場合、深いスロットをつつくのに適しています。Cycle Time Calculatorは、特定のスロットジオメトリに最適なペック数を決定するのに役立ちます。</p>
+<h2>Keyway Milling: 特別な考慮事項</h2>
+<p>キーウェイは通常、公差が厳しく (H7/h7フィット) 、フィニッシュパスが必要です。荒削りパスは、1辺あたり0.2〜0.5mmの仕上げ余裕を持つ標準的なスロットミリングパラメータに従う必要があります。フィニッシュパスは、必要な表面仕上げと寸法精度を実現するために、粗面供給速度の60〜70% で片側0.1〜0.2mmかかります。</p>
+<p>キーウェイカッター (ウッドラフカッターとキーシートカッター) は、標準のエンドミルとは異なる形状を持っています。それらは通常、より少ないフルート (2〜3) と剛性のためのより大きなコア直径を有する。この計算機からのフィードと速度は、キーウェイを切断する標準的なエンドミルに有効です。専用のキーシートカッターについては、メーカーの推奨事項を参照してください。</p>
+<h2>スロットフライスのためのクーラント戦略</h2>
+<p>ツールエントリポイントでの洪水冷却剤は、スチールとステンレスのスロットミリングの最小要件です。クーラントの流れは、ワークピースの上面だけでなく、切断ゾーンに到達する必要があります。20 mmより深いスロットの場合、20バールのスピンドル冷却剤は、チップの排気と工具の寿命を大幅に改善します。アルミニウムでは、圧縮空気が十分であることが多く、好まれます。冷却剤は、高い供給速度でアルミニウムに熱衝撃を引き起こす可能性があります。</p>
+<p>MQL (最小量の潤滑) は、アルミニウムと軟鋼のスロットに有効です。オイルミストは、フラッドクーラントが生成する熱勾配を生成せずに、チップとツールのインターフェースでの摩擦を低減します。ステンレスとチタンの場合、50バールの高圧スルースピンドルクーラントは、スロットのための唯一の信頼できるクーラント戦略です。</p>
+<h2>よくある質問</h2>
+<p><strong>What is slot milling?</strong> A milling operation where the tool is engaged across its full diameter (180° engagement), cutting a slot in a single pass. It is the most demanding milling operation due to restricted chip evacuation and high cutting forces.</p>
+<p><strong>How much should I reduce feed rate for slotting?</strong> 送り rate should be reduced by 40-60% compared to side milling at the same chip load. The exact reduction depends on material, slot depth, and tool geometry. This calculator computes the safe reduction automatically.</p>
+<p><strong>Can I use the same RPM for slotting as side milling?</strong> RPM should be slightly reduced (10-20%) for slotting to reduce heat generation at the tool center. The calculator's RPM value accounts for this reduction.</p>
+<p><strong>How deep can I cut in one pass for slot milling?</strong> For aluminum, up to 1.5× tool diameter in a single pass. For steel and stainless, limit single-pass depth to 1× tool diameter. For titanium, do not exceed 0.5× diameter per pass without through-spindle coolant.</p>
+<p><strong>What is the best flute count for slot milling?</strong> 2-3 flutes are preferred for slotting because they provide more chip evacuation space. 4-flute tools can be used for finishing passes where the depth per pass is low and chip volume is small.</p>
+<p><strong>When should I use trochoidal milling instead of slotting?</strong> For slots wider than 2× tool diameter, trochoidal milling with a smaller tool produces higher MRR and better tool life than conventional slotting with a full-width tool. Use the <a href="/tools/trochoidal-milling-calculator/" style="color:#0066cc">トロコイド加工計算ツール</a> to compare both approaches.</p>
+<div style="text-align:center;padding:32px 24px;font-size:15px;color:#1d1d1f;background:#f5f5f7;border-radius:16px;max-width:900px;margin:40px auto 0">
+<p style="margin:0">最適化されたフルートジオメトリを備えたスロッティングエンドミルについては、高性能エンドミルを確認してください</p>
+</div>
+</div>
+</section>
+<div class="toolbox-widget"><h3>🔧精密工学ツールボックス</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">チタンガイド</a>
+<a href="/tools/hardness-converter/">グレード相互参照</a>
+<a href="/tools/tap-drill-size-calculator/">部品当たりのコスト</a>
+<a href="/tools/mrr-calculator/">トルクコンバーター</a>
+<a href="/tools/feed-converter/">一括見積もりを依頼する →</a>
+<a href="/tools/surface-roughness-calculator/">ソリッドカーバイドエンドミル</a>
+<a href="/tools/titanium-machining-guide/">工具ホルダー</a>
+<a href="/tools/carbide-grade-cross-ref-2/">成績の参考</a>
+<a href="/tools/cost-per-part-calculator/">スクラップ価値計算ツール</a>
+<a href="/tools/torque-unit-converter/">冷却液のライフサイクルコスト</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Slot Milling Calculatorのプロフェッショナルソリューション</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">ISO認証品質のプレミアム超硬工具を工場直送価格でご提供。技術サポート付き。</p>
+</div>
+<a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">鋳鉄加工用計算ツール</a><a href="/products/tool-holders.html">超合金工具寿命推定ツール</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/slot-milling-calculator/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/slot-milling-calculator/&amp;text=Slot Milling Calculator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Slot Milling Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/slot-milling-calculator/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
 <p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
-<div style="dierence</a>
-<a href="/jp/tools/force-calculator/">Force Calculator</a>
-<a href="/jp/tools/tube-weight-calculator/">Tube Weight Calculator</a>
-<a href="/jp/tools/percentage-of-thread-calculator/">Percentage Of Thread Calculator</a>
-<a href="/jp/tools/flatness-calculator/">Flatness Calculator</a>
-<a href="/jp/tools/nose-radius-compensation/">Nose Radius Compensation</a>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/jp/tools/form-tap-drill-calculator/">Form Tap Drill Calculator</a>
+<a href="/jp/tools/titanium-machining-guide/">Titanium Machining Guide</a>
+<a href="/jp/tools/cycle-time-calculator/">Cycle Time Calculator</a>
+<a href="/jp/tools/iso-fit-calculator/">Iso Fit Calculator</a>
+<a href="/jp/tools/aluminum-alloy-table/">Aluminum Alloy Table</a>
+<a href="/jp/tools/speed-feed/">Speed Feed</a>
+<a href="/jp/tools/batch-cost-calculator/">Batch Cost Calculator</a>
+<a href="/jp/tools/round-bar-weight/">Round Bar Weight</a>
+<a href="/jp/tools/gdt-symbols-reference/">Gdt Symbols Reference</a>
+<a href="/jp/tools/ramping-angle-calculator/">Ramping Angle Calculator</a>
 
 </div>
 </section>
@@ -305,22 +539,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/jp/tools/heat-expansion-calculator/">Heat Expansion Calculator</a>
+<a href="/jp/tools/chamfer-calculator/">Chamfer Calculator</a>
+<a href="/jp/tools/drill-point-length-calculator/">Drill Point Length Calculator</a>
+<a href="/jp/tools/form-tap-drill-calculator/">Form Tap Drill Calculator</a>
+<a href="/jp/tools/gcode-reference/">Gcode Reference</a>
+<a href="/jp/tools/force-calculator/">Force Calculator</a>
+<a href="/jp/tools/tube-weight-calculator/">Tube Weight Calculator</a>
+<a href="/jp/tools/percentage-of-thread-calculator/">Percentage Of Thread Calculator</a>
+<a href="/jp/tools/flatness-calculator/">Flatness Calculator</a>
+<a href="/jp/tools/nose-radius-compensation/">Nose Radius Compensation</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -330,6 +568,20 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body>
 </html>

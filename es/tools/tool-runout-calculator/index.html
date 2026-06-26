@@ -12,7 +12,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -26,18 +39,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -178,6 +180,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -185,7 +188,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1567361808960-3e7f9e3b3de1?w=1200&h=675&fit=crop&q=80&auto=format" alt="Mecanizado de precisión" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/es/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -200,15 +210,105 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 </div>
 </div>
 </nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<section class="hero"><div class="container"><div class="badge">🔍 Diagnostic Tool</div><h1>Herramienta Runout Impact</h1><p>Runout es la causa #1 del desgaste desigual de la herramienta y el acabado de la superficie inconsistente. Ingrese su runout medido y vea cómo afecta la carga de viruta de cada flauta.</p><a class="btn" href="#calculator">Diagnosticar ↓</a></div></section>
+<section class="container" id="calculator" style="padding-bottom:40px">
+<div class="card"><h2>🔍Análisis de impacto de Runout</h2><p class="sub">Mide cómo el runout distribuye la carga de chip de manera desigual a través de las flautas.</p>
+<div class="card-row">
+<div class="field"><label>📐Diámetro de la herramienta (mm)</label><input id="dia" max="50" min="0.5" oninput="calc()" step="0.5" type="number" value="12"/></div>
+<div class="field"><label>📏Runout medido (μm)</label><input id="runout" max="200" min="1" oninput="calc()" step="1" type="number" value="20"/></div>
+<div class="field"><label>🦷Flautas</label><select id="flutes" onchange="calc()"><option>2</option><option selected="">4</option><option>6</option></select></div>
+<div class="field"><label>📊Fz programado (mm)</label><input id="fz" max="1" min="0.001" oninput="calc()" step="0.005" type="number" value="0.05"/></div>
+</div>
+<div class="result-grid">
+<div class="result-item"><div class="label">Max Chip Load (Flute 1)</div><div class="value bad" id="r-max">—</div><div class="unit">mm</div></div>
+<div class="result-item"><div class="label">Min Chip Load (Flute N)</div><div class="value" id="r-min">—</div><div class="unit">mm</div></div>
+<div class="result-item"><div class="label">Load Imbalance</div><div class="value bad" id="r-imbalance">—</div><div class="unit">%</div></div>
+<div class="result-item"><div class="label">Tool Life Impact</div><div class="value" id="r-life">—</div><div class="unit">% reduction</div></div>
+</div>
+</div>
+<div style="text-align:center;margin:20px 0"><a href="/tools/" style="color:#0066cc;text-decoration:none;font-size:13px">← Todas las herramientas</a></div>
+</section>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Herramientas de precisión relacionadas</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/es/tools/tangent-point-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tangent Point Calculator</a><a href="/es/tools/tap-drill-size-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tap Drill Size Calculator</a><a href="/es/tools/taper-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Taper Calculator</a><a href="/es/tools/chip-load/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Chip Load</a><a href="/es/tools/force-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Force Calculator</a><a href="/es/tools/polar-rect-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Polar Rect Converter</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">Inicio</a>
+<a href="/tools/">Todas las herramientas</a>
+<a href="/products/">Productos</a>
+<a href="/guides/">Guías</a>
+<a href="/about.html">Sobre</a>
+<a href="/quote.html">Convertidor de dureza</a>
+<a href="/privacy.html">Tamaño del taladro de roscado</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Calculadora de MRR</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Todas las herramientas</a></p>
+<p style="font-size:11px;margin-bottom:6px">Los resultados son únicamente de referencia. Consulte a los fabricantes de herramientas para aplicaciones específicas.</p>
+<p style="font-size:11px">©Herramientas de carburo 2026</p>
+</div>
+</footer>
+<script>
+function calc(){const d=parseFloat(document.getElementById('dia').value)||12;const r=parseFloat(document.getElementById('runout').value)||20;const z=parseInt(document.getElementById('flutes').value)||4;const fz=parseFloat(document.getElementById('fz').value)||0.05;const rMm=r/1000;const maxFz=fz+rMm>0?fz+rMm:0;const minFz=Math.max(0,fz-rMm);const imbalance=maxFz>0?((maxFz-minFz)/maxFz)*100:0;const lifeRed=Math.min(80,r*2);document.getElementById('r-max').textContent=maxFz.toFixed(4);document.getElementById('r-min').textContent=minFz.toFixed(4);document.getElementById('r-imbalance').textContent=Math.round(imbalance)+'%';document.getElementById('r-life').textContent=Math.round(lifeRed)+'%';}
+calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><section class="seo-content"><div class="container">
+<div class="diag"><p><strong>🔴 Symptom:</strong> One flute always wears faster than the others. Tool life is half of what it should be. Surface finish varies from part to part. <strong>→ Likely cause: excessive runout.</strong></p></div>
+<h2>Cómo Runout destruye la vida de la herramienta de manera desuniformemente</h2>
+<p>Cuando un portaherramientas tiene 20 μm de salida, la primera flauta en el corte toma más material que los otros. En un molino de extremo de 4 flautas con 20 μm de salida y una carga de viruta programada de 0,05mm por diente, la primera flauta realmente corta a 0,07mm-40% sobre la carga recomendada. Las tres flautas restantes cortan progresivamente menos, con la última flauta cortando a solo 0,03mm, potencialmente por debajo del grosor mínimo de la viruta, causando frotamiento en lugar de corte.</p>
+<p>La flauta sobrecargada se desgasta rápidamente y desarrolla astillado de borde. Una vez que la primera flauta falla, las flautas restantes se obligan a tomar más que su parte, creando un fracaso de la cascada que destruye el instrumento en una fracción de su vida esperada. Esta es la razón por la cual una fresa de extremo de 4 flautas en un soporte de salida de 20 μm puede durar solo 30-50% mientras la misma herramienta en un soporte de 4 μm.</p>
+<p>En un soporte de collet ER estándar, es común una desviación de 15-30 μm. En un soporte hidráulico de precisión o de ajuste por contracción, el runout es típicamente inferior a 5 μm. La diferencia del coste entre estos tenedores se recupera en vida de la herramienta dentro de las semanas para cualquier tienda que corre cantidades de la producción.</p>
+<h2>Diagnosticar problemas relacionados con el runout</h2>
+<p>La desviación produce un patrón específico de síntomas: marcas de vibración a intervalos regulares correspondientes a la frecuencia de rotación del husillo, desgaste desigual de la herramienta con una o dos acanaladuras que muestran significativamente más desgaste de borde que otras, y variación dimensional en las características mecanizadas con diferentes orientaciones de herramienta. En un VF-2 Haas o VMC similar, la verificación de la desviación con un indicador de cuadrante en la punta de la herramienta y 50 mm por debajo del soporte debe ser parte de cada cambio de herramienta. La desviación en la punta que excede los 10 μm para las herramientas de acabado debe corregirse antes de cortar el material.</p>
+<h2>Preguntas frecuentes</h2>
+<p><strong>What is tool runout?</strong> The eccentricity of the cutting tool relative to the spindle axis, measured in microns. Runout causes each flute to take an uneven cut.</p>
+<p><strong>How much runout is acceptable?</strong> Below 5 μm for finishing, below 15 μm for roughing. Above 20 μm, tool life drops by 50% or more regardless of material or cutting parameters.</p>
+<p><strong>How do I measure runout?</strong> Use a dial indicator at the tool tip. Rotate the spindle by hand and read the total indicated runout (TIR). Measure both at the tip and 50 mm down the tool to check for bent tools.</p>
+<p><strong>What holder type has the lowest runout?</strong> Shrink-fit holders (2-4 μm), followed by hydraulic chucks (3-5 μm), then milling chucks (5-10 μm), and ER collets (10-30 μm depending on quality and condition).</p>
+</div></section>
+<div class="toolbox-widget"><h3>🔧Caja de herramientas de ingeniería de precisión</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Rugosidad de la superficie</a>
+<a href="/tools/hardness-converter/">Guía de titanio</a>
+<a href="/tools/tap-drill-size-calculator/">Referencia cruzada de calificaciones</a>
+<a href="/tools/mrr-calculator/">Costo por pieza</a>
+<a href="/tools/feed-converter/">Convertidor de par</a>
+<a href="/tools/surface-roughness-calculator/">Solicitar cotización por volumen →</a>
+<a href="/tools/titanium-machining-guide/">Fresas de extremo de carburo sólido</a>
+<a href="/tools/carbide-grade-cross-ref-2/">Portaherramientas</a>
+<a href="/tools/cost-per-part-calculator/">Calculadora de parámetros de engranajes</a>
+<a href="/tools/torque-unit-converter/">Temporizador Pomodoro</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">¿Soluciones Profesionales para Tool Runout Calculator?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Obtenga precios directos de fábrica en herramientas de carburo premium con calidad certificada ISO.</p>
+</div>
+<a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">Calculadora de profundidad de rosca y par de torsión</a><a href="/products/tool-holders.html">Seleccionador de recubrimientos</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/tool-runout-calculator/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/tool-runout-calculator/&amp;text=Tool Runout Calculator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Tool Runout Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/tool-runout-calculator/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profes>
-<a href="/es/tools/tube-weight-calculator/">Tube Weight Calculator</a>
-<a href="/es/tools/aql-sampling-calculator/">Aql Sampling Calculator</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/es/tools/heat-expansion-calculator/">Heat Expansion Calculator</a>
+<a href="/es/tools/carbide-grade-cross-ref-2/">Carbide Grade Cross Ref 2</a>
+<a href="/es/tools/cost-per-part-calculator/">Cost Per Part Calculator</a>
 <a href="/es/tools/cycle-time-calculator/">Cycle Time Calculator</a>
-<a href="/es/tools/wall-thickness-calculator/">Wall Thickness Calculator</a>
-<a href="/es/tools/inventory-turnover-calculator/">Inventory Turnover Calculator</a>
+<a href="/es/tools/die-steel-thermal-conductivity/">Die Steel Thermal Conductivity</a>
+<a href="/es/tools/coolant-concentration/">Coolant Concentration</a>
 <a href="/es/tools/titanium-machining-guide/">Titanium Machining Guide</a>
+<a href="/es/tools/surface-roughness-calculator/">Surface Roughness Calculator</a>
+<a href="/es/tools/taper-calculator/">Taper Calculator</a>
+<a href="/es/tools/coord-rotation-calculator/">Coord Rotation Calculator</a>
 
 </div>
 </section>
@@ -233,22 +333,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/es/tools/machinability-rating/">Machinability Rating</a>
+<a href="/es/tools/thread-lead-angle-calculator/">Thread Lead Angle Calculator</a>
+<a href="/es/tools/helical-interpolation-calculator/">Helical Interpolation Calculator</a>
+<a href="/es/tools/arc-r-to-ij-converter/">Arc R To Ij Converter</a>
+<a href="/es/tools/tube-weight-calculator/">Tube Weight Calculator</a>
+<a href="/es/tools/aql-sampling-calculator/">Aql Sampling Calculator</a>
+<a href="/es/tools/cycle-time-calculator/">Cycle Time Calculator</a>
+<a href="/es/tools/wall-thickness-calculator/">Wall Thickness Calculator</a>
+<a href="/es/tools/inventory-turnover-calculator/">Inventory Turnover Calculator</a>
+<a href="/es/tools/titanium-machining-guide/">Titanium Machining Guide</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -258,5 +362,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>

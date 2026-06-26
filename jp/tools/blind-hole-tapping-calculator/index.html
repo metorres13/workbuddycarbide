@@ -11,7 +11,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -25,18 +38,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -249,6 +251,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -256,7 +259,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1504328346580-ee3558200b6a?w=1200&h=675&fit=crop&q=80&auto=format" alt="精密超硬ドリル" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/jp/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -270,16 +280,89 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 <a class="nv-quote" href="/jp/quote.html">📩 見積依頼</a>
 </div>
 </div>
-</nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">超硬合金グレードの相互参照表</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">Gコードリファレンス</a> <span style="color:#d2d2d6">›</span> Blind Hole Tapping Calculator</div>
+<section class="hero"><div class="container"><div class="badge" style="display:inline-flex;background:#f5f5f7;padding:4px 14px;border-radius:20px;font-size:11px;font-weight:600;color:#86868b;margin-bottom:16px">⚠️ Safety Guide</div><h1>ドリル深さ = 糸深さタップ面取り長さ2 × ピッチクリアランス。</h1><p>🔩糸のサイズ</p><a class="btn" href="#calculator">金属コスト計算機</a></div></section>
+<section class="container" id="calculator" style="padding-bottom:40px"><div class="card"><h2>📏必要な糸の深さ (mm)</h2><p class="sub">🔧タップタイプ</p><div class="card-row"><div class="field"><label>🔧100種類のプロ向け切削工具をチェック</label><select id="size" onchange="calc()"><option>M6×1.0</option><option>M8×1.25</option><option selected="">M10×1.5</option><option>M12×1.75</option></select></div><div class="field"><label>すべてのツール</label><input id="tdepth" max="100" min="3" oninput="calc()" step="1" type="number" value="20"/></div><div class="field"><label>結果は参考としてのみご使用ください。具体的な用途については、工具メーカーにご相談ください。</label><select id="taptype" onchange="calc()"><option value="plug">Plug tap (3-5 thread chamfer)</option><option selected="" value="bottom">Bottom tap (1-2 thread chamfer)</option></select></div></div><div class="result-grid"><div class="result-item"><div class="label">Minimum Drill Depth</div><div class="value" id="r-drill">—</div><div class="unit">mm</div></div>
+<div class="result-item"><div class="label">Tap Chamfer Length</div><div class="value" id="r-chamfer">—</div><div class="unit">mm</div></div>
+<div class="result-item"><div class="label">Safety Clearance</div><div class="value" id="r-clear">—</div><div class="unit">mm</div></div>
+<div class="result-item"><div class="label">Tap Entry (perfect)</div><div class="value" id="r-entry">—</div><div class="unit">mm</div></div></div></div><div style="text-align:center;margin:16px 0"><a href="/tools/" style="color:#0066cc;text-decoration:none;font-size:13px">ツールボックス整理箱</a></div></section>
+
+<script>function calc(){const val=document.getElementById('size').value;const major=parseFloat(val.split('×')[0].replace('M',''));const pitch=parseFloat(val.split('×')[1]);const req=parseFloat(document.getElementById('tdepth').value)||20;const tapType=document.getElementById('taptype').value;const chamferLen=tapType==='plug'?4*pitch:1.5*pitch;const clear=2*pitch;const drill=req+chamferLen+clear;const entry=req-chamferLen;document.getElementById('r-drill').textContent=drill.toFixed(1);document.getElementById('r-chamfer').textContent=chamferLen.toFixed(1);document.getElementById('r-clear').textContent=clear.toFixed(1);document.getElementById('r-entry').textContent=Math.max(0,entry).toFixed(1);}calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">関連精密工具</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/jp/tools/ball-nose-effective-diameter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Ball Nose Effective Diameter</a><a href="/jp/tools/batch-cost-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Batch Cost Calculator</a><a href="/jp/tools/bolt-circle-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Bolt Circle Calculator</a><a href="/jp/tools/tool-steel-heat-treat/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tool Steel Heat Treat</a><a href="/jp/tools/reaming-allowance-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Reaming Allowance Calculator</a><a href="/jp/tools/pomodoro-timer/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Pomodoro Timer</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">超硬合金グレードの相互参照表</a>
+<a href="/tools/">ブラインドホールタップの深さの要件を理解する</a>
+<a href="/products/">🇬🇧英語</a>
+<a href="/guides/">🇩🇪ドイツ</a>
+<a href="/about.html">🇯🇵ジェイピー</a>
+<a href="/quote.html">表面粗さ</a>
+<a href="/privacy.html">チタンガイド</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">グレード相互参照</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">ブラインドホールタップの深さの要件を理解する</a></p>
+<p style="font-size:11px;margin-bottom:6px">ブラインドホールタッピングでは、タップを底打ちしないように正確な奥行き制御が必要です。これにより、工具の破損やねじ山の損傷が発生する可能性があります。ほとんどのアプリケーションの最小全ねじ深さは、公称ねじ直径の1.5 × です。タップの面取り長さ (通常は3〜5本の糸) を考慮し、2〜3mmの安全クリアランスを追加すると、タップやワークピースを危険にさらすことなく、信頼性の高いタッピングが保証されます。</p>
+<p style="font-size:11px">ブラインドホールのタップドリル深さの計算</p>
+</div>
+<section class="seo"><div class="container">
+<h2>タップドリルの深さは、スレッドの係合長とタップのリードの両方を考慮する必要があります。標準のプラグ面取りタップの場合は、必要なスレッド長を超える深さの5スレッドを追加します。次の式を使用します。ドリルの深さ = 必要な糸の深さ (5 × ピッチ) 1mm、タップからボトムへの衝突を心配することなく、ブラインドホールのサイクルを自信を持ってプログラムできます。</h2><p>避けるべき一般的なブラインドホールタッピングミス</p>
+<h2>最も頻繁なエラーには、不十分なドリル深さ、間違ったタップスタイルの使用 (ボトミングとプラグの面取り) 、および不十分なチップ排気が含まれます。直径2倍より深いブラインドホールの場合は、チップを穴から引き抜くスパイラルフルートタップを検討して、タップの破損につながるチップパッキングのリスクを減らします。</h2><p>よくある質問</p>
+<h2>アルミニウムおよびその他の非鉄材料の場合、ほとんどの用途では、公称直径の1.5倍で十分です。スチールとステンレススチールでは、直径1.0 × が一般的に適切である。エンジニアリング要件に対して常に確認してください。</h2><p>ブラインドホールにフォーミングタップを使用する必要がありますか?ブラインドホールには、40〜60% のトルクが必要であり、薄壁の機能を変形させる可能性のある大きな半径方向の力を生成するため、 (ロール) タップの形成は推奨されません。ブラインドホール用途には、スパイラルフルート形状のカッティングタップを使用します。</p>
+<h2>ブラインドホールタッピングのチップブレイクをプログラムするにはどうすればよいですか?CNCコントロールがサポートしている場合は、リジッドタッピングサイクルをペックタッピングで使用します (G84.2またはM29)。それ以外の場合は、チップをクリアできるように、反転する前に穴の底でドウェルをプログラムします。2 × 直径より深いブラインドホールのタッピング速度を20% 下げます。</h2>
+<p><strong>What is the minimum thread engagement for blind holes in aluminum?</strong> For aluminum and other non-ferrous materials, 1.5× the nominal diameter of thread engagement is sufficient for most applications. For steel and stainless steel, 1.0× diameter is typically adequate. Always verify against your engineering requirements.</p>
+<p><strong>Should I use a forming tap for blind holes?</strong> Forming (roll) taps are not recommended for blind holes because they require 40–60% more torque and generate significant radial force that can deform thin-walled features. Use cutting taps with spiral flute geometry for blind hole applications.</p>
+<p><strong>How do I program chip breaking for blind hole tapping?</strong> Use rigid tapping cycles with peck tapping if your CNC control supports it (G84.2 or M29). Otherwise, program a dwell at the bottom of the hole before reversal to allow chips to clear. Reduce tapping speed by 20% for blind holes deeper than 2× diameter.</p>
+<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">トルクコンバーター</a></p>
+</div></section>
+</footer>
+<div class="toolbox-widget"><h3>◆超硬工具</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">一括見積もりを依頼する →</a>
+<a href="/tools/hardness-converter/">カーバイドドリル</a>
+<a href="/tools/tap-drill-size-calculator/">スレッドミル &amp; タップ</a>
+<a href="/tools/mrr-calculator/">鋼の熱伝導率</a>
+<a href="/tools/feed-converter/">一括割引計算機</a>
+<a href="/tools/surface-roughness-calculator/">重量・送料計算ツール</a>
+<a href="/tools/titanium-machining-guide/">グラファイト加工計算ツール</a>
+<a href="/tools/carbide-grade-cross-ref-2/">送料・関税の見積もりツール</a>
+<a href="/tools/cost-per-part-calculator/">引張強度変換器</a>
+<a href="/tools/torque-unit-converter/">リンクドイン</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Blind Hole Tapping Calculatorのプロフェッショナルソリューション</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">ISO認証品質のプレミアム超硬工具を工場直送価格でご提供。技術サポート付き。</p>
+</div>
+<a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/drills.html">Carbide Drills</a><a href="/products/threading-tools.html">Thread Mills &amp; Taps</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/blind-hole-tapping-calculator/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/blind-hole-tapping-calculator/&amp;text=Blind Hole Tapping Calculator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Blind Hole Tapping Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/blind-hole-tapping-calculator/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
 <p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
-<div style="di/">Tool Steel Heat Treat</a>
-<a href="/jp/tools/drill-point-length-calculator/">Drill Point Length Calculator</a>
-<a href="/jp/tools/brass-machining-parameters/">Brass Machining Parameters</a>
-<a href="/jp/tools/metal-cost-calculator/">Metal Cost Calculator</a>
-<a href="/jp/tools/tool-wear-cost-calculator/">Tool Wear Cost Calculator</a>
-<a href="/jp/tools/hardness-converter/">Hardness Converter</a>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/jp/tools/arc-r-to-ij-converter/">Arc R To Ij Converter</a>
+<a href="/jp/tools/thread-pitch-diameter-calculator/">Thread Pitch Diameter Calculator</a>
+<a href="/jp/tools/toolbox-organizer/">Toolbox Organizer</a>
+<a href="/jp/tools/aql-sampling-calculator/">Aql Sampling Calculator</a>
+<a href="/jp/tools/dovetail-calculator/">Dovetail Calculator</a>
+<a href="/jp/tools/tapping-feed-rate-calculator/">Tapping Feed Rate Calculator</a>
+<a href="/jp/tools/tap-drill-size-calculator/">Tap Drill Size Calculator</a>
+<a href="/jp/tools/gun-drill-calculator/">Gun Drill Calculator</a>
+<a href="/jp/tools/heat-expansion-calculator/">Heat Expansion Calculator</a>
+<a href="/jp/tools/chip-load/">Chip Load</a>
 
 </div>
 </section>
@@ -304,22 +387,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/jp/tools/keyway-depth-calculator/">Keyway Depth Calculator</a>
+<a href="/jp/tools/reaming-allowance-calculator/">Reaming Allowance Calculator</a>
+<a href="/jp/tools/threading-pass-calculator/">Threading Pass Calculator</a>
+<a href="/jp/tools/cost-per-part-calculator/">Cost Per Part Calculator</a>
+<a href="/jp/tools/tool-steel-heat-treat/">Tool Steel Heat Treat</a>
+<a href="/jp/tools/drill-point-length-calculator/">Drill Point Length Calculator</a>
+<a href="/jp/tools/brass-machining-parameters/">Brass Machining Parameters</a>
+<a href="/jp/tools/metal-cost-calculator/">Metal Cost Calculator</a>
+<a href="/jp/tools/tool-wear-cost-calculator/">Tool Wear Cost Calculator</a>
+<a href="/jp/tools/hardness-converter/">Hardness Converter</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -329,5 +416,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>

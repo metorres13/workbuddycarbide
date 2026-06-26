@@ -11,7 +11,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -25,18 +38,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -249,6 +251,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -256,7 +259,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1567361808960-3e7f9e3b3de1?w=1200&h=675&fit=crop&q=80&auto=format" alt="Mecanizado CNC de aluminio" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/es/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -270,15 +280,86 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 <a class="nv-quote" href="/es/quote.html">📩 Cotización</a>
 </div>
 </div>
-</nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">Organizador de herramientas</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">Diámetro/circunferencia</a> <span style="color:#d2d2d6">›</span> Brass Machining Parameters</div>
+<section class="hero"><div class="container"><div class="badge">🧰 Tool</div><h1>Operación</h1><p>Todas las herramientas</p></div></section>
+
+<div class="container"><div class="card"><h2>©Herramientas de carburo 2026</h2><label>Velocidades de corte óptimas para aleaciones de latón</label><select id="grade" onchange="render()"><option value="C360">C360 — Free-cutting brass</option><option value="C464">C464 — Naval brass</option><option value="C110">C110 — Pure copper</option><option value="C145">C145 — Tellurium copper</option></select><input id="i1" oninput="calc()" type="number" value="10"/><label>Las aleaciones de latón, particularmente los grados de mecanizado libre como C36000, se pueden cortar a velocidades de 800-1. 500 SFM con herramientas de carburo, significativamente más rápido que el acero. El alto contenido de zinc crea chips cortos y rotos que evitan la formación de bordes acumulados. Para latones-plomo, acabados de superficie por debajo de 32 μin Ra son alcanzables con acabado de una sola pasada a velocidades de alimentación moderadas.</label><select id="op" onchange="render()"><option value="turning">Turning</option><option value="milling">Milling</option><option value="drilling">Drilling</option></select><input id="i2" oninput="calc()" type="number" value="100"/><div class="res"><div class="res-item"><div class="lbl">SFM</div><div class="val" id="r2">—</div></div><div class="res-item"><div class="lbl">fz/feed</div><div class="val" id="r3">—</div></div><div class="res-item"><div class="lbl">Note</div><div class="val" id="r1">—</div></div></div></div>
+<div style="text-align:center;margin:24px 0"><a href="/tools/" style="color:#0066cc;font-size:13px">Convertidor de dureza</a></div></div>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Herramientas de precisión relacionadas</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/es/tools/ball-nose-effective-diameter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Ball Nose Effective Diameter</a><a href="/es/tools/batch-cost-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Batch Cost Calculator</a><a href="/es/tools/blind-hole-tapping-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Blind Hole Tapping Calculator</a><a href="/es/tools/tool-steel-heat-treat/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tool Steel Heat Treat</a><a href="/es/tools/machinability-rating/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Machinability Rating</a><a href="/es/tools/scrap-value-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Scrap Value Calculator</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">Organizador de herramientas</a>
+<a href="/tools/">Selección de la velocidad de alimentación para torneado y fresado de latón</a>
+<a href="/products/">🇯🇵JP</a>
+<a href="/guides/">🇪🇸ES</a>
+<a href="/about.html">🇻🇳VI</a>
+<a href="/quote.html">Referencia cruzada de calificaciones</a>
+<a href="/privacy.html">Costo por pieza</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Convertidor de par</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Selección de la velocidad de alimentación para torneado y fresado de latón</a></p>
+<p style="font-size:11px;margin-bottom:6px">La excelente maquinabilidad del latón permite velocidades de alimentación agresivas sin sacrificar la calidad de la superficie. Para operaciones de desbaste, use 0.008-0.015 in/rev para torneado y 0.004-0.008 in/diente para fresado. Las pasadas de acabado pueden correr a 0.003-0.006 in/rev. Las bajas fuerzas de corte significan que puede impulsar las tasas de avance hasta un 80% más que con el acero 4140 mientras mantiene la vida útil de la herramienta.</p>
+<p style="font-size:11px">Recomendaciones de geometría de herramientas para aleaciones de cobre</p>
+</div>
+<section class="seo"><div class="container">
+<h2>Para aleaciones de latón y cobre, use herramientas con ángulos de inclinación positivos (12-18 °) y bordes de corte afilados para minimizar el endurecimiento por trabajo. Las herramientas de flauta pulidas reducen la adhesión de viruta en las operaciones de perforación. Las herramientas de carburo sin recubrimiento o CVD recubiertas de diamante ofrecen la mejor combinación de nitidez de los bordes y resistencia al desgaste para el mecanizado de latón de alto volumen.</h2><p>Preguntas frecuentes</p>
+<h2>El alto contenido de zinc del latón (más del 30%) crea una estructura de viruta frágil que se rompe en pequeños fragmentos, reduciendo las fuerzas de corte y la generación de calor. Este comportamiento de autoastillado elimina la formación de bordes acumulados y permite velocidades de corte mucho más altas que el acero.</h2><p>Si bien el latón se puede mecanizar en seco debido a su baja conductividad térmica y sus propiedades autolubricantes, el uso de refrigerante mejora el acabado de la superficie y la precisión dimensional al controlar la expansión térmica. Para tolerancias estrechas (menos de ± 0.001 "), se recomienda refrigerante de inundación.</p>
+<h2>C36000 (latón de mecanizado libre) es el estándar de oro para el trabajo CNC, que ofrece la calificación de maquinabilidad más alta del 100%. Para aplicaciones que requieren material sin plomo, C27400 o C26000 (cartucho de latón) ofrecen buenas alternativas con velocidades de mecanizado ligeramente reducidas.</h2><p>⚡Calculado para la Serie de Alto Rendimiento de Carbide-Tooling.com. Ver catálogo →</p>
+<h2>🔧Caja de herramientas de ingeniería de precisión</h2>
+<p><strong>Why does brass machine so much easier than steel?</strong> Brass's high zinc content (over 30%) creates a brittle chip structure that breaks into small fragments, reducing cutting forces and heat generation. This self-chipping behavior eliminates built-up edge formation and allows much higher cutting speeds than steel.</p>
+<p><strong>Do I need coolant when machining brass?</strong> While brass can be machined dry due to its low thermal conductivity and self-lubricating properties, using coolant improves surface finish and dimensional accuracy by controlling thermal expansion. For tight tolerances (under ±0.001"), flood coolant is recommended.</p>
+<p><strong>What is the best grade of brass for CNC machining?</strong> C36000 (free-machining brass) is the gold standard for CNC work, offering the highest machinability rating of 100%. For applications requiring lead-free material, C27400 or C26000 (cartridge brass) provide good alternatives with slightly reduced machining speeds.</p>
+<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">Guía de selección de grado</a></p>
+</div></section>
+</footer>
+<script>function calc(){document.getElementById('r1').textContent=parseFloat(document.getElementById('i1').value)*parseFloat(document.getElementById('i2').value);}calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><div class="toolbox-widget"><h3>Guías</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Insertar consulta de calificaciones</a>
+<a href="/tools/hardness-converter/">Calculadora de longitud de punto de perforación</a>
+<a href="/tools/tap-drill-size-calculator/">Calculadora de ROI CNC</a>
+<a href="/tools/mrr-calculator/">Calculadora de mecanizado de hierro fundido</a>
+<a href="/tools/feed-converter/">Calculadora de peso y envío</a>
+<a href="/tools/surface-roughness-calculator/">Calculadora de costos de lote</a>
+<a href="/tools/titanium-machining-guide/">Calculadora del tiempo de ciclo</a>
+<a href="/tools/carbide-grade-cross-ref-2/">Mesa de aleación de aluminio</a>
+<a href="/tools/cost-per-part-calculator/">Calculadora de conicidad</a>
+<a href="/tools/torque-unit-converter/">LinkedIn</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">¿Soluciones Profesionales para Brass Machining Parameters?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Obtenga precios directos de fábrica en herramientas de carburo premium con calidad certificada ISO.</p>
+</div>
+<a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/carbide-grades.html">Grade Selection Guide</a><a href="/guides/insert-grade-selection.html">Insert Grade Inquiry</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/brass-machining-parameters/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/brass-machining-parameters/&amp;text=Brass Machining Parameters" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Brass Machining Parameters&amp;body=Check this out: https://carbide-tooling.com/tools/brass-machining-parameters/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profes
-<a href="/es/tools/ball-nose-effective-diameter/">Ball Nose Effective Diameter</a>
-<a href="/es/tools/countersink-depth-calculator/">Countersink Depth Calculator</a>
-<a href="/es/tools/nose-radius-compensation/">Nose Radius Compensation</a>
-<a href="/es/tools/tangent-point-calculator/">Tangent Point Calculator</a>
-<a href="/es/tools/surface-roughness-calculator/">Surface Roughness Calculator</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/es/tools/mcode-reference/">Mcode Reference</a>
+<a href="/es/tools/tool-change-time-analyzer/">Tool Change Time Analyzer</a>
+<a href="/es/tools/tool-steel-heat-treat/">Tool Steel Heat Treat</a>
+<a href="/es/tools/surface-speed/">Surface Speed</a>
+<a href="/es/tools/sfm-m-min-converter/">Sfm M Min Converter</a>
+<a href="/es/tools/hardness-converter/">Hardness Converter</a>
+<a href="/es/tools/coolant-lifecycle-cost/">Coolant Lifecycle Cost</a>
+<a href="/es/tools/tapping-feed-rate-calculator/">Tapping Feed Rate Calculator</a>
+<a href="/es/tools/torque-unit-converter/">Torque Unit Converter</a>
+<a href="/es/tools/titanium-machining-guide/">Titanium Machining Guide</a>
 
 </div>
 </section>
@@ -303,22 +384,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/es/tools/micron-inch-converter/">Micron Inch Converter</a>
+<a href="/es/tools/chip-load/">Chip Load</a>
+<a href="/es/tools/tube-weight-calculator/">Tube Weight Calculator</a>
+<a href="/es/tools/aluminum-alloy-table/">Aluminum Alloy Table</a>
+<a href="/es/tools/mcode-reference/">Mcode Reference</a>
+<a href="/es/tools/ball-nose-effective-diameter/">Ball Nose Effective Diameter</a>
+<a href="/es/tools/countersink-depth-calculator/">Countersink Depth Calculator</a>
+<a href="/es/tools/nose-radius-compensation/">Nose Radius Compensation</a>
+<a href="/es/tools/tangent-point-calculator/">Tangent Point Calculator</a>
+<a href="/es/tools/surface-roughness-calculator/">Surface Roughness Calculator</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -328,5 +413,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>

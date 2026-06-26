@@ -11,7 +11,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -25,18 +38,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -249,6 +251,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -256,7 +259,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1537432376149-e8c3e3e3b3c2?w=1200&h=675&fit=crop&q=80&auto=format" alt="Hartmetall-Schneidwerkzeug Detail" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/de/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -270,15 +280,93 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 <a class="nv-quote" href="/de/quote.html">📩 Angebot</a>
 </div>
 </div>
-</nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">Notenreferenz</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">AQL-Stichprobenrechner</a> <span style="color:#d2d2d6">›</span> Carbide Grade Cross Ref 2</div>
+<section class="hero"><div class="container"><div class="badge" style="display:inline-flex;background:#f5f5f7;padding:4px 14px;border-radius:20px;font-size:11px;font-weight:600;color:#86868b;margin-bottom:12px">🔩 Reference Database</div><h1>M</h1><p>K</p><div class="search-box"><span class="ico">🔍</span><input id="search" oninput="filter()" placeholder="Search grade name..." type="text"/></div><div class="chips"><button class="chip active" onclick="filterISO('all')">S</button><button class="chip" onclick="filterISO('P')"><span class="iso-t p">P</span></button><button class="chip" onclick="filterISO('M')"><span class="iso-t m">M</span></button><button class="chip" onclick="filterISO('K')"><span class="iso-t k">K</span></button><button class="chip" onclick="filterISO('S')"><span class="iso-t s">S</span></button></div></div></section>
+
+<section class="container" style="padding-bottom:40px">
+<div class="table-wrap" id="table-wrap"><table><thead><tr><th>Iscar</th><th>Mitsubishi</th><th>Sumitomo</th><th>Walter</th><th>Detaillierter Noten führer →</th><th>Vollständige Spezifikationen, Beschichtung details und Anwendungs hinweise.</th><th>Alle Werkzeuge</th><th>Die Ergebnisse dienen ausschließlich als Referenz. Wenden Sie sich bei spezifischen Anwendungen an die Hersteller der Werkzeuge.</th></tr></thead><tbody id="tbody"></tbody></table></div>
+<p id="count" style="text-align:center;font-size:12px;color:#86868b"></p>
+<div class="ref-links"><a class="ref-link" href="/tools/grade-reference/"><h4 style="font-size:14px;font-weight:600">©2026 Hartmetallwerkzeuge</h4><p style="font-size:12px;color:#86868b">ISO-Klasse-Klassifizierung: P, M, K, N, S, H</p></a></div>
+</section>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Verwandte Präzisionswerkzeuge</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/de/tools/cast-iron-machining/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Cast Iron Machining</a><a href="/de/tools/chamfer-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Chamfer Calculator</a><a href="/de/tools/chip-load/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Chip Load</a><a href="/de/tools/surface-speed/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Surface Speed</a><a href="/de/tools/surface-roughness-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Surface Roughness Calculator</a><a href="/de/tools/die-steel-thermal-conductivity/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Die Steel Thermal Conductivity</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">Notenreferenz</a>
+<a href="/tools/">Karbide in sätze werden unter ISO-Norm 513 in sechs Hauptgruppen basierend auf Werkstück material eingeteilt. P-Qualitäten (blau) sind für die Stahl bearbeitung, M-Qualitäten (gelb) für Edelstahl, K-Qualitäten (rot) für Gusseisen, N-Qualitäten (grün) für Aluminium, S-Qualitäten (braun) für Super legierungen und H-Qualitäten (grau) für gehärteten Stahl. Jede Klasse gleicht Zähigkeit und Verschleiß festigkeit unterschied lich aus.</a>
+<a href="/products/">🇩🇪DE</a>
+<a href="/guides/">🇯🇵JP</a>
+<a href="/about.html">🇪🇸ES</a>
+<a href="/quote.html">Notenübereinstimmung</a>
+<a href="/privacy.html">Kosten pro Teil</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Drehmomentwandler</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Karbide in sätze werden unter ISO-Norm 513 in sechs Hauptgruppen basierend auf Werkstück material eingeteilt. P-Qualitäten (blau) sind für die Stahl bearbeitung, M-Qualitäten (gelb) für Edelstahl, K-Qualitäten (rot) für Gusseisen, N-Qualitäten (grün) für Aluminium, S-Qualitäten (braun) für Super legierungen und H-Qualitäten (grau) für gehärteten Stahl. Jede Klasse gleicht Zähigkeit und Verschleiß festigkeit unterschied lich aus.</a></p>
+<p style="font-size:11px;margin-bottom:6px">Referenz übergreifende Top-Marken: Sandvik, Iscar, Kenna metal</p>
+<p style="font-size:11px">Beim Wechsel zwischen Marken bietet die ISO-Klassifizierung einen Ausgangs punkt, erzählt jedoch nicht die ganze Geschichte. Sandviks GC4415 entspricht in etwa Kenna metal KCP25 und Iscar IC8250 zum Drehen von Stahl. Aufgrund der Unterschiede in der Beschichtung stech no logie und im Substrat kann ein direkter Austausch bei unterbrochenen Schnitten oder Hoch geschwindigkeit veredelungen unterschied lich sein.</p>
+</div>
+<section class="seo"><div class="container">
+<h2>Beschichtung stech no logie und Anwendungs abgleich</h2><p>Moderne Hartmetall qualitäten verwenden CVD-Beschichtungen (chemische Gasphase abscheidung) oder PVD-Beschichtungen (physikalische Gasphase abscheidung). CVD-Beschichtungen mit mehreren Aluminium oxids ch ichten zeichnen sich durch Hoch geschwindigkeit drehen aus Stahl aus, wobei der Krater verschleiß der primäre Fehler modus ist. PVD-beschichtete Typen mit Ti Al N-oder Al Ti N-Beschichtungen werden zum Fräsen und Bohren bevorzugt, wenn die Kanten zähigkeit und die Wärme schock beständigkeit kritisch sind.</p>
+<h2>Häufig gestellte Fragen</h2><p>Kann ich einen P10 durch eine P30-Note ersetzen? Die P30-Klasse ist härter, aber weniger verschleiß fest als P10. Das Ersetzen von P30 für P10 ist für Schrupp vorgänge akzeptabel, bei denen die Kanten festigkeit wichtiger ist als die Oberflächen beschaffenheit. Verwenden Sie zum Veredeln die empfohlene Note oder ein feinkörniges P10-Äquivalent.</p>
+<h2>Wie entsprechen Beschichtung farben der Anwendung? Beschichtung farben sind herstellers pezi fisch und nicht genormt. Beispiels weise weist die schwarze Beschichtung von Sandvik auf ein Inveio hin™Schicht zum Drehen von Stahl, während die Gold beschichtung von Seco häufig auf ein Duratomic hinweist®Schicht. Überprüfen Sie immer den ISO-Code und die Anwendungs anleitung, anstatt sich nur auf Farbe zu verlassen.</h2><p>Was bedeutet das 'GC'-Präfix in Sandvik-Qualitäten? GC steht für 'General Carbide' und zeigt ein Hartmetall substrat an. Der folgende Buchstabe (z. B. GC4415) ist die Noten bezeichnung, bei der höhere Zahlen im Allgemeinen eine erhöhte Verschleiß festigkeit anzeigen. Die spezifische Formulierung und Beschichtung sind für Sandvik Coromant proprietär.</p>
+<h2>⚡Berechnet für die Hochleistungsserie von Carbide-Tooling.com. Katalog anzeigen →</h2>
+<p><strong>Can I substitute a P30 grade for a P10?</strong> P30 grades are tougher but less wear-resistant than P10. Substituting P30 for P10 is acceptable for roughing operations where edge strength matters more than surface finish. For finishing, use the recommended grade or a finer-grained P10 equivalent.</p>
+<p><strong>How do coating colors correspond to application?</strong> Coating colors are manufacturer-specific and not standardized. For example, Sandvik's black coating indicates a Inveio™ layer for steel turning, while Seco's gold coating often indicates a Duratomic® layer. Always check the ISO code and application guide rather than relying on color alone.</p>
+<p><strong>What does the 'GC' prefix in Sandvik grades mean?</strong> GC stands for 'General Carbide' and indicates a cemented carbide substrate. The letter following (e.g., GC4415) is the grade designation where higher numbers generally indicate increased wear resistance. The specific formulation and coating are proprietary to Sandvik Coromant.</p>
+<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">Leistungsstufen-Wahlhilfe</a></p>
+</div></section>
+</footer>
+<script>
+const GRADES=[{iso:'P',sandvik:'GC4325',kennametal:'KCU10',kyocera:'CA510P',iscar:'IC8250',mitsubishi:'UE6020',sumitomo:'AC6030P',walter:'WPP25S'},{iso:'P',sandvik:'GC3330',kennametal:'KCP25',kyocera:'PR1535',iscar:'IC8300',mitsubishi:'UE6110',sumitomo:'AC700P',walter:'WSM43S'},{iso:'P',sandvik:'GC4425',kennametal:'KC9110',kyocera:'CA100P',iscar:'IC328',mitsubishi:'MP9030',sumitomo:'AC820P',walter:'WPP10S'},{iso:'M',sandvik:'GC2025',kennametal:'KC9225',kyocera:'CA125M',iscar:'IC8300',mitsubishi:'MP6130',sumitomo:'AC6030M',walter:'WSM35S'},{iso:'M',sandvik:'GC2015',kennametal:'KC9240',kyocera:'CA525M',iscar:'IC808',mitsubishi:'MP7030',sumitomo:'AC700M',walter:'WSM43S'},{iso:'M',sandvik:'GC3330',kennametal:'KCM25',kyocera:'PR1605',iscar:'IC504',mitsubishi:'MP9120',sumitomo:'AC820M',walter:'WPP15S'},{iso:'K',sandvik:'GC3215',kennametal:'KCK20B',kyocera:'CA310K',iscar:'IC8250',mitsubishi:'UE6020',sumitomo:'AC300K',walter:'WKM25S'},{iso:'K',sandvik:'GC3220',kennametal:'KCK15B',kyocera:'CA510K',iscar:'IC8300',mitsubishi:'UE6105',sumitomo:'AC600K',walter:'WKM15S'},{iso:'K',sandvik:'GC4230',kennametal:'KCP25B',kyocera:'PR1535',iscar:'IC808',mitsubishi:'MC9020',sumitomo:'AC800K',walter:'WPP20S'},{iso:'S',sandvik:'GC1105',kennametal:'KCS10',kyocera:'CA115S',iscar:'IC804',mitsubishi:'MP9120',sumitomo:'AC500S',walter:'WTT10S'},{iso:'S',sandvik:'GC1115',kennametal:'KCS15',kyocera:'CA525S',iscar:'IC806',mitsubishi:'MP9130',sumitomo:'AC600S',walter:'WSM35S'},{iso:'S',sandvik:'S205',kennametal:'KCM25',kyocera:'CA510S',iscar:'IC806R',mitsubishi:'MP7140',sumitomo:'AC800S',walter:'WSM43S'}];
+let currentISO='all';function filterISO(iso){currentISO=iso;document.querySelectorAll('.chips .chip').forEach(c=>c.classList.toggle('active',c.textContent.trim()===(iso==='all'?'All':iso)));filter();}window.filterISO=filterISO;function filter(){const q=document.getElementById('search').value.toLowerCase();const rows=GRADES.filter(g=>{if(currentISO!=='all'&&g.iso!==currentISO)return false;if(q){const vals=Object.values(g).filter(v=>typeof v==='string');if(!vals.some(v=>v.toLowerCase().includes(q)))return false;}return true;});const tbody=document.getElementById('tbody');const isoCls={P:'p',M:'m',K:'k',S:'s',H:'h'};tbody.innerHTML=rows.map(r=>`<tr><td><span class="iso-t ${isoCls[r.iso]}">${r.iso}</span></td><td>${r.sandvik}</td><td>${r.kennametal}</td><td>${r.kyocera}</td><td>${r.iscar}</td><td>${r.mitsubishi}</td><td>${r.sumitomo}</td><td>${r.walter}</td></tr>`).join('');document.getElementById('count').textContent=rows.length+' grades displayed';}
+filter();
+</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><div class="toolbox-widget"><h3>Produkte</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Notenabfrage einfügen</a>
+<a href="/tools/hardness-converter/">Schrittfräsen</a>
+<a href="/tools/tap-drill-size-calculator/">Steigungswinkelrechner</a>
+<a href="/tools/mrr-calculator/">Korrektur des Radius der Werkzeugnase</a>
+<a href="/tools/feed-converter/">Gewichts- und Versandkostenrechner</a>
+<a href="/tools/surface-roughness-calculator/">Werkzeugkisten-Organizer</a>
+<a href="/tools/titanium-machining-guide/">Slot Fräs rechner</a>
+<a href="/tools/carbide-grade-cross-ref-2/">Gewindegangrechner</a>
+<a href="/tools/cost-per-part-calculator/">LinkedIn</a>
+<a href="/tools/torque-unit-converter/">E-Mail</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Professionelle Lösungen für Carbide Grade Cross Ref 2?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Erhalten Sie werkseitige Preise für Premium-Hartmetallwerkzeuge mit ISO-zertifizierter Qualität.</p>
+</div>
+<a href="/de/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Massenangebot anfordern →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/carbide-grades.html">Grade Selection Guide</a><a href="/guides/insert-grade-selection.html">Insert Grade Inquiry</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/carbide-grade-cross-ref-2/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/carbide-grade-cross-ref-2/&amp;text=Carbide Grade Cross Reference" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Carbide Grade Cross Reference&amp;body=Check this out: https://carbide-tooling.com/tools/carbide-grade-cross-ref-2/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Globales Engineering-Verzeichnis</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professiip-load/">Chip Load</a>
-<a href="/de/tools/torque-unit-converter/">Torque Unit Converter</a>
-<a href="/de/tools/reaming-allowance-calculator/">Reaming Allowance Calculator</a>
-<a href="/de/tools/round-bar-weight/">Round Bar Weight</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professionelle Bearbeitungswerkzeuge</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/de/tools/titanium-machining-guide/">Titanium Machining Guide</a>
+<a href="/de/tools/feed-rate-override-calculator/">Feed Rate Override Calculator</a>
+<a href="/de/tools/gcode-reference/">Gcode Reference</a>
+<a href="/de/tools/percentage-of-thread-calculator/">Percentage Of Thread Calculator</a>
+<a href="/de/tools/nose-radius-compensation/">Nose Radius Compensation</a>
+<a href="/de/tools/grade-reference/">Grade Reference</a>
+<a href="/de/tools/machine-power-calculator/">Machine Power Calculator</a>
+<a href="/de/tools/surface-speed/">Surface Speed</a>
+<a href="/de/tools/mcode-reference/">Mcode Reference</a>
 <a href="/de/tools/wall-thickness-calculator/">Wall Thickness Calculator</a>
-<a href="/de/tools/arc-r-to-ij-converter/">Arc R To Ij Converter</a>
 
 </div>
 </section>
@@ -303,22 +391,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Globales Engineering-Verzeichnis</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professionelle Bearbeitungswerkzeuge</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/de/tools/ball-nose-effective-diameter/">Ball Nose Effective Diameter</a>
+<a href="/de/tools/slot-milling-calculator/">Slot Milling Calculator</a>
+<a href="/de/tools/heat-expansion-calculator/">Heat Expansion Calculator</a>
+<a href="/de/tools/speed-feed/">Speed Feed</a>
+<a href="/de/tools/chip-load/">Chip Load</a>
+<a href="/de/tools/torque-unit-converter/">Torque Unit Converter</a>
+<a href="/de/tools/reaming-allowance-calculator/">Reaming Allowance Calculator</a>
+<a href="/de/tools/round-bar-weight/">Round Bar Weight</a>
+<a href="/de/tools/wall-thickness-calculator/">Wall Thickness Calculator</a>
+<a href="/de/tools/arc-r-to-ij-converter/">Arc R To Ij Converter</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -328,5 +420,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/de/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Massenangebot anfordern →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>

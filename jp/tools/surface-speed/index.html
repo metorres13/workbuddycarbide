@@ -107,7 +107,20 @@ footer a{color:#0066cc;text-decoration:none}
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -121,18 +134,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -281,6 +283,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -288,6 +291,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1565193566165-24e2f9e7e80c?w=1200&h=675&fit=crop&q=80&auto=format" alt="CNCフライス削り速度と送り" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div>
 <nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/jp/"><span>◆</span> Carbide Tooling</a>
@@ -303,15 +314,308 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 </div>
 </div>
 </nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<section class="hero">
+<div class="container">
+<div class="badge">🔧 Free Professional Tool</div>
+<h1><span class="accent">SFM</span> Calculator</h1>
+<p>旋盤の回転とフライス加工のための表面フィート/分 (SFM) 、RPM、または切断速度を計算します。任意の2つの値を入力します-すぐに3番目を取得します。</p>
+<div class="hero-actions">
+<a class="btn" href="#calculator">📩精度に関するお見積りを取得する</a>
+<a class="btn-outline" href="https://carbide-tooling.com/quote.html">🔩Sandvik、Kennametal、Kyocera、Iscar、Mitsubishiなどのカーバイドグレードクロスリファレンス検索同等のグレード。クロスリファレンスツール</a>
+</div>
+</div>
+</section>
+<section class="container" id="calculator" style="padding-bottom:40px">
+<div class="card">
+<h2>🔄表面速度計算機</h2>
+<p class="sub">回転、フライス加工、および掘削作業用。インペリアル (SFM) またはメトリック (m/min)。</p>
+<div class="tabs" id="unit-tabs">
+<button class="tab active" onclick="setUnit('imperial')">📏インペリアル (SFM)</button>
+<button class="tab" onclick="setUnit('metric')">📐メトリック (m/min)</button>
+</div>
+<!-- Mode Selector -->
+<div class="mode-grid" id="mode-grid">
+<button class="mode-btn active" onclick="setMode('sfm')">🎯 Find SFM<br/><span style="font-weight:400;color:#86868b;font-size:11px">Given RPM + Diameter</span></button>
+<button class="mode-btn" onclick="setMode('rpm')">⚡ Find RPM<br/><span style="font-weight:400;color:#86868b;font-size:11px">Given Target SFM + Diameter</span></button>
+<button class="mode-btn" onclick="setMode('dia')">📐 Find Diameter<br/><span style="font-weight:400;color:#86868b;font-size:11px">Given Target SFM + RPM</span></button>
+</div>
+<div class="card-row">
+<div class="field" id="field1"><label id="lbl1">⚙️ スピンドル速度 (RPM)</label>
+<input id="val1" max="50000" min="1" oninput="calc()" step="100" type="number" value="3500"/>
+</div>
+<div class="field" id="field2"><label id="lbl2">📐ワーク/ツール直径</label>
+<div style="display:flex;gap:8px;align-items:center">
+<input id="val2" max="500" min="0.01" oninput="calc()" step="0.1" style="flex:1" type="number" value="3"/>
+<span id="dia-label" style="font-size:13px;color:#86868b;white-space:nowrap;min-width:40px">inch</span>
+</div>
+</div>
+<div class="field" id="field3"><label id="lbl3">🎯ターゲットSFM</label>
+<input id="val3" max="15000" min="1" oninput="calc()" step="10" type="number" value="800"/>
+</div>
+</div>
+<div class="field" id="operation-type" style="margin-bottom:16px;display:none">
+<label>操作タイプ (推奨SFM用)</label>
+<select id="op-type" onchange="calc()">
+<option value="turning">Turning (OD / Face)</option>
+<option value="milling">Milling</option>
+<option value="drilling">Drilling</option>
+</select>
+</div>
+<div class="result-grid" id="results">
+<div class="result-item"><div class="label" id="res1-label">Surface 切削速度</div><div class="value" id="r1">—</div><div class="unit" id="res1-unit">SFM</div></div>
+<div class="result-item"><div class="label" id="res2-label">Spindle 切削速度</div><div class="value" id="r2">—</div><div class="unit">RPM</div></div>
+<div class="result-item"><div class="label" id="res3-label">Diameter</div><div class="value" id="r3">—</div><div class="unit" id="res3-unit">inch</div></div>
+<div class="result-item"><div class="label">Cutting 切削速度 (Vc)</div><div class="value" id="r4">—</div><div class="unit" id="res4-unit">m/min</div></div>
+</div>
+</div>
+<!-- Cross-links to other tools -->
+<div class="ref-links" style="margin-top:40px">
+<a class="ref-link" href="/tools/grade-reference/"><div class="icon">🔩</div><h4>超硬合金グレードの相互参照表</h4><p>Sandvik、Kennametal、Kyocera、Iscar、Mitsubishiなどで同等の成績を検索します。</p><span class="tag">Cross-reference tool</span></a>
+<a class="ref-link" href="https://carbide-tooling.com/tools/"><div class="icon">📋</div><h4>すべてのツール</h4><p>すべてのCNC加工計算機とリファレンスツールを参照します。</p><span class="tag">Tool hub</span></a>
+</div>
+<div class="ref-links">
+<a class="ref-link" href="/tools/speed-feed/">
+<div class="icon">⚙️</div>
+<h4>切削速度・送り計算ツール</h4>
+<p>SFMがわかったら、材料の最適RPM、フィードレート、およびチップ負荷を計算します。</p>
+<span class="tag">Recommended next step</span>
+</a>
+<a class="ref-link" href="/tools/chip-load/">
+<div class="icon">📐</div>
+<h4>チップ負荷計算ツール</h4>
+<p>ツールの故障を防ぐために、材料固有の推奨事項に対して歯ごとの飼料を確認します。</p>
+<span class="tag">Companion tool</span>
+</a>
+</div>
+</section>
+<!-- ===== SEO CONTENT: Case study first, then theory ===== -->
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">関連精密工具</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/jp/tools/scrap-value-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Scrap Value Calculator</a><a href="/jp/tools/sfm-m-min-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Sfm M Min Converter</a><a href="/jp/tools/shipping-duty-estimator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Shipping Duty Estimator</a><a href="/jp/tools/pythagorean-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Pythagorean Calculator</a><a href="/jp/tools/metric-imperial-thread-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Metric Imperial Thread Converter</a><a href="/jp/tools/flatness-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Flatness Calculator</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">見積もりを取得する</a>
+<a href="/tools/">すべてのツール</a>
+<a href="/products/">ガイド</a>
+<a href="/guides/">について</a>
+<a href="/about.html">📩見積もりを取得する</a>
+<a href="/quote.html">速度と送り量</a>
+<a href="/privacy.html">硬度変換器</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">タップ穴径</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">すべてのツール</a></p>
+<p style="font-size:11px;margin-bottom:6px">©2026年用超硬工具</p>
+<p style="font-size:11px">🔍実世界のケース: 表面速度を修正することによる300% のツール寿命の改善</p>
+</div>
+</footer>
+<script>
+let unit = 'imperial';
+let mode = 'sfm';
+
+function setUnit(u) {
+ unit = u;
+ document.querySelectorAll('#unit-tabs .tab').forEach((t,i) => {
+ t.classList.toggle('active', (i===0 && u==='imperial') || (i===1 && u==='metric'));
+ });
+ document.getElementById('dia-label').textContent = u === 'imperial' ? 'inch' : 'mm';
+ document.getElementById('res1-unit').textContent = u === 'imperial' ? 'SFM' : 'm/min';
+ document.getElementById('res3-unit').textContent = u === 'imperial' ? 'inch' : 'mm';
+ document.getElementById('res4-unit').textContent = u === 'imperial' ? 'm/min' : 'SFM';
+ calc();
+}
+window.setUnit = setUnit;
+
+function setMode(m) {
+ mode = m;
+ document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+ document.querySelectorAll('.mode-btn').forEach(b => {
+ if ((m==='sfm' && b.innerHTML.includes('SFM')) || 
+ (m==='rpm' && b.innerHTML.includes('RPM')) ||
+ (m==='dia' && b.innerHTML.includes('Diameter')))
+ b.classList.add('active');
+ });
+ 
+ // Show/hide fields
+ const f1 = document.getElementById('field1');
+ const f2 = document.getElementById('field2');
+ const f3 = document.getElementById('field3');
+ 
+ if (m === 'sfm') {
+ f1.style.display = 'block';
+ f2.style.display = 'block';
+ f3.style.display = 'none';
+ document.getElementById('lbl1').textContent = '⚙️ Spindle 切削速度 (RPM)';
+ document.getElementById('lbl2').textContent = '📐 Workpiece / Tool Diameter';
+ document.getElementById('res1-label').textContent = 'Surface 切削速度';
+ document.getElementById('res2-label').textContent = 'Spindle 切削速度';
+ document.getElementById('res3-label').textContent = 'Diameter';
+ } else if (m === 'rpm') {
+ f1.style.display = 'none';
+ f2.style.display = 'block';
+ f3.style.display = 'block';
+ document.getElementById('lbl2').textContent = '📐 Workpiece / Tool Diameter';
+ document.getElementById('lbl3').textContent = '🎯 Target Surface 切削速度';
+ document.getElementById('res1-label').textContent = 'Surface 切削速度';
+ document.getElementById('res2-label').textContent = 'Spindle 切削速度';
+ document.getElementById('res3-label').textContent = 'Diameter';
+ } else {
+ f1.style.display = 'block';
+ f2.style.display = 'none';
+ f3.style.display = 'block';
+ document.getElementById('lbl1').textContent = '⚙️ Spindle 切削速度 (RPM)';
+ document.getElementById('lbl3').textContent = '🎯 Target Surface 切削速度';
+ document.getElementById('res1-label').textContent = 'Surface 切削速度';
+ document.getElementById('res2-label').textContent = 'Spindle 切削速度';
+ document.getElementById('res3-label').textContent = 'Diameter';
+ }
+ calc();
+}
+window.setMode = setMode;
+
+function calc() {
+ const v1 = parseFloat(document.getElementById('val1').value) || 0;
+ const v2 = parseFloat(document.getElementById('val2').value) || 0;
+ const v3 = parseFloat(document.getElementById('val3').value) || 0;
+ 
+ let sfm, rpm, dia, vc;
+ const isImperial = unit === 'imperial';
+ 
+ if (mode === 'sfm') {
+ rpm = v1;
+ dia = v2;
+ sfm = isImperial ? (Math.PI * dia * rpm) / 12 : v2;
+ vc = isImperial ? sfm * 0.3048 : (Math.PI * dia * rpm) / 1000;
+ if (!isImperial) {
+ // metric mode - v2 is mm, v1 is rpm
+ vc = (Math.PI * dia * rpm) / 1000;
+ sfm = vc * 3.28084;
+ }
+ } else if (mode === 'rpm') {
+ dia = v2;
+ if (isImperial) {
+ sfm = v3;
+ rpm = (sfm * 12) / (Math.PI * dia);
+ vc = sfm * 0.3048;
+ } else {
+ vc = v3;
+ rpm = (vc * 1000) / (Math.PI * dia);
+ sfm = vc * 3.28084;
+ }
+ } else {
+ rpm = v1;
+ if (isImperial) {
+ sfm = v3;
+ dia = (sfm * 12) / (Math.PI * rpm);
+ vc = sfm * 0.3048;
+ } else {
+ vc = v3;
+ dia = (vc * 1000) / (Math.PI * rpm);
+ sfm = vc * 3.28084;
+ }
+ }
+ 
+ document.getElementById('r1').textContent = isImperial ? Math.round(sfm) : vc.toFixed(1);
+ document.getElementById('r2').textContent = Math.round(rpm).toLocaleString();
+ document.getElementById('r3').textContent = dia.toFixed(2);
+ document.getElementById('r4').textContent = isImperial ? vc.toFixed(1) : Math.round(sfm);
+}
+
+setMode('sfm');
+</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
+<section class="seo-content">
+<div class="container">
+<div class="case-study">
+<h3>医療機器メーカーは、カーバイドインサート付きのCNC旋盤で17-4PHステンレス鋼を回転させていました。それらは直径12mmのワークピースで1,200RPMで動作しており、表面速度は約45 m/分でした。インサートは80の部品の後で故障し、エッジチッピングとビルドアップエッジフォーメーションがありました。この計算機を使用して、彼らはその材料の正しい表面速度が120 m/分であるべきであると決定しました。RPMを3,200に調整する (および当社の切削速度 &amp; 送り Calculatorで検証する) ことにより、ツールの寿命はエッジあたり350パーツを超え、4倍の改善になりました。挿入コストだけで年間節約額は12,000ドルを超えました。</h3>
+<p>A medical device manufacturer was turning 17-4 PH stainless steel on a CNC lathe with a carbide insert. They were running at 1,200 RPM with a 12mm diameter workpiece — giving a surface speed of approximately 45 m/min. Inserts were failing after 80 parts, with edge chipping and built-up edge formation. Using this calculator, they determined the correct surface speed should be 120 m/min for that material. By adjusting RPM to 3,200 (and verifying with our <a href="/tools/speed-feed/" style="color:#0066cc">切削速度・送り計算ツール</a>), tool life increased to over 350 parts per edge — a 4× improvement. The annual savings on insert costs alone exceeded $12,000.</p>
+</div>
+<h2>表面速度 (SFM(Surface Feet per Minute、imperial) またはVc(meters per minute、metric) で測定) は、刃先が材料を通過する線速度です。これは、切削温度、工具摩耗率、および表面の完全性を直接決定するため、機械加工で最も重要なパラメータです。</h2>
+<p>Surface speed — measured in <strong>SFM</strong> (Surface Feet per Minute, imperial) or <strong>Vc</strong> (meters per minute, metric) — is the linear velocity at which the cutting edge passes through the material. It is the single most important parameter in machining because it directly determines cutting temperature, tool wear rate, and surface integrity.</p>
+<p><strong>Imperial (SFM):</strong> <code>SFM = (π × D × RPM) ÷ 12</code><br/>
+<strong>Metric (Vc):</strong> <code>Vc (m/min) = (π × D × RPM) ÷ 1000</code></p>
+<p>カーバイド工具の推奨表面速度</p>
+<h2>以下の表は、一般的な操作全体でのカーバイド切削工具の推奨SFM範囲を示しています。これらの値は、リジッドセットアップ、適切なクーラント、および平均カット深さの条件を想定しています。</h2>
+<p>材料</p>
+<table>
+<tr><th>ターニング (SFM)</th><th>フライス加工 (SFM)</th><th>掘削 (SFM)</th><th>アルミニウム6061</th></tr>
+<tr><td>ステンレス钢304</td><td>800-1,500</td><td>800-1,200</td><td>400-600</td></tr>
+<tr><td>チタングレード5</td><td>400-600</td><td>250-400</td><td>150-250</td></tr>
+<tr><td>硬化スチール (45-55 HRC)</td><td>200-350</td><td>150-250</td><td>80-150</td></tr>
+<tr><td>マイルドスチール1018</td><td>250-400</td><td>150-250</td><td>80-120</td></tr>
+<tr><td>インコネル718</td><td>600-900</td><td>400-700</td><td>250-400</td></tr>
+<tr><td>鋳鉄 (グレー)</td><td>100-200</td><td>80-150</td><td>40-80</td></tr>
+<tr><td>チップ負荷が最適な表面速度に影響を与える理由</td><td>500-800</td><td>400-700</td><td>200-350</td></tr>
+</table>
+<div class="note">
+<strong>⚠️ Important:</strong> Surface speed is workpiece-material limited, not tool limited. A carbide end mill rated for 1,000 SFM still cannot cut titanium at that speed — the material's thermal properties govern the maximum. Always select SFM based on the workpiece, then verify the tool coating can handle the resulting temperature.
+ </div>
+<h2>SFMとチップの負荷の関係はしばしば誤解されます。より高い表面速度では、歯あたりのチップ負荷を推奨範囲内に維持する必要があります。そうしないと、ツールがせん断の代わりに摩擦し、SFMに関係なく過度の熱が発生します。これが、適切な速度とフィードの計算には、表面速度とチップ負荷の最適化の両方が必要な理由です。SFMを設定した後、チップロード計算機を使用して、歯あたりのフィードが適切であることを確認します。</h2>
+<p>The relationship between SFM and <a href="/tools/chip-load/" style="color:#0066cc">表面粗さ</a> is often misunderstood. At higher surface speeds, the chip load per tooth must be maintained within the recommended range — otherwise the tool rubs instead of shearing, generating excessive heat regardless of SFM. This is why a proper speeds-and-feeds calculation requires both surface speed AND chip load optimization. Use the <a href="/tools/chip-load/" style="color:#0066cc">チップ負荷計算ツール</a> after setting your SFM to verify the feed per tooth is adequate.</p>
+<h2>RPMは機械パラメータです-それはあなたがスピンドルコントロールに設定したものです。SFMはプロセスパラメータです-それが実際に切削性能を決定するものです。同じSFMは直径によって非常に異なったRPMを要求できます:</h2>
+<p>小径 (6mmエンドミル):800 SFM → 〜12,000 RPM</p>
+<ul>
+<li><strong>Small diameter (6mm end mill):</strong> 800 SFM → ~12,000 RPM</li>
+<li><strong>Large diameter (100mm face mill):</strong> 800 SFM → ~780 RPM</li>
+</ul>
+<p>あなたの表面速度が間違っていることを示します</p>
+<h2>速すぎる: 急速な側面の摩耗、刃先の塑性変形、構築されたエッジ、チャタリング、変色したチップ (青/紫) 、表面仕上げの不良。遅すぎる: BUEの形成、高い切断力、不十分なチップ制御、チャタリング、ワークピース表面の汚れ、生産性の低下。</h2>
+<p><strong>Too fast:</strong> Rapid flank wear, plastic deformation of the cutting edge, built-up edge, chatter, discolored chips (blue/purple), poor surface finish.<br/>
+<strong>Too slow:</strong> BUE formation, high cutting forces, poor chip control, chatter, smearing on the workpiece surface, reduced productivity.</p>
+<p>When in doubt, consult the <a href="/tools/speed-feed/" style="color:#0066cc">切削速度・送り計算ツール</a> which incorporates material-specific SFM ranges for carbide end mills.</p>
+<h2>加工におけるSFMとは何ですか?SFM (Surface Feet per Minute) は、切削工具のエッジがワーク材料を通過する線速度です。切削温度、工具寿命、表面仕上げを決定します。</h2>
+<p><strong>What is SFM in machining?</strong> SFM (Surface Feet per Minute) is the linear speed at which a cutting tool edge travels through the workpiece material. It determines cutting temperature, tool life, and surface finish.</p>
+<p><strong>How do I calculate SFM from RPM?</strong> Multiply π by the diameter in inches and RPM, then divide by 12: <code>SFM = (π × D × RPM) ÷ 12</code>. Use this calculator for instant results.</p>
+<p><strong>What SFM should I use for carbide end mills in stainless steel?</strong> For stainless 304, use 250-400 SFM for roughing, 300-500 SFM for finishing. Lower end for heavier cuts, higher end for finishing passes.</p>
+<p><strong>The difference between SFM and RPM?</strong> SFM is cutting speed through material (process parameter). RPM is spindle rotation speed (machine parameter). RPM = (SFM × 12) ÷ (π × D).</p>
+<p><strong>Does workpiece hardness affect surface speed?</strong> Yes — harder materials require lower SFM. As a rule of thumb, reduce SFM by 20% for every 10 HRC increase above 35 HRC. Higher hardness also increases cutting forces, which must be accounted for in the <a href="/tools/speed-feed/" style="color:#0066cc">部品当たりのコスト</a>.</p>
+<p><strong>Should I use coolant or dry at high SFM?</strong> At high SFM (above 600 SFM in steel), coolant is essential to manage thermal shock. With carbide tools, intermittent coolant application can cause micro-cracking. Use consistent flood or through-spindle coolant when running above 500 SFM.</p>
+</div>
+</section>
+<div class="toolbox-widget"><h3>専門的なツールが必要ですか？</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">トルクコンバーター</a>
+<a href="/tools/hardness-converter/">一括見積もりを依頼する →</a>
+<a href="/tools/tap-drill-size-calculator/">ソリッドカーバイドエンドミル</a>
+<a href="/tools/mrr-calculator/">工具ホルダー</a>
+<a href="/tools/feed-converter/">壁厚計算ツール</a>
+<a href="/tools/surface-roughness-calculator/">直径と円周の計算ツール</a>
+<a href="/tools/titanium-machining-guide/">バッチコスト計算機</a>
+<a href="/tools/carbide-grade-cross-ref-2/">歯車パラメータ計算ツール</a>
+<a href="/tools/cost-per-part-calculator/">鋳鉄加工用計算ツール</a>
+<a href="/tools/torque-unit-converter/">テーパー計算機</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Surface Speedのプロフェッショナルソリューション</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">ISO認証品質のプレミアム超硬工具を工場直送価格でご提供。技術サポート付き。</p>
+</div>
+<a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">リンクドイン</a><a href="/products/tool-holders.html">電子メール</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/surface-speed/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/surface-speed/&amp;text=Surface 切削速度 (SFM) Calculator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Surface 切削速度 (SFM) Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/surface-speed/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
 <p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
-<div style="diator</a>
-<a href="/jp/tools/hardness-converter/">Hardness Converter</a>
-<a href="/jp/tools/tool-steel-heat-treat/">Tool Steel Heat Treat</a>
-<a href="/jp/tools/tool-wear-cost-calculator/">Tool Wear Cost Calculator</a>
-<a href="/jp/tools/metal-weight-calculator/">Metal Weight Calculator</a>
-<a href="/jp/tools/reaming-allowance-calculator/">Reaming Allowance Calculator</a>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/jp/tools/thread-lead-angle-calculator/">Thread Lead Angle Calculator</a>
+<a href="/jp/tools/cycle-time-calculator/">Cycle Time Calculator</a>
+<a href="/jp/tools/plastic-machining/">Plastic Machining</a>
+<a href="/jp/tools/peck-drilling-calculator/">Peck Drilling Calculator</a>
+<a href="/jp/tools/sine-bar-calculator/">Sine Bar Calculator</a>
+<a href="/jp/tools/brass-machining-parameters/">Brass Machining Parameters</a>
+<a href="/jp/tools/grade-reference/">Grade Reference</a>
+<a href="/jp/tools/engineering-interest-calculator/">Engineering Interest Calculator</a>
+<a href="/jp/tools/gcode-reference/">Gcode Reference</a>
+<a href="/jp/tools/sfm-m-min-converter/">Sfm M Min Converter</a>
 
 </div>
 </section>
@@ -336,22 +640,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/jp/tools/npt-pipe-thread-calculator/">Npt Pipe Thread Calculator</a>
+<a href="/jp/tools/cycle-time-calculator/">Cycle Time Calculator</a>
+<a href="/jp/tools/grade-reference/">Grade Reference</a>
+<a href="/jp/tools/tap-drill-size-calculator/">Tap Drill Size Calculator</a>
+<a href="/jp/tools/ramping-angle-calculator/">Ramping Angle Calculator</a>
+<a href="/jp/tools/hardness-converter/">Hardness Converter</a>
+<a href="/jp/tools/tool-steel-heat-treat/">Tool Steel Heat Treat</a>
+<a href="/jp/tools/tool-wear-cost-calculator/">Tool Wear Cost Calculator</a>
+<a href="/jp/tools/metal-weight-calculator/">Metal Weight Calculator</a>
+<a href="/jp/tools/reaming-allowance-calculator/">Reaming Allowance Calculator</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -361,6 +669,20 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body>
 </html>

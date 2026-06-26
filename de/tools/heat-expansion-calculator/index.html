@@ -11,7 +11,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -25,18 +38,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -177,6 +179,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -184,7 +187,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1565193566165-24e2f9e7e80c?w=1200&h=675&fit=crop&q=80&auto=format" alt="Industrielle Präzisionsfertigung" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/de/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -199,14 +209,105 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 </div>
 </div>
 </nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<section class="hero"><div class="container"><div class="badge">🌡️ Physics-Based Tool</div><h1>Bearbeitungs wärme erweiterung</h1><p>Hitze vom Schneiden erweitert das Werkstück und das Werkzeug. In einer langen Produktion kann diese thermische Drift Teile aus der Toleranz drücken. Berechnen Sie die Erweiterung und entscheiden Sie, wann Sie die Maschine aufwärmen lassen.</p><a class="btn" href="#calculator">Berechnen ↓</a></div></section>
+<section class="container" id="calculator" style="padding-bottom:40px">
+<div class="card"><h2>🌡️ Schätzung des thermischen Wachstums</h2><p class="sub">ΔL = α × L × ΔT. Geben Sie das Material, die Teile länge und den erwarteten Temperatur anstieg ein.</p>
+<div class="card-row">
+<div class="field"><label>🔩Werkstückmaterial</label><select id="material" onchange="calc()"><option value="al6061">Aluminum 6061 (α=23)</option><option selected="" value="ss304">Stainless Steel 304 (α=17)</option><option value="mild_steel">Mild Steel 1018 (α=12)</option><option value="ti6al4v">Titanium Gr5 (α=8.6)</option></select></div>
+<div class="field"><label>📏Teile länge (mm)</label><input id="length" max="2000" min="1" oninput="calc()" step="10" type="number" value="200"/></div>
+<div class="field"><label>📐Teildurchmesser (mm)</label><input id="dia" max="500" min="1" oninput="calc()" step="1" type="number" value="50"/></div>
+<div class="field"><label>🌡️ Erwarteter Temp-Anstieg (°C)</label><input id="dt" max="200" min="1" oninput="calc()" step="1" type="number" value="25"/></div>
+</div>
+<div class="result-grid">
+<div class="result-item"><div class="label">Length Expansion</div><div class="value" id="r-length">—</div><div class="unit">microns</div></div>
+<div class="result-item"><div class="label">Diameter Expansion</div><div class="value" id="r-dia">—</div><div class="unit">microns</div></div>
+<div class="result-item"><div class="label">Time to Stable (min)</div><div class="value" id="r-time">—</div><div class="unit">minutes</div></div>
+<div class="result-item"><div class="label">Expansion Impact</div><div class="value" id="r-impact">—</div><div class="unit">μm/min</div></div>
+</div>
+</div>
+<div style="text-align:center;margin:20px 0"><a href="/tools/" style="color:#0066cc;text-decoration:none;font-size:13px">← Alle Tools</a></div>
+</section>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Verwandte Präzisionswerkzeuge</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/de/tools/hardness-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Hardness Converter</a><a href="/de/tools/helical-interpolation-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Helical Interpolation Calculator</a><a href="/de/tools/horsepower-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Horsepower Calculator</a><a href="/de/tools/arc-r-to-ij-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Arc R To Ij Converter</a><a href="/de/tools/surface-speed/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Surface Speed</a><a href="/de/tools/tap-drill-size-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tap Drill Size Calculator</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">Startseite</a>
+<a href="/tools/">Alle Werkzeuge</a>
+<a href="/products/">Produkte</a>
+<a href="/guides/">Führer</a>
+<a href="/about.html">Über</a>
+<a href="/quote.html">Härtekonverter</a>
+<a href="/privacy.html">Bohrergröße für Gewindebohrungen</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">MRR-Rechner</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Alle Werkzeuge</a></p>
+<p style="font-size:11px;margin-bottom:6px">Die Ergebnisse dienen ausschließlich als Referenz. Wenden Sie sich bei spezifischen Anwendungen an die Hersteller der Werkzeuge.</p>
+<p style="font-size:11px">©2026 Hartmetallwerkzeuge</p>
+</div>
+</footer>
+<script>
+const MATS={al6061:{a:23,label:'Aluminum'},ss304:{a:17,label:'Stainless'},mild_steel:{a:12,label:'Steel'},ti6al4v:{a:8.6,label:'Titanium'}};
+function calc(){const m=MATS[document.getElementById('material').value];const l=parseFloat(document.getElementById('length').value)||200;const d=parseFloat(document.getElementById('dia').value)||50;const dt=parseFloat(document.getElementById('dt').value)||25;const lenExp=m.a*l*dt/1000;const diaExp=m.a*d*dt/1000;const warmUp=Math.min(30,5+dt*1.2);const driftRate=lenExp/warmUp;document.getElementById('r-length').textContent=lenExp.toFixed(1);document.getElementById('r-dia').textContent=diaExp.toFixed(1);document.getElementById('r-time').textContent=Math.round(warmUp);document.getElementById('r-impact').textContent=driftRate.toFixed(1);}
+calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><section class="seo-content"><div class="container">
+<h2>Warum sich Ihr erster Teil immer von Ihrem fünfzigsten unter scheidet</h2>
+<p>Jeder Maschinist hat es gesehen: Der erste Teil des Morgens misst perfekt bei 20 ° C-Laden temperatur. Durch Teil 30 produziert das gleiche Programm Teile 20-50 Mikrometer Übergröße. Die Maschine hat sich nicht geändert-die Temperatur hat. Die Schneid flüssigkeit erwärmt sich, die Spindel lager erreichen ein thermisches Gleichgewicht und das Werkstück absorbiert Wärme aus dem Schneid prozess. Auf einer 200-mm-Welle in 304 Edelstahl fügt ein Temperatur anstieg von 25 ° C eine Länge von 85 Mikrometer hinzu-genug, um ein Merkmal mit enger Toleranz aus der Spezifikation zu verdrängen.</p>
+<p>Die thermische Ausdehnung ist vollständig reversibel und vorhersehbar. Die Formel ist linear: Jeder Grad der Temperatur änderung erweitert Stahl um 12 Mikrometer pro Meter, Aluminium um 23 und Titan um 8,6. Sobald Sie den Temperatur anstieg kennen, können Sie die Dimensions drift berechnen und im Programm oder in der Werkzeug versatz tabelle kompensieren.</p>
+<h2>Aufwärm zyklus: Wann und wie lange</h2>
+<p>Eine CNC-Werkzeug maschine benötigt ca. 15-30 Minuten, um nach dem Kaltstart ein thermisches Gleichgewicht zu erreichen. Während dieser Zeit wächst die Spindel vertikal, wenn sich die Lager erwärmen, und die Kugel schrauben dehnen sich axial aus. Bei einem Haas-VF-2 kann das Wachstum der Z-Achse während des Aufwärmens 25-40 Mikrometer erreichen. Bei einem Mazak-VC-500 sind es aufgrund der dickeren Gusseisen konstruktion, die Wärme langsamer absorbiert, normaler weise 15 bis 25 Mikrometer.</p>
+<p>Durch das Ausführen eines Aufwärm programms-abwechselnde Spindel drehzahlen und schnelle Durchlauf bewegungen-wird die Maschine gleichmäßig auf Temperatur gebracht und die thermische Drift während der Produktion verringert. Für Teile mit Toleranzen unter ± 25 Mikrometern ist es nicht optional, einen Aufwärm zyklus vor dem ersten Teil durch zuführen.</p>
+<h2>Häufig gestellte Fragen</h2>
+<p><strong>How much does steel expand with heat?</strong> 12 microns per meter per degree Celsius. A 500 mm steel part that heats up by 20°C grows 120 microns — over 0.1 mm.</p>
+<p><strong>Does cutting fluid temperature matter?</strong> Yes. Flood coolant systems can heat up by 10-20°C during production, transferring heat to the workpiece and machine structure. A chiller unit on the coolant system is the standard fix for high-volume production with tight tolerances.</p>
+<p><strong>How do I compensate for thermal expansion in my CNC program?</strong> Two methods: (1) Let the machine warm up for 20-30 minutes before cutting the first part. (2) After warm-up, measure the first part and adjust your tool offsets to account for the remaining thermal drift.</p>
+<p><strong>Does tool expansion affect hole accuracy?</strong> A 12 mm carbide end mill heating up by 100°C at the cutting edge expands by approximately 5 microns — enough to affect H7 hole tolerances. Carbide's low expansion coefficient (5.5 μm/m·°C) compared to steel (12 μm/m·°C) means the tool expands less than the workpiece for the same temperature rise.</p>
+</div></section>
+<div class="toolbox-widget"><h3>🔧Werkzeugkasten der Präzisionstechnik</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Oberflächenrauheit</a>
+<a href="/tools/hardness-converter/">Titanführung</a>
+<a href="/tools/tap-drill-size-calculator/">Notenübereinstimmung</a>
+<a href="/tools/mrr-calculator/">Kosten pro Teil</a>
+<a href="/tools/feed-converter/">Drehmomentwandler</a>
+<a href="/tools/surface-roughness-calculator/">Massenanfrage stellen →</a>
+<a href="/tools/titanium-machining-guide/">Vollhartmetall-Schaftfräser</a>
+<a href="/tools/carbide-grade-cross-ref-2/">Drehplatten</a>
+<a href="/tools/cost-per-part-calculator/">Rechner für die Länge der Bohrspitze</a>
+<a href="/tools/torque-unit-converter/">AQL-Stichprobenrechner</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Professionelle Lösungen für Heat Expansion Calculator?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Erhalten Sie werkseitige Preise für Premium-Hartmetallwerkzeuge mit ISO-zertifizierter Qualität.</p>
+</div>
+<a href="/de/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Massenangebot anfordern →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">Helixinterpolationsrechner</a><a href="/products/turning-inserts.html">Gewindebohrer-Bohrlochrechner</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/heat-expansion-calculator/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/heat-expansion-calculator/&amp;text=Heat Expansion Calculator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Heat Expansion Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/heat-expansion-calculator/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Globales Engineering-Verzeichnis</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professitools/dia-circ-calculator/">Dia Circ Calculator</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professionelle Bearbeitungswerkzeuge</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/de/tools/trochoidal-milling-calculator/">Trochoidal Milling Calculator</a>
+<a href="/de/tools/superalloy-tool-life/">Superalloy Tool Life</a>
+<a href="/de/tools/machine-power-calculator/">Machine Power Calculator</a>
+<a href="/de/tools/weight-shipping-calculator/">Weight Shipping Calculator</a>
 <a href="/de/tools/coord-rotation-calculator/">Coord Rotation Calculator</a>
-<a href="/de/tools/feed-rate-override-calculator/">Feed Rate Override Calculator</a>
-<a href="/de/tools/mrr-calculator/">Mrr Calculator</a>
-<a href="/de/tools/toolbox-organizer/">Toolbox Organizer</a>
+<a href="/de/tools/mcode-reference/">Mcode Reference</a>
+<a href="/de/tools/cast-iron-machining/">Cast Iron Machining</a>
+<a href="/de/tools/shipping-duty-estimator/">Shipping Duty Estimator</a>
 <a href="/de/tools/hardness-converter/">Hardness Converter</a>
+<a href="/de/tools/tool-steel-heat-treat/">Tool Steel Heat Treat</a>
 
 </div>
 </section>
@@ -231,22 +332,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Globales Engineering-Verzeichnis</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professionelle Bearbeitungswerkzeuge</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/de/tools/thread-pitch-diameter-calculator/">Thread Pitch Diameter Calculator</a>
+<a href="/de/tools/tap-drill-size-calculator/">Tap Drill Size Calculator</a>
+<a href="/de/tools/peck-drilling-calculator/">Peck Drilling Calculator</a>
+<a href="/de/tools/chip-load/">Chip Load</a>
+<a href="/de/tools/dia-circ-calculator/">Dia Circ Calculator</a>
+<a href="/de/tools/coord-rotation-calculator/">Coord Rotation Calculator</a>
+<a href="/de/tools/feed-rate-override-calculator/">Feed Rate Override Calculator</a>
+<a href="/de/tools/mrr-calculator/">Mrr Calculator</a>
+<a href="/de/tools/toolbox-organizer/">Toolbox Organizer</a>
+<a href="/de/tools/hardness-converter/">Hardness Converter</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -256,5 +361,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/de/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Massenangebot anfordern →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>

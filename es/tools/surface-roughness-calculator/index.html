@@ -82,7 +82,20 @@ footer a{color:#0066cc;text-decoration:none}
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -96,18 +109,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -256,6 +258,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -263,6 +266,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1567361808960-3e7f9e3b3de1?w=1200&h=675&fit=crop&q=80&auto=format" alt="Mecanizado de precisión" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div>
 <nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/es/"><span>◆</span> Carbide Tooling</a>
@@ -278,15 +289,257 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 </div>
 </div>
 </nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<section class="hero">
+<div class="container">
+<div class="badge">🔬 Free Professional Tool</div>
+<h1>Calculadora de rugosidad de la superficie</h1>
+<p>Calcule el acabado de superficie teórico Ra y Rz para operaciones de torneado y fresado. Comprenda cómo la velocidad de avance y el radio de la nariz determinan la calidad de la superficie.</p>
+<div class="hero-actions">
+<a class="btn" href="#calculator">Privacidad</a>
+<a class="btn-outline" href="https://carbide-tooling.com/quote.html">en</a>
+</div>
+</div>
+</section>
+<section class="container" id="calculator" style="padding-bottom:40px">
+<div class="card">
+<h2>🔬Calculadora de acabado superficial</h2>
+<p class="sub">Basado en el modelo teórico de rugosidad. Los resultados reales pueden variar debido al borde acumulado, la vibración y el desgaste de la herramienta.</p>
+<div class="card-row">
+<div class="field"><label>🔧Operación</label>
+<select id="op-type" onchange="calc()">
+<option value="turning">Turning (OD / Face)</option>
+<option value="milling">Milling (peripheral)</option>
+</select>
+</div>
+<div class="field"><label>📊Velocidad de alimentación</label>
+<input id="feed" max="2" min="0.01" oninput="calc()" step="0.005" type="number" value="0.15"/>
+<span id="feed-unit" style="font-size:10px;color:#86868b">mm/rev (turning) or mm/tooth (milling)</span>
+</div>
+<div class="field"><label>🔘Radio de la nariz/de la esquina (milímetro)</label>
+<input id="radius" max="6" min="0.05" oninput="calc()" step="0.1" type="number" value="0.8"/>
+<span style="font-size:10px;color:#86868b">Insert nose radius (turning) or corner radius (milling)</span>
+</div>
+<div class="field"><label>⚙️ Material</label>
+<select id="material" onchange="calc()">
+<option value="al6061">Aluminum 6061</option>
+<option selected="" value="ss304">Stainless Steel 304</option>
+<option value="mild_steel">Mild Steel 1018</option>
+<option value="ti6al4v">Titanium Grade 5</option>
+</select>
+</div>
+<div class="field"><label>🎯Objetivo Ra Requisito</label>
+<select id="target" onchange="calc()">
+<option value="0.1">0.1 μm — Mirror finish</option>
+<option selected="" value="0.4">0.4 μm — Precision ground</option>
+<option value="0.8">0.8 μm — Fine machining</option>
+<option value="1.6">1.6 μm — Standard machining</option>
+<option value="3.2">3.2 μm — Rough machining</option>
+<option value="6.3">6.3 μm — Very rough</option>
+</select>
+</div>
+</div>
+<div class="result-grid">
+<div class="result-item"><div class="label">Theoretical Ra</div><div class="value" id="r-ra">—</div><div class="unit">μm</div></div>
+<div class="result-item"><div class="label">Theoretical Rz</div><div class="value" id="r-rz">—</div><div class="unit">μm</div></div>
+<div class="result-item"><div class="label">N Grade</div><div class="value" id="r-ngrade">—</div><div class="unit">ISO 1302</div></div>
+<div class="result-item"><div class="label">Status vs. Target</div><div class="value" id="r-status">—</div><div class="unit" id="r-status-unit"></div></div>
+</div>
+<div class="extra-info">
+<span>Avance rate to achieve target Ra: <span class="val" id="x-feed-target">—</span> mm/rev</span>
+<span style="color:#d2d2d6">|</span>
+<span>Minimum nose radius for target: <span class="val" id="x-radius-target">—</span> mm</span>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px">
+<a href="/tools/speed-feed/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
+<div style="font-size:20px;margin-bottom:4px">⚙️</div><h4 style="font-size:14px;font-weight:600;margin-bottom:2px">Calculadora de velocidad y avance</h4>
+<p style="font-size:12px;color:#86868b">Encuentre el equilibrio entre el acabado de la superficie y la productividad.</p>
+</a>
+<a href="/tools/cycle-time-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
+<div style="font-size:20px;margin-bottom:4px">⏱️</div><h4 style="font-size:14px;font-weight:600;margin-bottom:2px">Calculadora del tiempo de ciclo</h4>
+<p style="font-size:12px;color:#86868b">Alimentación inferior = acabado más fino pero tiempo de ciclo más largo.</p>
+</a>
+</div>
+</section>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Herramientas de precisión relacionadas</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/es/tools/scrap-value-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Scrap Value Calculator</a><a href="/es/tools/sfm-m-min-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Sfm M Min Converter</a><a href="/es/tools/shipping-duty-estimator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Shipping Duty Estimator</a><a href="/es/tools/die-steel-thermal-conductivity/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Die Steel Thermal Conductivity</a><a href="/es/tools/coolant-concentration/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Coolant Concentration</a><a href="/es/tools/graphite-machining/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Graphite Machining</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">Velocidad y avance</a>
+<a href="/tools/">Todas las herramientas</a>
+<a href="/products/">🇯🇵JP</a>
+<a href="/guides/">🇪🇸ES</a>
+<a href="/about.html">🇻🇳VI</a>
+<a href="/quote.html">Rugosidad de la superficie</a>
+<a href="/privacy.html">Guía de titanio</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Referencia cruzada de calificaciones</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Todas las herramientas</a></p>
+<p style="font-size:11px;margin-bottom:6px">Los resultados son únicamente de referencia. Consulte a los fabricantes de herramientas para aplicaciones específicas.</p>
+<p style="font-size:11px">©Herramientas de carburo 2026</p>
+</div>
+</footer>
+<script>
+const N_GRADES = [
+ {n:'N1',ra:0.025},{n:'N2',ra:0.05},{n:'N3',ra:0.1},{n:'N4',ra:0.2},
+ {n:'N5',ra:0.4},{n:'N6',ra:0.8},{n:'N7',ra:1.6},{n:'N8',ra:3.2},
+ {n:'N9',ra:6.3},{n:'N10',ra:12.5},{n:'N11',ra:25},{n:'N12',ra:50}
+];
+
+function calc() {
+ const op = document.getElementById('op-type').value;
+ const feed = parseFloat(document.getElementById('feed').value) || 0.15;
+ const r = parseFloat(document.getElementById('radius').value) || 0.8;
+ const targetRa = parseFloat(document.getElementById('target').value) || 0.4;
+
+ // Ra = f² / (32 × R) — result in mm, convert to μm (*1000)
+ const ra = (feed * feed) / (32 * r) * 1000;
+ const rz = ra * 6; // approximate ratio for turning
+
+ // Find N grade
+ let ng = N_GRADES[0].n;
+ for (let i = N_GRADES.length - 1; i >= 0; i--) {
+ if (ra <= N_GRADES[i].ra) ng = N_GRADES[i].n;
+ }
+
+ // Status
+ let status, statusClass;
+ if (ra <= targetRa * 0.8) {
+ status = '✅ Achievable';
+ statusClass = 'good';
+ } else if (ra <= targetRa * 1.2) {
+ status = '⚠️ Marginal';
+ statusClass = 'warning';
+ } else {
+ status = '❌ Not achievable';
+ statusClass = '';
+ }
+
+ // Avance rate needed for target Ra
+ const feedTarget = targetRa > 0 ? Math.sqrt((targetRa * 32 * r) / 1000) : 0;
+
+ // Minimum nose radius for target
+ const minRadius = targetRa > 0 ? (feed * feed * 1000) / (32 * targetRa) : 0;
+
+ document.getElementById('r-ra').textContent = ra.toFixed(2);
+ document.getElementById('r-rz').textContent = rz.toFixed(2);
+ document.getElementById('r-ngrade').textContent = ng;
+ const st = document.getElementById('r-status');
+ st.textContent = status;
+ st.className = 'value ' + statusClass;
+ document.getElementById('x-feed-target').textContent = feedTarget.toFixed(3);
+ document.getElementById('x-radius-target').textContent = minRadius.toFixed(2);
+}
+
+calc();
+</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
+<section class="seo-content">
+<div class="container">
+<h2>Estándares ISO de acabado superficial: lo que realmente significa los grados Ra, Rz y N</h2>
+<p>Surface finish is specified on engineering drawings using standardized parameters defined by ISO 1302 and ISO 4287. The three most commonly specified parameters are <strong>Ra</strong> (arithmetic average roughness), <strong>Rz</strong> (average maximum height), and <strong>N grade</strong> (ISO roughness grade number). Understanding the relationship between these parameters and the cutting conditions that produce them is essential for meeting print specifications without over-machining.</p>
+<p>Ra es el parámetro más universalmente especificado: representa el promedio aritmético de las desviaciones absolutas de la altura del perfil de la línea media. Rz es el promedio de los cinco picos más altos y los cinco valles más bajos a lo largo de la longitud de evaluación. El sistema de grado N (N1 a N12) proporciona un número de grado de rugosidad estandarizado en el que cada paso representa aproximadamente un cambio del 50% en la rugosidad superficial. Una parte que llama N5 (0,4 μm Ra) es fundamentalmente diferente de fabricar que una que llama N7 (1,6 μm Ra): la velocidad de alimentación debe reducirse a la mitad, duplicando el tiempo del ciclo.</p>
+<div class="std-table">
+<table>
+<tr><th>Grado de N</th><th>Ra (μm)</th><th>Rz (μm)</th><th>Aplicación típica</th></tr>
+<tr><td>N1</td><td>0.025</td><td>0.15</td><td>Bloques de calibre, componentes ópticos</td></tr>
+<tr><td>N3</td><td>0.1</td><td>0.6</td><td>Husillos de precisión, cojinetes diarios</td></tr>
+<tr><td>N5</td><td>0.4</td><td>2.5</td><td>Ejes de precisión, superficies de sellado</td></tr>
+<tr><td>N6</td><td>0.8</td><td>5.0</td><td>General mecanizado encaja</td></tr>
+<tr><td>N7</td><td>1.6</td><td>10.0</td><td>Mecanizado estándar (más común)</td></tr>
+<tr><td>N8</td><td>3.2</td><td>16.0</td><td>Superficies mecanizadas comerciales</td></tr>
+<tr><td>N9</td><td>6.3</td><td>32.0</td><td>Mecanizado en bruto, no crítico</td></tr>
+</table>
+</div>
+<h2>La fórmula de rugosidad teórica</h2>
+<p>La rugosidad superficial teórica para una operación de torneado está determinada por la geometría del radio de la punta de la herramienta de corte y la velocidad de avance. La herramienta deja una serie de crestas helicoidales en la superficie de la pieza de trabajo: la altura de estas crestas es la rugosidad teórica:</p>
+<p><code>Ra (μm) = (f² × 1000) ÷ (32 × R)</code><br/>
+<code>Rz (μm) = (f² × 1000) ÷ (8 × R)</code></p>
+<p>Where <strong>f</strong> = feed per revolution (mm/rev) and <strong>R</strong> = insert nose radius (mm). For milling, the corner radius of the end mill replaces the nose radius, and the feed per tooth replaces feed per revolution.</p>
+<p>The critical insight from these formulas is that roughness increases with the <strong>square of the feed rate</strong> — doubling the feed quadruples the surface roughness. Conversely, increasing the nose radius reduces roughness linearly — doubling the radius halves the roughness. This makes nose radius selection the most powerful lever for controlling surface finish without sacrificing cycle time.</p>
+<h2>Selección del radio de la nariz: equilibrio entre rugosidad y productividad</h2>
+<p>The relationship between feed rate, nose radius, and surface roughness creates a three-way optimization problem. A larger nose radius (1.2 mm vs. 0.4 mm) allows four times higher feed rate for the same Ra, directly reducing cycle time. However, larger nose radii increase cutting forces and can cause chatter in long-overhang operations — a problem analyzed in detail by the <a href="/tools/force-calculator/" style="color:#0066cc">Convertidor de par</a>.</p>
+<p>Practical nose radius selection guidelines: For finishing passes requiring Ra ≤ 0.8 μm, use a 0.8 mm or 1.2 mm nose radius with feed rates between 0.08-0.15 mm/rev. For roughing where Ra ≤ 3.2 μm is acceptable, use a 0.4 mm radius with feeds up to 0.35 mm/rev. The <a href="/tools/cycle-time-calculator/" style="color:#0066cc">Calculadora del tiempo de ciclo</a> can help quantify the productivity impact of switching to a larger nose radius.</p>
+<h2>Por qué la rugosidad real difiere de la teórica</h2>
+<p>El modelo teórico asume una geometría perfecta: una herramienta afilada con un corte de radio de nariz ideal sin vibración, borde acumulado o desgaste de la herramienta. En producción, el Ra real es típicamente 20-50% más alto que el teórico debido a varios factores:</p>
+<ul>
+<li><strong>Built-up edge (BUE):</strong> Material adhering to the cutting edge creates an irregular surface. Most common in aluminum and low-carbon steel at moderate cutting speeds. Increasing cutting speed by 20% or using a polished insert reduces BUE.</li>
+<li><strong>Chatter vibration:</strong> Even mild chatter (amplitude &lt; 10 μm) can double the actual Ra. The problem is mechanical, not geometric — use the <a href="/tools/speed-feed/" style="color:#0066cc">Calculadora de velocidad y avance</a> to find a stable RPM range.</li>
+<li><strong>Tool wear:</strong> A worn tool produces a degraded surface finish. As flank wear reaches 0.2 mm, actual Ra can increase by 50-80% compared to a fresh edge. The increase in cutting forces from tool wear can be monitored using the <a href="/tools/horsepower-calculator/" style="color:#0066cc">Portaherramientas</a> — a power increase of 15%+ at constant parameters indicates tool wear.</li>
+<li><strong>Material smearing:</strong> Ductile materials like aluminum and low-carbon steel can smear across the machined surface, creating peaks and valleys not predicted by the geometric model. Using coolant with EP additives reduces smearing.</li>
+</ul>
+<h2>Implicaciones económicas de los requisitos de acabado de superficie</h2>
+<p>El costo de lograr un acabado superficial específico no es lineal con el valor Ra. La reducción de Ra de 1,6 μm a 0,8 μm normalmente requiere reducir a la mitad la velocidad de alimentación, lo que duplica el tiempo de ciclo para la pasada de acabado. Reducir de 0,8 μm a 0,4 μm requiere reducir a la mitad la alimentación de nuevo, duplicando el tiempo de ciclo una vez más. Esta relación exponencial significa que la sobreespecificación del acabado de la superficie es uno de los errores más comunes y costosos en el diseño de piezas.</p>
+<p>A modo de comparación: un eje que requiere 1,6 μm Ra (N7) puede girarse en bruto a una alimentación de 0,3mm/rev. El mismo eje que requiere 0,4 μm Ra (N5) requiere un acabado a 0,12mm/rev de alimentación-un aumento de 2,5 × en el tiempo de acabado. En un eje con 100mm de longitud de giro, esto agrega 15-20 segundos por pieza. En 10.000 piezas, eso es aproximadamente 50 horas de tiempo adicional de la máquina, a $85/hora, un costo innecesario de $4.250 en mecanizado.</p>
+<h2>Tabla de optimización de la velocidad de alimentación y el radio de la nariz</h2>
+<p>La siguiente tabla muestra la velocidad de alimentación máxima que se puede utilizar para lograr un objetivo Ra para radios de nariz comunes:</p>
+<div class="std-table">
+<table>
+<tr><th>Objetivo Ra</th><th>R = 0,2mm</th><th>R = 0,4mm</th><th>R = 0,8mm</th><th>R = 1,2mm</th></tr>
+<tr><td>0,4 μm (N5)</td><td>0,05mm/rev</td><td>0,07mm/rev</td><td>0,10mm/rev</td><td>0,12mm/rev</td></tr>
+<tr><td>0,8 μm (N6)</td><td>0,07mm/rev</td><td>0,10mm/rev</td><td>1,6 μm (N7)</td><td>0,20mm/rev</td></tr>
+<tr><td>0,25mm/rev</td><td>0,10mm/rev</td><td>1,6 μm (N7)</td><td>0,35mm/rev</td><td>Preguntas frecuentes</td></tr>
+<tr><td>Ra (Promedio de rugosidad) es la media aritmética de las desviaciones absolutas del perfil de la línea media a lo largo de la longitud de evaluación. Es el parámetro de acabado de superficie más comúnmente especificado en los dibujos de ingeniería ISO.</td><td>1,6 μm (N7)</td><td>0,35mm/rev</td><td>¿La velocidad de corte afecta el acabado de la superficie? Indirectamente, sí, a través de la formación de bordes acumulados. A velocidades de corte bajas (por debajo de 150 SFM en acero), BUE forma y degrada el acabado de la superficie. A velocidades muy altas (por encima de 800 SFM), el ablandamiento térmico puede mejorar el acabado. La calculadora de velocidad y alimentación ayuda a seleccionar velocidades que evitan el rango de formación de BUE.</td><td>¿Cómo afecta el desgaste de la herramienta a la rugosidad de la superficie? A medida que la herramienta se desgasta, el radio de la nariz cambia (generalmente aumenta ligeramente antes de una falla catastrófica), lo que teóricamente debería mejorar el acabado. Sin embargo, el microastillado y la ruptura del borde crean características de superficie irregulares que degradan el acabado significativamente. Reemplace los insertos cuando el Ra aumente en más del 30% con parámetros de corte constantes.</td></tr>
+</table>
+</div>
+<h2>¿Cuál es la diferencia entre Ra y Rz?Ra es la desviación promedio en todo el perfil. Rz es el promedio de los cinco picos más altos menos los cinco valles más bajos. Rz es típicamente 5-7 veces más grande que Ra para superficies giradas. ISO 1302 permite especificar cualquier parámetro; Rz es preferido para sellar superficies y juntas donde las alturas de los picos importan más.</h2>
+<p><strong>What is Ra surface finish?</strong> Ra (Roughness Average) is the arithmetic mean of absolute profile deviations from the mean line over the evaluation length. It is the most commonly specified surface finish parameter in ISO engineering drawings.</p>
+<p><strong>How do I calculate surface finish from feed rate and nose radius?</strong> Use the formula Ra = f² / (32 × R). This calculator does it instantly for both turning and milling operations. The result is the theoretical best possible finish — actual Ra will be 20-50% higher.</p>
+<p><strong>What feed rate gives 0.4 μm Ra in turning?</strong> For a 0.8 mm nose radius: f = √(0.4 × 32 × 0.8 / 1000) = 0.10 mm/rev. For a 0.4 mm radius: f = 0.07 mm/rev. This calculator's "Avance rate to achieve target" field shows the answer for your specific parameters automatically.</p>
+<p><strong>Does cutting speed affect surface finish?</strong> Indirectly, yes — through built-up edge formation. At low cutting speeds (below 150 SFM in steel), BUE forms and degrades surface finish. At very high speeds (above 800 SFM), thermal softening can improve finish. The <a href="/tools/speed-feed/" style="color:#0066cc">Calculadora de velocidad y avance</a> helps select speeds that avoid the BUE formation range.</p>
+<p><strong>How does tool wear affect surface roughness?</strong> As the tool wears, the nose radius changes (usually increases slightly before catastrophic failure), which should theoretically improve finish. However, micro-chipping and edge breakdown create irregular surface features that degrade finish significantly. Replace inserts when Ra increases by more than 30% at constant cutting parameters.</p>
+<p><strong>What is the difference between Ra and Rz?</strong> Ra is the average deviation across the entire profile. Rz is the average of the five highest peaks minus the five lowest valleys. Rz is typically 5-7 times larger than Ra for turned surfaces. ISO 1302 allows specifying either parameter; Rz is preferred for sealing surfaces and joints where peak heights matter most.</p>
+<div style="text-align:center;padding:32px 24px;font-size:15px;color:#1d1d1f;background:#f5f5f7;border-radius:16px;max-width:900px;margin:40px auto 0">
+<p style="margin:0">Productos</p>
+</div>
+</div>
+</section>
+<div class="toolbox-widget"><h3>Guías</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Calculadora de pasos de roscado</a>
+<a href="/tools/hardness-converter/">Calculadora del diámetro de paso de rosca</a>
+<a href="/tools/tap-drill-size-calculator/">Estimador de vida útil de herramientas para superaleaciones</a>
+<a href="/tools/mrr-calculator/">Seleccionador de recubrimientos</a>
+<a href="/tools/feed-converter/">Calculadora de caballos de fuerza</a>
+<a href="/tools/surface-roughness-calculator/">Calculadora de profundidad de avellanado</a>
+<a href="/tools/titanium-machining-guide/">Calculadora de fresado de ranuras</a>
+<a href="/tools/carbide-grade-cross-ref-2/">LinkedIn</a>
+<a href="/tools/cost-per-part-calculator/">Correo electrónico</a>
+<a href="/tools/torque-unit-converter/">Torque Converter</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">¿Soluciones Profesionales para Surface Roughness Calculator?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Obtenga precios directos de fábrica en herramientas de carburo premium con calidad certificada ISO.</p>
+</div>
+<a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">Solid Carbide End Mills</a><a href="/products/tool-holders.html">Tool Holders</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/surface-roughness-calculator/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/surface-roughness-calculator/&amp;text=Surface Roughness Calculator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Surface Roughness Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/surface-roughness-calculator/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profess Ref 2</a>
-<a href="/es/tools/tube-weight-calculator/">Tube Weight Calculator</a>
-<a href="/es/tools/coating-selector/">Coating Selector</a>
-<a href="/es/tools/arc-r-to-ij-converter/">Arc R To Ij Converter</a>
-<a href="/es/tools/speed-feed/">Speed Feed</a>
-<a href="/es/tools/inventory-turnover-calculator/">Inventory Turnover Calculator</a>
-<a href="/es/tools/tangent-point-calculator/">Tangent Point Calculator</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/es/tools/dia-circ-calculator/">Dia Circ Calculator</a>
+<a href="/es/tools/toolbox-organizer/">Toolbox Organizer</a>
+<a href="/es/tools/wall-thickness-calculator/">Wall Thickness Calculator</a>
+<a href="/es/tools/drill-point-length-calculator/">Drill Point Length Calculator</a>
+<a href="/es/tools/form-tap-drill-calculator/">Form Tap Drill Calculator</a>
+<a href="/es/tools/coord-rotation-calculator/">Coord Rotation Calculator</a>
+<a href="/es/tools/temp-converter/">Temp Converter</a>
+<a href="/es/tools/slot-milling-calculator/">Slot Milling Calculator</a>
+<a href="/es/tools/bulk-discount-calculator/">Bulk Discount Calculator</a>
+<a href="/es/tools/chip-load/">Chip Load</a>
 
 </div>
 </section>
@@ -311,22 +564,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/es/tools/form-tap-drill-calculator/">Form Tap Drill Calculator</a>
+<a href="/es/tools/percentage-of-thread-calculator/">Percentage Of Thread Calculator</a>
+<a href="/es/tools/tap-drill-size-calculator/">Tap Drill Size Calculator</a>
+<a href="/es/tools/carbide-grade-cross-ref-2/">Carbide Grade Cross Ref 2</a>
+<a href="/es/tools/tube-weight-calculator/">Tube Weight Calculator</a>
+<a href="/es/tools/coating-selector/">Coating Selector</a>
+<a href="/es/tools/arc-r-to-ij-converter/">Arc R To Ij Converter</a>
+<a href="/es/tools/speed-feed/">Speed Feed</a>
+<a href="/es/tools/inventory-turnover-calculator/">Inventory Turnover Calculator</a>
+<a href="/es/tools/tangent-point-calculator/">Tangent Point Calculator</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -336,6 +593,20 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body>
 </html>

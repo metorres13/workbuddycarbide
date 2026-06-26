@@ -11,7 +11,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -25,18 +38,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -249,6 +251,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -256,7 +259,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1504917598568-65a8f8b4f8ca?w=1200&h=675&fit=crop&q=80&auto=format" alt="鋼製造と加工" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/jp/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -270,16 +280,86 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 <a class="nv-quote" href="/jp/quote.html">📩 見積依頼</a>
 </div>
 </div>
-</nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">タップ穴径</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">丸棒の重量</a> <span style="color:#d2d2d6">›</span> Die Steel Thermal Conductivity</div>
+<section class="hero"><div class="container"><div class="badge">🧰 Tool</div><h1>温度 (℃)</h1><p>参照: 熱伝導率が高いスチールグレードは、金型でより速く冷却されます。</p></div></section>
+
+<div class="container"><div class="card"><h2>結果は参考としてのみご使用ください。具体的な用途については、工具メーカーにご相談ください。</h2><label>©2026年用超硬工具</label><select id="grade" onchange="calc()"><option value="H13">H13 — Hot work</option><option value="P20">P20 — Pre-hardened</option><option value="D2">D2 — High carbon/high chrome</option><option value="S7">S7 — Shock resisting</option><option value="A2">A2 — Air hardening</option></select><label>さまざまな温度でのH13ツールスチールの熱伝導性</label><input id="i1" oninput="calc()" type="number" value="200"/><label>H13ホットワークツール鋼は、室温で24重量/容積から500 °Cで28重量/容積・Kの範囲の熱伝導率を示します。この温度上昇は工具鋼の特徴であり、ダイカストおよびホットフォージングアプリケーションの冷却速度に影響を与えます。これらの値を理解することは、金型設計者が均一な部品冷却のために冷却チャネルの配置を最適化するのに役立ちます。</label><!-- value=--><div class="res"><div class="res-item"><div class="lbl">Conductivity</div><div class="val" id="r2">—</div></div><div class="res-item"><div class="lbl">kJ/h·m·K</div><div class="val" id="r3">—</div></div><div class="res-item"><div class="lbl">Assessment</div><div class="val" id="r1">—</div></div></div></div>
+<div style="text-align:center;margin:24px 0"><a href="/tools/" style="color:#0066cc;font-size:13px">硬度変換器</a></div></div>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">関連精密工具</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/jp/tools/dia-circ-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Dia Circ Calculator</a><a href="/jp/tools/dovetail-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Dovetail Calculator</a><a href="/jp/tools/drill-point-length-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Drill Point Length Calculator</a><a href="/jp/tools/tensile-strength-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tensile Strength Converter</a><a href="/jp/tools/mrr-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Mrr Calculator</a><a href="/jp/tools/cost-per-part-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Cost Per Part Calculator</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">タップ穴径</a>
+<a href="/tools/">P20、D2、およびS7の熱特性の比較</a>
+<a href="/products/">🇯🇵ジェイピー</a>
+<a href="/guides/">🇪🇸エスイー</a>
+<a href="/about.html">🇻🇳VI</a>
+<a href="/quote.html">トルクコンバーター</a>
+<a href="/privacy.html">一括見積もりを依頼する →</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">成績選択ガイド</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">P20、D2、およびS7の熱特性の比較</a></p>
+<p style="font-size:11px;margin-bottom:6px">P20事前硬化型鋼は、24 °Cで29重量/容積・Kの導電率を示し、一般的な型鋼の中で最も熱応答性が高くなります。クロム含有量が高いD2工具鋼は、20重量/容積・Kで導電率が低くなります。S7耐衝撃鋼は25重量/容積・Kでその間に落ちます。これらの違いは、モールドサイクルタイムとキャビティ温度の均一性に大きく影響します。</p>
+<p style="font-size:11px">導電性が金型冷却チャネルの設計にどのように影響するか</p>
+</div>
+<section class="seo"><div class="container">
+<h2>熱伝導率が高いほど、均一な温度分布を維持しながら、冷却チャネルの間隔を広くできます。H13金型の場合、冷却チャネルは、キャビティ表面からチャネル直径の2〜2.5 × 間隔で配置する必要があります。導電率の低いD2金型の場合、間隔を直径1.5〜2倍に減らして、同等の冷却性能を実現します。</h2><p>よくある質問</p>
+<h2>工具鋼の熱伝導率は使用とともに変化しますか?はい。繰り返しの熱循環は、熱伝導率を徐々に低下させる微細構造の変化を引き起こす可能性があります。H13のような高温加工鋼は、炭化物の粗化と焼き戻しの影響により、600 °Cを超える拡張サービス後に導電率が5〜10% 低下する可能性があります。</h2><p>合金含有量は熱伝導率にどのように影響しますか?合金含有量が多いほど、一般的に熱伝導率が低下します。工具鋼のクロム、バナジウム、モリブデンはフォノンと電子を散乱させ、熱伝達を減らします。D2鋼の12% のクロム含有量は、低合金P20と比較して導電率が低いことを説明しています。</p>
+<h2>熱伝導率データを使用して冷却時間を予測できますか?はい、検証済みのFEAモデルがあります。熱拡散率 (導電率を密度 × 比熱で割ったもの) は、過渡冷却分析の重要なパラメーターです。安全率が10% のハンドブック値を使用すると、信頼性の高い金型冷却時間の見積もりが提供されます。</h2><p>⚡カーバイド・ツーリング・ドットコムの高性能シリーズ用に算出済み。カタログを表示する →</p>
+<h2>🔧精密工学ツールボックス</h2>
+<p><strong>Does thermal conductivity of tool steel change with use?</strong> Yes. Repeated thermal cycling can cause microstructural changes that gradually reduce thermal conductivity. Hot work steels like H13 may show 5–10% reduction in conductivity after extended service above 600°C due to carbide coarsening and tempering effects.</p>
+<p><strong>How does alloy content affect thermal conductivity?</strong> Higher alloy content generally reduces thermal conductivity. Chromium, vanadium, and molybdenum in tool steels scatter phonons and electrons, reducing heat transfer. D2 steel's 12% chromium content explains its lower conductivity compared to low-alloy P20.</p>
+<p><strong>Can I use thermal conductivity data to predict cooling time?</strong> Yes, with validated FEA models. The thermal diffusivity (conductivity divided by density × specific heat) is the key parameter for transient cooling analysis. Using handbook values with a 10% safety factor provides reliable mold cooling time estimates.</p>
+<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">ダブテール計算機</a></p>
+</div></section>
+</footer>
+<script>function calc(){document.getElementById('r1').textContent=parseFloat(document.getElementById('i1').value)*parseFloat(document.getElementById('i2').value);}calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><div class="toolbox-widget"><h3>ガイド</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">プラスチック加工ガイド</a>
+<a href="/tools/hardness-converter/">バッチコスト計算機</a>
+<a href="/tools/tap-drill-size-calculator/">プライバシー</a>
+<a href="/tools/mrr-calculator/">ヘリカル補間計算</a>
+<a href="/tools/feed-converter/">チップ負荷計算ツール</a>
+<a href="/tools/surface-roughness-calculator/">カタログを表示する →</a>
+<a href="/tools/titanium-machining-guide/">金属コスト計算機</a>
+<a href="/tools/carbide-grade-cross-ref-2/">リンクドイン</a>
+<a href="/tools/cost-per-part-calculator/">電子メール</a>
+<a href="/tools/torque-unit-converter/">Torque Converter</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Die Steel Thermal Conductivityのプロフェッショナルソリューション</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">ISO認証品質のプレミアム超硬工具を工場直送価格でご提供。技術サポート付き。</p>
+</div>
+<a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/carbide-grades.html">Grade Selection Guide</a><a href="/guides/insert-grade-selection.html">Insert Grade Inquiry</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/die-steel-thermal-conductivity/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/die-steel-thermal-conductivity/&amp;text=Die Steel Thermal Conductivity" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Die Steel Thermal Conductivity&amp;body=Check this out: https://carbide-tooling.com/tools/die-steel-thermal-conductivity/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
 <p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
-<div style="di<a href="/jp/tools/pythagorean-calculator/">Pythagorean Calculator</a>
-<a href="/jp/tools/polar-rect-converter/">Polar Rect Converter</a>
-<a href="/jp/tools/toolbox-organizer/">Toolbox Organizer</a>
-<a href="/jp/tools/dia-circ-calculator/">Dia Circ Calculator</a>
-<a href="/jp/tools/stainless-properties/">Stainless Properties</a>
-<a href="/jp/tools/form-tap-drill-calculator/">Form Tap Drill Calculator</a>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/jp/tools/automation-vs-manual-calculator/">Automation Vs Manual Calculator</a>
+<a href="/jp/tools/cycle-time-calculator/">Cycle Time Calculator</a>
+<a href="/jp/tools/cast-iron-machining/">Cast Iron Machining</a>
+<a href="/jp/tools/tool-wear-cost-calculator/">Tool Wear Cost Calculator</a>
+<a href="/jp/tools/mcode-reference/">Mcode Reference</a>
+<a href="/jp/tools/heat-expansion-calculator/">Heat Expansion Calculator</a>
+<a href="/jp/tools/chip-load/">Chip Load</a>
+<a href="/jp/tools/gcode-reference/">Gcode Reference</a>
+<a href="/jp/tools/gear-parameter-calculator/">Gear Parameter Calculator</a>
+<a href="/jp/tools/helical-interpolation-calculator/">Helical Interpolation Calculator</a>
 
 </div>
 </section>
@@ -304,22 +384,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/jp/tools/inventory-turnover-calculator/">Inventory Turnover Calculator</a>
+<a href="/jp/tools/ball-nose-effective-diameter/">Ball Nose Effective Diameter</a>
+<a href="/jp/tools/automation-vs-manual-calculator/">Automation Vs Manual Calculator</a>
+<a href="/jp/tools/helical-interpolation-calculator/">Helical Interpolation Calculator</a>
+<a href="/jp/tools/pythagorean-calculator/">Pythagorean Calculator</a>
+<a href="/jp/tools/polar-rect-converter/">Polar Rect Converter</a>
+<a href="/jp/tools/toolbox-organizer/">Toolbox Organizer</a>
+<a href="/jp/tools/dia-circ-calculator/">Dia Circ Calculator</a>
+<a href="/jp/tools/stainless-properties/">Stainless Properties</a>
+<a href="/jp/tools/form-tap-drill-calculator/">Form Tap Drill Calculator</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -329,5 +413,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>

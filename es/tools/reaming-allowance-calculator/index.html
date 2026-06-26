@@ -11,7 +11,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -25,18 +38,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -249,6 +251,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -256,7 +259,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1567361808960-3e7f9e3b3de1?w=1200&h=675&fit=crop&q=80&auto=format" alt="Mecanizado de precisión" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/es/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -270,15 +280,89 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 <a class="nv-quote" href="/es/quote.html">📩 Cotización</a>
 </div>
 </div>
-</nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">Convertidor de presión</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">Conversor de temperatura</a> <span style="color:#d2d2d6">›</span> Reaming Allowance Calculator</div>
+<section class="hero"><div class="container"><div class="badge" style="display:inline-flex;background:#f5f5f7;padding:4px 14px;border-radius:20px;font-size:11px;font-weight:600;color:#86868b;margin-bottom:16px">🔩 Finishing Guide</div><h1>Asignación estándar = 0,1-0,3mm para agujeros de menos de 20 mm de diámetro.</h1><p>📐Agujero acabado Dia (mm)</p><a class="btn" href="#calculator">Propiedades del acero inoxidable</a></div></section>
+<section class="container" id="calculator" style="padding-bottom:40px"><div class="card"><h2>🔧Material</h2><p class="sub">🔧Explore 100 herramientas de mecanizado profesionales</p><div class="card-row"><div class="field"><label>Todas las herramientas</label><input id="dia" max="50" min="1" oninput="calc()" step="0.5" type="number" value="10"/></div><div class="field"><label>Los resultados son únicamente de referencia. Consulte a los fabricantes de herramientas para aplicaciones específicas.</label><select id="mat" onchange="calc()"><option value="steel">Steel / Cast Iron</option><option value="al">Aluminum</option><option value="ss">Stainless</option></select></div></div><div class="result-grid"><div class="result-item"><div class="label">Pre-Ream Drill Size</div><div class="value" id="r-drill">—</div><div class="unit">mm</div></div>
+<div class="result-item"><div class="label">Allowance (per side)</div><div class="value" id="r-allow">—</div><div class="unit">mm</div></div>
+<div class="result-item"><div class="label">Reamer Velocidad de corte (SFM)</div><div class="value" id="r-sfm">—</div><div class="unit">SFM</div></div></div></div><div style="text-align:center;margin:16px 0"><a href="/tools/" style="color:#0066cc;text-decoration:none;font-size:13px">Convertidor de dureza</a></div></section>
+
+<script>function calc(){const d=parseFloat(document.getElementById('dia').value)||10;const mat=document.getElementById('mat').value;const allowance={steel:0.0015*d+0.05,al:0.001*d+0.08,ss:0.002*d+0.05}[mat];const drill=d-allowance*2;const sfms={'steel':80,'al':200,'ss':50};document.getElementById('r-drill').textContent=drill.toFixed(2);document.getElementById('r-allow').textContent=allowance.toFixed(2);document.getElementById('r-sfm').textContent=sfms[mat];}
+calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Herramientas de precisión relacionadas</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/es/tools/ramping-angle-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Ramping Angle Calculator</a><a href="/es/tools/round-bar-weight/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Round Bar Weight</a><a href="/es/tools/batch-cost-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Batch Cost Calculator</a><a href="/es/tools/countersink-depth-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Countersink Depth Calculator</a><a href="/es/tools/automation-vs-manual-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Automation Vs Manual Calculator</a><a href="/es/tools/production-efficiency-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Production Efficiency Calculator</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">Convertidor de presión</a>
+<a href="/tools/">Asignaciones de escariado recomendadas por material</a>
+<a href="/products/">🇬🇧EN</a>
+<a href="/guides/">🇩🇪DE</a>
+<a href="/about.html">🇯🇵JP</a>
+<a href="/quote.html">Guía de titanio</a>
+<a href="/privacy.html">Referencia cruzada de calificaciones</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Costo por pieza</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Asignaciones de escariado recomendadas por material</a></p>
+<p style="font-size:11px;margin-bottom:6px">El margen de escariado (eliminación de stock) debe equilibrarse entre la eliminación de material suficiente para lograr la redondez y el acabado de la superficie, sin exceder la capacidad del escariador. Para acero: 0.005-0.015 pulgadas (0,13-0,38mm) para diámetros de hasta 1 pulgada. Para aluminio: 0.008-0.020 pulgadas. Para hierro fundido: 0.004-0.012 pulgadas. Para acero inoxidable: 0.006-0.015 pulgadas. Permitir demasiado stock causa charla y agujeros de gran tamaño.</p>
+<p style="font-size:11px">Selección del tamaño del taladro de pre-escariado para un acabado óptimo</p>
+</div>
+<section class="seo"><div class="container">
+<h2>El agujero perforado debe ser 1-2% de tamaño inferior al diámetro nominal del escariador. Para un agujero escariado de 0.500 pulgadas, perfora 0.490-0.495 pulgadas. La perforación de tamaño inferior reduce las fuerzas de corte del escariador y mejora la geometría del agujero. Para los materiales que trabajan endurecen (inoxidable, titanio), permanezca en el extremo inferior del rango de tolerancia para minimizar el espesor de la capa endurecida por trabajo.</h2><p>Velocidad de escariador y alimentación para diferentes tamaños de agujero</p>
+<h2>Las velocidades de escariador deben ser 50-60% de las velocidades de perforación para el mismo material. Tasas de alimentación: 0.001-0.003 in/rev para diámetros inferiores a 0.250 pulgadas, 0.003-0.006 in/rev para 0.250-0.500 pulgadas, y 0.005-0.010 in/rev para diámetros más grandes. El uso de una velocidad demasiado alta provoca un desgaste rápido del escariador y una boca de campana de la entrada del orificio.</h2><p>Preguntas frecuentes</p>
+<h2>¿Puedo escariar un agujero para corregir la deriva de la ubicación? El escariado seguirá la línea central del agujero existente dentro de la capacidad de guía del escariador. Para la corrección de la ubicación, el pre-agujero debe estar dentro de ± 0.005 pulgadas de la ubicación del objetivo. Escariado corrige tamaño y acabado, no posición-uso aburrido para corrección de ubicación.</h2><p>¿Qué hace que un agujero escariada sea de boca de campana? Bell-boca (entrada ampliada) es causada típicamente por la desalineación entre el escariador y el eje de pre-agujero. Use un soporte de escariador flotante para permitir la autoalineación. Otras causas: velocidad de alimentación excesiva en la entrada, almohadillas de guía desgastadas o saliente de escariador más allá de 4 × diámetro.</p>
+<h2>¿Cuántas pasadas debo usar para el escariado? Una sola pasada de escariado es estándar para el 90% de las aplicaciones. Dos pasadas (rugoso y acabado) pueden mejorar el acabado de la superficie en un 15-25%, pero aumentar el tiempo de ciclo. Para tolerancias estrechas por debajo de ± 0,0002 pulgadas, considere una rema áspera que deja 0.002-0.004 pulgadas seguida de un pase de rema final.</h2>
+<p><strong>Can I ream a hole to correct location drift?</strong> Reaming will follow the existing hole centerline within the reamer's guidance capability. For location correction, the pre-hole must be within ±0.005 inches of target location. Reaming corrects size and finish, not position — use boring for location correction.</p>
+<p><strong>What causes a reamed hole to be bell-mouthed?</strong> Bell-mouthing (enlarged entrance) is typically caused by misalignment between the reamer and the pre-hole axis. Use a floating reamer holder to allow self-alignment. Other causes: excessive feed rate at entry, worn guide pads, or reamer overhang beyond 4× diameter.</p>
+<p><strong>How many passes should I use for reaming?</strong> A single reaming pass is standard for 90% of applications. Two passes (rough and finish) can improve surface finish by 15–25% but increase cycle time. For tight tolerances under ±0.0002 inches, consider a rough ream leaving 0.002–0.004 inches followed by a finish ream pass.</p>
+<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">Solicitar cotización por volumen →</a></p>
+</div></section>
+</footer>
+<div class="toolbox-widget"><h3>◆Herramientas de carburo</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Brocas de carburo</a>
+<a href="/tools/hardness-converter/">Calculadora de parámetros de engranajes</a>
+<a href="/tools/tap-drill-size-calculator/">Calculadora de velocidad y avance</a>
+<a href="/tools/mrr-calculator/">Referencia de símbolos de GD&amp;T</a>
+<a href="/tools/feed-converter/">Calculadora de tamaño de broca para roscado</a>
+<a href="/tools/surface-roughness-calculator/">Calculadora de eficiencia de producción</a>
+<a href="/tools/titanium-machining-guide/">Calculadora del ángulo de rampa</a>
+<a href="/tools/carbide-grade-cross-ref-2/">Parámetros de mecanizado del latón</a>
+<a href="/tools/cost-per-part-calculator/">Conductividad térmica del acero</a>
+<a href="/tools/torque-unit-converter/">LinkedIn</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">¿Soluciones Profesionales para Reaming Allowance Calculator?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Obtenga precios directos de fábrica en herramientas de carburo premium con calidad certificada ISO.</p>
+</div>
+<a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/drills.html">Carbide Drills</a><a href="/products/threading-tools.html">Thread Mills &amp; Taps</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/reaming-allowance-calculator/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/reaming-allowance-calculator/&amp;text=Reaming Allowance Calculator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Reaming Allowance Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/reaming-allowance-calculator/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profes/tools/threading-pass-calculator/">Threading Pass Calculator</a>
-<a href="/es/tools/speed-feed/">Speed Feed</a>
-<a href="/es/tools/aluminum-alloy-table/">Aluminum Alloy Table</a>
-<a href="/es/tools/cost-per-part-calculator/">Cost Per Part Calculator</a>
-<a href="/es/tools/coating-selector/">Coating Selector</a>
-<a href="/es/tools/gdt-symbols-reference/">Gdt Symbols Reference</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/es/tools/cycle-time-calculator/">Cycle Time Calculator</a>
+<a href="/es/tools/chamfer-calculator/">Chamfer Calculator</a>
+<a href="/es/tools/tap-drill-size-calculator/">Tap Drill Size Calculator</a>
+<a href="/es/tools/taper-calculator/">Taper Calculator</a>
+<a href="/es/tools/thread-pitch-diameter-calculator/">Thread Pitch Diameter Calculator</a>
+<a href="/es/tools/coord-rotation-calculator/">Coord Rotation Calculator</a>
+<a href="/es/tools/countersink-depth-calculator/">Countersink Depth Calculator</a>
+<a href="/es/tools/step-drill-design-calculator/">Step Drill Design Calculator</a>
+<a href="/es/tools/flatness-calculator/">Flatness Calculator</a>
+<a href="/es/tools/percentage-of-thread-calculator/">Percentage Of Thread Calculator</a>
 
 </div>
 </section>
@@ -303,22 +387,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/es/tools/bulk-discount-calculator/">Bulk Discount Calculator</a>
+<a href="/es/tools/scrap-value-calculator/">Scrap Value Calculator</a>
+<a href="/es/tools/tap-drill-size-calculator/">Tap Drill Size Calculator</a>
+<a href="/es/tools/ultimate-unit-converter/">Ultimate Unit Converter</a>
+<a href="/es/tools/threading-pass-calculator/">Threading Pass Calculator</a>
+<a href="/es/tools/speed-feed/">Speed Feed</a>
+<a href="/es/tools/aluminum-alloy-table/">Aluminum Alloy Table</a>
+<a href="/es/tools/cost-per-part-calculator/">Cost Per Part Calculator</a>
+<a href="/es/tools/coating-selector/">Coating Selector</a>
+<a href="/es/tools/gdt-symbols-reference/">Gdt Symbols Reference</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -328,5 +416,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>

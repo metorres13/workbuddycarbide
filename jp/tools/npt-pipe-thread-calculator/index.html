@@ -11,7 +11,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -25,18 +38,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -249,6 +251,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -256,7 +259,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1581093450607-4e0f9a7b3e3c?w=1200&h=675&fit=crop&q=80&auto=format" alt="ねじ切り" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/jp/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -270,15 +280,100 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 <a class="nv-quote" href="/jp/quote.html">📩 見積依頼</a>
 </div>
 </div>
-</nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">冷却液のライフサイクルコスト</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">スロット加工</a> <span style="color:#d2d2d6">›</span> Npt Pipe Thread Calculator</div>
+<section class="hero"><div class="container"><div class="badge" style="display:inline-flex;background:#f5f5f7;padding:4px 14px;border-radius:20px;font-size:11px;font-weight:600;color:#86868b;margin-bottom:16px">🔧 Standard Reference</div><h1>アメリカ標準テーパーパイプスレッド-ANSI B1.20.1</h1><p>📐NPTサイズ</p><a class="btn" href="#calculator">GD&amp;T記号リファレンス</a></div></section>
+
+<section class="container" id="calculator" style="padding-bottom:40px">
+<div class="card"><h2>結果は参考としてのみご使用ください。具体的な用途については、工具メーカーにご相談ください。</h2><p class="sub">©2026年用超硬工具</p>
+<div class="card-row">
+<div class="field"><label>NPTスレッドのテーパーとジオメトリを理解する</label><select id="size" onchange="calc()"><option>1/8-27</option><option>1/4-18</option><option>3/8-18</option><option selected="">1/2-14</option><option>3/4-14</option><option>1-11.5</option><option>1.5-11.5</option><option>2-11.5</option></select></div>
+</div>
+<div class="result-grid">
+<div class="result-item"><div class="label">Tap Drill Size</div><div class="value" id="r-drill">—</div><div class="unit">inch</div></div>
+<div class="result-item"><div class="label">Thread Depth</div><div class="value" id="r-depth">—</div><div class="unit">mm</div></div>
+<div class="result-item"><div class="label">Taper/ft</div><div class="value" id="r-taper">—</div><div class="unit">inch</div></div>
+</div>
+</div>
+<div style="text-align:center;margin:16px 0"><a href="/tools/" style="color:#0066cc;text-decoration:none;font-size:13px">速度と送り量</a></div>
+</section>
+<script>
+const NPT={};calc();function calc(){const sz=document.getElementById('size').value;const drills={'1/8-27':'R','1/4-18':'7/16','3/8-18':'9/16','1/2-14':'23/32','3/4-14':'59/64','1-11.5':'1.125','1.5-11.5':'1.625','2-11.5':'2.125'};const depths={'1/8-27':15,'1/4-18':19,'3/8-18':19,'1/2-14':22,'3/4-14':26,'1-11.5':30,'1.5-11.5':33,'2-11.5':35};document.getElementById('r-drill').textContent=drills[sz]||'—';document.getElementById('r-depth').textContent=depths[sz]||'—';document.getElementById('r-taper').textContent='3/4';}
+calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">関連精密工具</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/jp/tools/nose-radius-compensation/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Nose Radius Compensation</a><a href="/jp/tools/metal-weight-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Metal Weight Calculator</a><a href="/jp/tools/hardness-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Hardness Converter</a><a href="/jp/tools/countersink-depth-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Countersink Depth Calculator</a><a href="/jp/tools/trochoidal-milling-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Trochoidal Milling Calculator</a><a href="/jp/tools/thread-depth-torque-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Thread Depth Torque Calculator</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">冷却液のライフサイクルコスト</a>
+<a href="/tools/">NPT (National Pipe Taper) スレッドは、直径で測定された1:16テーパー (0.75インチ/フィート) を持っています。糸の角度は60 ° で、頂上と根が切り詰められています。テーパーは、ゲージングノッチのピッチ直径がスレッドのシーリング能力を決定することを意味します。NPTスレッドは、スレッド自体の変形によってシールされます-干渉フィットは、シーラントで適切に組み立てられたときに耐圧ジョイントを作成します。</a>
+<a href="/products/">🇩🇪ドイツ</a>
+<a href="/guides/">🇯🇵ジェイピー</a>
+<a href="/about.html">🇪🇸エスイー</a>
+<a href="/quote.html">部品当たりのコスト</a>
+<a href="/privacy.html">トルクコンバーター</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">一括見積もりを依頼する →</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">NPT (National Pipe Taper) スレッドは、直径で測定された1:16テーパー (0.75インチ/フィート) を持っています。糸の角度は60 ° で、頂上と根が切り詰められています。テーパーは、ゲージングノッチのピッチ直径がスレッドのシーリング能力を決定することを意味します。NPTスレッドは、スレッド自体の変形によってシールされます-干渉フィットは、シーラントで適切に組み立てられたときに耐圧ジョイントを作成します。</a></p>
+<p style="font-size:11px;margin-bottom:6px">加工用のNPTスレッド寸法の計算</p>
+<p style="font-size:11px">NPTスレッドをプログラミングするための重要な寸法: スレッドの深さ = 0.8 × 切り捨てられたプロファイルのピッチ、テーパー角度 = 1.79 ° が含まれています (1辺あたり0.895 ° の半角)。1/2 NPTスレッドの場合: ピッチ = 14 TPI (0.0714インチ) 、スレッドの深さ = 0.0571インチ、スレッドはハンドタイトエンゲージメントの場合は約0.54インチ、レンチタイトの場合は0.25インチ伸びます。</p>
+</div>
+<section class="seo"><div class="container">
+<h2>NPT対NPS対BSPT: 違いは何ですか?</h2><p>NPT (National Pipe Taper) とBSPT (British Standard Pipe Taper) は、外観が似ているにもかかわらず、互換性がありません。NPTは60 ° のねじ角度を有し、BSPTは55 ° を有する。BSPTはまた、異なるピッチシリーズを使用する。NPS (National Pipe Straight) には、スレッド干渉ではなくシーリングワッシャーに依存する平行スレッドがあります。パイプの糸を切る前に、常に標準を確認してください。</p>
+<h2>よくある質問</h2><p>NPT継手にどのくらいのスレッドシーラントを使用する必要がありますか?シーラント (パイプドープまたはPTFEテープ) は、端から1〜2本の糸から始めて、雄の糸にのみ塗布します。糸の根を埋めますが、パイプシステムに入る可能性のある余分なシーラントは避けてください。PTFEテープの場合は、時計回りに2〜3回巻き (パイプの端を見るとき) 、50% オーバーラップします。</p>
+<h2>NPT接続で許容できるスレッドの長さはどのくらいですか?この規格では、ハンドタイトエンゲージメント (L1) とレンチタイトメイク (L3) を指定しています。1/2 NPTの場合、L1 = 0.320インチ、L3 = 0.533インチ。最大スレッド長はL1L3である。これを超えると、スレッドが深くカットされすぎているか、テーパーが正しくありません。</h2><p>NPTスレッドゲージを検査に使用できますか?はい。オスの糸にはL1 (ハンドタイト) リングゲージを使用し、メスの糸にはプラグゲージを使用します。スレッドは手でゲージに入り、ゲージノッチの ± 1ターン以内に停止する必要があります。最終検査には6ステップのL2ゲージを使用して、スレッドが深く切断されすぎていないことを確認します。</p>
+<h2>⚡カーバイド・ツーリング・ドットコムの高性能シリーズ用に算出済み。カタログを表示する →</h2>
+<p><strong>How much thread sealant should I use on NPT fittings?</strong> Apply sealant (pipe dope or PTFE tape) to the male threads only, starting 1–2 threads from the end. Fill the thread roots but avoid excess sealant that could enter the pipe system. For PTFE tape, wrap 2–3 turns clockwise (when viewing the pipe end) with 50% overlap.</p>
+<p><strong>What is the acceptable thread length for NPT connections?</strong> The standard specifies hand-tight engagement (L1) and wrench-tight make-up (L3). For 1/2 NPT, L1 = 0.320 inches and L3 = 0.533 inches. Maximum thread length is L1 + L3. Exceeding this indicates the thread is cut too deep or the taper is incorrect.</p>
+<p><strong>Can I use NPT thread gages for inspection?</strong> Yes. Use L1 (hand-tight) ring gages for male threads and plug gages for female threads. The thread should enter the gage by hand and stop within ±1 turn of the gage notch. Use a 6-step L2 gage for final inspection to verify the thread is not cut too deep.</p>
+<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">ねじ切り用リーマおよびタップ</a></p>
+</div></section>
+</footer>
+<div class="toolbox-widget"><h3>製品</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">盲穴タッピング計算機</a>
+<a href="/tools/hardness-converter/">SFMからm/分への変換器</a>
+<a href="/tools/tap-drill-size-calculator/">カタログを表示する →</a>
+<a href="/tools/mrr-calculator/">鋼の熱伝導率</a>
+<a href="/tools/feed-converter/">自動化vs手動</a>
+<a href="/tools/surface-roughness-calculator/">工具鋼の熱処理計算ツール</a>
+<a href="/tools/titanium-machining-guide/">ボルトサークル計算ツール</a>
+<a href="/tools/carbide-grade-cross-ref-2/">リンクドイン</a>
+<a href="/tools/cost-per-part-calculator/">電子メール</a>
+<a href="/tools/torque-unit-converter/">Torque Converter</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Npt Pipe Thread Calculatorのプロフェッショナルソリューション</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">ISO認証品質のプレミアム超硬工具を工場直送価格でご提供。技術サポート付き。</p>
+</div>
+<a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/drills.html">Carbide Drills</a><a href="/products/threading-tools.html">Thread Mills &amp; Taps</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/npt-pipe-thread-calculator/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/npt-pipe-thread-calculator/&amp;text=NPT Pipe Thread Calculator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=NPT Pipe Thread Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/npt-pipe-thread-calculator/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
 <p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
-<div style="diols/tool-life-economics/">Tool Life Economics</a>
-<a href="/jp/tools/tensile-strength-converter/">Tensile Strength Converter</a>
-<a href="/jp/tools/heat-expansion-calculator/">Heat Expansion Calculator</a>
-<a href="/jp/tools/hardness-converter/">Hardness Converter</a>
-<a href="/jp/tools/cast-iron-machining/">Cast Iron Machining</a>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/jp/tools/cycle-time-calculator/">Cycle Time Calculator</a>
+<a href="/jp/tools/graphite-machining/">Graphite Machining</a>
+<a href="/jp/tools/peck-drilling-calculator/">Peck Drilling Calculator</a>
+<a href="/jp/tools/grade-reference/">Grade Reference</a>
+<a href="/jp/tools/brass-machining-parameters/">Brass Machining Parameters</a>
+<a href="/jp/tools/step-drill-design-calculator/">Step Drill Design Calculator</a>
+<a href="/jp/tools/sfm-m-min-converter/">Sfm M Min Converter</a>
+<a href="/jp/tools/production-efficiency-calculator/">Production Efficiency Calculator</a>
+<a href="/jp/tools/keyway-depth-calculator/">Keyway Depth Calculator</a>
+<a href="/jp/tools/countersink-depth-calculator/">Countersink Depth Calculator</a>
 
 </div>
 </section>
@@ -303,22 +398,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/jp/tools/chip-load/">Chip Load</a>
+<a href="/jp/tools/gcode-reference/">Gcode Reference</a>
+<a href="/jp/tools/coolant-concentration/">Coolant Concentration</a>
+<a href="/jp/tools/inventory-turnover-calculator/">Inventory Turnover Calculator</a>
+<a href="/jp/tools/form-tap-drill-calculator/">Form Tap Drill Calculator</a>
+<a href="/jp/tools/tool-life-economics/">Tool Life Economics</a>
+<a href="/jp/tools/tensile-strength-converter/">Tensile Strength Converter</a>
+<a href="/jp/tools/heat-expansion-calculator/">Heat Expansion Calculator</a>
+<a href="/jp/tools/hardness-converter/">Hardness Converter</a>
+<a href="/jp/tools/cast-iron-machining/">Cast Iron Machining</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -328,5 +427,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>

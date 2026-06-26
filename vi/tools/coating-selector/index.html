@@ -11,7 +11,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -25,18 +38,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -249,6 +251,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -256,7 +259,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1537432376149-e8c3e3e3b3c2?w=1200&h=675&fit=crop&q=80&auto=format" alt="Chi tiết dụng cụ cắt cacbua" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/vi/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -270,15 +280,86 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 <a class="nv-quote" href="/vi/quote.html">📩 Báo giá</a>
 </div>
 </div>
-</nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">Tính chất của thép không gỉ</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">Công cụ ước tính thuế vận chuyển</a> <span style="color:#d2d2d6">›</span> Coating Selector</div>
+<section class="hero"><div class="container"><div class="badge">🧰 Tool</div><h1>Vật liệu phôi</h1><p>Hoạt động</p></div></section>
+
+<div class="container"><div class="card"><h2>Tất cả công cụ</h2><label>Kết quả chỉ mang tính tham khảo. Hãy tham khảo ý kiến của các nhà sản xuất dụng cụ để biết thông tin về các ứng dụng cụ thể.</label><select id="mat" onchange="select()"><option value="steel">Steel / Alloy</option><option value="ss">Stainless</option><option value="ti">Titanium</option><option value="al">Aluminum</option><option value="inco">Inconel/Superalloys</option><option value="hrc">Hardened &gt;45 HRC</option></select><label>©Dụng cụ cắt gọt bằng cacbua năm 2026</label><select id="op" onchange="select()"><option value="rough">Roughing</option><option value="finish">Finishing</option></select><input id="i1" oninput="calc()" type="number" value="10"/><label>Lớp phủ PVD: Ti N, ti AL N, và AL ti N so sánh</label><select id="temp" onchange="select()"><option value="low">Low (&lt;500°C)</option><option value="med">Medium (500-800°C)</option><option value="high">High (&gt;800°C)</option></select><input id="i2" oninput="calc()" type="number" value="100"/><div class="res"><div class="res-item"><div class="lbl">Recommended Coating</div><div class="val" id="r2">—</div></div><div class="res-item"><div class="lbl">Why</div><div class="val" id="r3">—</div></div><div class="res-item"><div class="lbl">Coolant</div><div class="val" id="r1">—</div></div></div></div>
+<div style="text-align:center;margin:24px 0"><a href="/tools/" style="color:#0066cc;font-size:13px">Tốc độ và Lượng ăn dao</a></div></div>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Công cụ chính xác liên quan</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/vi/tools/carbide-grade-cross-ref-2/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Carbide Grade Cross Ref 2</a><a href="/vi/tools/cast-iron-machining/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Cast Iron Machining</a><a href="/vi/tools/chamfer-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Chamfer Calculator</a><a href="/vi/tools/tube-weight-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tube Weight Calculator</a><a href="/vi/tools/tangent-point-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tangent Point Calculator</a><a href="/vi/tools/step-drill-design-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Step Drill Design Calculator</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">Tính chất của thép không gỉ</a>
+<a href="/tools/">Lớp phủ PVD (lắng đọng hơi vật lý) được áp dụng ở nhiệt độ thấp hơn (400-500 ° C) và duy trì cấu hình cạnh sắc nét. Ti N (Vàng) là lớp phủ đa năng với tốc độ lên tới 400 sfm. Ti AL N (Violet-Gray) cung cấp khả năng chống oxy hóa đến 800 ° C, lý tưởng cho gia công khô. AL ti N (màu xám đậm) với hàm lượng nhôm cao hơn cung cấp độ cứng vượt trội ở nhiệt độ cao cho các ứng dụng tốc độ cao trên 1,000 sfm.</a>
+<a href="/products/">🇩🇪Đức</a>
+<a href="/guides/">🇯🇵JP</a>
+<a href="/about.html">🇪🇸ES</a>
+<a href="/quote.html">Hướng dẫn về Titan</a>
+<a href="/privacy.html">Phân loại tham chiếu</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Chi phí trên mỗi bộ phận</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Lớp phủ PVD (lắng đọng hơi vật lý) được áp dụng ở nhiệt độ thấp hơn (400-500 ° C) và duy trì cấu hình cạnh sắc nét. Ti N (Vàng) là lớp phủ đa năng với tốc độ lên tới 400 sfm. Ti AL N (Violet-Gray) cung cấp khả năng chống oxy hóa đến 800 ° C, lý tưởng cho gia công khô. AL ti N (màu xám đậm) với hàm lượng nhôm cao hơn cung cấp độ cứng vượt trội ở nhiệt độ cao cho các ứng dụng tốc độ cao trên 1,000 sfm.</a></p>
+<p style="font-size:11px;margin-bottom:6px">Lớp phủ cvd: Lớp dày cho các ứng dụng có độ mòn cao</p>
+<p style="font-size:11px">Lớp phủ cvd (lắng đọng hơi hóa học) được áp dụng ở nhiệt độ cao hơn (1,000 ° C) và tạo ra các lớp dày hơn, chịu mài mòn hơn. Lớp phủ cvd nhiều lớp với Oxit nhôm (alcome o₃) là tiêu chuẩn cho gang và thép quay ở tốc độ cao. Lớp phủ dày hơn mang lại khả năng chống mài mòn tuyệt vời nhưng có thể làm tròn cạnh, làm cho cvd không phù hợp với các ứng dụng cạnh sắc như xâu chuỗi.</p>
+</div>
+<section class="seo"><div class="container">
+<h2>Lớp phủ phù hợp với vật liệu phôi</h2><p>Đối với vật liệu nhôm và kim loại màu, các công cụ không tráng hoặc DLC (Carbon giống kim cương) ngăn ngừa sự hình thành cạnh tích hợp. Đối với thép, lớp phủ ti AL N cvd cân bằng khả năng chống mài mòn và độ dẻo dai. Đối với gang đúc, lớp cvd được phủ al₂o₃ vượt trội. Đối với các siêu hợp kim, lớp phủ AL ti N PVD có độ cứng cao và khả năng chống oxy hóa mang lại tuổi thọ công cụ tốt nhất trong việc cắt nhiệt độ cao.</p>
+<h2>Câu hỏi thường gặp</h2><p>Tôi có thể phủ lớp phủ PVD một lớp phủ cacbua đã được phủ không? không nên phủ lớp phủ trên lớp phủ hiện có. Lớp bám dính đòi hỏi phải có bề mặt chất nền sạch. Bất kỳ lớp phủ hiện có Nào Cũng Phải được lột trước khi phủ lại, có thể làm hỏng bề mặt cacbua. Luôn áp dụng lớp phủ cho các công cụ cacbua mới, không tráng.</p>
+<h2>Độ dày lớp phủ ảnh hưởng đến hiệu suất của dụng cụ như thế nào? lớp phủ dày hơn (8-15 μm cho cvd) cung cấp khả năng chống mài mòn tốt hơn để cắt liên tục nhưng có thể làm tròn cạnh làm tăng lực cắt. Lớp phủ mỏng hơn (1-4 μm cho PVD) duy trì các cạnh sắc nét hơn để hoàn thiện và xâu chuỗi. Chọn Độ dày lớp phủ dựa trên chế độ hao mòn chính của bạn-độ mòn miệng núi lửa hoặc độ mòn sườn.</h2><p>Lớp phủ DLC có đáng để gia công nhôm không? Vâng, đối với gia công nhôm sản xuất cao, lớp phủ DLC làm giảm ma sát và ngăn chặn cạnh tích tụ, kéo dài tuổi thọ dụng cụ bằng 2-5 × so với cacbua không tráng. Độ bám dính giảm cũng cải thiện tính nhất quán của bề mặt trong suốt quá trình sản xuất dài.</p>
+<h2>⚡Được tính toán cho Dòng sản phẩm Hiệu suất Cao của Carbide-Tooling.com. Xem danh mục →</h2>
+<p><strong>Can I PVD coat an already-coated carbide insert?</strong> No, coating over existing coating is not recommended. The adhesion layer requires a clean substrate surface. Any existing coating must be stripped before re-coating, which can damage the carbide substrate. Always apply coatings to fresh, uncoated carbide tools.</p>
+<p><strong>How does coating thickness affect tool performance?</strong> Thicker coatings (8–15 μm for CVD) provide better crater wear resistance for continuous cutting but can cause edge rounding that increases cutting forces. Thinner coatings (1–4 μm for PVD) maintain sharper edges for finishing and threading. Select coating thickness based on your primary wear mode — crater wear or flank wear.</p>
+<p><strong>Is DLC coating worth the premium for machining aluminum?</strong> Yes, for high-production aluminum machining, DLC coatings reduce friction and prevent built-up edge, extending tool life by 2–5× over uncoated carbide. The reduced adhesion also improves surface finish consistency across long production runs.</p>
+<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">Yêu cầu báo giá số lượng lớn →</a></p>
+</div></section>
+</footer>
+<script>function calc(){document.getElementById('r1').textContent=parseFloat(document.getElementById('i1').value)*parseFloat(document.getElementById('i2').value);}calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><div class="toolbox-widget"><h3>Sản phẩm</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Hướng dẫn lựa chọn lớp học</a>
+<a href="/tools/hardness-converter/">Chèn yêu cầu tra cứu điểm</a>
+<a href="/tools/tap-drill-size-calculator/">Máy tính bước phay</a>
+<a href="/tools/mrr-calculator/">Công cụ tính trọng lượng ống</a>
+<a href="/tools/feed-converter/">Công cụ tính toán quay tọa độ</a>
+<a href="/tools/surface-roughness-calculator/">Công cụ tính độ lệch của dụng cụ</a>
+<a href="/tools/titanium-machining-guide/">Bù trừ bán kính mũi dao</a>
+<a href="/tools/carbide-grade-cross-ref-2/">Máy tính phay trocôit</a>
+<a href="/tools/cost-per-part-calculator/">Máy tính tốc độ nạp khai thác</a>
+<a href="/tools/torque-unit-converter/">Công cụ tính độ sâu của lỗ vát mép</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Giải Pháp Chuyên Nghiệp cho Coating Selector?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Nhận giá trực tiếp từ nhà máy cho dụng cụ carbide cao cấp với chất lượng chứng nhận ISO.</p>
+</div>
+<a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/carbide-grades.html">Thư điện tử</a><a href="/guides/insert-grade-selection.html">Insert Grade Inquiry</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/coating-selector/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/coating-selector/&amp;text=Coating Selector" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Coating Selector&amp;body=Check this out: https://carbide-tooling.com/tools/coating-selector/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyêerter</a>
-<a href="/vi/tools/thread-pitch-diameter-calculator/">Thread Pitch Diameter Calculator</a>
-<a href="/vi/tools/cnc-roi-calculator/">Cnc Roi Calculator</a>
-<a href="/vi/tools/mrr-calculator/">Mrr Calculator</a>
-<a href="/vi/tools/metric-imperial-thread-converter/">Metric Imperial Thread Converter</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/vi/tools/coolant-lifecycle-cost/">Coolant Lifecycle Cost</a>
 <a href="/vi/tools/superalloy-tool-life/">Superalloy Tool Life</a>
+<a href="/vi/tools/machinability-rating/">Machinability Rating</a>
+<a href="/vi/tools/helical-interpolation-calculator/">Helical Interpolation Calculator</a>
+<a href="/vi/tools/thread-lead-angle-calculator/">Thread Lead Angle Calculator</a>
+<a href="/vi/tools/force-calculator/">Force Calculator</a>
+<a href="/vi/tools/automation-vs-manual-calculator/">Automation Vs Manual Calculator</a>
+<a href="/vi/tools/nose-radius-compensation/">Nose Radius Compensation</a>
+<a href="/vi/tools/pomodoro-timer/">Pomodoro Timer</a>
+<a href="/vi/tools/feed-converter/">Feed Converter</a>
 
 </div>
 </section>
@@ -303,22 +384,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/vi/tools/pomodoro-timer/">Pomodoro Timer</a>
+<a href="/vi/tools/bulk-discount-calculator/">Bulk Discount Calculator</a>
+<a href="/vi/tools/step-milling-calculator/">Step Milling Calculator</a>
+<a href="/vi/tools/round-bar-weight/">Round Bar Weight</a>
+<a href="/vi/tools/micron-inch-converter/">Micron Inch Converter</a>
+<a href="/vi/tools/thread-pitch-diameter-calculator/">Thread Pitch Diameter Calculator</a>
+<a href="/vi/tools/cnc-roi-calculator/">Cnc Roi Calculator</a>
+<a href="/vi/tools/mrr-calculator/">Mrr Calculator</a>
+<a href="/vi/tools/metric-imperial-thread-converter/">Metric Imperial Thread Converter</a>
+<a href="/vi/tools/superalloy-tool-life/">Superalloy Tool Life</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -328,5 +413,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>

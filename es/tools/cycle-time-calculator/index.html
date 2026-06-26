@@ -84,7 +84,20 @@ footer a{color:#0066cc;text-decoration:none}
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -98,18 +111,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -258,6 +260,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -265,6 +268,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1581092160607-ee22621e7591?w=1200&h=675&fit=crop&q=80&auto=format" alt="Panel de control CNC" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div>
 <nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/es/"><span>◆</span> Carbide Tooling</a>
@@ -280,14 +291,274 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 </div>
 </div>
 </nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<section class="hero">
+<div class="container">
+<div class="badge">⏱️ Free Professional Tool</div>
+<h1>Calculadora de tiempo de ciclo de giro</h1>
+<p>Estimar el tiempo de corte para operaciones de torneado, revestimiento, aburrido y separación OD. Calcule el costo por pieza y optimice el rendimiento de producción.</p>
+<div class="hero-actions">
+<a class="btn" href="#calculator">Comenzar el cálculo ↓</a>
+<a class="btn-outline" href="https://carbide-tooling.com/quote.html">📩Obtener una cita de precisión</a>
+</div>
+</div>
+</section>
+<section class="container" id="calculator" style="padding-bottom:40px">
+<div class="card">
+<h2>⏱️ Estimación del tiempo de ciclo</h2>
+<p class="sub">Para las operaciones del torno del CNC. Introduzca parámetros a continuación; los resultados se actualizan en tiempo real.</p>
+<div class="card-row">
+<div class="field"><label>🔧Tipo de operación</label>
+<select id="op-type" onchange="calc()">
+<option value="od">OD Turning (external)</option>
+<option value="facing">Facing (face)</option>
+<option value="boring">Boring (internal)</option>
+<option value="parting">Parting / Cut-off</option>
+</select>
+</div>
+<div class="field"><label>⚙Material ️</label>
+<select id="material" onchange="calc()">
+<option value="al6061">Aluminum 6061</option>
+<option selected="" value="ss304">Stainless Steel 304</option>
+<option value="mild_steel">Mild Steel 1018</option>
+<option value="ti6al4v">Titanium Grade 5</option>
+</select>
+</div>
+<div class="field"><label>📐Diámetro de la pieza (mm)</label>
+<input id="dia" max="500" min="1" oninput="calc()" step="1" type="number" value="50"/>
+</div>
+<div class="field"><label>📏Longitud de corte (mm)</label>
+<input id="length" max="2000" min="1" oninput="calc()" step="1" type="number" value="100"/>
+</div>
+<div class="field"><label>⏬Profundidad de corte (mm)</label>
+<input id="doc" max="20" min="0.1" oninput="calc()" step="0.1" type="number" value="2"/>
+</div>
+<div class="field"><label>📊Velocidad de alimentación (mm/rev)</label>
+<input id="feed" max="5" min="0.01" oninput="calc()" step="0.01" type="number" value="0.2"/>
+</div>
+<div class="field"><label>⚡Velocidad de corte (Vc m/min)</label>
+<input id="vc" max="2000" min="10" oninput="calc()" step="10" type="number" value="180"/>
+</div>
+<div class="field"><label>🔄Número de pases</label>
+<select id="passes" onchange="calc()"><option value="1">1</option><option value="2">2</option><option selected="" value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>
+</div>
+</div>
+<div class="card-row" style="grid-template-columns:1fr 1fr">
+<div class="field"><label>📐Diámetro final (mm)</label>
+<input id="final-dia" max="500" min="1" oninput="calc()" step="1" type="number" value="44"/>
+<span style="font-size:10px;color:#86868b">For facing: final = 0</span>
+</div>
+<div class="field"><label>⏱️ Tiempo sin corte (seg)</label>
+<input id="noncut" max="300" min="0" oninput="calc()" step="1" type="number" value="15"/>
+<span style="font-size:10px;color:#86868b">Tool change + positioning</span>
+</div>
+</div>
+<div class="result-grid">
+<div class="result-item"><div class="label">Cutting Time</div><div class="value" id="r-cut">—</div><div class="unit">seconds</div></div>
+<div class="result-item"><div class="label">Cycle Time per Part</div><div class="value" id="r-cycle">—</div><div class="unit">seconds</div></div>
+<div class="result-item"><div class="label">Parts per Hour</div><div class="value" id="r-pph">—</div><div class="unit">parts/hr</div></div>
+<div class="result-item"><div class="label">Spindle Velocidad de corte</div><div class="value" id="r-rpm">—</div><div class="unit">RPM</div></div>
+</div>
+<div class="extra-info">
+<span>Avance per minute: <span class="val" id="x-fpm">—</span> mm/min</span>
+<span style="color:#d2d2d6">|</span>
+<span>Material removed: <span class="val" id="x-removed">—</span> cm³</span>
+<span style="color:#d2d2d6">|</span>
+<span>Cost per part (est.): <span class="val" id="x-cost">—</span></span>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px">
+<a href="/tools/speed-feed/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
+<div style="font-size:20px;margin-bottom:4px">⚙️</div><h4 style="font-size:14px;font-weight:600;margin-bottom:2px">Calculadora de velocidad y avance</h4>
+<p style="font-size:12px;color:#86868b">Optimice los parámetros de corte antes de calcular el tiempo de ciclo.</p>
+</a>
+<a href="/tools/mrr-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
+<div style="font-size:20px;margin-bottom:4px">⚡</div><h4 style="font-size:14px;font-weight:600;margin-bottom:2px">Calculadora de MRR</h4>
+<p style="font-size:12px;color:#86868b">La tasa de eliminación de material afecta directamente al tiempo de ciclo.</p>
+</a>
+</div>
+</section>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Herramientas de precisión relacionadas</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/es/tools/carbide-grade-cross-ref-2/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Carbide Grade Cross Ref 2</a><a href="/es/tools/cast-iron-machining/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Cast Iron Machining</a><a href="/es/tools/chamfer-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Chamfer Calculator</a><a href="/es/tools/feed-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Feed Converter</a><a href="/es/tools/bulk-discount-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Bulk Discount Calculator</a><a href="/es/tools/gun-drill-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Gun Drill Calculator</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">Inicio</a>
+<a href="/tools/">Todas las herramientas</a>
+<a href="/products/">Productos</a>
+<a href="/guides/">Guías</a>
+<a href="/about.html">Sobre</a>
+<a href="/quote.html">Calculadora de fuerza</a>
+<a href="/privacy.html">Velocidad y avance</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Convertidor de dureza</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Todas las herramientas</a></p>
+<p style="font-size:11px;margin-bottom:6px">Los resultados son únicamente de referencia. Consulte a los fabricantes de herramientas para aplicaciones específicas.</p>
+<p style="font-size:11px">©Herramientas de carburo 2026</p>
+</div>
+</footer>
+<script>
+const MATS = {
+ al6061:{label:'Aluminum 6061'},
+ ss304:{label:'Stainless 304'},
+ mild_steel:{label:'Mild Steel'},
+ ti6al4v:{label:'Titanium Gr5'},
+};
+
+function calc() {
+ const op = document.getElementById('op-type').value;
+ const dia = parseFloat(document.getElementById('dia').value) || 50;
+ const len = parseFloat(document.getElementById('length').value) || 100;
+ const doc = parseFloat(document.getElementById('doc').value) || 2;
+ const feed = parseFloat(document.getElementById('feed').value) || 0.2;
+ const vc = parseFloat(document.getElementById('vc').value) || 180;
+ const passes = parseInt(document.getElementById('passes').value) || 3;
+ const finalDia = parseFloat(document.getElementById('final-dia').value) || 44;
+ const noncut = parseFloat(document.getElementById('noncut').value) || 15;
+
+ // Calculate RPM from Vc
+ let effDia = op === 'facing' ? (dia + finalDia) / 2 : dia;
+ if (op === 'parting') effDia = dia;
+ const rpm = effDia > 0 ? (vc * 1000) / (Math.PI * effDia) : 1000;
+
+ // Avance per minute
+ const fpm = feed * rpm;
+
+ // Calculate travel distance based on operation
+ let travel = 0;
+ if (op === 'od' || op === 'boring') {
+ travel = len + 5; // +5mm approach/overrun
+ } else if (op === 'facing') {
+ travel = (dia - finalDia) / 2 + 3;
+ } else if (op === 'parting') {
+ travel = dia / 2 + 2;
+ }
+
+ // Cutting time per pass
+ const cutPerPassSec = travel > 0 && fpm > 0 ? (travel / fpm) * 60 : 0;
+ 
+ // Total cutting time
+ const totalCutSec = cutPerPassSec * passes;
+ 
+ // Non-cutting between passes
+ const interPassSec = (passes - 1) * 3;
+ 
+ // Total cycle
+ const cycleSec = totalCutSec + noncut + interPassSec;
+ 
+ // Parts per hour
+ const pph = cycleSec > 0 ? 3600 / cycleSec : 0;
+
+ // Material removed
+ const singlePassDepth = (dia - finalDia) / 2 / passes;
+ const removedPerPass = op === 'od' || op === 'boring'
+ ? (Math.PI * (Math.pow(dia/10,2) - Math.pow((dia-2*singlePassDepth)/10,2)) * len/10) / 4
+ : 0;
+ const totalRemoved = removedPerPass * passes;
+
+ // Cost estimate
+ const shopRate = 85; // $/hour
+ const costPerPart = (cycleSec / 3600) * shopRate;
+
+ document.getElementById('r-cut').textContent = totalCutSec.toFixed(1);
+ document.getElementById('r-cycle').textContent = cycleSec.toFixed(1);
+ document.getElementById('r-pph').textContent = Math.round(pph);
+ document.getElementById('r-rpm').textContent = Math.round(rpm);
+ document.getElementById('x-fpm').textContent = Math.round(fpm);
+ document.getElementById('x-removed').textContent = totalRemoved.toFixed(1);
+ document.getElementById('x-cost').textContent = '$' + costPerPart.toFixed(2);
+}
+
+calc();
+</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
+<section class="seo-content">
+<div class="container">
+<h2>¿Cuánto tiempo debe tomar cada operación de giro?</h2>
+<p>Un eje de acero inoxidable 304, de 50mm de diámetro × 200mm de largo, con tres pasadas de desbaste y una pasada de acabado, ¿es razonable en 4 minutos? ¿O deberían ser dos? Sin un cálculo estructurado, las estimaciones varían en un 100% o más entre programadores experimentados. Esta variación afecta directamente la precisión de las citas, la programación de la producción y la rentabilidad de la tienda. La fórmula del tiempo de ciclo de torneado elimina las conjuras al dividir cada operación en sus componentes geométricos y cinemáticos.</p>
+<p>La diferencia entre un ciclo de giro bien optimizado y uno conservador es típicamente 30-50% del tiempo de ciclo, lo que se traduce directamente en costo por pieza. Un trabajo que ejecuta 500 partes por año a $12 cada una frente a $8 cada una representa una diferencia anual de $2.000 para un solo número de parte. A lo largo de un programa de producción completo, los ahorros de la optimización precisa del tiempo de ciclo financian inversiones significativas en herramientas y equipos.</p>
+<h2>La fórmula del tiempo de giro</h2>
+<p>Para cualquier pasada de torneado, el tiempo de corte se deriva de la relación fundamental entre la distancia de recorrido de la herramienta y la velocidad de avance:</p>
+<p><strong>Cutting time (min):</strong> <code>t = L / (f × n)</code><br/>
+ Where <strong>L</strong> = total tool travel including approach and overrun (mm), <strong>f</strong> = feed per revolution (mm/rev), and <strong>n</strong> = spindle speed (RPM).</p>
+<p>For <strong>OD turning</strong>, tool travel L = length of cut + approach distance. For <strong>facing</strong>, the average diameter is used: <code>L = (Dinitial + Dfinal) / 4</code> combined with the radial travel distance. For <strong>boring</strong>, the calculation is identical to OD turning but with internal diameter considerations. For <strong>parting</strong>, the travel distance equals the radius of the bar stock.</p>
+<h2>Donde se pierde el tiempo de ciclo: los factores ocultos</h2>
+<p>El tiempo de corte es solo una parte del tiempo total del ciclo. Los componentes no cortantes (posicionamiento de la herramienta, indexación, carga/descarga de piezas e inspección) a menudo representan el 30-60% del ciclo total en piezas pequeñas. Esta calculadora incluye un parámetro de tiempo sin corte para que pueda modelar el ciclo total con precisión.</p>
+<p>The most commonly overlooked factor is the <strong>number of passes</strong>. A single roughing pass at 3mm DOC removes more material per minute than two passes at 1.5mm each, but the cutting forces may exceed the insert's capability. The <a href="/tools/force-calculator/" style="color:#0066cc">Convertidor de feeds</a> can help determine the maximum DOC for your specific operation, enabling you to minimize pass count while staying within safe force limits.</p>
+<h3>Impacto en los costos de la reducción del tiempo de ciclo</h3>
+<p>Cada segundo ahorrado en tiempo de ciclo reduce coste proporcionalmente. A una tarifa de tienda de $85/hora, una reducción de 10 segundos en un ciclo de 3 minutos ahorra $0,47 por pieza. En una tirada de 10.000 partes, eso es $4.700. La siguiente tabla muestra cómo compuesto pequeñas mejoras:</p>
+<div class="comparison">
+<div><h4>🟢Corriente: 180 sec/part</h4><p>200 piezas/mes → 10 horas de mecanizado → $850/mes → $10.200/año</p></div>
+<div><h4>🔵Optimizado: 120 seg/parte</h4><p>200 parts/month → 6.7 hours → $567/month → $6,800/year<br/><strong>Save: $3,400/year</strong></p></div>
+</div>
+<h2>Estrategias específicas de la operación para reducir el tiempo de ciclo</h2>
+<p><strong>OD Turning:</strong> The most direct lever is increasing DOC to reduce the number of passes. Each eliminated pass saves the full cutting time plus approach/retract motion. Verify force limits with the <a href="/tools/force-calculator/" style="color:#0066cc">Rugosidad de la superficie</a> before increasing DOC.</p>
+<p><strong>Facing:</strong> Constant surface speed (CSS) mode is essential. Without CSS, the RPM stays fixed and the cutting speed drops to zero at the center — dramatically increasing cycle time for facing operations. Always program facing with G96 (CSS) rather than G97 (constant RPM).</p>
+<p><strong>Boring:</strong> Internal boring cycles are limited by tool overhang and vibration. The cycle time is often determined by the need to take light passes to control chatter. Using a tuned boring bar with a higher natural frequency can allow deeper DOC and reduce pass count.</p>
+<p><strong>Parting:</strong> Parting is feed-limited, not speed-limited. Increasing feed from 0.05 mm/rev to 0.12 mm/rev can cut cycle time by 60% on the parting operation. However, higher feeds increase the risk of jamming the insert in the cut. Use a parting tool with chip-forming geometry designed for high feed rates.</p>
+<h2>Cómo afectan los parámetros de corte al tiempo de ciclo frente a la vida de la herramienta</h2>
+<p>Existe una compensación directa entre el tiempo de ciclo y la vida útil de la herramienta. El aumento de la alimentación en un 20% reduce el tiempo de ciclo en un 17% pero reduce la vida útil de la herramienta en aproximadamente un 35% (según la ecuación de Taylor extendida a los efectos de la velocidad de alimentación). El punto de funcionamiento económico óptimo equilibra el coste del consumo creciente de la herramienta contra los ahorros de la duración de ciclo reducida. Para la producción de alto volumen (más de 10.000 piezas), la velocidad de alimentación óptima suele ser más alta que para las ejecuciones de bajo volumen, porque el tiempo de cambio de herramienta se amortiza en más piezas.</p>
+<p>Using the <a href="/tools/speed-feed/" style="color:#0066cc">Calculadora de velocidad y avance</a> to find the material-specific recommended chip load ensures you operate in the efficient zone where small feed increases give large cycle time reductions without disproportionate tool life penalties.</p>
+<div class="comparison">
+<div><h4>⚡Estrategia de alta alimentación</h4><p>f=0.4 mm/rev → 90 sec cycle<br/>Tool life: 80 parts/edge<br/>Cost: optimized for volume</p></div>
+<div><h4>🎯Estrategia equilibrada</h4><p>f=0.25 mm/rev → 125 sec cycle<br/>Tool life: 180 parts/edge<br/>Cost: optimized for mixed runs</p></div>
+</div>
+<h2>Preguntas frecuentes</h2>
+<p><strong>How do you calculate cycle time for CNC turning?</strong> Cutting time = length of cut ÷ (feed per revolution × RPM). Total cycle time = cutting time + non-cutting time (tool positioning, part loading, inspection). This calculator does both automatically.</p>
+<p><strong>What is the formula for turning time?</strong> T = L ÷ (f × n) where L = total tool travel (mm), f = feed per revolution (mm/rev), n = spindle speed (RPM). For multiple passes, multiply by the number of passes and add non-cutting time between passes.</p>
+<p><strong>How does depth of cut affect cycle time?</strong> DOC determines the number of passes required. Doubling DOC halves the number of passes, directly reducing cycle time. Example: removing 6mm of stock at 2mm DOC requires 3 passes; at 4mm DOC it requires 2 passes — a 33% cycle time reduction.</p>
+<p><strong>What is a good cycle time for CNC turning?</strong> For a typical shaft 50mm diameter × 100mm long in mild steel: 60-120 seconds per part is efficient. Under 60 seconds requires high-feed strategies with rigid setup. Over 180 seconds indicates conservative parameters or excessive pass count.</p>
+<p><strong>Does constant surface speed affect cycle time?</strong> Significantly for facing and large-diameter variations. CSS maintains optimal cutting speed throughout the operation, reducing cycle time by 20-40% on facing passes compared to constant RPM. Always use G96 for facing operations.</p>
+<p><strong>How do I reduce cycle time without reducing tool life?</strong> Increase RPM rather than feed — higher RPM reduces cycle time without increasing chip load (which is the primary driver of tool wear). Verify that the higher RPM stays within the recommended cutting speed range for the material using the <a href="/tools/speed-feed/" style="color:#0066cc">Calculadora de velocidad y avance</a>.</p>
+<div style="text-align:center;padding:32px 24px;font-size:15px;color:#1d1d1f;background:#f5f5f7;border-radius:16px;max-width:900px;margin:40px auto 0">
+<p style="margin:0">Para reducir el tiempo de ciclo sin comprometer la calidad, consulte nuestras Fresadoras de extremo de alto rendimiento</p>
+</div>
+</div>
+</section>
+<div class="toolbox-widget"><h3>🔧Caja de herramientas de ingeniería de precisión</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Costo por pieza</a>
+<a href="/tools/hardness-converter/">Convertidor de par</a>
+<a href="/tools/tap-drill-size-calculator/">Solicitar cotización por volumen →</a>
+<a href="/tools/mrr-calculator/">Calculadora de MRR</a>
+<a href="/tools/feed-converter/">Portaherramientas</a>
+<a href="/tools/surface-roughness-calculator/">Calculadora de chaflán</a>
+<a href="/tools/titanium-machining-guide/">Calculadora de concentración de refrigerante</a>
+<a href="/tools/carbide-grade-cross-ref-2/">Calculadora de peso de barra redonda</a>
+<a href="/tools/cost-per-part-calculator/">Calculadora de fresado por pasos</a>
+<a href="/tools/torque-unit-converter/">Calculadora de pasos de roscado</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">¿Soluciones Profesionales para Cycle Time Calculator?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Obtenga precios directos de fábrica en herramientas de carburo premium con calidad certificada ISO.</p>
+</div>
+<a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">Guía de mecanizado del titanio</a><a href="/products/tool-holders.html">Calculadora de expansión de calor</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/cycle-time-calculator/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/cycle-time-calculator/&amp;text=Cycle Time Calculator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Cycle Time Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/cycle-time-calculator/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesth Converter</a>
-<a href="/es/tools/drill-point-length-calculator/">Drill Point Length Calculator</a>
-<a href="/es/tools/ramping-angle-calculator/">Ramping Angle Calculator</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/es/tools/graphite-machining/">Graphite Machining</a>
+<a href="/es/tools/sfm-m-min-converter/">Sfm M Min Converter</a>
+<a href="/es/tools/cost-per-part-calculator/">Cost Per Part Calculator</a>
 <a href="/es/tools/superalloy-tool-life/">Superalloy Tool Life</a>
-<a href="/es/tools/arc-r-to-ij-converter/">Arc R To Ij Converter</a>
-<a href="/es/tools/coord-rotation-calculator/">Coord Rotation Calculator</a>
+<a href="/es/tools/thread-depth-torque-calculator/">Thread Depth Torque Calculator</a>
+<a href="/es/tools/torque-unit-converter/">Torque Unit Converter</a>
+<a href="/es/tools/nose-radius-compensation/">Nose Radius Compensation</a>
+<a href="/es/tools/round-bar-weight/">Round Bar Weight</a>
+<a href="/es/tools/temp-converter/">Temp Converter</a>
+<a href="/es/tools/tap-drill-size-calculator/">Tap Drill Size Calculator</a>
 
 </div>
 </section>
@@ -312,22 +583,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/es/tools/horsepower-calculator/">Horsepower Calculator</a>
+<a href="/es/tools/gcode-reference/">Gcode Reference</a>
+<a href="/es/tools/coating-selector/">Coating Selector</a>
+<a href="/es/tools/plastic-machining/">Plastic Machining</a>
+<a href="/es/tools/tensile-strength-converter/">Tensile Strength Converter</a>
+<a href="/es/tools/drill-point-length-calculator/">Drill Point Length Calculator</a>
+<a href="/es/tools/ramping-angle-calculator/">Ramping Angle Calculator</a>
+<a href="/es/tools/superalloy-tool-life/">Superalloy Tool Life</a>
+<a href="/es/tools/arc-r-to-ij-converter/">Arc R To Ij Converter</a>
+<a href="/es/tools/coord-rotation-calculator/">Coord Rotation Calculator</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -337,6 +612,20 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body>
 </html>

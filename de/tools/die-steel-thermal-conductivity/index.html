@@ -11,7 +11,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -25,18 +38,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -249,6 +251,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -256,7 +259,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1504917598568-65a8f8b4f8ca?w=1200&h=675&fit=crop&q=80&auto=format" alt="Stahlherstellung und Bearbeitung" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/de/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -270,15 +280,86 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 <a class="nv-quote" href="/de/quote.html">📩 Angebot</a>
 </div>
 </div>
-</nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">Bohrergröße für Gewindebohrungen</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">Rundstabgewicht</a> <span style="color:#d2d2d6">›</span> Die Steel Thermal Conductivity</div>
+<section class="hero"><div class="container"><div class="badge">🧰 Tool</div><h1>Temperatur (°C)</h1><p>Referenz: Stahls orten mit höherer Wärme leitfähig keit kühlen in Formen schneller ab.</p></div></section>
+
+<div class="container"><div class="card"><h2>Die Ergebnisse dienen ausschließlich als Referenz. Wenden Sie sich bei spezifischen Anwendungen an die Hersteller der Werkzeuge.</h2><label>©2026 Hartmetallwerkzeuge</label><select id="grade" onchange="calc()"><option value="H13">H13 — Hot work</option><option value="P20">P20 — Pre-hardened</option><option value="D2">D2 — High carbon/high chrome</option><option value="S7">S7 — Shock resisting</option><option value="A2">A2 — Air hardening</option></select><label>Wärme leitfähig keit von H13 Werkzeugs tahl bei verschiedenen Temperaturen</label><input id="i1" oninput="calc()" type="number" value="200"/><label>H13 Heiß werkzeugs tahl weist eine Wärme leitfähig keit von 24 W/m · K bei Raum temperatur bis 28 W/m · K bei 500 ° C auf. Dieser Temperatur anstieg ist charakter is tisch für Werkzeugs tähle und beeinflusst die Abkühl raten bei Druckguss-und Warm schmiede anwendungen. Das Verständnis dieser Werte hilft Schimmel designern, die Platzierung des Kühl kanals für eine gleichmäßige Teile kühlung zu optimieren.</label><!-- value=--><div class="res"><div class="res-item"><div class="lbl">Conductivity</div><div class="val" id="r2">—</div></div><div class="res-item"><div class="lbl">kJ/h·m·K</div><div class="val" id="r3">—</div></div><div class="res-item"><div class="lbl">Assessment</div><div class="val" id="r1">—</div></div></div></div>
+<div style="text-align:center;margin:24px 0"><a href="/tools/" style="color:#0066cc;font-size:13px">Härtekonverter</a></div></div>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Verwandte Präzisionswerkzeuge</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/de/tools/dia-circ-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Dia Circ Calculator</a><a href="/de/tools/dovetail-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Dovetail Calculator</a><a href="/de/tools/drill-point-length-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Drill Point Length Calculator</a><a href="/de/tools/batch-cost-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Batch Cost Calculator</a><a href="/de/tools/percentage-of-thread-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Percentage Of Thread Calculator</a><a href="/de/tools/gun-drill-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Gun Drill Calculator</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">Bohrergröße für Gewindebohrungen</a>
+<a href="/tools/">Vergleich der thermischen Eigenschaften P20, D2 und S7</a>
+<a href="/products/">🇯🇵JP</a>
+<a href="/guides/">🇪🇸ES</a>
+<a href="/about.html">🇻🇳VI</a>
+<a href="/quote.html">Drehmomentwandler</a>
+<a href="/privacy.html">Massenanfrage stellen →</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Leistungsstufen-Wahlhilfe</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Vergleich der thermischen Eigenschaften P20, D2 und S7</a></p>
+<p style="font-size:11px;margin-bottom:6px">P20 vor gehärteter Forms tahl weist bei 24 ° C eine Leitfähig keit von 29 W/m · K auf und ist damit der thermisch am besten reagierende gängige Forms tähle. D2-Werkzeugstahl mit seinem hohen Chrom gehalt hat eine geringere Leitfähig keit bei 20 W/m · K. Stoß beständiger Stahl S7 fällt dazwischen bei 25 W/m · K. Diese Unterschiede beeinflussen die Form zykluszeiten und die Gleichmäßigkeit der Hohlraum temperatur erheblich.</p>
+<p style="font-size:11px">Wie die Leitfähig keit das Design von Schimmel kühlanälen beeinflusst</p>
+</div>
+<section class="seo"><div class="container">
+<h2>Eine höhere Wärme leitfähig keit ermöglicht einen breiteren Kühl kanal abstand bei gleichmäßiger Temperatur verteilung. Bei H13-Formen sollten die Kühl kanäle 2 bis 2,5 × des Kanal durchmessers von der Hohlraum oberfläche beabstandet sein. Reduzieren Sie bei D2-Formen mit geringerer Leitfähig keit den Abstand auf 1, 5-2 × Durchmesser, um eine gleichwertige Kühlleistung zu erzielen.</h2><p>Häufig gestellte Fragen</p>
+<h2>Ändert sich die Wärme leitfähig keit von Werkzeugs tahl mit dem Gebrauch? Ja. Wiederholter thermischer Kreislauf kann zu mikros trukturellen Veränderungen führen, die die Wärme leitfähig keit allmählich verringern. Heiße Arbeits stähle wie H13 können nach längerer Wartung über 600 ° C aufgrund von Carbid-Vergröerung und Temperierung effekten eine Verringerung der Leitfähig keit um 5-10% aufweisen.</h2><p>Wie wirkt sich der Legierung gehalt auf die Wärme leitfähig keit aus? Ein höherer Legierung gehalt verringert im Allgemeinen die Wärme leitfähig keit. Chrom, Vanadium und Molybdän in Werkzeugs tählen streuen Phononen und Elektronen und reduzieren so die Wärme übertragung. Der 12% ige Chrom gehalt von D2-Stahl erklärt seine geringere Leitfähig keit im Vergleich zu niedrig legiertem P20.</p>
+<h2>Kann ich Wärme leitfähig keits daten verwenden, um die Kühlzeit vorher zusagen? Ja, mit validierten FEA-Modellen. Die thermische Diffusions fähigkeit (Leitfähig keit geteilt durch Dichte × spezifische Wärme) ist der Schlüssel parameter für die transiente Kühl analyze. Die Verwendung von Handbuch werten mit einem Sicherheits faktor von 10% liefert zuverlässige Schätzungen der Form kühlzeit.</h2><p>⚡Berechnet für die Hochleistungsserie von Carbide-Tooling.com. Katalog anzeigen →</p>
+<h2>🔧Werkzeugkasten der Präzisionstechnik</h2>
+<p><strong>Does thermal conductivity of tool steel change with use?</strong> Yes. Repeated thermal cycling can cause microstructural changes that gradually reduce thermal conductivity. Hot work steels like H13 may show 5–10% reduction in conductivity after extended service above 600°C due to carbide coarsening and tempering effects.</p>
+<p><strong>How does alloy content affect thermal conductivity?</strong> Higher alloy content generally reduces thermal conductivity. Chromium, vanadium, and molybdenum in tool steels scatter phonons and electrons, reducing heat transfer. D2 steel's 12% chromium content explains its lower conductivity compared to low-alloy P20.</p>
+<p><strong>Can I use thermal conductivity data to predict cooling time?</strong> Yes, with validated FEA models. The thermal diffusivity (conductivity divided by density × specific heat) is the key parameter for transient cooling analysis. Using handbook values with a 10% safety factor provides reliable mold cooling time estimates.</p>
+<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">Schwalbenschwanz-Rechner</a></p>
+</div></section>
+</footer>
+<script>function calc(){document.getElementById('r1').textContent=parseFloat(document.getElementById('i1').value)*parseFloat(document.getElementById('i2').value);}calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><div class="toolbox-widget"><h3>Führer</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Leitfaden zur Kunststoffbearbeitung</a>
+<a href="/tools/hardness-converter/">Chargenkostenrechner</a>
+<a href="/tools/tap-drill-size-calculator/">Datenschutz</a>
+<a href="/tools/mrr-calculator/">Helical Interpolation rechner</a>
+<a href="/tools/feed-converter/">Spanabtragskalkulator</a>
+<a href="/tools/surface-roughness-calculator/">Katalog ansehen →</a>
+<a href="/tools/titanium-machining-guide/">Metallkostenrechner</a>
+<a href="/tools/carbide-grade-cross-ref-2/">LinkedIn</a>
+<a href="/tools/cost-per-part-calculator/">E-Mail</a>
+<a href="/tools/torque-unit-converter/">Torque Converter</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Professionelle Lösungen für Die Steel Thermal Conductivity?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Erhalten Sie werkseitige Preise für Premium-Hartmetallwerkzeuge mit ISO-zertifizierter Qualität.</p>
+</div>
+<a href="/de/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Massenangebot anfordern →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/carbide-grades.html">Grade Selection Guide</a><a href="/guides/insert-grade-selection.html">Insert Grade Inquiry</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/die-steel-thermal-conductivity/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/die-steel-thermal-conductivity/&amp;text=Die Steel Thermal Conductivity" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Die Steel Thermal Conductivity&amp;body=Check this out: https://carbide-tooling.com/tools/die-steel-thermal-conductivity/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Globales Engineering-Verzeichnis</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professi="/de/tools/carbide-grade-cross-ref-2/">Carbide Grade Cross Ref 2</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professionelle Bearbeitungswerkzeuge</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/de/tools/toolbox-organizer/">Toolbox Organizer</a>
+<a href="/de/tools/sfm-m-min-converter/">Sfm M Min Converter</a>
+<a href="/de/tools/tube-weight-calculator/">Tube Weight Calculator</a>
 <a href="/de/tools/thread-depth-torque-calculator/">Thread Depth Torque Calculator</a>
-<a href="/de/tools/arc-r-to-ij-converter/">Arc R To Ij Converter</a>
-<a href="/de/tools/stainless-properties/">Stainless Properties</a>
-<a href="/de/tools/heat-expansion-calculator/">Heat Expansion Calculator</a>
-<a href="/de/tools/iso-fit-calculator/">Iso Fit Calculator</a>
+<a href="/de/tools/thread-lead-angle-calculator/">Thread Lead Angle Calculator</a>
+<a href="/de/tools/pomodoro-timer/">Pomodoro Timer</a>
+<a href="/de/tools/nose-radius-compensation/">Nose Radius Compensation</a>
+<a href="/de/tools/pressure-converter/">Pressure Converter</a>
+<a href="/de/tools/inventory-turnover-calculator/">Inventory Turnover Calculator</a>
+<a href="/de/tools/scrap-value-calculator/">Scrap Value Calculator</a>
 
 </div>
 </section>
@@ -303,22 +384,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Globales Engineering-Verzeichnis</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professionelle Bearbeitungswerkzeuge</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/de/tools/coord-rotation-calculator/">Coord Rotation Calculator</a>
+<a href="/de/tools/horsepower-calculator/">Horsepower Calculator</a>
+<a href="/de/tools/aql-sampling-calculator/">Aql Sampling Calculator</a>
+<a href="/de/tools/titanium-machining-guide/">Titanium Machining Guide</a>
+<a href="/de/tools/carbide-grade-cross-ref-2/">Carbide Grade Cross Ref 2</a>
+<a href="/de/tools/thread-depth-torque-calculator/">Thread Depth Torque Calculator</a>
+<a href="/de/tools/arc-r-to-ij-converter/">Arc R To Ij Converter</a>
+<a href="/de/tools/stainless-properties/">Stainless Properties</a>
+<a href="/de/tools/heat-expansion-calculator/">Heat Expansion Calculator</a>
+<a href="/de/tools/iso-fit-calculator/">Iso Fit Calculator</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -328,5 +413,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/de/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Massenangebot anfordern →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>

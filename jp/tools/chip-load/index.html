@@ -110,7 +110,20 @@ footer a{color:#0066cc;text-decoration:none}
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -124,18 +137,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -284,6 +286,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -291,6 +294,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1565193566165-24e2f9e7e80c?w=1200&h=675&fit=crop&q=80&auto=format" alt="CNCフライス削り速度と送り" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div>
 <nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/jp/"><span>◆</span> Carbide Tooling</a>
@@ -306,15 +317,286 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 </div>
 </div>
 </nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<section class="hero">
+<div class="container">
+<div class="badge">🔧 Free Professional Tool</div>
+<h1>チップ荷重計算機</h1>
+<p>カーバイドエンドミルの歯あたりのフィード (IPT / fz) を計算します。チップ荷重を最適化して、工具寿命、表面仕上げ、材料除去率を最大化します。</p>
+<div class="hero-actions">
+<a class="btn" href="#calculator">計算開始 →</a>
+<a class="btn-outline" href="/tools/">← すべてのツール</a>
+</div>
+</div>
+</section>
+<section class="container" id="calculator" style="padding-bottom:40px">
+<div class="card">
+<h2>🦷チップ荷重 &amp; 歯あたりのフィード</h2>
+<p class="sub">カーバイド工具メーカーと加工データハンドブックからの推奨チップ負荷範囲に基づく</p>
+<div class="tabs" id="unit-tabs">
+<button class="tab active" onclick="setUnit('metric')">📐メートル (mm)</button>
+<button class="tab" onclick="setUnit('imperial')">📏インペリアル (インチ)</button>
+</div>
+<div class="card-row">
+<div class="field"><label>🔩材料</label>
+<select id="material" onchange="calc()">
+<option value="al6061">Aluminum 6061</option>
+<option selected="" value="ss304">Stainless Steel 304</option>
+<option value="ss316">Stainless Steel 316</option>
+<option value="ti6al4v">Titanium Grade 5</option>
+<option value="hardened_steel">Hardened Steel (45-55 HRC)</option>
+<option value="mild_steel">Mild Steel 1018</option>
+<option value="tool_steel">Tool Steel A2/D2</option>
+<option value="inconel">Inconel 718</option>
+<option value="cast_iron">Cast Iron</option>
+<option value="brass">Brass / Copper</option>
+</select>
+</div>
+<div class="field"><label>⚙️ 操作</label>
+<select id="operation" onchange="calc()">
+<option value="roughing">Roughing</option>
+<option selected="" value="finishing">Finishing</option>
+</select>
+</div>
+<div class="field"><label>📐ツール直径</label>
+<input id="tool-dia" max="50" min="0.1" oninput="calc()" step="0.5" type="number" value="12"/>
+</div>
+<div class="field"><label>🦷フルート</label>
+<select id="flutes" onchange="calc()">
+<option value="2">2</option><option value="3">3</option><option selected="" value="4">4</option><option value="5">5</option><option value="6">6</option>
+</select>
+</div>
+<div class="field"><label id="lbl-input1">⚡スピンドル速度 (RPM)</label>
+<input id="rpm-input" max="50000" min="100" oninput="calc()" step="100" type="number" value="8000"/>
+</div>
+<div class="field"><label id="lbl-input2">📊フィードレート</label>
+<input id="feed-input" max="50000" min="1" oninput="calc()" step="10" type="number" value="1200"/>
+</div>
+</div>
+<!-- Status -->
+<div id="status-bar"></div>
+<!-- Results -->
+<div class="result-grid" id="results" style="margin-top:14px">
+<div class="result-item"><div class="label">Chip Load (IPT / fz)</div><div class="value accent" id="r-chip">—</div><div class="unit" id="chip-unit">mm/tooth</div></div>
+<div class="result-item"><div class="label">送り Per Revolution</div><div class="value" id="r-fpr">—</div><div class="unit" id="fpr-unit">mm/rev</div></div>
+<div class="result-item"><div class="label">Material Removal Rate</div><div class="value" id="r-mrr">—</div><div class="unit" id="mrr-unit">cm³/min</div></div>
+<div class="result-item"><div class="label">Surface 切削速度</div><div class="value" id="r-sfm">—</div><div class="unit">SFM</div></div>
+</div>
+<div class="extra-info">
+<span>Recommended chip load range for this material &amp; operation:</span>
+<span id="r-range" style="font-weight:600;color:#1d1d1f">—</span>
+<span style="margin-left:auto"><button onclick="copyResults()" style="background:none;border:none;color:#0066cc;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit">📋結果をコピー</button></span>
+</div>
+</div>
+<div class="ref-link">
+<p style="font-size:14px;font-weight:600;color:#1d1d1f">💡最初に正しいスピンドル速度が必要ですか?</p>
+<p>Use our <a href="/tools/speed-feed/">スピード &amp; フィード电卓 →</a></p>
+</div>
+</section>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">関連精密工具</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/jp/tools/carbide-grade-cross-ref-2/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Carbide Grade Cross Ref 2</a><a href="/jp/tools/cast-iron-machining/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Cast Iron Machining</a><a href="/jp/tools/chamfer-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Chamfer Calculator</a><a href="/jp/tools/shipping-duty-estimator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Shipping Duty Estimator</a><a href="/jp/tools/force-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Force Calculator</a><a href="/jp/tools/pomodoro-timer/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Pomodoro Timer</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">ホーム</a>
+<a href="/tools/">すべてのツール</a>
+<a href="/products/">製品</a>
+<a href="/guides/">ガイド</a>
+<a href="/about.html">について</a>
+<a href="/quote.html">硬度変換器</a>
+<a href="/privacy.html">タップ穴径</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">MRR計算ツール</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">すべてのツール</a></p>
+<p style="font-size:11px;margin-bottom:6px">結果は参考としてのみご使用ください。具体的な用途については、工具メーカーにご相談ください。</p>
+<p style="font-size:11px">©2026年用超硬工具</p>
+</div>
+</footer>
+<script>
+const MATS = {
+ al6061:{ipt_min:0.001,ipt_max:0.006,r_min:0.003,r_max:0.006,f_min:0.001,f_max:0.003,coeff:0.25,label:'Aluminum 6061'},
+ ss304:{ipt_min:0.001,ipt_max:0.005,r_min:0.002,r_max:0.005,f_min:0.001,f_max:0.003,coeff:0.55,label:'Stainless 304'},
+ ss316:{ipt_min:0.001,ipt_max:0.004,r_min:0.002,r_max:0.004,f_min:0.001,f_max:0.002,coeff:0.6,label:'Stainless 316'},
+ ti6al4v:{ipt_min:0.0008,ipt_max:0.003,r_min:0.001,r_max:0.003,f_min:0.0008,f_max:0.002,coeff:0.65,label:'Titanium Gr5'},
+ hardened_steel:{ipt_min:0.0005,ipt_max:0.003,r_min:0.001,r_max:0.003,f_min:0.0005,f_max:0.002,coeff:0.7,label:'Hardened Steel'},
+ mild_steel:{ipt_min:0.001,ipt_max:0.006,r_min:0.003,r_max:0.006,f_min:0.001,f_max:0.004,coeff:0.4,label:'Mild Steel 1018'},
+ tool_steel:{ipt_min:0.001,ipt_max:0.004,r_min:0.002,r_max:0.004,f_min:0.001,f_max:0.0025,coeff:0.55,label:'Tool Steel A2/D2'},
+ inconel:{ipt_min:0.0005,ipt_max:0.0025,r_min:0.001,r_max:0.0025,f_min:0.0005,f_max:0.0015,coeff:0.8,label:'Inconel 718'},
+ cast_iron:{ipt_min:0.002,ipt_max:0.006,r_min:0.003,r_max:0.006,f_min:0.002,f_max:0.004,coeff:0.3,label:'Cast Iron'},
+ brass:{ipt_min:0.002,ipt_max:0.007,r_min:0.003,r_max:0.007,f_min:0.002,f_max:0.005,coeff:0.2,label:'Brass/Copper'},
+};
+
+let unit = 'metric';
+
+function setUnit(u) {
+ unit = u;
+ document.querySelectorAll('#unit-tabs .tab').forEach((t,i) => {
+ t.classList.toggle('active', (i===0 && u==='metric') || (i===1 && u==='imperial'));
+ });
+ calc();
+}
+window.setUnit = setUnit;
+
+function calc() {
+ const mat = MATS[document.getElementById('material').value];
+ const op = document.getElementById('operation').value;
+ const d = parseFloat(document.getElementById('tool-dia').value) || 12;
+ const z = parseInt(document.getElementById('flutes').value) || 4;
+ const rpm = parseInt(document.getElementById('rpm-input').value) || 1000;
+ const feedInput = parseFloat(document.getElementById('feed-input').value) || 100;
+
+ const isRough = op === 'roughing';
+ const iptMin = isRough ? mat.r_min : mat.f_min;
+ const iptMax = isRough ? mat.r_max : mat.f_max;
+
+ // Calculate chip load
+ const feedPerMin = unit === 'metric' ? feedInput : feedInput * 25.4;
+ const chipLoadMm = feedPerMin / (rpm * z);
+ const chipLoadIpt = chipLoadMm / 25.4;
+
+ // 送り per revolution
+ const fpr = unit === 'metric' ? feedInput / rpm : feedInput / rpm;
+
+ // MRR (using default doc/woc ratios)
+ const doc = d * (isRough ? 0.5 : 0.2);
+ const woc = d * (isRough ? 0.7 : 0.3);
+ const mrr = unit === 'metric' ? (doc * woc * feedPerMin) / 1000 : (doc/25.4 * woc/25.4 * feedInput);
+
+ // SFM
+ const sfm = (Math.PI * d * rpm) / (unit === 'metric' ? 1000 : 12 * 25.4);
+
+ // Display
+ const displayChip = unit === 'metric' ? chipLoadMm : chipLoadIpt;
+ const chipUnit = unit === 'metric' ? 'mm/tooth' : 'IPT';
+ const displayFpr = fpr;
+ const fprUnit = unit === 'metric' ? 'mm/rev' : 'in/rev';
+
+ document.getElementById('r-chip').textContent = displayChip.toFixed(4);
+ document.getElementById('chip-unit').textContent = chipUnit;
+ document.getElementById('r-fpr').textContent = displayFpr.toFixed(3);
+ document.getElementById('fpr-unit').textContent = fprUnit;
+ document.getElementById('r-mrr').textContent = unit === 'metric' ? mrr.toFixed(1) : mrr.toFixed(2);
+ document.getElementById('mrr-unit').textContent = unit === 'metric' ? 'cm³/min' : 'in³/min';
+ document.getElementById('r-sfm').textContent = Math.round(sfm);
+
+ // Range display
+ const displayMin = unit === 'metric' ? iptMin : iptMin / 25.4;
+ const displayMax = unit === 'metric' ? iptMax : iptMax / 25.4;
+ const rangeStr = `${displayMin.toFixed(4)} - ${displayMax.toFixed(4)} ${chipUnit}`;
+ document.getElementById('r-range').textContent = rangeStr;
+
+ // Status
+ const sb = document.getElementById('status-bar');
+ const chip = unit === 'metric' ? chipLoadMm : chipLoadIpt;
+ const chipMin = unit === 'metric' ? iptMin : iptMin / 25.4;
+ const chipMax = unit === 'metric' ? iptMax : iptMax / 25.4;
+
+ let status = '';
+ if (chip < chipMin * 0.7) {
+ status = `<div class="status-bar danger"><span class="icon">🔴</span> Chip load too low — risk of rubbing, work-hardening, and rapid tool failure. Increase feed rate or reduce RPM.</div>`;
+ } else if (chip < chipMin) {
+ status = `<div class="status-bar warning"><span class="icon">🟡</span> Chip load below recommended range — consider increasing feed by ${Math.round((chipMin/chip - 1) * 100)}%</div>`;
+ } else if (chip <= chipMax) {
+ status = `<div class="status-bar good"><span class="icon">🟢</span> Chip load within optimal range for this material and operation.</div>`;
+ } else if (chip < chipMax * 1.3) {
+ status = `<div class="status-bar warning"><span class="icon">🟡</span> Chip load above recommended range — reduce feed or increase RPM to prevent chipping.</div>`;
+ } else {
+ status = `<div class="status-bar danger"><span class="icon">🔴</span> Chip load critically high — risk of tool breakage and spindle overload. Reduce feed by ${Math.round((chip/chipMax - 1) * 100)}% immediately.</div>`;
+ }
+ sb.innerHTML = status;
+}
+
+function copyResults() {
+ const mat = document.getElementById('material').options[document.getElementById('material').selectedIndex].text;
+ const chip = document.getElementById('r-chip').textContent;
+ const cu = document.getElementById('chip-unit').textContent;
+ const mrr = document.getElementById('r-mrr').textContent;
+ const mu = document.getElementById('mrr-unit').textContent;
+ const range = document.getElementById('r-range').textContent;
+ const t = `Carbide Tooling — Chip Load Calculator\nMaterial: ${mat}\nChip Load: ${chip} ${cu}\nRecommended Range: ${range}\nMRR: ${mrr} ${mu}\n\nGenerated by CarbideTooling.com`;
+ navigator.clipboard.writeText(t).then(() => {
+ const b = document.querySelector('.extra-info button');
+ b.textContent = '✅ Copied!';
+ setTimeout(() => b.textContent = '📋 Copy Results', 2000);
+ });
+}
+
+calc();
+</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
+<section class="seo-content">
+<div class="container">
+<h2>チップロードとは何ですか? 歯ごとの理解のフィード (fz / IPT)</h2>
+<p>チップ荷重は、歯あたりのフィード (メトリックではfz、インペリアルではIPT-歯あたりのインチ) とも呼ばれ、1回転あたりのツールの各刃先によって除去される材料の厚さです。これは、工具の寿命、表面仕上げ、および加工生産性に影響を与える単一の最も重要なパラメータです。最適化されたチップ負荷により、刃先が実際に切断され、摩擦が発生するのではなく、熱の蓄積、加工硬化、および早期の工具の故障が発生します。</p>
+<h3>チップロード式</h3>
+<p><strong>Imperial:</strong> <code>IPT = 送り Rate (IPM) ÷ (RPM × Number of Flutes)</code><br/>
+<strong>Metric:</strong> <code>fz (mm/tooth) = Vf (mm/min) ÷ (n × z)</code></p>
+<p>ここで、Vf = 送り速度、n = スピンドル速度 (RPM) 、z = フルートの数。</p>
+<p>Inversely, to calculate the required feed rate for a target chip load:<br/>
+<code>送り Rate = Target IPT × RPM × Number of Flutes</code></p>
+<h3>材料による推奨チップ荷重</h3>
+<p><strong>Aluminum 6061:</strong> 0.003-0.006 IPT roughing, 0.001-0.003 IPT finishing. Aluminum permits aggressive chip loads due to its low cutting forces. Use 2-3 flute tools for maximum chip evacuation.</p>
+<p><strong>Stainless Steel 304/316:</strong> 0.002-0.005 IPT roughing, 0.001-0.003 IPT finishing. Stainless steel work-hardens if the chip load is too low — maintaining minimum chip thickness is critical. Never drop below 0.001 IPT with carbide tools in stainless.</p>
+<p><strong>Titanium Grade 5:</strong> 0.001-0.003 IPT roughing, 0.0008-0.002 IPT finishing. Titanium's low thermal conductivity means the chip carries away most of the heat. Adequate chip load ensures heat doesn't concentrate at the cutting edge.</p>
+<p><strong>Hardened Steel (45-55 HRC):</strong> 0.001-0.003 IPT roughing, 0.0005-0.002 IPT finishing. Use light chip loads with high-flute-count tools. Trochoidal toolpaths allow higher chip loads at reduced radial engagement.</p>
+<h3>チップ負荷がツール寿命に重要である理由</h3>
+<p>推奨される最小チップ負荷を下回ると、ツールがせん断ではなく摩擦します。この摩擦により、過度の熱が発生し、ステンレス鋼やニッケル合金の加工硬化が発生し、側面の摩耗が加速します。最大チップ負荷を超えて実行すると、ツールのたわみ、エッジチッピング、およびスピンドル過負荷のリスクがあります。最適なチップ負荷は、材料の除去率と予測可能な工具寿命のバランスを取ります。通常、荒削り操作に推奨される範囲の中間から上限を対象とします。</p>
+<h3>チップ負荷が間違っていることを示します</h3>
+<p><strong>Too low:</strong> Burnt edges, discolored chips, squealing or whistling sounds, poor surface finish, rapid flank wear.<br/>
+<strong>Too high:</strong> Tool deflection, chatter marks, broken cutting edges, spindle load exceeding 100%, oversized hole or slot dimensions.</p>
+<h2>よくある質問</h2>
+<p><strong>What is chip load in CNC milling?</strong> Chip load (IPT or fz) is the thickness of material removed by each cutting flute per revolution. It determines whether the tool cuts efficiently or rubs against the material.</p>
+<p><strong>How do I calculate feed per tooth?</strong> Divide the feed rate by the product of spindle speed and number of flutes: fz = Vf ÷ (n × z). Use the calculator above for instant results.</p>
+<p><strong>What happens if chip load is too low?</strong> The tool rubs instead of cutting, generating excessive heat, causing work-hardening, and dramatically reducing tool life. In stainless steel, low chip load is the #1 cause of premature failure.</p>
+<p><strong>What is the difference between IPT and fz?</strong> IPT (Inches Per Tooth) and fz (feed per tooth in mm) are the same concept — just different units. IPT × 25.4 = fz in mm/tooth.</p>
+<p><strong>How does chip load affect surface finish?</strong> Lower chip loads generally produce finer surface finishes, but only if the tool is cutting (not rubbing). The theoretical finish is a function of feed per tooth and corner radius: Rt = (fz²) ÷ (8 × R).</p>
+<p><strong>Should chip load change for high-speed machining?</strong> For HSM/trochoidal toolpaths, you can increase chip load by 30-50% compared to conventional paths because the reduced radial engagement allows each tooth to take a thicker chip.</p>
+</div>
+</section>
+<div class="toolbox-widget"><h3>🔧精密工学ツールボックス</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">表面粗さ</a>
+<a href="/tools/hardness-converter/">チタンガイド</a>
+<a href="/tools/tap-drill-size-calculator/">グレード相互参照</a>
+<a href="/tools/mrr-calculator/">部品当たりのコスト</a>
+<a href="/tools/feed-converter/">トルクコンバーター</a>
+<a href="/tools/surface-roughness-calculator/">一括見積もりを依頼する →</a>
+<a href="/tools/titanium-machining-guide/">ソリッドカーバイドエンドミル</a>
+<a href="/tools/carbide-grade-cross-ref-2/">工具ホルダー</a>
+<a href="/tools/cost-per-part-calculator/">NPTパイプねじ計算ツール</a>
+<a href="/tools/torque-unit-converter/">Polarから長方形へのコンバータ</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Chip Loadのプロフェッショナルソリューション</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">ISO認証品質のプレミアム超硬工具を工場直送価格でご提供。技術サポート付き。</p>
+</div>
+<a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">バッチコスト計算機</a><a href="/products/tool-holders.html">工具交換時間アナライザー</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/chip-load/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/chip-load/&amp;text=Chip Load Calculator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Chip Load Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/chip-load/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
 <p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
-<div style="dioncentration/">Coolant Concentration</a>
-<a href="/jp/tools/aql-sampling-calculator/">Aql Sampling Calculator</a>
-<a href="/jp/tools/taper-calculator/">Taper Calculator</a>
-<a href="/jp/tools/pomodoro-timer/">Pomodoro Timer</a>
-<a href="/jp/tools/gdt-symbols-reference/">Gdt Symbols Reference</a>
-<a href="/jp/tools/speed-feed/">Speed Feed</a>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/jp/tools/tool-life-economics/">Tool Life Economics</a>
+<a href="/jp/tools/hardness-converter/">Hardness Converter</a>
+<a href="/jp/tools/automation-vs-manual-calculator/">Automation Vs Manual Calculator</a>
+<a href="/jp/tools/scrap-value-calculator/">Scrap Value Calculator</a>
+<a href="/jp/tools/carbide-grade-cross-ref-2/">Carbide Grade Cross Ref 2</a>
+<a href="/jp/tools/coolant-concentration/">Coolant Concentration</a>
+<a href="/jp/tools/pythagorean-calculator/">Pythagorean Calculator</a>
+<a href="/jp/tools/machinability-rating/">Machinability Rating</a>
+<a href="/jp/tools/graphite-machining/">Graphite Machining</a>
+<a href="/jp/tools/shipping-duty-estimator/">Shipping Duty Estimator</a>
 
 </div>
 </section>
@@ -339,22 +621,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/jp/tools/bulk-discount-calculator/">Bulk Discount Calculator</a>
+<a href="/jp/tools/thread-pitch-diameter-calculator/">Thread Pitch Diameter Calculator</a>
+<a href="/jp/tools/tensile-strength-converter/">Tensile Strength Converter</a>
+<a href="/jp/tools/nose-radius-compensation/">Nose Radius Compensation</a>
+<a href="/jp/tools/coolant-concentration/">Coolant Concentration</a>
+<a href="/jp/tools/aql-sampling-calculator/">Aql Sampling Calculator</a>
+<a href="/jp/tools/taper-calculator/">Taper Calculator</a>
+<a href="/jp/tools/pomodoro-timer/">Pomodoro Timer</a>
+<a href="/jp/tools/gdt-symbols-reference/">Gdt Symbols Reference</a>
+<a href="/jp/tools/speed-feed/">Speed Feed</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -364,6 +650,20 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body>
 </html>

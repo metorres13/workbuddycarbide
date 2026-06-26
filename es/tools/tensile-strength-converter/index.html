@@ -11,7 +11,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -25,18 +38,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -249,6 +251,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -256,7 +259,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1581093450562-17e0e3e3b3d2?w=1200&h=675&fit=crop&q=80&auto=format" alt="Prueba de dureza" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/es/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -270,15 +280,92 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 <a class="nv-quote" href="/es/quote.html">📩 Cotización</a>
 </div>
 </div>
-</nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">Conversor de SFM/m/min</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">Convertidor de arco R a IJ</a> <span style="color:#d2d2d6">›</span> Tensile Strength Converter</div>
+<section class="hero"><div class="container"><div class="badge">📊 Conversion Tool</div><h1>Fortalezas materiales comunes</h1><p>Material</p></div></section>
+
+<div class="container"><div class="card"><label>ksi</label><select id="fu" onchange="go()"><option value="ksi">ksi</option><option selected="" value="mpa">MPa</option><option value="psi">PSI</option></select><input id="val" oninput="go()" type="number" value="140"/><label>Acero A36</label><select id="tu" onchange="go()"><option value="ksi">ksi</option><option value="mpa">MPa</option><option value="psi">PSI</option></select>
+<div class="res"><div class="res-item"><div class="lbl">Converted</div><div class="val" id="r1">—</div></div><div class="res-item"><div class="lbl">All Scales</div><div class="val" id="r2" style="font-size:14px">—</div></div></div></div>
+<h2 style="font-size:15px;font-weight:700;margin-top:20px">1018 Acero</h2>
+<table class="chart"><tr><th>4140 recocido</th><th>4340 Q y T</th><th>Al 7075-T6</th></tr><tr><td>Ti-6 Al-4 V</td><td>400</td><td>58</td></tr><tr><td>Todas las herramientas</td><td>440</td><td>64</td></tr><tr><td>Los resultados son únicamente de referencia. Consulte a los fabricantes de herramientas para aplicaciones específicas.</td><td>655</td><td>95</td></tr><tr><td>©Herramientas de carburo 2026</td><td>1100</td><td>160</td></tr><tr><td>PSI a MPa: Entendiendo el Factor de Conversión</td><td>570</td><td>83</td></tr><tr><td>1 PSI = 0,00689476 MPa. Para convertir PSI a MPa, divida por 145. Para convertir MPa a PSI, multiplique por 145. Para referencia común: 30.000 PSI (acero típico de bajo carbono) = 207 MPa. 100.000 PSI (acero de aleación común) = 690 MPa. 150.000 PSI (acero de alta resistencia) = 1.034 MPa. 200.000 PSI (acero maraging) = 1.379 MPa. Comprender ambas unidades es esencial para las especificaciones de ingeniería globales.</td><td>950</td><td>138</td></tr></table>
+<div style="text-align:center;margin:24px 0"><a href="/tools/" style="color:#0066cc;font-size:13px">Convertidor de dureza</a></div></div>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Herramientas de precisión relacionadas</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/es/tools/tangent-point-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tangent Point Calculator</a><a href="/es/tools/tap-drill-size-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tap Drill Size Calculator</a><a href="/es/tools/taper-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Taper Calculator</a><a href="/es/tools/flatness-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Flatness Calculator</a><a href="/es/tools/cnc-roi-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Cnc Roi Calculator</a><a href="/es/tools/engineering-interest-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Engineering Interest Calculator</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">Conversor de SFM/m/min</a>
+<a href="/tools/">Rangos de resistencia a la tracción para materiales de ingeniería comunes</a>
+<a href="/products/">🇯🇵JP</a>
+<a href="/guides/">🇪🇸ES</a>
+<a href="/about.html">🇻🇳VI</a>
+<a href="/quote.html">Referencia cruzada de calificaciones</a>
+<a href="/privacy.html">Costo por pieza</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Convertidor de par</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Rangos de resistencia a la tracción para materiales de ingeniería comunes</a></p>
+<p style="font-size:11px;margin-bottom:6px">Aluminio 6061-T6: 42.000 PSI (290 MPa). 7075-T6: 83.000 PSI (572 MPa). Acero dulce (A36): 58.000 PSI (400 MPa). 4140 templado y templado: 140.000 PSI (965 MPa). Acero inoxidable 316: 75.000 PSI (517 MPa). Ti-6 de titanio Al-4 V: 130.000 PSI (896 MPa). Inconel 718: 180.000 PSI (1.241 MPa). Estos puntos de referencia ayudan a los ingenieros a evaluar rápidamente la resistencia relativa del material.</p>
+<p style="font-size:11px">Resistencia de rendimiento vs. Resistencia a la tracción definitiva</p>
+</div>
+<section class="seo"><div class="container">
+<h2>El límite elástico (YS) es la tensión a la que comienza la deformación permanente. Resistencia a la tracción final (UTS) es la tensión máxima antes de la fractura. La relación YS/UTS indica el margen de seguridad: acero de bajo carbono: 0.5-0.6 (excelente advertencia antes de la falla). Acero de alta resistencia: 0.8-0.9 (deformación plástica limitada antes de la fractura). Para el diseño, utilice siempre la fuerza de producción; UTS se utiliza para el análisis final del fracaso.</h2><p>Preguntas frecuentes</p>
+<h2>Los grados de carburo de tungsteno utilizados para las herramientas de corte tienen una resistencia a la ruptura transversal (TRS) de 350,000-450,000 PSI (2,400-3,100 MPa). A diferencia del acero, el carburo tiene una ductilidad insignificante y falla repentinamente bajo una carga de tracción. Esta alta relación de resistencia a la compresión es la razón por la cual las herramientas de carburo están diseñadas para la compresión.</h2><p>¿Cómo afecta la temperatura a la resistencia a la tracción? La resistencia a la tracción disminuye con el aumento de la temperatura. El acero a 400 °C retiene aproximadamente el 70% de la resistencia a temperatura ambiente. El aluminio a 300 °C retiene aproximadamente el 20% de la resistencia a temperatura ambiente. Las superaleaciones como Inconel mantienen un 80-90% de resistencia a 600 ° C, por lo que están especificadas para aplicaciones de alta temperatura.</p>
+<h2>¿La dureza predice la resistencia a la tracción con precisión? Sí, para aceros al carbono y aleados. Una aproximación común: UTS (ksi) ≈ 500 × HRC para aceros entre 20-40 HRC. Por encima de 40 HRC, use 490 (HRC − 40) × 300 como una mejor aproximación. ASTM E140 proporciona las tablas de conversión más precisas para dureza a resistencia a la tracción en diferentes familias de materiales.</h2><p>⚡Calculado para la Serie de Alto Rendimiento de Carbide-Tooling.com. Ver catálogo →</p>
+<h2>🔧Caja de herramientas de ingeniería de precisión</h2>
+<p><strong>What is the tensile strength of carbide cutting tool material?</strong> Tungsten carbide grades used for cutting tools have transverse rupture strength (TRS) of 350,000–450,000 PSI (2,400–3,100 MPa). Unlike steel, carbide has negligible ductility and fails suddenly under tensile load. This high compressive-to-tensile strength ratio is why carbide tools are designed for compression.</p>
+<p><strong>How does temperature affect tensile strength?</strong> Tensile strength decreases with increasing temperature. Steel at 400°C retains approximately 70% of room-temperature strength. Aluminum at 300°C retains about 20% of room-temperature strength. Superalloys like Inconel maintain 80–90% of strength at 600°C, which is why they're specified for high-temperature applications.</p>
+<p><strong>Does hardness predict tensile strength accurately?</strong> Yes, for carbon and alloy steels. A common approximation: UTS (ksi) ≈ 500 × HRC for steels between 20–40 HRC. Above 40 HRC, use 490 + (HRC − 40) × 300 as a better approximation. ASTM E140 provides the most accurate conversion tables for hardness to tensile strength across different material families.</p>
+<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">Guía de selección de grado</a></p>
+</div></section>
+</footer>
+<script>
+function go(){const v=parseFloat(document.getElementById('val').value)||0;const f=document.getElementById('fu').value;const t=document.getElementById('tu').value;let mpa=v;if(f==='ksi')mpa=v/0.145;else if(f==='psi')mpa=v/145;let res=mpa;if(t==='ksi')res=mpa*0.145;else if(t==='psi')res=mpa*145;document.getElementById('r1').textContent=res.toFixed(1);const k=mpa*0.145;document.getElementById('r2').textContent=k.toFixed(1)+' ksi | '+mpa.toFixed(0)+' MPa | '+Math.round(mpa*145).toLocaleString()+' PSI';}
+go();
+</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><div class="toolbox-widget"><h3>Guías</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Insertar consulta de calificaciones</a>
+<a href="/tools/hardness-converter/">Guía de mecanizado del titanio</a>
+<a href="/tools/tap-drill-size-calculator/">Estimador de derechos de aduana</a>
+<a href="/tools/mrr-calculator/">Calculadora de la longitud del punto de perforación</a>
+<a href="/tools/feed-converter/">Calculadora del diámetro de paso de rosca</a>
+<a href="/tools/surface-roughness-calculator/">Convertidor de roscas métricas e imperiales</a>
+<a href="/tools/titanium-machining-guide/">Automatización frente a manual</a>
+<a href="/tools/carbide-grade-cross-ref-2/">Calculadora de rotación de coordenadas</a>
+<a href="/tools/cost-per-part-calculator/">Propiedades del acero inoxidable</a>
+<a href="/tools/torque-unit-converter/">LinkedIn</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">¿Soluciones Profesionales para Tensile Strength Converter?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Obtenga precios directos de fábrica en herramientas de carburo premium con calidad certificada ISO.</p>
+</div>
+<a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/carbide-grades.html">Grade Selection Guide</a><a href="/guides/insert-grade-selection.html">Insert Grade Inquiry</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/tensile-strength-converter/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/tensile-strength-converter/&amp;text=Tensile Strength Converter" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Tensile Strength Converter&amp;body=Check this out: https://carbide-tooling.com/tools/tensile-strength-converter/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profes/tools/tapping-feed-rate-calculator/">Tapping Feed Rate Calculator</a>
-<a href="/es/tools/force-calculator/">Force Calculator</a>
-<a href="/es/tools/drill-point-length-calculator/">Drill Point Length Calculator</a>
-<a href="/es/tools/round-bar-weight/">Round Bar Weight</a>
-<a href="/es/tools/dia-circ-calculator/">Dia Circ Calculator</a>
-<a href="/es/tools/engineering-interest-calculator/">Engineering Interest Calculator</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/es/tools/chip-load/">Chip Load</a>
+<a href="/es/tools/machinability-rating/">Machinability Rating</a>
+<a href="/es/tools/coating-selector/">Coating Selector</a>
+<a href="/es/tools/feed-rate-override-calculator/">Feed Rate Override Calculator</a>
+<a href="/es/tools/slot-milling-calculator/">Slot Milling Calculator</a>
+<a href="/es/tools/titanium-machining-guide/">Titanium Machining Guide</a>
+<a href="/es/tools/tube-weight-calculator/">Tube Weight Calculator</a>
+<a href="/es/tools/ultimate-unit-converter/">Ultimate Unit Converter</a>
+<a href="/es/tools/polar-rect-converter/">Polar Rect Converter</a>
+<a href="/es/tools/taper-calculator/">Taper Calculator</a>
 
 </div>
 </section>
@@ -303,22 +390,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/es/tools/tool-change-time-analyzer/">Tool Change Time Analyzer</a>
+<a href="/es/tools/step-drill-design-calculator/">Step Drill Design Calculator</a>
+<a href="/es/tools/slot-milling-calculator/">Slot Milling Calculator</a>
+<a href="/es/tools/hardness-converter/">Hardness Converter</a>
+<a href="/es/tools/tapping-feed-rate-calculator/">Tapping Feed Rate Calculator</a>
+<a href="/es/tools/force-calculator/">Force Calculator</a>
+<a href="/es/tools/drill-point-length-calculator/">Drill Point Length Calculator</a>
+<a href="/es/tools/round-bar-weight/">Round Bar Weight</a>
+<a href="/es/tools/dia-circ-calculator/">Dia Circ Calculator</a>
+<a href="/es/tools/engineering-interest-calculator/">Engineering Interest Calculator</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -328,5 +419,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>

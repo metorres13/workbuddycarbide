@@ -11,7 +11,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -25,18 +38,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -249,6 +251,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -256,7 +259,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1565193566165-24e2f9e7e80c?w=1200&h=675&fit=crop&q=80&auto=format" alt="Industrielle Präzisionsfertigung" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/de/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -270,16 +280,90 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 <a class="nv-quote" href="/de/quote.html">📩 Angebot</a>
 </div>
 </div>
-</nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">Schritt fräsen</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">Mikron/Zoll-Umrechner</a> <span style="color:#d2d2d6">›</span> Arc R To Ij Converter</div>
+<section class="hero"><div class="container"><div class="badge">🧰 Engineering Tool</div><h1>Bewährte Verfahren für präzise Ergebnisse</h1><p>CNC-Bogen programmierung, Radius bis inkrementell</p></div></section>
+<section class="seo-content">
+<div class="container">
+<h2>Häufig gestellte Fragen</h2>
+<p>Wie genau ist dieses Werkzeug? Die Ergebnisse beruhen auf gängigen ingenieurtechnischen Formeln und dienen ausschließlich als Orientierungshilfe. Kritische Abmessungen vor Beginn der Produktion stets mit geeichten Messgeräten überprüfen.</p>
+<h2>Kann ich diese Ergebnisse für alle Materialien verwenden? Die Berechnungen gelten für Standardwerkstoffe. Bei speziellen Legierungen oder nicht standardmäßigen Einsatzbedingungen wenden Sie sich bitte an den Werkzeughersteller, um konkrete Empfehlungen zu erhalten.</h2>
+<p>Wie kann ich meinen Bearbeitungsprozess mithilfe dieser Daten optimieren? Verwenden Sie diese Referenzdaten als Ausgangspunkt und passen Sie sie an Ihre konkrete Maschine, Werkzeugausstattung und Materialkombination an. Speichern Sie die erfolgreichen Einstellungen zur späteren Verwendung.</p>
+<h2>🔧Entdecken Sie 100 professionelle Zerspanungswerkzeuge</h2>
+<p>⚙Eingabe</p>
+<h2>Wert</h2>
+<p><strong>How accurate is this tool?</strong> Results are based on standard engineering formulas and are provided for reference. Always verify critical dimensions with calibrated measurement equipment before production.</p>
+<p><strong>Can I use these results for all materials?</strong> The calculations apply to standard materials. For specialized alloys or non-standard conditions, consult the tool manufacturer for specific recommendations.</p>
+<p><strong>How do I improve my machining process with this data?</strong> Use this reference data as a starting point and adjust based on your specific machine, tooling, and material combination. Document successful settings for future reference.</p>
+</div>
+</section>
+
+<div class="container"><div class="panel"><h3>🔧Werkzeugkasten der Präzisionstechnik</h3><div class="row2"><div><label>Benötigen Sie professionelle Werkzeuge?</label><input id="v1" oninput="go()" type="number" value="100"/></div><div><label>Erhalten Sie werkseitige Direktpreise, speziell entwickelte Hartmetallqualitäten und eine schnelle technische Unterstützung – alles aus einer Hand.</label><select id="unit" onchange="go()"></select></div></div><div style="display:grid;grid-template-columns:1fr;gap:6px;margin-top:10px"><div class="out"><div class="lbl">Result</div><div class="val" id="r1">—</div></div></div></div>
+<div style="text-align:center;margin:16px 0"><a href="/tools/" style="color:#0066cc;font-size:13px">Vorschub-Konverter</a></div></div>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Verwandte Präzisionswerkzeuge</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/de/tools/aluminum-alloy-table/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Aluminum Alloy Table</a><a href="/de/tools/aql-sampling-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Aql Sampling Calculator</a><a href="/de/tools/automation-vs-manual-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Automation Vs Manual Calculator</a><a href="/de/tools/round-bar-weight/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Round Bar Weight</a><a href="/de/tools/temp-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Temp Converter</a><a href="/de/tools/gun-drill-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Gun Drill Calculator</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">Schritt fräsen</a>
+<a href="/tools/">◆Hartmetallwerkzeuge</a>
+<a href="/products/">🇪🇸ES</a>
+<a href="/guides/">🇻🇳VI</a>
+<a href="/about.html">Startseite</a>
+<a href="/quote.html">Massenanfrage stellen →</a>
+<a href="/privacy.html">Vollhartmetall-Schaftfräser</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Drehplatten</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">◆Hartmetallwerkzeuge</a></p>
+<p style="font-size:11px;margin-bottom:6px">Produkte</p>
+<p style="font-size:11px">Führer</p>
+</div>
+</footer>
+<script>function go(){const v=parseFloat(document.getElementById('v1').value)||0;document.getElementById('r1').textContent=(v*1.609).toFixed(2)+' result';}go();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><div class="toolbox-widget"><h3>Über</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Kraft rechner</a>
+<a href="/tools/hardness-converter/">Referenz für GD &amp; T-Symbole</a>
+<a href="/tools/tap-drill-size-calculator/">Rohr Gewichts rechner</a>
+<a href="/tools/mrr-calculator/">in</a>
+<a href="/tools/feed-converter/">Wärmeleitfähigkeit von Stahl</a>
+<a href="/tools/surface-roughness-calculator/">Graphit-Bearbeitungs rechner</a>
+<a href="/tools/titanium-machining-guide/">LinkedIn</a>
+<a href="/tools/carbide-grade-cross-ref-2/">E-Mail</a>
+<a href="/tools/cost-per-part-calculator/">Cost Per Part</a>
+<a href="/tools/torque-unit-converter/">Torque Converter</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Professionelle Lösungen für Arc R To Ij Converter?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Erhalten Sie werkseitige Preise für Premium-Hartmetallwerkzeuge mit ISO-zertifizierter Qualität.</p>
+</div>
+<a href="/de/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Massenangebot anfordern →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">Solid Carbide End Mills</a><a href="/products/turning-inserts.html">Turning Inserts</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/arc-r-to-ij-converter/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/arc-r-to-ij-converter/&amp;text=Arc R to IJ Converter" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Arc R to IJ Converter&amp;body=Check this out: https://carbide-tooling.com/tools/arc-r-to-ij-converter/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Globales Engineering-Verzeichnis</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professia>
-<a href="/de/tools/threading-pass-calculator/">Threading Pass Calculator</a>
-<a href="/de/tools/gcode-reference/">Gcode Reference</a>
-<a href="/de/tools/surface-roughness-calculator/">Surface Roughness Calculator</a>
-<a href="/de/tools/micron-inch-converter/">Micron Inch Converter</a>
-<a href="/de/tools/mrr-calculator/">Mrr Calculator</a>
-<a href="/de/tools/tensile-strength-converter/">Tensile Strength Converter</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professionelle Bearbeitungswerkzeuge</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/de/tools/round-bar-weight/">Round Bar Weight</a>
+<a href="/de/tools/tool-steel-heat-treat/">Tool Steel Heat Treat</a>
+<a href="/de/tools/reaming-allowance-calculator/">Reaming Allowance Calculator</a>
+<a href="/de/tools/torque-unit-converter/">Torque Unit Converter</a>
+<a href="/de/tools/form-tap-drill-calculator/">Form Tap Drill Calculator</a>
+<a href="/de/tools/batch-cost-calculator/">Batch Cost Calculator</a>
+<a href="/de/tools/tool-change-time-analyzer/">Tool Change Time Analyzer</a>
+<a href="/de/tools/scrap-value-calculator/">Scrap Value Calculator</a>
+<a href="/de/tools/metric-imperial-thread-converter/">Metric Imperial Thread Converter</a>
+<a href="/de/tools/drill-point-length-calculator/">Drill Point Length Calculator</a>
 
 </div>
 </section>
@@ -304,22 +388,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Globales Engineering-Verzeichnis</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professionelle Bearbeitungswerkzeuge</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/de/tools/toolbox-organizer/">Toolbox Organizer</a>
+<a href="/de/tools/blind-hole-tapping-calculator/">Blind Hole Tapping Calculator</a>
+<a href="/de/tools/aql-sampling-calculator/">Aql Sampling Calculator</a>
+<a href="/de/tools/drill-point-length-calculator/">Drill Point Length Calculator</a>
+<a href="/de/tools/threading-pass-calculator/">Threading Pass Calculator</a>
+<a href="/de/tools/gcode-reference/">Gcode Reference</a>
+<a href="/de/tools/surface-roughness-calculator/">Surface Roughness Calculator</a>
+<a href="/de/tools/micron-inch-converter/">Micron Inch Converter</a>
+<a href="/de/tools/mrr-calculator/">Mrr Calculator</a>
+<a href="/de/tools/tensile-strength-converter/">Tensile Strength Converter</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -329,5 +417,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/de/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Massenangebot anfordern →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>

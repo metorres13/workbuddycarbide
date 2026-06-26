@@ -11,7 +11,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -25,18 +38,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -249,6 +251,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -256,7 +259,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1504917598568-65a8f8b4f8ca?w=1200&h=675&fit=crop&q=80&auto=format" alt="Mecanizado de titanio" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/es/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -270,16 +280,89 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 <a class="nv-quote" href="/es/quote.html">📩 Cotización</a>
 </div>
 </div>
-</nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">Privacidad</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">en</a> <span style="color:#d2d2d6">›</span> Titanium Machining Guide</div>
+<section class="hero"><h1>Los resultados son únicamente de referencia. Consulte a los fabricantes de herramientas para aplicaciones específicas.</h1><p>©Herramientas de carburo 2026</p></section>
+<div class="container"><div class="tool-card"><h3>Parámetros de mecanizado de Ti-6 Al-4 V: velocidades y alimentaciones</h3><select id="grade" onchange="render()" style="width:100%;padding:8px 12px;border-radius:8px;border:1px solid #e8e8ed;font-size:13px;font-family:inherit;outline:none"><option value="gr5">Ti-6Al-4V (Grade 5)</option><option value="gr23">Ti-6Al-4V ELI (Grade 23)</option><option value="gr2">CP Titanium (Grade 2)</option></select></div><div id="results" style="margin:16px 0"></div><div class="tip">⚠️ Titanium conducts heat poorly — 85% of cutting heat goes into the tool. Through-spindle coolant at 50+ bar is not optional; it is the difference between 20 parts per edge and 200.</div>
+<div style="text-align:center;margin:24px 0"><a href="/tools/" style="color:#0066cc;font-size:13px">Ver catálogo →</a></div></div>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Herramientas de precisión relacionadas</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/es/tools/tangent-point-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tangent Point Calculator</a><a href="/es/tools/tap-drill-size-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tap Drill Size Calculator</a><a href="/es/tools/taper-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Taper Calculator</a><a href="/es/tools/sine-bar-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Sine Bar Calculator</a><a href="/es/tools/blind-hole-tapping-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Blind Hole Tapping Calculator</a><a href="/es/tools/pythagorean-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Pythagorean Calculator</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">Privacidad</a>
+<a href="/tools/">Ti-6 Al-4 V (Grado 5) es la aleación de titanio más común para aplicaciones aeroespaciales y médicas. Parámetros recomendados con herramientas de carburo: 80-150 SFM para desbaste, 150-200 SFM para acabado. Carga de viruta: 0.002-0.005 in/diente para fresado. Utilice el fresado de ascenso exclusivamente para evitar el endurecimiento del trabajo. La velocidad de alimentación nunca debe caer por debajo de 0.001 in/rev-permanencia o trabajo de vacilación-endurece la superficie inmediatamente.</a>
+<a href="/products/">🇬🇧EN</a>
+<a href="/guides/">🇩🇪DE</a>
+<a href="/about.html">🇯🇵JP</a>
+<a href="/quote.html">Rugosidad de la superficie</a>
+<a href="/privacy.html">Guía de titanio</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Referencia cruzada de calificaciones</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Ti-6 Al-4 V (Grado 5) es la aleación de titanio más común para aplicaciones aeroespaciales y médicas. Parámetros recomendados con herramientas de carburo: 80-150 SFM para desbaste, 150-200 SFM para acabado. Carga de viruta: 0.002-0.005 in/diente para fresado. Utilice el fresado de ascenso exclusivamente para evitar el endurecimiento del trabajo. La velocidad de alimentación nunca debe caer por debajo de 0.001 in/rev-permanencia o trabajo de vacilación-endurece la superficie inmediatamente.</a></p>
+<p style="font-size:11px;margin-bottom:6px">Estrategias de refrigerante para el mecanizado de titanio</p>
+<p style="font-size:11px">El titanio tiene una baja conductividad térmica (7,5 W/m · K frente a 50 W/m · K para el acero), lo que hace que la mayoría del calor de corte se concentre en el borde de la herramienta. El refrigerante de inundación es obligatorio a 100 PSI. El refrigerante de alta presión a través del husillo (800-1,500 PSI) prolonga la vida útil de la herramienta 3-5 veces al mejorar la evacuación de calor de la zona de corte. Nunca máquina de titanio seco-el calor causa la falla inmediata de la herramienta y los riesgos de incendios de chips de titanio.</p>
+</div>
+<section class="seo"><div class="container">
+<h2>Selección de geometría de herramienta para componentes de titanio</h2><p>Utilice herramientas afiladas con inclinación positiva (8-12 °) y ángulos de alivio generosos (8-12 °) para reducir las fuerzas de corte y la generación de calor. Molinos de extremo de hélice variable reducen la charla común en el mecanizado de titanio. Para bolsillos profundos, use fresas de extremo con radio de esquina (0.030-0.060 pulgadas) para evitar que se astille la esquina. Evite las herramientas indexables cuando sea posible: el carburo sólido proporciona una mejor resistencia de los bordes para el titanio.</p>
+<h2>Preguntas frecuentes</h2><p>¿Por qué el titanio es tan difícil de mecanizar en comparación con el acero? El titanio combina baja conductividad térmica (el calor permanece en el filo), bajo módulo elástico (se aleja de la herramienta y causa vibración) y reactividad química (soldaduras a los bordes de la herramienta). La combinación de estos factores crea un material excepcionalmente desafiante que requiere estrategias específicas que no son necesarias para el mecanizado de acero.</p>
+<h2>¿Puedo utilizar fresado convencional (sin ascenso) para titanio? Trabajo de fresado convencional: endurece la superficie y provoca una rápida ruptura del borde de la herramienta. Siempre use fresado de ascenso para titanio. Si la máquina tiene una reacción excesiva, solucione el problema mecánico antes de intentar el mecanizado de titanio.</h2><p>Recubrimientos de Al Ti N (nitruro de aluminio y titanio) con alto contenido de aluminio (60-70%) proporcionan el mejor rendimiento en titanio debido a su alta temperatura de oxidación (900 ° C) y baja conductividad térmica. Los recubrimientos de Ti Al N también son eficaces. Evite los recubrimientos de Ti N: funcionan mal en la zona de corte de alta temperatura del titanio.</p>
+<h2>⚡Calculado para la Serie de Alto Rendimiento de Carbide-Tooling.com. Ver catálogo →</h2>
+<p><strong>Why is titanium so difficult to machine compared to steel?</strong> Titanium combines low thermal conductivity (heat stays at the cutting edge), low elastic modulus (springs away from the tool causing chatter), and chemical reactivity (welds to tool edges). The combination of these factors creates a uniquely challenging material that requires specific strategies not needed for steel machining.</p>
+<p><strong>Can I use conventional (non-climb) milling for titanium?</strong> Not recommended. Conventional milling work-hardens the surface and causes rapid tool edge breakdown. Always use climb milling for titanium. If the machine has excessive backlash, fix the mechanical issue before attempting titanium machining.</p>
+<p><strong>What is the best tool coating for titanium?</strong> AlTiN (Aluminum Titanium Nitride) coatings with high aluminum content (60–70%) provide the best performance in titanium due to their high oxidation temperature (900+°C) and low thermal conductivity. TiAlN coatings are also effective. Avoid TiN coatings — they perform poorly in titanium's high-temperature cutting zone.</p>
+<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">Convertidor de par</a></p>
+</div></section>
+</footer>
+<script>
+const DATA={gr5:{name:'Ti-6Al-4V',sfm:'150-250',feed:'0.003-0.005',fpt:'0.04-0.08',coolant:'50-70 bar',docs:'0.5×D',hardness:'36 HRC',tensile:'950 MPa'},gr23:{name:'Ti-6Al-4V ELI',sfm:'140-230',feed:'0.003-0.005',fpt:'0.04-0.08',coolant:'50-70 bar',docs:'0.4×D',hardness:'34 HRC',tensile:'900 MPa'},gr2:{name:'CP Titanium',sfm:'200-350',feed:'0.004-0.007',fpt:'0.06-0.12',coolant:'Flood',docs:'0.8×D',hardness:'20 HRC',tensile:'345 MPa'}};
+function render(){const d=DATA[document.getElementById('grade').value];document.getElementById('results').innerHTML=`<table class="par-table"><tr><th>Parameter</th><th>Value</th></tr><tr><td>SFM (Turning)</td><td>${d.sfm}</td></tr><tr><td>Avance (mm/rev turning)</td><td>${d.feed}</td></tr><tr><td>fz (mm/tooth mill)</td><td>${d.fpt}</td></tr><tr><td>Coolant Pressure</td><td>${d.coolant}</td></tr><tr><td>Max DOC</td><td>${d.docs}</td></tr><tr><td>Hardness</td><td>${d.hardness}</td></tr><tr><td>Tensile Strength</td><td>${d.tensile}</td></tr></table>`;}
+render();
+</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><div class="toolbox-widget"><h3>◆Herramientas de carburo</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Solicitar cotización por volumen →</a>
+<a href="/tools/hardness-converter/">Guía de selección de grado</a>
+<a href="/tools/tap-drill-size-calculator/">Insertar consulta de calificaciones</a>
+<a href="/tools/mrr-calculator/">Acceder a la calculadora de velocidad de alimentación</a>
+<a href="/tools/feed-converter/">Conversor de temperatura</a>
+<a href="/tools/surface-roughness-calculator/">Calculadora de diseño de brocas escalonadas</a>
+<a href="/tools/titanium-machining-guide/">Calculadora del ángulo de avance de la rosca</a>
+<a href="/tools/carbide-grade-cross-ref-2/">Calculadora del tiempo de ciclo</a>
+<a href="/tools/cost-per-part-calculator/">Calculadora de roscas de tubería NPT</a>
+<a href="/tools/torque-unit-converter/">Calculadora de interpolación helicoidal</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">¿Soluciones Profesionales para Titanium Machining Guide?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Obtenga precios directos de fábrica en herramientas de carburo premium con calidad certificada ISO.</p>
+</div>
+<a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/carbide-grades.html">Correo electrónico</a><a href="/guides/insert-grade-selection.html">Insert Grade Inquiry</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/titanium-machining-guide/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/titanium-machining-guide/&amp;text=Titanium Machining Guide" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Titanium Machining Guide&amp;body=Check this out: https://carbide-tooling.com/tools/titanium-machining-guide/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesng Calculator</a>
-<a href="/es/tools/tool-steel-heat-treat/">Tool Steel Heat Treat</a>
-<a href="/es/tools/drill-point-length-calculator/">Drill Point Length Calculator</a>
-<a href="/es/tools/sfm-m-min-converter/">Sfm M Min Converter</a>
-<a href="/es/tools/cost-per-part-calculator/">Cost Per Part Calculator</a>
-<a href="/es/tools/bolt-circle-calculator/">Bolt Circle Calculator</a>
-<a href="/es/tools/machine-power-calculator/">Machine Power Calculator</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/es/tools/nose-radius-compensation/">Nose Radius Compensation</a>
+<a href="/es/tools/coating-selector/">Coating Selector</a>
+<a href="/es/tools/wall-thickness-calculator/">Wall Thickness Calculator</a>
+<a href="/es/tools/ramping-angle-calculator/">Ramping Angle Calculator</a>
+<a href="/es/tools/thread-lead-angle-calculator/">Thread Lead Angle Calculator</a>
+<a href="/es/tools/coord-rotation-calculator/">Coord Rotation Calculator</a>
+<a href="/es/tools/torque-unit-converter/">Torque Unit Converter</a>
+<a href="/es/tools/pomodoro-timer/">Pomodoro Timer</a>
+<a href="/es/tools/step-drill-design-calculator/">Step Drill Design Calculator</a>
+<a href="/es/tools/force-calculator/">Force Calculator</a>
 
 </div>
 </section>
@@ -304,22 +387,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/es/tools/countersink-depth-calculator/">Countersink Depth Calculator</a>
+<a href="/es/tools/tool-runout-calculator/">Tool Runout Calculator</a>
+<a href="/es/tools/thread-depth-torque-calculator/">Thread Depth Torque Calculator</a>
+<a href="/es/tools/blind-hole-tapping-calculator/">Blind Hole Tapping Calculator</a>
+<a href="/es/tools/tool-steel-heat-treat/">Tool Steel Heat Treat</a>
+<a href="/es/tools/drill-point-length-calculator/">Drill Point Length Calculator</a>
+<a href="/es/tools/sfm-m-min-converter/">Sfm M Min Converter</a>
+<a href="/es/tools/cost-per-part-calculator/">Cost Per Part Calculator</a>
+<a href="/es/tools/bolt-circle-calculator/">Bolt Circle Calculator</a>
+<a href="/es/tools/machine-power-calculator/">Machine Power Calculator</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -329,5 +416,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>

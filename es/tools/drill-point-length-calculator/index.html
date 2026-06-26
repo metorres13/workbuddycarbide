@@ -11,7 +11,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -25,18 +38,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -249,6 +251,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -256,7 +259,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1504328346580-ee3558200b6a?w=1200&h=675&fit=crop&q=80&auto=format" alt="Perforación de carburo de precisión" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/es/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -270,16 +280,103 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 <a class="nv-quote" href="/es/quote.html">📩 Cotización</a>
 </div>
 </div>
-</nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">Costo por pieza</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">Concentración del refrigerante</a> <span style="color:#d2d2d6">›</span> Drill Point Length Calculator</div>
+<section class="hero"><div class="container"><div class="badge" style="display:inline-flex;background:#f5f5f7;padding:4px 14px;border-radius:20px;font-size:11px;font-weight:600;color:#86868b;margin-bottom:16px">📐 Geometry Tool</div><h1>Fórmula: L = (D/2) / tan (punto_ángulo/2). Agregue esto a su profundidad Z para agujeros pasantes.</h1><p>📐Diámetro del taladro (mm)</p><a class="btn" href="#calculator">Estimador de derechos de aduana</a></div></section>
+
+<section class="container" id="calculator" style="padding-bottom:40px">
+<div class="card"><h2>📏Profundidad del agujero requerida (mm)</h2><p class="sub">Todas las herramientas</p>
+<div class="card-row">
+<div class="field"><label>Los resultados son únicamente de referencia. Consulte a los fabricantes de herramientas para aplicaciones específicas.</label><input id="dia" max="50" min="0.5" oninput="calc()" step="0.5" type="number" value="10"/></div>
+<div class="field"><label>©Herramientas de carburo 2026</label><select id="angle" onchange="calc()"><option value="118">118° — Standard HSS</option><option selected="" value="135">135° — Carbide / High-performance</option><option value="140">140° — Indexable drills</option></select></div>
+<div class="field"><label>Ángulos de punto de perforación estándar y sus aplicaciones</label><input id="depth" max="500" min="1" oninput="calc()" step="0.5" type="number" value="25"/></div>
+</div>
+<div class="result-grid">
+<div class="result-item"><div class="label">Point Length</div><div class="value" id="r-point">—</div><div class="unit">mm</div></div>
+<div class="result-item"><div class="label">Total Z-Depth</div><div class="value" id="r-total">—</div><div class="unit">mm</div></div>
+<div class="result-item"><div class="label">Point Ratio</div><div class="value" id="r-ratio">—</div><div class="unit">× diameter</div></div>
+<div class="result-item"><div class="label">For Through-Hole</div><div class="value" id="r-thru">—</div><div class="unit">mm Z</div></div>
+</div>
+</div>
+<div style="text-align:center;margin:16px 0"><a href="/tools/" style="color:#0066cc;text-decoration:none;font-size:13px">Velocidad y avance</a></div>
+</section>
+<script>
+function calc(){const d=parseFloat(document.getElementById('dia').value)||10;const ang=parseFloat(document.getElementById('angle').value)||135;const dep=parseFloat(document.getElementById('depth').value)||25;const point=(d/2)/Math.tan(ang/2*Math.PI/180);const total=dep+point;const thru=dep+point+0.5;document.getElementById('r-point').textContent=point.toFixed(2);document.getElementById('r-total').textContent=total.toFixed(2);document.getElementById('r-ratio').textContent=(point/d).toFixed(2);document.getElementById('r-thru').textContent=thru.toFixed(2);}
+calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Herramientas de precisión relacionadas</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/es/tools/dia-circ-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Dia Circ Calculator</a><a href="/es/tools/die-steel-thermal-conductivity/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Die Steel Thermal Conductivity</a><a href="/es/tools/dovetail-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Dovetail Calculator</a><a href="/es/tools/chip-load/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Chip Load</a><a href="/es/tools/helical-interpolation-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Helical Interpolation Calculator</a><a href="/es/tools/thread-pitch-diameter-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Thread Pitch Diameter Calculator</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">Costo por pieza</a>
+<a href="/tools/">El ángulo de punto de perforación estándar de 118 ° es adecuado para la mayoría de los materiales, incluidos el acero, el aluminio y los plásticos. Se prefiere un ángulo de punto de 135 °, a menudo con adelgazamiento de banda de punto dividido, para materiales más duros como el acero inoxidable y el titanio. El ángulo más plano reduce la fuerza de corte en el centro de la broca, evitando astillar y prolongando la vida útil de la herramienta en materiales difíciles de mecanizar.</a>
+<a href="/products/">🇩🇪DE</a>
+<a href="/guides/">🇯🇵JP</a>
+<a href="/about.html">🇪🇸ES</a>
+<a href="/quote.html">Referencia cruzada de calificaciones</a>
+<a href="/privacy.html">Convertidor de par</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Solicitar cotización por volumen →</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">El ángulo de punto de perforación estándar de 118 ° es adecuado para la mayoría de los materiales, incluidos el acero, el aluminio y los plásticos. Se prefiere un ángulo de punto de 135 °, a menudo con adelgazamiento de banda de punto dividido, para materiales más duros como el acero inoxidable y el titanio. El ángulo más plano reduce la fuerza de corte en el centro de la broca, evitando astillar y prolongando la vida útil de la herramienta en materiales difíciles de mecanizar.</a></p>
+<p style="font-size:11px;margin-bottom:6px">Cálculo de la longitud del punto de perforación para un control preciso de la profundidad</p>
+<p style="font-size:11px">La longitud del punto de perforación es igual a la distancia desde la punta de perforación hasta el diámetro completo, calculada como: Longitud del punto = (Diámetro de perforación/2)/tan (Ángulo de punto/2). Para un taladro de 118 °, esto es aproximadamente 0,3 × diámetro. Para un taladro de 135 °, aproximadamente 0,2 × de diámetro. La adición de esto a la profundidad requerida del agujero asegura la profundidad apropiada del agujero pasante o del agujero ciego.</p>
+</div>
+<section class="seo"><div class="container">
+<h2>Ajuste de punto de división y geometrías especiales</h2><p>Los taladros de punto dividido tienen una característica de autocentrado que reduce la longitud del borde del punzante, acortando efectivamente la longitud del punto funcional en un 10-15%. Al programar profundidades para taladros de punto dividido, reduzca la longitud de punto calculada en un 15% para un control de profundidad más preciso. Las geometrías de punto helicoidal utilizadas en taladros CNC pueden reducir los requisitos de empuje hasta en un 50%.</p>
+<h2>Preguntas frecuentes</h2><p>¿Cuánta profundidad adicional debo agregar para un agujero pasante? Para los agujeros pasantes, agregue la longitud completa del punto de perforación más 0,5-1,0mm para garantizar que el taladro se rompa limpiamente. Esto evita que un "anillo" permanezca en el punto de ruptura. Para materiales delgados (&lt; 3 × diámetro), utilice un ángulo de punta reducido o un taladro de fondo plano especializado.</p>
+<h2>¿El ángulo del punto de perforación afecta la rectitud del agujero? Sí. Un ángulo de punto más plano (135 °) proporciona un mejor autocentrado y reduce el caminar sobre superficies irregulares. Para agujeros profundos que excedan el diámetro de 5 ×, un punto de división de 135 ° mejora significativamente la rectitud del agujero en comparación con un punto estándar de 118 °.</h2><p>¿Cómo mido con precisión la longitud del punto de perforación? Utilice un medidor de punto de perforación o un comparador óptico para obtener la medición más precisa. Para la medición del taller, el método de 'marca de testigo': perforar en una placa plana, medir la profundidad al diámetro completo usando un micrófono de profundidad en la impresión, y comparar con su profundidad programada.</p>
+<h2>⚡Calculado para la Serie de Alto Rendimiento de Carbide-Tooling.com. Ver catálogo →</h2>
+<p><strong>How much extra depth should I add for a through hole?</strong> For through holes, add the full drill point length plus 0.5–1.0 mm to ensure the drill breaks through cleanly. This prevents a 'ring' from remaining at the breakthrough point. For thin materials (&lt; 3× diameter), use a reduced point angle or a specialized flat-bottom drill.</p>
+<p><strong>Does drill point angle affect hole straightness?</strong> Yes. A flatter point angle (135°) provides better self-centering and reduces walk on uneven surfaces. For deep holes exceeding 5× diameter, a 135° split point significantly improves hole straightness compared to a standard 118° point.</p>
+<p><strong>How do I measure drill point length accurately?</strong> Use a drill point gage or optical comparator for the most accurate measurement. For shop-floor measurement, the 'witness mark' method: drill into a flat plate, measure the depth to full diameter using a depth mic on the impression, and compare with your programmed depth.</p>
+<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">Fresas de roscar y machos de roscar</a></p>
+</div></section>
+</footer>
+<div class="toolbox-widget"><h3>Productos</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Calculadora del tiempo de ciclo</a>
+<a href="/tools/hardness-converter/">Calculadora de cola de milano</a>
+<a href="/tools/tap-drill-size-calculator/">Calculadora de velocidad y avance</a>
+<a href="/tools/mrr-calculator/">Referencia del Código M</a>
+<a href="/tools/feed-converter/">Peso y envío</a>
+<a href="/tools/surface-roughness-calculator/">Calculadora de parámetros de engranajes</a>
+<a href="/tools/titanium-machining-guide/">Calculadora de rotación de inventario</a>
+<a href="/tools/carbide-grade-cross-ref-2/">Calculadora de expansión térmica</a>
+<a href="/tools/cost-per-part-calculator/">Referencia de símbolos de GD&amp;T</a>
+<a href="/tools/torque-unit-converter/">Correo electrónico</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">¿Soluciones Profesionales para Drill Point Length Calculator?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Obtenga precios directos de fábrica en herramientas de carburo premium con calidad certificada ISO.</p>
+</div>
+<a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/drills.html">Carbide Drills</a><a href="/products/threading-tools.html">Thread Mills &amp; Taps</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/drill-point-length-calculator/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/drill-point-length-calculator/&amp;text=Drill Point Length Calculator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Drill Point Length Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/drill-point-length-calculator/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profes/a>
-<a href="/es/tools/bolt-circle-calculator/">Bolt Circle Calculator</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/es/tools/aluminum-alloy-table/">Aluminum Alloy Table</a>
 <a href="/es/tools/percentage-of-thread-calculator/">Percentage Of Thread Calculator</a>
-<a href="/es/tools/gcode-reference/">Gcode Reference</a>
-<a href="/es/tools/aql-sampling-calculator/">Aql Sampling Calculator</a>
-<a href="/es/tools/countersink-depth-calculator/">Countersink Depth Calculator</a>
-<a href="/es/tools/feed-rate-override-calculator/">Feed Rate Override Calculator</a>
+<a href="/es/tools/weight-shipping-calculator/">Weight Shipping Calculator</a>
+<a href="/es/tools/helical-interpolation-calculator/">Helical Interpolation Calculator</a>
+<a href="/es/tools/superalloy-tool-life/">Superalloy Tool Life</a>
+<a href="/es/tools/production-efficiency-calculator/">Production Efficiency Calculator</a>
+<a href="/es/tools/batch-cost-calculator/">Batch Cost Calculator</a>
+<a href="/es/tools/thread-pitch-diameter-calculator/">Thread Pitch Diameter Calculator</a>
+<a href="/es/tools/bolt-circle-calculator/">Bolt Circle Calculator</a>
+<a href="/es/tools/toolbox-organizer/">Toolbox Organizer</a>
 
 </div>
 </section>
@@ -304,22 +401,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Directorio Global de Ingeniería</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore más herramientas profesionales de mecanizado</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/es/tools/torque-unit-converter/">Torque Unit Converter</a>
+<a href="/es/tools/metric-imperial-thread-converter/">Metric Imperial Thread Converter</a>
+<a href="/es/tools/toolbox-organizer/">Toolbox Organizer</a>
+<a href="/es/tools/helical-interpolation-calculator/">Helical Interpolation Calculator</a>
+<a href="/es/tools/bolt-circle-calculator/">Bolt Circle Calculator</a>
+<a href="/es/tools/percentage-of-thread-calculator/">Percentage Of Thread Calculator</a>
+<a href="/es/tools/gcode-reference/">Gcode Reference</a>
+<a href="/es/tools/aql-sampling-calculator/">Aql Sampling Calculator</a>
+<a href="/es/tools/countersink-depth-calculator/">Countersink Depth Calculator</a>
+<a href="/es/tools/feed-rate-override-calculator/">Feed Rate Override Calculator</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -329,5 +430,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/es/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Solicitar Cotización →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>

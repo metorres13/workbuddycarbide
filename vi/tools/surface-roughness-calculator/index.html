@@ -82,7 +82,20 @@ footer a{color:#0066cc;text-decoration:none}
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -96,18 +109,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -256,6 +258,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -263,6 +266,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1567361808960-3e7f9e3b3de1?w=1200&h=675&fit=crop&q=80&auto=format" alt="Gia công chính xác" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div>
 <nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/vi/"><span>◆</span> Carbide Tooling</a>
@@ -278,14 +289,257 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 </div>
 </div>
 </nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<section class="hero">
+<div class="container">
+<div class="badge">🔬 Free Professional Tool</div>
+<h1>Công cụ tính độ nhám bề mặt</h1>
+<p>Tính toán bề mặt ra và RZ lý thuyết cho hoạt động tiện và phay. Hiểu cách thức thức ăn và bán kính mũi xác định chất lượng bề mặt.</p>
+<div class="hero-actions">
+<a class="btn" href="#calculator">Quyền riêng tư</a>
+<a class="btn-outline" href="https://carbide-tooling.com/quote.html">trong</a>
+</div>
+</div>
+</section>
+<section class="container" id="calculator" style="padding-bottom:40px">
+<div class="card">
+<h2>🔬Máy tính bề mặt hoàn thiện</h2>
+<p class="sub">Dựa trên mô hình độ nhám lý thuyết. Kết quả thực tế có thể khác nhau do cạnh tích hợp, độ rung và độ mòn của dụng cụ.</p>
+<div class="card-row">
+<div class="field"><label>🔧Hoạt động</label>
+<select id="op-type" onchange="calc()">
+<option value="turning">Turning (OD / Face)</option>
+<option value="milling">Milling (peripheral)</option>
+</select>
+</div>
+<div class="field"><label>📊Tốc độ cấp liệu</label>
+<input id="feed" max="2" min="0.01" oninput="calc()" step="0.005" type="number" value="0.15"/>
+<span id="feed-unit" style="font-size:10px;color:#86868b">mm/rev (turning) or mm/tooth (milling)</span>
+</div>
+<div class="field"><label>🔘Bán kính mũi/Góc (mm)</label>
+<input id="radius" max="6" min="0.05" oninput="calc()" step="0.1" type="number" value="0.8"/>
+<span style="font-size:10px;color:#86868b">Insert nose radius (turning) or corner radius (milling)</span>
+</div>
+<div class="field"><label>⚙️ Chất liệu</label>
+<select id="material" onchange="calc()">
+<option value="al6061">Aluminum 6061</option>
+<option selected="" value="ss304">Stainless Steel 304</option>
+<option value="mild_steel">Mild Steel 1018</option>
+<option value="ti6al4v">Titanium Grade 5</option>
+</select>
+</div>
+<div class="field"><label>🎯Yêu cầu ra mục tiêu</label>
+<select id="target" onchange="calc()">
+<option value="0.1">0.1 μm — Mirror finish</option>
+<option selected="" value="0.4">0.4 μm — Precision ground</option>
+<option value="0.8">0.8 μm — Fine machining</option>
+<option value="1.6">1.6 μm — Standard machining</option>
+<option value="3.2">3.2 μm — Rough machining</option>
+<option value="6.3">6.3 μm — Very rough</option>
+</select>
+</div>
+</div>
+<div class="result-grid">
+<div class="result-item"><div class="label">Theoretical Ra</div><div class="value" id="r-ra">—</div><div class="unit">μm</div></div>
+<div class="result-item"><div class="label">Theoretical Rz</div><div class="value" id="r-rz">—</div><div class="unit">μm</div></div>
+<div class="result-item"><div class="label">N Grade</div><div class="value" id="r-ngrade">—</div><div class="unit">ISO 1302</div></div>
+<div class="result-item"><div class="label">Status vs. Target</div><div class="value" id="r-status">—</div><div class="unit" id="r-status-unit"></div></div>
+</div>
+<div class="extra-info">
+<span>Lượng chạy dao rate to achieve target Ra: <span class="val" id="x-feed-target">—</span> mm/rev</span>
+<span style="color:#d2d2d6">|</span>
+<span>Minimum nose radius for target: <span class="val" id="x-radius-target">—</span> mm</span>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px">
+<a href="/tools/speed-feed/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
+<div style="font-size:20px;margin-bottom:4px">⚙️</div><h4 style="font-size:14px;font-weight:600;margin-bottom:2px">Công cụ tính toán tốc độ và lượng ăn dao</h4>
+<p style="font-size:12px;color:#86868b">Tìm sự cân bằng giữa bề mặt hoàn thiện và năng suất.</p>
+</a>
+<a href="/tools/cycle-time-calculator/" style="background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s">
+<div style="font-size:20px;margin-bottom:4px">⏱️</div><h4 style="font-size:14px;font-weight:600;margin-bottom:2px">Công cụ tính thời gian chu kỳ</h4>
+<p style="font-size:12px;color:#86868b">Thức ăn thấp hơn = hoàn thiện tốt hơn nhưng thời gian chu kỳ dài hơn.</p>
+</a>
+</div>
+</section>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Công cụ chính xác liên quan</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/vi/tools/scrap-value-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Scrap Value Calculator</a><a href="/vi/tools/sfm-m-min-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Sfm M Min Converter</a><a href="/vi/tools/shipping-duty-estimator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Shipping Duty Estimator</a><a href="/vi/tools/plastic-machining/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Plastic Machining</a><a href="/vi/tools/tool-runout-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tool Runout Calculator</a><a href="/vi/tools/coolant-concentration/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Coolant Concentration</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">Tốc độ và Lượng ăn dao</a>
+<a href="/tools/">Tất cả công cụ</a>
+<a href="/products/">🇯🇵JP</a>
+<a href="/guides/">🇪🇸ES</a>
+<a href="/about.html">🇻🇳VI</a>
+<a href="/quote.html">Độ nhám bề mặt</a>
+<a href="/privacy.html">Hướng dẫn về Titan</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Phân loại tham chiếu</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Tất cả công cụ</a></p>
+<p style="font-size:11px;margin-bottom:6px">Kết quả chỉ mang tính tham khảo. Hãy tham khảo ý kiến của các nhà sản xuất dụng cụ để biết thông tin về các ứng dụng cụ thể.</p>
+<p style="font-size:11px">©Dụng cụ cắt gọt bằng cacbua năm 2026</p>
+</div>
+</footer>
+<script>
+const N_GRADES = [
+ {n:'N1',ra:0.025},{n:'N2',ra:0.05},{n:'N3',ra:0.1},{n:'N4',ra:0.2},
+ {n:'N5',ra:0.4},{n:'N6',ra:0.8},{n:'N7',ra:1.6},{n:'N8',ra:3.2},
+ {n:'N9',ra:6.3},{n:'N10',ra:12.5},{n:'N11',ra:25},{n:'N12',ra:50}
+];
+
+function calc() {
+ const op = document.getElementById('op-type').value;
+ const feed = parseFloat(document.getElementById('feed').value) || 0.15;
+ const r = parseFloat(document.getElementById('radius').value) || 0.8;
+ const targetRa = parseFloat(document.getElementById('target').value) || 0.4;
+
+ // Ra = f² / (32 × R) — result in mm, convert to μm (*1000)
+ const ra = (feed * feed) / (32 * r) * 1000;
+ const rz = ra * 6; // approximate ratio for turning
+
+ // Find N grade
+ let ng = N_GRADES[0].n;
+ for (let i = N_GRADES.length - 1; i >= 0; i--) {
+ if (ra <= N_GRADES[i].ra) ng = N_GRADES[i].n;
+ }
+
+ // Status
+ let status, statusClass;
+ if (ra <= targetRa * 0.8) {
+ status = '✅ Achievable';
+ statusClass = 'good';
+ } else if (ra <= targetRa * 1.2) {
+ status = '⚠️ Marginal';
+ statusClass = 'warning';
+ } else {
+ status = '❌ Not achievable';
+ statusClass = '';
+ }
+
+ // Lượng chạy dao rate needed for target Ra
+ const feedTarget = targetRa > 0 ? Math.sqrt((targetRa * 32 * r) / 1000) : 0;
+
+ // Minimum nose radius for target
+ const minRadius = targetRa > 0 ? (feed * feed * 1000) / (32 * targetRa) : 0;
+
+ document.getElementById('r-ra').textContent = ra.toFixed(2);
+ document.getElementById('r-rz').textContent = rz.toFixed(2);
+ document.getElementById('r-ngrade').textContent = ng;
+ const st = document.getElementById('r-status');
+ st.textContent = status;
+ st.className = 'value ' + statusClass;
+ document.getElementById('x-feed-target').textContent = feedTarget.toFixed(3);
+ document.getElementById('x-radius-target').textContent = minRadius.toFixed(2);
+}
+
+calc();
+</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
+<section class="seo-content">
+<div class="container">
+<h2>Tiêu chuẩn hoàn thiện bề mặt ISO: Loại ra, RZ và N thực sự có nghĩa là gì</h2>
+<p>Surface finish is specified on engineering drawings using standardized parameters defined by ISO 1302 and ISO 4287. The three most commonly specified parameters are <strong>Ra</strong> (arithmetic average roughness), <strong>Rz</strong> (average maximum height), and <strong>N grade</strong> (ISO roughness grade number). Understanding the relationship between these parameters and the cutting conditions that produce them is essential for meeting print specifications without over-machining.</p>
+<p>Ra là tham số được chỉ định phổ biến nhất-Nó đại diện cho trung bình số học của độ lệch chiều cao hồ sơ tuyệt đối so với đường trung bình. RZ là trung bình của năm đỉnh cao nhất và năm thung lũng thấp nhất so với chiều dài đánh giá. Hệ thống cấp N (N1 đến N12) cung cấp số độ nhám chuẩn hóa, trong đó mỗi bước biểu thị khoảng 50% thay đổi độ nhám bề mặt. Một phần gọi là N5 (0.4 μm ra) Về cơ bản khác với sản xuất so với một gọi ra N7 (1.6 μm ra)-Tốc độ thức ăn phải giảm một nửa, tăng gấp đôi thời gian chu kỳ.</p>
+<div class="std-table">
+<table>
+<tr><th>Loại N</th><th>Ra (μm)</th><th>RZ (μm)</th><th>Ứng dụng điển hình</th></tr>
+<tr><td>N1</td><td>0.025</td><td>0.15</td><td>Khối đo, linh kiện quang học</td></tr>
+<tr><td>N3</td><td>0.1</td><td>0.6</td><td>Trục chính xác, vòng bi</td></tr>
+<tr><td>N5</td><td>0.4</td><td>2.5</td><td>Trục chính xác, bề mặt bịt kín</td></tr>
+<tr><td>N6</td><td>0.8</td><td>5.0</td><td>Phù hợp gia công thông thường</td></tr>
+<tr><td>N7</td><td>1.6</td><td>10.0</td><td>Gia công tiêu chuẩn (phổ biến nhất)</td></tr>
+<tr><td>N8</td><td>3.2</td><td>16.0</td><td>Bề mặt gia công thương mại</td></tr>
+<tr><td>N9</td><td>6.3</td><td>32.0</td><td>Gia công thô, không quan trọng</td></tr>
+</table>
+</div>
+<h2>Công thức mài mòn lý thuyết</h2>
+<p>Độ nhám bề mặt lý thuyết cho thao tác xoay được xác định bởi hình học bán kính mũi của dụng cụ cắt và tốc độ nạp liệu. Công cụ này để lại một loạt các gờ xoắn ốc trên bề mặt phôi-Chiều cao của các gờ này là độ nhám lý thuyết:</p>
+<p><code>Ra (μm) = (f² × 1000) ÷ (32 × R)</code><br/>
+<code>Rz (μm) = (f² × 1000) ÷ (8 × R)</code></p>
+<p>Where <strong>f</strong> = feed per revolution (mm/rev) and <strong>R</strong> = insert nose radius (mm). For milling, the corner radius of the end mill replaces the nose radius, and the feed per tooth replaces feed per revolution.</p>
+<p>The critical insight from these formulas is that roughness increases with the <strong>square of the feed rate</strong> — doubling the feed quadruples the surface roughness. Conversely, increasing the nose radius reduces roughness linearly — doubling the radius halves the roughness. This makes nose radius selection the most powerful lever for controlling surface finish without sacrificing cycle time.</p>
+<h2>Lựa chọn bán kính mũi: Cân bằng độ nhám và năng suất</h2>
+<p>The relationship between feed rate, nose radius, and surface roughness creates a three-way optimization problem. A larger nose radius (1.2 mm vs. 0.4 mm) allows four times higher feed rate for the same Ra, directly reducing cycle time. However, larger nose radii increase cutting forces and can cause chatter in long-overhang operations — a problem analyzed in detail by the <a href="/tools/force-calculator/" style="color:#0066cc">Bộ biến mô</a>.</p>
+<p>Practical nose radius selection guidelines: For finishing passes requiring Ra ≤ 0.8 μm, use a 0.8 mm or 1.2 mm nose radius with feed rates between 0.08-0.15 mm/rev. For roughing where Ra ≤ 3.2 μm is acceptable, use a 0.4 mm radius with feeds up to 0.35 mm/rev. The <a href="/tools/cycle-time-calculator/" style="color:#0066cc">Công cụ tính thời gian chu kỳ</a> can help quantify the productivity impact of switching to a larger nose radius.</p>
+<h2>Tại sao độ nhám thực tế khác với lý thuyết</h2>
+<p>Mô hình lý thuyết giả định hình học hoàn hảo-một công cụ sắc nét với việc cắt bán kính mũi lý tưởng mà không bị rung, cạnh tích hợp hoặc mài dụng cụ. Trong sản xuất, thực tế ra thường cao hơn 20-50% so với lý thuyết do một số yếu tố:</p>
+<ul>
+<li><strong>Built-up edge (BUE):</strong> Material adhering to the cutting edge creates an irregular surface. Most common in aluminum and low-carbon steel at moderate cutting speeds. Increasing cutting speed by 20% or using a polished insert reduces BUE.</li>
+<li><strong>Chatter vibration:</strong> Even mild chatter (amplitude &lt; 10 μm) can double the actual Ra. The problem is mechanical, not geometric — use the <a href="/tools/speed-feed/" style="color:#0066cc">Công cụ tính toán tốc độ và lượng ăn dao</a> to find a stable RPM range.</li>
+<li><strong>Tool wear:</strong> A worn tool produces a degraded surface finish. As flank wear reaches 0.2 mm, actual Ra can increase by 50-80% compared to a fresh edge. The increase in cutting forces from tool wear can be monitored using the <a href="/tools/horsepower-calculator/" style="color:#0066cc">Giá đựng dụng cụ</a> — a power increase of 15%+ at constant parameters indicates tool wear.</li>
+<li><strong>Material smearing:</strong> Ductile materials like aluminum and low-carbon steel can smear across the machined surface, creating peaks and valleys not predicted by the geometric model. Using coolant with EP additives reduces smearing.</li>
+</ul>
+<h2>Tác động kinh tế của yêu cầu hoàn thiện bề mặt</h2>
+<p>Chi phí để đạt được một bề mặt hoàn thiện cụ thể không phải là tuyến tính với giá trị ra. Giảm ra từ 1.6 μm xuống 0.8 μm thường đòi hỏi giảm một nửa tốc độ Thức Ăn-gấp đôi thời gian chu kỳ cho đường chuyền hoàn thiện. Giảm từ 0.8 μm xuống 0.4 μm cần giảm một nửa Nguồn cấp dữ liệu một lần nữa, tăng gấp đôi thời gian chu kỳ một lần nữa. Mối Quan Hệ theo cấp số nhân này có nghĩa là bề mặt hoàn thiện quá mức là một trong những sai lầm phổ biến và tốn kém nhất trong thiết kế một phần.</p>
+<p>Để so sánh: Trục cần 1.6 μm ra (N7) có thể quay thô ở nguồn cấp 0.3mm/Rev. Cùng một trục cần 0.4 μm ra (N5) yêu cầu hoàn thiện ở nguồn cấp 0.12mm/REV-tăng 2.5 × trong thời gian hoàn thiện. Trên trục có chiều dài xoay 100mm, phần này tăng thêm 15-20 giây mỗi bộ phận. Với 10,000 phụ tùng, đó là khoảng 50 giờ thời gian máy bổ sung-với mức $85/giờ, chi phí gia công là 4,250 đô la không cần thiết.</p>
+<h2>Bảng tối ưu hóa tỷ lệ thức ăn và bán kính mũi</h2>
+<p>Bảng dưới đây cho thấy tỷ lệ thức ăn tối đa có thể được sử dụng để đạt được mục tiêu ra cho bán kính mũi thông thường:</p>
+<div class="std-table">
+<table>
+<tr><th>Target ra</th><th>R = 0.2mm</th><th>R = 0.4mm</th><th>R = 0.8mm</th><th>R = 1.2mm</th></tr>
+<tr><td>0.4 μm (N5)</td><td>0.05mm/vòng quay</td><td>0.07mm/vòng quay</td><td>0.10mm/vòng quay</td><td>0.12mm/vòng quay</td></tr>
+<tr><td>0.8 μm (N6)</td><td>0.07mm/vòng quay</td><td>0.10mm/vòng quay</td><td>1.6 μm (N7)</td><td>0.20mm/vòng quay</td></tr>
+<tr><td>0.25mm/vòng quay</td><td>0.10mm/vòng quay</td><td>1.6 μm (N7)</td><td>0.35mm/vòng quay</td><td>Câu hỏi thường gặp</td></tr>
+<tr><td>Kết thúc bề mặt ra là gì? ra (độ nhám trung bình) là trung bình số học của độ lệch hồ sơ tuyệt đối so với đường trung bình trên Chiều dài đánh giá. Đây là thông số hoàn thiện bề mặt được chỉ định phổ biến nhất trong bản vẽ kỹ thuật ISO.</td><td>1.6 μm (N7)</td><td>0.35mm/vòng quay</td><td>Tốc độ cắt có ảnh hưởng đến bề mặt hoàn thiện không? gián tiếp, Có-thông qua hình thành cạnh tích hợp. Ở tốc độ cắt thấp (dưới 150 sfm bằng thép), hình dạng Bue và làm suy giảm bề mặt hoàn thiện. Ở tốc độ rất cao (trên 800 sfm), làm mềm nhiệt có thể cải thiện độ hoàn thiện. Máy tính tốc độ &amp; thức ăn giúp chọn tốc độ tránh phạm vi hình thành Bue.</td><td>Độ mòn của dụng cụ ảnh hưởng đến độ nhám bề mặt như thế nào? vì dụng cụ bị mòn, bán kính mũi thay đổi (thường tăng nhẹ trước khi thất bại thảm khốc), điều này về mặt lý thuyết nên cải thiện độ hoàn thiện. Tuy nhiên, vi sứt mẻ và vỡ cạnh tạo ra các tính năng bề mặt không đều làm giảm đáng kể độ hoàn thiện. Thay thế chèn khi ra tăng hơn 30% ở các thông số cắt liên tục.</td></tr>
+</table>
+</div>
+<h2>Sự khác biệt giữa ra và RZ? ra là độ lệch trung bình trên toàn bộ cấu hình là gì. RZ là trung bình của năm đỉnh cao nhất trừ đi năm thung lũng thấp nhất. RZ thường lớn hơn ra 5-7 lần so với bề mặt quay. ISO 1302 cho phép xác định một trong hai tham số; RZ được ưu tiên để niêm phong bề mặt và các khớp có độ cao nhất.</h2>
+<p><strong>What is Ra surface finish?</strong> Ra (Roughness Average) is the arithmetic mean of absolute profile deviations from the mean line over the evaluation length. It is the most commonly specified surface finish parameter in ISO engineering drawings.</p>
+<p><strong>How do I calculate surface finish from feed rate and nose radius?</strong> Use the formula Ra = f² / (32 × R). This calculator does it instantly for both turning and milling operations. The result is the theoretical best possible finish — actual Ra will be 20-50% higher.</p>
+<p><strong>What feed rate gives 0.4 μm Ra in turning?</strong> For a 0.8 mm nose radius: f = √(0.4 × 32 × 0.8 / 1000) = 0.10 mm/rev. For a 0.4 mm radius: f = 0.07 mm/rev. This calculator's "Lượng chạy dao rate to achieve target" field shows the answer for your specific parameters automatically.</p>
+<p><strong>Does cutting speed affect surface finish?</strong> Indirectly, yes — through built-up edge formation. At low cutting speeds (below 150 SFM in steel), BUE forms and degrades surface finish. At very high speeds (above 800 SFM), thermal softening can improve finish. The <a href="/tools/speed-feed/" style="color:#0066cc">Công cụ tính toán tốc độ và lượng ăn dao</a> helps select speeds that avoid the BUE formation range.</p>
+<p><strong>How does tool wear affect surface roughness?</strong> As the tool wears, the nose radius changes (usually increases slightly before catastrophic failure), which should theoretically improve finish. However, micro-chipping and edge breakdown create irregular surface features that degrade finish significantly. Replace inserts when Ra increases by more than 30% at constant cutting parameters.</p>
+<p><strong>What is the difference between Ra and Rz?</strong> Ra is the average deviation across the entire profile. Rz is the average of the five highest peaks minus the five lowest valleys. Rz is typically 5-7 times larger than Ra for turned surfaces. ISO 1302 allows specifying either parameter; Rz is preferred for sealing surfaces and joints where peak heights matter most.</p>
+<div style="text-align:center;padding:32px 24px;font-size:15px;color:#1d1d1f;background:#f5f5f7;border-radius:16px;max-width:900px;margin:40px auto 0">
+<p style="margin:0">Sản phẩm</p>
+</div>
+</div>
+</section>
+<div class="toolbox-widget"><h3>Hướng dẫn</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Công cụ tính bước ren</a>
+<a href="/tools/hardness-converter/">Công cụ tính đường kính bước ren</a>
+<a href="/tools/tap-drill-size-calculator/">Công cụ ước tính tuổi thọ dụng cụ cho siêu hợp kim</a>
+<a href="/tools/mrr-calculator/">Trình chọn lớp phủ</a>
+<a href="/tools/feed-converter/">Máy tính mã lực</a>
+<a href="/tools/surface-roughness-calculator/">Công cụ tính độ sâu của lỗ vát mép</a>
+<a href="/tools/titanium-machining-guide/">Công cụ tính toán phay rãnh</a>
+<a href="/tools/carbide-grade-cross-ref-2/">LinkedIn</a>
+<a href="/tools/cost-per-part-calculator/">Thư điện tử</a>
+<a href="/tools/torque-unit-converter/">Torque Converter</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Giải Pháp Chuyên Nghiệp cho Surface Roughness Calculator?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Nhận giá trực tiếp từ nhà máy cho dụng cụ carbide cao cấp với chất lượng chứng nhận ISO.</p>
+</div>
+<a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">Solid Carbide End Mills</a><a href="/products/tool-holders.html">Tool Holders</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/surface-roughness-calculator/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/surface-roughness-calculator/&amp;text=Surface Roughness Calculator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Surface Roughness Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/surface-roughness-calculator/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyêhref="/vi/tools/hardness-converter/">Hardness Converter</a>
-<a href="/vi/tools/carbide-grade-cross-ref-2/">Carbide Grade Cross Ref 2</a>
-<a href="/vi/tools/reaming-allowance-calculator/">Reaming Allowance Calculator</a>
-<a href="/vi/tools/dia-circ-calculator/">Dia Circ Calculator</a>
-<a href="/vi/tools/arc-r-to-ij-converter/">Arc R To Ij Converter</a>
-<a href="/vi/tools/iso-fit-calculator/">Iso Fit Calculator</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/vi/tools/shipping-duty-estimator/">Shipping Duty Estimator</a>
+<a href="/vi/tools/pressure-converter/">Pressure Converter</a>
+<a href="/vi/tools/force-calculator/">Force Calculator</a>
+<a href="/vi/tools/countersink-depth-calculator/">Countersink Depth Calculator</a>
+<a href="/vi/tools/tool-runout-calculator/">Tool Runout Calculator</a>
+<a href="/vi/tools/flatness-calculator/">Flatness Calculator</a>
+<a href="/vi/tools/pythagorean-calculator/">Pythagorean Calculator</a>
+<a href="/vi/tools/step-milling-calculator/">Step Milling Calculator</a>
+<a href="/vi/tools/ramping-angle-calculator/">Ramping Angle Calculator</a>
+<a href="/vi/tools/cast-iron-machining/">Cast Iron Machining</a>
 
 </div>
 </section>
@@ -310,22 +564,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/vi/tools/nose-radius-compensation/">Nose Radius Compensation</a>
+<a href="/vi/tools/ramping-angle-calculator/">Ramping Angle Calculator</a>
+<a href="/vi/tools/engineering-interest-calculator/">Engineering Interest Calculator</a>
+<a href="/vi/tools/npt-pipe-thread-calculator/">Npt Pipe Thread Calculator</a>
+<a href="/vi/tools/hardness-converter/">Hardness Converter</a>
+<a href="/vi/tools/carbide-grade-cross-ref-2/">Carbide Grade Cross Ref 2</a>
+<a href="/vi/tools/reaming-allowance-calculator/">Reaming Allowance Calculator</a>
+<a href="/vi/tools/dia-circ-calculator/">Dia Circ Calculator</a>
+<a href="/vi/tools/arc-r-to-ij-converter/">Arc R To Ij Converter</a>
+<a href="/vi/tools/iso-fit-calculator/">Iso Fit Calculator</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -335,6 +593,20 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body>
 </html>

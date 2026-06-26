@@ -11,7 +11,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -25,18 +38,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -249,6 +251,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -256,7 +259,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1504917598568-65a8f8b4f8ca?w=1200&h=675&fit=crop&q=80&auto=format" alt="Sản xuất thép" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/vi/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -270,15 +280,86 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 <a class="nv-quote" href="/vi/quote.html">📩 Báo giá</a>
 </div>
 </div>
-</nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">Trình chọn lớp phủ</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">Gia công gang đúc</a> <span style="color:#d2d2d6">›</span> Tube Weight Calculator</div>
+<section class="hero"><div class="container"><div class="badge">🧰 Tool</div><h1>OD (mm)</h1><p>Tường (mm)</p></div></section>
+
+<div class="container"><div class="card"><h2>Kết quả chỉ mang tính tham khảo. Hãy tham khảo ý kiến của các nhà sản xuất dụng cụ để biết thông tin về các ứng dụng cụ thể.</h2><label>©Dụng cụ cắt gọt bằng cacbua năm 2026</label><select id="mat" onchange="calc()"><option value="7.85">Steel</option><option value="8.0">Stainless</option></select><label>Tính toán trọng lượng thanh rỗng: (od²-id²) công thức</label><input id="i1" oninput="calc()" type="number" value="10"/><label>Trọng lượng của một ống/Thanh rỗng được tính như: trọng lượng trên một đơn vị chiều dài = (?/4) × (od²-id²) × mật độ. Đối với thép: Trọng lượng (lbs/ft) = (od²-id²) × 2.672, trong đó Kích thước tính bằng inch. Đối với hệ mét: Trọng lượng (kg/m) = (od²-id²) × 0.00617, trong đó Kích thước tính bằng mm. một ống thép ID OD × 2 inch 3 inch nặng (9-4) × 2.672 = 13.36 lbs/ft.</label><input id="i2" oninput="calc()" type="number" value="3"/><div class="res" style="grid-template-columns:repeat(3,1fr)"><div class="res-item"><div class="lbl">kg/meter</div><div class="val" id="r2">—</div></div><div class="res-item"><div class="lbl">kg/length</div><div class="val" id="r1">—</div></div></div></div>
+<div style="text-align:center;margin:24px 0"><a href="/tools/" style="color:#0066cc;font-size:13px">Bộ chuyển đổi độ cứng</a></div></div>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Công cụ chính xác liên quan</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/vi/tools/tangent-point-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tangent Point Calculator</a><a href="/vi/tools/tap-drill-size-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tap Drill Size Calculator</a><a href="/vi/tools/taper-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Taper Calculator</a><a href="/vi/tools/step-drill-design-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Step Drill Design Calculator</a><a href="/vi/tools/cycle-time-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Cycle Time Calculator</a><a href="/vi/tools/ramping-angle-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Ramping Angle Calculator</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">Trình chọn lớp phủ</a>
+<a href="/tools/">Trọng lượng ống lên lịch: Tiêu chuẩn so với cực mạnh so với cực mạnh gấp đôi</a>
+<a href="/products/">🇯🇵JP</a>
+<a href="/guides/">🇪🇸ES</a>
+<a href="/about.html">🇻🇳VI</a>
+<a href="/quote.html">Phân loại tham chiếu</a>
+<a href="/privacy.html">Bộ biến mô</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Yêu cầu báo giá số lượng lớn →</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Trọng lượng ống lên lịch: Tiêu chuẩn so với cực mạnh so với cực mạnh gấp đôi</a></p>
+<p style="font-size:11px;margin-bottom:6px">Lịch trình Ống xác định Độ dày thành cho một kích thước ống danh nghĩa nhất định (NPS). Lịch trình 40 (tiêu chuẩn): NPS 3 inch có tường 0.216 inch × 8.63 lbs/ft. Lịch trình 80 (XS): NPS 3 inch có tường 0.300 inch × 11.68 lbs/ft. Lịch trình 160 (XXS): NPS 3 inch có tường 0.438 inch × 17.22 lbs/ft. Sử dụng bảng lịch trình khi làm việc với ống tiêu chuẩn thay vì tính toán từ kích thước danh nghĩa.</p>
+<p style="font-size:11px">Chênh lệch mật độ vật liệu về trọng lượng ống</p>
+</div>
+<section class="seo"><div class="container">
+<h2>Ống thép Cacbon: 0.284 lbs/in³ (yếu tố mặc định). Không gỉ 304/316: 0.289 lbs/in³ (+ 1.8%). Nhôm 6061: 0.098 lbs/in³ (-65.5%). Đồng thau: 0.307 lbs/in³ (+ 8.1%). Khi tính toán Trọng lượng ống để ước tính chi phí, sử dụng hệ số mật độ chính xác là rất quan trọng-Sai số mật độ 50% gây ra lỗi 50% về chi phí vật liệu. Luôn xác minh Thông số kỹ thuật Vật liệu trước khi tính toán.</h2><p>Câu hỏi thường gặp</p>
+<h2>Làm thế nào để giải thích khả năng chịu đựng Độ dày thành ống? thông số kỹ thuật ASTM cho phép biến đổi Độ dày thành ± 10%. Đối với ước tính trọng lượng bảo thủ, hãy sử dụng Độ dày tường danh nghĩa. Đối với trọng lượng tối đa (vận chuyển), hãy sử dụng tường danh nghĩa + 10%. Đối với trọng lượng tối thiểu (Thiết kế kết cấu), hãy sử dụng tường danh nghĩa-10%. Yêu cầu báo cáo kiểm tra nhà máy cho độ dày tường đo thực tế trên các đơn đặt hàng quan trọng.</h2><p>Trọng lượng ống có ảnh hưởng đến các thông số gia công không? vâng. Các ống nặng cần được hỗ trợ nhiều hơn để tránh nói chuyện trong khi xoay. Theo quy tắc của ngón tay cái, các ống có độ dày thành dưới 1/8 OD yêu cầu vật liệu đệm hoặc chất độn ổn định trong quá trình gia công để tránh rung động. Ống đo ánh sáng (tường &lt;1/16 inch) đặc biệt khó cắt ren do lệch hướng xuyên tâm.</p>
+<h2>Làm thế nào để tính Chiều dài ống còn lại so với trọng lượng? cân ống, trừ trọng lượng của bất kỳ phụ kiện đính kèm hoặc mũ đầu, và chia cho trọng lượng mỗi Foot cho OD cụ thể và Độ dày thành. Một mảnh 5 ft của ống thép 40 lịch trình 2 inch nặng khoảng 5 × 3.65 = 18.25 lbs. Nếu bạn có 12.4 lbs còn lại: 12.4 / 3.65 = 3.4 feet còn lại.</h2><p>⚡Được tính toán cho Dòng sản phẩm Hiệu suất Cao của Carbide-Tooling.com. Xem danh mục →</p>
+<h2>🔧Hộp công cụ kỹ thuật chính xác</h2>
+<p><strong>How do I account for tube wall thickness tolerance?</strong> ASTM specifications allow ±10% wall thickness variation. For conservative weight estimates, use nominal wall thickness. For maximum weight (shipping), use nominal wall + 10%. For minimum weight (structural design), use nominal wall − 10%. Request mill test reports for actual measured wall thickness on critical orders.</p>
+<p><strong>Does tube weight affect machining parameters?</strong> Yes. Heavy tubes require more support to prevent chatter during turning. As a rule of thumb, tubes with wall thickness below 1/8 of OD require steady rests or filler material during machining to prevent vibration. Light-gauge tubes (wall &lt; 1/16 inch) are particularly challenging for thread cutting due to radial deflection.</p>
+<p><strong>How do I calculate remaining tube length from weight?</strong> Weigh the tube, subtract the weight of any attachments or end caps, and divide by the weight per foot for the specific OD and wall thickness. A 5-ft piece of 2-inch Schedule 40 steel pipe weighs approximately 5 × 3.65 = 18.25 lbs. If you have 12.4 lbs remaining: 12.4 / 3.65 = 3.4 feet remaining.</p>
+<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">Đầu dao tiện</a></p>
+</div></section>
+</footer>
+<script>function calc(){document.getElementById('r1').textContent=parseFloat(document.getElementById('i1').value)*parseFloat(document.getElementById('i2').value);}calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><div class="toolbox-widget"><h3>Hướng dẫn</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Công cụ tính lãi suất kỹ thuật</a>
+<a href="/tools/hardness-converter/">Máy tính mã lực</a>
+<a href="/tools/tap-drill-size-calculator/">Tham số gia công đồng thau</a>
+<a href="/tools/mrr-calculator/">Máy tính tính độ sâu rãnh then</a>
+<a href="/tools/feed-converter/">Máy tính điều chỉnh tốc độ cấp liệu</a>
+<a href="/tools/surface-roughness-calculator/">Máy tính vát mép</a>
+<a href="/tools/titanium-machining-guide/">Máy tính ren ống NPT</a>
+<a href="/tools/carbide-grade-cross-ref-2/">LinkedIn</a>
+<a href="/tools/cost-per-part-calculator/">Bàn hợp kim nhôm</a>
+<a href="/tools/torque-unit-converter/">Torque Converter</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Giải Pháp Chuyên Nghiệp cho Tube Weight Calculator?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Nhận giá trực tiếp từ nhà máy cho dụng cụ carbide cao cấp với chất lượng chứng nhận ISO.</p>
+</div>
+<a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">Solid Carbide End Mills</a><a href="/products/turning-inserts.html">Turning Inserts</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/tube-weight-calculator/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/tube-weight-calculator/&amp;text=Tube Weight Calculator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Tube Weight Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/tube-weight-calculator/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyêM Min Converter</a>
-<a href="/vi/tools/force-calculator/">Force Calculator</a>
-<a href="/vi/tools/step-milling-calculator/">Step Milling Calculator</a>
-<a href="/vi/tools/pomodoro-timer/">Pomodoro Timer</a>
-<a href="/vi/tools/taper-calculator/">Taper Calculator</a>
-<a href="/vi/tools/coolant-concentration/">Coolant Concentration</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/vi/tools/chip-load/">Chip Load</a>
+<a href="/vi/tools/dia-circ-calculator/">Dia Circ Calculator</a>
+<a href="/vi/tools/arc-r-to-ij-converter/">Arc R To Ij Converter</a>
+<a href="/vi/tools/nose-radius-compensation/">Nose Radius Compensation</a>
+<a href="/vi/tools/production-efficiency-calculator/">Production Efficiency Calculator</a>
+<a href="/vi/tools/coating-selector/">Coating Selector</a>
+<a href="/vi/tools/machine-power-calculator/">Machine Power Calculator</a>
+<a href="/vi/tools/npt-pipe-thread-calculator/">Npt Pipe Thread Calculator</a>
+<a href="/vi/tools/metric-imperial-thread-converter/">Metric Imperial Thread Converter</a>
+<a href="/vi/tools/bulk-discount-calculator/">Bulk Discount Calculator</a>
 
 </div>
 </section>
@@ -303,22 +384,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/vi/tools/flatness-calculator/">Flatness Calculator</a>
+<a href="/vi/tools/metal-weight-calculator/">Metal Weight Calculator</a>
+<a href="/vi/tools/tool-steel-heat-treat/">Tool Steel Heat Treat</a>
+<a href="/vi/tools/micron-inch-converter/">Micron Inch Converter</a>
+<a href="/vi/tools/sfm-m-min-converter/">Sfm M Min Converter</a>
+<a href="/vi/tools/force-calculator/">Force Calculator</a>
+<a href="/vi/tools/step-milling-calculator/">Step Milling Calculator</a>
+<a href="/vi/tools/pomodoro-timer/">Pomodoro Timer</a>
+<a href="/vi/tools/taper-calculator/">Taper Calculator</a>
+<a href="/vi/tools/coolant-concentration/">Coolant Concentration</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -328,5 +413,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>

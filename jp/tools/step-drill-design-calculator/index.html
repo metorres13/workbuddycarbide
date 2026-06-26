@@ -11,7 +11,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -25,18 +38,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -249,6 +251,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -256,7 +259,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1565193566165-24e2f9e7e80c?w=1200&h=675&fit=crop&q=80&auto=format" alt="工業精密製造" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/jp/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -270,15 +280,86 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 <a class="nv-quote" href="/jp/quote.html">📩 見積依頼</a>
 </div>
 </div>
-</nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">ねじのリード角</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">CNC ROI計算ツール</a> <span style="color:#d2d2d6">›</span> Step Drill Design Calculator</div>
+<section class="hero"><div class="container"><div class="badge" style="display:inline-flex;background:#f5f5f7;padding:4px 14px;border-radius:20px;font-size:11px;font-weight:600;color:#86868b;margin-bottom:16px">📐 Design Guide</div><h1>📐小さい直径 (mm)</h1><p>📐大径 (mm)</p><a class="btn" href="#calculator">キー溝の深さ</a></div></section>
+<section class="container" id="calculator" style="padding-bottom:40px"><div class="card"><h2>📏総深さ (mm)</h2><p class="sub">🔧材料</p><div class="card-row"><div class="field"><label>🔧100種類のプロ向け切削工具をチェック</label><input id="d1" max="30" min="1" oninput="calc()" step="0.5" type="number" value="6"/></div><div class="field"><label>すべてのツール</label><input id="d2" max="50" min="1" oninput="calc()" step="0.5" type="number" value="12"/></div><div class="field"><label>結果は参考としてのみご使用ください。具体的な用途については、工具メーカーにご相談ください。</label><input id="depth" max="100" min="1" oninput="calc()" step="1" type="number" value="25"/></div><div class="field"><label>©2026年用超硬工具</label><select id="mat" onchange="calc()"><option value="steel">Steel</option><option value="al">Aluminum</option></select></div></div><div class="result-grid"><div class="result-item"><div class="label">Max Step Depth</div><div class="value" id="r-step">—</div><div class="unit">mm</div></div><div class="result-item"><div class="label">Chamfer Width</div><div class="value" id="r-chamfer">—</div><div class="unit">mm</div></div><div class="result-item"><div class="label">Min Pilot Depth</div><div class="value" id="r-pilot">—</div><div class="unit">mm</div></div><div class="result-item"><div class="label">Chip Clearance</div><div class="value" id="r-clear">—</div><div class="unit">mm</div></div></div></div><div style="text-align:center;margin:16px 0"><a href="/tools/" style="color:#0066cc;text-decoration:none;font-size:13px">ドリル先端長</a></div></section>
+
+<script>function calc(){const d1=parseFloat(document.getElementById('d1').value)||6;const d2=parseFloat(document.getElementById('d2').value)||12;const dep=parseFloat(document.getElementById('depth').value)||25;const mat=document.getElementById('mat').value;const step=Math.min(d2*0.5,dep);const chamfer=(d2-d1)*0.5;const pilot=Math.min(d1*1.5,dep*0.3);const clear=dep-pilot-step;document.getElementById('r-step').textContent=step.toFixed(1);document.getElementById('r-chamfer').textContent=chamfer.toFixed(1);document.getElementById('r-pilot').textContent=pilot.toFixed(1);document.getElementById('r-clear').textContent=clear.toFixed(1);}calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">関連精密工具</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/jp/tools/scrap-value-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Scrap Value Calculator</a><a href="/jp/tools/sfm-m-min-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Sfm M Min Converter</a><a href="/jp/tools/shipping-duty-estimator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Shipping Duty Estimator</a><a href="/jp/tools/machinability-rating/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Machinability Rating</a><a href="/jp/tools/wall-thickness-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Wall Thickness Calculator</a><a href="/jp/tools/tool-steel-heat-treat/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tool Steel Heat Treat</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">ねじのリード角</a>
+<a href="/tools/">ステップドリルは、単一のツールに複数の直径を組み合わせて、ツールの変更とサイクルタイムを短縮します。各ステップは、直径 (D) 、ステップ長 (L) 、および遷移半径 (R) の3つの重要な寸法を有する。標準的な方法: 応力集中を減らし、ステップ破損を防ぐために、最小0.015インチの遷移半径を維持します。フルート全体の長さは、最も深いステッププラス20% のクリアランスに対応する必要があります。</a>
+<a href="/products/">🇩🇪ドイツ</a>
+<a href="/guides/">🇯🇵ジェイピー</a>
+<a href="/about.html">🇪🇸エスイー</a>
+<a href="/quote.html">部品当たりのコスト</a>
+<a href="/privacy.html">トルクコンバーター</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">一括見積もりを依頼する →</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">ステップドリルは、単一のツールに複数の直径を組み合わせて、ツールの変更とサイクルタイムを短縮します。各ステップは、直径 (D) 、ステップ長 (L) 、および遷移半径 (R) の3つの重要な寸法を有する。標準的な方法: 応力集中を減らし、ステップ破損を防ぐために、最小0.015インチの遷移半径を維持します。フルート全体の長さは、最も深いステッププラス20% のクリアランスに対応する必要があります。</a></p>
+<p style="font-size:11px;margin-bottom:6px">ステップ間隔と移行角度のデザイン</p>
+<p style="font-size:11px">ステップ間の移行には、鋭い90 ° のコーナーではなく、面取りまたは半径を含める必要があります。推奨される移行角度: 鋼の階段状の穴の場合は30〜45 ° 、バリの形成を減らすためのアルミニウムの場合は15〜30 °。スルーホールステップの場合、移行はより積極的になる可能性があります。ブラインドホールステップの場合、ステップ長にパイロット直径のポイント長のクリアランスが含まれていることを確認してください。</p>
+</div>
+<section class="seo"><div class="container">
+<h2>マルチステップ操作のためのツール素材の選択</h2><p>ステップドリルは、ツールに沿ったさまざまな切削作用により、単径ドリルよりも高いねじり荷重を受けます。ステップドリルの場合、靭性のためにマイクログレインカーバイドグレード (K20-K30) を使用します。鋼の高生産ステップ掘削の場合、Ti Al Nコーティングされたカーバイドは、コーティングされていない状態で工具の寿命を2〜3倍延長します。アルミニウムでは、DLCコーティングされたステップドリルがステップトランジションのエッジの構築を防ぎます。</p>
+<h2>よくある質問</h2><p>標準的なドリルをステップドリルに挽くことはできますか?はい、ユニバーサルツールとカッターグラインダーで。カーバイドにはダイヤモンドホイールを使用し、研削中の過熱を避けてください。ステップ遷移は、0.002インチTIR内で同心でなければならない。重要なステップ寸法については、再現性のあるジオメトリにCNCツールグラインダーを使用します。</p>
+<h2>1つのツールの最大ステップ数はいくつですか?実用的な制限は、手動工具研削の場合は3〜4ステップ、CNC接地工具の場合は5〜7ステップです。これを超えると、チップの排気が無効になり、ツールの断面剛性が低下します。4ステップ以上を必要とする穴の場合は、代わりにステップリーマーを使用することを検討してください。</h2><p>ステップドリルチャタリングを防ぐにはどうすればよいですか?ステップトランジションでのチャタリングは、切断力の中断によって引き起こされます。ステップ移行中にフィードレートを30% 削減します。ツールホルダーに最小のランアウト (0.0005インチTIR未満) があることを確認します。可能な場合はスタブ長のステップドリルを使用します。短いツールは指数関数的に剛性が高くなります。</p>
+<h2>⚡カーバイド・ツーリング・ドットコムの高性能シリーズ用に算出済み。カタログを表示する →</h2>
+<p><strong>Can I grind a standard drill into a step drill?</strong> Yes, on a universal tool and cutter grinder. Use a diamond wheel for carbide and avoid overheating during grinding. The step transitions must be concentric within 0.002 inches TIR. For critical step dimensions, use a CNC tool grinder for repeatable geometry.</p>
+<p><strong>What is the maximum number of steps for a single tool?</strong> Practical limit is 3–4 steps for manual tool grinding and 5–7 steps for CNC-ground tools. Beyond this, chip evacuation becomes ineffective, and the tool's cross-sectional rigidity is compromised. For holes requiring more than 4 steps, consider using a step reamer instead.</p>
+<p><strong>How do I prevent step drill chattering?</strong> Chatter at step transitions is caused by interrupted cut forces. Reduce feed rate by 30% during step transitions. Ensure the toolholder has minimal runout (under 0.0005 inches TIR). Use a stub-length step drill where possible — a shorter tool is exponentially more rigid.</p>
+<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">工具ホルダー</a></p>
+</div></section>
+</footer>
+<div class="toolbox-widget"><h3>製品</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">成形タップ用穴あけドリル計算ツール</a>
+<a href="/tools/hardness-converter/">の中で</a>
+<a href="/tools/tap-drill-size-calculator/">ペック掘削計算機</a>
+<a href="/tools/mrr-calculator/">テーパー計算機</a>
+<a href="/tools/feed-converter/">ポモドーロタイマー</a>
+<a href="/tools/surface-roughness-calculator/">硬度変換器</a>
+<a href="/tools/titanium-machining-guide/">ISOフィット計算機</a>
+<a href="/tools/carbide-grade-cross-ref-2/">接点計算機</a>
+<a href="/tools/cost-per-part-calculator/">リンクドイン</a>
+<a href="/tools/torque-unit-converter/">電子メール</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Step Drill Design Calculatorのプロフェッショナルソリューション</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">ISO認証品質のプレミアム超硬工具を工場直送価格でご提供。技術サポート付き。</p>
+</div>
+<a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">Solid Carbide End Mills</a><a href="/products/tool-holders.html">Tool Holders</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/step-drill-design-calculator/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/step-drill-design-calculator/&amp;text=Step Drill Design Calculator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Step Drill Design Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/step-drill-design-calculator/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
 <p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
-<div style="ditools/helical-interpolation-calculator/">Helical Interpolation Calculator</a>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/jp/tools/step-milling-calculator/">Step Milling Calculator</a>
+<a href="/jp/tools/micron-inch-converter/">Micron Inch Converter</a>
+<a href="/jp/tools/weight-shipping-calculator/">Weight Shipping Calculator</a>
+<a href="/jp/tools/arc-r-to-ij-converter/">Arc R To Ij Converter</a>
+<a href="/jp/tools/cost-per-part-calculator/">Cost Per Part Calculator</a>
+<a href="/jp/tools/threading-pass-calculator/">Threading Pass Calculator</a>
+<a href="/jp/tools/reaming-allowance-calculator/">Reaming Allowance Calculator</a>
+<a href="/jp/tools/torque-unit-converter/">Torque Unit Converter</a>
+<a href="/jp/tools/wall-thickness-calculator/">Wall Thickness Calculator</a>
 <a href="/jp/tools/graphite-machining/">Graphite Machining</a>
-<a href="/jp/tools/metal-weight-calculator/">Metal Weight Calculator</a>
-<a href="/jp/tools/dovetail-calculator/">Dovetail Calculator</a>
-<a href="/jp/tools/temp-converter/">Temp Converter</a>
 
 </div>
 </section>
@@ -303,22 +384,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/jp/tools/chamfer-calculator/">Chamfer Calculator</a>
+<a href="/jp/tools/cast-iron-machining/">Cast Iron Machining</a>
+<a href="/jp/tools/feed-converter/">Feed Converter</a>
+<a href="/jp/tools/gear-parameter-calculator/">Gear Parameter Calculator</a>
+<a href="/jp/tools/peck-drilling-calculator/">Peck Drilling Calculator</a>
+<a href="/jp/tools/helical-interpolation-calculator/">Helical Interpolation Calculator</a>
+<a href="/jp/tools/graphite-machining/">Graphite Machining</a>
+<a href="/jp/tools/metal-weight-calculator/">Metal Weight Calculator</a>
+<a href="/jp/tools/dovetail-calculator/">Dovetail Calculator</a>
+<a href="/jp/tools/temp-converter/">Temp Converter</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -328,5 +413,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>

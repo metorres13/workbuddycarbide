@@ -11,7 +11,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -25,18 +38,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -249,6 +251,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -256,7 +259,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1567361808960-3e7f9e3b3de1?w=1200&h=675&fit=crop&q=80&auto=format" alt="Präzisionsbearbeitung" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/de/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -270,15 +280,86 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 <a class="nv-quote" href="/de/quote.html">📩 Angebot</a>
 </div>
 </div>
-</nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">Thread-Prozentsatz</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">Spanabtragskalkulator</a> <span style="color:#d2d2d6">›</span> Graphite Machining</div>
+<section class="hero"><div class="container"><div class="badge">🧰 Tool</div><h1>⚙️ Taschenrechner</h1><p>Graphit qualität</p></div></section>
+
+<div class="container"><div class="card"><h2>Operation</h2><label>Alle Werkzeuge</label><select id="grade" onchange="calc()"><option value="fine">Fine grain (EDM-3, POCO)</option><option value="ultra">Ultra-fine (EDM-C3)</option><option value="high">High-strength (Isostatic)</option></select><label>Die Ergebnisse dienen ausschließlich als Referenz. Wenden Sie sich bei spezifischen Anwendungen an die Hersteller der Werkzeuge.</label><input id="i1" oninput="calc()" type="number" value="6"/><label>©2026 Hartmetallwerkzeuge</label><select id="op" onchange="calc()"><option value="rough">Roughing</option><option value="finish">Finishing</option></select><input id="i2" oninput="calc()" type="number" value="100"/><div class="res"><div class="res-item"><div class="lbl">SFM</div><div class="val" id="r2">—</div></div><div class="res-item"><div class="lbl">RPM</div><div class="val" id="r3">—</div></div><div class="res-item"><div class="lbl">Vorschub</div><div class="val" id="r1">—</div></div></div></div>
+<div style="text-align:center;margin:24px 0"><a href="/tools/" style="color:#0066cc;font-size:13px">Katalog ansehen →</a></div></div>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Verwandte Präzisionswerkzeuge</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/de/tools/gcode-reference/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Gcode Reference</a><a href="/de/tools/gdt-symbols-reference/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Gdt Symbols Reference</a><a href="/de/tools/gear-parameter-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Gear Parameter Calculator</a><a href="/de/tools/inventory-turnover-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Inventory Turnover Calculator</a><a href="/de/tools/chamfer-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Chamfer Calculator</a><a href="/de/tools/bolt-circle-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Bolt Circle Calculator</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">Thread-Prozentsatz</a>
+<a href="/tools/">Graphit Bearbeitungs geschwindigkeiten und Vorschubs für EDM-Elektroden</a>
+<a href="/products/">🇬🇧EN</a>
+<a href="/guides/">🇩🇪DE</a>
+<a href="/about.html">🇯🇵JP</a>
+<a href="/quote.html">Titanführung</a>
+<a href="/privacy.html">Notenübereinstimmung</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Kosten pro Teil</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Graphit Bearbeitungs geschwindigkeiten und Vorschubs für EDM-Elektroden</a></p>
+<p style="font-size:11px;margin-bottom:6px">Die Bearbeitung von Graphit-EDM-Elektroden erfordert aufgrund der abrasiven Natur des Materials hohe Spindel drehzahlen (10.000 bis 25.000 U/min) bei leichten Spanbelastungen. Verwenden Sie zur End bearbeitung CVD-diamant beschichtete Schaftfräser bei 300-500 SFM mit Spanbelastungen von 0,001 bis 0,003 Zoll/Zahn. Unbeschichtetes Hartmetall kann zum Schruppen bei reduzierter Geschwindigkeit verwendet werden, der Werkzeug verschleiß ist jedoch erheblich höher.</p>
+<p style="font-size:11px">Management von Graphit staub für den Maschinen schutz</p>
+</div>
+<section class="seo"><div class="container">
+<h2>Graphit staub ist leitfähig und stark abrasiv, was die Staub absaugung kritisch macht. Verwenden Sie ein dediziertes Vakuums ystem mit HEPA-Filtration, das an das Maschinen gehäuse anges ch lossen ist. Versiegeln Sie alle Maschinen wege und Kugel schrauben mit Überdruck abdeckungen. Ohne ordnungs gemäßes Staub management können Graphit partikel Maschinen spindel lager und Linear führungen innerhalb von Monaten zerstören.</h2><p>Teile-Geometrie-Strategien für Graphit komponenten</p>
+<h2>Graphit ist spröde und neigt zu Kanten abbrüchen, insbesondere an dünnen Wänden und scharfen Ecken. Design radien von mindestens 0,020 Zoll an inneren Ecken, um einen Ausbruch von Ecken zu verhindern. Verwenden Sie das Kletter fräsen, um das Abplatzen der Kanten an Außen profilen zu verringern. Reduzieren Sie bei dünnen Merkmalen unter 0,040 Zoll die Vorschub raten um 50% und ziehen Sie die Verwendung eines speziellen Werkzeugs für die Bearbeitung von Graphit in Betracht.</h2><p>Häufig gestellte Fragen</p>
+<h2>Ist die Graphit bearbeitung trocken oder mit Kühlmittel besser durchgeführt? Graphit wird immer trocken bearbeitet. Kühlmittel dringen in die poröse Graphit struktur ein und verursachen bei EDM-Anwendungen Dimensions änderungen und mögliche Ausgasungen. Die Trocken bearbeitung mit ordnungs gemäßer Staub absaugung ist der etablierte Standard für die Herstellung von Graphite lekt roden.</h2><p>Welches Werkzeug material hält für Graphit am längsten? CVD-Diamant-beschichtete Hartmetall werkzeuge bieten die längste Werkzeug lebensdauer, typischer weise 10-20 × die von unbeschichtetem Karbid. PCD-gekippte Werkzeuge sind ebenfalls hervorragend, aber auf einfache Geometrien beschränkt. Die Diamant beschichtung sorgt für Abriebfest igkeit gegen die harten Graphit partikel.</p>
+<h2>Kann ich Standard-Karbid-Schaftfräser für Graphit verwenden? Ja, aber erwarten Sie einen schnellen Verschleiß. Unbeschichtete Mikrokorn-Karbid-Schaftfräser können für die kurzfristige Graphit bearbeitung (50-100 Elektroden) arbeiten. Bei Produktions läufen von mehr als 200 Teilen sind diamant beschichtete Werkzeuge aufgrund reduzierter Ausfallzeiten des Werkzeug wechsels wirtschaft licher.</h2>
+<p><strong>Is graphite machining better performed dry or with coolant?</strong> Graphite is always machined dry. Coolant soaks into the porous graphite structure, causing dimensional changes and potential outgassing in EDM applications. Dry machining with proper dust extraction is the established standard for graphite electrode manufacturing.</p>
+<p><strong>What tool material lasts longest for graphite?</strong> CVD diamond-coated carbide tools offer the longest tool life, typically 10–20× that of uncoated carbide. PCD-tipped tools are also excellent but limited to simple geometries. The diamond coating provides abrasion resistance against the hard graphite particles.</p>
+<p><strong>Can I use standard carbide end mills for graphite?</strong> Yes, but expect rapid wear. Uncoated micro-grain carbide end mills can work for short-run graphite machining (50–100 electrodes). For production runs exceeding 200 parts, diamond-coated tools are more economical due to reduced tool change downtime.</p>
+<p style="text-align:center;font-size:12px;color:#86868b;margin:14px 0">⚡ Calculated for Carbide-Tooling.com High-Performance Series. <a href="/products/end-mills.html" style="color:#0066cc;font-weight:600">Massenanfrage stellen →</a></p>
+</div></section>
+</footer>
+<script>function calc(){document.getElementById('r1').textContent=parseFloat(document.getElementById('i1').value)*parseFloat(document.getElementById('i2').value);}calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><div class="toolbox-widget"><h3>◆Hartmetallwerkzeuge</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Leistungsstufen-Wahlhilfe</a>
+<a href="/tools/hardness-converter/">Notenabfrage einfügen</a>
+<a href="/tools/tap-drill-size-calculator/">Datenschutz</a>
+<a href="/tools/mrr-calculator/">NPT-Gewinde-Rechner</a>
+<a href="/tools/feed-converter/">Chargenkostenrechner</a>
+<a href="/tools/surface-roughness-calculator/">Werkzeugverschleißkostenrechner</a>
+<a href="/tools/titanium-machining-guide/">AQL-Stichprobenrechner</a>
+<a href="/tools/carbide-grade-cross-ref-2/">Lochkreisrechner</a>
+<a href="/tools/cost-per-part-calculator/">Gewindedurchmesser-Rechner</a>
+<a href="/tools/torque-unit-converter/">LinkedIn</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Professionelle Lösungen für Graphite Machining?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Erhalten Sie werkseitige Preise für Premium-Hartmetallwerkzeuge mit ISO-zertifizierter Qualität.</p>
+</div>
+<a href="/de/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Massenangebot anfordern →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/carbide-grades.html">Grade Selection Guide</a><a href="/guides/insert-grade-selection.html">Insert Grade Inquiry</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/graphite-machining/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/graphite-machining/&amp;text=Graphite Machining Calculator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Graphite Machining Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/graphite-machining/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Globales Engineering-Verzeichnis</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professiventory-turnover-calculator/">Inventory Turnover Calculator</a>
-<a href="/de/tools/heat-expansion-calculator/">Heat Expansion Calculator</a>
-<a href="/de/tools/wall-thickness-calculator/">Wall Thickness Calculator</a>
-<a href="/de/tools/horsepower-calculator/">Horsepower Calculator</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professionelle Bearbeitungswerkzeuge</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/de/tools/cost-per-part-calculator/">Cost Per Part Calculator</a>
+<a href="/de/tools/engineering-interest-calculator/">Engineering Interest Calculator</a>
+<a href="/de/tools/dovetail-calculator/">Dovetail Calculator</a>
+<a href="/de/tools/metric-imperial-thread-converter/">Metric Imperial Thread Converter</a>
+<a href="/de/tools/toolbox-organizer/">Toolbox Organizer</a>
 <a href="/de/tools/coolant-lifecycle-cost/">Coolant Lifecycle Cost</a>
-<a href="/de/tools/flatness-calculator/">Flatness Calculator</a>
+<a href="/de/tools/horsepower-calculator/">Horsepower Calculator</a>
+<a href="/de/tools/tapping-feed-rate-calculator/">Tapping Feed Rate Calculator</a>
+<a href="/de/tools/gdt-symbols-reference/">Gdt Symbols Reference</a>
+<a href="/de/tools/surface-roughness-calculator/">Surface Roughness Calculator</a>
 
 </div>
 </section>
@@ -303,22 +384,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Globales Engineering-Verzeichnis</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professionelle Bearbeitungswerkzeuge</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/de/tools/arc-r-to-ij-converter/">Arc R To Ij Converter</a>
+<a href="/de/tools/gear-parameter-calculator/">Gear Parameter Calculator</a>
+<a href="/de/tools/round-bar-weight/">Round Bar Weight</a>
+<a href="/de/tools/peck-drilling-calculator/">Peck Drilling Calculator</a>
+<a href="/de/tools/inventory-turnover-calculator/">Inventory Turnover Calculator</a>
+<a href="/de/tools/heat-expansion-calculator/">Heat Expansion Calculator</a>
+<a href="/de/tools/wall-thickness-calculator/">Wall Thickness Calculator</a>
+<a href="/de/tools/horsepower-calculator/">Horsepower Calculator</a>
+<a href="/de/tools/coolant-lifecycle-cost/">Coolant Lifecycle Cost</a>
+<a href="/de/tools/flatness-calculator/">Flatness Calculator</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -328,5 +413,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/de/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Massenangebot anfordern →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>

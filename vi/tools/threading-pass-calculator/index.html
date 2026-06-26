@@ -12,7 +12,20 @@
 .lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
 .lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
 .lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav /* Language Switcher - Dropdown with Flags */
+.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
+
+/* Language Switcher - Dropdown with Flags */
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
+.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex;align-items:center}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
+.lang-menu.show{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+.lang-menu a .flag{font-size:16px}
+
 .logo{font-size:13px;white-space:nowrap}
 body{overflow-x:hidden!important}
 @media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
@@ -26,18 +39,7 @@ body{overflow-x:hidden!important}
 .nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
 .nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
 .nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){}
-
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
+@media(max-width:768px){.nav-links{display:none!important}}
 </style>
 <link href="/css/tool-style.css" rel="stylesheet"/>
 <meta content="#0066cc" name="theme-color"/>
@@ -178,6 +180,7 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
 </style>
 
+
 <style id="hero-img-style">
 .hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
@@ -185,7 +188,14 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 .hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
 </style>
 
-<nav id="nav-v2">
+</head>
+<body>
+
+<div class="hero-img-wrapper">
+<img src="https://images.unsplash.com/1581093450607-4e0f9a7b3e3c?w=1200&h=675&fit=crop&q=80&auto=format" alt="Cắt ren" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"/>
+<div class="img-overlay"></div>
+</div>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
 <div class="nv-inner">
 <a class="nv-logo" href="/vi/"><span>◆</span> Carbide Tooling</a>
 <div class="nv-links">
@@ -200,14 +210,108 @@ nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Robot
 </div>
 </div>
 </nav>
-class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<section class="hero"><div class="container"><div class="badge">🔧 Programming Tutorial</div><h1>Công cụ tính bước ren</h1><p>Đối với xe đạp g76 trên máy tiện CNC. Tính độ sâu trên mỗi đường chuyền, số lượng đường chuyền, và phương pháp infeed cho luồng bên ngoài và bên trong.</p><a class="btn" href="#calculator">Tính toán ↓</a></div></section>
+<section class="container" id="calculator" style="padding-bottom:40px">
+<div class="card"><h2>🔧Đường cắt ren</h2><p class="sub">Đối với chỉ một điểm trên máy tiện CNC có chu kỳ g76 hoặc G92.</p>
+<div class="card-row">
+<div class="field"><label>🔩Vật liệu</label><select id="material" onchange="calc()"><option value="steel">Steel / Alloy</option><option value="ss">Stainless</option><option value="al">Aluminum</option></select></div>
+<div class="field"><label>📐Chiều cao ren (mm)</label><input id="pitch" max="8" min="0.2" oninput="calc()" step="0.1" type="number" value="1.5"/></div>
+<div class="field"><label>📏Ren chính DIA (mm)</label><input id="major" max="200" min="3" oninput="calc()" step="0.5" type="number" value="20"/></div>
+<div class="field"><label>🔧Bên ngoài/Bên trong</label><select id="type" onchange="calc()"><option value="ext">External (bolt)</option><option value="int">Internal (nut)</option></select></div>
+</div>
+<div class="result-grid">
+<div class="result-item"><div class="label">Total Thread Depth</div><div class="value" id="r-depth">—</div><div class="unit">mm</div></div>
+<div class="result-item"><div class="label">Number of Passes</div><div class="value" id="r-passes">—</div><div class="unit">passes</div></div>
+<div class="result-item"><div class="label">First Pass Depth</div><div class="value" id="r-first">—</div><div class="unit">mm</div></div>
+<div class="result-item"><div class="label">Last Pass Depth</div><div class="value" id="r-last">—</div><div class="unit">mm</div></div>
+</div>
+</div>
+<div style="text-align:center;margin:20px 0"><a href="/tools/" style="color:#0066cc;text-decoration:none;font-size:13px">← Tất cả công cụ</a></div>
+</section>
+<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Công cụ chính xác liên quan</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/vi/tools/tangent-point-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tangent Point Calculator</a><a href="/vi/tools/tap-drill-size-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tap Drill Size Calculator</a><a href="/vi/tools/taper-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Taper Calculator</a><a href="/vi/tools/superalloy-tool-life/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Superalloy Tool Life</a><a href="/vi/tools/pressure-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Pressure Converter</a><a href="/vi/tools/polar-rect-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Polar Rect Converter</a></div></div><footer class="tool-footer">
+<div class="container">
+<div class="footer-links">
+<a href="/">Trang chủ</a>
+<a href="/tools/">Tất cả công cụ</a>
+<a href="/products/">Sản phẩm</a>
+<a href="/guides/">Hướng dẫn</a>
+<a href="/about.html">Về chúng tôi</a>
+<a href="/quote.html">Bộ chuyển đổi độ cứng</a>
+<a href="/privacy.html">Kích thước mũi khoan taro</a>
+</div>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">Công cụ tính MRR</a>
+<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
+<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+</div>
+<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">Tất cả công cụ</a></p>
+<p style="font-size:11px;margin-bottom:6px">Kết quả chỉ mang tính tham khảo. Hãy tham khảo ý kiến của các nhà sản xuất dụng cụ để biết thông tin về các ứng dụng cụ thể.</p>
+<p style="font-size:11px">©Dụng cụ cắt gọt bằng cacbua năm 2026</p>
+</div>
+</footer>
+<script>
+function calc(){const m=document.getElementById('material').value;const p=parseFloat(document.getElementById('pitch').value)||1.5;const maj=parseFloat(document.getElementById('major').value)||20;const t=document.getElementById('type').value;const depth=t==='ext'?0.6134*p:0.5413*p;const passFactors={steel:[0.35,0.25,0.18,0.13,0.07,0.03],ss:[0.28,0.2,0.15,0.12,0.09,0.06,0.03,0.02],al:[0.4,0.28,0.18,0.08]};const factors=passFactors[m]||passFactors.steel;const firstPass=depth*factors[0];let remaining=depth;let passes=0;for(let f of factors){if(remaining<=0)break;const thisPass=depth*f;remaining-=thisPass;passes++;}if(remaining>0){passes+=Math.ceil(remaining/0.02);}const lastPass=depth*factors[factors.length-1];document.getElementById('r-depth').textContent=depth.toFixed(3);document.getElementById('r-passes').textContent=passes;document.getElementById('r-first').textContent=firstPass.toFixed(3);document.getElementById('r-last').textContent=lastPass.toFixed(3);}
+calc();</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><section class="seo-content"><div class="container">
+<h2>Lập trình g76: có bao nhiêu đường chuyền cho một sợi ren 1.5mm?</h2>
+<p>Một ren ngoài 20 mm × 1.5 trên trục thép cần tổng độ sâu ren xấp xỉ 0.92mm (cao độ 0.61 × cho dạng ren tiêu chuẩn 60 °). Chu kỳ g76 cần phân phối độ sâu này qua nhiều đường chuyền với độ sâu giảm trên mỗi đường chuyền-đường chuyền đầu tiên được cắt giảm nặng nhất, và các đường chuyền tiếp theo sẽ dần dần nhẹ hơn.</p>
+<p>Đối với một sợi thép cao 1.5mm, hãy sử dụng 5-6 đường chuyền. Đường chuyền đầu tiên loại bỏ khoảng 0.35mm, 0.25mm thứ hai, 0.15mm thứ ba, v. v... xuống mức hoàn thiện 0.03mm. Trong nhôm, cùng một sợi có thể được cắt trong 3-4 đường chuyền vì vật liệu là tha thứ hơn. Trong không gỉ, tăng lên 7-8 đường chuyền để phân phối tải trọng cắt và ngăn ngừa làm cứng ở gốc ren.</p>
+<p>Phương pháp infeed-Hợp chất infeed ở 29.5 ° đối với chu kỳ g76 tiêu chuẩn-Tạo ra sự hình thành chip thuận lợi hơn so với infeed thẳng. Miếng chèn cắt ren chỉ cắt ở một cạnh, tạo thành cấu hình ren dần dần với mỗi đường chuyền. Máy tính này sử dụng công thức giảm chiều sâu tiêu chuẩn từ Sổ tay của máy móc.</p>
+<ol>
+<li><strong>Step 1:</strong> Calculate total thread depth = 0.6134 × pitch (external) or 0.5413 × pitch (internal)</li>
+<li><strong>Step 2:</strong> Starting depth = total depth × 0.4 (reduced for material toughness)</li>
+<li><strong>Step 3:</strong> Each subsequent pass depth = previous depth × 0.65-0.75</li>
+<li><strong>Step 4:</strong> Minimum pass depth = 0.02-0.05 mm for finishing</li>
+</ol>
+<h2>Câu hỏi thường gặp</h2>
+<p><strong>How do you calculate thread depth for CNC threading?</strong> External thread depth = 0.6134 × pitch. Internal thread depth = 0.5413 × pitch. These values come from the ISO 68-1 thread profile standard.</p>
+<p><strong>How many passes for a 2 mm pitch thread in steel?</strong> 7-8 passes. The first pass at approximately 0.4 mm depth, decreasing to 0.03 mm for the final finishing pass.</p>
+<p><strong>What is the difference between G92 and G76 threading cycles?</strong> G92 is a simple pass-repeat cycle (same depth each pass). G76 is a multi-pass cycle with automatic depth decrease and compound infeed. Use G76 for all threading except very coarse pitches where G92 gives better control.</p>
+<p><strong>Should I use coolant for thread cutting?</strong> Yes, for all materials except cast iron. Coolant prevents built-up edge on the threading insert, which degrades thread form accuracy. For carbide threading inserts, consistent coolant flow also prevents thermal cracking.</p>
+</div></section>
+<div class="toolbox-widget"><h3>🔧Hộp công cụ kỹ thuật chính xác</h3><div class="toolbox-links">
+<a href="/tools/speed-feed/">Độ nhám bề mặt</a>
+<a href="/tools/hardness-converter/">Hướng dẫn về Titan</a>
+<a href="/tools/tap-drill-size-calculator/">Phân loại tham chiếu</a>
+<a href="/tools/mrr-calculator/">Chi phí trên mỗi bộ phận</a>
+<a href="/tools/feed-converter/">Bộ biến mô</a>
+<a href="/tools/surface-roughness-calculator/">Yêu cầu báo giá số lượng lớn →</a>
+<a href="/tools/titanium-machining-guide/">Mũi khoan cacbua</a>
+<a href="/tools/carbide-grade-cross-ref-2/">Dao phay ren &amp; Tarô</a>
+<a href="/tools/cost-per-part-calculator/">Hộp đựng dụng cụ</a>
+<a href="/tools/torque-unit-converter/">Tham chiếu chéo cấp độ cacbua</a>
+</div></div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Giải Pháp Chuyên Nghiệp cho Threading Pass Calculator?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Nhận giá trực tiếp từ nhà máy cho dụng cụ carbide cao cấp với chất lượng chứng nhận ISO.</p>
+</div>
+<a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
+</div>
+<div class="product-links"><span>🔗 Recommended:</span><a href="/products/drills.html">Công cụ tính toán phay rãnh</a><a href="/products/threading-tools.html">Công cụ tính độ nhám bề mặt</a></div>
+
+<div class="share-bar">
+<span class="share-label">↗ Share with Engineers</span>
+<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/threading-pass-calculator/" rel="noopener" target="_blank">LinkedIn</a>
+<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/threading-pass-calculator/&amp;text=Threading Pass Calculator" rel="noopener" target="_blank">𝕏</a>
+<a href="mailto:subject=Threading Pass Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/threading-pass-calculator/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
 <h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyêcalculator/">Machine Power Calculator</a>
-<a href="/vi/tools/reaming-allowance-calculator/">Reaming Allowance Calculator</a>
-<a href="/vi/tools/gun-drill-calculator/">Gun Drill Calculator</a>
-<a href="/vi/tools/cast-iron-machining/">Cast Iron Machining</a>
-<a href="/vi/tools/temp-converter/">Temp Converter</a>
-<a href="/vi/tools/nose-radius-compensation/">Nose Radius Compensation</a>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/vi/tools/ramping-angle-calculator/">Ramping Angle Calculator</a>
+<a href="/vi/tools/drill-point-length-calculator/">Drill Point Length Calculator</a>
+<a href="/vi/tools/shipping-duty-estimator/">Shipping Duty Estimator</a>
+<a href="/vi/tools/thread-depth-torque-calculator/">Thread Depth Torque Calculator</a>
+<a href="/vi/tools/plastic-machining/">Plastic Machining</a>
+<a href="/vi/tools/sfm-m-min-converter/">Sfm M Min Converter</a>
+<a href="/vi/tools/tap-drill-size-calculator/">Tap Drill Size Calculator</a>
+<a href="/vi/tools/round-bar-weight/">Round Bar Weight</a>
+<a href="/vi/tools/cnc-roi-calculator/">Cnc Roi Calculator</a>
+<a href="/vi/tools/ball-nose-effective-diameter/">Ball Nose Effective Diameter</a>
 
 </div>
 </section>
@@ -232,22 +336,26 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
   transform:translateY(-1px);
   box-shadow:0 4px 12px rgba(0,102,204,.15);
 }
-
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-
 </style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Danh Mục Kỹ Thuật Toàn Cầu</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Khám phá thêm công cụ gia công chuyên nghiệp</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/vi/tools/aluminum-alloy-table/">Aluminum Alloy Table</a>
+<a href="/vi/tools/metal-cost-calculator/">Metal Cost Calculator</a>
+<a href="/vi/tools/heat-expansion-calculator/">Heat Expansion Calculator</a>
+<a href="/vi/tools/titanium-machining-guide/">Titanium Machining Guide</a>
+<a href="/vi/tools/machine-power-calculator/">Machine Power Calculator</a>
+<a href="/vi/tools/reaming-allowance-calculator/">Reaming Allowance Calculator</a>
+<a href="/vi/tools/gun-drill-calculator/">Gun Drill Calculator</a>
+<a href="/vi/tools/cast-iron-machining/">Cast Iron Machining</a>
+<a href="/vi/tools/temp-converter/">Temp Converter</a>
+<a href="/vi/tools/nose-radius-compensation/">Nose Radius Compensation</a>
+
+</div>
+</section>
+
 <aside class="b2b-card-enhanced" style="margin:32px 0">
 <div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
 <div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
@@ -257,5 +365,19 @@ class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;backgr
 </div>
 <a href="/vi/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Yêu Cầu Báo Giá Số Lượng →</a>
 </div>
-<script>function toggleLangDD(e){e.stopPropagation();var d=document.getElementById('lang-dd');if(d)d.classList.toggle('open')}document.addEventListener('click',function(){var d=document.getElementById('lang-dd');if(d)d.classList.remove('open')});</script>
+<script>
+function toggleLangDD(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('lang-dd');
+  if (dd) { dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(e) {
+  var dd = document.getElementById('lang-dd');
+  var btn = document.querySelector('.lang-btn');
+  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
+    dd.classList.remove('open');
+  }
+});
+</script>
+
 </body></html>
