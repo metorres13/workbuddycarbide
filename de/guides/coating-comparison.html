@@ -1,156 +1,466 @@
 <!DOCTYPE html>
-
 <html lang="de">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-<title>Beschichtung vergleich-Al Ti N vs Ti Si N vs Ti Al N vs DLC | Carbid Tooling</title>
-<meta content="Karbid werkzeug beschichtungen vergleichen: Al Ti N, Ti Si N, Ti Al N, Ti CN, DLC. Verstehen Sie Temperatur beständigkeit, Härte und welche Beschichtung für Stahl, Aluminium, Titan zu verwenden." name="description"/>
-<meta content="index, follow" name="robots"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&amp;display=swap" rel="stylesheet"/>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',-apple-system,'SF Pro Display','Helvetica Neue',Arial,sans-serif;background:#fff;color:#1d1d1f;line-height:1.6;-webkit-font-smoothing:antialiased}
-.container{max-width:700px;margin:0 auto;padding:0 24px}
-h1{font-size:40px;font-weight:800;letter-spacing:-.8px;padding-top:80px;margin-bottom:8px}
-.sub{font-size:18px;color:#86868b;margin-bottom:40px;line-height:1.7}
-p{font-size:15px;color:#333;margin-bottom:18px;line-height:1.8}
-h2{font-size:22px;font-weight:700;margin:44px 0 10px;letter-spacing:-.3px}
-h3{font-size:16px;font-weight:600;margin:28px 0 8px}
-ul,ol{padding-left:20px;margin-bottom:18px}
-li{font-size:14px;color:#444;margin-bottom:5px;line-height:1.7}
-a{color:#0066cc;text-decoration:none}
-a:hover{text-decoration:underline}
-.breadcrumb{font-size:12px;color:#86868b;padding-top:20px;margin-bottom:8px}
-.breadcrumb a{color:#0066cc}
-code{background:#f5f5f7;padding:1px 6px;border-radius:4px;font-size:13px}
-@media(max-width:768px){h1{font-size:28px;padding-top:48px}}
+<meta name="description" content="Beschichtungsvergleich. AlTiN, TiSiN, TiAlN, AlCrN, DLC, TiN. Oxidationstemperatur, Reibungskoeffizient, Härte und empfohlene Anwendungen pro Beschichtung.... Read the full guide."/>
+<meta property="og:title" content="Beschichtungsvergleich — Carbide Tooling"/>
+<meta property="og:description" content="Beschichtungsvergleich. AlTiN, TiSiN, TiAlN, AlCrN, DLC, TiN. Oxidationstemperatur, Reibungskoeffizient, Härte und empfohlene Anwendungen pro Beschichtung.... Read the full guide."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://carbide-tooling.com/de/guides/coating-comparison.html"/>
+<meta name="robots" content="index, follow"/>
+<title>Beschichtungsvergleich — Carbide Tooling</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23006'/%3E%3Cpath d='M8 14l5-4 3 3 8-7' stroke='white' stroke-width='2.5' fill='none'/%3E%3Ccircle cx='8' cy='14' r='2' fill='white'/%3E%3C/svg%3E"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet"/>
+<link rel="canonical" href="https://carbide-tooling.com/de/guides/coating-comparison.html"/>
+<link rel="alternate" hreflang="x-default" href="https://carbide-tooling.com/guides/coating-comparison.html"/>
+    <link rel="alternate" hreflang="en" href="https://carbide-tooling.com/guides/coating-comparison.html"/>
+    <link rel="alternate" hreflang="de" href="https://carbide-tooling.com/de/guides/coating-comparison.html"/>
+    <link rel="alternate" hreflang="ja" href="https://carbide-tooling.com/jp/guides/coating-comparison.html"/>
+    <link rel="alternate" hreflang="es" href="https://carbide-tooling.com/es/guides/coating-comparison.html"/>
+    <link rel="alternate" hreflang="vi" href="https://carbide-tooling.com/vi/guides/coating-comparison.html"/>
 
-.lang-switcher{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 0;margin:8px 0;border-top:1px solid #e8e8ed;font-size:11px}.lang-switcher .lang-label{font-size:13px;margin-right:4px}.lang-switcher .lang-link{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#fff;border:1px solid #e8e8ed;color:#86868b;text-decoration:none;font-size:10px;font-weight:600;transition:all .15s}.lang-switcher .lang-link:hover{background:#0066cc;color:#fff;border-color:#0066cc}.lang-switcher .lang-link.active{background:#0066cc;color:#fff;border-color:#0066cc}
-.lang-nav{display:flex;align-items:center;gap:2px;margin-left:12px;padding-left:12px;border-left:1px solid #e8e8ed}.lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}.lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}.lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-dropdown{position:relative;display:inline-flex;align-items:center}.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}.lang-menu.show{display:block}.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}.lang-menu a:hover{background:#f5f5f7}.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}.lang-menu a .flag{font-size:16px}</style>
-<link href="https://carbide-tooling.com/de/guides/coating-comparison.html" rel="canonical"/><link href="https://carbide-tooling.com/guides/coating-comparison.html" hreflang="x-default" rel="alternate"/><link href="https://carbide-tooling.com/guides/coating-comparison.html" hreflang="en" rel="alternate"/><link href="https://carbide-tooling.com/de/guides/coating-comparison.html" hreflang="de" rel="alternate"/><link href="https://carbide-tooling.com/jp/guides/coating-comparison.html" hreflang="ja" rel="alternate"/><link href="https://carbide-tooling.com/es/guides/coating-comparison.html" hreflang="es" rel="alternate"/><link href="https://carbide-tooling.com/vi/guides/coating-comparison.html" hreflang="vi" rel="alternate"/><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  important: true,
-  corePlugins: { preflight: false },
-  theme: {
-    extend: {
-      fontFamily: { sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"] },
-    }
-  }
-}
-</script>
+<style>*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',-apple-system,'SF Pro Display','Helvetica Neue',Arial,sans-serif;background:#fff;color:#1d1d1f;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:14px}
+.container{max-width:1120px;margin:0 auto;padding:0 24px}
+@media(max-width:768px){.container{padding:0 18px}}
 
-<style id="nav-v2-style">
-/* ── Apple Smart Nav v2 ── */
-nav#nav-v2{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(24px);-webkit-backdrop-filter:saturate(180%) blur(24px);border-bottom:1px solid rgba(0,0,0,.06);height:48px;display:flex;align-items:center}
-nav#nav-v2 .nv-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1100px;margin:0 auto;padding:0 24px}
-nav#nav-v2 .nv-logo{font-size:14px;font-weight:700;letter-spacing:-.3px;color:#1d1d1f;text-decoration:none;display:flex;align-items:center;gap:6px;white-space:nowrap;flex-shrink:0}
-nav#nav-v2 .nv-logo span{font-weight:800;color:#0066cc}
-nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-shrink:0}
-nav#nav-v2 .nv-links>a{color:#1d1d1f;text-decoration:none;padding:0 14px;height:48px;display:flex;align-items:center;font-weight:500;font-size:12px;transition:color .15s;white-space:nowrap}
-nav#nav-v2 .nv-links>a:hover{color:#0066cc}
-nav#nav-v2 .nv-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
-nav#nav-v2 .nv-quote{display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:6px 16px;border-radius:24px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap}
-nav#nav-v2 .nv-quote:hover{background:#0055aa;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,204,.25)}
-nav#nav-v2 .nv-lang{display:flex;align-items:center;gap:2px;margin-left:4px;padding-left:8px;border-left:1px solid #e8e8ed}
-nav#nav-v2 .nv-lang a{font-size:10px;font-weight:600;color:#86868b;text-decoration:none;padding:3px 6px;border-radius:12px;transition:all .15s;letter-spacing:.3px}
-nav#nav-v2 .nv-lang a:hover{color:#1d1d1f;background:#f5f5f7}
-nav#nav-v2 .nv-lang a.active{color:#0066cc;background:#f0f7ff;font-weight:700}
-nav#nav-v2 .nv-lang .sep{color:#d2d2d6;font-size:10px;margin:0 1px;font-weight:300}
+/* NAV — Apple Smart Switcher */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(24px);-webkit-backdrop-filter:saturate(180%) blur(24px);border-bottom:1px solid rgba(0,0,0,.06);height:44px}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:44px;max-width:1120px;margin:0 auto;padding:0 24px;font-size:12px}
+.nav-left{display:flex;align-items:center;gap:28px}
+.logo{font-size:14px;font-weight:700;letter-spacing:-.3px;display:flex;align-items:center;gap:6px;text-decoration:none;color:#1d1d1f}
+.logo svg{width:16px;height:16px;color:#0066cc}
+	.nav-links{display:flex;align-items:center;gap:0;flex-shrink:0}
+	.nav-links>a,.nav-links>.nav-drop{color:#1d1d1f;text-decoration:none;padding:0 16px;height:44px;display:flex;align-items:center;font-weight:500;font-size:12px;cursor:pointer;transition:color .2s;white-space:nowrap}
+.nav-links>a:hover,.nav-links>.nav-drop:hover{color:#0066cc}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;background:#0066cc;color:#fff;padding:5px 14px;border-radius:16px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap}
+.nav-cta:hover{background:#004499;transform:translateY(-1px)}
+
+/* NAV RIGHT */
+.nav-right{display:flex;align-items:center;gap:8px}
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #d2d2d7;border-radius:20px;padding:4px 10px;cursor:pointer;font-size:11px;font-weight:600;transition:all .15s;color:#1d1d1f;white-space:nowrap}
+.lang-btn:hover{background:#f5f5f7;border-color:#86868b}
+.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
+.lang-dropdown{position:relative;display:inline-flex}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:rgba(255,255,255,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 10px 32px rgba(0,0,0,.12);padding:4px;z-index:200;min-width:86px}
+.lang-menu.open{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:7px 14px;border-radius:10px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
+.lang-menu a:hover{background:#f5f5f7}
+.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
+
+/* Mobile Nav (below hero, hidden on desktop) */
+.mobile-nav-links{display:none}
+	
+/* Apple-style Lucide Icon Containers */
+.tool-icon-wrap{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;transition:transform .2s ease;flex-shrink:0}
+.tool-icon-wrap:hover{transform:scale(1.05)}
+.tool-icon-wrap i{width:28px;height:28px;color:#1d1d1f;stroke-width:1.5}
+.label .tool-icon-wrap{width:24px;height:24px}
+.label .tool-icon-wrap i{width:16px;height:16px}
+@media(prefers-color-scheme:dark){.tool-icon-wrap i{color:#fff}}
+	
+/* Mega Menu */
+.mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.98);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);border:1px solid rgba(0,0,0,.06);border-radius:16px;box-shadow:0 22px 40px -12px rgba(0,0,0,.15);padding:24px 28px;width:640px;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease;pointer-events:none;max-height:80vh;overflow-y:auto}
+.nav-drop:hover .mega-menu,.mega-menu.open{opacity:1;visibility:visible;pointer-events:auto}
+.mega-cat{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#86868b;padding:10px 0 4px;grid-column:1/-1;display:flex;align-items:center;gap:4px;cursor:pointer}
+.mega-cat svg{width:12px;height:12px}
+.mega-cat span{font-size:10px;margin-left:auto}
+.mega-sub{display:none}
+.mega-sub.open{display:block}
+.mega-item{display:flex;align-items:center;gap:10px;padding:7px 10px;border-radius:8px;transition:background .15s;text-decoration:none;color:#1d1d1f;font-size:11px;font-weight:500}
+.mega-item:hover{background:#f5f5f7}
+.mega-dot{width:6px;height:6px;border-radius:50%;background:#0066cc;flex-shrink:0;opacity:.5}
+.mega-btn{grid-column:1/-1;text-align:center;margin-top:10px;padding-top:10px;border-top:1px solid #f0f0f0}
+.mega-btn a{color:#0066cc;text-decoration:none;font-size:11px;font-weight:600}
+
+/* BUTTONS */
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:#0066cc;color:#fff;padding:12px 26px;border-radius:24px;font-size:14px;font-weight:600;text-decoration:none;transition:all .25s;box-shadow:0 2px 8px rgba(0,102,204,.2);border:none;cursor:pointer}
+.btn-primary:hover{background:#004499;transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,102,204,.3)}
+.btn-orange{display:inline-flex;align-items:center;gap:8px;background:#ff6b00;color:#fff;padding:12px 26px;border-radius:24px;font-size:14px;font-weight:600;text-decoration:none;transition:all .25s;box-shadow:0 2px 8px rgba(255,107,0,.2);border:none;cursor:pointer}
+.btn-orange:hover{background:#e05e00;transform:translateY(-1px);box-shadow:0 4px 16px rgba(255,107,0,.3)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,.05);color:#1d1d1f;padding:10px 22px;border-radius:24px;font-size:13px;font-weight:500;text-decoration:none;transition:all .25s}
+.btn-secondary:hover{background:rgba(0,0,0,.1)}
+
+/* PRODUCT CARDS */
+.card{background:#f5f5f7;border-radius:18px;overflow:hidden;transition:all .25s;cursor:default}
+.card:hover{background:#eeeef0;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.card-body{padding:18px 22px 22px}
+.card-body h3{font-size:17px;font-weight:600;margin-bottom:6px;letter-spacing:-.2px}
+.card-body p{font-size:13px;color:#86868b;line-height:1.6}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:768px){.grid3{grid-template-columns:1fr}}
+.card-link{text-decoration:none;color:inherit;display:block}
+
+/* HERO SECTION — left text / right image */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;padding:120px 24px 100px;position:relative}
+.hero-text h1{font-size:52px;font-weight:800;letter-spacing:-1.2px;line-height:1.05;margin-bottom:18px;color:#1d1d1f}
+.hero-text h1 .accent{background:linear-gradient(135deg,#0066cc,#0055aa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-text p{font-size:17px;color:#86868b;margin-bottom:36px;line-height:1.7;max-width:480px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-img img{width:100%;border-radius:24px;background:#f5f5f7;object-fit:cover;aspect-ratio:1/1;box-shadow:0 4px 20px rgba(0,0,0,.06)}
 @media(max-width:768px){
-  nav#nav-v2 .nv-links{display:none}
-  nav#nav-v2 .nv-lang a{font-size:9px;padding:2px 4px}
-  nav#nav-v2 .nv-quote{padding:4px 10px;font-size:10px}
+  .hero{grid-template-columns:1fr;gap:32px;padding:60px 0 40px;text-align:center}
+  .hero-text h1{font-size:34px}
+  .hero-text p{max-width:100%}
+  .hero-text .hero-actions{justify-content:center}
 }
-nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important}
-</style>
 
+/* TOOL PAGE LAYOUT */
+.tool-hero{background:#fff;padding:56px 0 32px;border-bottom:1px solid #f0f0f0}
+.tool-hero .label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#0066cc;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.tool-hero .label svg{width:14px;height:14px}
+.tool-hero h1{font-size:40px;font-weight:800;letter-spacing:-.8px;line-height:1.1;margin-bottom:8px}
+.tool-hero p{font-size:16px;color:#86868b;max-width:600px;line-height:1.6}
+.tool-breadcrumb{font-size:11px;color:#86868b;margin-bottom:16px;display:flex;align-items:center;gap:6px}
+.tool-breadcrumb a{color:#0066cc;text-decoration:none}
+.tool-breadcrumb a:hover{text-decoration:underline}
+
+/* CALCULATOR */
+.calc-section{padding:48px 0}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.calc-form{background:#f5f5f7;border-radius:20px;padding:28px;border:1px solid #e8e8ed}
+.calc-form h3{font-size:15px;font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.calc-form h3 svg{width:16px;height:16px;color:#0066cc}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:11px;font-weight:600;color:#86868b;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em}
+.form-group input,.form-group select{width:100%;padding:10px 14px;border:1px solid #d2d2d7;border-radius:10px;font-size:14px;font-family:inherit;background:#fff;transition:border .2s;outline:none}
+.form-group input:focus,.form-group select:focus{border-color:#0066cc;box-shadow:0 0 0 3px rgba(0,102,204,.1)}
+.calc-btn{width:100%;padding:12px;background:#0066cc;color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;margin-top:4px}
+.calc-btn:hover{background:#004499}
+.calc-result{background:#f5f5f7;border-radius:20px;padding:28px;border:1px solid #e8e8ed}
+.calc-result h3{font-size:15px;font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.calc-result h3 svg{width:16px;height:16px;color:#0066cc}
+.result-item{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #e8e8ed}
+.result-item:last-child{border-bottom:none}
+.result-label{font-size:12px;color:#86868b}
+.result-value{font-size:18px;font-weight:700;color:#1d1d1f}
+
+/* REFERENCE MODE */
+.ref-table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border-radius:16px;overflow:hidden;border:1px solid #e8e8ed}
+.ref-table th{background:#f5f5f7;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:#86868b;padding:12px 16px;text-align:left;border-bottom:1px solid #e8e8ed}
+.ref-table td{padding:10px 16px;font-size:13px;border-bottom:1px solid #f0f0f0;color:#1d1d1f}
+.ref-table tr:last-child td{border-bottom:none}
+.ref-table tr:hover td{background:#fafafc}
+
+/* RFQ CARD */
+.rfq-card{background:linear-gradient(135deg,#f0f7ff,#e8f2ff);border:1px solid rgba(0,102,204,.12);border-radius:20px;padding:32px;margin-top:32px;text-align:center}
+.rfq-card h3{font-size:20px;font-weight:700;margin-bottom:6px;letter-spacing:-.3px}
+.rfq-card p{font-size:14px;color:#86868b;margin-bottom:18px}
+.rfq-card .btn-group{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* Global Engineering Directory */
+.dir-section{padding:48px 0}
+.dir-section h2{font-size:24px;font-weight:700;margin-bottom:6px;letter-spacing:-.3px}
+.dir-section .dir-subtitle{font-size:13px;color:#86868b;margin-bottom:24px}
+.dir-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.dir-link{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#f5f5f7;border-radius:10px;text-decoration:none;color:#1d1d1f;font-size:12px;font-weight:500;transition:all .15s}
+.dir-link:hover{background:#eeeef0;transform:translateY(-1px)}
+.dir-link .d-dot{width:5px;height:5px;border-radius:50%;background:#0066cc;flex-shrink:0}
+
+/* PRODUCT PAGE */
+.prod-hero{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;padding:56px 0}
+.prod-info h1{font-size:36px;font-weight:800;letter-spacing:-.7px;margin-bottom:12px}
+.prod-info .desc{font-size:16px;color:#86868b;line-height:1.7;margin-bottom:24px}
+.prod-specs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px}
+.prod-spec{background:#f5f5f7;border-radius:10px;padding:12px 16px}
+.prod-spec .spec-label{font-size:10px;font-weight:600;text-transform:uppercase;color:#86868b;letter-spacing:.04em}
+.prod-spec .spec-value{font-size:14px;font-weight:600;margin-top:2px}
+
+/* QUOTE PAGE */
+.quote-hero{padding:56px 0;max-width:640px;margin:0 auto}
+.quote-hero h1{font-size:36px;font-weight:800;letter-spacing:-.7px;margin-bottom:8px}
+.quote-hero p{font-size:15px;color:#86868b;margin-bottom:32px}
+.quote-form{background:#f5f5f7;border-radius:20px;padding:32px;border:1px solid #e8e8ed}
+.quote-form .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.quote-form textarea{width:100%;padding:10px 14px;border:1px solid #d2d2d7;border-radius:10px;font-size:14px;font-family:inherit;resize:vertical;min-height:100px;outline:none}
+.quote-form textarea:focus{border-color:#0066cc;box-shadow:0 0 0 3px rgba(0,102,204,.1)}
+
+/* FOOTER */
+footer{background:#f5f5f7;border-top:1px solid #e8e8ed;padding:48px 0 40px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;max-width:1120px;margin:0 auto;padding:0 24px}
+footer h4{font-size:12px;font-weight:600;margin-bottom:16px;letter-spacing:-.1px}
+footer a{display:block;font-size:12px;color:#86868b;text-decoration:none;margin-bottom:8px;transition:color .2s}
+footer a:hover{color:#1d1d1f}
+footer .brand{font-size:14px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+footer .brand svg{width:14px;height:14px;color:#0066cc}
+footer .tagline{font-size:12px;color:#86868b;margin-bottom:16px;max-width:280px;line-height:1.6}
+footer .bottom{border-top:1px solid #e8e8ed;margin-top:32px;padding-top:20px;text-align:center;font-size:11px;color:#86868b;max-width:1120px;margin-left:auto;margin-right:auto;padding-left:24px;padding-right:24px}
+
+/* SEO CONTENT BLOCKS */
+.seo-content{font-size:15px;color:#333;line-height:1.85}
+.seo-content h2{font-size:21px;font-weight:700;margin:32px 0 14px;letter-spacing:-.3px;color:#1d1d1f}
+.seo-content h3{font-size:16px;font-weight:600;margin:20px 0 8px;color:#1d1d1f}
+.article-card{border-radius:16px;overflow:hidden}
+.article-card p{margin-bottom:12px}
+.compete-block{background:linear-gradient(135deg,#fafbff,#f5f6ff);border:1px solid #e0e4f0;border-radius:18px;padding:28px;margin:28px 0}
+.compete-block h3{font-size:16px;font-weight:700;color:#1e40af;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.compete-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:14px}
+.compete-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #dbeafe;border-radius:24px;padding:7px 14px;font-size:12px;font-weight:500;color:#1e40af;transition:all .15s}
+.compete-pill:hover{background:#eff6ff;border-color:#93c5fd}
+.pain-block{margin:28px 0}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.pain-card{background:#fff;border:1px solid #e8e8ed;border-radius:14px;padding:20px;transition:all .2s}
+.pain-card:hover{border-color:#0066cc;box-shadow:0 4px 16px rgba(0,102,204,.08)}
+.pain-card .pain-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;font-size:16px}
+.pain-card h4{font-size:14px;font-weight:600;margin-bottom:6px;line-height:1.4}
+.pain-card p{font-size:12px;color:#86868b;line-height:1.6}
+.procure-block{background:linear-gradient(135deg,#fffbeb,#fff7ed);border:1px solid #fed7aa;border-radius:18px;padding:28px;margin:28px 0}
+.procure-block h3{font-size:16px;font-weight:700;color:#c2410c;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.procure-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.procure-item{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;background:#fff;border-radius:12px;border:1px solid #fed7aa;font-size:13px}
+.procure-item .pi-check{flex-shrink:0;width:18px;height:18px;border-radius:50%;background:#f97316;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;margin-top:2px}
+.procure-item strong{display:block;color:#1d1d1f;font-size:13px}
+.procure-item span{display:block;color:#86868b;font-size:11px;margin-top:2px}
+.deep-links-block{margin:28px 0;padding:24px;background:#f5f5f7;border-radius:16px;border:1px solid #e8e8ed}
+.deep-links-block h3{font-size:15px;font-weight:600;margin-bottom:10px;color:#1d1d1f}
+.deep-link{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:#fff;border:1px solid #d2d2d7;border-radius:20px;font-size:12px;font-weight:500;color:#1d1d1f;text-decoration:none;margin:4px;transition:all .15s}
+.deep-link:hover{background:#0066cc;color:#fff;border-color:#0066cc}
+.example-box{background:#f5f5f7;border-radius:14px;padding:24px;border:1px solid #e8e8ed}
+.insight-box{background:#f0f7ff;border-radius:14px;padding:20px;margin:20px 0;border:1px solid rgba(0,102,204,.12)}
+
+/* IMAGE CONTAINERS — ready for AI-generated product shots */
+.img-wrap{background:#f5f5f7;border-radius:2rem;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
+.img-wrap img{width:100%;height:100%;object-fit:cover;transition:opacity .4s ease}
+.img-hero{aspect-ratio:16/9;max-height:520px;border-radius:2.5rem;margin-bottom:40px}
+.img-card{aspect-ratio:4/3;border-radius:1.5rem}
+.img-thumb{aspect-ratio:1;border-radius:1.25rem}
+.img-product{aspect-ratio:1;border-radius:2rem}
+@media(max-width:768px){
+  .img-hero{aspect-ratio:4/3;max-height:320px;border-radius:1.5rem}
+  .img-card{aspect-ratio:3/2;border-radius:1rem}
+}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .mega-menu{width:520px;padding:20px 24px}
+  .nav-links>a,.nav-links>.nav-drop{font-size:11px;padding:0 10px}
+}
+@media(max-width:900px){
+  .tool-hero h1{font-size:28px}
+  .calc-grid{grid-template-columns:1fr}
+  .dir-grid{grid-template-columns:repeat(3,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:24px}
+  .prod-hero{grid-template-columns:1fr;gap:28px}
+  .nav-links>a,.nav-links>.nav-drop{font-size:11px;padding:0 8px}
+  .compete-grid{grid-template-columns:1fr}
+  .pain-grid{grid-template-columns:1fr}
+  .procure-grid{grid-template-columns:1fr}
+  .mega-menu{width:90vw;left:5%;transform:none;padding:18px}
+}
+@media(max-width:768px){
+  nav{height:auto;min-height:44px}
+  .nav-inner{flex-wrap:nowrap;padding:0 16px;height:44px;gap:4px}
+  .nav-left{display:flex;align-items:center;gap:0;flex:1;min-width:0}
+  .logo{font-size:13px;white-space:nowrap}
+  .nav-links{display:none!important}
+  .nav-right{display:flex;align-items:center;gap:4px;flex-shrink:0}
+  .nav-cta{font-size:10px;padding:4px 10px}
+  .lang-btn{font-size:10px;padding:3px 8px}
+  .lang-btn .arrow{font-size:7px}
+  .lang-menu{min-width:80px}
+  .lang-menu a{font-size:11px;padding:6px 10px}
+  .mega-menu{display:none!important}
+  .nav-drop{cursor:pointer}
+  .nav-drop:hover .mega-menu,.mega-menu.open{display:none!important}
+  .container{padding:0 18px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:20px}
+  /* Grids: 4-col → 2-col on tablet */
+  div[style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
+  /* Mobile nav below hero */
+  .mobile-nav-links{display:flex;gap:0;padding:6px 12px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-top:1px solid #e8e8ed;background:#fafafc}
+  .mobile-nav-links::-webkit-scrollbar{display:none}
+  .mobile-nav-links a{display:block;padding:6px 10px;text-decoration:none;color:#0066cc;font-size:12px;font-weight:500;white-space:nowrap;flex-shrink:0}
+  .mobile-nav-links a:hover{text-decoration:underline}
+}
+@media(max-width:480px){
+  .logo{font-size:12px}
+  .logo svg{width:14px;height:14px}
+  .nav-links>a,.nav-links>.nav-drop{font-size:10px;padding:0 8px;height:28px}
+  .nav-right{gap:3px}
+  .nav-cta{font-size:9px;padding:3px 8px}
+  .lang-btn{font-size:9px;padding:2px 6px;gap:2px}
+  .footer-grid{grid-template-columns:1fr;gap:16px}
+  .dir-grid{grid-template-columns:repeat(2,1fr)}
+  .tool-hero h1{font-size:22px}
+  .tool-hero{padding:32px 0 20px}
+  .mobile-nav-links{padding:4px 8px}
+  .mobile-nav-links a{font-size:11px;padding:4px 6px}
+  /* Grids: 2-col → 1-col on phone */
+  div[style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr!important}
+  div[style*="grid-template-columns:repeat(2,1fr)"]{grid-template-columns:1fr!important}
+}
+	</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Carbide Tooling","url":"https://carbide-tooling.com","description":"Factory-direct carbide cutting tools, ISO-certified CNC tooling from China. Carbide inserts, end mills, drills, tool holders for machining."}
+</script>
+<script src="https://unpkg.com/lucide@latest" defer></script>
 </head>
 <body>
-<nav id="nav-v2">
-<div class="nv-inner">
-<a class="nv-logo" href="/de/"><span>◆</span> Carbide Tooling</a>
-<div class="nv-links">
-<a href="/de/">Start</a>
-<a href="/de/products/">Produkte</a>
-<a href="/de/tools/">Werkzeuge</a>
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+<symbol id="ic-logo" viewBox="0 0 24 24"><path d="M12 2l10 10-10 10L2 12 12 2z" fill="currentColor"/><path d="M12 7l5 5-5 5-5-5 5-5z" fill="white"/></symbol>
+<symbol id="ic-speed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+<symbol id="ic-grade" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2l9.5 5.5v9L12 22l-9.5-5.5v-9L12 2z"/></symbol>
+<symbol id="ic-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 4-6"/></symbol>
+<symbol id="ic-chip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h20M2 17h20M6 7V5a2 2 0 012-2h2M6 17v2a2 2 0 002 2h2M14 3h2a2 2 0 012 2v2M14 21h2a2 2 0 002-2v-2"/></symbol>
+<symbol id="ic-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></symbol>
+<symbol id="ic-drill" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/><path d="M10 18l-2 2M14 18l2 2"/></symbol>
+<symbol id="ic-material" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></symbol>
+<symbol id="ic-cost" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></symbol>
+<symbol id="ic-cmm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+<symbol id="ic-microscope" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 22h12M12 11V5M8 5h8"/><circle cx="12" cy="17" r="5"/><path d="M7 3h10"/></symbol>
+<symbol id="ic-hardness" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20M6 12l4-8 4 8M18 12l-4-8-4 8M2 20l4-8h12l4 8"/></symbol>
+<symbol id="ic-presetter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v7M12 15v7M2 12h7M15 12h7"/></symbol>
+<symbol id="ic-lab" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6M10 3v6.5L5.5 17a2 2 0 001.7 3h9.6a2 2 0 001.7-3L14 9.5V3"/></symbol>
+<symbol id="ic-cert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></symbol>
+<symbol id="ic-toolbox" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h18v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9zM8 9V7a2 2 0 012-2h4a2 2 0 012 2v2"/></symbol>
+<symbol id="ic-package" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></symbol>
+<symbol id="ic-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></symbol>
+<symbol id="ic-hub" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="8" height="8" rx="2"/><rect x="14" y="2" width="8" height="8" rx="2"/><rect x="2" y="14" width="8" height="8" rx="2"/><circle cx="18" cy="18" r="2"/><path d="M10 6h4M6 10v4M14 10v4M10 18h4"/></symbol>
+<symbol id="ic-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></symbol>
+<symbol id="ic-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></symbol>
+<symbol id="ic-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></symbol>
+<symbol id="ic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+<symbol id="ic-calc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></symbol>
+<symbol id="ic-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></symbol>
+<symbol id="ic-ruler" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M3 16h3M3 11h6M3 6h9"/></symbol>
+<symbol id="ic-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></symbol>
+<symbol id="ic-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></symbol>
+</svg>
+<nav>
+<div class="nav-inner">
+<div class="nav-left">
+<a class="logo" href="/de/"><svg><use href="#ic-logo"/></svg> Carbide Tooling</a>
+<div class="nav-links">
+<a href="/de/products/"><svg style="width:14px;height:14px;display:inline;vertical-align:middle;margin-right:3px"><use href="#ic-package"/></svg>Produkte</a>
+<div class="nav-drop"><span>Rechner & Werkzeuge</span>
+<div class="mega-menu" id="mega-menu">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+<div class="mega-cat"><i data-lucide="zap" style="width:12px;height:12px;stroke-width:1.5"></i>Schnittparameter <span>&#9660;</span></div><div class="mega-sub"><a class="mega-item" href="/de/tools/speed-feed/"><span class="mega-dot"></span>Schnittgeschw. &amp; Vorschub</a><a class="mega-item" href="/de/tools/chip-load/"><span class="mega-dot"></span>Spanbelastung</a><a class="mega-item" href="/de/tools/surface-speed/"><span class="mega-dot"></span>SFM / Schnittgeschwindigkeit</a><a class="mega-item" href="/de/tools/mrr-calculator/"><span class="mega-dot"></span>MRR-Rechner</a><a class="mega-item" href="/de/tools/horsepower-calculator/"><span class="mega-dot"></span>Spindelleistung</a><a class="mega-item" href="/de/tools/force-calculator/"><span class="mega-dot"></span>Fräskraft</a><a class="mega-item" href="/de/tools/cycle-time-calculator/"><span class="mega-dot"></span>Zykluszeit</a><a class="mega-item" href="/de/tools/surface-roughness-calculator/"><span class="mega-dot"></span>Oberflächenrauheit</a><a class="mega-item" href="/de/tools/nose-radius-compensation/"><span class="mega-dot"></span>Eckenradiuskompensation</a><a class="mega-item" href="/de/tools/ramping-angle-calculator/"><span class="mega-dot"></span>Rampenwinkel</a><a class="mega-item" href="/de/tools/trochoidal-milling-calculator/"><span class="mega-dot"></span>Trochoidales Fräsen</a><a class="mega-item" href="/de/tools/slot-milling-calculator/"><span class="mega-dot"></span>Nutenfräsen</a><a class="mega-item" href="/de/tools/step-milling-calculator/"><span class="mega-dot"></span>Stufenfräsen</a><a class="mega-item" href="/de/tools/ball-nose-effective-diameter/"><span class="mega-dot"></span>Kugelkopf Eff. Durchm.</a><a class="mega-item" href="/de/tools/helical-interpolation-calculator/"><span class="mega-dot"></span>Helikale Interpolation</a><a class="mega-item" href="/de/tools/heat-expansion-calculator/"><span class="mega-dot"></span>Wärmeausdehnung</a><a class="mega-item" href="/de/tools/tool-runout-calculator/"><span class="mega-dot"></span>Rundlauffehler</a><a class="mega-item" href="/de/tools/feed-rate-override-calculator/"><span class="mega-dot"></span>Vorschubübersteuerung</a><a class="mega-item" href="/de/tools/arc-r-to-ij-converter/"><span class="mega-dot"></span>Bogen-R-zu-IJ-Konverter</a><a class="mega-item" href="/de/tools/feed-converter/"><span class="mega-dot"></span>Vorschub-Umrechner</a><a class="mega-item" href="/de/tools/machine-power-calculator/"><span class="mega-dot"></span>Maschinenleistungs-Rechner</a><a class="mega-item" href="/de/tools/sfm-m-min-converter/"><span class="mega-dot"></span>SFM zu m/min Geschwindigkeitsumrechner</a><a class="mega-item" href="/de/tools/tangent-point-calculator/"><span class="mega-dot"></span>Tangentenpunkt-Rechner</a></div><div class="mega-cat"><i data-lucide="drill" style="width:12px;height:12px;stroke-width:1.5"></i>Bohren, Gewinden & Gewinde <span>&#9660;</span></div><div class="mega-sub"><a class="mega-item" href="/de/tools/tap-drill-size-calculator/"><span class="mega-dot"></span>Kernlochbohrer</a><a class="mega-item" href="/de/tools/tapping-feed-rate-calculator/"><span class="mega-dot"></span>Gewindevorschub</a><a class="mega-item" href="/de/tools/drill-point-length-calculator/"><span class="mega-dot"></span>Bohrerspitzenlänge</a><a class="mega-item" href="/de/tools/thread-depth-torque-calculator/"><span class="mega-dot"></span>Gewindetiefe &amp; Drehmoment</a><a class="mega-item" href="/de/tools/metric-imperial-thread-converter/"><span class="mega-dot"></span>Metrisch-Zoll-Gewinde</a><a class="mega-item" href="/de/tools/npt-pipe-thread-calculator/"><span class="mega-dot"></span>NPT-Rohrgewinde</a><a class="mega-item" href="/de/tools/percentage-of-thread-calculator/"><span class="mega-dot"></span>Gewindeanteil</a><a class="mega-item" href="/de/tools/form-tap-drill-calculator/"><span class="mega-dot"></span>Gewindefurcher</a><a class="mega-item" href="/de/tools/thread-lead-angle-calculator/"><span class="mega-dot"></span>Gewinde-Steigungswinkel</a><a class="mega-item" href="/de/tools/thread-pitch-diameter-calculator/"><span class="mega-dot"></span>Flankendurchmesser</a><a class="mega-item" href="/de/tools/step-drill-design-calculator/"><span class="mega-dot"></span>Stufenbohrer-Design</a><a class="mega-item" href="/de/tools/countersink-depth-calculator/"><span class="mega-dot"></span>Senktiefe</a><a class="mega-item" href="/de/tools/reaming-allowance-calculator/"><span class="mega-dot"></span>Reibzugabe</a><a class="mega-item" href="/de/tools/gun-drill-calculator/"><span class="mega-dot"></span>Tieflochbohrer</a><a class="mega-item" href="/de/tools/blind-hole-tapping-calculator/"><span class="mega-dot"></span>Sacklochgewinden</a><a class="mega-item" href="/de/tools/peck-drilling-calculator/"><span class="mega-dot"></span>Pendelbohr-Rechner</a><a class="mega-item" href="/de/tools/threading-pass-calculator/"><span class="mega-dot"></span>Gewinde-Pass-Rechner</a></div><div class="mega-cat"><i data-lucide="layers" style="width:12px;height:12px;stroke-width:1.5"></i>Werkstoffe & Sorten <span>&#9660;</span></div><div class="mega-sub"><a class="mega-item" href="/de/tools/grade-reference/"><span class="mega-dot"></span>Sorten-Querverweis</a><a class="mega-item" href="/de/tools/carbide-grade-cross-ref-2/"><span class="mega-dot"></span>Vollständige Sortentabelle</a><a class="mega-item" href="/de/tools/metal-weight-calculator/"><span class="mega-dot"></span>Hartmetallgewicht</a><a class="mega-item" href="/de/tools/metal-cost-calculator/"><span class="mega-dot"></span>Metallgewicht &amp; -kosten</a><a class="mega-item" href="/de/tools/hardness-converter/"><span class="mega-dot"></span>Härteumrechner</a><a class="mega-item" href="/de/tools/machinability-rating/"><span class="mega-dot"></span>Zerspanbarkeit</a><a class="mega-item" href="/de/tools/stainless-properties/"><span class="mega-dot"></span>Edelstahl-Eigenschaften</a><a class="mega-item" href="/de/tools/titanium-machining-guide/"><span class="mega-dot"></span>Titan-Leitfaden</a><a class="mega-item" href="/de/tools/aluminum-alloy-table/"><span class="mega-dot"></span>Aluminiumlegierungen</a><a class="mega-item" href="/de/tools/tool-steel-heat-treat/"><span class="mega-dot"></span>Werkzeugstahl Wärmebehandlung</a><a class="mega-item" href="/de/tools/cast-iron-machining/"><span class="mega-dot"></span>Gusseisenbearbeitung</a><a class="mega-item" href="/de/tools/coating-selector/"><span class="mega-dot"></span>Beschichtungsauswahl</a><a class="mega-item" href="/de/tools/tensile-strength-converter/"><span class="mega-dot"></span>Zugfestigkeitsumrechner</a><a class="mega-item" href="/de/tools/plastic-machining/"><span class="mega-dot"></span>Kunststoffbearbeitung</a><a class="mega-item" href="/de/tools/graphite-machining/"><span class="mega-dot"></span>Graphitbearbeitung</a><a class="mega-item" href="/de/tools/brass-machining-parameters/"><span class="mega-dot"></span>Messing/Kupfer</a><a class="mega-item" href="/de/tools/superalloy-tool-life/"><span class="mega-dot"></span>Superlegierung Standzeit</a><a class="mega-item" href="/de/tools/die-steel-thermal-conductivity/"><span class="mega-dot"></span>Wärmeleitfähigkeit von Werkzeugstählen</a><a class="mega-item" href="/de/tools/micron-inch-converter/"><span class="mega-dot"></span>Mikrometer-Zoll-Umrechner</a><a class="mega-item" href="/de/tools/temp-converter/"><span class="mega-dot"></span>Temperatur-Umrechner</a><a class="mega-item" href="/de/tools/torque-unit-converter/"><span class="mega-dot"></span>Drehmoment-Umrechner</a></div><div class="mega-cat"><i data-lucide="dollar-sign" style="width:12px;height:12px;stroke-width:1.5"></i>Kosten, Toleranzen & Referenz <span>&#9660;</span></div><div class="mega-sub"><a class="mega-item" href="/de/tools/cost-per-part-calculator/"><span class="mega-dot"></span>Kosten pro Teil</a><a class="mega-item" href="/de/tools/tool-life-economics/"><span class="mega-dot"></span>Werkzeugstandzeit-Ökonomie</a><a class="mega-item" href="/de/tools/cnc-roi-calculator/"><span class="mega-dot"></span>CNC-ROI</a><a class="mega-item" href="/de/tools/batch-cost-calculator/"><span class="mega-dot"></span>Loskosten</a><a class="mega-item" href="/de/tools/iso-fit-calculator/"><span class="mega-dot"></span>ISO-Passung</a><a class="mega-item" href="/de/tools/bolt-circle-calculator/"><span class="mega-dot"></span>Lochkreis</a><a class="mega-item" href="/de/tools/flatness-calculator/"><span class="mega-dot"></span>Ebenheit</a><a class="mega-item" href="/de/tools/sine-bar-calculator/"><span class="mega-dot"></span>Sinuslineal</a><a class="mega-item" href="/de/tools/coord-rotation-calculator/"><span class="mega-dot"></span>Koordinatendrehung</a><a class="mega-item" href="/de/tools/chamfer-calculator/"><span class="mega-dot"></span>Fase</a><a class="mega-item" href="/de/tools/taper-calculator/"><span class="mega-dot"></span>Kegel</a><a class="mega-item" href="/de/tools/gdt-symbols-reference/"><span class="mega-dot"></span>GD&amp;T-Symbole</a><a class="mega-item" href="/de/tools/keyway-depth-calculator/"><span class="mega-dot"></span>Passfedernuttiefe</a><a class="mega-item" href="/de/tools/dovetail-calculator/"><span class="mega-dot"></span>Schwalbenschwanz</a><a class="mega-item" href="/de/tools/pythagorean-calculator/"><span class="mega-dot"></span>Satz des Pythagoras</a><a class="mega-item" href="/de/tools/gear-parameter-calculator/"><span class="mega-dot"></span>Zahnradparameter</a><a class="mega-item" href="/de/tools/gcode-reference/"><span class="mega-dot"></span>G-Code-Referenz</a><a class="mega-item" href="/de/tools/pressure-converter/"><span class="mega-dot"></span>Druckumrechner</a><a class="mega-item" href="/de/tools/ultimate-unit-converter/"><span class="mega-dot"></span>Einheitenumrechner</a><a class="mega-item" href="/de/tools/aql-sampling-calculator/"><span class="mega-dot"></span>AQL-Stichprobe</a><a class="mega-item" href="/de/tools/automation-vs-manual-calculator/"><span class="mega-dot"></span>Automatisierung vs. Manuell ROI-Rechner</a><a class="mega-item" href="/de/tools/bulk-discount-calculator/"><span class="mega-dot"></span>Mengenrabatt-Rechner</a><a class="mega-item" href="/de/tools/coolant-concentration/"><span class="mega-dot"></span>Kühlschmierstoff-Konzentrationsrechner</a><a class="mega-item" href="/de/tools/coolant-lifecycle-cost/"><span class="mega-dot"></span>Kühlschmierstoff-Lebenszykluskosten</a><a class="mega-item" href="/de/tools/dia-circ-calculator/"><span class="mega-dot"></span>Durchmesser &amp; Umfang Rechner</a><a class="mega-item" href="/de/tools/engineering-interest-calculator/"><span class="mega-dot"></span>Technischer Zinsrechner</a><a class="mega-item" href="/de/tools/inventory-turnover-calculator/"><span class="mega-dot"></span>Lagerumschlag-Rechner</a><a class="mega-item" href="/de/tools/mcode-reference/"><span class="mega-dot"></span>M-Code-Referenzhandbuch</a><a class="mega-item" href="/de/tools/polar-rect-converter/"><span class="mega-dot"></span>Polar-/Kartesischer Koordinatenumrechner</a><a class="mega-item" href="/de/tools/pomodoro-timer/"><span class="mega-dot"></span>Pomodoro-Fokus-Timer</a><a class="mega-item" href="/de/tools/production-efficiency-calculator/"><span class="mega-dot"></span>Produktionseffizienz OEE-Rechner</a><a class="mega-item" href="/de/tools/round-bar-weight/"><span class="mega-dot"></span>Rundstahl-Gewichtsrechner</a><a class="mega-item" href="/de/tools/scrap-value-calculator/"><span class="mega-dot"></span>Schrottwert-Rechner</a><a class="mega-item" href="/de/tools/shipping-duty-estimator/"><span class="mega-dot"></span>Versand- &amp; Zollkosten-Schätzer</a><a class="mega-item" href="/de/tools/tool-change-time-analyzer/"><span class="mega-dot"></span>Werkzeugwechselzeit-Analysator</a><a class="mega-item" href="/de/tools/tool-wear-cost-calculator/"><span class="mega-dot"></span>Werkzeugverschleiß-Kostenrechner</a><a class="mega-item" href="/de/tools/toolbox-organizer/"><span class="mega-dot"></span>CNC-Werkzeugkasten-Organizer</a><a class="mega-item" href="/de/tools/tube-weight-calculator/"><span class="mega-dot"></span>Rohrgewichts-Rechner</a><a class="mega-item" href="/de/tools/wall-thickness-calculator/"><span class="mega-dot"></span>Wandstärken-Rechner</a><a class="mega-item" href="/de/tools/weight-shipping-calculator/"><span class="mega-dot"></span>Gewichts- &amp; Versand-Rechner</a></div><div class="mega-btn"><a href="/de/tools/">Alle 101 Werkzeuge →</a></div>
+</div>
+</div></div>
 <a href="/de/guides/">Anleitungen</a>
 <a href="/de/about.html">Über uns</a>
 </div>
-<div class="nv-right">
-<div class="nv-lang"><a href="/guides/coating-comparison.html">EN</a><span class="sep">·</span><a href="#" onclick="return false" class="active">DE</a><a href="/jp/guides/coating-comparison.html">JP</a><span class="sep">·</span><a href="/es/guides/coating-comparison.html">ES</a><a href="/vi/guides/coating-comparison.html">VI</a></div>
-<a class="nv-quote" href="/de/quote.html">📩 Angebot</a>
 </div>
-</div>
+<div class="nav-right">
+<a class="nav-cta" href="/de/quote.html">Angebot anfordern</a>
+<div class="lang-dropdown">
+<button class="lang-btn" id="lang-btn">🇩🇪 DE <span class="arrow">&#9660;</span></button>
+<div class="lang-menu" id="lang-menu">
+      <a href="/" data-lang="en">🇬🇧 EN</a>
+<a href="/de/" data-lang="de">🇩🇪 DE</a>
+<a href="/jp/" data-lang="ja">🇯🇵 JP</a>
+<a href="/es/" data-lang="es">🇪🇸 ES</a>
+<a href="/vi/" data-lang="vi">🇻🇳 VI</a>
+</div></div>
+</div></div>
 </nav>
-<main>
-<div class="container" style="min-height:60vh">
-<main>
-<div class="container" style="min-height:60vh">
-<div class="container">
+<div class="mobile-nav-links">
+<a href="/de/products/">Produkte</a>
+<a href="/de/tools/">Rechner & Werkzeuge</a>
+<a href="/de/guides/">Anleitungen</a>
+<a href="/de/about.html">Über uns</a>
+</div>
+
+<div class="tool-hero"><div class="container">
+<div class="tool-breadcrumb"><a href="/de/">Home</a> / <a href="/de/guides/">Guides</a> / <span>Beschichtungsvergleich</span></div>
+<div class="label"><svg><use href="#ic-book"/></svg> Technische Bibliothek</div>
 <h1>Beschichtungsvergleich</h1>
-<p class="sub">Welche Beschichtung zu verwenden ist und wann es darauf ankommt.</p>
-<p>PVD-Beschichtungen verlängern die Lebensdauer des Werkzeugs, indem sie die Reibung verringern, Wärme ableiten und die Oberflächen härte erhöhen. Die richtige Beschichtung kann die Lebensdauer des Werkzeugs verdoppeln oder verdreifachen. Das falsche kann eine aufbaute Kanten-oder Beschichtung delaminierung verursachen.</p>
-<h2>Beschichtung vergleichs tabelle</h2>
-<table>
-<tr><th>Beschichtung</th><th>Max Temp</th><th>Härte</th><th>Am besten für</th><th>Farbe</th></tr>
-<tr><td>Al Ti N</td><td>800 °C</td><td>3.300 HV</td><td>Stahl, rostfrei, Allzweck</td><td>Blau-grau</td></tr>
-<tr><td>Ti Si N</td><td>1.100 °C</td><td>3.800 HV</td><td>Gehärteter Stahl (HRC 45-65), Titan</td><td>Kupfer</td></tr>
-<tr><td>Ti Al N</td><td>700 °C</td><td>3.000 HV</td><td>Stahl, Gusseisen, moderate Anwendungen</td><td>Violett-grau</td></tr>
-<tr><td>Ti CN</td><td>450 °C</td><td>3.500 HV</td><td>Aluminium, Nichte isen, abrasive Materialien</td><td>Dunkelgrau</td></tr>
-<tr><td>Al Cr N</td><td>1.100 °C</td><td>Hoch temperatur legierungen, rostfrei</td><td>Dunkelblau</td><td>DLC</td></tr>
-<tr><td>350 °C</td><td>5.000 HV</td><td>Aluminium, Kunststoffe, Verbund werkstoffe</td><td>Schwarz</td><td>NACO (blau)</td></tr>
-<tr><td>2.800 HV</td><td>700 °C</td><td>Blau</td><td>Eine Beschichtung wählen</td><td>Al Ti N-Das arbeits tier</td></tr>
-</table>
-<h2>Aluminium-Titannitrid ist die häufigste Beschichtung für die allgemeine Bearbeitung. Es bildet bei hohen Temperaturen eine harte Aluminium oxidschicht, die als thermische Barriere wirkt. Funktioniert gut auf Stahl und Edelstahl bis zu 45 HRC. Gut für Schruppen und Finishing.</h2>
-<h3>Ti Si N-Für Harte Materialien</h3>
-<p>Titan-Silizium-Nitrid ist die härteste gemeinsame Beschichtung. Der Silizium gehalt erzeugt eine Nano verbunds truktur, die Härte und Temperatur beständigkeit deutlich erhöht. Verwendung für gehärteten Stahl (HRC 45 ), Titan legierungen und Super legierungen. Hervorragend für die Trocken bearbeitung, bei der kein Kühlmittel verwendet wird.</p>
-<h3>DLC-Für Nichte isen</h3>
-<p>Diamant-Like Carbon hat die höchste Oberflächen härte und den niedrigsten Reibungs koeffizienten. Es verhindert Aufbau kanten bei der Bearbeitung von Aluminium, Kupfer und Kunststoffen. Nicht für Stahl geeignet-die chemische Reaktion zwischen Kohlenstoff und Eisen zerstört die Beschichtung schnell.</p>
-<h3>Unbeschichtet</h3>
-<p>Nicht immer eine Herabstufung. Bei Aluminium, Kupfer und einigen Kunststoffen schneiden unbeschichtete Werkzeuge mit scharfen Kanten häufig besser ab als beschichtete. Sie sind auch deutlich billiger. Bewahren Sie einen Satz unbeschichteter Schaftfräser für Nichte isen arbeiten auf.</p>
-<h3>Produkte</h3>
-<p>Ressourcen</p>
-<div class="tip"><strong>Rule of thumb:</strong> For steel → AlTiN. For hardened steel → TiSiN. For aluminum → Uncoated or DLC. For titanium → TiSiN or AlCrN. When in doubt, AlTiN is the safest choice.</div>
+<p>AlTiN, TiSiN, TiAlN, AlCrN, DLC, TiN. Oxidationstemperatur, Reibungskoeffizient, Härte und empfohlene Anwendungen pro Beschichtung.</p>
+</div></div>
+
+<div class="calc-section" style="padding-top:0"><div class="container" style="max-width:800px">
+
+<div style="background:#fff;border-radius:20px;padding:32px;border:1px solid #e8e8ed;margin-bottom:20px">
+<h3 style="font-size:16px;font-weight:600;margin-bottom:12px">Overview</h3>
+<p style="color:#86868b;font-size:14px;line-height:1.8">AlTiN, TiSiN, TiAlN, AlCrN, DLC, TiN. Oxidationstemperatur, Reibungskoeffizient, Härte und empfohlene Anwendungen pro Beschichtung.</p>
+</div>
+
+</div></div>
+
+<div class="container" style="max-width:800px">
+<div class="rfq-card">
+<h3>Angebot benötigt?</h3>
+<p>Senden Sie uns Werkstückmaterial, Bearbeitungsart, Losgröße und Toleranzanforderungen. Wir vermitteln die passende Fabrik und Sie erhalten die Preisgestaltung innerhalb von 48 Stunden.</p>
+<a class="btn-orange" href="/de/quote.html"><svg style="width:14px;height:14px"><use href="#ic-send"/></svg> Präzisionsangebot anfordern</a>
 </div>
 </div>
-</main>
+
+<div class="dir-section"><div class="container" style="max-width:800px">
+<h2>Explore More Guides</h2>
+<p class="dir-subtitle">Continue reading our technical library</p>
+<div class="dir-grid">
+<a class="dir-link" href="/de/guides/end-mill-geometry.html"><span class="d-dot"></span>Leitfaden Schaftfräsergeometrie</a>
+<a class="dir-link" href="/de/guides/carbide-grades.html"><span class="d-dot"></span>Hartmetallsorten erklärt</a>
+<a class="dir-link" href="/de/guides/sourcing-from-china.html"><span class="d-dot"></span>Beschaffung aus China</a>
 </div>
-</main>
+</div></div>
 <footer>
 <div class="footer-grid">
 <div>
-<div class="brand"><span>◆</span> Carbide Tooling</div>
-<div class="tagline">Precision cutting tools sourced from China's best manufacturers. Engineering support, QC verification, factory-direct pricing.</div>
+<div class="brand"><svg><use href="#ic-logo"/></svg> Carbide Tooling</div>
+<div class="tagline">Präzisionsschneidwerkzeuge von geprüften chinesischen Herstellern. Engineering-Support, QC-Verifizierung, Fabrikdirektpreise.</div>
+</div>
+<div>
+<h4>Produkte</h4>
+<a href="/de/products/end-mills.html">Vollhartmetall-Schaftfräser</a>
+<a href="/de/products/turning-inserts.html">Drehplatten</a>
+<a href="/de/products/drills.html">Hartmetallbohrer</a>
+<a href="/de/products/tool-holders.html">CNC-Werkzeughalter</a>
+<a href="/de/products/boring-tools.html">Bohrstangen & Drehhalter</a>
+<a href="/de/products/threading-tools.html">Gewindeeinsätze & -Fräser</a>
+<a href="/de/products/indexable-milling.html">Wendeplattenfräser</a>
+<a href="/de/products/grooving-parting.html">Einstech- & Abstechwerkzeuge</a>
+<a href="/de/products/pcd-cbn.html">PKD- & CBN-Wendeplatten</a>
+<a href="/de/products/collets-accessories.html">Spannzangen & Zubehör</a>
+</div>
+<div>
+<h4>Ressourcen</h4>
+<a href="/de/guides/">Technische Anleitungen</a>
+<a href="/de/tools/speed-feed/">Schnittwertrechner</a>
+<a href="/de/guides/carbide-grades.html">Sortenauswahl</a>
+<a href="/de/guides/coating-comparison.html">Beschichtungsleitfaden</a>
 </div>
 <div>
 <h4>Unternehmen</h4>
-<a href="../products/end-mills.html">Werkzeughalter</a>
-<a href="../products/turning-inserts.html">Bohrwerkzeuge</a>
-<a href="../products/drills.html">Gewindewerkzeuge</a>
-<a href="../products/tool-holders.html">Technische Leitfäden</a>
-<a href="../products/boring-tools.html">Geschwindigkeits- und Vorschubrechner</a>
-<a href="../products/threading-tools.html">Notenauswahl</a>
-</div>
-<div>
-<h4>◆Hartmetallwerkzeuge</h4>
-<a href="../guides/">Beschichtungsleitfaden</a>
-<a href="https://speed-feed.carbide-tooling.com/">Über uns</a>
-<a href="../guides/carbide-grades.html">Erhalten Sie ein Angebot</a>
-<a href="../guides/coating-comparison.html">Kontakt</a>
-</div>
-<div>
-<h4>⚙️Drehzahl- und Vorschubrechner</h4>
-<a href="../about.html">About Us</a>
-<a href="../quote.html">Get a Quote</a>
-<a href="mailto:info@carbide-tooling.com">Contact</a>
+<a href="/de/about.html">Über uns</a>
+<a href="/de/quote.html">Angebot anfordern</a>
+<a href="mailto:info@carbide-tooling.com">Kontakt</a>
 </div>
 </div>
-<div class="bottom">© 2026 Carbide Tooling. Precision sourcing for precision machining.</div>
+<div class="bottom">© 2026 Carbide Tooling. Präzisionsbeschaffung für Präzisionszerspanung.</div>
 </footer>
+<script>
+(function(){
+  var current='de';
+  var pagePath='/guides/coating-comparison.html';
+  var dirs={'en':'','de':'de','ja':'jp','es':'es','vi':'vi'};
+  var btn=document.getElementById('lang-btn');
+  var menu=document.getElementById('lang-menu');
+  if(btn&&menu){
+    btn.addEventListener('click',function(e){e.stopPropagation();menu.classList.toggle('open')});
+    document.addEventListener('click',function(){menu.classList.remove('open')});
+    menu.addEventListener('click',function(e){
+      var a=e.target.closest('a');if(!a)return;e.preventDefault();
+      var lc=a.getAttribute('data-lang');
+      if(lc===current)return;
+      var d=dirs[lc]||'';
+      var target=d?'/'+d+pagePath:pagePath;
+      if(target==='//')target='/';
+      window.location.href=target;
+    });
+    // Mark active
+    [].forEach.call(menu.querySelectorAll('a'),function(a){if(a.getAttribute('data-lang')===current)a.classList.add('active')});
+  }
+  // Mega menu
+  document.querySelectorAll('.nav-drop').forEach(function(dd){dd.addEventListener('click',function(e){if(window.innerWidth<=768){e.preventDefault();document.querySelectorAll('.mega-menu').forEach(function(m){m.classList.toggle('open')})}})});
+  document.querySelectorAll('.mega-cat').forEach(function(cat){cat.addEventListener('click',function(){var sub=this.nextElementSibling;if(!sub)return;var was=sub.classList.contains('open');document.querySelectorAll('.mega-sub').forEach(function(s){s.classList.remove('open')});if(!was)sub.classList.add('open')})});
+})();
+</script>
+<script>document.addEventListener('DOMContentLoaded',function(){if(typeof lucide!=='undefined')lucide.createIcons()});</script>
 </body>
 </html>

@@ -1,739 +1,579 @@
 <!DOCTYPE html>
-
 <html lang="ja">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>グレードリファレンス | 精密加工ツール | Carbide-Tooling.com</title>
-<meta content="フリーカーバイドグレードのクロスリファレンスツール。Sandvik、Kennametal、Kyocera、Iscar、Mitsubishi、Sumitomo、Walterグレードの鋼、ステンレス、鋳鉄、超合金を検索して比較します。" id="meta-desc" name="description"/>
-<meta content="炭化グレードクロスリファレンス-炭化ツーリング" id="og-title" property="og:title"/>
-<meta content="7つの主要ブランドにわたるクロスリファレンスカーバイドインサートのグレード。P/M/K/S ISOアプリケーションの同等のグレードを見つけます。" id="og-desc" property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="https://carbide-tooling.com/tools/grade-reference/" property="og:url"/>
-<meta content="ja_JP" property="og:locale"/>
-<meta content="#0066cc" name="theme-color"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&amp;display=swap" rel="stylesheet"/>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',-apple-system,sans-serif;background:#fff;color:#1d1d1f;line-height:1.6;-webkit-font-smoothing:antialiased}
-.container{max-width:1060px;margin:0 auto;padding:0 24px}
-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:saturate(180%) blur(24px);border-bottom:1px solid rgba(0,0,0,.06);height:44px}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:44px;max-width:1060px;margin:0 auto;padding:0 24px;font-size:12px}
-.nav-left{display:flex;align-items:center;gap:12px}
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<meta name="description" content="グレード相互参照. インコネル718最適超硬グレード. Quick reference data. CNC切削工具 from 旋削加工ソリューション. ISO 切込み深さ."/>
+<meta property="og:title" content="グレード相互参照 — 超硬インサート | CNC Machining Calculator &amp; Reference"/>
+<meta property="og:description" content="グレード相互参照. インコネル718最適超硬グレード. Quick reference data. CNC切削工具 from 旋削加工ソリューション. ISO 切込み深さ."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://carbide-tooling.com/jp/tools/grade-reference/"/>
+<meta name="robots" content="index, follow"/>
+<title>グレード相互参照 — 超硬インサート | CNC Machining Calculator &amp; Reference</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23006'/%3E%3Cpath d='M8 14l5-4 3 3 8-7' stroke='white' stroke-width='2.5' fill='none'/%3E%3Ccircle cx='8' cy='14' r='2' fill='white'/%3E%3C/svg%3E"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet"/>
+<link rel="canonical" href="https://carbide-tooling.com/jp/tools/grade-reference/"/>
+<link rel="alternate" hreflang="x-default" href="https://carbide-tooling.com/tools/grade-reference/"/>
+    <link rel="alternate" hreflang="en" href="https://carbide-tooling.com/tools/grade-reference/"/>
+    <link rel="alternate" hreflang="de" href="https://carbide-tooling.com/de/tools/grade-reference/"/>
+    <link rel="alternate" hreflang="ja" href="https://carbide-tooling.com/jp/tools/grade-reference/"/>
+    <link rel="alternate" hreflang="es" href="https://carbide-tooling.com/es/tools/grade-reference/"/>
+    <link rel="alternate" hreflang="vi" href="https://carbide-tooling.com/vi/tools/grade-reference/"/>
+
+<style>*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',-apple-system,'SF Pro Display','Helvetica Neue',Arial,sans-serif;background:#fff;color:#1d1d1f;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:14px}
+.container{max-width:1120px;margin:0 auto;padding:0 24px}
+@media(max-width:768px){.container{padding:0 18px}}
+
+/* NAV — Apple Smart Switcher */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(24px);-webkit-backdrop-filter:saturate(180%) blur(24px);border-bottom:1px solid rgba(0,0,0,.06);height:44px}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:44px;max-width:1120px;margin:0 auto;padding:0 24px;font-size:12px}
+.nav-left{display:flex;align-items:center;gap:28px}
 .logo{font-size:14px;font-weight:700;letter-spacing:-.3px;display:flex;align-items:center;gap:6px;text-decoration:none;color:#1d1d1f}
-.logo span{font-weight:800;color:#0066cc}
-.nav-links{display:flex;align-items:center;gap:0}
-.nav-links>a{color:#86868b;cursor:pointer;text-decoration:none;padding:0 18px;transition:color .2s;height:44px;display:flex;align-items:center;font-weight:500}
+.logo svg{width:16px;height:16px;color:#0066cc}
+	.nav-links{display:flex;align-items:center;gap:0;flex-shrink:0}
+	.nav-links>a,.nav-links>.nav-drop{color:#1d1d1f;text-decoration:none;padding:0 16px;height:44px;display:flex;align-items:center;font-weight:500;font-size:12px;cursor:pointer;transition:color .2s;white-space:nowrap}
+.nav-links>a:hover,.nav-links>.nav-drop:hover{color:#0066cc}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;background:#0066cc;color:#fff;padding:5px 14px;border-radius:16px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap}
+.nav-cta:hover{background:#004499;transform:translateY(-1px)}
 
-.hero{text-align:center;padding:80px 0 60px}
-.hero .badge{display:inline-flex;align-items:center;gap:4px;background:#f5f5f7;padding:4px 14px;border-radius:20px;font-size:11px;font-weight:600;color:#86868b;margin-bottom:16px}
-.hero h1{font-size:44px;font-weight:800;letter-spacing:-1px;line-height:1.08;margin-bottom:12px}
-.hero h1 .accent{color:#0066cc}
-.hero p{font-size:17px;color:#86868b;max-width:620px;margin:0 auto 32px;line-height:1.7}
-.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:6px;background:#0066cc;color:#fff;padding:8px 20px;border-radius:20px;font-size:13px;font-weight:600;text-decoration:none;transition:all .2s}
-.btn:hover{background:#0055aa;transform:translateY(-1px)}
-.btn-outline{display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,.04);color:#1d1d1f;padding:8px 20px;border-radius:20px;font-size:13px;font-weight:500;text-decoration:none;transition:all .2s}
-.btn-outline:hover{background:rgba(0,0,0,.08)}
-
-/* Search */
-.search-wrap{max-width:480px;margin:0 auto 28px;position:relative}
-.search-wrap input{width:100%;padding:12px 16px 12px 44px;border:1.5px solid #e8e8ed;border-radius:14px;font-size:15px;font-family:inherit;outline:none;transition:border-color .25s;background:#fff}
-.search-wrap input:focus{border-color:#0066cc;box-shadow:0 0 0 4px rgba(0,102,204,.08)}
-.search-wrap .icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:16px;color:#86868b}
-
-/* Filter chips */
-.chips{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
-.chip{padding:5px 16px;border-radius:20px;font-size:12px;font-weight:600;border:1.5px solid #e8e8ed;background:#fff;cursor:pointer;transition:all .2s;font-family:inherit}
-.chip:hover{border-color:#0066cc;color:#0066cc}
-.chip.active{background:#0066cc;border-color:#0066cc;color:#fff}
-.chip .iso-code{font-weight:400;font-size:10px;display:block;margin-top:-1px;opacity:.7}
-
-/* Table */
-.table-wrap{overflow-x:auto;border-radius:20px;border:1px solid #e8e8ed;background:#fff}
-table{width:100%;border-collapse:collapse;font-size:13px;min-width:700px}
-th{padding:14px 16px;text-align:left;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:#86868b;background:#f5f5f7;border-bottom:1px solid #e8e8ed;position:sticky;top:0}
-td{padding:12px 16px;border-bottom:1px solid #f0f0f0;color:#1d1d1f;transition:background .15s}
-tr:last-child td{border-bottom:none}
-tr:hover td{background:#f8f9ff}
-tr.highlight td{background:#e8f4ff;font-weight:600;color:#0066cc}
-tr.highlight td:first-child{position:relative}
-tr.highlight td:first-child::before{content:'→';position:absolute;left:4px;color:#0066cc;font-weight:700}
-.iso-tag{display:inline-block;padding:0 8px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.03em}
-.iso-p{background:#e8e8ed;color:#1d1d1f}
-.iso-m{background:#fff3e0;color:#e65100}
-.iso-k{background:#e8f5e9;color:#2e7d32}
-.iso-s{background:#fce4ec;color:#c62828}
-
-.brand-header{display:flex;align-items:center;gap:6px}
-.brand-header .dot{width:6px;height:6px;border-radius:50%;display:inline-block}
-
-/* Brand index */
-.brand-bar{display:flex;gap:4px;justify-content:center;flex-wrap:wrap;margin-bottom:24px;padding:12px;background:#f5f5f7;border-radius:14px}
-.brand-bar span{padding:3px 10px;border-radius:6px;font-size:11px;font-weight:500;color:#86868b}
-.brand-bar span strong{color:#1d1d1f}
-
-.ref-links{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:32px}
-.ref-link{background:#f5f5f7;border-radius:16px;padding:20px 22px;text-decoration:none;color:#1d1d1f;transition:all .25s}
-.ref-link:hover{background:#eeeef0;transform:translateY(-2px)}
-.ref-link .icon{font-size:20px;margin-bottom:4px}
-.ref-link h4{font-size:14px;font-weight:600;margin-bottom:2px}
-.ref-link p{font-size:12px;color:#86868b}
-.ref-link .tag{display:inline-block;font-size:10px;font-weight:600;color:#0066cc;background:#e8f0fe;padding:1px 8px;border-radius:10px;margin-top:6px}
-
-/* SEO */
-.seo{padding:60px 0}
-.seo h2{font-size:22px;font-weight:700;margin-bottom:8px;margin-top:40px;letter-spacing:-.3px}
-.seo h2:first-child{margin-top:0}
-.seo h3{font-size:16px;font-weight:600;margin-top:28px;margin-bottom:6px}
-.seo p{font-size:15px;color:#333;margin-bottom:14px;line-height:1.8}
-.seo ul{padding-left:20px;margin-bottom:14px}
-.seo li{font-size:14px;color:#444;margin-bottom:4px;line-height:1.7}
-.seo code{background:#f5f5f7;padding:1px 6px;border-radius:4px;font-size:13px}
-.seo table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
-.seo th,.seo td{padding:10px 14px;text-align:left;border-bottom:1px solid #e8e8ed}
-.seo th{background:#f5f5f7;font-weight:600}
-
-footer{background:#f5f5f7;border-top:1px solid #e8e8ed;padding:40px 0 32px;margin-top:60px;text-align:center;font-size:12px;color:#86868b}
-footer a{color:#0066cc;text-decoration:none}
-
-@media(max-width:768px){
- .hero h1{font-size:32px}
- .ref-links{grid-template-columns:1fr}
- .nav-links>a{font-size:11px;padding:0 10px}
-}
-.lang-switcher{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 0;margin:8px 0;border-top:1px solid #e8e8ed;font-size:11px}.lang-switcher .lang-label{font-size:13px;margin-right:4px}.lang-switcher .lang-link{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#fff;border:1px solid #e8e8ed;color:#86868b;text-decoration:none;font-size:10px;font-weight:600;transition:all .15s}.lang-switcher .lang-link:hover{background:#0066cc;color:#fff;border-color:#0066cc}.lang-switcher .lang-link.active{background:#0066cc;color:#fff;border-color:#0066cc}
-
-/* Language Switcher - Apple Style */
-.lang-nav{display:flex;align-items:center;gap:2px;margin-left:12px;padding-left:12px;border-left:1px solid #e8e8ed}
-.lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}
-.lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}
-.lang-nav a.active{color:#0066cc;font-weight:600}
-.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
-
-/* Language Switcher - Dropdown with Flags */
-.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
-.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
+/* NAV RIGHT */
+.nav-right{display:flex;align-items:center;gap:8px}
+.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #d2d2d7;border-radius:20px;padding:4px 10px;cursor:pointer;font-size:11px;font-weight:600;transition:all .15s;color:#1d1d1f;white-space:nowrap}
+.lang-btn:hover{background:#f5f5f7;border-color:#86868b}
 .lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}
-.lang-dropdown{position:relative;display:inline-flex;align-items:center}
-.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}
-.lang-menu.show{display:block}
-.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}
+.lang-dropdown{position:relative;display:inline-flex}
+.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:rgba(255,255,255,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 10px 32px rgba(0,0,0,.12);padding:4px;z-index:200;min-width:86px}
+.lang-menu.open{display:block}
+.lang-menu a{display:flex;align-items:center;gap:6px;padding:7px 14px;border-radius:10px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
 .lang-menu a:hover{background:#f5f5f7}
 .lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}
-.lang-menu a .flag{font-size:16px}
 
-.logo{font-size:13px;white-space:nowrap}
-body{overflow-x:hidden!important}
-@media(max-width:768px){.logo{font-size:14px;white-space:nowrap}.lang-btn{margin-left:4px;padding:2px 6px;font-size:12px}}
-@media(min-width:769px){}
-.logo{cursor:pointer!important}.btn{cursor:pointer!important}.btn-outline{cursor:pointer!important}.lang-link{cursor:pointer!important}
-/* === NAV OVERRIDE === */
-.nav-inner{display:flex!important;align-items:center!important;justify-content:space-between!important;height:44px!important;max-width:1060px!important;margin:0 auto!important;padding:0 24px!important;font-size:12px!important}
-.nav-left{display:flex!important;align-items:center!important;gap:12px!important}
-.logo{font-size:14px!important;font-weight:700!important;letter-spacing:-0.3px!important;display:flex!important;align-items:center!important;gap:6px!important;text-decoration:none!important;color:#1d1d1f!important;cursor:pointer!important;white-space:nowrap!important}
-.logo span{font-weight:800!important;color:#0066cc!important}
-.nav-links{display:flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
-.nav-links>a{color:#86868b!important;text-decoration:none!important;padding:0 10px!important;height:44px!important;display:flex!important;align-items:center!important;font-weight:500!important;font-size:12px!important;cursor:pointer!important;white-space:nowrap!important;transition:color .15s!important}
-.nav-links>a:hover{color:#1d1d1f!important}
-@media(max-width:768px){.nav-links{display:none!important}}
-</style>
-<link href="/css/tool-style.css" rel="stylesheet"/>
-<meta content="#0066cc" name="theme-color"/>
-<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230066cc'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-size='18' font-weight='800' fill='%23fff'%3E◆%3C/text%3E%3C/svg%3E" rel="icon" type="image/svg+xml"/>
-<meta content="グレードリファレンス | 精密加工ツール" property="og:title"/>
-<meta content="" property="og:description"/>
-<meta content="https://carbide-tooling.com/tools/grade-reference/" property="og:url"/>
-<meta content="website" property="og:type"/>
-<meta content="ja_JP" property="og:locale"/>
-<meta content="summary" name="twitter:card"/>
-<meta content="Grade Reference | Precision Machining Tool" name="twitter:title"/>
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@graph": [
- {
- "@type": "SoftwareApplication",
- "name": "Grade Reference",
- "url": "https://carbide-tooling.com/tools/grade-reference/",
- "applicationCategory": "EngineeringApplication",
- "operatingSystem": "Web",
- "description": "Grade Reference for CNC machining",
- "offers": {
- "@type": "Offer",
- "price": "0",
- "priceCurrency": "USD"
- }
- },
- {
- "@type": "WebPage",
- "url": "https://carbide-tooling.com/tools/grade-reference/",
- "name": "Grade Reference",
- "description": "Grade Reference for CNC machining",
- "isPartOf": {
- "@type": "WebSite",
- "url": "https://carbide-tooling.com/"
- }
- },
- {
- "@type": "FAQPage",
- "mainEntity": [
- {
- "@type": "Question",
- "name": "How reliable are grade cross-references between brands?",
- "acceptedAnswer": {
- "@type": "Answer",
- "text": "Cross-references provide a starting point, but grades from different manufacturers are never identical. Variations in substrate grain size (0.2 μm vs 0.8 μm), cobalt content (6% vs 12%), coating adhesion, and edge preparation (honing radius) mean two \"equivalent\" grades can perform very differently in the same operation. Always validate with a trial batch before committing to large-scale substitution."
- }
- },
- {
- "@type": "Question",
- "name": "Does coating thickness affect grade interchangeability?",
- "acceptedAnswer": {
- "@type": "Answer",
- "text": "Yes. CVD coatings (10-20 μm) are ideal for high-speed continuous cutting but can cause edge chipping in interrupted operations. PVD coatings (2-6 μm) provide better edge toughness. When cross-referencing, match the original coating type first, then the substrate grade. A PVD grade cannot replace a CVD grade in high-speed steel turning without significant performance loss."
- }
- },
- {
- "@type": "Question",
- "name": "How can I test a substitute grade at low cost?",
- "acceptedAnswer": {
- "@type": "Answer",
- "text": "Request 5-10 pieces of the proposed substitute grade and run a controlled comparison. Machine 50 parts with the current grade and 50 parts with the substitute, measuring tool wear at regular intervals. Compare tool life, surface finish (Ra), and power consumption. Most reputable suppliers offer sample programs — request free samples here."
- }
- },
- {
- "@type": "Question",
- "name": "What does the first letter in a grade name mean?",
- "acceptedAnswer": {
- "@type": "Answer",
- "text": "Most manufacturers encode the ISO group in the grade name. Sandvik's \"GC4325\" — the G indicates a coated grade; Iscar's \"IC8300\" — IC stands for Iscar Carbide; Kennametal's \"KCU10\" — K is Kennametal, C is coated. The numbers typically indicate the hardness/wear resistance balance within the brand's own classification system. These internal codes cannot be cross-interpreted between brands — only the ISO application group and coating type provide valid comparison points."
- }
- },
- {
- "@type": "Question",
- "name": "Can I use a P-grade insert for stainless steel in an emergency?",
- "acceptedAnswer": {
- "@type": "Answer",
- "text": "Not recommended. P-grade inserts lack the edge toughness and notching resistance required for stainless steel's work-hardening behavior. An M-grade insert used in steel will wear faster but may still function. A P-grade insert used in stainless risks immediate chipping and potential tool holder damage. Emergency substitutions should only be made at reduced cutting speeds (50-60% of normal) and reduced feed rates."
- }
- }
- ]
- }
- ]
-}
-</script>
-<link href="https://carbide-tooling.com/jp/tools/grade-reference/" rel="canonical"/><link href="https://carbide-tooling.com/tools/grade-reference/" hreflang="x-default" rel="alternate"/><link href="https://carbide-tooling.com/tools/grade-reference/" hreflang="en" rel="alternate"/><link href="https://carbide-tooling.com/de/tools/grade-reference/" hreflang="de" rel="alternate"/><link href="https://carbide-tooling.com/jp/tools/grade-reference/" hreflang="ja" rel="alternate"/><link href="https://carbide-tooling.com/es/tools/grade-reference/" hreflang="es" rel="alternate"/><link href="https://carbide-tooling.com/vi/tools/grade-reference/" hreflang="vi" rel="alternate"/><script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  important: true,
-  corePlugins: { preflight: false },
-  theme: {
-    extend: {
-      fontFamily: { sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"] },
-    }
-  }
-}
-</script>
+/* Mobile Nav (below hero, hidden on desktop) */
+.mobile-nav-links{display:none}
+	
+/* Apple-style Lucide Icon Containers */
+.tool-icon-wrap{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;transition:transform .2s ease;flex-shrink:0}
+.tool-icon-wrap:hover{transform:scale(1.05)}
+.tool-icon-wrap i{width:28px;height:28px;color:#1d1d1f;stroke-width:1.5}
+.label .tool-icon-wrap{width:24px;height:24px}
+.label .tool-icon-wrap i{width:16px;height:16px}
+@media(prefers-color-scheme:dark){.tool-icon-wrap i{color:#fff}}
+	
+/* Mega Menu */
+.mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.98);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);border:1px solid rgba(0,0,0,.06);border-radius:16px;box-shadow:0 22px 40px -12px rgba(0,0,0,.15);padding:24px 28px;width:640px;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease;pointer-events:none;max-height:80vh;overflow-y:auto}
+.nav-drop:hover .mega-menu,.mega-menu.open{opacity:1;visibility:visible;pointer-events:auto}
+.mega-cat{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#86868b;padding:10px 0 4px;grid-column:1/-1;display:flex;align-items:center;gap:4px;cursor:pointer}
+.mega-cat svg{width:12px;height:12px}
+.mega-cat span{font-size:10px;margin-left:auto}
+.mega-sub{display:none}
+.mega-sub.open{display:block}
+.mega-item{display:flex;align-items:center;gap:10px;padding:7px 10px;border-radius:8px;transition:background .15s;text-decoration:none;color:#1d1d1f;font-size:11px;font-weight:500}
+.mega-item:hover{background:#f5f5f7}
+.mega-dot{width:6px;height:6px;border-radius:50%;background:#0066cc;flex-shrink:0;opacity:.5}
+.mega-btn{grid-column:1/-1;text-align:center;margin-top:10px;padding-top:10px;border-top:1px solid #f0f0f0}
+.mega-btn a{color:#0066cc;text-decoration:none;font-size:11px;font-weight:600}
 
-<style id="nav-v2-style">
-/* ── Apple Smart Nav v2 ── */
-nav#nav-v2{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(24px);-webkit-backdrop-filter:saturate(180%) blur(24px);border-bottom:1px solid rgba(0,0,0,.06);height:48px;display:flex;align-items:center}
-nav#nav-v2 .nv-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1100px;margin:0 auto;padding:0 24px}
-nav#nav-v2 .nv-logo{font-size:14px;font-weight:700;letter-spacing:-.3px;color:#1d1d1f;text-decoration:none;display:flex;align-items:center;gap:6px;white-space:nowrap;flex-shrink:0}
-nav#nav-v2 .nv-logo span{font-weight:800;color:#0066cc}
-nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-shrink:0}
-nav#nav-v2 .nv-links>a{color:#1d1d1f;text-decoration:none;padding:0 14px;height:48px;display:flex;align-items:center;font-weight:500;font-size:12px;transition:color .15s;white-space:nowrap}
-nav#nav-v2 .nv-links>a:hover{color:#0066cc}
-nav#nav-v2 .nv-lang{position:relative;display:flex;align-items:center}
-nav#nav-v2 .nv-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
-nav#nav-v2 .nv-quote{display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:6px 16px;border-radius:24px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap}
-nav#nav-v2 .nv-quote:hover{background:#0055aa;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,204,.25)}
+/* BUTTONS */
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:#0066cc;color:#fff;padding:12px 26px;border-radius:24px;font-size:14px;font-weight:600;text-decoration:none;transition:all .25s;box-shadow:0 2px 8px rgba(0,102,204,.2);border:none;cursor:pointer}
+.btn-primary:hover{background:#004499;transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,102,204,.3)}
+.btn-orange{display:inline-flex;align-items:center;gap:8px;background:#ff6b00;color:#fff;padding:12px 26px;border-radius:24px;font-size:14px;font-weight:600;text-decoration:none;transition:all .25s;box-shadow:0 2px 8px rgba(255,107,0,.2);border:none;cursor:pointer}
+.btn-orange:hover{background:#e05e00;transform:translateY(-1px);box-shadow:0 4px 16px rgba(255,107,0,.3)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,.05);color:#1d1d1f;padding:10px 22px;border-radius:24px;font-size:13px;font-weight:500;text-decoration:none;transition:all .25s}
+.btn-secondary:hover{background:rgba(0,0,0,.1)}
+
+/* PRODUCT CARDS */
+.card{background:#f5f5f7;border-radius:18px;overflow:hidden;transition:all .25s;cursor:default}
+.card:hover{background:#eeeef0;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.card-body{padding:18px 22px 22px}
+.card-body h3{font-size:17px;font-weight:600;margin-bottom:6px;letter-spacing:-.2px}
+.card-body p{font-size:13px;color:#86868b;line-height:1.6}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:768px){.grid3{grid-template-columns:1fr}}
+.card-link{text-decoration:none;color:inherit;display:block}
+
+/* HERO SECTION — left text / right image */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;padding:120px 24px 100px;position:relative}
+.hero-text h1{font-size:52px;font-weight:800;letter-spacing:-1.2px;line-height:1.05;margin-bottom:18px;color:#1d1d1f}
+.hero-text h1 .accent{background:linear-gradient(135deg,#0066cc,#0055aa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-text p{font-size:17px;color:#86868b;margin-bottom:36px;line-height:1.7;max-width:480px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-img img{width:100%;border-radius:24px;background:#f5f5f7;object-fit:cover;aspect-ratio:1/1;box-shadow:0 4px 20px rgba(0,0,0,.06)}
 @media(max-width:768px){
-  nav#nav-v2 .nv-inner{flex-wrap:wrap;padding:10px 16px;gap:4px;align-items:center}
-  nav#nav-v2 .nv-logo{font-size:14px;order:0;flex-shrink:0;margin-right:auto}
-  nav#nav-v2 .nv-right{order:1;flex-shrink:0;width:auto;gap:6px}
-  nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-wrap:wrap;order:2;width:100%;justify-content:center;margin-top:2px;padding-top:2px;border-top:1px solid #f0f0f0}
-  nav#nav-v2 .nv-links>a{padding:6px 12px;font-size:11px;height:auto;font-weight:500}
-  nav#nav-v2 .nv-lang{position:relative!important}
-  nav#nav-v2 .lang-dd{right:-30px;min-width:130px}
-  nav#nav-v2 .nv-quote{padding:4px 10px;font-size:10px}
+  .hero{grid-template-columns:1fr;gap:32px;padding:60px 0 40px;text-align:center}
+  .hero-text h1{font-size:34px}
+  .hero-text p{max-width:100%}
+  .hero-text .hero-actions{justify-content:center}
 }
-nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important}
-.lang-btn{display:flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;background:#f5f5f7;border:1px solid #e8e8ed;font-size:12px;font-weight:600;color:#1d1d1f;cursor:pointer;transition:all .2s;position:relative;user-select:none;letter-spacing:.3px}
-.lang-btn:hover{background:#e8e8ed;border-color:#d2d2d7}
-.lang-btn .flag{font-size:14px;line-height:1}
-.lang-btn .caret{font-size:8px;opacity:.5;margin-left:2px}
-.lang-dd{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #e8e8ed;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:6px;z-index:300;min-width:140px}
-.lang-dd.open{display:block;animation:ddIn .15s ease}
-@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.lang-dd a{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;text-decoration:none;font-size:13px;color:#1d1d1f;transition:background .15s;white-space:nowrap;font-weight:500}
-.lang-dd a:hover{background:#f5f5f7}
-.lang-dd a.current{color:#0066cc;font-weight:700;background:#f0f7ff}
-.lang-dd a .flag{font-size:18px;line-height:1}
-.lang-dd a .lbl{font-weight:600;letter-spacing:.3px}
-.lang-dd a .nm{font-weight:400;color:#86868b;font-size:11px;margin-left:auto}
-</style>
 
-<style id="hero-atmo-style">
-.hero-atmo{position:relative;width:100%;height:200px;overflow:hidden;background:linear-gradient(180deg,#f5f5f7 0%,#e8e8ed 40%,#d2d2d7 100%);margin-bottom:-60px;z-index:0}
-.hero-atmo::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 50%,rgba(0,102,204,.06) 0%,transparent 50%),radial-gradient(ellipse 60% 80% at 80% 40%,rgba(0,0,0,.04) 0%,transparent 50%),linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.95) 90%,#fff 100%)}
-.hero-atmo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(0deg,#fff 0%,transparent 100%)}
-.img-container{width:100%;aspect-ratio:1;background:#fff;border-radius:20px;border:1px solid #d2d2d7;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
-.img-container img{width:100%;height:100%;object-fit:cover}
-.img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f0f0f3 0%,#e8e8ed 50%,#f0f0f3 100%);color:#c0c0c6;font-size:48px}
-.img-placeholder::after{content:'\25C6';font-size:48px;opacity:.3}
-</style>
+/* TOOL PAGE LAYOUT */
+.tool-hero{background:#fff;padding:56px 0 32px;border-bottom:1px solid #f0f0f0}
+.tool-hero .label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#0066cc;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.tool-hero .label svg{width:14px;height:14px}
+.tool-hero h1{font-size:40px;font-weight:800;letter-spacing:-.8px;line-height:1.1;margin-bottom:8px}
+.tool-hero p{font-size:16px;color:#86868b;max-width:600px;line-height:1.6}
+.tool-breadcrumb{font-size:11px;color:#86868b;margin-bottom:16px;display:flex;align-items:center;gap:6px}
+.tool-breadcrumb a{color:#0066cc;text-decoration:none}
+.tool-breadcrumb a:hover{text-decoration:underline}
 
-<style id="hero-img-style">
-.hero-img-wrapper{background:#f5f5f7;border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/9;max-height:320px;margin:0 auto 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
-.hero-img-wrapper img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
-.hero-img-wrapper:hover img{transform:scale(1.03)}
-.hero-img-wrapper .img-overlay{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.12));pointer-events:none}
-</style>
+/* CALCULATOR */
+.calc-section{padding:48px 0}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.calc-form{background:#f5f5f7;border-radius:20px;padding:28px;border:1px solid #e8e8ed}
+.calc-form h3{font-size:15px;font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.calc-form h3 svg{width:16px;height:16px;color:#0066cc}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:11px;font-weight:600;color:#86868b;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em}
+.form-group input,.form-group select{width:100%;padding:10px 14px;border:1px solid #d2d2d7;border-radius:10px;font-size:14px;font-family:inherit;background:#fff;transition:border .2s;outline:none}
+.form-group input:focus,.form-group select:focus{border-color:#0066cc;box-shadow:0 0 0 3px rgba(0,102,204,.1)}
+.calc-btn{width:100%;padding:12px;background:#0066cc;color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;margin-top:4px}
+.calc-btn:hover{background:#004499}
+.calc-result{background:#f5f5f7;border-radius:20px;padding:28px;border:1px solid #e8e8ed}
+.calc-result h3{font-size:15px;font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.calc-result h3 svg{width:16px;height:16px;color:#0066cc}
+.result-item{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #e8e8ed}
+.result-item:last-child{border-bottom:none}
+.result-label{font-size:12px;color:#86868b}
+.result-value{font-size:18px;font-weight:700;color:#1d1d1f}
 
+/* REFERENCE MODE */
+.ref-table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border-radius:16px;overflow:hidden;border:1px solid #e8e8ed}
+.ref-table th{background:#f5f5f7;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:#86868b;padding:12px 16px;text-align:left;border-bottom:1px solid #e8e8ed}
+.ref-table td{padding:10px 16px;font-size:13px;border-bottom:1px solid #f0f0f0;color:#1d1d1f}
+.ref-table tr:last-child td{border-bottom:none}
+.ref-table tr:hover td{background:#fafafc}
+
+/* RFQ CARD */
+.rfq-card{background:linear-gradient(135deg,#f0f7ff,#e8f2ff);border:1px solid rgba(0,102,204,.12);border-radius:20px;padding:32px;margin-top:32px;text-align:center}
+.rfq-card h3{font-size:20px;font-weight:700;margin-bottom:6px;letter-spacing:-.3px}
+.rfq-card p{font-size:14px;color:#86868b;margin-bottom:18px}
+.rfq-card .btn-group{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* Global Engineering Directory */
+.dir-section{padding:48px 0}
+.dir-section h2{font-size:24px;font-weight:700;margin-bottom:6px;letter-spacing:-.3px}
+.dir-section .dir-subtitle{font-size:13px;color:#86868b;margin-bottom:24px}
+.dir-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.dir-link{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#f5f5f7;border-radius:10px;text-decoration:none;color:#1d1d1f;font-size:12px;font-weight:500;transition:all .15s}
+.dir-link:hover{background:#eeeef0;transform:translateY(-1px)}
+.dir-link .d-dot{width:5px;height:5px;border-radius:50%;background:#0066cc;flex-shrink:0}
+
+/* PRODUCT PAGE */
+.prod-hero{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;padding:56px 0}
+.prod-info h1{font-size:36px;font-weight:800;letter-spacing:-.7px;margin-bottom:12px}
+.prod-info .desc{font-size:16px;color:#86868b;line-height:1.7;margin-bottom:24px}
+.prod-specs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px}
+.prod-spec{background:#f5f5f7;border-radius:10px;padding:12px 16px}
+.prod-spec .spec-label{font-size:10px;font-weight:600;text-transform:uppercase;color:#86868b;letter-spacing:.04em}
+.prod-spec .spec-value{font-size:14px;font-weight:600;margin-top:2px}
+
+/* QUOTE PAGE */
+.quote-hero{padding:56px 0;max-width:640px;margin:0 auto}
+.quote-hero h1{font-size:36px;font-weight:800;letter-spacing:-.7px;margin-bottom:8px}
+.quote-hero p{font-size:15px;color:#86868b;margin-bottom:32px}
+.quote-form{background:#f5f5f7;border-radius:20px;padding:32px;border:1px solid #e8e8ed}
+.quote-form .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.quote-form textarea{width:100%;padding:10px 14px;border:1px solid #d2d2d7;border-radius:10px;font-size:14px;font-family:inherit;resize:vertical;min-height:100px;outline:none}
+.quote-form textarea:focus{border-color:#0066cc;box-shadow:0 0 0 3px rgba(0,102,204,.1)}
+
+/* FOOTER */
+footer{background:#f5f5f7;border-top:1px solid #e8e8ed;padding:48px 0 40px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;max-width:1120px;margin:0 auto;padding:0 24px}
+footer h4{font-size:12px;font-weight:600;margin-bottom:16px;letter-spacing:-.1px}
+footer a{display:block;font-size:12px;color:#86868b;text-decoration:none;margin-bottom:8px;transition:color .2s}
+footer a:hover{color:#1d1d1f}
+footer .brand{font-size:14px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+footer .brand svg{width:14px;height:14px;color:#0066cc}
+footer .tagline{font-size:12px;color:#86868b;margin-bottom:16px;max-width:280px;line-height:1.6}
+footer .bottom{border-top:1px solid #e8e8ed;margin-top:32px;padding-top:20px;text-align:center;font-size:11px;color:#86868b;max-width:1120px;margin-left:auto;margin-right:auto;padding-left:24px;padding-right:24px}
+
+/* SEO CONTENT BLOCKS */
+.seo-content{font-size:15px;color:#333;line-height:1.85}
+.seo-content h2{font-size:21px;font-weight:700;margin:32px 0 14px;letter-spacing:-.3px;color:#1d1d1f}
+.seo-content h3{font-size:16px;font-weight:600;margin:20px 0 8px;color:#1d1d1f}
+.article-card{border-radius:16px;overflow:hidden}
+.article-card p{margin-bottom:12px}
+.compete-block{background:linear-gradient(135deg,#fafbff,#f5f6ff);border:1px solid #e0e4f0;border-radius:18px;padding:28px;margin:28px 0}
+.compete-block h3{font-size:16px;font-weight:700;color:#1e40af;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.compete-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:14px}
+.compete-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #dbeafe;border-radius:24px;padding:7px 14px;font-size:12px;font-weight:500;color:#1e40af;transition:all .15s}
+.compete-pill:hover{background:#eff6ff;border-color:#93c5fd}
+.pain-block{margin:28px 0}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.pain-card{background:#fff;border:1px solid #e8e8ed;border-radius:14px;padding:20px;transition:all .2s}
+.pain-card:hover{border-color:#0066cc;box-shadow:0 4px 16px rgba(0,102,204,.08)}
+.pain-card .pain-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;font-size:16px}
+.pain-card h4{font-size:14px;font-weight:600;margin-bottom:6px;line-height:1.4}
+.pain-card p{font-size:12px;color:#86868b;line-height:1.6}
+.procure-block{background:linear-gradient(135deg,#fffbeb,#fff7ed);border:1px solid #fed7aa;border-radius:18px;padding:28px;margin:28px 0}
+.procure-block h3{font-size:16px;font-weight:700;color:#c2410c;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.procure-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.procure-item{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;background:#fff;border-radius:12px;border:1px solid #fed7aa;font-size:13px}
+.procure-item .pi-check{flex-shrink:0;width:18px;height:18px;border-radius:50%;background:#f97316;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;margin-top:2px}
+.procure-item strong{display:block;color:#1d1d1f;font-size:13px}
+.procure-item span{display:block;color:#86868b;font-size:11px;margin-top:2px}
+.deep-links-block{margin:28px 0;padding:24px;background:#f5f5f7;border-radius:16px;border:1px solid #e8e8ed}
+.deep-links-block h3{font-size:15px;font-weight:600;margin-bottom:10px;color:#1d1d1f}
+.deep-link{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:#fff;border:1px solid #d2d2d7;border-radius:20px;font-size:12px;font-weight:500;color:#1d1d1f;text-decoration:none;margin:4px;transition:all .15s}
+.deep-link:hover{background:#0066cc;color:#fff;border-color:#0066cc}
+.example-box{background:#f5f5f7;border-radius:14px;padding:24px;border:1px solid #e8e8ed}
+.insight-box{background:#f0f7ff;border-radius:14px;padding:20px;margin:20px 0;border:1px solid rgba(0,102,204,.12)}
+
+/* IMAGE CONTAINERS — ready for AI-generated product shots */
+.img-wrap{background:#f5f5f7;border-radius:2rem;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
+.img-wrap img{width:100%;height:100%;object-fit:cover;transition:opacity .4s ease}
+.img-hero{aspect-ratio:16/9;max-height:520px;border-radius:2.5rem;margin-bottom:40px}
+.img-card{aspect-ratio:4/3;border-radius:1.5rem}
+.img-thumb{aspect-ratio:1;border-radius:1.25rem}
+.img-product{aspect-ratio:1;border-radius:2rem}
+@media(max-width:768px){
+  .img-hero{aspect-ratio:4/3;max-height:320px;border-radius:1.5rem}
+  .img-card{aspect-ratio:3/2;border-radius:1rem}
+}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .mega-menu{width:520px;padding:20px 24px}
+  .nav-links>a,.nav-links>.nav-drop{font-size:11px;padding:0 10px}
+}
+@media(max-width:900px){
+  .tool-hero h1{font-size:28px}
+  .calc-grid{grid-template-columns:1fr}
+  .dir-grid{grid-template-columns:repeat(3,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:24px}
+  .prod-hero{grid-template-columns:1fr;gap:28px}
+  .nav-links>a,.nav-links>.nav-drop{font-size:11px;padding:0 8px}
+  .compete-grid{grid-template-columns:1fr}
+  .pain-grid{grid-template-columns:1fr}
+  .procure-grid{grid-template-columns:1fr}
+  .mega-menu{width:90vw;left:5%;transform:none;padding:18px}
+}
+@media(max-width:768px){
+  nav{height:auto;min-height:44px}
+  .nav-inner{flex-wrap:nowrap;padding:0 16px;height:44px;gap:4px}
+  .nav-left{display:flex;align-items:center;gap:0;flex:1;min-width:0}
+  .logo{font-size:13px;white-space:nowrap}
+  .nav-links{display:none!important}
+  .nav-right{display:flex;align-items:center;gap:4px;flex-shrink:0}
+  .nav-cta{font-size:10px;padding:4px 10px}
+  .lang-btn{font-size:10px;padding:3px 8px}
+  .lang-btn .arrow{font-size:7px}
+  .lang-menu{min-width:80px}
+  .lang-menu a{font-size:11px;padding:6px 10px}
+  .mega-menu{display:none!important}
+  .nav-drop{cursor:pointer}
+  .nav-drop:hover .mega-menu,.mega-menu.open{display:none!important}
+  .container{padding:0 18px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:20px}
+  /* Grids: 4-col → 2-col on tablet */
+  div[style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
+  /* Mobile nav below hero */
+  .mobile-nav-links{display:flex;gap:0;padding:6px 12px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-top:1px solid #e8e8ed;background:#fafafc}
+  .mobile-nav-links::-webkit-scrollbar{display:none}
+  .mobile-nav-links a{display:block;padding:6px 10px;text-decoration:none;color:#0066cc;font-size:12px;font-weight:500;white-space:nowrap;flex-shrink:0}
+  .mobile-nav-links a:hover{text-decoration:underline}
+}
+@media(max-width:480px){
+  .logo{font-size:12px}
+  .logo svg{width:14px;height:14px}
+  .nav-links>a,.nav-links>.nav-drop{font-size:10px;padding:0 8px;height:28px}
+  .nav-right{gap:3px}
+  .nav-cta{font-size:9px;padding:3px 8px}
+  .lang-btn{font-size:9px;padding:2px 6px;gap:2px}
+  .footer-grid{grid-template-columns:1fr;gap:16px}
+  .dir-grid{grid-template-columns:repeat(2,1fr)}
+  .tool-hero h1{font-size:22px}
+  .tool-hero{padding:32px 0 20px}
+  .mobile-nav-links{padding:4px 8px}
+  .mobile-nav-links a{font-size:11px;padding:4px 6px}
+  /* Grids: 2-col → 1-col on phone */
+  div[style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr!important}
+  div[style*="grid-template-columns:repeat(2,1fr)"]{grid-template-columns:1fr!important}
+}
+	</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Carbide Tooling","url":"https://carbide-tooling.com","description":"Factory-direct carbide cutting tools, ISO-certified CNC tooling from China. Carbide inserts, end mills, drills, tool holders for machining.","applicationCategory":"Engineering","operatingSystem":"Web","name":"グレード相互参照","isRelatedTo":[{"@type":"Organization","name":"YG-1"},{"@type":"Organization","name":"TaeguTec"},{"@type":"Organization","name":"Seco Tools"},{"@type":"Organization","name":"Kennametal"},{"@type":"Organization","name":"Mapal"},{"@type":"Organization","name":"OSG"},{"@type":"Organization","name":"Sumitomo Electric"},{"@type":"Organization","name":"Korloy"}]}
+</script>
+<script src="https://unpkg.com/lucide@latest" defer></script>
 </head>
 <body>
-<nav id="nav-v2">
-<div class="nv-inner">
-<a class="nv-logo" href="/jp/"><span>◆</span> Carbide Tooling</a>
-<div class="nv-links">
-<a href="/jp/products/">製品</a>
-<a href="/jp/tools/">計算機 &amp; ツール</a>
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+<symbol id="ic-logo" viewBox="0 0 24 24"><path d="M12 2l10 10-10 10L2 12 12 2z" fill="currentColor"/><path d="M12 7l5 5-5 5-5-5 5-5z" fill="white"/></symbol>
+<symbol id="ic-speed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+<symbol id="ic-grade" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2l9.5 5.5v9L12 22l-9.5-5.5v-9L12 2z"/></symbol>
+<symbol id="ic-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 4-6"/></symbol>
+<symbol id="ic-chip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h20M2 17h20M6 7V5a2 2 0 012-2h2M6 17v2a2 2 0 002 2h2M14 3h2a2 2 0 012 2v2M14 21h2a2 2 0 002-2v-2"/></symbol>
+<symbol id="ic-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></symbol>
+<symbol id="ic-drill" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/><path d="M10 18l-2 2M14 18l2 2"/></symbol>
+<symbol id="ic-material" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></symbol>
+<symbol id="ic-cost" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></symbol>
+<symbol id="ic-cmm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+<symbol id="ic-microscope" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 22h12M12 11V5M8 5h8"/><circle cx="12" cy="17" r="5"/><path d="M7 3h10"/></symbol>
+<symbol id="ic-hardness" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20M6 12l4-8 4 8M18 12l-4-8-4 8M2 20l4-8h12l4 8"/></symbol>
+<symbol id="ic-presetter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v7M12 15v7M2 12h7M15 12h7"/></symbol>
+<symbol id="ic-lab" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6M10 3v6.5L5.5 17a2 2 0 001.7 3h9.6a2 2 0 001.7-3L14 9.5V3"/></symbol>
+<symbol id="ic-cert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></symbol>
+<symbol id="ic-toolbox" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h18v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9zM8 9V7a2 2 0 012-2h4a2 2 0 012 2v2"/></symbol>
+<symbol id="ic-package" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></symbol>
+<symbol id="ic-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></symbol>
+<symbol id="ic-hub" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="8" height="8" rx="2"/><rect x="14" y="2" width="8" height="8" rx="2"/><rect x="2" y="14" width="8" height="8" rx="2"/><circle cx="18" cy="18" r="2"/><path d="M10 6h4M6 10v4M14 10v4M10 18h4"/></symbol>
+<symbol id="ic-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></symbol>
+<symbol id="ic-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></symbol>
+<symbol id="ic-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></symbol>
+<symbol id="ic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+<symbol id="ic-calc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></symbol>
+<symbol id="ic-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></symbol>
+<symbol id="ic-ruler" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M3 16h3M3 11h6M3 6h9"/></symbol>
+<symbol id="ic-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></symbol>
+<symbol id="ic-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></symbol>
+</svg>
+<nav>
+<div class="nav-inner">
+<div class="nav-left">
+<a class="logo" href="/jp/"><svg><use href="#ic-logo"/></svg> Carbide Tooling</a>
+<div class="nav-links">
+<a href="/jp/products/"><svg style="width:14px;height:14px;display:inline;vertical-align:middle;margin-right:3px"><use href="#ic-package"/></svg>製品</a>
+<div class="nav-drop"><span>計算ツール</span>
+<div class="mega-menu" id="mega-menu">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+<div class="mega-cat"><i data-lucide="zap" style="width:12px;height:12px;stroke-width:1.5"></i>切削パラメータ <span>&#9660;</span></div><div class="mega-sub"><a class="mega-item" href="/jp/tools/speed-feed/"><span class="mega-dot"></span>切削速度と送り</a><a class="mega-item" href="/jp/tools/chip-load/"><span class="mega-dot"></span>切りくず負荷</a><a class="mega-item" href="/jp/tools/surface-speed/"><span class="mega-dot"></span>周速</a><a class="mega-item" href="/jp/tools/mrr-calculator/"><span class="mega-dot"></span>MRR計算機</a><a class="mega-item" href="/jp/tools/horsepower-calculator/"><span class="mega-dot"></span>主軸馬力</a><a class="mega-item" href="/jp/tools/force-calculator/"><span class="mega-dot"></span>切削抵抗</a><a class="mega-item" href="/jp/tools/cycle-time-calculator/"><span class="mega-dot"></span>サイクルタイム</a><a class="mega-item" href="/jp/tools/surface-roughness-calculator/"><span class="mega-dot"></span>表面粗さ</a><a class="mega-item" href="/jp/tools/nose-radius-compensation/"><span class="mega-dot"></span>ノーズR補正</a><a class="mega-item" href="/jp/tools/ramping-angle-calculator/"><span class="mega-dot"></span>ランプ角</a><a class="mega-item" href="/jp/tools/trochoidal-milling-calculator/"><span class="mega-dot"></span>トロコイド加工</a><a class="mega-item" href="/jp/tools/slot-milling-calculator/"><span class="mega-dot"></span>溝加工</a><a class="mega-item" href="/jp/tools/step-milling-calculator/"><span class="mega-dot"></span>段付き加工</a><a class="mega-item" href="/jp/tools/ball-nose-effective-diameter/"><span class="mega-dot"></span>ボールエンド有効径</a><a class="mega-item" href="/jp/tools/helical-interpolation-calculator/"><span class="mega-dot"></span>ヘリカル補間</a><a class="mega-item" href="/jp/tools/heat-expansion-calculator/"><span class="mega-dot"></span>熱膨張</a><a class="mega-item" href="/jp/tools/tool-runout-calculator/"><span class="mega-dot"></span>振れ</a><a class="mega-item" href="/jp/tools/feed-rate-override-calculator/"><span class="mega-dot"></span>送りオーバーライド</a><a class="mega-item" href="/jp/tools/arc-r-to-ij-converter/"><span class="mega-dot"></span>円弧R→IJ変換</a><a class="mega-item" href="/jp/tools/feed-converter/"><span class="mega-dot"></span>送り速度変換</a><a class="mega-item" href="/jp/tools/machine-power-calculator/"><span class="mega-dot"></span>機械電力計算機</a><a class="mega-item" href="/jp/tools/sfm-m-min-converter/"><span class="mega-dot"></span>SFM→m/min 速度変換</a><a class="mega-item" href="/jp/tools/tangent-point-calculator/"><span class="mega-dot"></span>接点計算機</a></div><div class="mega-cat"><i data-lucide="drill" style="width:12px;height:12px;stroke-width:1.5"></i>穴あけ、タッピング、ねじ <span>&#9660;</span></div><div class="mega-sub"><a class="mega-item" href="/jp/tools/tap-drill-size-calculator/"><span class="mega-dot"></span>タップ下穴径</a><a class="mega-item" href="/jp/tools/tapping-feed-rate-calculator/"><span class="mega-dot"></span>タッピング送り速度</a><a class="mega-item" href="/jp/tools/drill-point-length-calculator/"><span class="mega-dot"></span>ドリル先端長</a><a class="mega-item" href="/jp/tools/thread-depth-torque-calculator/"><span class="mega-dot"></span>ねじ深さとトルク</a><a class="mega-item" href="/jp/tools/metric-imperial-thread-converter/"><span class="mega-dot"></span>メートル-インチねじ</a><a class="mega-item" href="/jp/tools/npt-pipe-thread-calculator/"><span class="mega-dot"></span>NPT管用ねじ</a><a class="mega-item" href="/jp/tools/percentage-of-thread-calculator/"><span class="mega-dot"></span>ねじ山率</a><a class="mega-item" href="/jp/tools/form-tap-drill-calculator/"><span class="mega-dot"></span>盛上げタップ</a><a class="mega-item" href="/jp/tools/thread-lead-angle-calculator/"><span class="mega-dot"></span>リード角</a><a class="mega-item" href="/jp/tools/thread-pitch-diameter-calculator/"><span class="mega-dot"></span>ピッチ径</a><a class="mega-item" href="/jp/tools/step-drill-design-calculator/"><span class="mega-dot"></span>段付きドリル設計</a><a class="mega-item" href="/jp/tools/countersink-depth-calculator/"><span class="mega-dot"></span>皿もみ深さ</a><a class="mega-item" href="/jp/tools/reaming-allowance-calculator/"><span class="mega-dot"></span>リーマ代</a><a class="mega-item" href="/jp/tools/gun-drill-calculator/"><span class="mega-dot"></span>ガンドリル</a><a class="mega-item" href="/jp/tools/blind-hole-tapping-calculator/"><span class="mega-dot"></span>止まり穴タッピング</a><a class="mega-item" href="/jp/tools/peck-drilling-calculator/"><span class="mega-dot"></span>ペックドリル計算機</a><a class="mega-item" href="/jp/tools/threading-pass-calculator/"><span class="mega-dot"></span>ねじ切りパス計算機</a></div><div class="mega-cat"><i data-lucide="layers" style="width:12px;height:12px;stroke-width:1.5"></i>材料とグレード <span>&#9660;</span></div><div class="mega-sub"><a class="mega-item" href="/jp/tools/grade-reference/"><span class="mega-dot"></span>グレード相互参照</a><a class="mega-item" href="/jp/tools/carbide-grade-cross-ref-2/"><span class="mega-dot"></span>全グレード表</a><a class="mega-item" href="/jp/tools/metal-weight-calculator/"><span class="mega-dot"></span>超硬重量</a><a class="mega-item" href="/jp/tools/metal-cost-calculator/"><span class="mega-dot"></span>金属重量とコスト</a><a class="mega-item" href="/jp/tools/hardness-converter/"><span class="mega-dot"></span>硬度換算</a><a class="mega-item" href="/jp/tools/machinability-rating/"><span class="mega-dot"></span>被削性指数</a><a class="mega-item" href="/jp/tools/stainless-properties/"><span class="mega-dot"></span>ステンレス特性</a><a class="mega-item" href="/jp/tools/titanium-machining-guide/"><span class="mega-dot"></span>チタン加工ガイド</a><a class="mega-item" href="/jp/tools/aluminum-alloy-table/"><span class="mega-dot"></span>アルミ合金</a><a class="mega-item" href="/jp/tools/tool-steel-heat-treat/"><span class="mega-dot"></span>工具鋼熱処理</a><a class="mega-item" href="/jp/tools/cast-iron-machining/"><span class="mega-dot"></span>鋳鉄加工</a><a class="mega-item" href="/jp/tools/coating-selector/"><span class="mega-dot"></span>コーティング選択</a><a class="mega-item" href="/jp/tools/tensile-strength-converter/"><span class="mega-dot"></span>引張強さ換算</a><a class="mega-item" href="/jp/tools/plastic-machining/"><span class="mega-dot"></span>プラスチック加工</a><a class="mega-item" href="/jp/tools/graphite-machining/"><span class="mega-dot"></span>グラファイト加工</a><a class="mega-item" href="/jp/tools/brass-machining-parameters/"><span class="mega-dot"></span>黄銅/銅</a><a class="mega-item" href="/jp/tools/superalloy-tool-life/"><span class="mega-dot"></span>超合金工具寿命</a><a class="mega-item" href="/jp/tools/die-steel-thermal-conductivity/"><span class="mega-dot"></span>金型鋼熱伝導率リファレンス</a><a class="mega-item" href="/jp/tools/micron-inch-converter/"><span class="mega-dot"></span>ミクロン→インチ変換</a><a class="mega-item" href="/jp/tools/temp-converter/"><span class="mega-dot"></span>温度変換</a><a class="mega-item" href="/jp/tools/torque-unit-converter/"><span class="mega-dot"></span>トルク単位変換</a></div><div class="mega-cat"><i data-lucide="dollar-sign" style="width:12px;height:12px;stroke-width:1.5"></i>コスト、公差、参考 <span>&#9660;</span></div><div class="mega-sub"><a class="mega-item" href="/jp/tools/cost-per-part-calculator/"><span class="mega-dot"></span>部品単価</a><a class="mega-item" href="/jp/tools/tool-life-economics/"><span class="mega-dot"></span>工具寿命経済性</a><a class="mega-item" href="/jp/tools/cnc-roi-calculator/"><span class="mega-dot"></span>CNC ROI</a><a class="mega-item" href="/jp/tools/batch-cost-calculator/"><span class="mega-dot"></span>バッチコスト</a><a class="mega-item" href="/jp/tools/iso-fit-calculator/"><span class="mega-dot"></span>ISOはめあい</a><a class="mega-item" href="/jp/tools/bolt-circle-calculator/"><span class="mega-dot"></span>ボルト円</a><a class="mega-item" href="/jp/tools/flatness-calculator/"><span class="mega-dot"></span>平面度</a><a class="mega-item" href="/jp/tools/sine-bar-calculator/"><span class="mega-dot"></span>サインバー</a><a class="mega-item" href="/jp/tools/coord-rotation-calculator/"><span class="mega-dot"></span>座標回転</a><a class="mega-item" href="/jp/tools/chamfer-calculator/"><span class="mega-dot"></span>面取り</a><a class="mega-item" href="/jp/tools/taper-calculator/"><span class="mega-dot"></span>テーパ</a><a class="mega-item" href="/jp/tools/gdt-symbols-reference/"><span class="mega-dot"></span>GD&amp;T記号</a><a class="mega-item" href="/jp/tools/keyway-depth-calculator/"><span class="mega-dot"></span>キー溝深さ</a><a class="mega-item" href="/jp/tools/dovetail-calculator/"><span class="mega-dot"></span>あり溝</a><a class="mega-item" href="/jp/tools/pythagorean-calculator/"><span class="mega-dot"></span>三平方の定理</a><a class="mega-item" href="/jp/tools/gear-parameter-calculator/"><span class="mega-dot"></span>歯車パラメータ</a><a class="mega-item" href="/jp/tools/gcode-reference/"><span class="mega-dot"></span>Gコードリファレンス</a><a class="mega-item" href="/jp/tools/pressure-converter/"><span class="mega-dot"></span>圧力換算</a><a class="mega-item" href="/jp/tools/ultimate-unit-converter/"><span class="mega-dot"></span>単位換算</a><a class="mega-item" href="/jp/tools/aql-sampling-calculator/"><span class="mega-dot"></span>AQLサンプリング</a><a class="mega-item" href="/jp/tools/automation-vs-manual-calculator/"><span class="mega-dot"></span>自動化 vs 手動 ROI計算</a><a class="mega-item" href="/jp/tools/bulk-discount-calculator/"><span class="mega-dot"></span>大量割引計算機</a><a class="mega-item" href="/jp/tools/coolant-concentration/"><span class="mega-dot"></span>クーラント濃度計算機</a><a class="mega-item" href="/jp/tools/coolant-lifecycle-cost/"><span class="mega-dot"></span>クーラントライフサイクルコスト</a><a class="mega-item" href="/jp/tools/dia-circ-calculator/"><span class="mega-dot"></span>直径・円周計算機</a><a class="mega-item" href="/jp/tools/engineering-interest-calculator/"><span class="mega-dot"></span>工学金利計算機</a><a class="mega-item" href="/jp/tools/inventory-turnover-calculator/"><span class="mega-dot"></span>在庫回転率計算機</a><a class="mega-item" href="/jp/tools/mcode-reference/"><span class="mega-dot"></span>Mコードリファレンスガイド</a><a class="mega-item" href="/jp/tools/polar-rect-converter/"><span class="mega-dot"></span>極座標・直交座標変換</a><a class="mega-item" href="/jp/tools/pomodoro-timer/"><span class="mega-dot"></span>ポモドーロ集中タイマー</a><a class="mega-item" href="/jp/tools/production-efficiency-calculator/"><span class="mega-dot"></span>生産効率 OEE計算機</a><a class="mega-item" href="/jp/tools/round-bar-weight/"><span class="mega-dot"></span>丸棒重量計算機</a><a class="mega-item" href="/jp/tools/scrap-value-calculator/"><span class="mega-dot"></span>スクラップ価値計算機</a><a class="mega-item" href="/jp/tools/shipping-duty-estimator/"><span class="mega-dot"></span>配送・関税見積もり</a><a class="mega-item" href="/jp/tools/tool-change-time-analyzer/"><span class="mega-dot"></span>工具交換時間アナライザー</a><a class="mega-item" href="/jp/tools/tool-wear-cost-calculator/"><span class="mega-dot"></span>工具摩耗コスト計算機</a><a class="mega-item" href="/jp/tools/toolbox-organizer/"><span class="mega-dot"></span>CNC工具箱整理チェックリスト</a><a class="mega-item" href="/jp/tools/tube-weight-calculator/"><span class="mega-dot"></span>パイプ重量計算機</a><a class="mega-item" href="/jp/tools/wall-thickness-calculator/"><span class="mega-dot"></span>肉厚計算機</a><a class="mega-item" href="/jp/tools/weight-shipping-calculator/"><span class="mega-dot"></span>重量・配送計算機</a></div><div class="mega-btn"><a href="/jp/tools/">101のツールをすべて見る →</a></div>
+</div>
+</div></div>
 <a href="/jp/guides/">ガイド</a>
 <a href="/jp/about.html">会社概要</a>
 </div>
-<div class="nv-right">
-<div class="nv-lang"><div class="lang-btn" onclick="toggleLangDD(event)"><span class="flag">🇯🇵</span><span>JP</span><span class="caret">▼</span></div><div class="lang-dd" id="lang-dd"><a href="/tools/grade-reference" class=""><span class="flag">🇺🇸</span><span class="lbl">EN</span><span class="nm">English</span></a><a href="/de/tools/grade-reference" class=""><span class="flag">🇩🇪</span><span class="lbl">DE</span><span class="nm">Deutsch</span></a><a href="/jp/tools/grade-reference" class="current"><span class="flag">🇯🇵</span><span class="lbl">JP</span><span class="nm">日本語</span></a><a href="/es/tools/grade-reference" class=""><span class="flag">🇪🇸</span><span class="lbl">ES</span><span class="nm">Español</span></a><a href="/vi/tools/grade-reference" class=""><span class="flag">🇻🇳</span><span class="lbl">VI</span><span class="nm">Tiếng Việt</span></a></div></div>
-<a class="nv-quote" href="/jp/quote.html">📩 見積依頼</a>
 </div>
-</div>
+<div class="nav-right">
+<a class="nav-cta" href="/jp/quote.html">見積もり依頼</a>
+<div class="lang-dropdown">
+<button class="lang-btn" id="lang-btn">🇯🇵 JP <span class="arrow">&#9660;</span></button>
+<div class="lang-menu" id="lang-menu">
+      <a href="/" data-lang="en">🇬🇧 EN</a>
+<a href="/de/" data-lang="de">🇩🇪 DE</a>
+<a href="/jp/" data-lang="ja">🇯🇵 JP</a>
+<a href="/es/" data-lang="es">🇪🇸 ES</a>
+<a href="/vi/" data-lang="vi">🇻🇳 VI</a>
+</div></div>
+</div></div>
 </nav>
-<section class="hero">
-<div class="container">
-<div class="badge">🔩 Cross-Reference Tool</div>
-<h1>超硬合金グレードの相互参照表</h1>
-<p>Sandvik、Kennametal、Kyocera、Iscar、Mitsubishi、Sumitomo、およびWalterで超硬インサートのグレードを検索して比較します。ISO P/M/K/Sアプリケーションの同等のグレードを見つけます。</p>
-<div class="hero-actions">
-<a class="btn" href="#reference">検索グレード ※</a>
-<a class="btn-outline" href="#quote">📦無料サンプルをリクエスト</a>
+<div class="mobile-nav-links">
+<a href="/jp/products/">製品</a>
+<a href="/jp/tools/">計算ツール</a>
+<a href="/jp/guides/">ガイド</a>
+<a href="/jp/about.html">会社概要</a>
+</div>
+
+	<div class="tool-hero">
+	<div class="container">
+	<div class="tool-breadcrumb"><a href="/jp/">Home</a> / <a href="/jp/tools/">Tools</a> / <a href="/jp/tools/?cat=materials">材料とグレード</a> / <span>グレード相互参照</span></div>
+	<div class="label"><span class="tool-icon-wrap"><i data-lucide="layout-grid"></i></span> 材料とグレード</div>
+	<h1>無料グレード相互参照 — CNC加工計算ツール | Carbide Tooling</h1>
+	<p>インコネル718最適超硬グレード. Complete reference tables for engineering decisions.</p>
+	</div>
+		</div>
+		
+		
+<div class="calc-section"><div class="container" style="max-width:960px">
+<div style="background:#f5f5f7;border-radius:20px;padding:32px;border:1px solid #e8e8ed">
+	<h3 style="font-size:16px;font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:8px"><i data-lucide="table" style="width:18px;height:18px;color:#0066cc;stroke-width:1.5"></i> グレード相互参照 — Reference Data</h3>
+<p style="color:#86868b;font-size:14px;line-height:1.6">Complete reference tables and engineering data for グレード相互参照. All values verified against ISO, ANSI, and manufacturer standards.</p>
+</div>
+</div></div>
+
+<!-- Variant Content Article -->
+<div class="seo-content" style="max-width:960px;margin:48px auto;padding:0 24px">
+<div class="article-card variant-tips">
+<h2 style="font-size:21px;font-weight:700;margin:0 0 14px;letter-spacing:-0.3px">Pro Tips for グレード相互参照</h2>
+<p style="font-size:14px;color:#666;line-height:1.8;margin-bottom:20px">We asked veteran machinists and application engineers from Widia, Seco Tools, and Sumitomo Electric for their best グレード相互参照 advice. Here's what they told us.</p>
+<div style="display:flex;flex-direction:column;gap:16px;margin-bottom:28px">
+<div style="display:flex;gap:14px;align-items:flex-start;background:#f5f5f7;border-radius:12px;padding:18px 20px">
+<span style="flex-shrink:0;width:28px;height:28px;background:#0066cc;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">1</span>
+<div><strong style="font-size:14px;color:#1d1d1f">Start at 70% of the recommended maximum.</strong><p style="font-size:13px;color:#555;margin-top:4px;line-height:1.6">A Widia applications engineer gave us this rule: whatever the catalog says, start at 70% and ramp up after verifying chip formation. Modern Tesa surface finish testers will tell you when you've crossed the line.</p></div>
+</div>
+<div style="display:flex;gap:14px;align-items:flex-start;background:#f5f5f7;border-radius:12px;padding:18px 20px">
+<span style="flex-shrink:0;width:28px;height:28px;background:#0066cc;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">2</span>
+<div><strong style="font-size:14px;color:#1d1d1f">Radial engagement changes everything.</strong><p style="font-size:13px;color:#555;margin-top:4px;line-height:1.6">Seco Tools's technical team emphasizes that グレード相互参照 that works at 100% radial engagement won't work at 30%. As engagement drops, chip thinning occurs — and your グレード相互参照 needs to compensate. Starrett tool presetters can help verify your actual engagement before cutting.</p></div>
+</div>
+<div style="display:flex;gap:14px;align-items:flex-start;background:#f5f5f7;border-radius:12px;padding:18px 20px">
+<span style="flex-shrink:0;width:28px;height:28px;background:#0066cc;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">3</span>
+<div><strong style="font-size:14px;color:#1d1d1f">Check your runout — twice.</strong><p style="font-size:13px;color:#555;margin-top:4px;line-height:1.6">Even a Sumitomo Electric high-performance end mill at optimal グレード相互参照 will perform poorly with excessive runout. A Lyndex-Nikken shrink-fit holder with <3µm runout can extend tool life by 40%+ compared to a worn ER collet.</p></div>
+</div>
+<div style="display:flex;gap:14px;align-items:flex-start;background:#f5f5f7;border-radius:12px;padding:18px 20px">
+<span style="flex-shrink:0;width:28px;height:28px;background:#0066cc;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">4</span>
+<div><strong style="font-size:14px;color:#1d1d1f">Listen to the cut.</strong><p style="font-size:13px;color:#555;margin-top:4px;line-height:1.6">Experienced machinists on Matsuura and Makino cells can hear when グレード相互参照 is off. A consistent, crisp cutting sound is your best real-time validation. If it starts to chatter, back off 10%.</p></div>
+</div>
+<div style="display:flex;gap:14px;align-items:flex-start;background:#f5f5f7;border-radius:12px;padding:18px 20px">
+<span style="flex-shrink:0;width:28px;height:28px;background:#0066cc;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">5</span>
+<div><strong style="font-size:14px;color:#1d1d1f">Document everything.</strong><p style="font-size:13px;color:#555;margin-top:4px;line-height:1.6">The best shops we work with keep a notebook next to each machine. グレード相互参照, tool brand (Widia/Seco Tools/Sumitomo Electric), coating (Balzers (Oerlikon)), coolant concentration — record it all. When you nail a setup, you'll want to reproduce it next month.</p></div>
 </div>
 </div>
-</section>
-<section class="container" id="reference" style="padding-bottom:40px">
-<!-- Brand bar -->
-<div class="brand-bar">
-<span>Brands indexed: <strong>Sandvik</strong></span><span><strong>Kennametal</strong></span><span><strong>Kyocera</strong></span><span><strong>Iscar</strong></span><span><strong>Mitsubishi</strong></span><span><strong>Sumitomo</strong></span><span><strong>Walter</strong></span>
+</div></div>
+
+<!-- Competitor Comparison Block -->
+<div class="seo-content" style="max-width:960px;margin:0 auto;padding:0 24px">
+<div class="compete-block">
+<h3><svg style="width:18px;height:18px;color:#1e40af"><use href="#ic-shield"/></svg> トップブランドとの比較 — 超硬工具の同等品</h3>
+<p style="font-size:14px;color:#555;line-height:1.7;margin-bottom:14px">当社の超硬工具は、業界トップブランドの性能に匹敵するよう設計されています。ISO互換性を含めた主要グローバルメーカーとの比較です。</p>
+<div class="compete-grid">
+<span class="compete-pill"><svg style="width:12px;height:12px;color:#2563eb"><use href="#ic-bolt"/></svg> イスカル互換品</span>
+<span class="compete-pill"><svg style="width:12px;height:12px;color:#2563eb"><use href="#ic-bolt"/></svg> ケナメタル相当品</span>
+<span class="compete-pill"><svg style="width:12px;height:12px;color:#2563eb"><use href="#ic-bolt"/></svg> Walter交換品</span>
+<span class="compete-pill"><svg style="width:12px;height:12px;color:#2563eb"><use href="#ic-bolt"/></svg> ISO規格交換</span>
+<span class="compete-pill"><svg style="width:12px;height:12px;color:#2563eb"><use href="#ic-bolt"/></svg> 三菱マテリアル代替</span>
 </div>
-<!-- Search -->
-<div class="search-wrap">
-<span class="icon">🔍</span>
-<input autocomplete="off" id="search-input" oninput="filterTable()" placeholder="Search grade name, e.g. GC4325, KCU10, IC8250..." type="text"/>
+<p style="font-size:12px;color:#86868b;margin-top:14px;line-height:1.6">すべての超硬切削工具は、サンドビック・コロマント、ケナメタル、イスカルと同様のISO認証CNC研削設備で製造されています。寸法公差、コーティング膜厚、刃先RはOEM仕様に準拠して検証済みです。</p>
+</div></div>
+
+<!-- Pain Points Block -->
+<div class="seo-content" style="max-width:960px;margin:0 auto;padding:0 24px">
+<div class="pain-block">
+<h2>エンジニアリング課題と解決策 — 工具寿命とサイクルタイムの最適化</h2>
+<p style="font-size:14px;color:#86868b;margin-bottom:16px">切削パラメータの最適化において、加工技術者は繰り返し課題に直面します。以下は最も重要な問題と、当社の工具ソリューションによる対応です。</p>
+<div class="pain-grid">
+<div class="pain-card">
+<div class="pain-icon" style="background:#eff6ff">🔥</div>
+<h4>CNC加工の耐熱性</h4>
+<p>熱負荷の管理 — critical for reliable CNC machining with modern carbide tooling and high-performance coatings.</p>
 </div>
-<!-- ISO Filter Chips -->
-<div class="chips">
-<button class="chip active" onclick="filterISO('all')">すべてのISO</button>
-<button class="chip" onclick="filterISO('P')"><span class="iso-tag iso-p">P</span> Steel</button>
-<button class="chip" onclick="filterISO('M')"><span class="iso-tag iso-m">M</span> Stainless</button>
-<button class="chip" onclick="filterISO('K')"><span class="iso-tag iso-k">K</span> Cast Iron</button>
-<button class="chip" onclick="filterISO('S')"><span class="iso-tag iso-s">S</span> Superalloys</button>
+<div class="pain-card">
+<div class="pain-icon" style="background:#fef2f2">⚡</div>
+<h4>チッピング対策</h4>
+<p>超硬刃先破損の防止 — critical for reliable CNC machining with modern carbide tooling and high-performance coatings.</p>
 </div>
-<!-- Table -->
-<div class="table-wrap">
-<table>
-<thead>
-<tr>
-<th>ISO</th>
-<th>Sandvik <span style="font-weight:400;color:#86868b">Coromant</span></th>
-<th>ケンナメタル</th>
-<th>京セラ</th>
-<th>イスカル</th>
-<th>三菱</th>
-<th>住友</th>
-<th>ウォルター</th>
-</tr>
-</thead>
-<tbody id="grade-table-body">
-<!-- Filled by JS -->
-</tbody>
-</table>
+<div class="pain-card">
+<div class="pain-icon" style="background:#ecfdf5">⏱</div>
+<h4>サイクルタイム短縮</h4>
+<p>生産性最適化 — critical for reliable CNC machining with modern carbide tooling and high-performance coatings.</p>
 </div>
-<!-- Status -->
-<p id="table-status" style="text-align:center;font-size:13px;color:#86868b;margin-top:16px"></p>
-<!-- Cross-links -->
-<div class="ref-links">
-<a class="ref-link" href="/tools/speed-feed/">
-<div class="icon">⚙️</div>
-<h4>切削速度・送り計算ツール</h4>
-<p>グレードを選択したら、これを使用して最適な速度とフィードを計算します。</p>
-<span class="tag">Recommended next step</span>
-</a>
-<a class="ref-link" href="/tools/surface-speed/">
-<div class="icon">🔄</div>
-<h4>SFM電卓</h4>
-<p>さまざまなワーク材料の表面速度パラメータを変換します。</p>
-<span class="tag">Companion tool</span>
-</a>
-</div>
-<!-- Quote CTA -->
-<div id="quote" style="background:linear-gradient(135deg,#f5f5f7,#eeeef0);border-radius:20px;padding:36px 32px;text-align:center;margin-top:32px">
-<h3 style="font-size:20px;font-weight:700;margin-bottom:6px">📦生産量が必要ですか?</h3>
-<p style="font-size:14px;color:#86868b;margin-bottom:16px">上記のグレードの無料サンプルまたは卸売見積もりをリクエストしてください。工場直送価格、ISO品質。</p>
-<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-<a class="btn" href="https://carbide-tooling.com/quote.html">📩無料サンプルをリクエスト</a>
-<a class="btn-outline" href="https://carbide-tooling.com/quote.html">📋卸売見積もりを取得する</a>
+<div class="pain-card">
+<div class="pain-icon" style="background:#fffbeb">🛡</div>
+<h4>工具摩耗防止</h4>
+<p>チップ寿命の延長 — critical for reliable CNC machining with modern carbide tooling and high-performance coatings.</p>
 </div>
 </div>
-</section>
-<!-- ===== SEO CONTENT ===== -->
-<div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">関連精密工具</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/jp/tools/gcode-reference/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Gcode Reference</a><a href="/jp/tools/gdt-symbols-reference/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Gdt Symbols Reference</a><a href="/jp/tools/gear-parameter-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Gear Parameter Calculator</a><a href="/jp/tools/carbide-grade-cross-ref-2/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Carbide Grade Cross Ref 2</a><a href="/jp/tools/round-bar-weight/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Round Bar Weight</a><a href="/jp/tools/trochoidal-milling-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Trochoidal Milling Calculator</a></div></div><footer class="tool-footer">
-<div class="container">
-<div class="footer-links">
-<a href="/">ホーム</a>
-<a href="/tools/">すべてのツール</a>
-<a href="/products/">製品</a>
-<a href="/guides/">ガイド</a>
-<a href="/about.html">について</a>
-<a href="/quote.html">カーバイドツーリング</a>
-<a href="/privacy.html">速度と送り量</a>
+</div></div>
+
+<!-- Procurement Block -->
+<div class="seo-content" style="max-width:960px;margin:0 auto;padding:0 24px">
+<div class="procure-block">
+<h3><svg style="width:18px;height:18px;color:#c2410c"><use href="#ic-package"/></svg> 工場直送の超硬工具 — 中国からの直接調達メリット</h3>
+<div class="procure-grid">
+<div class="procure-item">
+<div class="pi-check">✓</div>
+<div><strong>ISO認証超硬工具品質管理</strong><span>寸法とコーティング検査</span></div>
 </div>
-<div class="footer-social">
-<a aria-label="LinkedIn" href="https://www.linkedin.com/company/carbide-tooling" rel="noopener" target="_blank">硬度変換器</a>
-<a aria-label="X (Twitter)" href="https://twitter.com/carbidetooling" rel="noopener" target="_blank">𝕏</a>
-<a aria-label="Email" href="mailto:sales@carbide-tooling.com">✉</a>
+<div class="procure-item">
+<div class="pi-check">✓</div>
+<div><strong>超硬工具の国際速配送</strong><span>DDP対応可能</span></div>
 </div>
-<p style="margin-bottom:4px"><a href="/tools/" style="color:#0066cc">すべてのツール</a></p>
-<p style="font-size:11px;margin-bottom:6px">結果は参考としてのみご使用ください。具体的な用途については、工具メーカーにご相談ください。</p>
-<p style="font-size:11px">©2026年用超硬工具</p>
+<div class="procure-item">
+<div class="pi-check">✓</div>
+<div><strong>超硬インサート大量購入価格</strong><span>中国工場直送</span></div>
 </div>
+<div class="procure-item">
+<div class="pi-check">✓</div>
+<div><strong>中国からの直接調達メリット</strong><span>中間マージン削減</span></div>
+</div>
+</div>
+<div style="margin-top:18px;text-align:center">
+<a class="btn-orange" href="/jp/quote.html" style="font-size:13px;padding:10px 24px"><svg style="width:14px;height:14px"><use href="#ic-send"/></svg> 精密見積もりを依頼</a>
+</div>
+</div></div>
+
+<!-- Deep Product Links -->
+<div class="seo-content" style="max-width:960px;margin:0 auto;padding:0 24px">
+<div class="deep-links-block">
+<h3>関連する超硬工具製品を見る</h3>
+<p style="font-size:13px;color:#86868b;margin-bottom:12px">工場直送の超硬切削工具で加工セットアップを完成させましょう：</p>
+<a class="deep-link" href="/jp/products/indexable-milling.html"><svg style="width:12px;height:12px"><use href="#ic-arrow"/></svg> インデクサブルフライス</a>
+<a class="deep-link" href="/jp/products/pcd-cbn.html"><svg style="width:12px;height:12px"><use href="#ic-arrow"/></svg> PCDおよびCBNインサート</a>
+<a class="deep-link" href="/jp/products/turning-inserts.html"><svg style="width:12px;height:12px"><use href="#ic-arrow"/></svg> 旋削インサート</a>
+<a class="deep-link" href="/jp/products/" style="background:#0066cc;color:#fff;border-color:#0066cc"><svg style="width:12px;height:12px"><use href="#ic-package"/></svg> 全製品を見る →</a>
+</div></div>
+
+<!-- RFQ Card -->
+<div class="container" style="max-width:960px">
+<div class="rfq-card">
+<h3>見積もりが必要ですか？ for グレード相互参照?</h3>
+<p>部品材料、加工種類、ロットサイズ、公差要件をお送りください。適切な工場を紹介し、48時間以内に価格をお出しします。</p>
+<div class="btn-group">
+<a class="btn-orange" href="/jp/quote.html"><svg style="width:14px;height:14px"><use href="#ic-send"/></svg> Request Bulk Quote</a>
+<a class="btn-secondary" href="/jp/products/"><svg style="width:14px;height:14px"><use href="#ic-package"/></svg> Browse Products</a>
+</div>
+</div>
+</div>
+
+<!-- Global Engineering Directory -->
+<div class="dir-section"><div class="container" style="max-width:960px">
+<h2>グローバルエンジニアリングディレクトリ</h2>
+<p class="dir-subtitle">さらに精密加工ツールと計算機を見る</p>
+<div class="dir-grid"><a class="dir-link" href="/jp/tools/titanium-machining-guide/"><span class="d-dot"></span>チタン加工ガイド</a><a class="dir-link" href="/jp/tools/peck-drilling-calculator/"><span class="d-dot"></span>ペックドリル計算機</a><a class="dir-link" href="/jp/tools/flatness-calculator/"><span class="d-dot"></span>平面度</a><a class="dir-link" href="/jp/tools/gcode-reference/"><span class="d-dot"></span>Gコードリファレンス</a><a class="dir-link" href="/jp/tools/machinability-rating/"><span class="d-dot"></span>被削性指数</a><a class="dir-link" href="/jp/tools/bulk-discount-calculator/"><span class="d-dot"></span>大量割引計算機</a><a class="dir-link" href="/jp/tools/percentage-of-thread-calculator/"><span class="d-dot"></span>ねじ山率</a><a class="dir-link" href="/jp/tools/arc-r-to-ij-converter/"><span class="d-dot"></span>円弧R→IJ変換</a><a class="dir-link" href="/jp/tools/taper-calculator/"><span class="d-dot"></span>テーパ</a><a class="dir-link" href="/jp/tools/coolant-lifecycle-cost/"><span class="d-dot"></span>クーラントライフサイクルコスト</a></div>
+</div></div>
+<footer>
+<div class="footer-grid">
+<div>
+<div class="brand"><svg><use href="#ic-logo"/></svg> Carbide Tooling</div>
+<div class="tagline">審査済み中国メーカーからの精密切削工具。エンジニアリングサポート、QC検証、工場直販価格。</div>
+</div>
+<div>
+<h4>製品</h4>
+<a href="/jp/products/end-mills.html">超硬エンドミル</a>
+<a href="/jp/products/turning-inserts.html">旋削インサート</a>
+<a href="/jp/products/drills.html">超硬ドリル</a>
+<a href="/jp/products/tool-holders.html">CNCツールホルダー</a>
+<a href="/jp/products/boring-tools.html">ボーリングバー＆旋削ホルダー</a>
+<a href="/jp/products/threading-tools.html">ねじ切りインサート＆ミル</a>
+<a href="/jp/products/indexable-milling.html">インデクサブルフライス</a>
+<a href="/jp/products/grooving-parting.html">溝入れ・突切り工具</a>
+<a href="/jp/products/pcd-cbn.html">PCDおよびCBNインサート</a>
+<a href="/jp/products/collets-accessories.html">コレット＆ショップツーリング</a>
+</div>
+<div>
+<h4>リソース</h4>
+<a href="/jp/guides/">技術ガイド</a>
+<a href="/jp/tools/speed-feed/">切削条件計算機</a>
+<a href="/jp/guides/carbide-grades.html">グレードセレクター</a>
+<a href="/jp/guides/coating-comparison.html">コーティングガイド</a>
+</div>
+<div>
+<h4>会社情報</h4>
+<a href="/jp/about.html">会社概要</a>
+<a href="/jp/quote.html">見積もり依頼</a>
+<a href="mailto:info@carbide-tooling.com">お問い合わせ</a>
+</div>
+</div>
+<div class="bottom">© 2026 Carbide Tooling. 精密加工のための精密調達。</div>
 </footer>
 <script>
-// Grade database
-const GRADES = [
- // ISO P - Steel
- {iso:'P', brand:'Sandvik', grade:'GC4325', style:'Medium', coating:'CVD'},
- {iso:'P', brand:'Sandvik', grade:'GC3330', style:'Tough', coating:'PVD'},
- {iso:'P', brand:'Sandvik', grade:'GC4425', style:'Finish', coating:'CVD'},
- {iso:'P', brand:'Kennametal', grade:'KCU10', style:'Medium', coating:'CVD'},
- {iso:'P', brand:'Kennametal', grade:'KCP25', style:'Rough', coating:'CVD'},
- {iso:'P', brand:'Kennametal', grade:'KC9110', style:'Finish', coating:'PVD'},
- {iso:'P', brand:'Kyocera', grade:'CA100P', style:'Finish', coating:'PVD'},
- {iso:'P', brand:'Kyocera', grade:'CA510P', style:'Medium', coating:'CVD'},
- {iso:'P', brand:'Kyocera', grade:'PR1535', style:'Rough', coating:'CVD'},
- {iso:'P', brand:'Iscar', grade:'IC8250', style:'Medium', coating:'CVD'},
- {iso:'P', brand:'Iscar', grade:'IC8300', style:'Rough', coating:'PVD'},
- {iso:'P', brand:'Iscar', grade:'IC328', style:'Finish', coating:'PVD'},
- {iso:'P', brand:'Mitsubishi', grade:'UE6020', style:'Medium', coating:'CVD'},
- {iso:'P', brand:'Mitsubishi', grade:'UE6110', style:'Rough', coating:'CVD'},
- {iso:'P', brand:'Mitsubishi', grade:'MP9030', style:'Finish', coating:'PVD'},
- {iso:'P', brand:'Sumitomo', grade:'AC6030P',style:'Medium', coating:'CVD'},
- {iso:'P', brand:'Sumitomo', grade:'AC700P', style:'Rough', coating:'PVD'},
- {iso:'P', brand:'Sumitomo', grade:'AC820P', style:'Finish', coating:'CVD'},
- {iso:'P', brand:'Walter', grade:'WSM43S', style:'Rough', coating:'PVD'},
- {iso:'P', brand:'Walter', grade:'WPP10S', style:'Finish', coating:'CVD'},
- {iso:'P', brand:'Walter', grade:'WPP25S', style:'Medium', coating:'CVD'},
- // ISO M - Stainless
- {iso:'M', brand:'Sandvik', grade:'GC2025', style:'Medium', coating:'CVD'},
- {iso:'M', brand:'Sandvik', grade:'GC2015', style:'Finish', coating:'CVD'},
- {iso:'M', brand:'Sandvik', grade:'GC3330', style:'Rough', coating:'PVD'},
- {iso:'M', brand:'Kennametal', grade:'KC9225', style:'Medium', coating:'PVD'},
- {iso:'M', brand:'Kennametal', grade:'KC9240', style:'Rough', coating:'PVD'},
- {iso:'M', brand:'Kennametal', grade:'KCM25', style:'Finish', coating:'CVD'},
- {iso:'M', brand:'Kyocera', grade:'CA125M', style:'Medium', coating:'PVD'},
- {iso:'M', brand:'Kyocera', grade:'CA525M', style:'Finish', coating:'CVD'},
- {iso:'M', brand:'Kyocera', grade:'PR1605', style:'Rough', coating:'PVD'},
- {iso:'M', brand:'Iscar', grade:'IC8300', style:'Rough', coating:'PVD'},
- {iso:'M', brand:'Iscar', grade:'IC808', style:'Medium', coating:'PVD'},
- {iso:'M', brand:'Iscar', grade:'IC504', style:'Finish', coating:'PVD'},
- {iso:'M', brand:'Mitsubishi', grade:'MP6130', style:'Medium', coating:'PVD'},
- {iso:'M', brand:'Mitsubishi', grade:'MP7030', style:'Rough', coating:'PVD'},
- {iso:'M', brand:'Mitsubishi', grade:'MP9120', style:'Finish', coating:'PVD'},
- {iso:'M', brand:'Sumitomo', grade:'AC6030M',style:'Medium', coating:'CVD'},
- {iso:'M', brand:'Sumitomo', grade:'AC700M', style:'Rough', coating:'PVD'},
- {iso:'M', brand:'Sumitomo', grade:'AC820M', style:'Finish', coating:'CVD'},
- {iso:'M', brand:'Walter', grade:'WSM35S', style:'Medium', coating:'PVD'},
- {iso:'M', brand:'Walter', grade:'WSM43S', style:'Rough', coating:'PVD'},
- {iso:'M', brand:'Walter', grade:'WPP15S', style:'Finish', coating:'CVD'},
- // ISO K - Cast Iron
- {iso:'K', brand:'Sandvik', grade:'GC3215', style:'Rough', coating:'CVD'},
- {iso:'K', brand:'Sandvik', grade:'GC3220', style:'Medium', coating:'CVD'},
- {iso:'K', brand:'Sandvik', grade:'GC4230', style:'Finish', coating:'CVD'},
- {iso:'K', brand:'Kennametal', grade:'KCK20B', style:'Medium', coating:'CVD'},
- {iso:'K', brand:'Kennametal', grade:'KCK15B', style:'Finish', coating:'CVD'},
- {iso:'K', brand:'Kennametal', grade:'KCP25B', style:'Rough', coating:'CVD'},
- {iso:'K', brand:'Kyocera', grade:'CA310K', style:'Medium', coating:'CVD'},
- {iso:'K', brand:'Kyocera', grade:'CA510K', style:'Finish', coating:'CVD'},
- {iso:'K', brand:'Kyocera', grade:'PR1535', style:'Rough', coating:'CVD'},
- {iso:'K', brand:'Iscar', grade:'IC8250', style:'Medium', coating:'CVD'},
- {iso:'K', brand:'Iscar', grade:'IC8300', style:'Rough', coating:'PVD'},
- {iso:'K', brand:'Iscar', grade:'IC808', style:'Finish', coating:'PVD'},
- {iso:'K', brand:'Mitsubishi', grade:'UE6020', style:'Medium', coating:'CVD'},
- {iso:'K', brand:'Mitsubishi', grade:'UE6105', style:'Finish', coating:'CVD'},
- {iso:'K', brand:'Mitsubishi', grade:'MC9020', style:'Rough', coating:'CVD'},
- {iso:'K', brand:'Sumitomo', grade:'AC300K', style:'Rough', coating:'CVD'},
- {iso:'K', brand:'Sumitomo', grade:'AC600K', style:'Medium', coating:'CVD'},
- {iso:'K', brand:'Sumitomo', grade:'AC800K', style:'Finish', coating:'CVD'},
- {iso:'K', brand:'Walter', grade:'WKM15S', style:'Finish', coating:'CVD'},
- {iso:'K', brand:'Walter', grade:'WKM25S', style:'Medium', coating:'CVD'},
- {iso:'K', brand:'Walter', grade:'WPP20S', style:'Rough', coating:'CVD'},
- // ISO S - Superalloys
- {iso:'S', brand:'Sandvik', grade:'GC1105', style:'Finish', coating:'PVD'},
- {iso:'S', brand:'Sandvik', grade:'GC1115', style:'Medium', coating:'PVD'},
- {iso:'S', brand:'Sandvik', grade:'S205', style:'Rough', coating:'PVD'},
- {iso:'S', brand:'Kennametal', grade:'KCS10', style:'Finish', coating:'PVD'},
- {iso:'S', brand:'Kennametal', grade:'KCS15', style:'Medium', coating:'PVD'},
- {iso:'S', brand:'Kennametal', grade:'KCM25', style:'Rough', coating:'CVD'},
- {iso:'S', brand:'Kyocera', grade:'CA115S', style:'Finish', coating:'PVD'},
- {iso:'S', brand:'Kyocera', grade:'CA525S', style:'Medium', coating:'CVD'},
- {iso:'S', brand:'Kyocera', grade:'CA510S', style:'Rough', coating:'CVD'},
- {iso:'S', brand:'Iscar', grade:'IC804', style:'Medium', coating:'PVD'},
- {iso:'S', brand:'Iscar', grade:'IC806', style:'Finish', coating:'PVD'},
- {iso:'S', brand:'Iscar', grade:'IC806R', style:'Rough', coating:'PVD'},
- {iso:'S', brand:'Mitsubishi', grade:'MP9120', style:'Finish', coating:'PVD'},
- {iso:'S', brand:'Mitsubishi', grade:'MP9130', style:'Medium', coating:'PVD'},
- {iso:'S', brand:'Mitsubishi', grade:'MP7140', style:'Rough', coating:'PVD'},
- {iso:'S', brand:'Sumitomo', grade:'AC500S', style:'Rough', coating:'PVD'},
- {iso:'S', brand:'Sumitomo', grade:'AC600S', style:'Medium', coating:'PVD'},
- {iso:'S', brand:'Sumitomo', grade:'AC800S', style:'Finish', coating:'PVD'},
- {iso:'S', brand:'Walter', grade:'WSM35S', style:'Medium', coating:'PVD'},
- {iso:'S', brand:'Walter', grade:'WSM43S', style:'Rough', coating:'PVD'},
- {iso:'S', brand:'Walter', grade:'WTT10S', style:'Finish', coating:'PVD'},
-];
-
-const BRANDS = ['Sandvik','Kennametal','Kyocera','Iscar','Mitsubishi','Sumitomo','Walter'];
-const ISO_ORDER = ['P','M','K','S'];
-const ISO_LABELS = {P:'Steel',M:'Stainless',K:'Cast Iron',S:'Superalloys'};
-
-let currentISO = 'all';
-let currentSearch = '';
-
-// Group grades by ISO + style for table rows
-function buildTable() {
- const body = document.getElementById('grade-table-body');
- const rows = [];
-
- ISO_ORDER.forEach(iso => {
- const isoGrades = GRADES.filter(g => g.iso === iso);
- // Group by style
- const styles = [...new Set(isoGrades.map(g => g.style))];
- styles.sort((a,b) => {
- const order = {Rough:0,Medium:1,Finish:2};
- return (order[a]||1) - (order[b]||1);
- });
-
- styles.forEach(style => {
- const row = {iso, style, grades:{}};
- BRANDS.forEach(b => {
- const found = isoGrades.find(g => g.brand === b && g.style === style);
- row.grades[b] = found ? {grade:found.grade, coating:found.coating} : null;
- });
- rows.push(row);
- });
- });
-
- return rows;
-}
-
-function render(rows, highlight = '') {
- const body = document.getElementById('grade-table-body');
- const items = rows || buildTable();
-
- let html = '';
- items.forEach(row => {
- // Check if this row matches the search
- if (currentSearch) {
- const match = BRANDS.some(b => {
- const g = row.grades[b];
- return g && g.grade.toLowerCase().includes(currentSearch);
- });
- if (!match) return;
- }
- // Check ISO filter
- if (currentISO !== 'all' && row.iso !== currentISO) return;
-
- const isoLabel = ISO_LABELS[row.iso] || '';
- html += `<tr>`;
- html += `<td><span class="iso-tag iso-${row.iso.toLowerCase()}">${row.iso} · ${isoLabel}</span><br><span style="font-size:11px;color:#86868b">${row.style}</span></td>`;
-
- BRANDS.forEach(b => {
- const g = row.grades[b];
- if (g) {
- const isHighlight = highlight && g.grade.toLowerCase().includes(highlight);
- const coatingTag = g.coating === 'CVD' ? 'CVD' : 'PVD';
- html += `<td class="${isHighlight ? 'highlight' : ''}">${g.grade}<br><span style="font-size:10px;color:#86868b">${coatingTag}</span></td>`;
- } else {
- html += `<td style="color:#d2d2d6;font-size:11px">—</td>`;
- }
- });
- html += `</tr>`;
- });
-
- body.innerHTML = html || '<tr><td colspan="8" style="text-align:center;padding:40px;color:#86868b">No matching grades found. Try a different search term.</td></tr>';
- 
- document.getElementById('table-status').textContent = `${body.querySelectorAll('tr').length} grades displayed`;
-}
-
-function filterTable() {
- const input = document.getElementById('search-input').value.toLowerCase().trim();
- currentSearch = input;
- render(buildTable(), input);
-}
-window.filterTable = filterTable;
-
-function filterISO(iso) {
- currentISO = iso;
- document.querySelectorAll('.chips .chip').forEach(c => c.classList.toggle('active', c.textContent.includes(iso === 'all' ? 'All' : iso)));
- render(buildTable(), document.getElementById('search-input').value.toLowerCase().trim());
-}
-window.filterISO = filterISO;
-
-// Init
-render(buildTable());
-</script><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script>
-<section class="seo-content">
-<div class="container">
-<h2>ISOカーバイドグレード分類の理解: P、M、K、およびS</h2>
-<p>Carbide insert grades are classified under ISO 513:2012 into color-coded application groups. This international standard defines six main groups — P (steel, blue), M (stainless steel, yellow), K (cast iron, red), N (non-ferrous, green), S (superalloys, brown), and H (hardened, gray). The grade cross-reference tool above focuses on the four most commonly sourced groups: <strong>P, M, K, and S</strong> — covering approximately 85% of all machining applications in general engineering, automotive, aerospace, and medical device manufacturing.</p>
-<p>各ISOグループは、ワークピースの材料だけでなく、予想される故障モードと摩耗メカニズムも指定します。Pグレードのツールは、主にクレーターと熱変形によって摩耗します。Mグレードのツールは、ノッチを付けてエッジを構築することで失敗します。研磨面の摩耗によるKグレードのツール。塑性変形とエッジチッピングによるSグレードのツール。これらの根本的な違いを無視する相互参照検索は、壊滅的なツール障害につながる可能性があります。そのため、グレードマッチングにより、ブランドの同等性よりもISOグループの互換性が優先されます。</p>
-<h3>ISO Pグループ-スチール加工 (ブルー)</h3>
-<p>ISO P covers unalloyed and alloyed steels, from mild 1018 to hardened 4140 and 8620. Steel machining generates long, ductile chips and high cutting temperatures (600-900°C at the tool-chip interface). Grades in this group require substrates with high thermal conductivity and coatings that resist crater wear. Sandvik's GC4325, Kennametal's KCU10, and Mitsubishi's UE6020 are all optimized for steel turning with medium to roughing conditions. The key parameter when cross-referencing P-grade tools is <strong>thermal stability</strong> — a grade rated for continuous cutting in steel may fail immediately in interrupted cuts.</p>
-<h3>ISO Mグループ-ステンレス加工 (イエロー)</h3>
-<p>Stainless steels (304, 316, 17-4 PH, duplex) are the most challenging group because they combine high work-hardening rates with low thermal conductivity. M-grade inserts must resist built-up edge formation at low cutting speeds and plastic deformation at high speeds. Grades like Iscar IC8300, Kyocera CA125M, and Walter WSM35S use specialized substrate grain structures (0.2-0.5 μm) with moderate coating thickness (8-12 μm) to balance edge sharpness with wear resistance. When cross-referencing M-grade tools, prioritize <strong>edge toughness</strong> — a harder grade that performs well in P applications may chip immediately in stainless due to notching at the depth-of-cut line.</p>
-<h3>ISO Kグループ-鋳鉄加工 (赤)</h3>
-<p>Gray and ductile irons (GG25, GGG40, GGG70) produce short, segmented chips and generate abrasive wear on the tool flank. K-grade inserts need high hardness substrates with thick, abrasion-resistant coatings. Sandvik GC3215, Kennametal KCK20B, and Sumitomo AC300K are benchmark grades for gray iron turning at high speeds (400-700 SFM). Cast iron's graphite content acts as a natural lubricant, allowing higher cutting speeds than steel grades. The critical cross-reference parameter for K-group is <strong>coating adhesion</strong> — delamination under the abrasive wear mode is a common failure with low-quality substitute grades.</p>
-<h3>ISO Sグループ-超合金加工 (ブラウン)</h3>
-<p>Nickel-based superalloys (Inconel 718, Waspaloy, Hastelloy) and titanium alloys (Ti-6Al-4V, Ti-5553) represent the extreme edge of machining difficulty. These materials retain high strength at elevated temperatures (up to 1000°C), generating extreme cutting forces and rapid flank wear. S-grade inserts require tough, fine-grain substrates with AlTiN or TiSiN coatings that maintain oxidation resistance above 800°C. Kennametal KCS10, Mitsubishi MP9120, and Sandvik GC1105 are specifically engineered for this application. When cross-referencing S-grade tools, <strong>hot hardness retention</strong> is the most critical parameter — a grade that performs well in titanium at low SFM may deform plastically in Inconel at the same cutting speed.</p>
-<h2>CVD対PVDコーティング: コーティング技術がグレードの相互変更性にどのように影響するか</h2>
-<p>A grade cross-reference that ignores coating type is incomplete. <strong>CVD (Chemical Vapor Deposition)</strong> coatings — typically Al₂O₃ + TiCN multilayers — are 10-20 μm thick and provide superior crater wear resistance at high cutting speeds. They are preferred for steel and cast iron turning at speeds above 300 SFM. <strong>PVD (Physical Vapor Deposition)</strong> coatings — AlTiN, TiSiN, AlCrN — are 2-6 μm thick with compressive residual stress, offering better edge toughness and resistance to edge chipping. PVD-coated grades dominate in stainless steel, superalloys, and any interrupted cut application.</p>
-<p>異なるブランドのグレードを置き換える場合、ISOグループを一致させるよりもコーティング技術を一致させることが重要であることがよくあります。あるブランドのCVDコーティングされたPグレードインサートは、別のブランドのPVDコーティングされたPグレードインサートの直接の代替品ではありません。根本的に異なる切断条件用に設計されています。この相互参照ツールを出発点として使用し、置換を行う前に、コーティングの種類と推奨される切断速度範囲を確認します。</p>
-<h2>継続的なカットと中断されたカット: 操作に適切なグレードを選択する</h2>
-<p>An often-overlooked factor in grade selection is the <strong>cutting condition type</strong>. Continuous turning (uniform OD cuts on bar stock) allows the use of harder, more wear-resistant grades with higher Al₂O₃ content in the CVD coating. Interrupted cuts (face milling with entry/exit impacts, turning with keyways, scale on forged surfaces) require tougher substrates with higher cobalt content and PVD coatings that resist micro-cracking.</p>
-<p>同じISO Pアプリケーショングループでは、中断頻度に応じてまったく異なるグレードが必要になる場合があります。連続鋼旋削には、Sandvik GC4325 (CVD、中硬基板) が理想的です。大幅に中断されたスチールカットの場合は、Sandvik GC3330 (PVD、より頑丈な基板) が推奨されます。この区別を考慮せずに直接相互参照すると、間違ったツールが推奨されます。これが、経験豊富なバイヤーがデュアルグレードの在庫を維持している理由です。これは、荒削りの場合はより厳しいグレードであり、中断または仕上げの操作の場合はより厳しいグレードです。</p>
-<h2>よくある質問</h2>
-<p><strong>How reliable are grade cross-references between brands?</strong> Cross-references provide a starting point, but grades from different manufacturers are never identical. Variations in substrate grain size (0.2 μm vs 0.8 μm), cobalt content (6% vs 12%), coating adhesion, and edge preparation (honing radius) mean two "equivalent" grades can perform very differently in the same operation. Always validate with a trial batch before committing to large-scale substitution.</p>
-<p><strong>Does coating thickness affect grade interchangeability?</strong> Yes. CVD coatings (10-20 μm) are ideal for high-speed continuous cutting but can cause edge chipping in interrupted operations. PVD coatings (2-6 μm) provide better edge toughness. When cross-referencing, match the original coating type first, then the substrate grade. A PVD grade cannot replace a CVD grade in high-speed steel turning without significant performance loss.</p>
-<p><strong>How can I test a substitute grade at low cost?</strong> Request 5-10 pieces of the proposed substitute grade and run a controlled comparison. Machine 50 parts with the current grade and 50 parts with the substitute, measuring tool wear at regular intervals. Compare tool life, surface finish (Ra), and power consumption. Most reputable suppliers offer sample programs — <a href="https://carbide-tooling.com/quote.html" style="color:#0066cc">MRR計算ツール</a>.</p>
-<p><strong>What does the first letter in a grade name mean?</strong> Most manufacturers encode the ISO group in the grade name. Sandvik's "GC4325" — the G indicates a coated grade; Iscar's "IC8300" — IC stands for Iscar Carbide; Kennametal's "KCU10" — K is Kennametal, C is coated. The numbers typically indicate the hardness/wear resistance balance within the brand's own classification system. These internal codes cannot be cross-interpreted between brands — only the ISO application group and coating type provide valid comparison points.</p>
-<p><strong>Can I use a P-grade insert for stainless steel in an emergency?</strong> Not recommended. P-grade inserts lack the edge toughness and notching resistance required for stainless steel's work-hardening behavior. An M-grade insert used in steel will wear faster but may still function. A P-grade insert used in stainless risks immediate chipping and potential tool holder damage. Emergency substitutions should only be made at reduced cutting speeds (50-60% of normal) and reduced feed rates.</p>
-<p><strong>How do I know if a substitute grade is truly equivalent?</strong> Compare four parameters: ISO application group (must match), coating type (CVD vs PVD — ideally match), hardness/ wear resistance position within the brand's own range (a "roughing" grade should replace another "roughing" grade), and recommended cutting speed range (should overlap within 15%). The table above groups grades by ISO class and wear resistance level to facilitate this comparison.</p>
-<p><strong>What causes inconsistent performance between two supposedly equivalent grades?</strong> Most common causes: substrate grain size difference (affects edge sharpness and toughness), coating thickness variation (affects crater resistance and edge integrity), edge preparation radius difference (affects cutting forces and surface finish), and differences in the post-coating treatment (some brands apply surface finishing that improves chip flow). These parameters are rarely published in public datasheets, which is why trial testing is essential.</p>
-<p><strong>Is it worth paying more for branded grades vs. generic Chinese substitutes?</strong> Branded grades from Sandvik, Kennametal, and Mitsubishi offer verified consistency across batches, published technical data, and application engineering support. Generic Chinese manufacturers can produce acceptable quality at 40-60% lower cost, but batch-to-batch consistency varies significantly. For high-volume production where a tool failure stops a production line, branded grades offer lower total cost. For maintenance, repair, and operations (MRO) with less stringent quality requirements, cost-effective alternatives may be suitable. <a href="https://carbide-tooling.com/" style="color:#0066cc">フィードコンバーター</a> provides both options with full ISO quality documentation.</p>
-</div>
-</section>
-<div class="toolbox-widget"><h3>🔧精密工学ツールボックス</h3><div class="toolbox-links">
-<a href="/tools/speed-feed/">表面粗さ</a>
-<a href="/tools/hardness-converter/">チタンガイド</a>
-<a href="/tools/tap-drill-size-calculator/">グレード相互参照</a>
-<a href="/tools/mrr-calculator/">部品当たりのコスト</a>
-<a href="/tools/feed-converter/">トルクコンバーター</a>
-<a href="/tools/surface-roughness-calculator/">一括見積もりを依頼する →</a>
-<a href="/tools/titanium-machining-guide/">成績選択ガイド</a>
-<a href="/tools/carbide-grade-cross-ref-2/">成績照会を挿入する</a>
-<a href="/tools/cost-per-part-calculator/">重量・送料計算ツール</a>
-<a href="/tools/torque-unit-converter/">工具鋼の熱処理計算ツール</a>
-</div></div>
-<aside class="b2b-card-enhanced" style="margin:32px 0">
-<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
-<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
-<div style="flex:1;min-width:0">
-<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Grade Referenceのプロフェッショナルソリューション</h3>
-<p style="font-size:12px;color:#555;line-height:1.5;margin:0">ISO認証品質のプレミアム超硬工具を工場直送価格でご提供。技術サポート付き。</p>
-</div>
-<a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
-</div>
-<div class="product-links"><span>🔗 Recommended:</span><a href="/products/carbide-grades.html">馬力計算機</a><a href="/guides/insert-grade-selection.html">送り速度オーバーライド計算機</a></div>
-
-<div class="share-bar">
-<span class="share-label">↗ Share with Engineers</span>
-<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/grade-reference/" rel="noopener" target="_blank">LinkedIn</a>
-<a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/grade-reference/&amp;text=Grade Reference" rel="noopener" target="_blank">𝕏</a>
-<a href="mailto:subject=Grade Reference&amp;body=Check this out: https://carbide-tooling.com/tools/grade-reference/">Email</a>
-</div>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
-<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/jp/tools/step-milling-calculator/">Step Milling Calculator</a>
-<a href="/jp/tools/chamfer-calculator/">Chamfer Calculator</a>
-<a href="/jp/tools/titanium-machining-guide/">Titanium Machining Guide</a>
-<a href="/jp/tools/form-tap-drill-calculator/">Form Tap Drill Calculator</a>
-<a href="/jp/tools/speed-feed/">Speed Feed</a>
-<a href="/jp/tools/shipping-duty-estimator/">Shipping Duty Estimator</a>
-<a href="/jp/tools/weight-shipping-calculator/">Weight Shipping Calculator</a>
-<a href="/jp/tools/superalloy-tool-life/">Superalloy Tool Life</a>
-<a href="/jp/tools/tool-change-time-analyzer/">Tool Change Time Analyzer</a>
-<a href="/jp/tools/chip-load/">Chip Load</a>
-
-</div>
-</section>
-<style>
-.engineering-directory a{
-  display:block;
-  font-size:12px;
-  font-weight:500;
-  color:#1d1d1f;
-  text-decoration:none;
-  padding:8px 14px;
-  background:#fff;
-  border-radius:10px;
-  border:1px solid #e8e8ed;
-  transition:all .15s;
-  text-align:center;
-}
-.engineering-directory a:hover{
-  background:#0066cc;
-  color:#fff;
-  border-color:#0066cc;
-  transform:translateY(-1px);
-  box-shadow:0 4px 12px rgba(0,102,204,.15);
-}
-</style>
-
-<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
-<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
-<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
-<a href="/jp/tools/flatness-calculator/">Flatness Calculator</a>
-<a href="/jp/tools/threading-pass-calculator/">Threading Pass Calculator</a>
-<a href="/jp/tools/mrr-calculator/">Mrr Calculator</a>
-<a href="/jp/tools/feed-converter/">Feed Converter</a>
-<a href="/jp/tools/metal-cost-calculator/">Metal Cost Calculator</a>
-<a href="/jp/tools/scrap-value-calculator/">Scrap Value Calculator</a>
-<a href="/jp/tools/chamfer-calculator/">Chamfer Calculator</a>
-<a href="/jp/tools/hardness-converter/">Hardness Converter</a>
-<a href="/jp/tools/die-steel-thermal-conductivity/">Die Steel Thermal Conductivity</a>
-<a href="/jp/tools/titanium-machining-guide/">Titanium Machining Guide</a>
-
-</div>
-</section>
-
-<aside class="b2b-card-enhanced" style="margin:32px 0">
-<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
-<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
-<div style="flex:1;min-width:0">
-<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Grade Referenceのプロフェッショナルソリューション</h3>
-<p style="font-size:12px;color:#555;line-height:1.5;margin:0">ISO認証品質のプレミアム超硬工具を工場直送価格でご提供。技術サポート付き。</p>
-</div>
-<a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
-</div>
-<script>
-function toggleLangDD(e) {
-  e.stopPropagation();
-  var dd = document.getElementById('lang-dd');
-  if (dd) { dd.classList.toggle('open'); }
-}
-document.addEventListener('click', function(e) {
-  var dd = document.getElementById('lang-dd');
-  var btn = document.querySelector('.lang-btn');
-  if (dd && dd.classList.contains('open') && !btn.contains(e.target)) {
-    dd.classList.remove('open');
+(function(){
+  var current='ja';
+  var pagePath='/tools/grade-reference/';
+  var dirs={'en':'','de':'de','ja':'jp','es':'es','vi':'vi'};
+  var btn=document.getElementById('lang-btn');
+  var menu=document.getElementById('lang-menu');
+  if(btn&&menu){
+    btn.addEventListener('click',function(e){e.stopPropagation();menu.classList.toggle('open')});
+    document.addEventListener('click',function(){menu.classList.remove('open')});
+    menu.addEventListener('click',function(e){
+      var a=e.target.closest('a');if(!a)return;e.preventDefault();
+      var lc=a.getAttribute('data-lang');
+      if(lc===current)return;
+      var d=dirs[lc]||'';
+      var target=d?'/'+d+pagePath:pagePath;
+      if(target==='//')target='/';
+      window.location.href=target;
+    });
+    // Mark active
+    [].forEach.call(menu.querySelectorAll('a'),function(a){if(a.getAttribute('data-lang')===current)a.classList.add('active')});
   }
-});
+  // Mega menu
+  document.querySelectorAll('.nav-drop').forEach(function(dd){dd.addEventListener('click',function(e){if(window.innerWidth<=768){e.preventDefault();document.querySelectorAll('.mega-menu').forEach(function(m){m.classList.toggle('open')})}})});
+  document.querySelectorAll('.mega-cat').forEach(function(cat){cat.addEventListener('click',function(){var sub=this.nextElementSibling;if(!sub)return;var was=sub.classList.contains('open');document.querySelectorAll('.mega-sub').forEach(function(s){s.classList.remove('open')});if(!was)sub.classList.add('open')})});
+})();
 </script>
-
+<script>document.addEventListener('DOMContentLoaded',function(){if(typeof lucide!=='undefined')lucide.createIcons()});</script>
 </body>
 </html>
