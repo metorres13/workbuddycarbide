@@ -14,7 +14,6 @@
 .lang-nav a.active{color:#0066cc;font-weight:600}
 .lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
 
-
 /* Language Switcher - Dropdown with Flags */
 .lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
 .lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
@@ -254,31 +253,73 @@ body{overflow-x:hidden!important}
 <link href="https://carbide-tooling.com/jp/tools/tap-drill-size-calculator/" hreflang="ja" rel="alternate"/>
 <link href="https://carbide-tooling.com/es/tools/tap-drill-size-calculator/" hreflang="es" rel="alternate"/>
 <link href="https://carbide-tooling.com/vi/tools/tap-drill-size-calculator/" hreflang="vi" rel="alternate"/> <link href="https://carbide-tooling.com/tools/tap-drill-size-calculator" hreflang="x-default" rel="alternate"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  important: true,
+  corePlugins: { preflight: false },
+  theme: {
+    extend: {
+      fontFamily: { sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"] },
+    }
+  }
+}
+</script>
+
+<style id="nav-v2-style">
+/* ── Apple Smart Nav v2 ── */
+nav#nav-v2{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(24px);-webkit-backdrop-filter:saturate(180%) blur(24px);border-bottom:1px solid rgba(0,0,0,.06);height:48px;display:flex;align-items:center}
+nav#nav-v2 .nv-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1100px;margin:0 auto;padding:0 24px}
+nav#nav-v2 .nv-logo{font-size:14px;font-weight:700;letter-spacing:-.3px;color:#1d1d1f;text-decoration:none;display:flex;align-items:center;gap:6px;white-space:nowrap;flex-shrink:0}
+nav#nav-v2 .nv-logo span{font-weight:800;color:#0066cc}
+nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-shrink:0}
+nav#nav-v2 .nv-links>a{color:#1d1d1f;text-decoration:none;padding:0 14px;height:48px;display:flex;align-items:center;font-weight:500;font-size:12px;transition:color .15s;white-space:nowrap}
+nav#nav-v2 .nv-links>a:hover{color:#0066cc}
+nav#nav-v2 .nv-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+nav#nav-v2 .nv-quote{display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:6px 16px;border-radius:24px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap}
+nav#nav-v2 .nv-quote:hover{background:#0055aa;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,204,.25)}
+nav#nav-v2 .nv-lang{display:flex;align-items:center;gap:2px;margin-left:4px;padding-left:8px;border-left:1px solid #e8e8ed}
+nav#nav-v2 .nv-lang a{font-size:10px;font-weight:600;color:#86868b;text-decoration:none;padding:3px 6px;border-radius:12px;transition:all .15s;letter-spacing:.3px}
+nav#nav-v2 .nv-lang a:hover{color:#1d1d1f;background:#f5f5f7}
+nav#nav-v2 .nv-lang a.active{color:#0066cc;background:#f0f7ff;font-weight:700}
+nav#nav-v2 .nv-lang .sep{color:#d2d2d6;font-size:10px;margin:0 1px;font-weight:300}
+@media(max-width:768px){
+  nav#nav-v2 .nv-links{display:none}
+  nav#nav-v2 .nv-lang a{font-size:9px;padding:2px 4px}
+  nav#nav-v2 .nv-quote{padding:4px 10px;font-size:10px}
+}
+nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important}
+</style>
+
+<style id="hero-atmo-style">
+.hero-atmo{position:relative;width:100%;height:200px;overflow:hidden;background:linear-gradient(180deg,#f5f5f7 0%,#e8e8ed 40%,#d2d2d7 100%);margin-bottom:-60px;z-index:0}
+.hero-atmo::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 50%,rgba(0,102,204,.06) 0%,transparent 50%),radial-gradient(ellipse 60% 80% at 80% 40%,rgba(0,0,0,.04) 0%,transparent 50%),linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.95) 90%,#fff 100%)}
+.hero-atmo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(0deg,#fff 0%,transparent 100%)}
+.img-container{width:100%;aspect-ratio:1;background:#fff;border-radius:20px;border:1px solid #d2d2d7;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
+.img-container img{width:100%;height:100%;object-fit:cover}
+.img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f0f0f3 0%,#e8e8ed 50%,#f0f0f3 100%);color:#c0c0c6;font-size:48px}
+.img-placeholder::after{content:'◆';font-size:48px;opacity:.3}
+</style>
 </head>
-<body><nav><div class="nav-inner"><div class="nav-left"><a class="logo" href="https://carbide-tooling.com/"><span>◆</span> Carbide Tooling</a><div class="nav-links"><a href="https://carbide-tooling.com/products/">Products</a><a href="https://carbide-tooling.com/guides/">Guides</a><a href="https://carbide-tooling.com/about.html">About</a></div></div><a href="https://carbide-tooling.com/quote.html" style="display:inline-flex;background:#0066cc;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">📩 Get a Quote</a>
-<div class="lang-dropdown">
-<button class="lang-btn" onclick="toggleLang(event)"><span id="cf">🇬🇧</span><span class="arrow">▼</span></button>
-<div class="lang-menu" id="lang-menu">
-<a class="active" href="/tools/tap-drill-size-calculator/"><span class="flag">🇬🇧</span> EN</a>
-<a href="/de/tools/tap-drill-size-calculator/"><span class="flag">🇩🇪</span> DE</a>
-<a href="/jp/tools/tap-drill-size-calculator/"><span class="flag">🇯🇵</span> JP</a>
-<a href="/es/tools/tap-drill-size-calculator/"><span class="flag">🇪🇸</span> ES</a>
-<a href="/vi/tools/tap-drill-size-calculator/"><span class="flag">🇻🇳</span> VI</a>
+<body>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
+<div class="nv-inner">
+<a class="nv-logo" href="/"><span>◆</span> Carbide Tooling</a>
+<div class="nv-links">
+<a href="/">Home</a>
+<a href="/products/">Products</a>
+<a href="/tools/">Tools</a>
+<a href="/guides/">Guides</a>
+<a href="/about.html">About</a>
 </div>
-</div></div></nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">Home</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">Tools</a> <span style="color:#d2d2d6">›</span> Tap Drill Size Calculator</div>
+<div class="nv-right">
+<div class="nv-lang"><a href="#" onclick="return false" class="active">EN</a><span class="sep">·</span><a href="/de/tools/tap-drill-size-calculator/">DE</a><a href="/jp/tools/tap-drill-size-calculator/">JP</a><span class="sep">·</span><a href="/es/tools/tap-drill-size-calculator/">ES</a><a href="/vi/tools/tap-drill-size-calculator/">VI</a></div>
+<a class="nv-quote" href="/quote.html">📩 Get a Quote</a>
+</div>
+</div>
+</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">Home</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">Tools</a> <span style="color:#d2d2d6">›</span> Tap Drill Size Calculator</div>
 <section class="hero"><div class="container"><div class="badge" style="display:inline-flex;background:#f5f5f7;padding:4px 14px;border-radius:20px;font-size:11px;font-weight:600;color:#86868b;margin-bottom:16px">🔧 Reference Table</div><h1>Tap Drill <span class="accent">Size Calculator</span></h1><p>Find the right drill bit for any thread. Select thread standard and size, get the recommended drill diameter and expected thread percentage.</p><a class="btn" href="#calculator" style="display:inline-flex;background:#0066cc;color:#fff;padding:8px 20px;border-radius:20px;font-size:13px;font-weight:600;text-decoration:none">Calculate ↓</a></div></section>
-<section class="more-tools">
-<h3>🔧 Explore 100+ Professional Machining Tools</h3>
-<div class="tool-grid">
-<a href="/tools/torque-unit-converter/">Torque Unit Converter</a><a href="/tools/temp-converter/">Temperature Converter</a><a href="/tools/arc-r-to-ij-converter/">Arc R to IJ Converter</a><a href="/tools/surface-speed/">Surface Speed (SFM)</a><a href="/tools/peck-drilling-calculator/">Peck Drilling</a><a href="/tools/graphite-machining/">Graphite Machining</a><a href="/tools/tensile-strength-converter/">Tensile Strength Converter</a><a href="/tools/plastic-machining/">Plastic Machining Guide</a>
-</div>
-</section>
-<section class="more-tools">
-<h3>🔧 Explore 100+ Professional Machining Tools</h3>
-<div class="tool-grid">
-<a href="/tools/cost-per-part-calculator/">Cost Per Part</a><a href="/tools/aluminum-alloy-table/">Aluminum Alloy Table</a><a href="/tools/coolant-lifecycle-cost/">Coolant Lifecycle Cost</a><a href="/tools/peck-drilling-calculator/">Peck Drilling</a><a href="/tools/engineering-interest-calculator/">Engineering Interest</a><a href="/tools/ultimate-unit-converter/">Ultimate Unit Converter</a><a href="/tools/titanium-machining-guide/">Titanium Machining Guide</a><a href="/tools/pressure-converter/">Pressure Converter</a>
-</div>
-</section>
+
 <section class="container" id="calculator" style="padding-bottom:40px">
 <div class="card"><h2>🔧 Tap Drill Size</h2><p class="sub">Formula: Drill Dia = Major Dia − (0.013 × Pitch × %Thread) / 1.299</p>
 <div class="card-row">
@@ -294,14 +335,6 @@ body{overflow-x:hidden!important}
 </div>
 <div style="text-align:center;margin:16px 0"><a href="/tools/" style="color:#0066cc;text-decoration:none;font-size:13px">← All Tools</a></div>
 </section>
-<aside class="b2b-card">
-<div class="b2b-icon">📦</div>
-<div class="b2b-body">
-<h3>Need Professional Tooling?</h3>
-<p>Get factory-direct pricing, engineered carbide grades, and responsive technical support — all from one source.</p>
-</div>
-<a class="b2b-btn" href="/quote.html">Request Bulk Quote →</a>
-</aside>
 <div class="product-links"><span>🔗 Recommended:</span><a href="/products/drills.html">Carbide Drills &amp; Tap Holders</a><a href="/products/threading-tools.html">Thread Mills &amp; Taps</a></div>
 <div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">Related Precision Tools</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/tools/tangent-point-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tangent Point Calculator</a><a href="/tools/taper-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Taper Calculator</a><a href="/tools/tapping-feed-rate-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tapping Feed Rate Calculator</a><a href="/tools/peck-drilling-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Peck Drilling Calculator</a><a href="/tools/drill-point-length-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Drill Point Length Calculator</a><a href="/tools/micron-inch-converter/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Micron Inch Converter</a></div></div><footer class="tool-footer">
 <div class="container">
@@ -354,30 +387,40 @@ document.getElementById('standard').addEventListener('change',function(){const s
 <a href="/tools/cost-per-part-calculator/">Cost Per Part</a>
 <a href="/tools/torque-unit-converter/">Torque Converter</a>
 </div></div>
-<div class="b2b-icon">📦</div>
-<div class="b2b-body">
-<h3>Need Professional Tooling?</h3>
-<p>Get factory-direct pricing, engineered carbide grades, and responsive technical support — all from one source.</p>
-</div>
-<a class="b2b-btn" href="/quote.html">Request Bulk Quote →</a>
+
 <div class="product-links"><span>🔗 Recommended:</span><a href="/products/drills.html">Carbide Drills</a><a href="/products/threading-tools.html">Thread Mills &amp; Taps</a></div>
-<section class="more-tools">
-<h3>🔧 Explore 100+ Professional Machining Tools</h3>
-<div class="tool-grid">
-<a href="/tools/sine-bar-calculator/">Sine Bar Calculator</a>
-<a href="/tools/aql-sampling-calculator/">AQL Sampling Calculator</a>
-<a href="/tools/die-steel-thermal-conductivity/">Die Steel Thermal Conductivity</a>
-<a href="/tools/pressure-converter/">Pressure Converter</a>
-<a href="/tools/step-milling-calculator/">Step Milling Calculator</a>
-<a href="/tools/cast-iron-machining/">Cast Iron Machining Calculator</a>
-<a href="/tools/mcode-reference/">M-Code Reference</a>
-<a href="/tools/step-drill-design-calculator/">Step Drill Design Calculator</a>
-</div>
-</section>
+
 <div class="share-bar">
 <span class="share-label">↗ Share with Engineers</span>
 <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/tap-drill-size-calculator/" rel="noopener" target="_blank">LinkedIn</a>
 <a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/tap-drill-size-calculator/&amp;text=Tap Drill Size Calculator" rel="noopener" target="_blank">𝕏</a>
 <a href="mailto:subject=Tap Drill Size Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/tap-drill-size-calculator/">Email</a>
 </div>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Professional Solutions for Tap Drill Size Calculator?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Get factory-direct pricing on premium carbide tooling with ISO-certified quality and responsive engineering support.</p>
+</div>
+<a href="/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Request Bulk Quote →</a>
+</div>
+</aside>
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Global Engineering Directory</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Explore more professional machining tools from our global collection</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/tools/pomodoro-timer/">Pomodoro Timer</a>
+<a href="/tools/chamfer-calculator/">Chamfer Calculator</a>
+<a href="/tools/tool-runout-calculator/">Tool Runout Calculator</a>
+<a href="/tools/torque-unit-converter/">Torque Unit Converter</a>
+<a href="/tools/superalloy-tool-life/">Superalloy Tool Life</a>
+<a href="/tools/sine-bar-calculator/">Sine Bar Calculator</a>
+<a href="/tools/pressure-converter/">Pressure Converter</a>
+<a href="/tools/weight-shipping-calculator/">Weight Shipping Calculator</a>
+<a href="/tools/form-tap-drill-calculator/">Form Tap Drill Calculator</a>
+<a href="/tools/metal-weight-calculator/">Metal Weight Calculator</a>
+</div>
+</section>
+<style>.engineering-directory a{display:block;font-size:12px;font-weight:500;color:#1d1d1f;text-decoration:none;padding:8px 14px;background:#fff;border-radius:10px;border:1px solid #e8e8ed;transition:all .15s;text-align:center}.engineering-directory a:hover{background:#0066cc;color:#fff;border-color:#0066cc;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,204,.15)}</style>
 </body></html>

@@ -10,8 +10,61 @@
 .lang-switcher{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 0;margin:8px 0;border-top:1px solid #e8e8ed;font-size:11px}.lang-switcher .lang-label{font-size:13px;margin-right:4px}.lang-switcher .lang-link{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#fff;border:1px solid #e8e8ed;color:#86868b;text-decoration:none;font-size:10px;font-weight:600;transition:all .15s}.lang-switcher .lang-link:hover{background:#0066cc;color:#fff;border-color:#0066cc}.lang-switcher .lang-link.active{background:#0066cc;color:#fff;border-color:#0066cc}
 .lang-nav{display:flex;align-items:center;gap:2px;margin-left:12px;padding-left:12px;border-left:1px solid #e8e8ed}.lang-nav a{font-size:11px;font-weight:500;color:#86868b;text-decoration:none;padding:2px 5px;border-radius:4px;transition:all .15s}.lang-nav a:hover{color:#1d1d1f;background:#f5f5f7}.lang-nav a.active{color:#0066cc;font-weight:600}.lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
 .lang-dropdown{position:relative;display:inline-flex;align-items:center}.lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}.lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}.lang-btn .arrow{font-size:8px;color:#86868b;margin-left:2px}.lang-menu{display:none;position:absolute;top:100%;right:0;margin-top:4px;background:#fff;border:1px solid #e8e8ed;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);padding:4px;z-index:200;min-width:100px}.lang-menu.show{display:block}.lang-menu a{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:12px;color:#1d1d1f;transition:background .1s;white-space:nowrap}.lang-menu a:hover{background:#f5f5f7}.lang-menu a.active{color:#0066cc;font-weight:600;background:#f0f7ff}.lang-menu a .flag{font-size:16px}
-.nav-left{gap:16px}.nav-links>a{padding:0 12px;font-size:12px}.logo{font-size:13px;white-space:nowrap}</style><link href="https://carbide-tooling.com/quote.html" rel="canonical"/><link href="https://carbide-tooling.com/quote.html" hreflang="x-default" rel="alternate"/><link href="https://carbide-tooling.com/de/quote.html" hreflang="de" rel="alternate"/><link href="https://carbide-tooling.com/jp/quote.html" hreflang="ja" rel="alternate"/><link href="https://carbide-tooling.com/es/quote.html" hreflang="es" rel="alternate"/><link href="https://carbide-tooling.com/vi/quote.html" hreflang="vi" rel="alternate"/><link href="https://carbide-tooling.com/quote.html" hreflang="en" rel="alternate"/><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script></head>
-<body><nav><div class="nav-inner"><div class="nav-left"><a class="logo" href="https://carbide-tooling.com/"><span>◆</span> Carbide Tooling</a><div class="nav-links"><a href="https://carbide-tooling.com/products/">Products</a><a href="https://carbide-tooling.com/guides/">Guides</a><a href="https://carbide-tooling.com/about.html">About</a></div></div><div class="lang-dropdown"><button class="lang-btn" onclick="toggleLang(event)">🇬🇧<span class="arrow">▼</span></button><div class="lang-menu" id="lang-menu"><a class="active" href="/quote.html"><span class="flag">🇬🇧</span> EN</a><a href="/de/quote.html"><span class="flag">🇩🇪</span> DE</a><a href="/jp/quote.html"><span class="flag">🇯🇵</span> JP</a><a href="/es/quote.html"><span class="flag">🇪🇸</span> ES</a><a href="/vi/quote.html"><span class="flag">🇻🇳</span> VI</a></div></div><a href="https://carbide-tooling.com/quote.html" style="display:inline-flex;background:#0066cc;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">📩 Get a Quote</a></div></nav>
+.nav-left{gap:16px}.nav-links>a{padding:0 12px;font-size:12px}.logo{font-size:13px;white-space:nowrap}</style><link href="https://carbide-tooling.com/quote.html" rel="canonical"/><link href="https://carbide-tooling.com/quote.html" hreflang="x-default" rel="alternate"/><link href="https://carbide-tooling.com/de/quote.html" hreflang="de" rel="alternate"/><link href="https://carbide-tooling.com/jp/quote.html" hreflang="ja" rel="alternate"/><link href="https://carbide-tooling.com/es/quote.html" hreflang="es" rel="alternate"/><link href="https://carbide-tooling.com/vi/quote.html" hreflang="vi" rel="alternate"/><link href="https://carbide-tooling.com/quote.html" hreflang="en" rel="alternate"/><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  important: true,
+  corePlugins: { preflight: false },
+  theme: {
+    extend: {
+      fontFamily: { sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"] },
+    }
+  }
+}
+</script>
+
+<style id="nav-v2-style">
+/* ── Apple Smart Nav v2 ── */
+nav#nav-v2{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(24px);-webkit-backdrop-filter:saturate(180%) blur(24px);border-bottom:1px solid rgba(0,0,0,.06);height:48px;display:flex;align-items:center}
+nav#nav-v2 .nv-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1100px;margin:0 auto;padding:0 24px}
+nav#nav-v2 .nv-logo{font-size:14px;font-weight:700;letter-spacing:-.3px;color:#1d1d1f;text-decoration:none;display:flex;align-items:center;gap:6px;white-space:nowrap;flex-shrink:0}
+nav#nav-v2 .nv-logo span{font-weight:800;color:#0066cc}
+nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-shrink:0}
+nav#nav-v2 .nv-links>a{color:#1d1d1f;text-decoration:none;padding:0 14px;height:48px;display:flex;align-items:center;font-weight:500;font-size:12px;transition:color .15s;white-space:nowrap}
+nav#nav-v2 .nv-links>a:hover{color:#0066cc}
+nav#nav-v2 .nv-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+nav#nav-v2 .nv-quote{display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:6px 16px;border-radius:24px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap}
+nav#nav-v2 .nv-quote:hover{background:#0055aa;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,204,.25)}
+nav#nav-v2 .nv-lang{display:flex;align-items:center;gap:2px;margin-left:4px;padding-left:8px;border-left:1px solid #e8e8ed}
+nav#nav-v2 .nv-lang a{font-size:10px;font-weight:600;color:#86868b;text-decoration:none;padding:3px 6px;border-radius:12px;transition:all .15s;letter-spacing:.3px}
+nav#nav-v2 .nv-lang a:hover{color:#1d1d1f;background:#f5f5f7}
+nav#nav-v2 .nv-lang a.active{color:#0066cc;background:#f0f7ff;font-weight:700}
+nav#nav-v2 .nv-lang .sep{color:#d2d2d6;font-size:10px;margin:0 1px;font-weight:300}
+@media(max-width:768px){
+  nav#nav-v2 .nv-links{display:none}
+  nav#nav-v2 .nv-lang a{font-size:9px;padding:2px 4px}
+  nav#nav-v2 .nv-quote{padding:4px 10px;font-size:10px}
+}
+nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important}
+</style>
+
+</head>
+<body><nav id="nav-v2">
+<div class="nv-inner">
+<a class="nv-logo" href="/"><span>◆</span> Carbide Tooling</a>
+<div class="nv-links">
+<a href="/">Home</a>
+<a href="/products/">Products</a>
+<a href="/tools/">Tools</a>
+<a href="/guides/">Guides</a>
+<a href="/about.html">About</a>
+</div>
+<div class="nv-right">
+<div class="nv-lang"><a href="#" onclick="return false" class="active">EN</a><span class="sep">·</span><a href="/de/quote.html">DE</a><a href="/jp/quote.html">JP</a><span class="sep">·</span><a href="/es/quote.html">ES</a><a href="/vi/quote.html">VI</a></div>
+<a class="nv-quote" href="/quote.html">📩 Get a Quote</a>
+</div>
+</div>
+</nav>
 <div class="container">
 <section class="hero"><h1>Request a <span class="accent">Quote</span></h1><p>Tell us what you need — we'll connect you with the right factory within 48 hours.</p></section>
 <form onsubmit="alert('Thank you! We will respond within 48 hours. Contact: sales@carbide-tooling.com');return false">
@@ -24,4 +77,4 @@
 <label>Target Price / Material Notes</label><textarea placeholder="e.g. 4-flute, AlTiN coated, 12mm diameter, HRC 55. Target $12/pc."></textarea>
 <button class="btn-submit" type="submit">📩 Submit Quote Request</button>
 <p style="text-align:center;font-size:12px;color:#86868b;margin-top:12px">Or email us directly: <a href="mailto:sales@carbide-tooling.com" style="color:#0066cc">sales@carbide-tooling.com</a></p></div></form></div>
-<footer><div class="container"><p style="margin-bottom:4px"><a href="https://carbide-tooling.com/">CarbideTooling.com</a> — <a href="/tools/">All Tools</a></p><p style="font-size:11px">© 2026 Carbide Tooling</p></div><div class="lang-switcher"><span class="lang-label">Language:</span><a class="lang-link active" href="/quote.html">EN</a><a class="lang-link" href="/de/quote.html">DE</a><a class="lang-link" href="/jp/quote.html">JP</a><a class="lang-link" href="/es/quote.html">ES</a><a class="lang-link" href="/vi/quote.html">VI</a></div></footer></body></html>
+<footer><div class="container"><p style="margin-bottom:4px"><a href="https://carbide-tooling.com/">CarbideTooling.com</a> — <a href="/tools/">All Tools</a></p><p style="font-size:11px">© 2026 Carbide Tooling</p></div></footer></body></html>

@@ -75,9 +75,62 @@ footer{margin-top:80px;padding:32px 0;border-top:1px solid #f0f0f0;text-align:ce
 ]
  </script>
 <!-- GOOGLE ANALYTICS ID: 填入 GA ID 后启用 -->
-<link href="https://carbide-tooling.com/vi/guides/" rel="canonical"/><link href="https://carbide-tooling.com/guides/" hreflang="x-default" rel="alternate"/><link href="https://carbide-tooling.com/guides/" hreflang="en" rel="alternate"/><link href="https://carbide-tooling.com/de/guides/" hreflang="de" rel="alternate"/><link href="https://carbide-tooling.com/jp/guides/" hreflang="ja" rel="alternate"/><link href="https://carbide-tooling.com/es/guides/" hreflang="es" rel="alternate"/><link href="https://carbide-tooling.com/vi/guides/" hreflang="vi" rel="alternate"/><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script></head>
+<link href="https://carbide-tooling.com/vi/guides/" rel="canonical"/><link href="https://carbide-tooling.com/guides/" hreflang="x-default" rel="alternate"/><link href="https://carbide-tooling.com/guides/" hreflang="en" rel="alternate"/><link href="https://carbide-tooling.com/de/guides/" hreflang="de" rel="alternate"/><link href="https://carbide-tooling.com/jp/guides/" hreflang="ja" rel="alternate"/><link href="https://carbide-tooling.com/es/guides/" hreflang="es" rel="alternate"/><link href="https://carbide-tooling.com/vi/guides/" hreflang="vi" rel="alternate"/><script>function toggleLang(e){e.stopPropagation();document.getElementById('lang-menu').classList.toggle('show')}document.addEventListener('click',function(){var m=document.getElementById('lang-menu');if(m)m.classList.remove('show')});</script><script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  important: true,
+  corePlugins: { preflight: false },
+  theme: {
+    extend: {
+      fontFamily: { sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"] },
+    }
+  }
+}
+</script>
+
+<style id="nav-v2-style">
+/* ── Apple Smart Nav v2 ── */
+nav#nav-v2{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(24px);-webkit-backdrop-filter:saturate(180%) blur(24px);border-bottom:1px solid rgba(0,0,0,.06);height:48px;display:flex;align-items:center}
+nav#nav-v2 .nv-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1100px;margin:0 auto;padding:0 24px}
+nav#nav-v2 .nv-logo{font-size:14px;font-weight:700;letter-spacing:-.3px;color:#1d1d1f;text-decoration:none;display:flex;align-items:center;gap:6px;white-space:nowrap;flex-shrink:0}
+nav#nav-v2 .nv-logo span{font-weight:800;color:#0066cc}
+nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-shrink:0}
+nav#nav-v2 .nv-links>a{color:#1d1d1f;text-decoration:none;padding:0 14px;height:48px;display:flex;align-items:center;font-weight:500;font-size:12px;transition:color .15s;white-space:nowrap}
+nav#nav-v2 .nv-links>a:hover{color:#0066cc}
+nav#nav-v2 .nv-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+nav#nav-v2 .nv-quote{display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:6px 16px;border-radius:24px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap}
+nav#nav-v2 .nv-quote:hover{background:#0055aa;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,204,.25)}
+nav#nav-v2 .nv-lang{display:flex;align-items:center;gap:2px;margin-left:4px;padding-left:8px;border-left:1px solid #e8e8ed}
+nav#nav-v2 .nv-lang a{font-size:10px;font-weight:600;color:#86868b;text-decoration:none;padding:3px 6px;border-radius:12px;transition:all .15s;letter-spacing:.3px}
+nav#nav-v2 .nv-lang a:hover{color:#1d1d1f;background:#f5f5f7}
+nav#nav-v2 .nv-lang a.active{color:#0066cc;background:#f0f7ff;font-weight:700}
+nav#nav-v2 .nv-lang .sep{color:#d2d2d6;font-size:10px;margin:0 1px;font-weight:300}
+@media(max-width:768px){
+  nav#nav-v2 .nv-links{display:none}
+  nav#nav-v2 .nv-lang a{font-size:9px;padding:2px 4px}
+  nav#nav-v2 .nv-quote{padding:4px 10px;font-size:10px}
+}
+nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important}
+</style>
+
+</head>
 <body>
-<nav><div class="container nav-inner"><div class="logo"><span>◆</span> Carbide Tooling</div><div><a href="/">Trích dẫn</a><a href="/products/">Products</a><a href="/guides/">Guides</a><a href="/about.html">About</a><a href="/quote.html">Quote</a></div><div class="lang-dropdown"><button class="lang-btn" onclick="toggleLang(event)"> 🇻🇳<span class="arrow">▼</span></button><div class="lang-menu" id="lang-menu"><a href="/guides/index.html"><span class="flag">🇬🇧</span> EN</a><a href="/de/guides/index.html"><span class="flag">🇩🇪</span> DE</a><a href="/jp/guides/index.html"><span class="flag">🇯🇵</span> JP</a><a href="/es/guides/index.html"><span class="flag">🇪🇸</span> ES</a><a class="active" href="/vi/guides/index.html"><span class="flag">🇻🇳</span> VI</a></div></div></div></nav>
+<nav id="nav-v2">
+<div class="nv-inner">
+<a class="nv-logo" href="/vi/"><span>◆</span> Carbide Tooling</a>
+<div class="nv-links">
+<a href="/vi/">Trang chủ</a>
+<a href="/vi/products/">Sản phẩm</a>
+<a href="/vi/tools/">Công cụ</a>
+<a href="/vi/guides/">Hướng dẫn</a>
+<a href="/vi/about.html">Giới thiệu</a>
+</div>
+<div class="nv-right">
+<div class="nv-lang"><a href="/guides/">EN</a><span class="sep">·</span><a href="/de/guides/">DE</a><a href="/jp/guides/">JP</a><span class="sep">·</span><a href="/es/guides/">ES</a><a href="#" onclick="return false" class="active">VI</a></div>
+<a class="nv-quote" href="/vi/quote.html">📩 Báo giá</a>
+</div>
+</div>
+</nav>
 <div class="container">
 <h1>Số lượng sáo, góc xoắn, bán kính góc và lớp phủ-Mỗi biến ảnh hưởng đến vết cắt của bạn như thế nào.</h1>
 <p class="sub">Các loại cacbua được giải thích dưới micron, siêu mịn, thông thường-loại nào hoạt động tốt nhất cho vật liệu của bạn. Vật liệu</p>
@@ -89,6 +142,6 @@ footer{margin-top:80px;padding:32px 0;border-top:1px solid #f0f0f0;text-align:ce
 <li><a href="/guides/insert-grade-selection.html"><h3>Sản phẩm</h3><p>Hướng dẫn</p><span class="tag">Turning</span></a></li>
 </ul>
 </div>
-<footer><div class="container"><p>Về chúng tôi</p></div><div class="lang-switcher"><span class="lang-label">Ngôn ngữ:</span><a class="lang-link" href="/guides/index.html">EN</a><a class="lang-link" href="/de/guides/index.html">DE</a><a class="lang-link" href="/jp/guides/index.html">JP</a><a class="lang-link" href="/es/guides/index.html">ES</a><a class="lang-link active" href="/vi/guides/index.html">VI</a></div></footer>
+<footer><div class="container"><p>Về chúng tôi</p></div></footer>
 </body>
 </html>

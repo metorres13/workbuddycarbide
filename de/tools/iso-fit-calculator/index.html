@@ -13,7 +13,6 @@
 .lang-nav a.active{color:#0066cc;font-weight:600}
 .lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
 
-
 /* Language Switcher - Dropdown with Flags */
 .lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
 .lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
@@ -190,18 +189,124 @@ body{overflow-x:hidden!important}
  ]
 }
 </script>
-<link href="https://carbide-tooling.com/de/tools/iso-fit-calculator/" rel="canonical"/><link href="https://carbide-tooling.com/tools/iso-fit-calculator/" hreflang="x-default" rel="alternate"/><link href="https://carbide-tooling.com/tools/iso-fit-calculator/" hreflang="en" rel="alternate"/><link href="https://carbide-tooling.com/de/tools/iso-fit-calculator/" hreflang="de" rel="alternate"/><link href="https://carbide-tooling.com/jp/tools/iso-fit-calculator/" hreflang="ja" rel="alternate"/><link href="https://carbide-tooling.com/es/tools/iso-fit-calculator/" hreflang="es" rel="alternate"/><link href="https://carbide-tooling.com/vi/tools/iso-fit-calculator/" hreflang="vi" rel="alternate"/></head>
-<body><nav><div class="nav-inner"><div class="nav-left"><a class="logo" href="https://carbide-tooling.com/"><span>◆</span> Carbide Tooling</a><div class="nav-links"><a href="https://carbide-tooling.com/products/">🇪🇸ES</a><a href="https://carbide-tooling.com/guides/">🇻🇳VI</a><a href="https://carbide-tooling.com/about.html">Startseite</a></div></div><a href="https://carbide-tooling.com/quote.html" style="display:inline-flex;background:#0066cc;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">Werkzeuge</a>
-<div class="lang-dropdown">
-<button class="lang-btn" onclick="toggleLang(event)"><span id="cf">🇬🇧</span><span class="arrow">▼</span></button>
-<div class="lang-menu" id="lang-menu">
-<a class="active" href="/tools/iso-fit-calculator/"><span class="flag">🇬🇧</span> EN</a>
-<a href="/de/tools/iso-fit-calculator/"><span class="flag">🇩🇪</span> DE</a>
-<a href="/jp/tools/iso-fit-calculator/"><span class="flag">🇯🇵</span> JP</a>
-<a href="/es/tools/iso-fit-calculator/"><span class="flag">🇪🇸</span> ES</a>
-<a href="/vi/tools/iso-fit-calculator/"><span class="flag">🇻🇳</span> VI</a>
+<link href="https://carbide-tooling.com/de/tools/iso-fit-calculator/" rel="canonical"/><link href="https://carbide-tooling.com/tools/iso-fit-calculator/" hreflang="x-default" rel="alternate"/><link href="https://carbide-tooling.com/tools/iso-fit-calculator/" hreflang="en" rel="alternate"/><link href="https://carbide-tooling.com/de/tools/iso-fit-calculator/" hreflang="de" rel="alternate"/><link href="https://carbide-tooling.com/jp/tools/iso-fit-calculator/" hreflang="ja" rel="alternate"/><link href="https://carbide-tooling.com/es/tools/iso-fit-calculator/" hreflang="es" rel="alternate"/><link href="https://carbide-tooling.com/vi/tools/iso-fit-calculator/" hreflang="vi" rel="alternate"/><script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  important: true,
+  corePlugins: { preflight: false },
+  theme: {
+    extend: {
+      fontFamily: { sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"] },
+    }
+  }
+}
+</script>
+
+<style id="nav-v2-style">
+/* ── Apple Smart Nav v2 ── */
+nav#nav-v2{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(24px);-webkit-backdrop-filter:saturate(180%) blur(24px);border-bottom:1px solid rgba(0,0,0,.06);height:48px;display:flex;align-items:center}
+nav#nav-v2 .nv-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1100px;margin:0 auto;padding:0 24px}
+nav#nav-v2 .nv-logo{font-size:14px;font-weight:700;letter-spacing:-.3px;color:#1d1d1f;text-decoration:none;display:flex;align-items:center;gap:6px;white-space:nowrap;flex-shrink:0}
+nav#nav-v2 .nv-logo span{font-weight:800;color:#0066cc}
+nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-shrink:0}
+nav#nav-v2 .nv-links>a{color:#1d1d1f;text-decoration:none;padding:0 14px;height:48px;display:flex;align-items:center;font-weight:500;font-size:12px;transition:color .15s;white-space:nowrap}
+nav#nav-v2 .nv-links>a:hover{color:#0066cc}
+nav#nav-v2 .nv-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+nav#nav-v2 .nv-quote{display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:6px 16px;border-radius:24px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap}
+nav#nav-v2 .nv-quote:hover{background:#0055aa;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,204,.25)}
+nav#nav-v2 .nv-lang{display:flex;align-items:center;gap:2px;margin-left:4px;padding-left:8px;border-left:1px solid #e8e8ed}
+nav#nav-v2 .nv-lang a{font-size:10px;font-weight:600;color:#86868b;text-decoration:none;padding:3px 6px;border-radius:12px;transition:all .15s;letter-spacing:.3px}
+nav#nav-v2 .nv-lang a:hover{color:#1d1d1f;background:#f5f5f7}
+nav#nav-v2 .nv-lang a.active{color:#0066cc;background:#f0f7ff;font-weight:700}
+nav#nav-v2 .nv-lang .sep{color:#d2d2d6;font-size:10px;margin:0 1px;font-weight:300}
+@media(max-width:768px){
+  nav#nav-v2 .nv-links{display:none}
+  nav#nav-v2 .nv-lang a{font-size:9px;padding:2px 4px}
+  nav#nav-v2 .nv-quote{padding:4px 10px;font-size:10px}
+}
+nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important}
+</style>
+
+<style id="hero-atmo-style">
+/* ── Hero Atmosphere ── */
+.hero-atmo {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 40%, #d2d2d7 100%);
+  margin-bottom: -60px;
+  z-index: 0;
+}
+.hero-atmo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(0,102,204,.06) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 80% at 80% 40%, rgba(0,0,0,.04) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.95) 90%, #fff 100%);
+}
+.hero-atmo::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 80px;
+  background: linear-gradient(0deg, #fff 0%, transparent 100%);
+}
+/* Image Container - Apple Style */
+.img-container {
+  width: 100%;
+  aspect-ratio: 1;
+  background: #fff;
+  border-radius: 20px;
+  border: 1px solid #d2d2d7;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f0f0f3 0%, #e8e8ed 50%, #f0f0f3 100%);
+  color: #c0c0c6;
+  font-size: 48px;
+}
+.img-placeholder::after {
+  content: '◆';
+  font-size: 48px;
+  opacity: .3;
+}
+</style>
+
+</head>
+<body>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
+<div class="nv-inner">
+<a class="nv-logo" href="/de/"><span>◆</span> Carbide Tooling</a>
+<div class="nv-links">
+<a href="/de/">Start</a>
+<a href="/de/products/">Produkte</a>
+<a href="/de/tools/">Werkzeuge</a>
+<a href="/de/guides/">Anleitungen</a>
+<a href="/de/about.html">Über uns</a>
 </div>
-</div></div></nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">Blindlochgewindeschneiden</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">Metallkostenrechner</a> <span style="color:#d2d2d6">›</span> Iso Fit Calculator</div>
+<div class="nv-right">
+<div class="nv-lang"><a href="/tools/iso-fit-calculator/">EN</a><span class="sep">·</span><a href="#" onclick="return false" class="active">DE</a><a href="/jp/tools/iso-fit-calculator/">JP</a><span class="sep">·</span><a href="/es/tools/iso-fit-calculator/">ES</a><a href="/vi/tools/iso-fit-calculator/">VI</a></div>
+<a class="nv-quote" href="/de/quote.html">📩 Angebot</a>
+</div>
+</div>
+</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">Blindlochgewindeschneiden</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">Metallkostenrechner</a> <span style="color:#d2d2d6">›</span> Iso Fit Calculator</div>
 <section class="hero"><div class="container"><div class="badge">📐 Standards Reference — ISO 286</div><h1>Praktische Anwendungen in der CNC-Bearbeitung</h1><p>Im täglichen Shop-Betrieb dient der Iso Fit-Rechner als Kurz referenz für Maschinisten, Programmierer und Fertigungs ingenieure. Verwenden Sie es während der Einrichtung, der Programmierung oder der Qualitätsprüfung, um Ihre Parameter zu überprüfen und konsistente Ergebnisse über alle Produktionsdurchläufe hinweg sicherzustellen.</p></div></section>
 <section class="seo-content">
 <div class="container">
@@ -217,12 +322,7 @@ body{overflow-x:hidden!important}
 <p><strong>How do I improve my machining process with this data?</strong> Use this reference data as a starting point and adjust based on your specific machine, tooling, and material combination. Document successful settings for future reference.</p>
 </div>
 </section>
-<section class="more-tools">
-<h3>Grund größe (mm)</h3>
-<div class="tool-grid">
-<a href="/tools/npt-pipe-thread-calculator/">Wärmebehandlung von Werkzeugstahl</a><a href="/tools/grade-reference/">← Alle Tools</a><a href="/tools/gcode-reference/">Erhalten Sie ein Angebot</a><a href="/tools/thread-depth-torque-calculator/">Datenschutz</a><a href="/tools/force-calculator/">in</a><a href="/tools/blind-hole-tapping-calculator/">Geschwindigkeit &amp; Vorschub</a><a href="/tools/metal-cost-calculator/">Härtekonverter</a><a href="/tools/tool-steel-heat-treat/">Bohrergröße für Gewindebohrungen</a>
-</div>
-</section>
+
 <div class="container"><div class="card"><h3>Gemeinsame Fit-Empfehlungen</h3><div class="row2"><div><label>Anwendung</label><select id="hole" onchange="calc()"><option>H6</option><option selected="">H7</option><option>H8</option><option>H9</option></select></div><div><label>Fit</label><select id="shaft" onchange="calc()"><option>f7</option><option selected="">g6</option><option>h6</option><option>h7</option><option>k6</option><option>p6</option><option>s6</option></select></div></div>
 <label>Typ</label><input id="size" oninput="calc()" type="number" value="50"/>
 <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:12px">
@@ -272,32 +372,110 @@ calc();
 <a href="/tools/cost-per-part-calculator/">LinkedIn</a>
 <a href="/tools/torque-unit-converter/">E-Mail</a>
 </div></div>
-<aside class="b2b-card">
-<div class="b2b-icon">📦</div>
-<div class="b2b-body">
-<h3>📩Erhalten Sie ein Angebot</h3>
-<p>🇬🇧EN</p>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Professionelle Lösungen für Iso Fit Calculator?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Erhalten Sie werkseitige Preise für Premium-Hartmetallwerkzeuge mit ISO-zertifizierter Qualität.</p>
 </div>
-<a class="b2b-btn" href="/quote.html">Request Bulk Quote →</a>
-</aside>
+<a href="/de/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Massenangebot anfordern →</a>
+</div>
 <div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">Solid Carbide End Mills</a><a href="/products/turning-inserts.html">Turning Inserts</a></div>
-<section class="more-tools">
-<h3>Grund größe (mm)</h3>
-<div class="tool-grid">
-<a href="/tools/toolbox-organizer/">Toolbox Organizer</a>
-<a href="/tools/feed-rate-override-calculator/">Vorschub Rate Override Calculator</a>
-<a href="/tools/graphite-machining/">Graphite Machining Calculator</a>
-<a href="/tools/arc-r-to-ij-converter/">Arc R to IJ Converter</a>
-<a href="/tools/round-bar-weight/">Round Bar Weight Calculator</a>
-<a href="/tools/flatness-calculator/">Flatness Calculator</a>
-<a href="/tools/gear-parameter-calculator/">Gear Parameter Calculator</a>
-<a href="/tools/surface-speed/">Surface Schnittgeschwindigkeit (SFM) Calculator</a>
-</div>
-</section>
+
 <div class="share-bar">
 <span class="share-label">↗ Share with Engineers</span>
 <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/iso-fit-calculator/" rel="noopener" target="_blank">LinkedIn</a>
 <a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/iso-fit-calculator/&amp;text=ISO Fit Calculator" rel="noopener" target="_blank">𝕏</a>
 <a href="mailto:subject=ISO Fit Calculator&amp;body=Check this out: https://carbide-tooling.com/tools/iso-fit-calculator/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Globales Engineering-Verzeichnis</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professionelle Bearbeitungswerkzeuge</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/de/tools/ramping-angle-calculator/">Ramping Angle Calculator</a>
+<a href="/de/tools/tool-runout-calculator/">Tool Runout Calculator</a>
+<a href="/de/tools/engineering-interest-calculator/">Engineering Interest Calculator</a>
+<a href="/de/tools/tangent-point-calculator/">Tangent Point Calculator</a>
+<a href="/de/tools/countersink-depth-calculator/">Countersink Depth Calculator</a>
+<a href="/de/tools/ultimate-unit-converter/">Ultimate Unit Converter</a>
+<a href="/de/tools/tool-steel-heat-treat/">Tool Steel Heat Treat</a>
+<a href="/de/tools/metal-weight-calculator/">Metal Weight Calculator</a>
+<a href="/de/tools/nose-radius-compensation/">Nose Radius Compensation</a>
+<a href="/de/tools/aql-sampling-calculator/">Aql Sampling Calculator</a>
+
+</div>
+</section>
+<style>
+.engineering-directory a{
+  display:block;
+  font-size:12px;
+  font-weight:500;
+  color:#1d1d1f;
+  text-decoration:none;
+  padding:8px 14px;
+  background:#fff;
+  border-radius:10px;
+  border:1px solid #e8e8ed;
+  transition:all .15s;
+  text-align:center;
+}
+.engineering-directory a:hover{
+  background:#0066cc;
+  color:#fff;
+  border-color:#0066cc;
+  transform:translateY(-1px);
+  box-shadow:0 4px 12px rgba(0,102,204,.15);
+}
+</style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 Globales Engineering-Verzeichnis</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">Entdecken Sie weitere professionelle Bearbeitungswerkzeuge</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/de/tools/taper-calculator/">Taper Calculator</a>
+<a href="/de/tools/ultimate-unit-converter/">Ultimate Unit Converter</a>
+<a href="/de/tools/tool-runout-calculator/">Tool Runout Calculator</a>
+<a href="/de/tools/tangent-point-calculator/">Tangent Point Calculator</a>
+<a href="/de/tools/coolant-concentration/">Coolant Concentration</a>
+<a href="/de/tools/form-tap-drill-calculator/">Form Tap Drill Calculator</a>
+<a href="/de/tools/machine-power-calculator/">Machine Power Calculator</a>
+<a href="/de/tools/speed-feed/">Speed Feed</a>
+<a href="/de/tools/flatness-calculator/">Flatness Calculator</a>
+<a href="/de/tools/sine-bar-calculator/">Sine Bar Calculator</a>
+
+</div>
+</section>
+<style>
+.engineering-directory a{
+  display:block;
+  font-size:12px;
+  font-weight:500;
+  color:#1d1d1f;
+  text-decoration:none;
+  padding:8px 14px;
+  background:#fff;
+  border-radius:10px;
+  border:1px solid #e8e8ed;
+  transition:all .15s;
+  text-align:center;
+}
+.engineering-directory a:hover{
+  background:#0066cc;
+  color:#fff;
+  border-color:#0066cc;
+  transform:translateY(-1px);
+  box-shadow:0 4px 12px rgba(0,102,204,.15);
+}
+</style>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Professionelle Lösungen für Iso Fit Calculator?</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">Erhalten Sie werkseitige Preise für Premium-Hartmetallwerkzeuge mit ISO-zertifizierter Qualität.</p>
+</div>
+<a href="/de/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">Massenangebot anfordern →</a>
 </div>
 </body></html>

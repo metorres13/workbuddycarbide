@@ -13,7 +13,6 @@
 .lang-nav a.active{color:#0066cc;font-weight:600}
 .lang-nav .sep{color:#d2d2d6;font-size:10px;margin:0 1px}
 
-
 /* Language Switcher - Dropdown with Flags */
 .lang-btn{display:inline-flex;align-items:center;gap:4px;background:none;border:1px solid #e8e8ed;border-radius:8px;padding:3px 8px;cursor:pointer;font-size:13px;line-height:1;transition:all .15s;margin-left:8px}
 .lang-btn:hover{background:#f5f5f7;border-color:#d2d2d6}
@@ -190,18 +189,124 @@ body{overflow-x:hidden!important}
  ]
 }
 </script>
-<link href="https://carbide-tooling.com/jp/tools/toolbox-organizer/" rel="canonical"/><link href="https://carbide-tooling.com/tools/toolbox-organizer/" hreflang="x-default" rel="alternate"/><link href="https://carbide-tooling.com/tools/toolbox-organizer/" hreflang="en" rel="alternate"/><link href="https://carbide-tooling.com/de/tools/toolbox-organizer/" hreflang="de" rel="alternate"/><link href="https://carbide-tooling.com/jp/tools/toolbox-organizer/" hreflang="ja" rel="alternate"/><link href="https://carbide-tooling.com/es/tools/toolbox-organizer/" hreflang="es" rel="alternate"/><link href="https://carbide-tooling.com/vi/tools/toolbox-organizer/" hreflang="vi" rel="alternate"/></head>
-<body><nav><div class="nav-inner"><div class="nav-left"><a class="logo" href="https://carbide-tooling.com/"><span>◆</span> Carbide Tooling</a><div class="nav-links"><a href="https://carbide-tooling.com/products/">🇪🇸エスイー</a><a href="https://carbide-tooling.com/guides/">🇻🇳VI</a><a href="https://carbide-tooling.com/about.html">ホーム</a></div></div><a href="https://carbide-tooling.com/quote.html" style="display:inline-flex;background:#0066cc;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none">ツール</a>
-<div class="lang-dropdown">
-<button class="lang-btn" onclick="toggleLang(event)"><span id="cf">🇬🇧</span><span class="arrow">▼</span></button>
-<div class="lang-menu" id="lang-menu">
-<a class="active" href="/tools/toolbox-organizer/"><span class="flag">🇬🇧</span> EN</a>
-<a href="/de/tools/toolbox-organizer/"><span class="flag">🇩🇪</span> DE</a>
-<a href="/jp/tools/toolbox-organizer/"><span class="flag">🇯🇵</span> JP</a>
-<a href="/es/tools/toolbox-organizer/"><span class="flag">🇪🇸</span> ES</a>
-<a href="/vi/tools/toolbox-organizer/"><span class="flag">🇻🇳</span> VI</a>
+<link href="https://carbide-tooling.com/jp/tools/toolbox-organizer/" rel="canonical"/><link href="https://carbide-tooling.com/tools/toolbox-organizer/" hreflang="x-default" rel="alternate"/><link href="https://carbide-tooling.com/tools/toolbox-organizer/" hreflang="en" rel="alternate"/><link href="https://carbide-tooling.com/de/tools/toolbox-organizer/" hreflang="de" rel="alternate"/><link href="https://carbide-tooling.com/jp/tools/toolbox-organizer/" hreflang="ja" rel="alternate"/><link href="https://carbide-tooling.com/es/tools/toolbox-organizer/" hreflang="es" rel="alternate"/><link href="https://carbide-tooling.com/vi/tools/toolbox-organizer/" hreflang="vi" rel="alternate"/><script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  important: true,
+  corePlugins: { preflight: false },
+  theme: {
+    extend: {
+      fontFamily: { sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"] },
+    }
+  }
+}
+</script>
+
+<style id="nav-v2-style">
+/* ── Apple Smart Nav v2 ── */
+nav#nav-v2{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(24px);-webkit-backdrop-filter:saturate(180%) blur(24px);border-bottom:1px solid rgba(0,0,0,.06);height:48px;display:flex;align-items:center}
+nav#nav-v2 .nv-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1100px;margin:0 auto;padding:0 24px}
+nav#nav-v2 .nv-logo{font-size:14px;font-weight:700;letter-spacing:-.3px;color:#1d1d1f;text-decoration:none;display:flex;align-items:center;gap:6px;white-space:nowrap;flex-shrink:0}
+nav#nav-v2 .nv-logo span{font-weight:800;color:#0066cc}
+nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-shrink:0}
+nav#nav-v2 .nv-links>a{color:#1d1d1f;text-decoration:none;padding:0 14px;height:48px;display:flex;align-items:center;font-weight:500;font-size:12px;transition:color .15s;white-space:nowrap}
+nav#nav-v2 .nv-links>a:hover{color:#0066cc}
+nav#nav-v2 .nv-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+nav#nav-v2 .nv-quote{display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:6px 16px;border-radius:24px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap}
+nav#nav-v2 .nv-quote:hover{background:#0055aa;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,204,.25)}
+nav#nav-v2 .nv-lang{display:flex;align-items:center;gap:2px;margin-left:4px;padding-left:8px;border-left:1px solid #e8e8ed}
+nav#nav-v2 .nv-lang a{font-size:10px;font-weight:600;color:#86868b;text-decoration:none;padding:3px 6px;border-radius:12px;transition:all .15s;letter-spacing:.3px}
+nav#nav-v2 .nv-lang a:hover{color:#1d1d1f;background:#f5f5f7}
+nav#nav-v2 .nv-lang a.active{color:#0066cc;background:#f0f7ff;font-weight:700}
+nav#nav-v2 .nv-lang .sep{color:#d2d2d6;font-size:10px;margin:0 1px;font-weight:300}
+@media(max-width:768px){
+  nav#nav-v2 .nv-links{display:none}
+  nav#nav-v2 .nv-lang a{font-size:9px;padding:2px 4px}
+  nav#nav-v2 .nv-quote{padding:4px 10px;font-size:10px}
+}
+nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important}
+</style>
+
+<style id="hero-atmo-style">
+/* ── Hero Atmosphere ── */
+.hero-atmo {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 40%, #d2d2d7 100%);
+  margin-bottom: -60px;
+  z-index: 0;
+}
+.hero-atmo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(0,102,204,.06) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 80% at 80% 40%, rgba(0,0,0,.04) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.95) 90%, #fff 100%);
+}
+.hero-atmo::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 80px;
+  background: linear-gradient(0deg, #fff 0%, transparent 100%);
+}
+/* Image Container - Apple Style */
+.img-container {
+  width: 100%;
+  aspect-ratio: 1;
+  background: #fff;
+  border-radius: 20px;
+  border: 1px solid #d2d2d7;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f0f0f3 0%, #e8e8ed 50%, #f0f0f3 100%);
+  color: #c0c0c6;
+  font-size: 48px;
+}
+.img-placeholder::after {
+  content: '◆';
+  font-size: 48px;
+  opacity: .3;
+}
+</style>
+
+</head>
+<body>
+<div class="hero-atmo" aria-hidden="true"></div><nav id="nav-v2">
+<div class="nv-inner">
+<a class="nv-logo" href="/jp/"><span>◆</span> Carbide Tooling</a>
+<div class="nv-links">
+<a href="/jp/">ホーム</a>
+<a href="/jp/products/">製品</a>
+<a href="/jp/tools/">ツール</a>
+<a href="/jp/guides/">ガイド</a>
+<a href="/jp/about.html">会社概要</a>
 </div>
-</div></div></nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">銃のドリル計算機</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">NPTパイプねじ</a> <span style="color:#d2d2d6">›</span> Toolbox Organizer</div>
+<div class="nv-right">
+<div class="nv-lang"><a href="/tools/toolbox-organizer/">EN</a><span class="sep">·</span><a href="/de/tools/toolbox-organizer/">DE</a><a href="#" onclick="return false" class="active">JP</a><span class="sep">·</span><a href="/es/tools/toolbox-organizer/">ES</a><a href="/vi/tools/toolbox-organizer/">VI</a></div>
+<a class="nv-quote" href="/jp/quote.html">📩 見積依頼</a>
+</div>
+</div>
+</nav><div style="font-size:12px;color:#86868b;padding:12px 24px;max-width:900px;margin:0 auto"><a href="/" style="color:#0066cc;text-decoration:none">銃のドリル計算機</a> <span style="color:#d2d2d6">›</span> <a href="/tools/" style="color:#0066cc;text-decoration:none">NPTパイプねじ</a> <span style="color:#d2d2d6">›</span> Toolbox Organizer</div>
 <section class="hero"><div class="container"><div class="badge">🧰 Engineering Tool</div><h1>正確な結果を得るためのベストプラクティス</h1><p>ツールボックス引き出し仕切り、ツール組織</p></div></section>
 <section class="seo-content">
 <div class="container">
@@ -217,12 +322,7 @@ body{overflow-x:hidden!important}
 <p><strong>How do I improve my machining process with this data?</strong> Use this reference data as a starting point and adjust based on your specific machine, tooling, and material combination. Document successful settings for future reference.</p>
 </div>
 </section>
-<section class="more-tools">
-<h3>©2026年用超硬工具</h3>
-<div class="tool-grid">
-<a href="/tools/heat-expansion-calculator/">工具鋼の熱処理</a><a href="/tools/micron-inch-converter/">← すべてのツール</a><a href="/tools/inventory-turnover-calculator/">見積もりを取得する</a><a href="/tools/torque-unit-converter/">プライバシー</a><a href="/tools/sine-bar-calculator/">の中で</a><a href="/tools/gun-drill-calculator/">速度と送り量</a><a href="/tools/npt-pipe-thread-calculator/">硬度変換器</a><a href="/tools/tool-steel-heat-treat/">タップ穴径</a>
-</div>
-</section>
+
 <div class="container"><div class="panel"><h3>🔧精密工学ツールボックス</h3><div class="row2"><div><label>専門的なツールが必要ですか？</label><input id="v1" oninput="go()" type="number" value="100"/></div><div><label>工場直送価格、最適化された超硬材種、そして迅速な技術サポートを、すべてワンストップでご提供します。</label><select id="unit" onchange="go()"></select></div></div><div style="display:grid;grid-template-columns:1fr;gap:6px;margin-top:10px"><div class="out"><div class="lbl">Result</div><div class="val" id="r1">—</div></div></div></div>
 <div style="text-align:center;margin:16px 0"><a href="/tools/" style="color:#0066cc;font-size:13px">MRR計算ツール</a></div></div>
 <div style="margin:24px 0 40px"><h3 style="font-size:13px;font-weight:600;color:#86868b;margin-bottom:12px;text-align:center;text-transform:uppercase;letter-spacing:0.05em">関連精密工具</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"><a href="/jp/tools/tangent-point-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tangent Point Calculator</a><a href="/jp/tools/tap-drill-size-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Tap Drill Size Calculator</a><a href="/jp/tools/taper-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Taper Calculator</a><a href="/jp/tools/metal-cost-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Metal Cost Calculator</a><a href="/jp/tools/round-bar-weight/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Round Bar Weight</a><a href="/jp/tools/form-tap-drill-calculator/" style="display:block;background:#f5f5f7;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:500;color:#1d1d1f;text-decoration:none;text-align:center;transition:all .15s">Form Tap Drill Calculator</a></div></div><footer class="tool-footer">
@@ -258,32 +358,110 @@ body{overflow-x:hidden!important}
 <a href="/tools/cost-per-part-calculator/">Cost Per Part</a>
 <a href="/tools/torque-unit-converter/">Torque Converter</a>
 </div></div>
-<aside class="b2b-card">
-<div class="b2b-icon">📦</div>
-<div class="b2b-body">
-<h3>📩見積もりを取得する</h3>
-<p>🇬🇧英語</p>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Toolbox Organizerのプロフェッショナルソリューション</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">ISO認証品質のプレミアム超硬工具を工場直送価格でご提供。技術サポート付き。</p>
 </div>
-<a class="b2b-btn" href="/quote.html">Request Bulk Quote →</a>
-</aside>
+<a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
+</div>
 <div class="product-links"><span>🔗 Recommended:</span><a href="/products/end-mills.html">Solid Carbide End Mills</a><a href="/products/turning-inserts.html">Turning Inserts</a></div>
-<section class="more-tools">
-<h3>©2026年用超硬工具</h3>
-<div class="tool-grid">
-<a href="/tools/tap-drill-size-calculator/">Tap Drill Size Calculator</a>
-<a href="/tools/mrr-calculator/">斜面角度計算ツール</a>
-<a href="/tools/gun-drill-calculator/">速度と送り量</a>
-<a href="/tools/form-tap-drill-calculator/">Form Tap Drill Calculator</a>
-<a href="/tools/tangent-point-calculator/">Tangent Point Calculator</a>
-<a href="/tools/ramping-angle-calculator/">Ramping Angle Calculator</a>
-<a href="/tools/coating-selector/">Coating Selector</a>
-<a href="/tools/metal-cost-calculator/">Metal Cost Calculator</a>
-</div>
-</section>
+
 <div class="share-bar">
 <span class="share-label">↗ Share with Engineers</span>
 <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://carbide-tooling.com/tools/toolbox-organizer/" rel="noopener" target="_blank">LinkedIn</a>
 <a href="https://twitter.com/intent/tweet?url=https://carbide-tooling.com/tools/toolbox-organizer/&amp;text=Toolbox Organizer" rel="noopener" target="_blank">𝕏</a>
 <a href="mailto:subject=Toolbox Organizer&amp;body=Check this out: https://carbide-tooling.com/tools/toolbox-organizer/">Email</a>
+</div>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/jp/tools/pomodoro-timer/">Pomodoro Timer</a>
+<a href="/jp/tools/thread-depth-torque-calculator/">Thread Depth Torque Calculator</a>
+<a href="/jp/tools/carbide-grade-cross-ref-2/">Carbide Grade Cross Ref 2</a>
+<a href="/jp/tools/chamfer-calculator/">Chamfer Calculator</a>
+<a href="/jp/tools/drill-point-length-calculator/">Drill Point Length Calculator</a>
+<a href="/jp/tools/thread-lead-angle-calculator/">Thread Lead Angle Calculator</a>
+<a href="/jp/tools/grade-reference/">Grade Reference</a>
+<a href="/jp/tools/polar-rect-converter/">Polar Rect Converter</a>
+<a href="/jp/tools/trochoidal-milling-calculator/">Trochoidal Milling Calculator</a>
+<a href="/jp/tools/bulk-discount-calculator/">Bulk Discount Calculator</a>
+
+</div>
+</section>
+<style>
+.engineering-directory a{
+  display:block;
+  font-size:12px;
+  font-weight:500;
+  color:#1d1d1f;
+  text-decoration:none;
+  padding:8px 14px;
+  background:#fff;
+  border-radius:10px;
+  border:1px solid #e8e8ed;
+  transition:all .15s;
+  text-align:center;
+}
+.engineering-directory a:hover{
+  background:#0066cc;
+  color:#fff;
+  border-color:#0066cc;
+  transform:translateY(-1px);
+  box-shadow:0 4px 12px rgba(0,102,204,.15);
+}
+</style>
+
+<section class="engineering-directory" style="margin:40px 0 20px;padding:28px 24px;background:linear-gradient(135deg,#f8f9fa 0%,#f5f5f7 100%);border-radius:20px;border:1px solid #e8e8ed">
+<h3 style="font-size:16px;font-weight:700;color:#1d1d1f;margin-bottom:6px;text-align:center">🌐 グローバルエンジニアリングディレクトリ</h3>
+<p style="font-size:12px;color:#86868b;text-align:center;margin-bottom:16px">グローバルコレクションから専門の加工ツールを探索</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px">
+<a href="/jp/tools/grade-reference/">Grade Reference</a>
+<a href="/jp/tools/bolt-circle-calculator/">Bolt Circle Calculator</a>
+<a href="/jp/tools/heat-expansion-calculator/">Heat Expansion Calculator</a>
+<a href="/jp/tools/horsepower-calculator/">Horsepower Calculator</a>
+<a href="/jp/tools/coord-rotation-calculator/">Coord Rotation Calculator</a>
+<a href="/jp/tools/nose-radius-compensation/">Nose Radius Compensation</a>
+<a href="/jp/tools/coolant-concentration/">Coolant Concentration</a>
+<a href="/jp/tools/shipping-duty-estimator/">Shipping Duty Estimator</a>
+<a href="/jp/tools/pomodoro-timer/">Pomodoro Timer</a>
+<a href="/jp/tools/engineering-interest-calculator/">Engineering Interest Calculator</a>
+
+</div>
+</section>
+<style>
+.engineering-directory a{
+  display:block;
+  font-size:12px;
+  font-weight:500;
+  color:#1d1d1f;
+  text-decoration:none;
+  padding:8px 14px;
+  background:#fff;
+  border-radius:10px;
+  border:1px solid #e8e8ed;
+  transition:all .15s;
+  text-align:center;
+}
+.engineering-directory a:hover{
+  background:#0066cc;
+  color:#fff;
+  border-color:#0066cc;
+  transform:translateY(-1px);
+  box-shadow:0 4px 12px rgba(0,102,204,.15);
+}
+</style>
+<aside class="b2b-card-enhanced" style="margin:32px 0">
+<div style="display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f7ff 0%,#e8f4ff 100%);border:1px solid #b8d4f0;border-radius:20px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,102,204,.06)">
+<div style="flex-shrink:0;width:52px;height:52px;background:#0066cc;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,102,204,.2)">📦</div>
+<div style="flex:1;min-width:0">
+<h3 style="font-size:15px;font-weight:700;color:#1d1d1f;margin:0 0 4px">Toolbox Organizerのプロフェッショナルソリューション</h3>
+<p style="font-size:12px;color:#555;line-height:1.5;margin:0">ISO認証品質のプレミアム超硬工具を工場直送価格でご提供。技術サポート付き。</p>
+</div>
+<a href="/jp/quote.html" style="flex-shrink:0;display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:10px 22px;border-radius:24px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap" onmouseover="this.style.background='#0055aa';this.style.transform='translateY(-1px)';this.style.boxShadow='0 4px 16px rgba(0,102,204,.3)'" onmouseout="this.style.background='#0066cc';this.style.transform='none';this.style.boxShadow='none'">一括見積を依頼 →</a>
 </div>
 </body></html>

@@ -1,0 +1,23 @@
+{
+  "date": "2026-06-26",
+  "stats": {
+    "total_processed": 668,
+    "nav_updated": 668,
+    "b2b_enhanced": 505,
+    "directory_added": 505,
+    "hreflang_fixed": 102,
+    "errors": 0,
+    "skipped": 0
+  },
+  "sitemap_total_urls": 671,
+  "sitemap_details": {
+    "sitemap.xml": 118,
+    "sitemap-de.xml": 112,
+    "sitemap-ja.xml": 112,
+    "sitemap-es.xml": 112,
+    "sitemap-vi.xml": 112,
+    "sitemap-zh.xml": 105
+  },
+  "validation_sample": 100,
+  "validation_errors": 4
+}

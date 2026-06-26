@@ -1,1 +1,10 @@
+User-agent: *
+Allow: /
 Sitemap: https://carbide-tooling.com/sitemap-index.xml
+
+# Direct links for search engines
+Sitemap: https://carbide-tooling.com/sitemap.xml
+Sitemap: https://carbide-tooling.com/sitemap-de.xml
+Sitemap: https://carbide-tooling.com/sitemap-ja.xml
+Sitemap: https://carbide-tooling.com/sitemap-es.xml
+Sitemap: https://carbide-tooling.com/sitemap-vi.xml

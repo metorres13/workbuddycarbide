@@ -182,31 +182,63 @@ footer .bottom{border-top:1px solid #e8e8ed;margin-top:32px;padding-top:20px;tex
  "@context":"https://schema.org","@type":"WebSite","name":"Carbide Tooling","url":"https://carbide-tooling.com"
 }]
 </script>
-<link href="https://carbide-tooling.com/jp/index.html" rel="canonical"/><link href="https://carbide-tooling.com/index.html" hreflang="x-default" rel="alternate"/><link href="https://carbide-tooling.com/index.html" hreflang="en" rel="alternate"/><link href="https://carbide-tooling.com/de/index.html" hreflang="de" rel="alternate"/><link href="https://carbide-tooling.com/jp/index.html" hreflang="ja" rel="alternate"/><link href="https://carbide-tooling.com/es/index.html" hreflang="es" rel="alternate"/><link href="https://carbide-tooling.com/vi/index.html" hreflang="vi" rel="alternate"/></head>
+<link href="https://carbide-tooling.com/jp/index.html" rel="canonical"/><link href="https://carbide-tooling.com/index.html" hreflang="x-default" rel="alternate"/><link href="https://carbide-tooling.com/index.html" hreflang="en" rel="alternate"/><link href="https://carbide-tooling.com/de/index.html" hreflang="de" rel="alternate"/><link href="https://carbide-tooling.com/jp/index.html" hreflang="ja" rel="alternate"/><link href="https://carbide-tooling.com/es/index.html" hreflang="es" rel="alternate"/><link href="https://carbide-tooling.com/vi/index.html" hreflang="vi" rel="alternate"/><script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  important: true,
+  corePlugins: { preflight: false },
+  theme: {
+    extend: {
+      fontFamily: { sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"] },
+    }
+  }
+}
+</script>
+
+<style id="nav-v2-style">
+/* ── Apple Smart Nav v2 ── */
+nav#nav-v2{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(24px);-webkit-backdrop-filter:saturate(180%) blur(24px);border-bottom:1px solid rgba(0,0,0,.06);height:48px;display:flex;align-items:center}
+nav#nav-v2 .nv-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1100px;margin:0 auto;padding:0 24px}
+nav#nav-v2 .nv-logo{font-size:14px;font-weight:700;letter-spacing:-.3px;color:#1d1d1f;text-decoration:none;display:flex;align-items:center;gap:6px;white-space:nowrap;flex-shrink:0}
+nav#nav-v2 .nv-logo span{font-weight:800;color:#0066cc}
+nav#nav-v2 .nv-links{display:flex;align-items:center;gap:0;flex-shrink:0}
+nav#nav-v2 .nv-links>a{color:#1d1d1f;text-decoration:none;padding:0 14px;height:48px;display:flex;align-items:center;font-weight:500;font-size:12px;transition:color .15s;white-space:nowrap}
+nav#nav-v2 .nv-links>a:hover{color:#0066cc}
+nav#nav-v2 .nv-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+nav#nav-v2 .nv-quote{display:inline-flex;align-items:center;background:#0066cc;color:#fff;padding:6px 16px;border-radius:24px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap}
+nav#nav-v2 .nv-quote:hover{background:#0055aa;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,102,204,.25)}
+nav#nav-v2 .nv-lang{display:flex;align-items:center;gap:2px;margin-left:4px;padding-left:8px;border-left:1px solid #e8e8ed}
+nav#nav-v2 .nv-lang a{font-size:10px;font-weight:600;color:#86868b;text-decoration:none;padding:3px 6px;border-radius:12px;transition:all .15s;letter-spacing:.3px}
+nav#nav-v2 .nv-lang a:hover{color:#1d1d1f;background:#f5f5f7}
+nav#nav-v2 .nv-lang a.active{color:#0066cc;background:#f0f7ff;font-weight:700}
+nav#nav-v2 .nv-lang .sep{color:#d2d2d6;font-size:10px;margin:0 1px;font-weight:300}
+@media(max-width:768px){
+  nav#nav-v2 .nv-links{display:none}
+  nav#nav-v2 .nv-lang a{font-size:9px;padding:2px 4px}
+  nav#nav-v2 .nv-quote{padding:4px 10px;font-size:10px}
+}
+nav#nav-v2{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif!important}
+</style>
+
+</head>
 <body>
 <!-- ===== NAV ===== -->
-<nav>
-<div class="nav-inner">
-<div class="nav-left">
-<a class="logo" href="/"><span>◆</span> Carbide Tooling</a>
-<div class="nav-links">
-<a href="/products/">◆超硬工具</a>
-<a class="nav-link" href="/jp/tools/"> 全100ツールを見る →</a>
-<a href="/guides/">🇩🇪ドイツ</a>
-<a href="/about.html">🇯🇵ジェイピー</a>
+<nav id="nav-v2">
+<div class="nv-inner">
+<a class="nv-logo" href="/jp/"><span>◆</span> Carbide Tooling</a>
+<div class="nv-links">
+<a href="/jp/">ホーム</a>
+<a href="/jp/products/">製品</a>
+<a href="/jp/tools/">ツール</a>
+<a href="/jp/guides/">ガイド</a>
+<a href="/jp/about.html">会社概要</a>
+</div>
+<div class="nv-right">
+<div class="nv-lang"><a href="/">EN</a><span class="sep">·</span><a href="/de/">DE</a><a href="#" onclick="return false" class="active">JP</a><span class="sep">·</span><a href="/es/">ES</a><a href="/vi/">VI</a></div>
+<a class="nv-quote" href="/jp/quote.html">📩 見積依頼</a>
 </div>
 </div>
-<a href="/quote.html" style="display:inline-flex;align-items:center;gap:6px;background:#0066cc;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s">🇪🇸エスイー</a>
-<div class="lang-dropdown">
-<button class="lang-btn" onclick="toggleLang(event)"><span id="cf">🇬🇧</span><span class="arrow">▼</span></button>
-<div class="lang-menu" id="lang-menu">
-<a class="active" href="/"><span class="flag">🇬🇧</span> EN</a>
-<a href="/de/"><span class="flag">🇩🇪</span> DE</a>
-<a href="/jp/"><span class="flag">🇯🇵</span> JP</a>
-<a href="/es/"><span class="flag">🇪🇸</span> ES</a>
-<a href="/vi/"><span class="flag">🇻🇳</span> VI</a>
-</div>
-</div></div></nav>
+</nav>
 <!-- ===== HERO ===== -->
 <section class="hero">
 <div class="container" style="display:contents;">
